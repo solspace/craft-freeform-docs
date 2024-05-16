@@ -1,0 +1,195 @@
+---
+title: Craft Freeform 5.x - Caching Forms
+description: Forms and pages can cached in a variety of ways. Here are some solutions to consider...
+prev: false
+next: false
+---
+
+<meta property="og:image" content="https://docs.solspace.com/extras/social/craft/freeform/freeform.png" />
+
+<div id="pr-heading">
+    <img src="https://docs.solspace.com/extras/icons/products/freeform-icon.png" alt="Freeform" class="pr-image">
+    <span class="pr-name">Freeform</span>
+    <span class="pr-category">for Craft</span>
+    <div class="pr-v-wrapper">
+        <div class="pr-v">
+            <span class="pr-v-v">5.x</span>
+            <span class="pr-v-type pr-latest">✓ Latest</span>
+            <span class="pr-v-arrow arrow down"></span>
+        </div>
+        <ul class="pr-v-list">
+            <li><a href="/craft/freeform/v5/">5.x<span class="pr-v-type pr-latest">✓ Latest</span></a></li>
+            <li><a href="/craft/freeform/v4/">4.x</a></li>
+            <li><a href="/craft/freeform/v3/">3.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v2/">2.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v1/">1.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+        </ul>
+    </div>
+    <div class="pr-buy">
+        <a href="https://plugins.craftcms.com/freeform" class="button button-blue"><span class="external-url">Plugin Store</span></a>
+    </div>
+</div>
+
+<span class="page-section"><a href="/craft/freeform/v5/templates/">Templating</a></span>
+
+# Caching Forms <Badge type="feature" text="Improved in 5.0+" />
+
+Forms and pages can be cached in a variety of ways. Here are 2 different solutions, depending on your caching approach.
+
+::: guide ../../guides/troubleshooting-form-issues/
+Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.
+:::
+
+
+[[toc]]
+
+
+## Twig Template Caching
+
+When using simple [Craft Caching](https://craftcms.com/docs/5.x/reference/twig/tags.html#cache), you'll need to make sure that you are refreshing the [CSRF token](https://craftcms.com/docs/5.x/development/forms.html#csrf) and the Freeform form hash. Here's how that may look inside your template:
+
+```twig
+{# Initialize the form #}
+{% set form = freeform.form("myFormHandle") %}
+
+{# Cached form comes here #}
+{% cache %}
+    {{ form.render }}
+{% endcache %}
+
+{# Script for updating the form's Hash and CSRF token loads after #}
+<script>
+    // Find the corresponding Form
+    var form = document.querySelector('form');
+
+    // Locate and update the Hash input
+    var formHashInput = form.querySelector('input[name=formHash]');
+    formHashInput.setAttribute('value', '{{ form.hash }}');
+
+    // Locate and update the CSRF input
+    var csrfInput = form.querySelector('input[name={{ craft.app.config.general.csrfTokenName|e('js') }}]');
+    csrfInput.value = '{{ craft.app.request.csrfToken|e('js') }}';
+</script>
+```
+
+If using **PHP Sessions** or **Database Tables** for _Freeform Session Context_, be sure to include `{% do form.registerContext %}`:
+
+```twig {3}
+{# Initialize the form #}
+{% set form = freeform.form("myFormHandle") %}
+{% do form.registerContext %}
+
+{# Cached form comes here #}
+...
+```
+
+
+## Static Page Caching / CDN / Blitz
+
+Services like [CloudFlare](http://cloudflare.com) allow you to cache components of web pages like JS, CSS and images. But you can also cache entire web pages; the complete HTML of a page. They then distribute these cached copies of pages across their global network of data centers. This makes websites screaming fast. The [Blitz](https://plugins.craftcms.com/blitz) Craft plugin is another way for static page caching.
+
+There's one problem with full page caching though. Forms stop working after a while since their [CSRF tokens](https://craftcms.com/docs/5.x/development/forms.html#csrf) expire. CSRF tokens are a way of cutting down on unwanted form submissions and assure that a given form actually belongs to a given website.
+
+You can overcome this problem of expired CSRF tokens in Craft CMS with some simple javascript and a little Twig template code.
+
+<div class="step">
+<label for="step1"><input type="checkbox" class="step-check" id="step1">
+
+Create a separate Twig template to handle loading the refreshed tokens with the following code:
+
+</label>
+
+```twig
+{% set form = freeform.form(craft.app.request.get('form')) %}
+{{ {
+    hash: form.hash,
+    payload: form.payload,
+    csrf: {
+        name: craft.app.config.general.csrfTokenName,
+        value: craft.app.request.csrfToken,
+    }
+}|json_encode|raw }}
+```
+
+If using **PHP Sessions** or **Database Tables** for _Freeform Session Context_, be sure to include `{% do form.registerContext %}`:
+
+```twig {2}
+{% set form = freeform.form(craft.app.request.get('form')) %}
+{% do form.registerContext %}
+{{ {
+    hash: form.hash,
+    csrf: {
+        name: craft.app.config.general.csrfTokenName,
+        value: craft.app.request.csrfToken,
+    }
+}|json_encode|raw }}
+```
+
+</div>
+
+<div class="step">
+<label for="step2"><input type="checkbox" class="step-check" id="step2">
+
+Make sure routing to that template works correctly. For example, we often dedicate a directory **inside the Craft templates directory** named something like `dynamic` on our websites and place files in that directory that we know should never be cached by the CDN. The above template might be in a directory called `dynamic` with a filename of `index.twig`.
+
+</label>
+</div>
+
+<div class="step">
+<label for="step3"><input type="checkbox" class="step-check" id="step3">
+
+Set up a rule in CloudFlare or your preferred CDN that makes sure any URLs starting with `dynamic` are not cached. You can then aggressively cache all of your other site URLs.
+
+</label>
+</div>
+
+<div class="step">
+<label for="step4"><input type="checkbox" class="step-check" id="step4">
+
+Add the following JS snippet to your main `.js` file or to the bottom of all your web pages. Note that this snippet assumes you're already running [jQuery](https://jquery.com). It uses AJAX to fetch the contents of `https://yourwebsite.com/dynamic`, which just returns a fresh CSRF token (and anything else you include). This is then replaced in the CSRF token field of all forms on the page.
+
+</label>
+
+```twig
+{# Initialize the form #}
+{% set form = freeform.form("myFormHandle") %}
+{{ form.render }}
+
+{# Load the jQuery library #}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+{# The script for updating the form's hash, payload and CSRF token loads after #}
+<script>
+    $(function () {
+        // Find the corresponding Form
+        var form = document.querySelector('form');
+
+        $.ajax({
+            // Specify the form handle in the GET parameters
+            // ! Make sure to change the `myFormHandle` to your specific form handle.
+            url: '/dynamic?form=myFormHandle',
+            type: 'get',
+            dataType: 'json',
+            success: function (response) {
+                // Update the Form Hash
+                form.querySelector('input[name=formHash]').value = response.hash;
+
+                // Update the Payload if encrypted payloads are enabled
+                form.querySelector('input[name=freeform_payload]').value = response.payload;
+
+                // Locate and update the CSRF input
+                var csrf = response.csrf;
+                form.querySelector('input[name=' + csrf.name + ']').value = csrf.value;
+            },
+        });
+    });
+</script>
+```
+
+</div>
+
+<div class="step-finished">Finished!</div>
+
+::: guide ../../guides/multiple-instances-of-same-form/
+Using a form more than once in the same template? Be sure to specify the `id` parameter for the _Form_ query in your template with unique values.
+:::

@@ -1,0 +1,603 @@
+---
+title: Craft Freeform 5.x - Tailwind CSS 3 - Example Formatting Template
+description: A Tailwind CSS formatting template example.
+prev: false
+next: false
+---
+
+<meta property="og:image" content="https://docs.solspace.com/extras/social/craft/freeform/freeform.png" />
+
+<div id="pr-heading">
+    <img src="https://docs.solspace.com/extras/icons/products/freeform-icon.png" alt="Freeform" class="pr-image">
+    <span class="pr-name">Freeform</span>
+    <span class="pr-category">for Craft</span>
+    <div class="pr-v-wrapper">
+        <div class="pr-v">
+            <span class="pr-v-v">5.x</span>
+            <span class="pr-v-type pr-latest">✓ Latest</span>
+            <span class="pr-v-arrow arrow down"></span>
+        </div>
+        <ul class="pr-v-list">
+            <li><a href="/craft/freeform/v5/">5.x<span class="pr-v-type pr-latest">✓ Latest</span></a></li>
+            <li><a href="/craft/freeform/v4/">4.x</a></li>
+            <li><a href="/craft/freeform/v3/">3.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v2/">2.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v1/">1.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+        </ul>
+    </div>
+    <div class="pr-buy">
+        <a href="https://plugins.craftcms.com/freeform" class="button button-blue"><span class="external-url">Plugin Store</span></a>
+    </div>
+</div>
+
+<span class="page-section"><a href="/craft/freeform/v5/templates/formatting/">Formatting Templates</a></span>
+
+# Tailwind CSS 3 <Badge type="feature" text="Improved in 5.0+" />
+
+The following example assumes you're including necessary [Tailwind CSS 3](https://tailwindcss.com) components. Due to the nature of Tailwind, this likely won't be useable as-is for most customers, but will serve as a good starting point for creating your own. You can place the CSS and JS inside the formatting template or add to your site's CSS / JS files.
+
+
+[[toc]]
+
+
+## Preview
+
+![Tailwind CSS 3 Example](../../images/formatting/tailwind-3.png)
+
+::: video 78LAmvZ0yoA/?start=313
+Video: Preview of Formatting Template Examples
+:::
+
+
+## Templates
+
+<div class="code-tabs">
+
+<div class="code-tab-directory">/tailwind-3/</div>
+
+<input type="radio" name="code-tabs" tabindex="1" id="code-tab-1" checked="checked">
+<label for="code-tab-1" class="code-tab-twig">index.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+{# Pull in CSS and field rendering #}
+<style>
+{% include "freeform/_templates/formatting/tailwind-3/_main.css" %}
+</style>
+{% import "freeform/_templates/formatting/tailwind-3/_row.twig" as rowMacro %}
+
+{# Render the opening form tag #}
+{{ form.renderTag({
+    attributes: {
+        row: { class: "flex flex-wrap -mx-2 mb-4" },
+        success: { class: "bg-green-100 border border-green-400 font-bold text-green-700 px-4 py-3 rounded relative mb-4" },
+        errors: { class: "bg-red-100 border border-red-400 font-bold text-red-700 px-4 py-3 rounded relative mb-4" },
+        novalidate: true,
+    },
+    buttons: {
+        attributes: {
+            container: { class: "flex flex-wrap -mx-2 mb-4" },
+            column: { class: "ml-2" },
+            buttonWrapper: {},
+            submit: { class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" },
+            back: { class: "bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded mr-2" },
+            save: { class: "bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" },
+        },
+    },
+    fields: {
+        "@global": {
+            attributes: {
+                container: { class: "w-full px-2" },
+                label: { class: "block text-slate-800 text-base font-medium mb-1" },
+                input: {
+                    class: [
+                        "md:mb-0 mb-4",
+                        "appearance-none block w-full",
+                        "text-slate-800 rounded py-2 px-3 leading-tight",
+                        "placeholder:font-light placeholder:text-slate-400",
+                        "border border-slate-400 focus:outline-none focus:bg-white focus:border-blue-600",
+                    ],
+                },
+                instructions: { class: "block text-slate-500 text-sm -mt-1.5 mb-1" },
+                error: { class: "freeform-errors block w-full text-sm text-red-500 mt-1" },
+            },
+        },
+        ":required": {
+            attributes: {
+                label: { "+class": "required" },
+            },
+        },
+        ":errors": {
+            attributes: {
+                input: { "+class": "border-red-500" },
+            },
+        },
+        "@checkbox, @checkboxes, @radios, @opinion-scale, @signature, @table": {
+            attributes: {
+                input: { "-class": "appearance-none block w-full" },
+            },
+        },
+        "@signature": {
+            attributes: {
+                input: { "+class": "rounded py-1 px-2 mr-1 hover:bg-slate-400" },
+            },
+        },
+        "@checkbox" : {
+            attributes: {
+                label: {
+                    "-class": "block text-slate-800 text-base font-medium mb-1",
+                    "+class": "ml-2 font-medium text-slate-700"
+                },
+            },
+        },
+        "@checkbox, @checkboxes, @radios": {
+            attributes: {
+                input: { "+class": "w-4 h-4 text-blue-600 bg-slate-100 border-slate-300 rounded" },
+            },
+        },
+        "@stripe": {
+            attributes: {
+                input: { "-class": "rounded py-2 px-3 leading-tight placeholder:font-light placeholder:text-slate-400 border border-slate-400 focus:outline-none focus:bg-white focus:border-blue-600" },
+            },
+        },
+    },
+}) }}
+
+{# Pull in JS overrides #}
+<script>
+{% include "freeform/_templates/formatting/tailwind-3/_main.js" %}
+</script>
+
+{# Success and error message handling for non-AJAX forms #}
+{% if not form.settings.ajax %}
+    {% if form.submittedSuccessfully %}
+        <div{{ form.attributes.success|raw }}>
+            <p>{{ form.settings.successMessage | t('freeform') }}</p>
+        </div>
+    {% endif %}
+    {% if form.hasErrors %}
+        <div{{ form.attributes.errors|raw }}>
+            <p>{{ form.settings.errorMessage | t('freeform') }}</p>
+
+            {% if form.errors|length %}
+                <ul class="mb-0">
+                    {% for error in form.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endif %}
+
+{# Render page tabs if multi-page #}
+{% if form.pages|length > 1 %}
+    <ul class="flex border-b-2 border-slate-300 mb-6">
+        {% for page in form.pages %}
+            <li class="mr-1">
+                <span class="inline-block rounded-t py-2 px-5 {{ form.currentPage.index == page.index ? 'bg-slate-300 border-l border-t border-r border-slate-300 text-slate-800 font-semibold' : 'bg-white text-slate-500 font-normal' }}">{{ page.label }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{# Display form field rows and columns #}
+{{ rowMacro.render(form.rows, form) }}
+
+{# Render the closing form tag #}
+{{ form.renderClosingTag }}
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs" id="code-tab-2">
+<label for="code-tab-2" class="code-tab-twig">_row.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+{% macro getFieldTemplate(type) -%}
+    {% set fieldTemplatePath = "freeform/_templates/formatting/tailwind-3/fields/" %}
+    {{- fieldTemplatePath ~ type ~ ".twig" -}}
+{%- endmacro %}
+
+{% macro render(rows, form) %}
+    {% import _self as self %}
+
+    {% for row in rows %}
+
+        {% set columnCount = row|length %}
+
+        <div{{ form.attributes.row|raw }}>
+            {% for field in row %}
+
+                {% do field.setParameters({
+                    attributes: {
+                        container: {
+                            class: [
+                                columnCount in [2, 3, 4] ? "md:w-1/" ~ columnCount,
+                                columnCount in [2, 3, 4] ? "lg:w-1/" ~ columnCount,
+                                columnCount in [2, 3, 4] ? "xl:w-1/" ~ columnCount,
+                                columnCount == 1 ? "md:w-full lg:w-full xl:w-full"
+                            ],
+                        },
+                    }
+                }) %}
+
+                {% include [self.getFieldTemplate(field.type), self.getFieldTemplate("_default")] %}
+
+            {% endfor %}
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs" id="code-tab-3">
+<label for="code-tab-3" class="code-tab-css">_main.css</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` css
+/* LAYOUT */
+html, body {
+    font-family: sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+.required::after {
+    content: "*";
+    color: #d00;
+    margin-left: 5px;
+}
+button[type=submit].freeform-processing {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+button[type=submit].freeform-processing:before {
+    content: "";
+    display: block;
+    flex: 1 0 11px;
+    width: 11px;
+    height: 11px;
+    margin-right: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent transparent #fff #fff;
+    border-radius: 50%;
+    animation: freeform-processing .5s linear infinite;
+}
+@keyframes freeform-processing {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(1turn);
+    }
+}
+.input-group-one-line > div {
+    float: left;
+    margin-right: 15px;
+}
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs" id="code-tab-4">
+<label for="code-tab-4" class="code-tab-js">_main.js</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` js
+var form = document.querySelector('[data-id="{{ form.anchor }}"]');
+if (form) {
+    // Styling for AJAX responses
+    form.addEventListener("freeform-ready", function (event) {
+        var freeform = event.freeform;
+        freeform.setOption("errorClassBanner", ["bg-red-100", "border", "border-red-400", "font-bold", "text-red-700", "px-4", "py-3", "rounded", "relative", "mb-4"]);
+        freeform.setOption("errorClassList", ["errors", "text-red-500", "text-sm", "italic"]);
+        freeform.setOption("errorClassField", ["border-red-500"]);
+        freeform.setOption("successClassBanner", ["bg-green-100", "border", "border-green-500", "font-bold", "text-green-700", "px-4", "py-3", "rounded", "relative", "mb-4"]);
+    })
+    // Styling for Stripe Payments field
+    form.addEventListener("freeform-stripe-appearance", function (event) {
+        event.elementOptions.appearance = Object.assign(
+            event.elementOptions.appearance,
+            {
+                variables: {
+                    colorPrimary: "#0d6efd",
+                    fontFamily: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"",
+                    fontSizeBase: "16px",
+                    spacingUnit: "0.2em",
+                    tabSpacing: "10px",
+                    gridColumnSpacing: "20px",
+                    gridRowSpacing: "20px",
+                    colorText: "#212529",
+                    colorBackground: "#ffffff",
+                    colorDanger: "rgb(239 68 68)",
+                    borderRadius: "5px",
+                },
+                rules: {
+                    '.Tab, .Input': {
+                        border: '1px solid rgb(148 163 184)',
+                        boxShadow: 'none',
+                    },
+                    '.Tab:focus, .Input:focus': {
+                        border: '1px solid #0b5ed7',
+                        boxShadow: 'none',
+                        outline: '0',
+                        transition: 'border-color .15s ease-in-out',
+                    },
+                    '.Label': {
+                        fontSize: '16px',
+                        fontWeight: '500',
+                    },
+                },
+            }
+        );
+    });
+}
+```
+
+</div>
+<a class="code-tab-directory-link" href="#tailwind-3-fields">fields/</a>
+</div>
+
+<div class="code-tabs" id="tailwind-3-fields">
+
+<div class="code-tab-directory">/tailwind-3/fields/</div>
+
+<input type="radio" name="code-tabs-b" tabindex="1" id="code-tab-1b" checked="checked">
+<label for="code-tab-1b" class="code-tab-twig">_default.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+{{ field.render }}
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-b" id="code-tab-2b">
+<label for="code-tab-2b" class="code-tab-twig">checkbox.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+<div{{ field.attributes.container }}>
+
+<div class="flex items-center">
+    {{ field.renderInput }}
+    {{ field.renderLabel }}
+</div>
+
+{{ field.renderInstructions }}
+{{ field.renderErrors }}
+
+</div>
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-b" id="code-tab-3b">
+<label for="code-tab-3b" class="code-tab-twig">checkboxes.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+{% do field.setParameters({
+    attributes: {
+        container: {
+            class: [
+                field.oneLine ? "input-group-one-line"
+            ]
+        }
+    }
+}) %}
+
+<div{{ field.attributes.container }}>
+
+{{ field.renderLabel }}
+{{ field.renderInstructions }}
+{% for index, option in field.options %}
+    <div class="flex items-center mb-1">
+        <input type="checkbox"
+                name="{{ field.handle }}[]"
+                value="{{ option.value }}"
+                id="{{ field.idAttribute }}-{{ index }}"
+                class="{{ field.attributes.input.get("class") }}{{ field.hasErrors ? ' border-red-500' }}"
+                {{ option.value in field.value ? "checked" }}
+        />
+        <label for="{{ field.idAttribute }}-{{ index }}" class="ml-2 font-normal text-slate-600">
+            {{ option.label|t('freeform')|raw }}
+        </label>
+    </div>
+{% endfor %}
+{{ field.renderErrors }}
+
+</div>
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-b" id="code-tab-4b">
+<label for="code-tab-4b" class="code-tab-twig">radios.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+{% do field.setParameters({
+    attributes: {
+        container: {
+            class: [
+                field.oneLine ? "input-group-one-line"
+            ]
+        }
+    }
+}) %}
+
+<div{{ field.attributes.container }}>
+
+{{ field.renderLabel }}
+{{ field.renderInstructions }}
+{% for index, option in field.options %}
+    <div class="flex items-center mb-1">
+        <input type="radio"
+                name="{{ field.handle }}"
+                value="{{ option.value }}"
+                id="{{ field.idAttribute }}-{{ index }}"
+                class="{{ field.attributes.input.get("class") }}{{ field.hasErrors ? ' border-red-500' }}"
+                {{ option.value == field.value ? "checked" }}
+        />
+        <label for="{{ field.idAttribute }}-{{ index }}" class="ml-2 font-normal text-slate-600">
+            {{ option.label|t('freeform')|raw }}
+        </label>
+    </div>
+{% endfor %}
+{{ field.renderErrors }}
+
+</div>
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-b" id="code-tab-5b">
+<label for="code-tab-5b" class="code-tab-twig">group.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+{% import "freeform/_templates/formatting/tailwind-3/_row.twig" as rowMacro %}
+
+<div{{ field.attributes.container }}>
+    {{ field.renderLabel }}
+    {{ field.renderInstructions }}
+
+    {{ rowMacro.render(field.layout, form) }}
+</div>
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-b" id="code-tab-6b">
+<label for="code-tab-6b" class="code-tab-twig">table.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+{% set tableColumnCount = field.tableLayout|length %}
+
+{{ field.render({
+    instructionsBelowField: false,
+    addButtonLabel: "Add +",
+    removeButtonLabel: "x",
+    tableAttributes: {
+        table: { class: "table" },
+        row: { class: "table-row" },
+        column: { class: [
+            tableColumnCount in [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] ? "w-1/" ~ tableColumnCount,
+            tableColumnCount == 1 ? "w-full",
+            "table-col pb-1"
+        ] },
+        label: { class: [
+            "text-left font-medium tracking-wide text-slate-800 text-sm mb-2 pr-5"
+        ] },
+        input: { class: [ field.attributes.input.get("class"), "mr-5 w-11/12 block" ] },
+        dropdown: { class: [ field.attributes.input.get("class"), "mr-5 w-11/12 block" ] },
+        checkbox: { class: [ field.attributes.input.get("class"), "mr-5" ] },
+        removeButton: { class: "bg-red-500 hover:bg-red-700 text-white font-normal py-1 px-3 rounded" },
+        addButton: { class: "bg-green-500 hover:bg-green-700 text-white font-normal py-1 px-3 rounded mt-2" },
+    },
+}) }}
+```
+
+</div>
+
+<input type="radio" tabindex="1" name="code-tabs-b" id="code-tab-7b">
+<label for="code-tab-7b" class="code-tab-twig">opinion-scale.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+<div{{ field.attributes.container }}>
+
+{{ field.renderLabel }}
+{{ field.renderInstructions }}
+
+<ul class="w-full text-sm font-medium border border-slate-400 rounded flex">
+    {% for scale in field.scales %}
+        <li class="w-full">
+            <input type="radio" name="{{ field.handle }}"
+                value="{{ scale.value }}"
+                id="{{ field.idAttribute }}-{{ loop.index }}"
+                {{ field.value == scale.value ? "checked" }}
+                class="hidden peer"
+             />
+            <label for="{{ field.idAttribute }}-{{ loop.index }}"
+                class="inline-flex text-center w-full py-2 px-3 text-slate-800 bg-white cursor-pointer peer-checked:bg-slate-200 hover:bg-slate-100
+                    {% if loop.index == 1 %}
+                        border-r border-slate-400 rounded-tl rounded-bl
+                    {% elseif loop.index == field.scales|length %}
+                        rounded-tr rounded-br
+                    {% else %}
+                        border-r border-slate-400
+                    {% endif %}">
+                {{ scale }}
+            </label>
+        </li>
+    {% endfor %}
+</ul>
+
+{% if field.legends %}
+    <ul class="w-full text-sm font-medium flex text-slate-500">
+        {% for legend in field.legends %}
+            <li class="w-full
+                {% if loop.index == 1 %}
+                    text-left
+                {% elseif loop.index == field.legends|length %}
+                    text-right
+                {% else %}
+                    text-center
+                {% endif %}">
+                {{ legend }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{{ field.renderErrors }}
+
+</div>
+```
+
+</div>
+
+<input type="radio" tabindex="1" name="code-tabs-b" id="code-tab-8b">
+<label for="code-tab-8b" class="code-tab-twig">dropdown.twig</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` twig
+<div{{ field.attributes.container }}>
+
+{{ field.renderLabel }}
+{{ field.renderInstructions }}
+<div class="relative">
+    {{ field.renderInput }}
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-800">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+    </div>
+</div>
+{{ field.renderErrors }}
+
+</div>
+```
+
+</div>
+
+</div>
+
+
+## CDN Links
+Tailwind CSS is typically installed via CLI, but for the purposes of this example template, we use a CDN. The following CDN link for Tailwind CSS 3 is for v3.3.3, which may no longer be the latest version. Please see official [Tailwind CSS 3 documentation](https://tailwindcss.com/docs/installation) for latest versions and CDN links.
+
+``` html
+<!-- Latest compiled and minified CSS -->
+<script src="https://cdn.tailwindcss.com/3.3.3"></script>
+```
+
+
+## Live Demo
+
+The demo below is a live [demo site](https://demo.solspace.net/craft/freeform-demo/) that shows most of what the Demo Templates include (some sections and data has been limited).
+
+<div class="demo-buttons">
+    <a href="https://demo.solspace.net/craft/freeform-demo/templates/tailwind-3/contact" target="_blank">Open in New Window</a>
+</div>
+<iframe title="App Demo" id="app-demo" src="https://demo.solspace.net/craft/freeform-demo/templates/tailwind-3/contact" scrolling="yes" height="1600px" width="100%" class="app-demo" frameborder="0"></iframe>

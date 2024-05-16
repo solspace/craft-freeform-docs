@@ -1,0 +1,265 @@
+---
+title: Craft Freeform 3.x - Updating from Freeform 2.x
+prev: false
+next: false
+---
+
+<meta property="og:image" content="https://docs.solspace.com/extras/social/craft/freeform/freeform.png" />
+
+::: version /craft/freeform/v5/
+Freeform
+:::
+
+<div id="pr-heading">
+    <img src="https://docs.solspace.com/extras/icons/products/freeform-icon.png" alt="Freeform" class="pr-image">
+    <span class="pr-name">Freeform</span>
+    <span class="pr-category">for Craft</span>
+    <div class="pr-v-wrapper">
+        <div class="pr-v">
+            <span class="pr-v-v">3.x</span>
+            <span class="pr-v-type pr-retired">Retired</span>
+            <span class="pr-v-arrow arrow down"></span>
+        </div>
+        <ul class="pr-v-list">
+            <li><a href="/craft/freeform/v5/">5.x<span class="pr-v-type pr-latest">✓ Latest</span></a></li>
+            <li><a href="/craft/freeform/v4/">4.x</a></li>
+            <li><a href="/craft/freeform/v3/">3.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v2/">2.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v1/">1.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+        </ul>
+    </div>
+    <div class="pr-buy">
+        <a href="https://plugins.craftcms.com/freeform" class="button button-blue"><span class="external-url">Plugin Store</span></a>
+    </div>
+</div>
+
+<span class="page-section">Setup</span>
+
+# Updating from Freeform 2.x
+
+::: warning
+Due to the nature of this update (consolidating _Lite_ + _Pro_ + _Payments_ editions plugins plus other big changes) we recommend anyone upgrading from Freeform 2.x to do so carefully in a development environment and follow the special instructions below.
+:::
+
+The Freeform 2.x to Freeform 3.x upgrade is special for a variety of reasons, each of which carry implications:
+
+- It consolidates the 3 separate plugins (_Lite_ + _Pro_ + _Payments_) into a single plugin with real editions.
+- Some _Lite_ features are now _Pro_ only, while the _Payments_ plugin features are now part of the _Pro_ edition ([see Key Changes table below](#key-changes)).
+- _Lite_ customers have all been granted access to Freeform 3.x _Pro_ licenses (freely available with valid (non-expired) licenses, otherwise an renewal is required).
+- The package name for Freeform has changed from `craft3-freeform` to `craft-freeform`.
+- There may be a bit of a clean-up process for _Pro_ and/or _Payments_ plugins (if applicable).
+
+<div class="menu-grid">
+    <a href="#key-changes" class="menu-box">
+        <img src="../../../../images/icons/review.png" alt="Key Changes">
+        <div class="menu-grid-text">
+            <h3>Key Changes</h3>
+            <p>Review the list of key changes made to Freeform 3.</p>
+        </div>
+    </a>
+    <a href="#updating-from-2-x" class="menu-box">
+        <img src="../../../../images/icons/trolley.png" alt="Updating from 2.x">
+        <div class="menu-grid-text">
+            <h3>Updating from 2.x</h3>
+            <p>Instructions for updating from Freeform 2.x to Freeform 3.x.</p>
+        </div>
+    </a>
+    <a href="#troubleshooting" class="menu-box">
+        <img src="../../../../images/icons/question-sign.png" alt="Troubleshooting">
+        <div class="menu-grid-text">
+            <h3>Troubleshooting</h3>
+            <p>Solutions for common issues after upgrading.</p>
+        </div>
+    </a>
+    <a href="./changelog.html" class="menu-box">
+        <img src="../../../../images/icons/rewind-time.png" alt="Changelog">
+        <div class="menu-grid-text">
+            <h3>Changelog</h3>
+            <p>Review the list of releases and changes for Freeform.</p>
+        </div>
+    </a>
+</div>
+
+
+[[toc]]
+
+
+<div class="content-block">
+
+## Key Changes
+Freeform 3 brings some exciting new features to Freeform, but there have also been a few changes to what's offered between the _Lite_, _Pro_ and _Payments_ editions. The chart below will explain those changes so you know how to account for them in the future. All existing _Lite_ customers prior to version 3 becoming available have been granted access to Freeform 3.x _Pro_ licenses (freely available with valid (non-expired) licenses, otherwise an renewal is required).
+
+::: warning
+**All Freeform customers' v2 _Lite_ licenses have been upgraded to v3 _Pro_ licenses as of June 11, 2019.** If your Freeform license(s) have expired, and you wish to renew to get access to Freeform 3, please be aware that your _old Lite_ license is now a single _Pro_ license and your _old Pro_ and/or _old Payments_ license(s) are discontinued. This means that if you originally had _old Lite_ and _old Pro_, you now have _new Pro_ (all you need) and your _old Pro_ (separate plugin license) essentially no longer exists. Renewals will only require renewing your _new Pro_ license.
+
+**If you wish to downgrade your _new Pro_ license** to a _new Lite_ license, please [contact the Craft Support Team](mailto:support@craftcms.com) for assistance, and they'll be happy to help. We apologize for any confusion and inconvenience. Just be aware that some features from _Freeform 2 Lite_ are no longer available in _Freeform 3 Lite_ (see below).
+:::
+
+::: tip
+For a full list and comparison of all features available to Freeform 3 Lite and Pro, please check out the [Compare Chart documentation](../compare.md).
+:::
+
+<span class="green">✓ Added</span> &nbsp;|&nbsp; <span class="yellow">↻ Improved</span> &nbsp;|&nbsp; <span class="red">× Removed</span> &nbsp;|&nbsp; <span class="gray">✓/× No Change</span>
+
+| <h3 class="no-margin">Pricing & Support</h3> | <h3 class="no-margin">Lite 3</h3> | <h3 class="no-margin">Pro 3</h3> |
+| :--- | :---: | :---: |
+| [Build User registration forms](../guides/user-registration-forms.md) | <span class="red">×</span> | <span class="yellow">✓</span> |
+| Confirm field type | <span class="red">×</span> | <span class="gray">✓</span> |
+| Password field type | <span class="red">×</span> | <span class="gray">✓</span> |
+| Number, Phone, Website field types | <span class="yellow"><sub><sup>Uses designated input types now</sup></sub></span> | <span class="yellow"><sub><sup>Uses designated input types now</sup></sub></span> |
+| Retroactively resend email notifications | <span class="red">×</span> | <span class="gray">✓</span> |
+| [Map submission data to Craft Elements](../overview/form-builder.md#element-connections) | <span class="red">×</span> |  <span class="yellow">↻</span> |
+| Automatically purge submission data | <span class="red">×</span> | <span class="gray">✓</span> |
+| [Accept Payments](../integrations/payments/README.md) (Stripe) | <sub><sup><span class="red">N/A</span><br /><span class="gray"><s>+$59</s></span></sup></sub> | <span class="green">✓</span><br /><sub><sup><span class="green">Included</span><br /><span class="gray"><s>+$59</s></span></sup></sub> |
+| Ability to rename plugin | <span class="red">×</span> | <span class="gray">✓</span> |
+
+</div>
+<div class="content-block">
+
+## Updating from 2.x
+
+#### To transition from Freeform 2.x to Freeform 3.x, please follow the instructions below very carefully.
+
+::: warning
+**All Freeform customers' v2 _Lite_ licenses have been upgraded to v3 _Pro_ licenses as of June 11, 2019.** If your Freeform license(s) have expired, and you wish to renew to get access to Freeform 3, please be aware that your _old Lite_ license is now a single _Pro_ license and your _old Pro_ and/or _old Payments_ license(s) are discontinued. This means that if you originally had _old Lite_ and _old Pro_, you now have _new Pro_ (all you need) and your _old Pro_ (separate plugin license) essentially no longer exists. Renewals will only require renewing your _new Pro_ license.
+
+**If you wish to downgrade your _new Pro_ license** to a _new Lite_ license, please [contact the Craft Support Team](mailto:support@craftcms.com) for assistance, and they'll be happy to help. We apologize for any confusion and inconvenience. Just be aware that some features from _Freeform 2 Lite_ are no longer available in _Freeform 3 Lite_ (see below).
+:::
+
+1. <span class="red">BACKUP YOUR SITE FILES AND DATABASE.</span>
+2. Update to the latest versions of _Lite_, _Pro_ and/or _Payments_. This isn't exactly required, but it will help narrow down any potential issues (isolate whether any potential issue has to do with an old Freeform 2.x migration or the 3.x migration, etc).
+3. Carefully review the [changelog](./changelog.md) for Freeform 3.x as well as the new [key features/changes table](#key-changes) above.
+4. If your Freeform license(s) are currently expired, you will need to renew the _new Freeform 3 Pro_ license (formerly your _old Freeform 2 Lite_ license, regardless of which edition you had before). If you had an _old Freeform 2 Pro_ license, it essentially no longer exists. We recommend renewing the license inside the [Craft ID](https://id.craftcms.com) site this time:
+    ![Renew the new Freeform 3 Pro license](../images/v2-upgrade-renewal.png)
+5. We recommend updating via Composer from the Terminal:
+    * Open your Craft site's main `composer.json` file and make the following changes (note change of `solspace/craft3-freeform` to `solspace/craft-freeform`):
+        ``` diff
+          "require": {
+              "php": ">=7.0.0",
+              "craftcms/cms": "^3.1.0",
+              "vlucas/phpdotenv": "v2.4.0",
+        -     "solspace/craft3-freeform": "^2.5.0",
+        -     "solspace/craft3-freeform-pro": "^2.5.0",
+        -     "solspace/craft3-freeform-payments": "~1.0.0",
+        +     "solspace/craft-freeform": "^3.0.0",
+        -     "solspace/craft3-calendar": "^2.0.0",
+        +     "solspace/craft-calendar": "^3.0.0"
+          },
+        ```
+    * Open your Terminal and go to your Craft project: `cd /path/to/project`
+    * To run the available updates for your site, run `composer update`
+6. Proceed to Craft control panel and click the **Finish Updates** button when it shows.
+    * The Freeform 3.x migration and Composer update should have updated Freeform Lite 2.x to Freeform 3.x with a _Pro_ edition license, and have uninstalled and removed the old _Freeform Pro 2.x_ and _Freeform Payments_ plugins.
+7. Go to the Plugins section of your Craft 3 control panel (**Craft CP** -> **Settings** -> **Plugins**) and ensure that you have the _Pro_ edition of Freeform. If not, follow the steps below:
+    * Click on the **Lite** flag/button beside the plugin name, which will take you to the Freeform product page inside the Craft Plugin Store.
+        ![Switch edition after update - step 1](../images/cp_switch-editions-purchase-1.png)
+    * Click on the **Reactivate** (or **Try**) button to activate the _Pro_ edition for your site.
+        ![Switch edition after update - step 2](../images/cp_switch-editions-purchase-2.png)
+    * Alternatively, you could edit the `edition` setting inside Craft's [Project Config](https://craftcms.com/docs/3.x/project-config.html) file to have a value of `pro`.
+8. Carefully review Freeform inside the control panel and in your templates and ensure that everything works correctly and/or necessary updates to forms/templates/settings are made. If you ever use the demo templates to review/test/experiment, please note that we've made large updates to the demo templates for Freeform 3.x, so you may wish to reinstall them.
+9. Ignore any previous _old Pro_ and _old Payments_ licenses you may have had, as these are now discontinued as of June 11, 2019. Your _old Lite_ license is now a _new Pro_ license, which grants you access to all of Freeform's features.
+
+</div>
+<div class="content-block">
+
+## Troubleshooting
+
+If something didn't go right, or if you're viewing this guide _after_ performing the upgrade from Freeform 2.x to 3.x, please check out some of the common issues below:
+
+* [Make sure you're calling Freeform 3 correctly](#make-sure-you-re-calling-freeform-3-correctly)
+* [Seeing odd errors in CP and/or templates](#seeing-odd-errors-in-cp-and-or-templates)
+* [Seeing plugin licensing errors](#seeing-plugin-licensing-errors)
+* [Old Freeform Pro 2.x plugin still installed](#old-freeform-pro-2-x-plugin-still-installed)
+
+
+### Make sure you're calling Freeform 3 correctly
+
+Your main Craft `composer.json` file should contain:
+
+* ONLY `"solspace/craft-freeform": "^3.0.0"`
+* NOT `"solspace/craft3-freeform": "^3.0.0"` (notice the `3`).
+* NOT `"solspace/craft3-freeform-pro": "^3.0.0"` (**Pro** is now part of the main `solspace/craft-freeform` package).
+* NOT `"solspace/craft3-freeform-payments": "^3.0.0"` (**Payments** is now part of the main `solspace/craft-freeform` package).
+
+As of Freeform 3.5+, there is a check to see if any of the following old Freeform 2.x folders exist (and while `solspace/craft3-freeform` will still pull the latest Freeform 3.x for now, it won't work forever):
+
+* `/vendor/solspace/craft3-freeform`
+* `/vendor/solspace/craft3-freeform-pro`
+* `/vendor/solspace/craft3-freeform-payments`
+
+::: warning
+If you happen to have the old Freeform Pro 2.x plugin still installed (and enabled), please see [Old Freeform Pro 2.x plugin still installed](#old-freeform-pro-2-x-plugin-still-installed) guide further below.
+:::
+
+#### To resolve this issue:
+
+1. <span class="red">BACKUP YOUR SITE FILES AND DATABASE.</span>
+2. Update your main Craft `composer.json` file to include only `"solspace/craft-freeform": "^3.0.0"` for Freeform.
+3. Remove any other instances of the old Freeform 2.x dependencies.
+4. Run `composer update` in your terminal.
+    * If you do not have access to run `composer update`, you can try performing any Craft or plugin update (or install new plugin temporarily) from the Craft CP to have Craft run the update on its end.
+5. Check the `/vendor/solspace/` directory and ensure that only the following folders exist:
+    * `craft-freeform`
+    * `craft3-commons`
+    * `craft-calendar` (if Solspace Calendar plugin is installed)
+    * `express-forms` (if Solspace Express Forms plugin is installed)
+6. If any other folders exist, remove them.
+7. Verify everything is working correctly.
+
+### Seeing odd errors in CP and/or templates
+
+If you're seeing any odd errors related to Pro features and field types, such as reCAPTCHA, Date Picker, Exporting, etc, it's likely because you still have old Freeform Pro 2.x installed.
+
+#### To resolve this issue:
+
+Please see [Old Freeform Pro 2.x plugin still installed](#old-freeform-pro-2-x-plugin-still-installed) guide below.
+
+### Seeing plugin licensing errors
+
+If you're seeing licensing errors in the control panel such as:
+
+>There’s a licensing issue with the Freeform plugin. Please fix on an environment where administrative changes are allowed.
+
+This might be because you're using the wrong edition or specifying the wrong edition in your Project Config file, etc.
+
+#### To resolve this issue:
+
+If using Craft's [Project Config](https://craftcms.com/docs/3.x/project-config.html) feaure, open up your `project.yaml` file and check for `freeform`. Ensure that the edition property contains a value of `lite` or `pro` (according to which edition you have), and NOT `standard`.
+
+If that still does not resolve the issue, please see the [Changing Editions](./installing-updating.md#changing-editions) documentation.
+
+### Old Freeform Pro 2.x plugin still installed
+
+It's perfectly possible for a site to have both Freeform 3.x and old Freeform Pro 2.x (or old Freeform Payments 1.x) installed and running at the same time, but it's not correct and needs to be fixed.
+
+When Craft 3 was first launched, they did not support true plugin editions. This meant that for us to provide a *Pro* edition of Freeform, it needed to be done as a *Lite* plugin + a *Pro* plugin. So if you wanted to have *Freeform Pro*, you needed to have 2 different plugins installed. EVentually, Craft added support for true editions of plugins, meaning that we could finally have a single Freeform plugin (which replaced the old *Lite* plugin) that allowed toggling of editions to enable *Pro* functionality, etc.
+
+Since the old Freeform Pro plugin was intentionally built to have its own namespacing and be installed alongside the other `freeform` *Lite* package, if the upgrade guide for upgrading from Freeform 2.x to 3.x was not followed (or not followed correctly), what could happen is that you get the new Freeform 3.x plugin and files AND keep the old Freeform Pro 2.x plugin and files as well, and sort of have Freeform installed twice. The old Freeform Pro plugin however, only carries with it *some* old Pro files that made the Pro parts work for old Freeform 2.x. What then happens is that Freeform 3.x includes all of those Pro files, and they double up against what the old Freeform Pro 2.x package has and can trigger some random errors either in the CP or front end, depending on which Pro features you're using.
+
+In Freeform 2.5.23, we introduced a change that would prepare the path to upgrading to Freeform 3.x. This change would allow the upgrade migration in 3.x to attempt to automatically uninstall the old Freeform Pro 2.x plugin (and/or Payments) without uninstalling some Pro database tables. **This is critical to understand before proceeding with the solution below...**
+
+#### To resolve this issue:
+
+::: warning
+If your installed version of the old Freeform Pro 2.x plugin is *below* 2.5.23, please follow the guide from Step 1. If you already have 2.5.23 or greater, you can skip Step 2.
+:::
+
+1. <span class="red">BACKUP YOUR SITE FILES AND DATABASE.</span>
+2. **If your installed version of the old Freeform Pro 2.x plugin is *below* 2.5.23:**
+    * Inside your main Craft `composer.json` file, update the the old Freeform Pro 2.x dependency to request the newer 2.x version: `"solspace/craft3-freeform-pro": "^2.5.23"`.
+    * Run `composer update` in your terminal to get the latest 2.x package.
+    * Visit the Craft control panel and run any migrations necessary.
+3. Go to the Plugins page inside the Craft control panel.
+4. Verify that the old Freeform Pro 2.x plugin is at least `2.5.23` or greater.
+5. Uninstall the old Freeform Pro 2.x plugin.
+6. Open up your site's main Craft `composer.json` file to include only `"solspace/craft-freeform": "^3.0.0"` for Freeform. Remove any other instances of the old Freeform 2.x dependencies.
+7. Run `composer update` in your terminal.
+8. Check the `/vendor/solspace/` directory and ensure that only the following folders exist:
+    * `craft-freeform`
+    * `craft3-commons`
+    * `craft-calendar` (if Solspace Calendar plugin is installed)
+    * `express-forms` (if Solspace Express Forms plugin is installed)
+9. If any other folders inside the `/vendor/solspace/` directory exist, remove them.
+10. Verify everything is working correctly.
+
+</div>

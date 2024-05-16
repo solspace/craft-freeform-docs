@@ -1,0 +1,491 @@
+---
+title: Craft Freeform 2.x - Fields & Field Types
+prev: false
+next: false
+---
+
+::: version /craft/freeform/v5/forms/fields/
+Freeform
+:::
+
+<div id="pr-heading">
+    <img src="https://docs.solspace.com/extras/icons/products/freeform-icon.png" alt="Freeform" class="pr-image">
+    <span class="pr-name">Freeform</span>
+    <span class="pr-category">for Craft</span>
+    <div class="pr-v-wrapper">
+        <div class="pr-v">
+            <span class="pr-v-v">2.x</span>
+            <span class="pr-v-type pr-retired">Retired</span>
+            <span class="pr-v-arrow arrow down"></span>
+        </div>
+        <ul class="pr-v-list">
+            <li><a href="/craft/freeform/v5/">5.x<span class="pr-v-type pr-latest">✓ Latest</span></a></li>
+            <li><a href="/craft/freeform/v4/">4.x</a></li>
+            <li><a href="/craft/freeform/v3/">3.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v2/">2.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v1/">1.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+        </ul>
+    </div>
+    <div class="pr-buy">
+        <a href="https://plugins.craftcms.com/freeform" class="button button-blue"><span class="external-url">Plugin Store</span></a>
+    </div>
+</div>
+
+<span class="page-section"></span>
+
+# Fields & Field Types
+
+Freeform uses its own set of fields and field types. Using a predefined set of fields also gives us the control to more easily account for how each form field should be displayed in Composer's live preview, and provides a smoother experience.
+
+::: warning
+There is currently a limit (around 130+) on the number of Freeform fields for each install of Craft, due to the MySQL column limit, since all fields are stored in a single table. However, Freeform fields can be used across all forms, and even be relabelled for each form.
+:::
+
+* [Fields Overview](#fields-overview)
+* [Field Types](#field-types)
+	* [Text](#fields-text)
+	* [Textarea](#fields-textarea)
+	* [Email](#fields-email)
+	* [Number](#fields-number)
+	* [Hidden](#fields-hidden)
+	* [Select](#fields-select)
+	* [Multiple Select](#fields-multiple-select)
+	* [Checkbox](#fields-checkbox)
+	* [Checkbox Group](#fields-checkbox-group)
+	* [Radio Group](#fields-radio-group)
+	* [File Upload](#fields-file-upload)
+	* [Dynamic Recipients](#fields-dynamic-recipients)
+* [Pro Field Types](#pro-field-types)
+	* [Date & Time](#fields-date-time)
+	* [Phone](#fields-phone)
+	* [Rating](#fields-rating)
+	* [Regex](#fields-regex)
+	* [Website](#fields-website)
+	* [reCAPTCHA](#fields-recaptcha)
+* [Special Fields](#special-fields)
+	* [Submit](#fields-submit)
+	* [HTML](#fields-html)
+	* [Confirm](#fields-confirm)
+	* [Password](#fields-password)
+	* [reCAPTCHA <Badge type="pro" text="Pro" />](#fields-recaptcha)
+* [Populating Fields with Elements & Predefined Options](#populating-fields-with-elements-predefined-options)
+	* [Available Fields](#available-fields)
+	* [Available Craft Elements](#available-craft-elements)
+	* [Available Predefined Options](#available-predefined-options)
+
+
+## Fields Overview
+
+Fields are global and available to all forms, but they can also be overwritten per form. This allows you to save time reusing existing fields when making other forms, but also gives you flexibility to make adjustments to them when needed. So to clarify, you can create fields with labels and options that are common to all forms, but also override those on each form. For example, if you have a field named **Cell Phone**, on the form level, you can rename the field name to **Mobile Phone**, or if you have a Checkbox Group field with options: **Option 1**, **Option 2**, and **Option 3**, you could override it to just have 2 options with values of **Option A** and **Option B**. When the fields are edited at global level (in main Fields area of Freeform control panel), your customizations per form will NOT be lost.
+
+Fields can be created and managed in the main field creation area (**Freeform > Fields > New Field**) and can also be created directly within the *Composer* interface as well. Fields created here are available globally as well (they do not just exist for that form).
+
+![Composer - Quick Create Fields](../images/cp_forms-composer-quickfield.png)
+
+Select, Multiple Select, Checkbox Group and Radio Group fields can also be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+
+All fieldtypes conveniently include the ability to set attributes for their **labels**, **inputs**, **errors** and **instructions** directly inside the Composer property editor. This allows you to keep your hands clean of being inside formatting templates and specify one-off exceptions for fields such as `readonly` and `autocomplete="off"`, etc.
+
+::: v-pre
+* To use single attributes like `novalidate`, just enter the attribute in the **Attribute** column and leave the **Value** column empty.
+* You can use anything inside the [Form](../template-objects/form.md) and [Field](../template-objects/field.md) objects as well, e.g.:
+	* `{{ field.id }}` to access Field ID.
+	* `{{ form.handle }}` to access form handle.
+:::
+
+![Composer - Field Attributes Editor](../images/cp_forms-composer-field-attributes.png)
+
+**Important Notes:**
+
+* All field properties can be overwritten at form level inside Composer, including the field Handle.
+* Once a field is created, you cannot change the field type after.
+* Freeform will load fields of [Hidden](#fields-hidden) type at the beginning of the form, regardless of where they are placed in Composer layout.
+
+![Fields](../images/cp_fields.png)
+
+![Create a Field](../images/cp_fields-create.png)
+
+
+## Field Types
+
+The following field types are available ([see below for additional Pro Field Types](#pro-field-types)):
+
+* **Text** <a href="#fields-text" id="fields-text" class="docs-anchor">#</a>
+	* A simple input field.
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+		* Can set `maxlength` property.
+	* View [field specific properties for templating](../template-objects/field.md#field-text).
+* **Textarea** <a href="#fields-textarea" id="fields-textarea" class="docs-anchor">#</a>
+	* A simple multi-line input field.
+		* Specify the number of rows the textarea should have.
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+		* Can set `maxlength` property.
+	* View [field specific properties for templating](../template-objects/field.md#field-textarea).
+* **Email** <a href="#fields-email" id="fields-email" class="docs-anchor">#</a>
+	* An input field that is flagged in Freeform to expect an email address value as well as possibility for receiving email notifications.
+		* In the Property Editor (right column) in Composer, select a notification template if you want the email entered for this field to receive an email notification.
+			* Users/groups need to have permissions access for **Email Notifications** to create new formatting templates.
+		* To allow sending of email notifications to more than 1 email address (e.g. in the case of a "tell-a-friend" type form), you will need to add multiple input fields, each with the input name `email[]`. This approach would require that you code this part manually however.
+		* Required field type if you wish for your users to receive an email notification.
+		* Required field type if you're using with a Mailing List API integration.
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+	* View [field specific properties for templating](../template-objects/field.md#field-email).
+* **Number** <Badge type="feature" text="Pro only prior to 2.3.0" /> <a href="#fields-number" id="fields-number" class="docs-anchor">#</a>
+	* An input field that is validated to contain numbers only, based on several configuration options.
+		* Choose if validation should allow negative numbers.
+		* Optionally set Min/Max values.
+			* Both are optional, you can have both, just one or neither.
+		* Optionally set Min/Max character length.
+			* Both are optional, you can have both, just one or neither.
+		* Set the number of decimals allowed.
+		* Decimal Separator - the character used to separate decimals:
+			* `.`
+			* `,`
+		* Thousands Separator - the character used to separate thousands:
+			* None
+			* Space (` `)
+			* `,`
+			* `.`
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+	* View [field specific properties for templating](../template-objects/field.md#field-number).
+* **Hidden** <a href="#fields-hidden" id="fields-hidden" class="docs-anchor">#</a>
+	* A hidden field.
+		* Can only include text strings at this time (no variables allowed).
+			* If you need you pass a value to your hidden field dynamically, you can do so with the `overrideValues` parameter. Ex: `overrideValues: { myFieldname: myvalue }`
+		* Cannot be marked as required.
+		* Freeform will load fields of this type at the beginning of the form, regardless of where they are placed in Composer layout.
+* **Select** <a href="#fields-select" id="fields-select" class="docs-anchor">#</a>
+	* A select dropdown menu field.
+		* Can specify labels (with values assumed) or labels and values (that differ).
+			* To make the first option empty, use **labels and values** approach with first option having **--** or **Please select...**, etc for the label, and leave option blank.
+		* Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+		* Can be marked as required.
+		* Can specify default option to be selected.
+	* View [field specific properties for templating](../template-objects/field.md#field-select).
+* **Multiple Select** <a href="#fields-multiple-select" id="fields-multiple-select" class="docs-anchor">#</a>
+	* A multiple select field.
+		* Can specify labels (with values assumed) or labels and values (that differ).
+		* Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+		* Can be marked as required.
+		* Can specify default option(s) to be selected.
+	* View [field specific properties for templating](../template-objects/field.md#field-multiple_select).
+* **Checkbox** <a href="#fields-checkbox" id="fields-checkbox" class="docs-anchor">#</a>
+	* A single checkbox field.
+		* Can be rendered vertically or horizontally. <Badge type="feature" text="2.5.0+" />
+		* Has a default value of **Yes**, which can be overwritten with any value you want. The front end however, will always display the value as `1`, but upon submission, the value will be switched to the one you have set.
+		* Can be marked as required, which would essentially require that this checkbox be checked.
+		* Can be checked by default.
+	* View [field specific properties for templating](../template-objects/field.md#field-checkbox).
+* **Checkbox Group** <a href="#fields-checkbox-group" id="fields-checkbox-group" class="docs-anchor">#</a>
+	* A group of checkboxes.
+		* Can specify labels (with values assumed) or labels and values (that differ).
+		* Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+		* Can be marked as required.
+		* Can specify which (if any) options to be checked by default.
+	* View [field specific properties for templating](../template-objects/field.md#field-checkbox_group).
+* **Radio Group** <a href="#fields-radio-group" id="fields-radio-group" class="docs-anchor">#</a>
+	* A group of radio options.
+		* Can specify labels (with values assumed) or labels and values (that differ).
+		* Can be rendered vertically or horizontally. <Badge type="feature" text="2.5.0+" />
+		* Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+		* Can be marked as required.
+		* Can specify which (if any) option to be selected by default.
+	* View [field specific properties for templating](../template-objects/field.md#field-radio_group).
+* **File Upload** <a href="#fields-file-upload" id="fields-file-upload" class="docs-anchor">#</a>
+	* A file upload field, using [Craft Assets](https://docs.craftcms.com/v3/assets.html).
+		* Can allow a single file or multiple files (applies `multiple` attribute to the single file upload input) to be uploaded.
+			* Specify a number larger than `1` in the **File Count** setting to allow multiple files to be uploaded at the same time.
+		* Must have an Asset Source location where the file will be uploaded to.
+		* Does NOT work with [Image Transforms](https://docs.craftcms.com/v3/assets.html#image-transforms).
+		* Define maximum file size (in KB). Default is 2048 KB (2MB). Is subject to:
+			* Craft's [maxUploadFileSize](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#$maxUploadFileSize-detail) setting
+			* PHP [memory_limit](http://us3.php.net/manual/en/ini.core.php#ini.memory-limit)
+			* PHP [post_max_size](http://us3.php.net/manual/en/ini.core.php#ini.post-max-size)
+			* PHP [upload_max_filesize](http://us3.php.net/manual/en/ini.core.php#ini.upload-max-filesize)
+		* Select which file types can be uploaded.
+			* Leaving all options unchecked will allow ALL file types.
+		* In [multi-page forms](../overview/multi-page-forms.md), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
+			* If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the file(s)) after that.
+		* Can be marked as required.
+	* View [field specific properties for templating](../template-objects/field.md#field-file).
+* **Dynamic Recipients** <a href="#fields-dynamic-recipients" id="fields-dynamic-recipients" class="docs-anchor">#</a>
+	* A select dropdown menu field that contains protected email addresses and labels for each.
+		* Can be switched to Radio or Checkbox options <Badge type="feature" text="2.1.0+" /> at form level inside Composer.
+		* Can be rendered vertically or horizontally. <Badge type="feature" text="2.5.0+" />
+		* Specify labels and email address values.
+			* Emails are never parsed in source code (they're replaced with **0**, **1**, **2**, etc).
+				* **NOTE:** When parsing this field semi-manually, be sure to use `loop.index0` to generate numeric values of options instead of `fieldName.value`.
+			* To make the first option empty, specify **--** or **Please select...**, etc for the label, and leave option blank.
+		* In the Property Editor (right column) in Composer, select a notification template you want the selected recipient for this field to receive.
+			* Users/groups need to have permissions access for **Email Notifications** to create new formatting templates.
+		* Can be marked as required.
+		* Can specify default option to be selected.
+		* Can specify 1 or more recipient options at a time (when using as Checkboxes).
+		* Multiple email addresses can be specified for each option, separated by commas.
+		* Can include more than 1 of this field type in your forms, allowing for multiple sets of recipients to be notified.
+	* View [field specific properties for templating](../template-objects/field.md#field-dynamic_recipients).
+
+
+## Pro Field Types
+
+The following extra field types are available with Freeform Pro:
+
+* **Date & Time** <a href="#fields-date-time" id="fields-date-time" class="docs-anchor">#</a>
+	* A complex date and/or time field. Can be used as Date only, Time only, or both. Many configuration and validation options available as well:
+		* Set a default value.
+			* Can use `now`, `today`, `5 days ago`, `2017-01-01 20:00:00`, etc, which will format the default value according to the chosen format as a localized value.
+		* Select if the field should use the default Freeform datepicker.
+			* Can include your own manually in the template if you wish.
+		* Generate a placeholder from your date format settings showing the accepted format.
+			* Can include your own placeholder if you wish.
+		* Date Order - the formatting order you'd like. Options are:
+			* Year month day
+			* Month day year
+			* Day month year
+		* Select if the year should be displayed/validated as 4 digits.
+		* Select if the day and month numbers should have a leading `0` for single digit values (e.g. August will display as `08` instead of `8`).
+		* Date separator - the character used between each year, month, day value:
+			* None
+			* Space (` `)
+			* `/`
+			* `-`
+			* `.`
+		* Select if time and datepicker should use 24 hour clock.
+		* Clock separator - the character used to separate hours and minutes:
+			* None
+			* Space (` `)
+			* `:`
+			* `-`
+			* `.`
+		* Choose if placeholder should display lowercase AM/PM (for 12hr clock).
+			* Currently doesn't work with the default Freeform date picker, but could be applied to a custom date picker.
+		* Choose if placeholder should separate AM/PM with a space (for 12hr clock).
+		* Select the Min and Max dates for the date picker and validation (optional). Use static dates (e.g. `2018-11-01`, `2018-11-30`) or relative date strings (e.g. `-10 days`, `+3 months`). <Badge type="feature" text="2.5.0+" />
+		* Can be marked as required.
+	* Freeform will automatically insert javascript in the footer of the page for this fieldtype. If you prefer to have this load inside the `<form></form>` tags (for purposes of caching, etc), you can adjust the [Freeform Javascript Insertion Location](../setup/settings.md#scripts-location) setting.
+	* View [field specific properties for templating](../template-objects/field.md#field-datetime).
+
+![Date & Time fieldtype](../images/cp_field-datetime.png)
+
+* **Phone** <a href="#fields-phone" id="fields-phone" class="docs-anchor">#</a>
+	* An input field that is validated to contain phone numbers only, based on a configured pattern.
+		* Set pattern to desired format, where `0` is a digit between `0` and `9`, e.g: <Badge type="feature" text="Improved in 2.2.0" />
+			* `(000) 000-0000`
+			* `+0 0000 000000`
+			* Check off *Use JS validation* checkbox to have Freeform include JS in the form that validates the format and auto-inserts the extra characters like `(`, `-`, `+` etc).
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+	* View [field specific properties for templating](../template-objects/field.md#field-phone).
+
+![Phone fieldtype](../images/cp_field-phone.png)
+
+* **Rating** <a href="#fields-rating" id="fields-rating" class="docs-anchor">#</a>
+	* A special field that allows for star ratings using Freeform's built in CSS and JS.
+		* Set a default star rating value (based on Maximum Number of Stars configuration option)
+		* Set the maximum number of stars allowed.
+		* Select an "Unselected" display color.
+		* Select a "Hover" display color.
+		* Select a "Selected" display color.
+		* Can be marked as required.
+	* Freeform will automatically insert javascript in the footer of the page for this fieldtype. If you prefer to have this load inside the `<form></form>` tags (for purposes of caching, etc), you can adjust the [Freeform Javascript Insertion Location](../setup/settings.md#scripts-location) setting.
+	* View [field specific properties for templating](../template-objects/field.md#field-rating).
+
+![Rating fieldtype](../images/cp_field-rating.png)
+
+::: v-pre
+* **Regex** <a href="#fields-regex" id="fields-regex" class="docs-anchor">#</a>
+	* An input field that is validated based on the specified regex pattern (e.g. `/^[a-zA-Z0-9]*$/`).
+		* Set error message a user will see if an incorrect value is supplied.
+			* Any occurrences of `{{pattern}}` will be replaced with specified regex pattern inside the error message, if any are found.
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+	* View [field specific properties for templating](../template-objects/field.md#field-regex).
+:::
+
+![Regex fieldtype](../images/cp_field-regex.png)
+
+* **Website** <a href="#fields-website" id="fields-website" class="docs-anchor">#</a>
+	* A simple input field that checks to see if the URL specified has valid syntax (`http://`, `https://`, `ftp://`, etc).
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+	* View [field specific properties for templating](../template-objects/field.md#field-website).
+
+![Website fieldtype](../images/cp_field-website.png)
+
+
+## Special Fields
+
+Special fields are ones that either every form needs (such as Submit button), ones that assist in setting up form behaviors (such as Confirm and Password), and ones that aid in the layout and content of forms (such as the HTML block). None of these fields store any submission data in the database. The following special fields are available to use:
+
+* **Submit** <a href="#fields-submit" id="fields-submit" class="docs-anchor">#</a>
+	* Settings allow you to edit the button label.
+	* You may adjust the positioning of the submit button:
+		* Aligned to Left
+		* Aligned to Center
+		* Aligned to Right
+	* When using with multi-page forms, Freeform will detect when you're on a page after first page, and provide you with additional options:
+		* It will include a Previous button by default, allowing the user to go back to previous pages in the form.
+			* Previous button can be disabled.
+		* Positioning options now include:
+			* Apart at Left and Right
+			* Together at Left
+			* Together at Center
+			* Together at Right
+	* You may include 1 per page in your form.
+* **HTML** <a href="#fields-html" id="fields-html" class="docs-anchor">#</a>
+	* Property Editor will load an HTML area for you to type or paste your code into.
+	* Layout column will live parse your HTML.
+	* All HTML is allowed here.
+	* You can include as many of these in your form as you wish.
+* **Confirm** <Badge type="feature" text="Improved in 2.2.0" /> <a href="#fields-confirm" id="fields-confirm" class="docs-anchor">#</a>
+	* Allows you to force a user to enter a matching value for another field, including [Password](#fields-password) special field (e.g. "Confirm Email Address").
+		* Select a target field to compare with.
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+* **Password** <Badge type="feature" text="2.2.0+" /> <a href="#fields-password" id="fields-password" class="docs-anchor">#</a>
+	* Allows you to collect a password from a submitter, **but NOT store the value in the database**.
+		* Useful for [creating a user registration form](../guides/user-registration-forms.md) (using the [Element Connections](../overview/element-connections.md) feature) and in other very specific use-cases where you're passing the password off somewhere else.
+		* Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../overview/email-notifications.md#all-fields).
+		* When using with Users [Element Connections](../overview/element-connections.md) feature, the password will be passed off to Craft's [Users](https://docs.craftcms.com/v3/users.html) member account feature.
+		* Can be marked as required.
+		* Can contain default text and/or placeholder.
+* **reCAPTCHA** <Badge type="pro" text="Pro" /> <a href="#fields-recaptcha" id="fields-recaptcha" class="docs-anchor">#</a>
+	* Built in support for [reCAPTCHA](https://www.google.com/recaptcha).
+	* See [reCAPTCHA documentation](../overview/spam-protection.md#recaptcha) for more information.
+	* *reCAPTCHA* fields will render automatically like the rest of your fields in your form, but if you're building a form manually, you'd call it like this (using the Hash value for *reCAPTCHA* field in Property Editor of Composer):
+
+``` twig
+{% set form = craft.freeform.form("composerForm") %}
+{% set recaptcha = form.get("JDGnlp8vB") %}
+{{ recaptcha.renderInput }}
+```
+
+* If you're loading an entire form via AJAX, you'll need to load the reCAPTCHA JS yourself, since it's considered insecure otherwise and the browser blocks it. You should add this script tag anywhere on your page, preferably the footer:
+
+``` html
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
+```
+
+## Populating Fields with Elements & Predefined Options
+
+Inside Composer (only), basic field types with options have the ability to be automatically fed options from Craft Elements or Predefined Options. This allows you to quickly build forms by having fields auto-generated.
+
+### Available Fields
+The following field types can be auto-populated:
+
+* [Select](#fields-select)
+	* Optional **Empty Option Label** to have first option be something like `Please select...`
+* [Multiple Select](#fields-multiple-select)
+* [Checkbox Group](#fields-checkbox-group)
+* [Radio Group](#fields-radio-group)
+
+### Available Craft Elements
+The following Craft Elements can be fed to the above field types:
+
+* **[Craft Entries](https://docs.craftcms.com/v3/sections-and-entries.html#entries)**
+	* **Target** sections or all sections.
+	* **Option Label** and **Option Value** choices:
+		* ID
+		* Title
+		* Slug
+		* URI
+		* Fields (simple values)
+* **[Craft Users](https://docs.craftcms.com/v3/users.html)**
+	* **Target** user groups or all groups.
+	* **Option Label** and **Option Value** choices:
+		* ID
+		* Username
+		* Email
+		* First Name
+		* Last Name
+		* Full Name
+		* Fields (simple values)
+* **[Craft Categories](https://docs.craftcms.com/v3/categories.html)**
+	* **Target** category groups or all groups.
+	* **Option Label** and **Option Value** choices:
+		* ID
+		* Title
+		* Slug
+		* URI
+		* Fields (simple values)
+* **[Craft Tags](https://docs.craftcms.com/v3/tags.html)**
+	* **Target** tag groups or all groups.
+	* **Option Label** and **Option Value** choices:
+		* ID
+		* Title
+		* Slug
+		* URI
+		* Fields (simple values)
+* **[Craft Assets](https://docs.craftcms.com/v3/assets.html)** <Badge type="feature" text="2.5.0+" />
+	* **Target** asset groups or all groups.
+	* **Option Label** and **Option Value** choices:
+		* Filename
+		* ID
+		* Fields (simple values)
+
+![Element Feeders](../images/cp_forms-composer-feeders-elements.png)
+
+### Available Predefined Options
+The following Freeform predefined options can be fed to the above field types:
+
+* **States**
+	* Official USA States
+	* **Option Label** and **Option Value** choices:
+		* Full
+		* Abbreviated (upper case 2 letters)
+* **States & Territories** <Badge type="feature" text="2.5.4+" />
+	* Official USA States and territories
+	* **Option Label** and **Option Value** choices:
+		* Full
+		* Abbreviated (upper case 2 letters)
+* **Provinces**
+	* Canadian Provinces and territories
+	* **Option Label** and **Option Value** choices:
+		* Full
+		* Abbreviated (upper case 2 letters)
+* **Countries**
+	* All world countries
+	* **Option Label** and **Option Value** choices:
+		* Full
+		* Abbreviated (upper case 2 letters)
+* **Languages**
+	* All world languages
+	* **Option Label** and **Option Value** choices:
+		* Full
+		* Abbreviated (lower case 2 letters)
+* **Numbers** (range)
+	* A custom range of numbers
+	* **Range Start** and **Range End**
+		* E.g. `60` - `65` would return list: `60, 61, 62, 63, 64, 65`
+* **Years** (range)
+	* A custom range of years
+	* **Range Start** - number of years in PAST from current year
+	* **Range End** - number of years in FUTURE from current year
+		* E.g. `5` (start) - `0` (end) would return list: `2018, 2017, 2016, 2015, 2014, 2013`
+	* **Sort Direction**:
+		* Ascending
+		* Descending
+* **Months**
+	* All 12 months of the year.
+	* **Option Label** and **Option Value** choices:
+		* Full, e.g. `September`
+		* Abbreviated (Capitalized 3 letters), e.g. `Sep`
+		* Single Number, e.g. `9`
+		* 2-digit Number, e.g. `09`
+* **Days**
+	* List of days `1` to `31`.
+	* **Option Label** and **Option Value** choices:
+		* Single Number, e.g. `3`
+		* 2-digit Number, e.g. `03`
+* **Days of Week**
+	* List of all days of week.
+	* **Option Label** and **Option Value** choices:
+		* Full, e.g. `Thursday`
+		* Abbreviated (Capitalized 3 letters), e.g. `Thu`
+		* Single Number, e.g. `4`
+
+![Predefined Feeders](../images/cp_forms-composer-feeders-predefined.png)

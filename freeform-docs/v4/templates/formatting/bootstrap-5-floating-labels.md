@@ -1,0 +1,384 @@
+---
+title: Craft Freeform 4.x - Bootstrap 5 with Floating Labels - Example Formatting Template
+description: This Bootstrap 5 formatting template showcases the floating labels feature.
+prev: false
+next: false
+---
+
+<meta property="og:image" content="https://docs.solspace.com/extras/social/craft/freeform/freeform.png" />
+
+::: new /craft/freeform/v5/templates/formatting/bootstrap-5-floating-labels/
+Freeform
+:::
+
+<div id="pr-heading">
+    <img src="https://docs.solspace.com/extras/icons/products/freeform-icon.png" alt="Freeform" class="pr-image">
+    <span class="pr-name">Freeform</span>
+    <span class="pr-category">for Craft</span>
+    <div class="pr-v-wrapper">
+        <div class="pr-v">
+            <span class="pr-v-v">4.x</span>
+            <span class="pr-v-arrow arrow down"></span>
+        </div>
+        <ul class="pr-v-list">
+            <li><a href="/craft/freeform/v5/">5.x<span class="pr-v-type pr-latest">✓ Latest</span></a></li>
+            <li><a href="/craft/freeform/v4/">4.x</a></li>
+            <li><a href="/craft/freeform/v3/">3.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v2/">2.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v1/">1.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+        </ul>
+    </div>
+    <div class="pr-buy">
+        <a href="https://plugins.craftcms.com/freeform" class="button button-blue"><span class="external-url">Plugin Store</span></a>
+    </div>
+</div>
+
+<span class="page-section"><a href="/craft/freeform/v4/templates/formatting/">Formatting Templates</a></span>
+
+# Bootstrap 5 with Floating Labels
+
+This example makes use of Bootstrap's [Floating Labels](https://getbootstrap.com/docs/5.2/forms/floating-labels/) feature. The following example assumes you're including necessary [Bootstrap 5](https://getbootstrap.com) JS and CSS. You can place the additional CSS and JS inside the formatting template or add to your site's CSS / JS files.
+
+
+[[toc]]
+
+
+## Preview
+
+![Bootstrap 5 Floating Labels Example](../../images/formatting/bootstrap-5-floating-labels.png)
+
+::: video 78LAmvZ0yoA/?start=224
+Video: Preview of Formatting Template Examples
+:::
+
+
+## Formatting
+
+``` twig
+{# Opening <form> tag #}
+{{ form.renderTag() }}
+
+{# Display page tabs if Multi-page form #}
+{% if form.pages|length > 1 %}
+    <ul class="nav nav-tabs freeform-page-tabs">
+    {% for page in form.pages %}
+        <li class="nav-item">
+            <span class="nav-link{{ form.currentPage.index == page.index ? ' font-weight-bold active' : ' disabled' }}">{{ page.label }}</span>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{# Display Error banner and general errors if applicable #}
+{% if form.hasErrors %}
+    <div class="alert alert-danger freeform-alert">
+        {{ form.errorMessage | t('freeform') }}
+
+        {% if form.errors|length %}
+            <ul class="mb-0">
+                {% for error in form.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endif %}
+
+{# Render form fields #}
+{% for row in form %}
+    <div class="row {{ form.customAttributes.rowClass }}">
+        {% for field in row %}
+            {% set width = (12 / (row|length)) %}
+
+            {% set isCheckbox = field.type in ["checkbox","mailing_list"] %}
+
+            {% set columnClass = "mb-3" %}
+            {% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+            {% set columnClass = columnClass ~ " col-sm-" ~ width ~ " col-12" %}
+
+            {% set class = "form-control" ~ (field.hasErrors ? " is-invalid has-validation") %}
+            {% if field.type == "file" %}
+                {% set class = "form-control-file" ~ (field.hasErrors ? " is-invalid") %}
+            {% elseif field.type == "select" or field.type == "dynamic_recipients" and (field.showAsSelect) %}
+                {% set class = "form-select" %}
+            {% elseif field.type == "signature" %}
+                {% set class = "btn btn-light" %}
+            {% elseif field.type == "table" %}
+                {% set class = "table" %}
+            {% elseif isCheckbox %}
+                {% set class = "checkbox" %}
+            {% endif %}
+
+            {% set labelClass = (field.required ? " required" : "") %}
+            {% set errorClass = "invalid-feedback" %}
+            {% set instructionClass = "form-text text-muted" %}
+
+            {% if field.type == "submit" or field.type == "save" %}
+                {% set columnClass = columnClass ~ " submit-align-" ~ field.position %}
+            {% endif %}
+
+            <div class="{{ columnClass }} ff-fieldtype-{{ field.type }}{% if field.type in ['text', 'email', 'confirmation', 'datetime', 'select', 'website', 'password', 'phone', 'textarea', 'multiple_select', 'number', 'regex'] or field.type == 'dynamic_recipients' and (field.showAsSelect) %} form-floating{% endif %}"{{ field.rulesHtmlData }}>
+                {% if field.type == "checkbox_group" %}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.oneLine ? "<div>"|raw }}
+
+                    {% for index, option in field.options %}
+                        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                            <input type="checkbox"
+                                   name="{{ field.handle }}[]"
+                                   value="{{ option.value }}"
+                                   id="{{ field.idAttribute }}-{{ index }}"
+                                   class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                    {{ option.checked ? "checked" : "" }}
+                            />
+
+                            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                {{ option.label|t('freeform')|raw }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                    {{ field.oneLine ? "</div>"|raw }}
+
+                    {{ field.renderInstructions() }}
+                    {{ field.renderErrors({ errorClass: errorClass }) }}
+
+                {% elseif field.type == "radio_group" %}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.oneLine ? "<div>"|raw }}
+
+                    {% for index, option in field.options %}
+                        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                            <input type="radio"
+                                   name="{{ field.handle }}"
+                                   value="{{ option.value }}"
+                                   id="{{ field.idAttribute }}-{{ index }}"
+                                   class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                    {{ option.checked ? "checked" : "" }}
+                            />
+                            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                {{ option.label|t('freeform')|raw }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                    {{ field.oneLine ? "</div>"|raw }}
+
+                    {{ field.renderInstructions() }}
+                    {{ field.renderErrors() }}
+
+                {% elseif field.type == "dynamic_recipients" and (field.showAsRadio or field.showAsCheckboxes) %}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.oneLine ? "<div>"|raw }}
+
+                    {% for index, option in field.options %}
+                        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                            <input type="{{ field.showAsRadio ? "radio" : "checkbox" }}"
+                                   name="{{ field.handle }}[]"
+                                   value="{{ loop.index0 }}"
+                                   class="form-check-input"
+                                   id="{{ field.idAttribute }}-{{ index }}"
+                                    {{ option.checked ? "checked" : "" }}
+                            />
+
+                            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                {{ option.label|t('freeform')|raw }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                    {{ field.oneLine ? "</div>"|raw }}
+
+                    {{ field.renderInstructions() }}
+                    {{ field.renderErrors() }}
+
+                {% elseif field.type in ["checkbox", "mailing_list"] %}
+
+                    <div class="form-check">
+                        {{ field.renderInput({ class: class ~ " form-check-input" ~ (field.hasErrors ? " is-invalid") }) }}
+                        {{ field.renderLabel({ labelClass: "form-check-label" ~ (field.hasErrors ? " is-invalid") ~ (field.required ? " required") }) }}
+                        {{ field.renderInstructions({ instructionsClass: instructionClass }) }}
+                        {{ field.renderErrors({ errorClass: errorClass }) }}
+                    </div>
+
+                {% elseif field.type == "submit" or field.type == "save" %}
+
+                    {{ field.render({ class: "btn btn-primary" }) }}
+
+                {% elseif field.type == "table" %}
+
+                    {{ field.render({
+                        class: class,
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        instructionsBelowField: true,
+                        errorClass: errorClass,
+                        addButtonLabel: "Add +",
+                        addButtonClass: "btn btn-sm btn-primary",
+                        removeButtonLabel: "x",
+                        removeButtonClass: "btn btn-sm btn-danger",
+                        tableTextInputClass: "form-control",
+                        tableSelectInputClass: "form-select",
+                        tableCheckboxInputClass: "form-check-input"
+                    }) }}
+
+                {% elseif field.type == "cc_details" %}
+
+                    {# FOR FREEFORM PAYMENTS #}
+
+                    {{ field.renderLabel({
+                        labelClass: (field.required ? " required" : ""),
+                        instructionsClass: "help-block",
+                        errorClass: "help-block",
+                    }) }}
+
+                    {% for layoutRow in field.layoutRows %}
+                        <div class="row mb-3{{ form.customAttributes.rowClass }}">
+                            {% for layoutField in layoutRow %}
+                                {% set layoutWidth = (12 / (layoutRow|length)) %}
+                                {% set columnClass = columnClass|replace(' col-sm-' ~ width) %}
+                                {% set columnClass = columnClass ~ " col-sm-" ~ layoutWidth %}
+                                <div class="{{ columnClass }}">
+                                    {{ layoutField.render({
+                                        class: isCheckbox ? "checkbox" : "form-control",
+                                        instructionsClass: "help-block",
+                                        instructionsBelowField: true,
+                                        labelClass: (layoutField.required ? " required" : ""),
+                                        errorClass: "help-block",
+                                    }) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                    {{ field.renderInput({
+                        instructionsClass: "help-block",
+                        instructionsBelowField: true,
+                        labelClass: (field.required ? " required" : ""),
+                        errorClass: "help-block",
+                    }) }}
+
+                    {{ field.renderInstructions }}
+                    {{ field.renderErrors }}
+
+                {% elseif field.type in ["rating", "file", "opinion_scale", "signature", "html", "rich_text"] %}
+
+                    {{ field.render({
+                        class: class,
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        instructionsBelowField: true,
+                        errorClass: errorClass,
+                    }) }}
+
+                {% else %}
+
+                    {% set inputAttributes = {} %}
+                    {% if field.type in ['textarea', 'multiple_select'] %}
+                        {% set inputAttributes = { style: 'height:' ~ (25 * field.rows|default(5)) ~ 'px' } %}
+                    {% endif %}
+
+                    {{ field.renderInput({
+                        class: class,
+                        instructionsBelowField: true,
+                        errorClass: errorClass,
+                        placeholder: field.label,
+                        inputAttributes: inputAttributes,
+                    }) }}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.renderInstructions }}
+                    {{ field.renderErrors }}
+
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+{# Closing </form> tag #}
+{{ form.renderClosingTag }}
+```
+
+
+## CSS
+The following CSS is a supplemental starting point to get forms appearing robustly.
+
+``` css
+.freeform-page-tabs {
+    margin: 30px 0;
+}
+.freeform-alert p:last-of-type {
+    margin-bottom: 0;
+}
+.form-floating > label {
+    left: 12px;
+}
+```
+
+
+## JS
+The following JS is a supplemental starting point to handle additional elements in the form.
+
+``` js
+// Styling for AJAX responses
+document.addEventListener("freeform-ready", function (event) {
+    var freeform = event.target.freeform;
+    freeform.setOption("errorClassBanner", ["alert", "alert-danger", "errors", "freeform-alert"]);
+    freeform.setOption("errorClassList", ["help-block", "errors", "invalid-feedback"]);
+    freeform.setOption("errorClassField", ["is-invalid", "has-error"]);
+    freeform.setOption("successClassBanner", ["alert", "alert-success", "form-success", "freeform-alert"]);
+})
+// Styling for Stripe Payments field
+document.addEventListener("freeform-stripe-styling", function (event) {
+    event.detail.base = {
+        fontSize: "16px",
+        fontFamily: "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"",
+    }
+})
+```
+
+
+## CDN Links
+The following CDN links for Bootstrap 5 are for v5.2.3, which may no longer be the latest version. Please see official [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.2/getting-started/download/) for latest versions and CDN links.
+
+``` html
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+```
+
+
+## Live Demo
+
+The demo below is a live [demo site](https://demo.solspace.net/craft/freeform-demo/) that shows most of what the Demo Templates include (some sections and data has been limited).
+
+<div class="demo-buttons">
+    <a href="https://demo.solspace.net/craft/freeform-demo/templates/bootstrap-5-floating-labels/contact" target="_blank">Open in New Window</a>
+</div>
+<iframe title="App Demo" id="app-demo" src="https://demo.solspace.net/craft/freeform-demo/templates/bootstrap-5-floating-labels/contact" scrolling="yes" height="1600px" width="100%" class="app-demo" frameborder="0"></iframe>

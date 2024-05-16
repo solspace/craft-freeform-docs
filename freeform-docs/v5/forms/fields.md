@@ -1,0 +1,1620 @@
+---
+title: Craft Freeform 5.x - Fields
+description: Freeform features its own set of robust field types.
+prev: false
+next: false
+---
+
+<meta property="og:image" content="https://docs.solspace.com/extras/social/craft/freeform/freeform.png" />
+
+<div id="pr-heading">
+    <img src="https://docs.solspace.com/extras/icons/products/freeform-icon.png" alt="Freeform" class="pr-image">
+    <span class="pr-name">Freeform</span>
+    <span class="pr-category">for Craft</span>
+    <div class="pr-v-wrapper">
+        <div class="pr-v">
+            <span class="pr-v-v">5.x</span>
+            <span class="pr-v-type pr-latest">✓ Latest</span>
+            <span class="pr-v-arrow arrow down"></span>
+        </div>
+        <ul class="pr-v-list">
+            <li><a href="/craft/freeform/v5/">5.x<span class="pr-v-type pr-latest">✓ Latest</span></a></li>
+            <li><a href="/craft/freeform/v4/">4.x</a></li>
+            <li><a href="/craft/freeform/v3/">3.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v2/">2.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+            <li><a href="/craft/freeform/v1/">1.x<span class="pr-v-type pr-retired">Retired</span></a></li>
+        </ul>
+    </div>
+    <div class="pr-buy">
+        <a href="https://plugins.craftcms.com/freeform" class="button button-blue"><span class="external-url">Plugin Store</span></a>
+    </div>
+</div>
+
+<span class="page-section"><a href="/craft/freeform/v5/forms/">Forms & Fields</a></span>
+
+# Fields
+
+<div class="hero-lead">
+
+Freeform features its own set of robust field types. The form builder displays a list of available field types which can then be added to forms indefinitely. Fields are specific to each form, but can also be saved or searched upon to be reused in other forms.
+
+</div>
+
+<div class="menu-grid">
+    <a href="#overview" class="menu-box">
+        <img src="../../../../images/icons/clipboard.png" alt="Overview">
+        <div class="menu-grid-text">
+            <h3>Overview</h3>
+            <p>Overview of fields and important notes.</p>
+        </div>
+    </a>
+    <a href="#field-types" class="menu-box">
+        <img src="../../../../images/icons/field-text.png" alt="Field Types">
+        <div class="menu-grid-text">
+            <h3>Field Types</h3>
+            <p>The field types available in Freeform.</p>
+        </div>
+    </a>
+    <a href="#favorite-fields" class="menu-box">
+        <img src="../../../../images/icons/love.png" alt="Favorite Fields">
+        <div class="menu-grid-text">
+            <h3>Favorite Fields <Badge type="feature" text="New!" /></h3>
+            <p>Manage a set of favorite fields to use in other forms.</p>
+        </div>
+    </a>
+    <a href="../../developer/field-types/" class="menu-box">
+        <img src="../../../../images/icons/gear-coding.png" alt="Custom Field Types">
+        <div class="menu-grid-text">
+            <h3>Custom Field Types <Badge type="feature" text="New!" /></h3>
+            <p>Easily create your own custom field types.</p>
+        </div>
+    </a>
+    <a href="#populating-fields-with-elements-predefined-options" class="menu-box">
+        <img src="../../../../images/icons/list-checks.png" alt="Populating Field Options">
+        <div class="menu-grid-text">
+            <h3>Populating Field Options</h3>
+            <p>With predefined data or other Craft Elements.</p>
+        </div>
+    </a>
+    <a href="#field-encryption" class="menu-box">
+        <img src="../../../../images/icons/lock.png" alt="Field Encryption">
+        <div class="menu-grid-text">
+            <h3>Field Encryption <Badge type="feature" text="New!" /></h3>
+            <p>Optionally encrypt the submitted data for each field.</p>
+        </div>
+    </a>
+</div>
+
+::: guide ../../developer/field-types/
+Need to build your own custom field type? Check out the guide.
+:::
+
+<video autoplay loop muted>
+    <source src="../videos/builder-feature.mp4" type="video/mp4">
+    This browser does not display the video tag.
+</video>
+
+
+[[toc]]
+
+
+## Overview
+
+- [Important Notes](#important-notes)
+- [Standard Settings](#standard-settings)
+- [Field Encryption](#field-encryption)
+- [Populating Field Options](#populating-field-options)
+- [Field Types Overview](#field-types)
+- [Favorite Fields](#favorite-fields)
+
+### Important Notes
+
+- If you'd like to [build your own custom field type](../../developer/field-types/), check out the guide.
+- Saved fields are a snapshot of that field at the time it was saved.
+- Any customizations of a Saved field or using a field from another form are specific only to the form they're adjusted in.
+- Fields can be changed to other field types at any point, but be aware that data loss could occur when switching incompatible field types.
+- All field types conveniently include the ability to set attributes for their **labels**, **inputs**, **errors** and **instructions** directly inside the form builder property editor.
+	- This allows you to keep your hands clean of being inside formatting templates and specify one-off exceptions for fields such as `readonly` and `autocomplete="off"`, etc.
+	- To use single attributes like `novalidate`, just enter the attribute in the **Attribute** column and leave the **Value** column empty.
+	- You can use anything inside the [Form](../templates/objects/form.md) and [Field](../templates/objects/field.md) objects as well, e.g.:
+		- `field.id` to access Field ID.
+		- `form.handle` to access form handle.
+
+### Standard Settings
+There is a standard number of settings available to all forms (with some exceptions). Every form field has the ability for you to do the following:
+
+Setting | Template&nbsp;Usage | Description
+--- | --- | ---
+**Label** | `label` | The label for the field. This can be changed per form if you wish.
+**Handle** | `handle` | How the field may be called in templates, if necessary. You may also override this value per form if you wish.
+**Required** | `required` | Toggle if the field requires a value to submit the form successfully.
+**Instructions** | `instructions` | Specify intructions for the field if you wish.
+**Default Value** | `defaultValue` | For applicable fields, you can set a default value or selected option for the field.
+**Placeholder** | `placeholder` | Specify placeholder text for the field, if applicable.
+**Maximum&nbsp;Length** | `maxlength` | The maximum number of characters for the field's value. Applicable only to the following field types: <ul><li>[Confirm](#confirm)</li><li>[Date & Time](#date-time)</li><li>[Email](#email)</li><li>[Hidden](#hidden)</li><li>[Invisible](#invisible)</li><li>[Number](#number)</li><li>[Password](#password)</li><li>[Phone](#phone)</li><li>[Regex](#regex)</li><li>[Text](#text)</li><li>[Textarea](#textarea)</li><li>[Website](#website)</li></ul>
+**Attribute Editor** |  | Apply any kind of attribute on the input, label, error, instruction in Freeform's automated rendering of the form.
+**Options** | `options`<ul><li>`label`</li><li>`value`</li><li>`checked`</li></ul> | Specify the option labels and values for applicable field types. Available only for the following field types: <ul><li>[Checkboxes](#checkboxes)</li><li>[Dropdown](#dropdown)</li><li>[Multiple Select](#multiple-select)</li><li>[Radios](#radios)</li></ul>
+
+### Field Encryption <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
+Each field includes the ability to optionally encrypt its submission data. Simply toggle the **Encrypt field data** setting inside the form builder for any field you wish to have encrypted. Freeform will take care of the rest.
+
+For each field that is encrypted and contains submission data, the database row column will contain a prefix of `encrypted:` and then the encryption string. Freeform will decrypt the submission data for exports, email notifications, integrations, and viewing submission data inside the control panel and front end (if you have templates set up to show it).
+
+::: warning
+Encryption is not retroactive. Each submission will need to be resaved to update older submissions.
+:::
+
+### Populating Field Options <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div>
+All multi-option field types (such as Dropdown, Checkboxes, etc) can have their option labels and values automatically populated with [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+
+- [Applicable Field Types](#applicable-field-types)
+- [Available Craft Elements](#available-craft-elements)
+- [Available Predefined Options](#available-predefined-options)
+
+### Field Types
+Freeform contains a rich set of field types to handle just about every possible scenario you might get yourself into.
+
+Name | `field.type` | Description | <span class="edition-express no-margin">Express</span> | <span class="edition-lite no-margin">Lite</span> | <span class="edition-pro no-margin">Pro</span> |
+--- | --- | --- | :---: | :---: | :---:
+[Calculation](#calculation) <Badge type="feature" text="New in 5.1+" /> | `calculation` | Perform dynamic calculations based on user-input values within forms. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Checkbox](#checkbox) | `checkbox` | A single checkbox field. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Checkboxes](#checkboxes) | `checkboxes` | A group of checkboxes. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Confirm](#confirm) | `confirm` | A text input field that targets another similar field and ensures the values match. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Date & Time](#date-time) | `datetime` | A complex date and/or time field. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Dropdown](#dropdown) | `dropdown` | A select dropdown menu field. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Email](#email) | `email` | A text input field that includes additional email validation and possibility for attaching an email notification to it. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[File Upload](#file-upload) | `file` | A regular file upload field. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[File Upload Drag & Drop](#file-drag-drop) | `file-dnd` | An advanced javascript-based file uploading field. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Group](#group) <Badge type="feature" text="New in 5.0+" /> | `group` | A field that contains other fields within it. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Hidden](#hidden) | <span class="compare-none">N/A</span> | A hidden input field. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[HTML](#html) | `html` | A block that allows you to insert HTML into areas of your form. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Invisible](#invisible) | <span class="compare-none">N/A</span> | A field that allows you to collect hidden data in form submissions without a hidden field being present in the template source code. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Multiple Select](#multiple-select) | `multiple-select` | A multiple-select field. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Number](#number) | `number` | A `number` type input field that is validated to contain certain numbers only. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Opinion Scale](#opinion-scale) | `opinion-scale` | A special field that allows for flexible opinion scoring. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Password](#password) | `password` | A text input field that collects sensitive passwords but does not store them. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Phone](#phone) | `phone` | A `tel` type input field that is validated to contain phone numbers only, based on a configured pattern. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Radios](#radios) | `radios` | A group of radio options. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Rating](#rating) | `rating` | A special field that allows for star ratings. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Regex](#regex) | `regex` | An input field that is validated based on the specified regex pattern (e.g. `/^[a-zA-Z0-9]*$/`). | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Rich Text](#rich-text) | `rich-text` | A block that allows you to insert rich text into areas of your form (headings, descriptions, etc). | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Signature](#signature) | `signature` | A field that allows users to handwrite signatures inside your form. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Stripe Payment](#stripe-payment) <Badge type="feature" text="Improved in 5.0+" /> | `stripe` | A set of input fields to allow the validation of credit cards and other payment options for [Stripe Payment](../integrations/payments/) implementations. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Submit buttons](#submit-buttons) | <span class="compare-none">N/A</span> | Handles the submit button(s), including **Save** option for the form. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Table](#table) | `table` | A field that allows you to collect and handle repeating data. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+[Text](#text) | `text` | A single-line text input field. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Textarea](#textarea) | `textarea` | A multi-line text input field. | <span class="edition-express">✓</span> | <span class="edition-lite">✓</span> | <span class="edition-pro">✓</span>
+[Website](#website) | `website` | A `url` type input field that checks to see if the URL specified has valid syntax. | <span class="compare-none">✕</span> | <span class="compare-none">✕</span> | <span class="edition-pro">✓</span>
+
+### Favorite Fields
+Any field can be a favorite field! If you have a number of fields that are commonly used across more than one form, such as **Name**, **Email**, etc, you can easily save them to your Favorite Fields list. If you need to edit or remove that field, you can always do that later in the manager area.
+
+<video autoplay loop muted>
+    <source src="../videos/builder-favorites.mp4" type="video/mp4">
+    This browser does not display the video tag.
+</video>
+
+
+## Calculation <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.1+" />
+The Calculation field allows you to perform dynamic calculations based on user-input values within your forms.
+
+::: warning
+For the Calculation field to work as a dynamic amount with the [Stripe Payments](../integrations/payments/) integration, the **Input Type** setting should be set to _Regular Text Input_ or _Plain Text_. If set to _Hidden_, the Calculation field should be within a multipage setup where it is on a page _before_ the page with the Stripe Payment Element field.
+:::
+
+### Supported Fields
+The following fields can be accessed within field calculation formulas:
+
+- [Dropdown](#dropdown)
+- [Hidden](#hidden)
+- [Invisible](#invisible)
+- [Number](#number)
+- [Opinion Scale](#opinion-scale)
+- [Radios](#radios)
+- [Rating](#rating)
+- [Regex](#regex)
+- [Text](#text)
+- [Textarea](#textarea)
+
+### Supported Operators
+Utilizing [Symfony Expression Syntax](https://symfony.com/doc/current/reference/formats/expression_language.html), the Calculation field type empowers users to create sophisticated calculations effortlessly. From fundamental arithmetic to complex logical operations, users can employ an array of operators and functions to achieve desired outcomes.
+
+#### Arithmetic
+
+| Operator | Description |
+| --- | --- |
+| `+` | Addition |
+| `-` | Subtraction |
+| `*` | Multiplication |
+| `/` | Division |
+
+##### Example
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-arithmetic" tabindex="1" id="code-tab-arithmetic1" checked="checked">
+<label for="code-tab-arithmetic1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+(field1 - field2) + field3
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-arithmetic" id="code-tab-arithmetic2">
+<label for="code-tab-arithmetic2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+(12 - 3) + 45 
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-arithmetic" id="code-tab-arithmetic3">
+<label for="code-tab-arithmetic3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+54 
+```
+
+</div>
+</div>
+
+#### Bitwise
+
+| Operator | Description |
+| --- | --- |
+| `&` | AND |
+| `|` | OR |
+| `^` | XOR |
+
+##### Example
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-bitwise" tabindex="1" id="code-tab-bitwise1" checked="checked">
+<label for="code-tab-bitwise1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+field1 ^ 5
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-bitwise" id="code-tab-bitwise2">
+<label for="code-tab-bitwise2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+3 ^ 3
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-bitwise" id="code-tab-bitwise3">
+<label for="code-tab-bitwise3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+6
+```
+
+</div>
+</div>
+
+#### Comparison
+
+| Operator | Description |
+| --- | --- |
+| `==` | Equal |
+| `===` | Identical |
+| `!=` | Not equal |
+| `!==` | Not identical |
+| `<` | Less than |
+| `>` | Greater than |
+| `<=` | Less than or equal to |
+| `>=` | Greater than or equal to |
+| `matches` | Regex match |
+
+##### Example
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-comparison" tabindex="1" id="code-tab-comparison1" checked="checked">
+<label for="code-tab-comparison1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+field1 >= field2
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-comparison" id="code-tab-comparison2">
+<label for="code-tab-comparison2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+40 >= 50
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-comparison" id="code-tab-comparison3">
+<label for="code-tab-comparison3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+false
+```
+
+</div>
+</div>
+
+#### Logical
+
+| Operator | Description |
+| --- | --- |
+| `!` or `not` | Not |
+| `&&` or `and` | And |
+| `||` or `or` | Or |
+
+##### Example
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-logical" tabindex="1" id="code-tab-logical1" checked="checked">
+<label for="code-tab-logical1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+field1 > field2 || field1 < field3
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-logical" id="code-tab-logical2">
+<label for="code-tab-logical2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+10 > 10 || 10 < 20
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-logical" id="code-tab-logical3">
+<label for="code-tab-logical3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+true
+```
+
+</div>
+</div>
+
+#### String
+
+| Operator | Description |
+| --- | --- |
+| `~` | Concatenation |
+
+##### Example 1
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-string" tabindex="1" id="code-tab-string1" checked="checked">
+<label for="code-tab-string1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+'Hello ' ~ firstName ~ ', ' ~ 'Welcome!'
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-string" id="code-tab-string2">
+<label for="code-tab-string2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+'Hello ' ~ 'Bob' ~ ', ' ~ 'Welcome!'
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-string" id="code-tab-string3">
+<label for="code-tab-string3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+Hello Bob, Welcome!
+```
+
+</div>
+</div>
+
+##### Example 2
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-stringb" tabindex="1" id="code-tab-stringb1" checked="checked">
+<label for="code-tab-stringb1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+nameTitle ~ ' ' ~ firstName ~ ' ' ~ lastName
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-stringb" id="code-tab-stringb2">
+<label for="code-tab-stringb2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+'Dr.' ~ ' ' ~ 'Sarah' ~ ' ' ~ 'Connor'
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-stringb" id="code-tab-stringb3">
+<label for="code-tab-stringb3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+Dr. Sarah Connor
+```
+
+</div>
+</div>
+
+#### Array
+
+| Operator | Description |
+| --- | --- |
+| `in` | Contains |
+| `not in` | Does not contain |
+
+##### Example
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-array" tabindex="1" id="code-tab-array1" checked="checked">
+<label for="code-tab-array1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+field1 in ['apple', 'orange', 'banana'] 
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-array" id="code-tab-array2">
+<label for="code-tab-array2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+'banana' in ['apple', 'orange', 'banana'] 
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-array" id="code-tab-array3">
+<label for="code-tab-array3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+true
+```
+
+</div>
+</div>
+
+#### Numeric
+
+| Operator | Description |
+| --- | --- |
+| `..` | Range |
+
+##### Example
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-numeric" tabindex="1" id="code-tab-numeric1" checked="checked">
+<label for="code-tab-numeric1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+field1 in 50..100
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-numeric" id="code-tab-numeric2">
+<label for="code-tab-numeric2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+75 in 50..100
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-numeric" id="code-tab-numeric3">
+<label for="code-tab-numeric3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+true
+```
+
+</div>
+</div>
+
+#### Ternary
+
+| Operator | Description |
+| --- | --- |
+| `?` | Operator that takes three operands |
+
+##### Example
+
+<div class="code-tabs code-tabs-no-top-padding">
+
+<input type="radio" name="code-tabs-ternary" tabindex="1" id="code-tab-ternary1" checked="checked">
+<label for="code-tab-ternary1" class="code-tab-twig">Formula</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+field1 == 5 ? 'yes' : 'no'
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-ternary" id="code-tab-ternary2">
+<label for="code-tab-ternary2" class="code-tab-html">Values</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+5 == 5 ? 'yes' : 'no'
+```
+
+</div>
+<input type="radio" tabindex="1" name="code-tabs-ternary" id="code-tab-ternary3">
+<label for="code-tab-ternary3" class="code-tab-html">Output</label>
+<div class="code-tab-panel" tabindex="1">
+
+``` typescript
+yes
+```
+
+</div>
+</div>
+
+
+## Checkbox
+A single checkbox field. The `field.type` property value is `checkbox` (for conditionals).
+
+<img src="../images/fields/checkbox.png" width="459" height="37" style="height: auto" alt="Checkbox field type">
+
+### Settings
+
+- Specify a value (e.g. `y` or `yes`, etc).
+    - Has a default value of **Yes**, which can be overwritten with any value you want. No matter what value is set manually on the front end, Freeform will interpret it as checked and record the value specified in the form builder.
+- May be checked by default.
+- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+
+### User Guides
+
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../../guides/parsing-html-in-field-options/)
+- [Want to display single checkbox fields as a light switch toggle?](../../guides/toggle-switch-checkbox/)
+
+
+## Checkboxes <Badge type="feature" text="Renamed in 5.0+" />
+A group of checkboxes. The `field.type` property value is `checkboxes` (for conditionals).
+
+<img src="../images/fields/checkbox-group.png" width="200" height="110" style="height: auto" alt="Checkboxes field type">
+
+### Settings
+
+- Can specify labels (with values assumed) or labels and values (that differ).
+- Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+- Can be rendered vertically or horizontally.
+
+### User Guides
+
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../../guides/parsing-html-in-field-options/)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../../guides/populate-field-options-at-template-level/)
+
+
+## Confirm <Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+A field that allows you to force a user to re-enter a matching value for another text input field, including [Password](#password) fields (e.g. "Confirm Email Address", "Confirm Password"). It runs through additional validation to make sure field values match. If not, it'll show an error. This field stores the data as well, in case that is important for your site's needs. The `field.type` property value is `confirm` (for conditionals).
+
+<img src="../images/fields/confirm.png" width="871" height="93" style="height: auto" alt="Confirm field type">
+
+### Settings
+
+- Choose a target field to validate against, e.g. **Email** field.
+    - Available fields must be of text input type, but don't necessarily need to be of the [Text](#text) field type - you can use with [Email](#email) fields, [Password](#password) special fields, [Phone](#phone) fields, etc.
+
+
+## Date & Time <Badge type="pro" text="Pro" />
+A complex date and/or time field. Can be used as Date only, Time only, or both. Many configuration and validation options available as well. The `field.type` property value is `datetime` (for conditionals).
+
+<img src="../images/fields/date-time.png" width="412" height="415" style="height: auto" alt="Date & Time field type">
+
+### Settings
+
+- May contain a default date value.
+    - You may use `now`, `today`, `5 days ago`, `2017-01-01 20:00:00`, etc, which will format the default value according to the chosen format as a localized value.
+- The default Freeform datepicker can be disabled and you can load your own manually in the template if you wish.
+    - Freeform will automatically insert javascript in the footer/inside form (depending on settings) of the page for this fieldtype.
+- Choose to have your own placeholder or have Freeform generate a placeholder based on the settings below.
+- Set the date order formatting you'd like:
+    - `year month day`, `month day year`, `day month year`
+- Select if the year should be displayed/validated as 4 digits.
+- Select if the day and month numbers should have a leading `0` for single digit values (e.g. August will display as `08` instead of `8`).
+- Choose the date separator character used between each year, month, day value:
+    - None, Space (` `), `/`, `-`, `.`
+- Select if time and datepicker should use 24 hour clock.
+- Choose the clock separator character used to separate hours and minutes:
+    - None, Space (` `), `:`, `-`, `.`
+- Choose if placeholder should separate AM/PM with a space (for 12hr clock).
+- Select the Min and Max dates for the date picker and validation (optional). Use static dates (e.g. `2018-11-01`, `2018-11-30`) or relative date strings (e.g. `-10 days`, `+3 months`).
+
+### Notes
+
+- For **localization** reference:
+    - The *Flatpickr* date picker will automatically localize according to the locale set for your site. Locales available are only 2-letter codes like `fr`, `de`, etc. In the event you're using a locale like `fr-CA` or `es-US`, etc, Freeform will just look at the first 2 letters and use that as the locale.
+    - To translate the formatting syntax error message, be sure to translate the following strings:
+        - `"{value}" does not conform to "{format}" format.`
+        - To translate the `{format}` rendered value to match the current locale, be sure to also translate whatever the rendered string is in the error message. For example, if you're using `fr` locale, and wish to have the default English `DD/MM/YYYY` show up as `JJ/MM/AAAA`, create a static translation for this manually.
+- To customize the date picker appearance and behavior, please see [Date Picker Events](../developer/datepicker/) documentation.
+
+### Templating
+
+- `initialValue`
+- `dateTimeType` (e.g. `both`)
+- `generatePlaceholder` (e.g. `true`)
+- `dateOrder` (e.g. `ymd`)
+- `date4DigitYear` (e.g. `true`)
+- `dateLeadingZero` (e.g. `true`)
+- `dateSeparator` (e.g. `/`)
+- `clock24h` (e.g. `false`)
+- `clockSeparator` (e.g. `:`)
+- `clockAMPMSeparate` (e.g. `true`)
+- `useDatepicker` (e.g. `true`)
+- `minDate` (e.g. `five weeks ago`)
+- `maxDate` (e.g. `2024-12-31`)
+
+
+## Dropdown <Badge type="feature" text="Renamed in 5.0+" />
+A select dropdown menu field. The `field.type` property value is `dropdown` (for conditionals).
+
+<img src="../images/fields/select.png" width="527" height="68" style="height: auto" alt="Dropdown field type">
+
+### Settings
+
+- Can specify labels (with values assumed) or labels and values (that differ).
+    - To make the first option empty, use **labels and values** approach with the first option having something like **Please select...** for the label, and leave option blank.
+- Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+
+### User Guides
+
+- [Need to populate field options at template level? Check out the guide for workaround options.](../../guides/populate-field-options-at-template-level/)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../../guides/other-option-for-fields/)
+
+
+
+## Email <Badge type="feature" text="Revised in 5.0+" />
+A single-line text input field that includes additional validation to expect a valid email address as well as the possibility of attaching an email notification to it. Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their email address twice. The `field.type` property value is `email` (for conditionals).
+
+<img src="../images/fields/email.png" width="428" height="90" style="height: auto" alt="Email field type">
+
+::: tip
+It is required to use the **Email** field type if you wish for your users to receive an email notification when submitting the form and/or you're using an Email Marketing API integration.
+:::
+
+::: guide ../../guides/preventing-email-addresses/
+Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?
+:::
+
+### Settings
+
+- Optionally choose an email notification template (see [Email Notifications](./email-notifications/#email-fields) documentation) to be used to send to the submitter of the form (or the email address entered in this field).
+    - Users/groups need to have permissions for **Notifications** to create new formatting templates inside the form builder.
+
+### Templating
+
+- `notificationId` (the ID of the assigned email notification template)
+
+
+## File Upload
+A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html). The `field.type` property value is `file` (for conditionals).
+
+<img src="../images/fields/file-upload.png" width="231" height="62" style="height: auto" alt="File Upload field type">
+
+### Settings
+
+- Must have a [Craft Asset](https://craftcms.com/docs/5.x/reference/element-types/assets.html) Source location where the file will be uploaded to.
+    - Does NOT work with [Image Transforms](https://craftcms.com/docs/5.x/reference/element-types/assets.html#image-transforms).
+    - **Upload Location Subfolder** (optional) - the subfolder path that files should be uploaded to. May contain `form.handle` or `form.id` variables or something like `currentUser.id` for folders based on user ID's or `"now"|date("Y/m")` to dynamically generate folders based on dates as well.
+- Define maximum file size (in KB). Default is 2048 KB (2MB). Is subject to:
+    - Craft's [maxUploadFileSize](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#$maxUploadFileSize-detail) setting
+    - PHP [memory_limit](http://us3.php.net/manual/en/ini.core.php#ini.memory-limit)
+    - PHP [post_max_size](http://us3.php.net/manual/en/ini.core.php#ini.post-max-size)
+    - PHP [upload_max_filesize](http://us3.php.net/manual/en/ini.core.php#ini.upload-max-filesize)
+- Can allow a single file or multiple files to be uploaded.
+    - Specify a number larger than `1` in the **File Count** setting to allow multiple files to be uploaded at the same time.
+    - When collecting multiple files, a single input is still displayed, but allows multiple files to be uploaded  (applies `multiple` attribute to the single file upload input).
+- Select which file types can be uploaded.
+    - Leaving all options unchecked will allow ALL file types.
+
+### Notes
+
+- In [multi-page forms](../forms/builder/#multi-page-forms), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
+    - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
+- If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
+    - E.g. To add support for `.heic` image files, you can add the following to your `config/general.php` file:
+        ``` php
+        'extraAllowedFileExtensions' => 'heic',
+
+        'extraFileKinds' => [
+            'image' => [
+                'extensions' => ['heic'],
+            ],
+        ],
+        ```
+        - The `extraFileKinds` part will merge `heic` into the list of valid **Image** file types and treat it as such when you check off _Image_ in the **Allowed File Kinds** setting for the field inside the Freeform form builder. If you do not do this, be sure to uncheck all file types in the **Allowed File Kinds** settings.
+    - E.g. To add an assortment of extra file extensions, you add the following to your `config/general.php` file:
+        ``` php
+        'extraAllowedFileExtensions' => 'bim, dwg, rvt'`
+        ```
+        - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
+- If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off).
+
+### Templating
+
+- `fileKinds` (an array of allowed file kinds, e.g. `image`, `document`, `audio`, etc.)
+- `maxFileSizeKB` (the numeric representation of the upload limit in kilobytes.)
+- `fileCount` (the maximum number of allowed files to be uploaded.)
+    - A number larger than `1` will allow multiple files to be uploaded at the same time.
+
+
+## File Upload Drag & Drop <Badge type="pro" text="Pro" />
+An advanced premium javascript-based file uploading field, using [Craft Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html). The `field.type` property value is `file-dnd` (for conditionals).
+
+<img src="../images/fields/file-upload-drag-drop.png" width="950" height="233" style="height: auto" alt="File Upload Drag & Drop field type">
+
+### Settings
+
+- Can control the placeholder wording, e.g. `Drag and drop files here, or click to upload`.
+- Choose a default style/theme, e.g. `Light` or `Dark`.
+- Choose an accent color (this affects the default color for the field border and delete button).
+- Must have a [Craft Asset](https://craftcms.com/docs/5.x/reference/element-types/assets.html) Source location where the file will be uploaded to.
+    - Does NOT work with [Image Transforms](https://craftcms.com/docs/5.x/reference/element-types/assets.html#image-transforms).
+    - **Upload Location Subfolder** (optional) - the subfolder path that files should be uploaded to. May contain `form.handle` or `form.id` variables or something like `currentUser.id` for folders based on user ID's or `"now"|date("Y/m")` to dynamically generate folders based on dates as well.
+- Specify the number of files allowed to upload.
+- Define maximum file size **per file** (in KB). Default is 2048 KB (2MB). Is subject to:
+    - Craft's [maxUploadFileSize](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#$maxUploadFileSize-detail) setting
+    - PHP [memory_limit](http://us3.php.net/manual/en/ini.core.php#ini.memory-limit)
+    - PHP [post_max_size](http://us3.php.net/manual/en/ini.core.php#ini.post-max-size)
+    - PHP [upload_max_filesize](http://us3.php.net/manual/en/ini.core.php#ini.upload-max-filesize)
+- Select which file types can be uploaded.
+    - Leaving all options unchecked will allow ALL file types.
+
+### Notes
+
+- Unlike the regular [File Upload](#file-upload) field, the **File Upload Drag & Drop** field will remember files that have been uploaded to it regardless of the context: errors upon submission, [multi-page forms](../forms/builder/#multi-page-forms), returning to edit the submission later.
+    - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
+- While files are uploading, Freeform will disable the **Submit** button so that the form has time to finish uploading the files. If the form is submitted while files are still uploading, any that are incomplete will not be saved.
+- If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
+    - E.g. To add support for `.heic` image files, you can add the following to your `config/general.php` file:
+        ``` php
+        'extraAllowedFileExtensions' => 'heic',
+
+        'extraFileKinds' => [
+            'image' => [
+                'extensions' => ['heic'],
+            ],
+        ],
+        ```
+        - The `extraFileKinds` part will merge `heic` into the list of valid **Image** file types and treat it as such when you check off _Image_ in the **Allowed File Kinds** setting for the field inside the Freeform form builder. If you do not do this, be sure to uncheck all file types in the **Allowed File Kinds** settings.
+    - E.g. To add an assortment of extra file extensions, you add the following to your `config/general.php` file:
+        ``` php
+        'extraAllowedFileExtensions' => 'bim, dwg, rvt'`
+        ```
+        - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
+- If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off). However, please note that image file thumbnails will only be present directly after initial upload. Afterward (error when submitting, multi-page forms, returning to edit) the image thumbnails will no longer be accessible to Freeform.
+
+### Templating
+
+- `fileKinds` (an array of allowed file kinds, e.g. `image`, `document`, `audio`, etc.)
+- `maxFileSizeKB` (the numeric representation of the upload limit in kilobytes.)
+- `fileCount` (the maximum number of allowed files to be uploaded.)
+    - A number larger than `1` will allow multiple files to be uploaded at the same time.
+
+### Customizing the Appearance
+
+The form builder includes some options for controlling basic styling, but you can also customize the appearance of the Drag and Drop File Upload field by using your own CSS. To avoid name collision and have maximum flexibility, the CSS class names use [BEM](http://getbem.com/introduction/) methodology. You will also likely need to specify `!important` for each override to ensure it takes effect.
+
+#### CLASS NAMES <Badge type="feature" text="Renamed in 5.0+" />
+Below is a list of all class names listed in SCSS:
+
+``` scss
+.freeform-file-dnd__input {
+    &__placeholder {}
+    &__messages {}
+    &__preview-zone {
+        &__file-preview {
+            &__filename {}
+            &__filesize {}
+            &__thumbnail {
+                &__extension-label {}
+                &__remove-button {}
+                &__errors {}
+                &__progress {}
+            }
+        }
+    }
+}
+```
+
+#### SCSS EXAMPLE
+Below is an example with SCSS:
+
+``` scss
+.freeform-file-dnd__input {
+    background: blue;
+  
+    &__preview-zone {
+        &__file-preview {
+            border: 3px solid grey;
+        
+            &__thumbnail {
+                border: 1px solid black;
+                padding: 5px;
+            
+                &__remove-button {
+                border-radius: 0;
+                }
+            }
+        }
+    }
+}
+```
+
+#### CSS EXAMPLE
+Below is an example with regular CSS:
+
+``` css
+.freeform-file-dnd__input {
+    background: blue !important;
+    border: 1px solid red !important;
+}
+.freeform-file-dnd__placeholder {
+    font-size: 12px !important;
+}
+.freeform-file-dnd__preview-zone__file-preview__thumbnail {
+    border: 3px solid yellow !important;
+    }
+.freeform-file-dnd__preview-zone__file-preview__thumbnail__remove-button {
+    border-radius: 0 !important;
+}
+```
+
+
+## Group <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
+A field that contains other fields within it. To use, add a Group field into your form's layout, then add/drag other fields into that Group inside the form builder. This becomes especially powerful when using with [Conditional Rules](./conditional-rules/), as you'll be able create a single rule to show/hide an entire group of fields at once.
+
+<video autoplay loop muted>
+    <source src="../videos/group-fields.mp4" type="video/mp4">
+    This browser does not display the video tag.
+</video>
+
+### Settings
+
+This field type only contains instructions and attributes for settings inside the builder.
+
+
+## Hidden
+A hidden input field.
+
+::: tip
+Freeform will load fields of this type at the beginning of the form, regardless of where they are placed in the form builder layout.
+:::
+
+### Settings
+
+- Can only include text strings at this time (no variables allowed).
+    - If you need you pass a value to your hidden field dynamically, you can do so with the `values` parameter. E.g. `values: { myFieldName: "myvalue" }`
+
+#### Special Notes
+- To access hidden fields in GraphQL queries you have to loop through the `form > fields` as they are not added to `form > pages > rows > fields`.
+
+
+## HTML
+A special field type that allows you include HTML and Twig inside your form layout in the form builder. The `field.type` property value is `html` (for conditionals).
+
+<img src="../images/fields/html.png" width="734" height="139" style="height: auto" alt="HTML field type">
+
+### Notes
+
+- The Property Editor will load an HTML area for you to type or paste your code into.
+- The Layout column in the form builder will live parse your HTML (Twig will not be parse inside the form builder).
+- All HTML is allowed here.
+- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings.md#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.
+
+
+### Display Submission Data from Previous Pages
+
+If you'd like to display submission data from previous pages, you can do this by using an HTML block field with Twig code that might look something like this:
+
+``` twig
+<ul>
+    <li>Name: {{ form.get('firstName').value }} {{ form.get('lastName').value }}</li>
+    <li>Email: {{ form.get('email').valueAsString }}</li>
+    <li>Home Phone: {{ form.get('homePhone').value }}</li>
+    <li>My Radio Field: {{ form.get('myRadioField').value }}</li>
+</ul>
+```
+
+
+## Invisible <Badge type="pro" text="Pro" />
+A field that allows you to collect hidden data in form submissions without a hidden field being present in the template source code.
+
+### Settings
+
+- Can only include text strings at this time (no variables allowed).
+    - If you need you pass a value to your hidden field dynamically, you can do so with the `values` parameter. E.g. `values: { myFieldName: "myvalue" }`
+
+
+## Multiple Select
+A multiple-select field. The `field.type` property value is `multiple-select` (for conditionals).
+
+<img src="../images/fields/multiple-select.png" width="336" height="127" style="height: auto" alt="Multiple Select field type">
+
+::: guide ../../guides/populate-field-options-at-template-level/
+Need to populate field options at template level? Check out the guide for workaround options.
+:::
+
+### Settings
+
+- Can specify labels (with values assumed) or labels and values (that differ).
+- Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+
+
+## Number
+A single-line `number` type input field that is validated to contain certain numbers only. The `field.type` property value is `number` (for conditionals).
+
+<img src="../images/fields/number.png" width="222" height="69" style="height: auto" alt="Number field type">
+
+::: guide ../../guides/range-slider-number/
+Want to display a Number field as a range slider?
+:::
+
+### Settings
+
+- Choose if validation should allow negative numbers.
+- Optionally set Min/Max values.
+    - You can set both, just one or neither.
+- Optionally set Min/Max character length.
+    - You can set both, just one or neither.
+- Optionally set the number of decimals allowed.
+- Set the `step` number to set default increments when a user uses the browser up/down arrows to increase/decrease the value.
+
+### Templating
+
+- `minLength`
+- `maxLength`
+- `minValue`
+- `maxValue`
+- `decimalCount`
+- `allowNegative` (e.g. `false`)
+- `step`
+
+
+## Opinion Scale <Badge type="pro" text="Pro" /><Badge type="feature" text="Revised in 5.0+" />
+A special field that allows for flexible opinion scoring using Freeform's built in CSS. The `field.type` property value is `opinion-scale` (for conditionals). This field type is included automatically with the _Pro_ edition of Freeform.
+
+<img src="../images/fields/opinion-scale.png" width="528" height="94" style="height: auto" alt="Opinion Scale field type">
+
+### Settings
+
+- Set the field's option values and optional corresponding labels.
+- Optionally add legends to correspond to with choice options (e.g. _Less Satisfied_, _More Satisfied_).
+
+### Templating
+
+- `scales`
+- `legends`
+
+### Customizing the Appearance
+
+To manually render an Opinion Scale field to use your own styles, your code might look something like this:
+
+``` twig
+{% set field = form.get("opinionScale") %}
+
+<ul style="border: 1px dashed gray; padding: 5px;">
+    {% for scale in field.scales %}
+        <li>
+            <input type="radio" name="{{ field.handle }}"
+                value="{{ scale.value }}"
+                id="{{ field.idAttribute }}-{{ loop.index }}"
+                {{ field.value == scale.value ? "checked" }}
+                class="hidden"
+            />
+            <label for="{{ field.idAttribute }}-{{ loop.index }}">
+                {{ scale.label ?: scale.value }}
+            </label>
+        </li>
+    {% endfor %}
+</ul>
+
+{% if field.legends %}
+    <ul>
+        {% for legend in field.legends %}
+            <li>{{ legend }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+```
+
+
+## Password <Badge type="pro" text="Pro" />
+A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/user-registration-forms.md) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
+
+<img src="../images/fields/password.png" width="347" height="67" style="height: auto" alt="Password field type">
+
+### Settings <Badge type="feature" text="New in 5.2+" />
+
+- **Min Length** - the minimum number of characters the password should be.
+- **Max Length** - the maximum number of characters the password should be.
+- **Character Variability** - the password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.
+
+### Notes
+
+- Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../forms/email-notifications/#all-fields).
+- When using with the Users [Element integration](../integrations/elements/), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
+
+
+## Phone <Badge type="pro" text="Pro" />
+A `tel` type input field that is validated to contain phone numbers only, based on a configured pattern. The `field.type` property value is `phone` (for conditionals).
+
+<img src="../images/fields/phone.png" width="947" height="70" style="height: auto" alt="Phone field type">
+
+### Settings
+
+- Set pattern to desired format, where `0` is a digit between `0` and `9`.
+    - E.g. `(000) 000-0000` or `+0 0000 000000`, etc.
+    - Toggle the *Use JS validation* setting to have Freeform include JS in the form that validates the format and auto-inserts the extra characters like `(`, `-`, `+` etc).
+
+### Templating
+
+- `pattern`
+
+
+## Radios <Badge type="feature" text="Renamed in 5.0+" />
+A group of radio options. The `field.type` property value is `radios` (for conditionals).
+
+<img src="../images/fields/radio-group.png" width="163" height="104" style="height: auto" alt="Radios field type">
+
+### Settings
+
+- Can specify labels (with values assumed) or labels and values (that differ).
+- Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
+- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+- Can be rendered vertically or horizontally.
+
+### User Guides
+
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../../guides/parsing-html-in-field-options/)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../../guides/populate-field-options-at-template-level/)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../../guides/other-option-for-fields/)
+
+
+## Rating <Badge type="pro" text="Pro" />
+A special field that allows for star ratings using Freeform's built-in CSS. The `field.type` property value is `rating` (for conditionals).
+This field type is included automatically with the _Pro_ edition of Freeform.
+
+<img src="../images/fields/rating.png" width="246" height="69" style="height: auto" alt="Rating field type">
+
+### Settings
+
+- Set the field's number of stars (`3`-`10`).
+- Style the color of the stars for the _unselected_, _hover_ and _selected_ states.
+
+### Templating
+
+- `colorIdle` (e.g. `#ddd`)
+- `colorHover` (e.g. `gold`)
+- `colorSelected` (e.g. `#f70`)
+- `maxValue` (e.g. `5`)
+
+### Customizing the Appearance
+
+To manually render a Rating field using your own styles, your code might look something like this:
+
+``` twig
+{% for i in 1..field.maxValue %}
+    <label for="rating-{{ i }}">whatever {{ i }}</label>
+    <input type="radio" id="rating-{{ i }}" value="{{ i }}" name="{{ field.handle }}">
+{% endfor %}
+```
+
+
+## Regex <Badge type="pro" text="Pro" />
+An input field that is validated based on the specified regex pattern (e.g. `/^[a-zA-Z0-9]*$/`). The `field.type` property value is `regex` (for conditionals).
+
+<img src="../images/fields/regex.png" width="351" height="93" style="height: auto" alt="Regex field type">
+
+### Settings
+
+- Specify a required pattern for values to match, e.g. `/^[a-zA-Z0-9]*$/`.
+    - When needing to use `{}` for attributes in **Regex** fields (such as `pattern`), you will need to specify them differently, as Freeform is built to allow Twig rendering and it'll choke. So for example, if you need to use `[0-9]{4,5}`, change it to:
+        ``` twig
+        [0-9]{{ '{' }}4,5{{ '}' }}
+        ```
+- Set the error message a user will see if an incorrect value is supplied.
+    - Any occurrences of `{pattern}` will be replaced with specified regex pattern inside the error message, if any are found.
+
+### Templating
+
+- `pattern`
+- `message`
+
+
+## Rich Text <Badge type="pro" text="Pro" />
+A special field type that allows you include rich text inside your form layout in the form builder. The `field.type` property value is `rich-text` (for conditionals).
+
+<img src="../images/fields/html.png" width="734" height="139" style="height: auto" alt="Rich Text field type">
+
+### Notes
+
+- The Property Editor will load a Rich Text area for you to type into and style as necessary.
+- The Layout column in the form builder will live parse your content.
+
+::: guide ../../guides/tinymce-editor-textarea/
+Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?
+:::
+
+
+## Signature <Badge type="pro" text="Pro" />
+A field that allows users to handwrite signatures with their mouse inside your form. The `field.type` property value is `signature` (for conditionals).
+
+<img src="../images/fields/signature.png" width="467" height="200" style="height: auto" alt="Signature field type">
+
+### Settings
+
+- Set the dimensions of the field writing/drawing area.
+- Set the border and background colors.
+- Set the pen dot size (in pixels) and the color.
+- To include ability for a user to click a button to erase their signature and start over, check off the **Show 'Clear' button?** checkbox.
+
+### Notes
+
+- Signatures are stored as an image datapoint value.
+- Signatures can be downloaded as JPG or PNG files (from control panel).
+- Signatures are excluded from regular exports and the `allFields` loop in email notification templates (since it would just hold an image datapoint value string).
+- Signatures can be edited when the form is in edit mode.
+- The _Clear_ button can be styled inside the form builder with **Input attributes** area inside the property editor.
+- The Signature field, due to it's complexness, cannot easily be manually generated in a form, and is best done with render helpers, e.g. `field.render`.
+- There's currently no way to make the signature pad area "responsive" (like setting it to 100% width), as this would be quite difficult to account for with the need to display the signature image in various places, etc.
+
+
+## Submit buttons <Badge type="feature" text="Revised in 5.0+" />
+Submit buttons are handled automatically by Freeform. They are automatically inserted at the end of your form in the form builder. This includes the **Submit/Continue**, **Previous** (where applicable), and **Save & Continue Later** buttons (where available).
+
+<img src="../images/fields/submit.png" width="182" height="48" style="height: auto" alt="Submit button">
+
+### Settings
+The Submit button settings allow you to edit the button label(s) and adjust the positioning of the buttons.
+
+- When using with multi-page forms, Freeform will detect when you're on a page after first page, and provide you with the option to toggle a **Back** button.
+- When using with the **Pro** edition, Freeform will provide you with the option to toggle a **Save** button.
+
+### Templating <Badge type="feature" text="Revised in 5.0+" />
+Controlling the format for submit buttons is now done through the new `buttons` namespace available in the [Template Overrides](../templates/formatting/#template-overrides) feature.
+
+``` twig
+{{ form.render({
+    buttons: {
+        attributes: {
+            container: { ... },
+            column: { ... },
+            buttonWrapper: { ... },
+            submit: { class: "form-field-button blue" },
+            back: { class: "form-field-button gray" },
+            save: { class: "form-field-button blue" },
+        },
+        submitLabel: "Send",
+        backLabel: "Previous",
+        saveLabel: "Save",
+    }
+}) }}
+```
+
+#### Further Customization
+If the override approach above is not enough for your needs, you can use a more manual approach. First, you need to disable the automatic insertion of Submit buttons by applying the `disable: ["submitButtons"]` parameter to your form. Then, you can use the button render approach.
+
+The following are available:
+
+- `renderSubmit` - render a complete **Submit** button
+- `renderBack` - render a complete **Back** button
+- `renderSave` - render a complete **Save** button
+
+``` twig
+{{ form.renderTag({
+    returnUrl: "contact/success",
+    disable: ["submitButtons"]
+}) }}
+
+    {# Your fields #}
+
+    {% set page = form.pages.current %}
+
+    {{ page.buttons.renderSubmit({ 'data-optional': 'attributes here' }) }}
+    {% if form.pages.current.buttons.back %}
+        {{ page.buttons.renderBack }}
+    {% endif %}
+    {% if form.pages.current.buttons.save %}
+        {{ page.buttons.renderSave }}
+    {% endif %}
+
+{{ form.renderClosingTag }}
+```
+
+And finally, for maximum control, you can use a property attributes render instead. The following are available:
+
+- `renderSubmitProps` - render the property attributes to attach to your **Submit** button
+- `renderBackProps` - render the property attributes to attach to your **Back** button
+- `renderSaveProps` - render the property attributes to attach to your **Save** button
+
+``` twig
+{{ form.renderTag({
+    returnUrl: "contact/success",
+    disable: ["submitButtons"]
+}) }}
+
+    {# Your fields #}
+
+    {% set page = form.pages.current %}
+
+    <button {{ page.buttons.submitRenderProps({ 'data-optional': 'attributes here' }) }}>
+        Submit
+    </button>
+    {% if form.pages.current.buttons.back %}
+        <button {{ page.buttons.backRenderProps }}>
+            Back
+        </button>
+    {% endif %}
+    {% if form.pages.current.buttons.save %}
+        <button {{ page.buttons.saveRenderProps }}>
+            Save
+        </button>
+    {% endif %}
+
+{{ form.renderClosingTag }}
+```
+
+### Save & Continue Later <Badge type="pro" text="Pro" />
+This feature allows users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later/).
+
+<img src="../images/fields/save.png" width="527" height="50" style="height: auto" alt="Save & Continue Later button">
+
+#### Additional Configuration
+
+- A return URL must be configured. This is where the user should be returned to if they click the button.
+    - Special `token` and `key` variables are available to include in the return path.
+    - The return URL can be wherever you like, and fully customizable. This is where you'd include instructions to the user including a URL for where to return to complete the form later.
+- You may optionally specify that an email notification be sent to the user if they click the **Save** button.
+    - Choose a special Freeform email notification template.
+    - The message of this email notification is completely customizable, but be sure to include instructions to the user including a URL for where to return to complete the form later.
+    - Requires targeting of an [Email](#email) field that will contain the user's email address in order to send the email notification.
+        - If the user hasn't yet filled out an email address, the email notification attempt will be suppressed (as there is no field validation to ensure the Email field is fillout out). A good way around this would be to have the first page include basic info like _name_ and _email_ but no option to save the form until the second page.
+
+
+## Stripe Payment <Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+When the [Stripe Payments](../integrations/payments/) integration is configured, a Stripe Payments special field type will become available. This field enables your forms to collect (but not store) credit card or other payment information and pass it off to Stripe.
+
+![Stripe Payment field Layout Options](../images/feature/stripe/layout.png)
+
+
+## Table <Badge type="pro" text="Pro" />
+A field that allows you to collect and handle repeating data. The `field.type` property value is `table` (for conditionals).
+
+<img src="../images/fields/table.png" width="951" height="285" style="height: auto" alt="Table field type">
+
+### Settings
+
+- Use the Table Layout area to create columns for the table. Options are:
+    - Text
+    - Checkbox
+        - When using _Checkbox_, specify a value you'd like to represent that checkbox when checked.
+    - Dropdown
+        - When using _Dropdown_, specify multiples separated by the `;` character, e.g. `apples;oranges:cherries`.
+- Check off *Use built-in Table JS?* checkbox to have Freeform include JS in the form that validates the format and auto-inserts the extra characters like `(`, `-`, `+` etc).
+
+### Rendering
+
+Here's how you can use `field.render` for an automated approach to render your Table field inside your formatting templates:
+
+``` twig
+{{ field.render({
+    class: "table",
+    label: "table-label",
+    row: "table-row",
+    column: "table-col",
+    addButtonLabel: "Add +",
+    addButtonClass: "btn btn-sm btn-primary",
+    removeButtonLabel: "x",
+    removeButtonClass: "btn btn-sm btn-danger",
+    tableTextInputClass: "form-control",
+    tableDropdownInputClass: "form-control",
+    tableCheckboxInputClass: "form-check-input"
+}) }}
+```
+
+### Customizing the Appearance
+
+For **manual** rendering of the Table field inside your form for full customizability, your code might look something like this:
+
+``` twig
+<table class="table">
+    <thead>
+        <tr>
+        {% for column in field.tableLayout %}
+            <th>{{ column.label }}</th>
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+    {% if field.value is empty %}
+        <tr>
+        {% for index, column in field.tableLayout %}
+            {% set colName = field.handle ~ "[0][" ~ index ~ "]" %}
+            <td>
+            {% switch column.type|default("text") %}
+                {% case "dropdown" %}
+                    <select name="{{ colName }}">
+                    {% for option in column.value|default("")|split(";") %}
+                        <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                    </select>
+                {% case "checkbox" %}
+                    <input type="checkbox" name="{{ colName }}" value="{{ column.value|default("Yes") }}" />
+                {% default %}
+                    <input type="text" name="{{ colName }}" value="{{ column.value|default("") }}" />
+            {% endswitch %}
+            </td>
+        {% endfor %}
+        </tr>
+    {% else %}
+        {% for rowIndex, row in field.value %}
+            <tr>
+            {% for index, column in field.tableLayout %}
+                {% set colName = field.handle ~ "[" ~ rowIndex ~ "][" ~ index ~ "]" %}
+                {% set colValue = row[index]|default("") %}
+                <td>
+                    {% switch column.type|default("text") %}
+                    {% case "dropdown" %}
+                        <select name="{{ colName }}">
+                        {% for option in colValue|default("")|split(";") %}
+                            <option value="{{ option }}"{{ option == colValue ? " selected" }}>{{ option }}</option>
+                        {% endfor %}
+                        </select>
+                    {% case "checkbox" %}
+                        <input type="checkbox" name="{{ colName }}" value="{{ column.value|default("Yes") }}" {{ colValue ? "checked" }} />
+                    {% default %}
+                        <input type="text" name="{{ colName }}" value="{{ colValue }}" />
+                    {% endswitch %}
+                </td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+```
+
+### Submission Data
+
+Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission.md):
+
+``` twig
+<table class="table">
+    <thead>
+        <tr>
+        {% for column in field.tableLayout %}
+            <th>{{ column.label|default("-") }}</th>
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in submission[field.handle].value %}
+        <tr>
+        {% for index, column in field.tableLayout %}
+            <td>{{ row[index] }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+```
+
+A complete example might look like:
+
+``` twig
+{% for field in submission %}
+    <td>
+    {% if field.type == "table" %}
+        <table class="table">
+            <thead>
+                <tr>
+                {% for column in field.tableLayout %}
+                    <th>{{ column.label|default("-") }}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in submission[field.handle].value %}
+                <tr>
+                {% for index, column in field.tableLayout %}
+                    <td>{{ row[index] }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {{ submission[field.handle] }}
+    {% endif %}
+    </td>
+{% endfor %}
+```
+
+
+## Text
+A single-line text input field. The `field.type` property value is `text` (for conditionals).
+
+<img src="../images/fields/text.png" width="706" height="67" style="height: auto" alt="Text field type">
+
+::: guide ../../guides/color-picker-text/
+Want to display a Text input as a Color Picker?
+:::
+
+
+## Textarea
+A multi-line text input field. The `field.type` property value is `textarea` (for conditionals).
+
+<img src="../images/fields/textarea.png" width="529" height="165" style="height: auto" alt="Textarea field type">
+
+### Settings
+
+- Can specify the number of rows the textarea should have.
+
+### User Guides
+
+- [Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../../guides/line-breaks-in-textarea-fields/)
+- [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../../guides/tinymce-editor-textarea/)
+
+
+## Website <Badge type="pro" text="Pro" />
+A `url` type input field that checks to see if the URL specified has valid syntax (`http://`, `https://`, `ftp://`, etc). The `field.type` property value is `website` (for conditionals).
+
+<img src="../images/fields/website.png" width="348" height="70" style="height: auto" alt="Website field type">
+
+
+## Populating Fields with Elements & Predefined Options <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div> <Badge type="feature" text="Improved in 5.0+" />
+Inside the form builder (only), field types with options (such as _Dropdown_, _Radios_, etc) have the ability to be automatically fed options from Craft Elements or Freeform's own predefined options. This allows you to quickly build forms by having fields auto-generated.
+
+::: guide ../../guides/populate-field-options-at-template-level/
+Need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template? Check out how to populate field options at template level.
+:::
+
+### Applicable Field Types
+The following field types can be auto-populated:
+
+* [Dropdown](#dropdown)
+    * Optional **Empty Option Label** to have first option be something like `Please select...`
+* [Multiple Select](#multiple-select)
+* [Checkboxes](#checkboxes)
+* [Radios](#radios)
+
+### Available Craft Elements <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div>
+The following Craft Elements can be fed to the above field types:
+
+* **[Craft Entries](https://craftcms.com/docs/5.x/reference/element-types/entries.html)**
+    * **Target** sections or all sections.
+    * **Option Label** and **Option Value** choices:
+        * ID, Title, Slug, URI, Fields (simple values)
+* **[Craft Users](https://craftcms.com/docs/5.x/reference/element-types/users.html)**
+    * **Target** user groups or all groups.
+    * **Option Label** and **Option Value** choices:
+        * ID, Username, Email, First Name, Last Name, Full Name, Fields (simple values)
+* **[Craft Categories](https://craftcms.com/docs/5.x/reference/element-types/categories.html)**
+    * **Target** category groups or all groups.
+    * **Option Label** and **Option Value** choices:
+        * ID, Title, Slug, URI, Fields (simple values)
+* **[Craft Tags](https://craftcms.com/docs/5.x/reference/element-types/tags.html)**
+    * **Target** tag groups or all groups.
+    * **Option Label** and **Option Value** choices:
+        * ID, Title, Slug, URI, Fields (simple values)
+* **[Craft Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html)**
+    * **Target** asset groups or all groups.
+    * **Option Label** and **Option Value** choices:
+        * Filename, ID, Fields (simple values)
+* **[Craft Commerce Products](https://craftcms.com/docs/commerce/5.x/system/products-variants.html)**
+    * **Target** product type or all product types.
+    * **Option Label** and **Option Value** choices:
+        * ID, Title, Slug, URI, SKU, Price, Fields (simple values)
+
+
+### Available Predefined Options <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div>
+The following Freeform predefined options can be fed to the above field types:
+
+* **States**
+    * Official USA States
+    * **Option Label** and **Option Value** choices:
+        * Full
+        * Abbreviated (upper case 2 letters)
+* **States & Territories**
+    * Official USA States and territories
+    * **Option Label** and **Option Value** choices:
+        * Full
+        * Abbreviated (upper case 2 letters)
+* **Canadian Provinces**
+    * **Provinces - English**
+        * Canadian Provinces and territories in English
+    * **Provinces - French**
+        * Canadian Provinces and territories in French
+    * **Provinces - Bilingual**
+        * Bilingual list of Canadian Provinces and territories
+        * **Option Label** and **Option Value** choices:
+            * Full
+            * Abbreviated (upper case 2 letters)
+* **Countries**
+    * All world countries
+    * **Option Label** and **Option Value** choices:
+        * Full
+        * Abbreviated (upper case 2 letters)
+* **Languages**
+    * All world languages
+    * **Option Label** and **Option Value** choices:
+        * Full
+        * Abbreviated (lower case 2 letters)
+* **Numbers** (range)
+    * A custom range of numbers
+    * **Range Start** and **Range End**
+        * E.g. `60` - `65` would return list: `60, 61, 62, 63, 64, 65`
+* **Years** (range)
+    * A custom range of years
+    * **Range Start** - number of years in PAST from current year
+    * **Range End** - number of years in FUTURE from current year
+        * E.g. `5` (start) - `0` (end) would return list: `2018, 2017, 2016, 2015, 2014, 2013`
+    * **Sort Direction**:
+        * Ascending
+        * Descending
+* **Months**
+    * All 12 months of the year.
+    * **Option Label** and **Option Value** choices:
+        * Full, e.g. `September`
+        * Abbreviated (Capitalized 3 letters), e.g. `Sep`
+        * Single Number, e.g. `9`
+        * 2-digit Number, e.g. `09`
+* **Days**
+    * List of days `1` to `31`.
+    * **Option Label** and **Option Value** choices:
+        * Single Number, e.g. `3`
+        * 2-digit Number, e.g. `03`
+* **Days of Week**
+    * List of all days of week.
+    * **Option Label** and **Option Value** choices:
+        * Full, e.g. `Thursday`
+        * Abbreviated (Capitalized 3 letters), e.g. `Thu`
+        * Single Number, e.g. `4`
+
+
+### Convert to Custom Options <Badge type="feature" text="New in 5.0+" />
+
+Sometimes you need a little more control over the populated data generated by the _Element_ or _Predefined_ options. You can click the **Convert to Custom Options** button at any time to have the generated option data converted to _Custom_ options that can then have its options edited, removed, added, renamed, and reordered.
+
+::: danger
+There are potentially negative implications with using this feature:
+- Your options data can become out of sync when new elements (e.g. Entries) are added after the fact.
+- If you apply this when there are already existing submissions, renaming option values will orphan submissions relying on the old value name.
+- Be very careful if you attempt to redo this process (e.g. changing back to _Element_ source and grabbing a fresh list of Craft Entries, then converting back to _Custom_). If any existing submissions are relying on old or modified option values, they can become orphaned in the process.
+:::
