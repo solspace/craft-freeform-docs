@@ -1,8 +1,8 @@
 {
-  "label": "Test",
+  "label": "User Guides",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Testdocumenten...."
+    "description": "Test Docs...."
   }
 }

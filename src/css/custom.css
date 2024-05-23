@@ -4,6 +4,11 @@
  * work well for content-centric websites.
  */
 
+/* Tailwind css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
@@ -15,6 +20,7 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-link-hover-decoration: none;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -27,4 +33,49 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/**
+* Global css
+*/
+
+/* Button */
+.primary-btn {
+  @apply relative text-lg font-medium py-2 px-6 rounded-full transition-all duration-500 bg-amber-600 text-white hover:text-white hover:bg-amber-700;
+}
+
+.primary-btn > span {
+  @apply relative transition-all duration-500;
+  padding: 0 15px;
+}
+
+.primary-btn:hover > span {
+  padding: 0 25px 0 5px;
+}
+
+.primary-btn > span::after {
+  @apply transition-all duration-500 absolute opacity-0 -top-0.5 -right-2;
+  content: '';
+}
+
+.primary-btn:hover > span::after,
+.primary-btn:hover > span.arrow-down::after {
+  @apply opacity-100 right-0;
+}
+
+.primary-btn:hover > span::after {
+  content: '→';
+}
+
+.primary-btn:hover > span.arrow-down::after {
+  content: '↓';
+}
+
+video {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  opacity: 1;
+  transition: all 0.5s;
 }

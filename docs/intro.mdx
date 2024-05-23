@@ -1,0 +1,57 @@
+---
+sidebar_position: 1
+---
+
+import { PrimaryButtonWithLink } from '@site/src/components/utils';
+import Player from 'react-player';
+
+# Overview
+
+<div className="flex flex-col items-center gap-6 mt-20">
+  <img
+    src={require('./assets/img/freeform5.png').default}
+    className="max-w-3xl"
+    alt="Freeform 5 for Craft CMS"
+  />
+  <h2 className="text-amber-500	">Ready for wherever your project takes you.</h2>
+  <p className="text-center">
+    Freeform is a versatile form-building tool that can adjust to the evolving
+    needs of your project, whether it's a simple or complex form. It offers
+    effective spam protection and an easy-to-use form builder with powerful
+    field types and built-in convenience features that your users will love.
+    Freeform integrates seamlessly with popular CRMs, email marketing services,
+    Craft elements, and more. It includes fully customizable ready-to-go
+    templates and also offers headless support.
+  </p>
+  <div className="flex flex-col items-center gap-6">
+    <div className="flex gap-3">
+      <PrimaryButtonWithLink
+        to="#feature-tour"
+        label="Feature Tour"
+        arrowDown
+      />
+      <PrimaryButtonWithLink to="#compare" label="Pricing" arrowDown />
+      <PrimaryButtonWithLink
+        to="/User%20Guides/getting-started/"
+        label="Getting Started"
+      />
+    </div>
+    <small>
+      <a
+        className="underline decoration-green-600  hover:decoration-amber-500 hover:underline"
+        href="https://plugins.craftcms.com/freeform"
+      >
+        INSTALL A FREE, UNLIMITED TRIAL TODAY!
+      </a>
+    </small>
+  </div>
+</div>
+
+<Player
+  url={require('./assets/video/builder-feature.mp4').default}
+  muted
+  loop
+  playing
+  width="100%"
+  height="100%"
+/>

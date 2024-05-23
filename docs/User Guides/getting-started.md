@@ -2,6 +2,6 @@
 sidebar_position: 1
 ---
 
-# Version!
+# Getting Started
 
 This is freeform v5.

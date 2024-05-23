@@ -1,6 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import tailwind from './plugins/tailwind-config.cjs';
 
 const config: Config = {
   title: 'Freeform for Craft',
@@ -37,6 +38,9 @@ const config: Config = {
     },
   },
 
+  // External plugins
+  plugins: [tailwind],
+
   presets: [
     [
       'classic',
@@ -50,10 +54,6 @@ const config: Config = {
           },
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: './src/css/custom.css',
