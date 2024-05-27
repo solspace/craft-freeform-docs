@@ -2,14 +2,48 @@
 sidebar_position: 1
 ---
 
-import { PrimaryButtonWithLink } from '@site/src/components/utils';
+[//]: # 'Packages'
+
 import Player from 'react-player';
+import ThemedImage from '@theme/ThemedImage';
+
+[//]: # 'Components'
+
+import {
+  PrimaryButtonWithLink,
+  SimpleTextLink,
+  FlexButton,
+  BrowserMockupWithPhoto,
+} from '@site/src/components/utils';
+import { FlexCards, FieldCards, Section } from '@site/src/components/docs';
+
+[//]: # 'Images & Icons'
+
+import FreeformIntroWhite from './assets/img/freeform-intro-white.png';
+import FreeformIntroBlack from './assets/img/freeform-intro-black.png';
+import TapWhiteIcon from './assets/icons/tap-white.png';
+import TapBlackIcon from './assets/icons/tap-black.png';
+import ShieldWhiteIcon from './assets/icons/shield-whtie.png';
+import ShieldBlackIcon from './assets/icons/shield-black.png';
+import SpamFolderPhoto from './assets/img/spam-folder.png';
+import SpamDetailPhoto from './assets/img/spam-detail.png';
+import TextareaIcon from './assets/icons/fields/textarea.png';
+
+[//]: # 'Videos'
+
+import FeatureVideo from './assets/video/builder-feature.mp4';
+import BuilderRulesVideo from './assets/video/builder-rules.mp4';
 
 # Overview
 
-<div className="flex flex-col items-center gap-6 mt-20">
-  <img
-    src={require('./assets/img/freeform5.png').default}
+[//]: # 'Intro'
+
+<section className="flex flex-col items-center gap-6 mt-20">
+  <ThemedImage
+    sources={{
+      light: FreeformIntroBlack,
+      dark: FreeformIntroWhite,
+    }}
     className="max-w-3xl"
     alt="Freeform 5 for Craft CMS"
   />
@@ -23,35 +57,516 @@ import Player from 'react-player';
     Craft elements, and more. It includes fully customizable ready-to-go
     templates and also offers headless support.
   </p>
-  <div className="flex flex-col items-center gap-6">
-    <div className="flex gap-3">
-      <PrimaryButtonWithLink
-        to="#feature-tour"
-        label="Feature Tour"
-        arrowDown
-      />
-      <PrimaryButtonWithLink to="#compare" label="Pricing" arrowDown />
-      <PrimaryButtonWithLink
-        to="/User%20Guides/getting-started/"
-        label="Getting Started"
-      />
-    </div>
-    <small>
-      <a
-        className="underline decoration-green-600  hover:decoration-amber-500 hover:underline"
-        href="https://plugins.craftcms.com/freeform"
-      >
-        INSTALL A FREE, UNLIMITED TRIAL TODAY!
-      </a>
-    </small>
-  </div>
-</div>
+  <FlexButton
+    items={[
+      { to: '#feature-tour', label: 'Feature Tour', arrowDown: true },
+      { to: '#compare', label: 'Primary' },
+      { to: 'User%20Guides/getting-started/', label: 'Getting Started' },
+    ]}
+  />
+  <small>
+    <SimpleTextLink
+      to="https://plugins.craftcms.com/freeform"
+      label="INSTALL A FREE, UNLIMITED TRIAL TODAY!"
+    />
+  </small>
+</section>
 
-<Player
-  url={require('./assets/video/builder-feature.mp4').default}
-  muted
-  loop
-  playing
-  width="100%"
-  height="100%"
+[//]: # 'Feature Video'
+
+<Player url={FeatureVideo} muted loop playing width="100%" height="100%" />
+
+[//]: # 'Useful Links'
+
+<FlexCards
+  items={[
+    {
+      title: 'Getting Started',
+      description: 'Learn the basics about Freeform and setting up forms.',
+      whiteImgSrc: TapWhiteIcon,
+      blackImgSrc: TapBlackIcon,
+      imgAlt: 'Getting started',
+      fullCardLink: 'User%20Guides/getting-started/',
+    },
+    {
+      title: 'User Guides',
+      description: 'See solutions to common problems and questions.',
+      whiteImgSrc: TapWhiteIcon,
+      blackImgSrc: TapBlackIcon,
+      imgAlt: 'User Guides',
+      fullCardLink: 'User%20Guides/getting-started/',
+    },
+    {
+      title: 'Support',
+      description:
+        'Questions or issues? We want to help your project go smoothly!',
+      whiteImgSrc: TapWhiteIcon,
+      blackImgSrc: TapBlackIcon,
+      imgAlt: 'Support',
+      fullCardLink: 'https://docs.solspace.com/support/',
+    },
+  ]}
 />
+
+[//]: # 'Reliability'
+
+## Reliability
+
+<Section
+  title="Reliability"
+  subtitle="Functional forms are crucial. Impressive features are useless if they don't work."
+  description="Losing customer leads can result in significant revenue loss and a negative impression on potential clients. We prioritize reliability above all else in Freeform to address this issue."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <FlexCards
+    items={[
+      {
+        title: 'Getting Started',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+    ]}
+  />
+  <FlexButton
+    items={[
+      { to: '#feature-tour', label: 'Reliability options', arrowDown: true },
+      { to: '#compare', label: 'Primary' },
+    ]}
+  />
+</Section>
+
+[//]: # 'Form Builder'
+
+## Form Builder
+
+<Section
+  title="Form Builder"
+  subtitle="Everything is at your fingertips in our elegant and intuitive form builder."
+  description="The Freeform form builder is an all-in-one interface that lets you take control of almost every aspect of your forms."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <Player url={FeatureVideo} muted loop playing width="100%" height="100%" />
+  <FlexButton
+    items={[
+      { to: '#feature-tour', label: 'Reliability options', arrowDown: true },
+      { to: '#compare', label: 'Primary' },
+    ]}
+  />
+</Section>
+
+[//]: # 'Convenience'
+
+## Convenience
+
+<Section
+  title="Convenience"
+  subtitle="So many plug-and-play features that make form building and templating a breeze!"
+  description="Losing customer leads can result in significant revenue loss and a negative impression on potential clients. We prioritize reliability above all else in Freeform to address this issue."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+    ]}
+  />
+</Section>
+
+[//]: # 'Spam Protection'
+
+## Spam Protection
+
+<Section
+  title="Spam Protection"
+  subtitle="Fight spam effectively."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
+  <BrowserMockupWithPhoto src={SpamDetailPhoto} alt="Spam Folder" />
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+    ]}
+  />
+</Section>
+
+[//]: # 'Powerful Fields'
+
+## Powerful Fields
+
+<Section
+  title="Powerful Fields"
+  subtitle="Freeform offers a diverse range of fieldtypes and advanced features to populate and control them."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <Player
+    url={BuilderRulesVideo}
+    muted
+    loop
+    playing
+    width="100%"
+    height="100%"
+  />
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+    ]}
+  />
+  <FlexButton
+    items={[{ to: '#feature-tour', label: 'Fields Overview', arrowDown: true }]}
+  />
+
+  <FieldCards items={[
+       {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        titleBadge: 'New!',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        titleBadge: 'New!',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+      {
+        link: 'User%20Guides/getting-started/',
+        title: 'Textarea',
+        description:
+          'Multi-line text inputs',
+        imgSrc: TextareaIcon,
+        imgAlt: 'Textarea',
+      },
+  ]} />
+</Section>
+
+[//]: # 'Email Notifications'
+
+## Email Notifications
+
+<Section
+  title="Email Notifications"
+  subtitle="Every conceivable option for sending fully customizable email notifications."
+  description="Have as many templates as you like, and use different ones for every type."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
+  <BrowserMockupWithPhoto src={SpamDetailPhoto} alt="Spam Folder" />
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'Support',
+        description:
+          'Questions or issues? We want to help your project go smoothly!',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Support',
+        linkWithDescription: 'https://docs.solspace.com/support/',
+      },
+    ]}
+  />
+</Section>
+
+[//]: # 'Flexible Templating'
+
+## Flexible Templating
+
+<Section
+  title="Flexible Templating"
+  subtitle="Fast and easy, yet highly customizable."
+  description="Templates are highly customizable for even the most complex forms. With our ready-to-use demo templates and features, you can be up and running in just a few minutes!"
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'User%20Guides/getting-started/',
+      },
+    ]}
+  />
+</Section>
+
+[//]: # 'Integrations'
+
+## Integrations
+
+<Section
+  title="Integrations"
+  subtitle="Integrate your forms with anything."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  Coming!!!
+</Section>

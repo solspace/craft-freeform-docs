@@ -1,3 +1,3 @@
-import { PrimaryButtonWithLink } from './Button';
-
-export { PrimaryButtonWithLink };
+export * from './Button';
+export * from './Links';
+export * from './Photos';

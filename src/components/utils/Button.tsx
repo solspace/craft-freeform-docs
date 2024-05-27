@@ -1,11 +1,43 @@
 import Link from '@docusaurus/Link';
 
-const PrimaryButtonWithLink = ({ to, label, arrowDown = false }) => {
+interface PrimaryButtonWithLink {
+  to: string;
+  label?: string;
+  arrowDown?: boolean;
+}
+
+interface ButtonProps {
+  items: PrimaryButtonWithLink[];
+}
+
+const PrimaryButtonWithLink: React.FC<PrimaryButtonWithLink> = ({
+  to,
+  label,
+  arrowDown = false,
+}) => {
   return (
     <Link to={to} className="primary-btn">
-      <span className={`${arrowDown ? 'arrow-down' : ''}`}>{label}</span>
+      <span className={`${arrowDown ? 'arrow-down' : ''}`}>
+        {label || 'Learn more'}
+      </span>
     </Link>
   );
 };
 
-export { PrimaryButtonWithLink };
+const FlexButton: React.FC<ButtonProps> = ({ items }) => {
+  return (
+    <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-wrap gap-3">
+        {items.map((item) => (
+          <PrimaryButtonWithLink
+            to={item.to}
+            label={item.label || 'Learn more'}
+            arrowDown={item?.arrowDown || false}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export { PrimaryButtonWithLink, FlexButton };

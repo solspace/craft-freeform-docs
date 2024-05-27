@@ -1,0 +1,164 @@
+import Link from '@docusaurus/Link';
+import ThemedImage from '@theme/ThemedImage';
+
+import { SimpleTextLink } from '@site/src/components/utils';
+
+interface CardProps {
+  fullCardLink?: string;
+  linkWithDescription?: string;
+  title: string;
+  titleBadge?: string;
+  description: string;
+  whiteImgSrc?: string;
+  blackImgSrc?: string;
+  imgAlt?: string;
+}
+
+interface FieldProps {
+  link: string;
+  title: string;
+  titleBadge?: string;
+  description: string;
+  imgSrc?: string;
+  imgAlt?: string;
+}
+
+interface CardSectionProps {
+  items: CardProps[];
+}
+
+interface FieldCardsProps {
+  items: FieldProps[];
+}
+
+const Card: React.FC<CardProps> = ({
+  fullCardLink,
+  linkWithDescription,
+  title,
+  titleBadge,
+  description,
+  whiteImgSrc,
+  blackImgSrc,
+  imgAlt,
+}) => {
+  if (fullCardLink) {
+    return (
+      <Link
+        to={fullCardLink}
+        className="group flex flex-row gap-2 border rounded-lg bg-gray-100 py-2 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400"
+      >
+        <div className="max-w-10 pt-2">
+          <ThemedImage
+            alt={imgAlt || title}
+            className="opacity-85	"
+            sources={{
+              light: blackImgSrc,
+              dark: whiteImgSrc,
+            }}
+          />
+        </div>
+        <div className="">
+          <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
+            {title}{' '}
+            {titleBadge && (
+              <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+                {titleBadge}
+              </span>
+            )}
+          </h3>
+          <p className="text-gray-700 mb-1 dark:text-gray-300 transition-all duration-500 dark:group-hover:text-gray-50 ">
+            {description}
+          </p>
+        </div>
+      </Link>
+    );
+  }
+
+  return (
+    <div className="group flex flex-row gap-2 border rounded-lg py-2 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white">
+      <div className="max-w-10 pt-2">
+        <ThemedImage
+          alt={imgAlt || title}
+          className="opacity-85	"
+          sources={{
+            light: blackImgSrc,
+            dark: whiteImgSrc,
+          }}
+        />
+      </div>
+      <div className="">
+        <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
+          {title}{' '}
+          {titleBadge && (
+            <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+              {titleBadge}
+            </span>
+          )}
+        </h3>
+        <p className="text-gray-700 mb-1 dark:text-gray-300 ">
+          {description}{' '}
+          {linkWithDescription && (
+            <SimpleTextLink to={linkWithDescription} label="Learn more" />
+          )}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const FlexCards: React.FC<CardSectionProps> = ({ items }) => {
+  return (
+    <div className="flex flex-wrap p-6 2xl:grid 2xl:grid-cols-3 justify-center gap-4">
+      {items.map((item, index) => (
+        <Card
+          key={`flex-cards-${index}`}
+          fullCardLink={item.fullCardLink}
+          linkWithDescription={item.linkWithDescription}
+          title={item.title}
+          titleBadge={item?.titleBadge}
+          description={item.description}
+          whiteImgSrc={item.whiteImgSrc}
+          blackImgSrc={item.blackImgSrc}
+          imgAlt={item.imgAlt}
+        />
+      ))}
+    </div>
+  );
+};
+
+const FieldCards: React.FC<FieldCardsProps> = ({ items }) => {
+  return (
+    <div className="flex flex-wrap py-6 my-10 gap-4">
+      {items.map((item, index) => (
+        <Link
+          key={`field-cards-${index}`}
+          to={item.link}
+          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-500 py-7 px-10 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-300 hover:dark:bg-sky-600"
+        >
+          <div className="max-w-10 pt-4">
+            <img
+              alt={item.imgAlt || item.title}
+              className="opacity-85	"
+              src={item.imgSrc}
+            />
+          </div>
+          <div className="text-center pb-4">
+            <h3 className="text-base font-semibold mb-0 text-white">
+              {item.title}{' '}
+              {item.titleBadge && (
+                <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+                  {item.titleBadge}
+                </span>
+              )}
+            </h3>
+            <p className="text-xs mb-1 text-gray-300 transition-all duration-500 dark:group-hover:text-gray-50 ">
+              {item.description}
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export { Card, FlexCards, FieldCards };
