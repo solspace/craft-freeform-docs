@@ -38,6 +38,14 @@ const config: Config = {
     },
   },
 
+  // Mermaid
+  markdown: {
+    mermaid: true,
+  },
+
+  // Themes
+  themes: ['@docusaurus/theme-mermaid'],
+
   // External plugins
   plugins: [tailwind],
 
