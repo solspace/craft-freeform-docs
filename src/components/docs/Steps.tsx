@@ -1,36 +1,52 @@
-interface VerticalStepWithLabelProps {
-  steps: string[];
+import React from 'react';
+
+interface StepMarkdownProps {
+  stepNumber?: number;
+  children?: React.ReactNode;
 }
 
-const VerticalStepWithLabel: React.FC<VerticalStepWithLabelProps> = ({
-  steps,
+const StepMarkdown: React.FC<StepMarkdownProps> = ({
+  children,
+  stepNumber,
 }) => {
   return (
-    <div className="flex flex-col">
-      {steps.map((step, index) => (
-        <div className="flex">
-          <div className="flex flex-col items-center mr-6">
-            <div>
-              <div className="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full bg-orange-700 ">
-                {index + 1}
-              </div>
-            </div>
-            <div className="w-px min-h-12 h-full bg-gray-300" />
+    <div className="flex">
+      {stepNumber && (
+        <div className="flex flex-col items-center mr-6">
+          <div className="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full bg-orange-700">
+            {stepNumber}
           </div>
-          <div className="flex flex-col">
-            <p
-              dangerouslySetInnerHTML={{ __html: step }}
-              className="text-sm text-gray-200 mb-0 pb-6"
-            />
-          </div>
+          <div className="w-px min-h-12 h-full bg-gray-300" />
         </div>
-      ))}
+      )}
+      <div className="flex flex-col">{children}</div>
+    </div>
+  );
+};
+
+const VerticalStepWrapper = ({ children }: { children: React.ReactNode }) => {
+  let stepNumber = 1;
+
+  const childrenWithStepNumbers = React.Children.map(children, (child) => {
+    if (React.isValidElement(child) && child.type === StepMarkdown) {
+      const stepWithNumber = React.cloneElement(child, {
+        stepNumber,
+      } as unknown as Partial<StepMarkdownProps>);
+
+      stepNumber++;
+      return stepWithNumber;
+    }
+
+    return child;
+  });
+
+  return (
+    <div className="flex flex-col">
+      {childrenWithStepNumbers}
       <div className="flex">
         <div className="flex flex-col md:items-center mr-6">
-          <div>
-            <div className="flex items-center justify-center py-2 px-3 text-xs font-medium border rounded-sm bg-orange-700 ">
-              Finished
-            </div>
+          <div className="flex items-center justify-center py-2 px-3 text-xs font-medium border rounded-sm bg-orange-700">
+            Finished
           </div>
         </div>
       </div>
@@ -38,4 +54,4 @@ const VerticalStepWithLabel: React.FC<VerticalStepWithLabelProps> = ({
   );
 };
 
-export { VerticalStepWithLabel };
+export { VerticalStepWrapper, StepMarkdown };

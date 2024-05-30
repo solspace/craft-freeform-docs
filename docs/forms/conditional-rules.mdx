@@ -8,15 +8,13 @@ import Player from 'react-player';
 
 [//]: # 'Components'
 
-import { VerticalStepWithLabel } from '@site/src/components/docs';
+import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
 [//]: # 'Videos'
 
 import BuilderRulesVideo from './assets/videos/builder-rules.mp4';
 
 # Conditional Rules
-
-[//]: # 'Intro with video'
 
 Freeform Pro edition includes Conditional Rules logic that can be added to forms. This feature allows you to effortlessly set fields and groups to **show or hide** based on the contents/selection of other fields, and even **skip pages** or submit the form based on the contents/selection of fields on a previous page.
 
@@ -27,8 +25,6 @@ To begin adding rules to your form, click on the **Rules** tab in the form build
 :::
 
 <Player url={BuilderRulesVideo} muted loop playing width="100%" height="100%" />
-
-[//]: # 'Overview'
 
 ## Overview
 
@@ -102,17 +98,25 @@ If you have **Previous** buttons enabled for your pages and you have rules that 
 - HTML
 - Rich Text
 
-[//]: # 'Quick Setup Guide'
-
 ## Quick Setup Guide
 
-<VerticalStepWithLabel
-  steps={[
-    'Click the <strong>Rules</strong> tab in the form builder. Then choose a field, group or page from the field layout map on the left.',
-    'The field, group or page you selected will then load in the right column. Click the <strong>Add rules</strong> button and configure which field(s) will affect whether the selected field will be <strong>shown or hidden</strong>, based on the criteria set for each.',
-    'If you wish to add more than one condition for a field, click the <strong>Add a Condition</strong> button. If you have more than one condition for a field, you may also set whether <strong>all</strong> or <strong>any</strong> of the conditions need to be met.',
-  ]}
-/>
+<VerticalStepWrapper>
+  <StepMarkdown>
+    Click the Rules tab in the form builder. Then choose a field, group or page
+    from the field layout map on the left.
+  </StepMarkdown>
+  <StepMarkdown>
+    The field, group or page you selected will then load in the right column.
+    Click the Add rules button and configure which field(s) will affect whether
+    the selected field will be shown or hidden, based on the criteria set for
+    each.
+  </StepMarkdown>
+  <StepMarkdown>
+    If you wish to add more than one condition for a field, click the Add a
+    Condition button. If you have more than one condition for a field, you may
+    also set whether all or any of the conditions need to be met.
+  </StepMarkdown>
+</VerticalStepWrapper>
 
 ## Templating
 
