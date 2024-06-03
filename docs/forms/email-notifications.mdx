@@ -13,3 +13,32 @@ import BuilderRulesVideo from './assets/videos/builder-rules.mp4';
 # Email Notifications
 
 Freeform allows you to send email notifications upon submittal of a form. They are global and can be reused for multiple forms, saving you time when you are managing many forms.
+
+:::tip
+Be sure to configure the [Email Alert](../configuration/settings/#notices-alerts) feature. It allows you to automatically send an email notification alerting the email address(es) specified when an email notification cannot be delivered.
+:::
+
+<Player url={BuilderRulesVideo} muted loop playing width="100%" height="100%" />
+
+:::info
+Email notifications may not work as expected when using **Sendmail** on your local dev environment. Check out our _Mailtrap_ setup guide.
+:::
+
+:::info
+Need to use the submitter of the form as Reply-to email address in admin email notifications?
+:::
+
+## Types of Email Notifications
+
+Freeform allows you to send email notifications 6 different ways (all of them each being able to have their own notification templates, etc):
+
+- [Admin](#admin)
+- [Conditional](#conditional) <Badge type="pro" text="Pro" />
+- [User Select](#user-select) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+- [Email Fields](#email-fields)
+- [User-Defined](#user-defined)
+- [Template-based](#template-based)
+
+### Admin
+
+Email notifications can be sent upon successful submit of the form to one or more admin email addresses.
