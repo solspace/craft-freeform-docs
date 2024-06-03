@@ -86,3 +86,40 @@ video {
   opacity: 1;
   transition: all 0.5s;
 }
+
+/* Badge */
+.badge-group .badge:first-child,
+.badge-group .badge:last-child {
+  position: relative;
+  z-index: 6 !important;
+}
+
+.badge-group .badge:first-child {
+  margin-right: 0 !important;
+  padding-right: 2px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.badge-group .badge:first-child::after {
+  border-left-style: solid;
+  border-left-width: 10px;
+}
+
+.badge-group .badge:first-child::after,
+.badge-group .badge.recommended:first-child::after {
+  border-left-color: #ffac40;
+  content: '';
+}
+
+.badge-group .badge:first-child::after {
+  border-left-color: #733ee3;
+  content: '';
+}
+
+.badge-group .badge:last-child {
+  margin-left: 0 !important;
+  padding-left: 12px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}

@@ -1,18 +1,14 @@
 ---
+title: 'Conditional Rules'
 sidebar_position: 1
 ---
 
-# Conditional Rules
-
-[//]: # 'Packages'
+# Conditional Rules <Badge type='pro' text='Pro' /> <BadgeGroup> <Badge type='feature' text='Improved in 5.0+' /> <Badge type='addon' text='Add-on' /></BadgeGroup>
 
 import Player from 'react-player';
 
-[//]: # 'Components'
-
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
-
-[//]: # 'Videos'
+import { Badge, BadgeGroup } from '@site/src/components/utils';
 
 import BuilderRulesVideo from './assets/videos/builder-rules.mp4';
 
@@ -28,7 +24,7 @@ To begin adding rules to your form, click on the **Rules** tab in the form build
 
 ## Overview
 
-### Field Layout Map
+### Field Layout Map <Badge type='feature' text='New in 5.0+' />
 
 For added convenience, Freeform includes a field map along with visual cues. This makes configuration faster and less confusing.
 
@@ -127,13 +123,13 @@ If you're customizing a formatting template or creating a form template manually
 
 There are 3 different approaches you can take:
 
-| Approach                                    | Benefits                                                                                                                                                                                       | Drawbacks                                                                                                                                                                                                                                                                                                                                                                       |                                       |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `myFieldHandle.renderContainerOpeningTag()` | Automatically generates the field wrapper `div`. Field attributes can still be applied to it. Maximum compatibility with attributes specified in the form builder and template overrides, etc. | A bit uglier to look at.                                                                                                                                                                                                                                                                                                                                                        | [Example](#rendercontaineropeningtag) |
-| `myFieldHandle.attributes.container`        | Automatically generates the field wrapper attributes specified in the form builder and template overrides, etc.                                                                                | If the form builder or template overrides contain any of the already hard-coded attributes, it will have no way of knowing and ruin one of the definitions. For example, you hard code in `class="form-field"`, if there are any additional classes specified for the field inside the form builder, it will render as an additional `class` attribute which will cause issues. | [Example](#attributes-container)      |
-| `data-field-container="myFieldHandle"`      | Minimal template code and looks cleaner.                                                                                                                                                       | Any attributes set in the form builder or template overrides will not show up.                                                                                                                                                                                                                                                                                                  | [Example](#data-field-container)      |
+| Approach                                                                                    | Benefits                                                                                                                                                                                       | Drawbacks                                                                                                                                                                                                                                                                                                                                                                       |                                       |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| `myFieldHandle.renderContainerOpeningTag()` <Badge type="recommended" text="Recommended" /> | Automatically generates the field wrapper `div`. Field attributes can still be applied to it. Maximum compatibility with attributes specified in the form builder and template overrides, etc. | A bit uglier to look at.                                                                                                                                                                                                                                                                                                                                                        | [Example](#rendercontaineropeningtag) |
+| `myFieldHandle.attributes.container`                                                        | Automatically generates the field wrapper attributes specified in the form builder and template overrides, etc.                                                                                | If the form builder or template overrides contain any of the already hard-coded attributes, it will have no way of knowing and ruin one of the definitions. For example, you hard code in `class="form-field"`, if there are any additional classes specified for the field inside the form builder, it will render as an additional `class` attribute which will cause issues. | [Example](#attributes-container)      |
+| `data-field-container="myFieldHandle"`                                                      | Minimal template code and looks cleaner.                                                                                                                                                       | Any attributes set in the form builder or template overrides will not show up.                                                                                                                                                                                                                                                                                                  | [Example](#data-field-container)      |
 
-### renderContainerOpeningTag
+### renderContainerOpeningTag <Badge type="recommended" text="Recommended" />
 
 ```twig {4,8,10,14} showLineNumbers
 {% set company = form.get("company") %}

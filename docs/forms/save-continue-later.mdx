@@ -112,13 +112,16 @@ Create a brand new template that contains something along the lines of this:
 
 <h3>Progress Saved!</h3>
 <p>
-    Your form progress has successfully been saved! Whenever you're ready
-    to complete the form, please return by visiting this URL:
+  Your form progress has successfully been saved! Whenever you're ready to
+  complete the form, please return by visiting this URL:
 </p>
 <p>
-    <a href="{{ siteUrl }}apply/form-save?session-token={{ submissionToken }}&key={{ submissionKey }}">
-        {{ siteUrl }}apply/form-save?session-token={{ submissionToken }}&key={{ submissionKey }}
-    </a>
+  <a
+    href="{{ siteUrl }}apply/form-save?session-token={{ submissionToken }}&key={{ submissionKey }}"
+  >
+    {{ siteUrl }}apply/form-save?session-token={{ submissionToken }}&key={{
+    submissionKey }}
+  </a>
 </p>
 ```
 
