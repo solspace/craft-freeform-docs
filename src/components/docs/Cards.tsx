@@ -23,6 +23,16 @@ interface FieldProps {
   imgAlt?: string;
 }
 
+interface IntegrationPhotoProps {
+  title: string;
+  iconSrc: string;
+  link: string;
+}
+
+interface IntegrationPhotoCardsProps {
+  items: IntegrationPhotoProps[];
+}
+
 interface CardSectionProps {
   items: CardProps[];
 }
@@ -161,4 +171,40 @@ const FieldCards: React.FC<FieldCardsProps> = ({ items }) => {
   );
 };
 
-export { Card, FlexCards, FieldCards };
+const PhotoCards: React.FC<IntegrationPhotoCardsProps> = ({ items }) => {
+  return (
+    <>
+      {items.map((item, index) => (
+        <a
+          key={`${item.title}-${index}`}
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center p-3 m-2 bg-gray-800 !dark:bg-red rounded-lg shadow-lg hover:bg-gray-700 transition-colors"
+        >
+          <img src={item.iconSrc} alt={item.title} />
+        </a>
+      ))}
+    </>
+  );
+};
+
+const IntegrationPhotoCards: React.FC<IntegrationPhotoCardsProps> = ({
+  items,
+}) => {
+  return (
+    <div className="relative block overflow-hidden mt-10 min-h-[650px] rounded-lg">
+      <div className="api-grid-wrapper-inner">
+        <div className="api-grid-wrapper-outer">
+          <div className="feature-grid feature-api-grid">
+            {[...Array(2)].map((_value: undefined, index: number) => (
+              <PhotoCards key={index} items={items} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { Card, FlexCards, FieldCards, IntegrationPhotoCards };

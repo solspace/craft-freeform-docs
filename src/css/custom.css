@@ -158,3 +158,168 @@ video {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
+
+/* Integrations api grid */
+.api-grid-wrapper-outer {
+  display: block;
+  margin-bottom: -25px;
+}
+
+.api-grid-wrapper-inner {
+  transform: rotate(-10deg);
+  margin: -250px;
+}
+
+.feature-grid {
+  display: grid !important;
+  grid-template-columns: 33.3% 33.3% 33.3% !important;
+  grid-template-rows: auto !important;
+  background: transparent !important;
+  margin: 50px 0 20px 0 !important;
+  padding: 0 !important;
+  position: relative;
+  z-index: 3 !important;
+}
+
+.feature-grid.feature-api-grid,
+.feature-grid.top-feature-grid {
+  border: 0 !important;
+}
+
+.feature-api-grid {
+  text-align: center !important;
+  justify-content: center !important;
+  animation-name: slide-left;
+  animation-duration: 1s;
+  z-index: 4;
+  position: relative;
+}
+
+.feature-api-grid a {
+  padding: 20px !important;
+  margin: 0 20px 20px 0 !important;
+  transition: all 0.5s;
+  display: inline-block;
+  background: rgba(0, 105, 190, 0.15);
+  border-bottom: none !important;
+  border-radius: $borderRadius;
+  position: relative;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='light'] .feature-api-grid a {
+  background: #567382;
+}
+
+.feature-api-grid a img {
+  max-height: 100% !important;
+  max-width: 100% !important;
+  margin: 0;
+  padding: 0 !important;
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.feature-api-grid a:hover {
+  background: rgba(0, 105, 190, 0.35) !important;
+  transform: scale(1.05);
+  border-bottom: none !important;
+}
+
+.feature-api-grid a:hover img {
+  box-shadow: 0 !important;
+}
+
+.feature-api-grid:hover img {
+  box-shadow: 0 !important;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+  .feature-grid {
+    grid-template-columns: 100% !important;
+  }
+  .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 33.33%) !important;
+  }
+  .api-grid-wrapper-outer .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 14%) !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 719px) {
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, 50%) !important;
+  }
+  .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 25%) !important;
+  }
+  .api-grid-wrapper-outer .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 13%) !important;
+  }
+}
+
+@media only screen and (min-width: 720px) and (max-width: 959px) {
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, 100%) !important;
+  }
+  .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 33.33%) !important;
+  }
+  .api-grid-wrapper-outer .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 14%) !important;
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, 50%) !important;
+  }
+  .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 25%) !important;
+  }
+  .api-grid-wrapper-outer {
+    max-height: 840px;
+  }
+  .api-grid-wrapper-outer .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 13%) !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, 50%) !important;
+  }
+  .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 20%) !important;
+  }
+  .api-grid-wrapper-outer {
+    max-height: 840px;
+  }
+  .api-grid-wrapper-outer .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 12%) !important;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1799px) {
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, 33.33%) !important;
+  }
+  .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 16.6%) !important;
+  }
+  .api-grid-wrapper-outer .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 11%) !important;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .feature-grid {
+    grid-template-columns: repeat(auto-fill, 33.33%) !important;
+  }
+  .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 16.6%) !important;
+  }
+  .api-grid-wrapper-outer .feature-api-grid {
+    grid-template-columns: repeat(auto-fill, 10%) !important;
+  }
+}

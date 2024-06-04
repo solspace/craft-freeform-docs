@@ -20,7 +20,7 @@ const badgeStyles: { [key in BadgeType]: string } = {
 const Badge: React.FC<BadgeProps> = ({ type, text }) => {
   return (
     <span
-      className={`badge align-top !text-[10px] !font-bold mt-0.5 px-2 py-1 rounded-full ${badgeStyles[type]} ${type}`}
+      className={`badge align-top !text-[10px] !font-bold mt-0.5 mx-1 px-2 py-1 rounded-full ${badgeStyles[type]} ${type}`}
     >
       {text}
     </span>

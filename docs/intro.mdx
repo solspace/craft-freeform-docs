@@ -2,23 +2,23 @@
 sidebar_position: 1
 ---
 
-[//]: # 'Packages'
-
 import Player from 'react-player';
 import ThemedImage from '@theme/ThemedImage';
 import Link from '@docusaurus/Link';
-
-[//]: # 'Components'
 
 import {
   PrimaryButtonWithLink,
   SimpleTextLink,
   FlexButton,
   BrowserMockupWithPhoto,
+  Badge,
 } from '@site/src/components/utils';
-import { FlexCards, FieldCards, Section } from '@site/src/components/docs';
-
-[//]: # 'Images & Icons'
+import {
+  FlexCards,
+  FieldCards,
+  IntegrationPhotoCards,
+  Section,
+} from '@site/src/components/docs';
 
 import FreeformIntroWhite from './assets/img/freeform-intro-white.png';
 import FreeformIntroBlack from './assets/img/freeform-intro-black.png';
@@ -29,15 +29,47 @@ import ShieldBlackIcon from './assets/icons/shield-black.png';
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
 import TextareaIcon from './assets/icons/fields/textarea.png';
+import SubmissionsListPhoto from './assets/img/submissions-list.png';
+import SubmissionsDetailPhoto from './assets/img/submissions-detail.png';
+import SubmissionsQuickExport from './assets/img/submissions-quick-export.png';
 
-[//]: # 'Videos'
+import Mailchimp from './assets/icons/integrations/mailchimp.png';
+import HubSpot from './assets/icons/integrations/hubspot.png';
+import Salesforce from './assets/icons/integrations/salesforce.png';
+import Zapier from './assets/icons/integrations/zapier.png';
+import Stripe from './assets/icons/integrations/stripe.png';
+import ConstantContact from './assets/icons/integrations/constant-contact.png';
+import Slack from './assets/icons/integrations/slack.png';
+import ActiveCampaign from './assets/icons/integrations/active-campaign.png';
+import Dotdigital from './assets/icons/integrations/dotdigital.png';
+import CampaignMonitor from './assets/icons/integrations/campaign-monitor.png';
+import Pardot from './assets/icons/integrations/pardot.png';
+import Freshdesk from './assets/icons/integrations/freshdesk.png';
+import Infusionsoft from './assets/icons/integrations/infusionsoft.png';
+import Insightly from './assets/icons/integrations/insightly.png';
+import GoogleSheets from './assets/icons/integrations/google-sheets.png';
+import Zoho from './assets/icons/integrations/zoho.png';
+import Campaign from './assets/icons/integrations/campaign.png';
+import Pipedrive from './assets/icons/integrations/pipedrive.png';
+import Sharpspring from './assets/icons/integrations/sharpspring.png';
+import ClickDimensions from './assets/icons/integrations/click-dimensions.png';
+import ReCAPTCHA from './assets/icons/integrations/recaptcha.png';
+import HCaptcha from './assets/icons/integrations/hcaptcha.png';
+import GenericWebhook from './assets/icons/integrations/generic-webhook.png';
+import GoogleTagManager from './assets/icons/integrations/google-tag-manager.png';
+import TailwindCSS from './assets/icons/integrations/tailwindcss.png';
+import Bootstrap from './assets/icons/integrations/bootstrap.png';
+import CraftEntries from './assets/icons/integrations/craft-entries.png';
+import CraftUsers from './assets/icons/integrations/craft-users.png';
+import CalendarEvents from './assets/icons/integrations/solspace-calendar.png';
+import EditElements from './assets/icons/integrations/edit-elements.png';
 
 import FeatureVideo from './assets/video/builder-feature.mp4';
 import BuilderRulesVideo from './assets/video/builder-rules.mp4';
+import BuilderIntegrationsVideo from './assets/video/builder-integrations.mp4';
+import BuilderUserRegisterVideo from './assets/video/builder-user-register.mp4';
 
 # Overview
-
-[//]: # 'Intro'
 
 <section className="flex flex-col items-center gap-6 mt-20">
   <ThemedImage
@@ -73,11 +105,7 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
   </small>
 </section>
 
-[//]: # 'Feature Video'
-
 <Player url={FeatureVideo} muted loop playing width="100%" height="100%" />
-
-[//]: # 'Useful Links'
 
 <FlexCards
   items={[
@@ -108,8 +136,6 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
     },
   ]}
 />
-
-[//]: # 'Reliability'
 
 ## Reliability
 
@@ -174,8 +200,6 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
   />
 </Section>
 
-[//]: # 'Form Builder'
-
 ## Form Builder
 
 <Section
@@ -193,8 +217,6 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
     ]}
   />
 </Section>
-
-[//]: # 'Convenience'
 
 ## Convenience
 
@@ -254,8 +276,6 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
   />
 </Section>
 
-[//]: # 'Spam Protection'
-
 ## Spam Protection
 
 <Section
@@ -314,8 +334,6 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
     ]}
   />
 </Section>
-
-[//]: # 'Powerful Fields'
 
 ## Powerful Fields
 
@@ -462,8 +480,6 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
   ]} />
 </Section>
 
-[//]: # 'Email Notifications'
-
 ## Email Notifications
 
 <Section
@@ -524,8 +540,6 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
   />
 </Section>
 
-[//]: # 'Flexible Templating'
-
 ## Flexible Templating
 
 <Section
@@ -545,7 +559,7 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
         whiteImgSrc: TapWhiteIcon,
         blackImgSrc: TapBlackIcon,
         imgAlt: 'Getting started',
-        linkWithDescription: 'User%20Guides/getting-started/',
+        linkWithDescription: 'user-guides/getting-started/',
       },
       {
         title: 'User Guides',
@@ -553,13 +567,11 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
         whiteImgSrc: TapWhiteIcon,
         blackImgSrc: TapBlackIcon,
         imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
+        linkWithDescription: 'user-guides/getting-started/',
       },
     ]}
   />
 </Section>
-
-[//]: #'Integrations'
 
 # Integrations
 
@@ -569,5 +581,413 @@ import BuilderRulesVideo from './assets/video/builder-rules.mp4';
   whiteImgSrc={ShieldWhiteIcon}
   blackImgSrc={ShieldBlackIcon}
 >
-  <div>Coming</div>
+  <IntegrationPhotoCards
+    items={[
+      {
+        title: 'Mailchimp',
+        link: '/integrations/mailchimp/',
+        iconSrc: Mailchimp,
+      },
+      { title: 'HubSpot', link: '/integrations/hubspot/', iconSrc: HubSpot },
+      {
+        title: 'Salesforce',
+        link: '/integrations/salesforce/',
+        iconSrc: Salesforce,
+      },
+      { title: 'Zapier', link: '/integrations/zapier/', iconSrc: Zapier },
+      { title: 'Stripe', link: '/integrations/payments/', iconSrc: Stripe }, // Assuming payments folder holds Stripe icon
+      {
+        title: 'Constant Contact',
+        link: '/integrations/constant-contact/',
+        iconSrc: ConstantContact,
+      },
+      { title: 'Slack', link: '/integrations/slack/', iconSrc: Slack },
+      {
+        title: 'Active Campaign',
+        link: '/integrations/active-campaign/',
+        iconSrc: ActiveCampaign,
+      },
+      {
+        title: 'Dotdigital',
+        link: '/integrations/dotdigital/',
+        iconSrc: Dotdigital,
+      },
+      {
+        title: 'Campaign Monitor',
+        link: '/integrations/campaign-monitor/',
+        iconSrc: CampaignMonitor,
+      },
+      { title: 'Pardot', link: '/integrations/pardot/', iconSrc: Pardot },
+      {
+        title: 'Freshdesk',
+        link: '/integrations/freshdesk/',
+        iconSrc: Freshdesk,
+      },
+      {
+        title: 'Infusionsoft',
+        link: '/integrations/infusionsoft/',
+        iconSrc: Infusionsoft,
+      },
+      {
+        title: 'Insightly',
+        link: '/integrations/insightly/',
+        iconSrc: Insightly,
+      },
+      {
+        title: 'Google Sheets',
+        link: '/integrations/google-sheets/',
+        iconSrc: GoogleSheets,
+      },
+      { title: 'Zoho', link: '/integrations/zoho/', iconSrc: Zoho },
+      { title: 'Campaign', link: '/integrations/campaign/', iconSrc: Campaign },
+      {
+        title: 'Pipedrive',
+        link: '/integrations/pipedrive/',
+        iconSrc: Pipedrive,
+      },
+      {
+        title: 'Sharpspring',
+        link: '/integrations/sharpspring/',
+        iconSrc: Sharpspring,
+      },
+      {
+        title: 'ClickDimensions',
+        link: '/integrations/click-dimensions/',
+        iconSrc: ClickDimensions,
+      },
+      {
+        title: 'reCAPTCHA',
+        link: '/integrations/recaptcha/',
+        iconSrc: ReCAPTCHA,
+      },
+      { title: 'hCaptcha', link: '/integrations/hcaptcha/', iconSrc: HCaptcha },
+      {
+        title: 'Generic Webhooks',
+        link: '/integrations/generic-webhook/',
+        iconSrc: GenericWebhook,
+      },
+      {
+        title: 'Google Tag Manager',
+        link: '/integrations/google-tag-manager/',
+        iconSrc: GoogleTagManager,
+      },
+      {
+        title: 'Tailwind CSS',
+        link: './templates/formatting/#sample-templates',
+        iconSrc: TailwindCSS,
+      },
+      {
+        title: 'Bootstrap',
+        link: './templates/formatting/#sample-templates',
+        iconSrc: Bootstrap,
+      },
+      {
+        title: 'Craft Entries',
+        link: '/integrations/elements/#craft-entries',
+        iconSrc: CraftEntries,
+      },
+      {
+        title: 'Craft Users',
+        link: '/integrations/elements/#craft-users',
+        iconSrc: CraftUsers,
+      },
+      {
+        title: 'Calendar Events',
+        link: '/integrations/elements/#solspace-calendar-events',
+        iconSrc: CalendarEvents,
+      },
+      {
+        title: 'Edit Elements',
+        link: '/integrations/elements/#editing-elements',
+        iconSrc: EditElements,
+      },
+    ]}
+  />
+  <Player
+    url={BuilderIntegrationsVideo}
+    muted
+    loop
+    playing
+    width="100%"
+    height="100%"
+  />
+  <Player
+    url={BuilderUserRegisterVideo}
+    muted
+    loop
+    playing
+    width="100%"
+    height="100%"
+  />
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+    ]}
+  />
 </Section>
+
+## Submission Data
+
+<Section
+  title="Submission Data"
+  subtitle="Capture and do what you please with submission data."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <BrowserMockupWithPhoto src={SubmissionsListPhoto} alt="Submissions List" />
+  <BrowserMockupWithPhoto src={SubmissionsDetailPhoto} alt="Submissions List" />
+  <BrowserMockupWithPhoto src={SubmissionsQuickExport} alt="Submissions List" />
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+    ]}
+  />
+</Section>
+
+## Headless
+
+<Section
+  title="Headless"
+  subtitle="Full support for your headless implementation."
+  description="Freeform supports headless website architecture making it easy to use JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more! Freeform also supports querying form layouts and using mutations to create submissions via GraphQL."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+    ]}
+  />
+</Section>
+
+## And more...
+
+<Section
+  title="And more..."
+  subtitle="The possibilities are endless."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+  <FlexCards
+    items={[
+      {
+        title: 'Limited Users',
+        titleBadge: 'New!',
+        description: 'Learn the basics about Freeform and setting up forms.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'Getting started',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+      {
+        title: 'User Guides',
+        description: 'See solutions to common problems and questions.',
+        whiteImgSrc: TapWhiteIcon,
+        blackImgSrc: TapBlackIcon,
+        imgAlt: 'User Guides',
+        linkWithDescription: 'user-guides/getting-started/',
+      },
+    ]}
+  />
+</Section>
+
+## Compare
+
+<Section
+  title="Compare"
+  subtitle="Which edition is right for your needs."
+  whiteImgSrc={ShieldWhiteIcon}
+  blackImgSrc={ShieldBlackIcon}
+>
+<div class="feature-table">
+
+| <h3 class="no-margin"></h3>                                                                                                               |                                         <h2 class="edition-express no-margin">Express</h2><Badge type="feature" text="New!" />                                         |                                         <h2 class="edition-lite no-margin">Lite</h2>                                         |                                                     <h2 class="edition-pro no-margin">Pro</h2>                                                     |
+| :---------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Price                                                                                                                                     |                                                             **<span class="edition-express">FREE!</span>**                                                             |                                          **<span class="edition-lite">$99</span>**                                           |                                                     **<span class="edition-pro">$149</span>**                                                      |
+| Number of Sites Allowed per License<br /><small>_Dev/staging environments don't count toward total._</small>                              |                                                              <span class="edition-express">1 site</span>                                                               |                                           <span class="edition-lite">1 site</span>                                           |                                                      <span class="edition-pro">1 site</span>                                                       |
+| Support Options                                                                                                                           |                                                         <span class="edition-express">Helpdesk, GitHub</span>                                                          |                                      <span class="edition-lite">Helpdesk, GitHub</span>                                      |                                                 <span class="edition-pro">Helpdesk, GitHub</span>                                                  |
+| Support Level<br /><small>_† Typical support ticket first response time within this timeframe or sooner, based on business days._</small> |                                                             <span class="edition-express">2-4 days†</span>                                                             |                                         <span class="edition-lite">1-2 days†</span>                                          |                                                     <span class="edition-pro">1-2 days†</span>                                                     |
+| Support Term                                                                                                                              |                                                                 <span class="compare-none">N/A</span>                                                                  |                                           <span class="edition-lite">1 year</span>                                           |                                                      <span class="edition-pro">1 year</span>                                                       |
+| Updates Available                                                                                                                         |                                                             <span class="edition-express">Unlimited</span>                                                             |                                           <span class="edition-lite">1 year</span>                                           |                                                      <span class="edition-pro">1 year</span>                                                       |
+| Renewal (optional)                                                                                                                        |                                                                 <span class="compare-none">N/A</span>                                                                  |                                           <span class="edition-lite">$49/yr</span>                                           |                                                      <span class="edition-pro">$79/yr</span>                                                       |
+| Compatibility<br /><small>_The same 5.x version works on both Craft 5.x and 4.x._</small>                                                 |                                                   <span class="edition-express">Craft&nbsp;5+, Craft&nbsp;4+</span>                                                    |                                <span class="edition-lite">Craft&nbsp;5+, Craft&nbsp;4+</span>                                |                                           <span class="edition-pro">Craft&nbsp;5+, Craft&nbsp;4+</span>                                            |
+| Works on [Craft Cloud](https://craftcms.com/cloud)                                                                                        |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Refund Policy                                                                                                                             |                                                                 <span class="compare-none">N/A</span>                                                                  |                                          <span class="edition-lite">30 days</span>                                           |                                                      <span class="edition-pro">30 days</span>                                                      |
+| Popular Framework Examples                                                                                                                |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Automated Templating                                                                                                                      |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Intuitive Drag & Drop Form Builder                                                                                                        |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Customize the display of Field types                                                                                                      |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Multi-page Forms                                                                                                                          |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Save & Continue Form Later                                                                                                                |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Conditional Rules Logic                                                                                                                   |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Built-in AJAX                                                                                                                             |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Store, View and Edit Submissions                                                                                                          |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Field Encryption                                                                                                                          |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Edit Submissions on Front End                                                                                                             |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| GDPR Compliant                                                                                                                            |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Site Filtering for Forms and Submissions                                                                                                  |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Automatically Purge Submission Data                                                                                                       |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Automatically Purge Spam Submission Data                                                                                                  |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Email Notifications                                                                                                                       |                                         <span class="edition-express">Admin, Email Field, User-Defined, Template-based</span>                                          |               <span class="edition-lite">Admin, User Select, Email Field, User-Defined, Template-based</span>                |                    <span class="edition-pro">Admin, Conditional, User Select, Email Field, User-Defined, Template-based</span>                     |
+| Email Alert of Failed Email Notifications                                                                                                 |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Weekly/Daily Digest Emails                                                                                                                |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Exporting of Data                                                                                                                         |                                                             <span class="edition-express">Basic CSV</span>                                                             |                                         <span class="edition-lite">Basic CSV</span>                                          |                                            <span class="edition-pro">Excel, CSV, XML, JSON, Text</span>                                            |
+| Export Profiles (pre-configured)                                                                                                          |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Export Email Notifications                                                                                                                |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Attach Forms to Entries                                                                                                                   |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Attach Submissions to Entries                                                                                                             |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Number of Forms                                                                                                                           |                                                                 <span class="edition-express">1</span>                                                                 |                                         <span class="edition-lite">Unlimited</span>                                          |                                                     <span class="edition-pro">Unlimited</span>                                                     |
+| Number of Fields                                                                                                                          |                                                             <span class="edition-express">Up to 20</span>                                                              |                                         <span class="edition-lite">Unlimited</span>                                          |                                                     <span class="edition-pro">Unlimited</span>                                                     |
+| Custom Statuses                                                                                                                           |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Basic Field Types                                                                                                                         |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Premium Field Types                                                                                                                       |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Build Custom Field Types                                                                                                                  |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Populate Fields with Element Data or Predefined Options                                                                                   |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Surveys & Polls Reporting                                                                                                                 |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Limited Users (form builder permissions)                                                                                                  |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Set Defaults and/or Lock Form Builder Settings                                                                                            |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Limit Form to 1 Submission per User                                                                                                       |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Limit Number of Submissions per Form                                                                                                      |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Set a Close Date per Form                                                                                                                 |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Automatically Store Logged In User ID on Submissions                                                                                      |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Map Submission Data to Craft Elements                                                                                                     |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Edit Other Craft Elements                                                                                                                 |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Relate Submissions to Craft Elements                                                                                                      |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Honeypot Test (Spam)                                                                                                                      |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Javascript Test (Spam)                                                                                                                    |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Spam Folder                                                                                                                               |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Spam Blocking                                                                                                                             |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Captchas                                                                                                                                  |                                                    <span class="edition-express">reCAPTCHA v2&nbsp;Checkbox</span>                                                     |      <span class="edition-lite">reCAPTCHA v2 Checkbox or Invisible, reCAPTCHA v3, hCaptcha Checkbox or Invisible</span>      |                 <span class="edition-pro">reCAPTCHA v2 Checkbox or Invisible, reCAPTCHA v3, hCaptcha Checkbox or Invisible</span>                  |
+| Email Marketing Integrations                                                                                                              |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |            <span class="edition-pro">Mailchimp, Campaign Monitor, Constant Contact, ActiveCampaign, Dotdigital, Campaign plugin</span>             |
+| CRM Integrations                                                                                                                          |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              | <span class="edition-pro">Salesforce, Pardot, HubSpot, ActiveCampaign, Pipedrive, Zoho CRM, Infusionsoft, Insightly, SharpSpring, Freshdesk</span> |
+| Webhooks Integrations                                                                                                                     |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                              <span class="edition-pro">Slack, Zapier, generic</span>                                               |
+| Other Integrations                                                                                                                        |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                   <span class="edition-pro">Google Sheets</span>                                                   |
+| POST Forwarding                                                                                                                           |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| GraphQL Support                                                                                                                           |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Stripe Payments                                                                                                                           |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Dashboard Widgets                                                                                                                         |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Important Update Warnings & Notices                                                                                                       |                                                                                   ✓                                                                                    |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Translatable                                                                                                                              |                                                                 <span class="edition-express">✓</span>                                                                 |                                             <span class="edition-lite">✓</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| Rename Plugin                                                                                                                             |                                                                  <span class="compare-none">✕</span>                                                                   |                                             <span class="compare-none">✕</span>                                              |                                                         <span class="edition-pro">✓</span>                                                         |
+| <small><a href="https://plugins.craftcms.com/freeform">INSTALL A FREE, UNLIMITED TRIAL TODAY!</a></small>                                 | <a href="https://plugins.craftcms.com/freeform" class="button"><span>Get it!</span></a><br /><b class="edition-express">FREE!</b> <Badge type="feature" text="New!" /> | <a href="https://plugins.craftcms.com/freeform" class="button"><span>Get it!</span></a><br /><b class="edition-lite">$99</b> |            <a href="https://plugins.craftcms.com/freeform" class="button"><span>Get it!</span></a><br /><b class="edition-pro">$149</b>            |
+
+</div>
+</Section>
+
+## Testimonials
+
+> "Freeform Pro is really head and shoulders above any other form builder I've used."
+
+> "Having reliable form processing is critical to making my clients' websites work. Using Freeform gives me the power to create flexible forms with less hassle than creating them manually."
+
+> "It's a fantastic plugin for Craft which we use on nearly all of our project websites."
+
+> "Freeform tends to add features before I realize I need them!"
+
+> "I love Freeform! Been using it on sites for a long time and I like how full-featured it is."
+
+> "Love this product... one of the best things built for Craft in my opinion."
+
+> "Awesome plugin! Saved a ton of time for me. Worth the money spent."
+
+> "Freeform has allowed me to do things that were once impossible for a project I was working on. It's easy to use and incredibly powerful!"
+
+_\*(Testimonials collected from an anonymous Freeform product feedback survey and through private support tickets)_
+
+## Why Freeform?
+
+Rest assured that Freeform and the team behind it are committed to providing you with the level of quality and support that you expect and deserve.
+
+<FlexCards
+  items={[
+    {
+      title: 'Limited Users',
+      titleBadge: 'New!',
+      description: 'Learn the basics about Freeform and setting up forms.',
+      whiteImgSrc: TapWhiteIcon,
+      blackImgSrc: TapBlackIcon,
+      imgAlt: 'Getting started',
+      linkWithDescription: 'user-guides/getting-started/',
+    },
+    {
+      title: 'User Guides',
+      description: 'See solutions to common problems and questions.',
+      whiteImgSrc: TapWhiteIcon,
+      blackImgSrc: TapBlackIcon,
+      imgAlt: 'User Guides',
+      linkWithDescription: 'user-guides/getting-started/',
+    },
+  ]}
+/>
+
+## FAQ
+
+Frequently asked questions about buying Freeform.
+
+<h3>How many sites can I use my license on?</h3>
+
+Each purchase of Freeform allows usage for 1 website, with the exception of development and staging versions of that site.
+
+<h3>If I buy Lite now, can I switch to Pro later?</h3>
+
+Yes! Just visit Freeform inside the Craft Plugin Store inside your control panel and click on the **Try** or **Buy Now** buttons, and Craft will switch the edition license for the difference in price.
+
+<h3>Do you offer discounts to non-profits?</h3>
+
+Yes, we offer a discount to non-profits for 20% off the regular price upon proof of non-profit status. Please contact us for more information about this.
+
+<h3>Can I try before I buy?</h3>
+
+In the Craft Plugin Store you can install a trial of Freeform to try it out!
+
+<h3>Does the Trial version limit features?</h3>
+
+The trial versions of Solspace software are not limited in any way. However, if you attempt to use a trial version on a production site, Craft will display a red banner at the top of your control panel alerting you to purchase a license.

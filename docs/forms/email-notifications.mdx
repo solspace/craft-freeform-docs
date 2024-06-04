@@ -10,7 +10,7 @@ import { Badge, BadgeGroup } from '@site/src/components/utils';
 
 import BuilderRulesVideo from './assets/videos/builder-rules.mp4';
 
-# Email Notifications
+# Email Notifications<Badge type='lite' text='Lite' /><Badge type='pro' text='Pro' /><Badge type='feature' text='Improved in 5.0+' /><Badge type='addon' text='Add-on' /><BadgeGroup><Badge type='lite' text='Lite' /><Badge type='pro' text='Pro' /></BadgeGroup><BadgeGroup><Badge type='feature' text='Improved in 5.0+' /><Badge type='addon' text='Add-on' /></BadgeGroup>
 
 Freeform allows you to send email notifications upon submittal of a form. They are global and can be reused for multiple forms, saving you time when you are managing many forms.
 
@@ -62,7 +62,7 @@ To set up:
   </StepMarkdown>
 </VerticalStepWrapper>
 
-### Conditional <Badge type="pro" text="Pro" /> <Badge type="feature" text="New in 5.0+" />
+### Conditional<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
 
 Email notifications can be conditionally sent to one or more admin email addresses based on the contents and/or option selection of any Freeform field(s).
 
@@ -87,3 +87,51 @@ If you need more sets of conditional rules, just repeat the process again. You m
 
 </StepMarkdown>
 </VerticalStepWrapper>
+
+### User Select<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup><Badge type="feature" text="Renamed & Improved for 5.0+" />
+
+Email notifications can be sent to one or more pre-defined admin email addresses that are selected by the user filling out the form using any [Dropdown](./fields/#dropdown), [Checkbox](./fields/#checkbox), [Checkboxes](./fields/#checkboxes), [Radios](./fields/#radios), [Multi-Select](./fields/#multiple-select) field types. For example, you might have a **Dropdown** field that contains different departments for the user to address the email to.
+
+:::warning
+Be sure to set up your option fields as usual, and do not set email addresses as their options. That part is done inside the **Notifications** tab.
+:::
+
+To set up:
+
+<VerticalStepWrapper>
+  <StepMarkdown>
+    In the form builder, click on the **Notifications** tab. Then click the
+    _New_ button beside the **User Select** menu.
+  </StepMarkdown>
+  <StepMarkdown>
+    Choose any [Dropdown](./fields/#dropdown), [Checkbox](./fields/#checkbox),
+    [Checkboxes](./fields/#checkboxes), [Radios](./fields/#radios) or
+    [Multi-Select](./fields/#multiple-select) field in the **Target field**
+    setting.
+  </StepMarkdown>
+  <StepMarkdown>
+    Choose an email notification template from the **Default Notification
+    Template** setting. If you haven't created any yet, be sure to do so.
+  </StepMarkdown>
+  <StepMarkdown>
+    If you wish to have an email address notified if _NO_ options are chosen,
+    you can set email address(es) in the **Default Recipients** setting.
+    **Otherwise, leave this setting blank.**
+  </StepMarkdown>
+    <StepMarkdown>
+    In the **Recipient Mapping** area, add email address(es) for each corresponding option. If you need to specify more than one email address for an option, hit _Enter_ and additional email inputs will appear.
+
+You can also choose to specify a different email notification template for any or all options.
+
+:::tip
+Email addresses will never be rendered in the front-end form.
+:::
+
+  </StepMarkdown>
+</VerticalStepWrapper>
+
+### Email Fields<Badge type="feature" text="Revised for 5.0+" />
+
+Email notifications can be sent to the user submitting the form as long as you're using the [Email](./fields/#email) field type. This is often used to send an email confirmation for the user.
+
+To set up:
