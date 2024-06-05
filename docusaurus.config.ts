@@ -58,6 +58,7 @@ const config: Config = {
           versions: {
             current: {
               label: 'v5 [latest]',
+              path: 'v5',
             },
           },
           routeBasePath: '/',
@@ -80,7 +81,7 @@ const config: Config = {
         src: 'img/freeform-icon.png',
       },
       items: [
-        { to: '/intro', label: 'Docs', position: 'left' },
+        { to: '/v5/intro', label: 'Docs', position: 'left' },
         {
           type: 'docsVersionDropdown',
           sidebarId: 'docsSidebar',
