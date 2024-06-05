@@ -81,7 +81,7 @@ const config: Config = {
         src: 'img/freeform-icon.png',
       },
       items: [
-        { to: '/v5/intro', label: 'Docs', position: 'left' },
+        { to: '/v5/', label: 'Docs', position: 'left' },
         {
           type: 'docsVersionDropdown',
           sidebarId: 'docsSidebar',
@@ -100,49 +100,30 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
       links: [
         {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Docs',
-              to: '/docs/intro',
-            },
-          ],
+          label: 'Home',
+          to: '/',
         },
         {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
+          label: 'Support',
+          to: 'https://docs.solspace.com/support/',
         },
         {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/solspace',
-            },
-          ],
+          label: 'Premium Support',
+          to: 'hhttps://docs.solspace.com/support/premium/',
+        },
+        {
+          label: 'License Agreement',
+          to: 'https://docs.solspace.com/license-agreement/',
+        },
+        {
+          label: 'Legacy Account',
+          to: 'https://docs.solspace.com/legacy-account/',
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Solspace, Inc.`,
+
+      copyright: `© ${new Date().getFullYear()} Solspace, Inc.`,
     },
     prism: {
       theme: prismThemes.nightOwlLight,

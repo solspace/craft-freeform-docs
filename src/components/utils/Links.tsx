@@ -1,10 +1,16 @@
 import Link from '@docusaurus/Link';
 
-const SimpleTextLink = ({ to, label }) => {
+interface SimpleTextLink {
+  to: string;
+  label?: string;
+  classes?: string;
+}
+
+const SimpleTextLink: React.FC<SimpleTextLink> = ({ to, label, classes }) => {
   return (
     <Link
       to={to}
-      className="underline decoration-green-600  hover:decoration-amber-500 hover:underline"
+      className={`underline decoration-green-600  hover:decoration-amber-500 hover:underline ${classes}`}
     >
       {label}
     </Link>
