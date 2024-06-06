@@ -1,9 +1,7 @@
-import ThemedImage from '@theme/ThemedImage';
+import Image from '@theme/IdealImage';
 
 interface SectionProps {
-  whiteImgSrc?: string;
-  blackImgSrc?: string;
-  imgAlt?: string;
+  imgSrc?: string;
   title: string;
   subtitle: string;
   description?: string;
@@ -11,9 +9,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({
-  whiteImgSrc,
-  blackImgSrc,
-  imgAlt,
+  imgSrc,
   title,
   subtitle,
   description,
@@ -23,15 +19,9 @@ const Section: React.FC<SectionProps> = ({
     <section className="flex flex-col">
       <div className="flex flex-col items-center">
         <div className="flex flex-col items-center gap-2 w-full xl:w-3/4">
-          {whiteImgSrc && blackImgSrc && (
+          {imgSrc && (
             <div className="max-w-24">
-              <ThemedImage
-                alt={imgAlt || title}
-                sources={{
-                  light: blackImgSrc,
-                  dark: whiteImgSrc,
-                }}
-              />
+              <Image img={imgSrc} alt={title} />
             </div>
           )}
           <h2 className="text-6xl font-normal text-amber-600 mb-2">{title}</h2>

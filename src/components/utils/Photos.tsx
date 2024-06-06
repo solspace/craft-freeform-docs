@@ -1,5 +1,21 @@
-const Photo = ({ src, alt }) => {
-  return <img alt={alt} src={src} />;
+import Image from '@theme/IdealImage';
+import { ThemedComponent } from '@docusaurus/theme-common';
+import { Props as ThemedImageProps } from '@theme/ThemedImage';
+
+const ThemedIdealImage = (props: ThemedImageProps): JSX.Element => {
+  const { sources, className: parentClassName, alt, ...propsRest } = props;
+  return (
+    <ThemedComponent className={parentClassName}>
+      {({ theme, className }) => (
+        <Image
+          img={sources[theme]}
+          alt={alt}
+          className={className}
+          {...propsRest}
+        />
+      )}
+    </ThemedComponent>
+  );
 };
 
 const BrowserMockupWithPhoto = ({ src, alt }) => {
@@ -11,10 +27,10 @@ const BrowserMockupWithPhoto = ({ src, alt }) => {
         <span className="w-3 h-3 rounded-full bg-green-400"></span>
       </div>
       <div className="w-full m-0">
-        <img className="rounded-b-lg" alt={alt} src={src} />
+        <Image className="rounded-b-lg" alt={alt} img={src} />
       </div>
     </div>
   );
 };
 
-export { Photo, BrowserMockupWithPhoto };
+export { BrowserMockupWithPhoto, ThemedIdealImage };

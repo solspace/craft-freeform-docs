@@ -3,6 +3,8 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import tailwind from './plugins/tailwind-config.cjs';
 
+import type { Options as IdealImageOptions } from '@docusaurus/plugin-ideal-image';
+
 const config: Config = {
   title: 'Freeform for Craft',
   tagline: 'Freeform is cool',
@@ -47,7 +49,20 @@ const config: Config = {
   themes: ['@docusaurus/theme-mermaid'],
 
   // External plugins
-  plugins: [tailwind],
+  plugins: [
+    tailwind,
+    [
+      'ideal-image',
+      {
+        quality: 90,
+        max: 2040, // max resized image's size.
+        min: 640, // min resized image's size. if original is lower, use that size.
+        steps: 2, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      } satisfies IdealImageOptions,
+      ,
+    ],
+  ],
 
   presets: [
     [

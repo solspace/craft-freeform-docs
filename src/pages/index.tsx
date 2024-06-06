@@ -1,7 +1,8 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+
+import { ThemedIdealImage } from '@site/src/components/utils';
 
 import {
   SimpleTextLink,
@@ -12,7 +13,7 @@ import {
 function HomepageHeader() {
   return (
     <header className="flex flex-col m-auto items-center gap-6 mt-32 max-w-7xl">
-      <ThemedImage
+      <ThemedIdealImage
         sources={{
           light: useBaseUrl('/img/freeform-intro-black.png'),
           dark: useBaseUrl('/img/freeform-intro-white.png'),

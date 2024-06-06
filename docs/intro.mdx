@@ -5,7 +5,6 @@ slug: /
 ---
 
 import Player from 'react-player';
-import ThemedImage from '@theme/ThemedImage';
 import Link from '@docusaurus/Link';
 
 import {
@@ -14,6 +13,7 @@ import {
   FlexButton,
   BrowserMockupWithPhoto,
   Badge,
+  ThemedIdealImage,
 } from '@site/src/components/utils';
 import {
   FlexCards,
@@ -25,9 +25,19 @@ import {
 import FreeformIntroWhite from './assets/img/freeform-intro-white.png';
 import FreeformIntroBlack from './assets/img/freeform-intro-black.png';
 import TapWhiteIcon from './assets/icons/tap-white.png';
-import TapBlackIcon from './assets/icons/tap-black.png';
-import ShieldWhiteIcon from './assets/icons/shield-whtie.png';
-import ShieldBlackIcon from './assets/icons/shield-black.png';
+import ShieldIcon from './assets/icons/shield.png';
+import TapIcon from './assets/icons/tap.png';
+import DiscussionIcon from './assets/icons/discussion.png';
+import GraduationCapIcon from './assets/icons/graduation-cap.png';
+import AlertIcon from './assets/icons/alert.png';
+import FolderAttentionIcon from './assets/icons/folder-attention.png';
+import GuaranteeCertificateIcon from './assets/icons/guarantee-certificate.png';
+import UpdateNotificationIcon from './assets/icons/update-notification.png';
+import EmailReportIcon from './assets/icons/email-report.png';
+import SupportIcon from './assets/icons/support.png';
+import MagicWandIcon from './assets/icons/magic-wand.png';
+import TrolleyICon from './assets/icons/trolley.png';
+
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
 import TextareaIcon from './assets/icons/fields/textarea.png';
@@ -73,8 +83,8 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 
 # Overview
 
-<section className="flex flex-col items-center gap-6 mt-20">
-  <ThemedImage
+<section className="flex flex-col items-center gap-6 my-20">
+  <ThemedIdealImage
     sources={{
       light: FreeformIntroBlack,
       dark: FreeformIntroWhite,
@@ -82,6 +92,7 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
     className="max-w-3xl"
     alt="Freeform 5 for Craft CMS"
   />
+
   <h2 className="text-amber-500	">Ready for wherever your project takes you.</h2>
   <p className="text-center">
     Freeform is a versatile form-building tool that can adjust to the evolving
@@ -95,8 +106,8 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   <FlexButton
     items={[
       { to: '#reliability', label: 'Feature Tour', arrowDown: true },
-      { to: '#compare', label: 'Primary' },
-      { to: '/user-guides/getting-started', label: 'Getting Started' },
+      { to: '#compare', label: 'Pricing' },
+      { to: 'user-guides/getting-started', label: 'Getting Started' },
     ]}
   />
   <small>
@@ -114,29 +125,27 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
     {
       title: 'Getting Started',
       description: 'Learn the basics about Freeform and setting up forms.',
-      whiteImgSrc: TapWhiteIcon,
-      blackImgSrc: TapBlackIcon,
+      imgSrc: TapIcon,
       imgAlt: 'Getting started',
-      fullCardLink: 'User%20Guides/getting-started/',
+      fullCardLink: 'user-guides/getting-started/',
     },
     {
       title: 'User Guides',
       description: 'See solutions to common problems and questions.',
-      whiteImgSrc: TapWhiteIcon,
-      blackImgSrc: TapBlackIcon,
+      imgSrc: GraduationCapIcon,
       imgAlt: 'User Guides',
-      fullCardLink: 'User%20Guides/getting-started/',
+      fullCardLink: 'category/user-guides',
     },
     {
       title: 'Support',
       description:
         'Questions or issues? We want to help your project go smoothly!',
-      whiteImgSrc: TapWhiteIcon,
-      blackImgSrc: TapBlackIcon,
+      imgSrc: DiscussionIcon,
       imgAlt: 'Support',
-      fullCardLink: 'https://docs.solspace.com/support/',
+      fullCardLink: '/support',
     },
-  ]}
+
+]}
 />
 
 ## Reliability
@@ -145,59 +154,58 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   title="Reliability"
   subtitle="Functional forms are crucial. Impressive features are useless if they don't work."
   description="Losing customer leads can result in significant revenue loss and a negative impression on potential clients. We prioritize reliability above all else in Freeform to address this issue."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+  imgSrc={ShieldIcon}
 >
   <FlexCards
     items={[
       {
-        title: 'Getting Started',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
+        title: 'Email Failure Alerts',
         description:
-          'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
+          'Freeform will email you if there is a template or setup issue with your site.',
+        imgSrc: AlertIcon,
+        linkWithDescription: 'configuration/notices-alerts/',
       },
       {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
+        title: 'Automatic Update Notices',
         description:
-          'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
+          'Freeform alerts you to potential website issues, catching errors before you notice.',
+        imgSrc: UpdateNotificationIcon,
+        linkWithDescription: 'configuration/notices-alerts/',
+      },
+      {
+        title: 'Weekly / Daily Digest Email',
+        description:
+          "Get email updates about what's happening on your site with weekly or daily digests.",
+        imgSrc: EmailReportIcon,
+        linkWithDescription: 'configuration/notices-alerts/',
+      },
+      {
+        title: 'Error Logging',
+        description:
+          'The error logging system tells you quickly about any problems on your website.',
+        imgSrc: GuaranteeCertificateIcon,
+      },
+      {
+        title: 'Satisfaction Guaranteed',
+        description:
+          'Try Freeform risk-free with our 90-day full refund guarantee.',
+        imgSrc: GuaranteeCertificateIcon,
+      },
+      {
+        title: 'Private Support Tickets',
+        description:
+          "If you need help with Freeform, send us a private support ticket and we'll be happy to assist you.",
+        imgSrc: GuaranteeCertificateIcon,
+        linkWithDescription: '/support',
+        linkWithDescriptionLabel: 'Private support'
       },
     ]}
   />
+
   <FlexButton
     items={[
-      { to: '#feature-tour', label: 'Reliability options', arrowDown: true },
-      { to: '#compare', label: 'Primary' },
+      { to: 'configuration/notices-alerts/', label: 'Reliability options' },
+      { to: '/support', label: 'Support options' },
     ]}
   />
 </Section>
@@ -208,14 +216,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   title="Form Builder"
   subtitle="Everything is at your fingertips in our elegant and intuitive form builder."
   description="The Freeform form builder is an all-in-one interface that lets you take control of almost every aspect of your forms."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={MagicWandIcon}
+
 >
+
   <Player url={FeatureVideo} muted loop playing width="100%" height="100%" />
   <FlexButton
     items={[
-      { to: '#feature-tour', label: 'Reliability options', arrowDown: true },
-      { to: '#compare', label: 'Primary' },
+      { to: 'forms/builder', label: 'Form Builder Overview', },
     ]}
   />
 </Section>
@@ -225,9 +233,7 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Convenience"
   subtitle="So many plug-and-play features that make form building and templating a breeze!"
-  description="Losing customer leads can result in significant revenue loss and a negative impression on potential clients. We prioritize reliability above all else in Freeform to address this issue."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+  imgSrc={TrolleyICon}
 >
   <FlexCards
     items={[
@@ -235,16 +241,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
@@ -252,16 +256,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Support',
         description:
           'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Support',
         linkWithDescription: 'https://docs.solspace.com/support/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
@@ -269,8 +271,7 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Support',
         description:
           'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Support',
         linkWithDescription: 'https://docs.solspace.com/support/',
       },
@@ -283,9 +284,10 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Spam Protection"
   subtitle="Fight spam effectively."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
   <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
   <BrowserMockupWithPhoto src={SpamDetailPhoto} alt="Spam Folder" />
   <FlexCards
@@ -294,16 +296,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
@@ -311,16 +311,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Support',
         description:
           'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Support',
         linkWithDescription: 'https://docs.solspace.com/support/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
@@ -328,8 +326,7 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Support',
         description:
           'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Support',
         linkWithDescription: 'https://docs.solspace.com/support/',
       },
@@ -342,67 +339,58 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Powerful Fields"
   subtitle="Freeform offers a diverse range of fieldtypes and advanced features to populate and control them."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
-  <Player
-    url={BuilderRulesVideo}
-    muted
-    loop
-    playing
-    width="100%"
-    height="100%"
-  />
-  <FlexCards
-    items={[
-      {
-        title: 'Limited Users',
-        titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
-        description:
-          'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
-      },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
-        description:
-          'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
-      },
-    ]}
-  />
-  <FlexButton
-    items={[{ to: '#feature-tour', label: 'Fields Overview', arrowDown: true }]}
-  />
+
+{' '}
+
+<Player url={BuilderRulesVideo} muted loop playing width="100%" height="100%" />
+<FlexCards
+  items={[
+    {
+      title: 'Limited Users',
+      titleBadge: 'New!',
+      description: 'Learn the basics about Freeform and setting up forms.',
+      imgSrc: TapWhiteIcon,
+      imgAlt: 'Getting started',
+      linkWithDescription: 'User%20Guides/getting-started/',
+    },
+    {
+      title: 'User Guides',
+      description: 'See solutions to common problems and questions.',
+      imgSrc: TapWhiteIcon,
+      imgAlt: 'User Guides',
+      linkWithDescription: 'User%20Guides/getting-started/',
+    },
+    {
+      title: 'Support',
+      description:
+        'Questions or issues? We want to help your project go smoothly!',
+      imgSrc: TapWhiteIcon,
+      imgAlt: 'Support',
+      linkWithDescription: 'https://docs.solspace.com/support/',
+    },
+    {
+      title: 'User Guides',
+      description: 'See solutions to common problems and questions.',
+      imgSrc: TapWhiteIcon,
+      imgAlt: 'User Guides',
+      linkWithDescription: 'User%20Guides/getting-started/',
+    },
+    {
+      title: 'Support',
+      description:
+        'Questions or issues? We want to help your project go smoothly!',
+      imgSrc: TapWhiteIcon,
+      imgAlt: 'Support',
+      linkWithDescription: 'https://docs.solspace.com/support/',
+    },
+  ]}
+/>
+<FlexButton
+  items={[{ to: '#feature-tour', label: 'Fields Overview', arrowDown: true }]}
+/>
 
   <FieldCards items={[
        {
@@ -488,9 +476,10 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   title="Email Notifications"
   subtitle="Every conceivable option for sending fully customizable email notifications."
   description="Have as many templates as you like, and use different ones for every type."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
   <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
   <BrowserMockupWithPhoto src={SpamDetailPhoto} alt="Spam Folder" />
   <FlexCards
@@ -499,16 +488,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
@@ -516,16 +503,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Support',
         description:
           'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Support',
         linkWithDescription: 'https://docs.solspace.com/support/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'User%20Guides/getting-started/',
       },
@@ -533,8 +518,7 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Support',
         description:
           'Questions or issues? We want to help your project go smoothly!',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Support',
         linkWithDescription: 'https://docs.solspace.com/support/',
       },
@@ -548,9 +532,10 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   title="Flexible Templating"
   subtitle="Fast and easy, yet highly customizable."
   description="Templates are highly customizable for even the most complex forms. With our ready-to-use demo templates and features, you can be up and running in just a few minutes!"
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
   <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
   <FlexCards
     items={[
@@ -558,16 +543,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'user-guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'user-guides/getting-started/',
       },
@@ -580,9 +563,10 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Integrations"
   subtitle="Integrate your forms with anything."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
   <IntegrationPhotoCards
     items={[
       {
@@ -727,16 +711,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'user-guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'user-guides/getting-started/',
       },
@@ -749,9 +731,10 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Submission Data"
   subtitle="Capture and do what you please with submission data."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
   <BrowserMockupWithPhoto src={SubmissionsListPhoto} alt="Submissions List" />
   <BrowserMockupWithPhoto src={SubmissionsDetailPhoto} alt="Submissions List" />
   <BrowserMockupWithPhoto src={SubmissionsQuickExport} alt="Submissions List" />
@@ -761,16 +744,14 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'user-guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'user-guides/getting-started/',
       },
@@ -784,25 +765,24 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   title="Headless"
   subtitle="Full support for your headless implementation."
   description="Freeform supports headless website architecture making it easy to use JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more! Freeform also supports querying form layouts and using mutations to create submissions via GraphQL."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
   <FlexCards
     items={[
       {
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'user-guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'user-guides/getting-started/',
       },
@@ -815,25 +795,24 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="And more..."
   subtitle="The possibilities are endless."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
   <FlexCards
     items={[
       {
         title: 'Limited Users',
         titleBadge: 'New!',
         description: 'Learn the basics about Freeform and setting up forms.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'Getting started',
         linkWithDescription: 'user-guides/getting-started/',
       },
       {
         title: 'User Guides',
         description: 'See solutions to common problems and questions.',
-        whiteImgSrc: TapWhiteIcon,
-        blackImgSrc: TapBlackIcon,
+        imgSrc: TapWhiteIcon,
         imgAlt: 'User Guides',
         linkWithDescription: 'user-guides/getting-started/',
       },
@@ -846,9 +825,10 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Compare"
   subtitle="Which edition is right for your needs."
-  whiteImgSrc={ShieldWhiteIcon}
-  blackImgSrc={ShieldBlackIcon}
+   imgSrc={ShieldIcon}
+
 >
+
 <div class="feature-table">
 
 | <h3 class="no-margin"></h3>                                                                                                               |                                         <h2 class="edition-express no-margin">Express</h2><Badge type="feature" text="New!" />                                         |                                         <h2 class="edition-lite no-margin">Lite</h2>                                         |                                                     <h2 class="edition-pro no-margin">Pro</h2>                                                     |
@@ -954,16 +934,14 @@ Rest assured that Freeform and the team behind it are committed to providing you
       title: 'Limited Users',
       titleBadge: 'New!',
       description: 'Learn the basics about Freeform and setting up forms.',
-      whiteImgSrc: TapWhiteIcon,
-      blackImgSrc: TapBlackIcon,
+      imgSrc: TapWhiteIcon,
       imgAlt: 'Getting started',
       linkWithDescription: 'user-guides/getting-started/',
     },
     {
       title: 'User Guides',
       description: 'See solutions to common problems and questions.',
-      whiteImgSrc: TapWhiteIcon,
-      blackImgSrc: TapBlackIcon,
+      imgSrc: TapWhiteIcon,
       imgAlt: 'User Guides',
       linkWithDescription: 'user-guides/getting-started/',
     },
