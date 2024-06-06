@@ -46,6 +46,12 @@ import StarterTemplatesIcon from './assets/icons/starter-templates.png';
 import UploadIcon from './assets/icons/upload.png';
 import ValidCheckIcon from './assets/icons/magic-wand.png';
 import WidgetsIcon from './assets/icons/widgets.png';
+import CarrotIcon from './assets/icons/carrot.png';
+import BlockedIcon from './assets/icons/blocked.png';
+import CaptchaIcon from './assets/icons/captcha.png';
+import SpamIcon from './assets/icons/spam.png';
+import ThrottlingIcon from './assets/icons/throttling.png';
+import TimeDeleteIcon from './assets/icons/time-delete.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
@@ -316,7 +322,7 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Spam Protection"
   subtitle="Fight spam effectively."
-   imgSrc={ShieldIcon}
+   imgSrc={CarrotIcon}
 
 >
 
@@ -325,42 +331,43 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   <FlexCards
     items={[
       {
-        title: 'Limited Users',
-        titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'User%20Guides/getting-started/',
+        title: 'Freeform Honeypot',
+        description: 'The Honeypot feature included in the system effectively deals with simple bot spam.',
+        imgSrc: CarrotIcon,
+        linkWithDescription: 'forms/spam-protection/#freeform-honeypot',
       },
       {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
+        title: 'Built-in Spam Folder',
+        description: 'Use the Spam Folder to catch any potential spam without risking missing legitimate submissions.',
+        imgSrc: SpamIcon,
+        linkWithDescription: 'forms/spam-protection/#spam-folder',
       },
       {
-        title: 'Support',
+        title: 'reCAPTCHA & hCaptcha',
         description:
-          'Questions or issues? We want to help your project go smoothly!',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
+          'To enhance your spam-fighting capabilities, you can choose to enable either reCAPTCHA or hCaptcha.',
+        imgSrc: CaptchaIcon,
+        linkWithDescription: 'forms/spam-protection/#recaptcha',
       },
       {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
+        title: 'Keyword Blocking',
+        description: 'With Freeform, you have the power to target and block specific email addresses, keywords, and IP addresses.',
+        imgSrc: BlockedIcon,
+        linkWithDescription: 'forms/spam-protection/#spam-blocking',
       },
       {
-        title: 'Support',
+        title: 'Throttling / Submit Time',
         description:
-          'Questions or issues? We want to help your project go smoothly!',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
+          'Limit form submissions by setting restrictions such as submission frequency, waiting period, or time limit for completion.',
+        imgSrc: ThrottlingIcon,
+        linkWithDescription: 'configuration/settings/#form-submission-throttling',
+      },
+        {
+        title: 'Automatic Purging',
+        description:
+          'Freeform can automatically delete submissions marked as spam after a set number of days.',
+        imgSrc: TimeDeleteIcon,
+        linkWithDescription: 'configuration/settings/#automatically-purge-spam-submissions',
       },
     ]}
   />

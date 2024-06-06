@@ -323,3 +323,9 @@ html[data-theme='light'] .feature-api-grid a {
     grid-template-columns: repeat(auto-fill, 10%) !important;
   }
 }
+
+/* IdealIamage */
+.ideal-browser-mock img {
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
