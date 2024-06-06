@@ -37,6 +37,15 @@ import EmailReportIcon from './assets/icons/email-report.png';
 import SupportIcon from './assets/icons/support.png';
 import MagicWandIcon from './assets/icons/magic-wand.png';
 import TrolleyICon from './assets/icons/trolley.png';
+import AnalyticsIcon from './assets/icons/guarantee-certificate.png';
+import DashboardIcon from './assets/icons/update-notification.png';
+import JSFormatIcon from './assets/icons/email-report.png';
+import PadlockIcon from './assets/icons/support.png';
+import PagesIcon from './assets/icons/magic-wand.png';
+import StarterTemplatesIcon from './assets/icons/starter-templates.png';
+import UploadIcon from './assets/icons/upload.png';
+import ValidCheckIcon from './assets/icons/magic-wand.png';
+import WidgetsIcon from './assets/icons/widgets.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
@@ -238,42 +247,65 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   <FlexCards
     items={[
       {
+        title: 'Forms Dashboard',
+        description:
+          'The Forms Dashboard provides a clear overview of your forms, submissions, and updates in one convenient location.',
+        imgSrc: DashboardIcon,
+        linkWithDescription: 'forms/builder',
+      },
+      {
+        title: 'Multi-Page Forms',
+        description:
+          'Do you have a lengthy form? With Freeform, you can divide your form into several pages.',
+        imgSrc: PagesIcon,
+        linkWithDescription: 'forms/builder/#multi-page-forms',
+      },
+      {
+        title: 'Complete Validation',
+        description:
+          'Freeform has validation features for fields, including making them required and ensuring specific data.',
+        imgSrc: ValidCheckIcon,
+      },
+      {
+        title: 'Built-in AJAX',
+        description:
+          'By simply checking a checkbox, Freeform will handle the AJAX processing for your form effortlessly.',
+        imgSrc: JSFormatIcon,
+      },
+      {
+        title: 'Drag & Drop File Upload',
+        description:
+          'The premium JS-based file uploading field shows progress and thumbnails and remembers existing files when editing.',
+        imgSrc: UploadIcon,
+        linkWithDescription: 'forms/fields/#file-upload-drag-drop',
+      },
+      {
         title: 'Limited Users',
         titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
         description:
-          'Questions or issues? We want to help your project go smoothly!',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
+          'Customize the form builder experience for specific users or groups.',
+        imgSrc: PadlockIcon,
+        linkWithDescription: 'configuration/limited-users/',
       },
       {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
+        title: 'Google Tag Manager',
         description:
-          'Questions or issues? We want to help your project go smoothly!',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
+          'Built-in flexible Google Tag Manager support with AJAX implementations.',
+        imgSrc: AnalyticsIcon,
+      },
+      {
+        title: 'Sample Templates',
+        description:
+          'Offers a variety of popular framework formatting templates that you can use as a starting point to develop your own project.',
+        imgSrc: StarterTemplatesIcon,
+        linkWithDescription: 'templates/formatting/',
+      },
+      {
+        title: 'Widgets',
+        description:
+          'Enhance your Craft Dashboard with stunning widgets like linear charts, radial charts, and recent submissions widgets.',
+        imgSrc: WidgetsIcon,
+        linkWithDescription: 'forms/widgets/',
       },
     ]}
   />

@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link';
 import Image from '@theme/IdealImage';
 
-import { SimpleTextLink } from '@site/src/components/utils';
+import { SimpleTextLink, Badge } from '@site/src/components/utils';
 
 interface CardProps {
   fullCardLink?: string;
@@ -65,11 +65,7 @@ const Card: React.FC<CardProps> = ({
         <div className="">
           <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
             {title}
-            {titleBadge && (
-              <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                {titleBadge}
-              </span>
-            )}
+            {titleBadge && <Badge type="feature" text={titleBadge} />}
           </h3>
           <p className="text-gray-700 mb-1 dark:text-gray-300 transition-all duration-500 dark:group-hover:text-gray-50 ">
             {description}
@@ -89,11 +85,7 @@ const Card: React.FC<CardProps> = ({
       <div className="">
         <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
           {title}
-          {titleBadge && (
-            <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-              {titleBadge}
-            </span>
-          )}
+          {titleBadge && <Badge type="feature" text={titleBadge} />}
         </h3>
         <p className="text-gray-700 mb-1 dark:text-gray-300 ">
           {description}{' '}
