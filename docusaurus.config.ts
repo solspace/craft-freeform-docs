@@ -60,7 +60,6 @@ const config: Config = {
         steps: 2, // the max number of images generated between min and max (inclusive)
         disableInDev: false,
       } satisfies IdealImageOptions,
-      ,
     ],
   ],
 
