@@ -286,16 +286,24 @@
     "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
     "description": "The unlisted content banner message"
   },
-  "My Site": {
-    "message": "Mijn website"
+  "theme.IdealImageMessage.loading": {
+    "message": "Laden...",
+    "description": "When the full-scale image is loading"
   },
-  "Freeform is cool!": {
-    "message": "Freeform is cool!"
+  "theme.IdealImageMessage.load": {
+    "message": "Klik om {sizeMessage} te laden",
+    "description": "To prompt users to load the full image. sizeMessage is a parenthesized size figure."
   },
-  "Freeform 5 for Craft CMS": {
-    "message": "Freeform 5 for Craft CMS"
+  "theme.IdealImageMessage.offline": {
+    "message": "Je browser is offline. De afbeelding is niet geladen",
+    "description": "When the user is viewing an offline document"
   },
-  "Freeform is a versatile form-building tool that can adjust to the evolving needs of your project, whether it's a simple or complex form.": {
-    "message": "Freeform is een veelzijdige tool voor het bouwen van formulieren die zich kan aanpassen aan de veranderende behoeften van uw project, of het nu een eenvoudige of complexe vorm is."
+  "theme.IdealImageMessage.404error": {
+    "message": "404. Afbeelding niet gevonden",
+    "description": "When the image is not found"
+  },
+  "theme.IdealImageMessage.error": {
+    "message": "Fout. Klik om te vernieuwen",
+    "description": "When the image fails to load for unknown error"
   }
 }

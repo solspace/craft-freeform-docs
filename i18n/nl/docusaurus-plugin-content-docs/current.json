@@ -3,12 +3,20 @@
     "message": "v5 [latest]",
     "description": "The label for version current"
   },
-  "sidebar.tutorialSidebar.category.Test": {
-    "message": "Test",
-    "description": "The label for category Test in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.User Guides": {
+    "message": "User Guides",
+    "description": "The label for category User Guides in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Test.link.generated-index.description": {
+  "sidebar.tutorialSidebar.category.User Guides.link.generated-index.description": {
     "message": "Test Docs....",
-    "description": "The generated-index page description for category Test in sidebar tutorialSidebar"
+    "description": "The generated-index page description for category User Guides in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Forms & Fields": {
+    "message": "Forms & Fields",
+    "description": "The label for category Forms & Fields in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Forms & Fields.link.generated-index.description": {
+    "message": "Test Docs....",
+    "description": "The generated-index page description for category Forms & Fields in sidebar tutorialSidebar"
   }
 }
