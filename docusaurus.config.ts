@@ -52,7 +52,7 @@ const config: Config = {
   plugins: [
     tailwind,
     [
-      'ideal-image',
+      '@docusaurus/plugin-ideal-image',
       {
         quality: 90,
         max: 2040, // max resized image's size.

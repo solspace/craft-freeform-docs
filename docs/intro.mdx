@@ -6,6 +6,7 @@ slug: /
 
 import Player from 'react-player';
 import Link from '@docusaurus/Link';
+import Image from '@theme/IdealImage';
 
 import {
   PrimaryButtonWithLink,
@@ -52,10 +53,16 @@ import CaptchaIcon from './assets/icons/captcha.png';
 import SpamIcon from './assets/icons/spam.png';
 import ThrottlingIcon from './assets/icons/throttling.png';
 import TimeDeleteIcon from './assets/icons/time-delete.png';
+import CheckListIcon from './assets/icons/check-list.png';
+import FieldTextIcon from './assets/icons/field-text.png';
+import GearCodingIcon from './assets/icons/gear-coding.png';
+import LockIcon from './assets/icons/lock.png';
+import LogicIcon from './assets/icons/logic.png';
+import RecycleIcon from './assets/icons/recycle.png';
+import ReviewIcon from './assets/icons/review.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
-import TextareaIcon from './assets/icons/fields/textarea.png';
 import SubmissionsListPhoto from './assets/img/submissions-list.png';
 import SubmissionsDetailPhoto from './assets/img/submissions-detail.png';
 import SubmissionsQuickExport from './assets/img/submissions-quick-export.png';
@@ -378,135 +385,192 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
 <Section
   title="Powerful Fields"
   subtitle="Freeform offers a diverse range of fieldtypes and advanced features to populate and control them."
-   imgSrc={ShieldIcon}
+  imgSrc={FieldTextIcon}
 
 >
-
-{' '}
 
 <Player url={BuilderRulesVideo} muted loop playing width="100%" height="100%" />
 <FlexCards
   items={[
     {
-      title: 'Limited Users',
+      title: 'Conditional Rules',
+      description:
+        'Customize your form by setting pages to skip and fields to appear/disappear based on other field contents or selections.',
+      imgSrc: LogicIcon,
+      linkWithDescription: 'forms/conditional-rules',
+    },
+    {
+      title: 'Populate Field Options',
+      description:
+        'Use Craft Element data or predefined Freeform options such as countries or months to populate dropdowns, checkboxes, and radios.',
+      imgSrc: CheckListIcon,
+      linkWithDescription:
+        'forms/fields/#populating-fields-with-elements-predefined-options',
+    },
+    {
+      title: 'Reuse Fields',
       titleBadge: 'New!',
-      description: 'Learn the basics about Freeform and setting up forms.',
-      imgSrc: TapWhiteIcon,
-      imgAlt: 'Getting started',
-      linkWithDescription: 'User%20Guides/getting-started/',
-    },
-    {
-      title: 'User Guides',
-      description: 'See solutions to common problems and questions.',
-      imgSrc: TapWhiteIcon,
-      imgAlt: 'User Guides',
-      linkWithDescription: 'User%20Guides/getting-started/',
-    },
-    {
-      title: 'Support',
       description:
-        'Questions or issues? We want to help your project go smoothly!',
-      imgSrc: TapWhiteIcon,
-      imgAlt: 'Support',
-      linkWithDescription: 'https://docs.solspace.com/support/',
+        'Save common fields as favorites, or quickly search across all forms to reuse an existing field.',
+      imgSrc: RecycleIcon,
+      linkWithDescription: 'forms/builder',
     },
     {
-      title: 'User Guides',
-      description: 'See solutions to common problems and questions.',
-      imgSrc: TapWhiteIcon,
-      imgAlt: 'User Guides',
-      linkWithDescription: 'User%20Guides/getting-started/',
-    },
-    {
-      title: 'Support',
+      title: 'Field Encryption',
+      titleBadge: 'New!',
       description:
-        'Questions or issues? We want to help your project go smoothly!',
-      imgSrc: TapWhiteIcon,
-      imgAlt: 'Support',
-      linkWithDescription: 'https://docs.solspace.com/support/',
+        'Each field includes the ability to optionally encrypt its submission data. Simply toggle the setting and Freeform will take care of the rest.',
+      imgSrc: LockIcon,
+      linkWithDescription: 'forms/fields/#field-encryption',
+    },
+    {
+      title: 'Custom Field Types',
+      titleBadge: 'New!',
+      description: 'Easily create your own custom field types!',
+      imgSrc: GearCodingIcon,
+      linkWithDescription: 'developer/field-types/',
+    },
+    {
+      title: 'Include a Review Page',
+      description:
+        'Use Twig code in an HTML block to create a custom review page for users to double-check form data from previous pages before submission.',
+      imgSrc: ReviewIcon,
     },
   ]}
 />
-<FlexButton
-  items={[{ to: '#feature-tour', label: 'Fields Overview', arrowDown: true }]}
-/>
+<FlexButton items={[{ to: 'forms/fields', label: 'Fields Overview' }]} />
 
   <FieldCards items={[
        {
-        link: 'User%20Guides/getting-started/',
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#textarea',
         title: 'Textarea',
         description:
           'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
-        titleBadge: 'New!',
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
+
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
-        titleBadge: 'New!',
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-      {
-        link: 'User%20Guides/getting-started/',
-        title: 'Textarea',
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
         description:
-          'Multi-line text inputs',
-        imgSrc: TextareaIcon,
-        imgAlt: 'Textarea',
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
       },
-  ]} />
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+           {
+        link: 'forms/fields/#text',
+        title: 'Text',
+        description:
+          'Regular text inputs',
+        imgSrc: FieldTextIcon,
+      },
+
+]} />
+
 </Section>
 
 ## Email Notifications

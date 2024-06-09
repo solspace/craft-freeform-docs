@@ -132,25 +132,23 @@ const FieldCards: React.FC<FieldCardsProps> = ({ items }) => {
         <Link
           key={`field-cards-${index}`}
           to={item.link}
-          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-500 py-7 px-10 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-300 hover:dark:bg-sky-600"
+          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-100 py-7 px-10 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-gray-200 hover:dark:bg-slate-900"
         >
           <div className="max-w-10 pt-4">
-            <img
+            <Image
               alt={item.imgAlt || item.title}
               className="opacity-85	"
-              src={item.imgSrc}
+              img={item.imgSrc}
             />
           </div>
           <div className="text-center pb-4">
-            <h3 className="text-base font-semibold mb-0 text-white">
+            <h3 className="text-base font-semibold mb-0 text-black dark:text-white">
               {item.title}{' '}
               {item.titleBadge && (
-                <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                  {item.titleBadge}
-                </span>
+                <Badge type="feature" text={item.titleBadge} />
               )}
             </h3>
-            <p className="text-xs mb-1 text-gray-300 transition-all duration-500 dark:group-hover:text-gray-50 ">
+            <p className="text-xs mb-1 text-gray-800 dark:text-gray-300 transition-all duration-500 dark:group-hover:text-gray-50 ">
               {item.description}
             </p>
           </div>
