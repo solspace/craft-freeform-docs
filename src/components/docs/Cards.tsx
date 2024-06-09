@@ -127,12 +127,12 @@ const FlexCards: React.FC<CardSectionProps> = ({ items }) => {
 
 const FieldCards: React.FC<FieldCardsProps> = ({ items }) => {
   return (
-    <div className="flex flex-wrap py-6 my-10 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 py-6 my-10 gap-4">
       {items.map((item, index) => (
         <Link
           key={`field-cards-${index}`}
           to={item.link}
-          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-100 py-7 px-10 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-gray-200 hover:dark:bg-slate-900"
+          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-100 py-7 px-10 max-w-80 transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-gray-200 hover:dark:bg-slate-900"
         >
           <div className="max-w-10 pt-4">
             <Image
