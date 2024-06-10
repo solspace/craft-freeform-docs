@@ -169,7 +169,7 @@ const PhotoCards: React.FC<IntegrationPhotoCardsProps> = ({ items }) => {
           rel="noopener noreferrer"
           className="flex flex-col items-center p-3 m-2 bg-gray-800 !dark:bg-red rounded-lg shadow-lg hover:bg-gray-700 transition-colors"
         >
-          <img src={item.iconSrc} alt={item.title} />
+          <Image img={item.iconSrc} alt={item.title} />
         </a>
       ))}
     </>

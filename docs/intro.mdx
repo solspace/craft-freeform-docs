@@ -96,6 +96,13 @@ import OpenLetterIcon from './assets/icons/open-letter.png';
 import ResendEmailIcon from './assets/icons/resend-email.png';
 import SketchIcon from './assets/icons/sketch.png';
 import SettingsIcon from './assets/icons/settings.png';
+import CloudApiIcon from './assets/icons/cloud-api.png';
+import ApiGearIcon from './assets/icons/api-gear.png';
+import ContentIcon from './assets/icons/content.png';
+import CRMIcon from './assets/icons/crm.png';
+import DocumentCloudIcon from './assets/icons/document-cloud.png';
+import MegaphoneIcon from './assets/icons/megaphone.png';
+import WebhookIcon from './assets/icons/webhook.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
@@ -820,7 +827,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="Integrations"
   subtitle="Integrate your forms with anything."
-   imgSrc={ShieldIcon}
+   imgSrc={CloudApiIcon}
 
 >
 
@@ -965,20 +972,51 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   <FlexCards
     items={[
       {
-        title: 'Limited Users',
-        titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'user-guides/getting-started/',
+        title: 'CRMs',
+        description: 'Easily integrate your forms with popular CRMs like Salesforce and HubSpot.',
+        imgSrc: CRMIcon,
+        linkWithDescription: 'integrations',
       },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'user-guides/getting-started/',
+        {
+        title: 'Email Marketing',
+        description: 'Connect your forms to Email Marketing services like Mailchimp and Constant Contact to streamline mailing list sign-ups.',
+        imgSrc: MegaphoneIcon,
+        linkWithDescription: 'integrations',
       },
+        {
+        title: 'Webhooks',
+        description: 'Connect submissions to Slack, create workflows with Zapier, or use the generic webhook for custom endpoints.',
+        imgSrc: WebhookIcon,
+        linkWithDescription: 'integrations',
+      }
+      ,
+        {
+        title: 'Craft Elements',
+        description: 'Create stunning forms that create or modify entries, users, Calendar events and complex user registration forms.',
+        imgSrc: ContentIcon,
+        linkWithDescription: 'integrations/elements/',
+      }
+      ,
+        {
+        title: 'Accept Payments',
+        description: 'You can start accepting payments and subscriptions for your forms through Stripe in just a few minutes.',
+        imgSrc: CreditCardIcon,
+        linkWithDescription: 'integrations/payments/',
+      }
+      ,
+        {
+        title: 'POST Forwarding',
+        description: 'Automatically submit form data to an external API URL after successful submission of the form.',
+        imgSrc: DocumentCloudIcon,
+        linkWithDescription: 'integrations/post-forwarding/',
+      }
+      ,
+        {
+        title: 'Custom',
+        description: 'Create your own integration by developing a custom module that utilizes any of the numerous developer events available.',
+        imgSrc: ApiGearIcon,
+        linkWithDescription: 'developer/events/',
+      }
     ]}
   />
 </Section>
