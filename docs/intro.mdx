@@ -1172,26 +1172,62 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="And more..."
   subtitle="The possibilities are endless."
-   imgSrc={ShieldIcon}
-
 >
 
   <FlexCards
     items={[
       {
-        title: 'Limited Users',
-        titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'user-guides/getting-started/',
+        title: 'User Group Permissions',
+        description: 'Finely control user groups and permissions to restrict access to certain forms, sections, and submissions.',
+        imgSrc: PadlockIcon,
+        linkWithDescription: 'configuration/permissions/',
       },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'user-guides/getting-started/',
+     {
+        title: 'Attach Forms to Elements',
+        description: 'Easily relate Freeform forms with other element types, such as Craft Entries, allowing endless use cases.',
+        imgSrc: ReferralIcon,
+        linkWithDescription: 'forms/relations/',
+      },
+         {
+        title: 'Loads of Settings',
+        description: 'Access to an extensive range of settings to tailor the management, behavior, and overall user experience of your forms.',
+        imgSrc: ConfigPageIcon,
+        linkWithDescription: 'configuration/settings/',
+      },
+         {
+        title: 'Site Filtering',
+        description: 'Optionally enable Site filtering for forms and submissions to show/hide them for specific Sites.',
+        imgSrc: WorldIcon,
+        linkWithDescription: 'configuration/sites/',
+      },
+         {
+        title: 'Javascript Plugin',
+        description: "Freeform's Javascript plugin simplifies form customization for developers, regardless of website setup.",
+        imgSrc: JSCodeIcon,
+        linkWithDescription: 'developer/js-plugin/',
+      },
+         {
+        title: 'GraphQL',
+        description: 'With Freeform, you can easily query form layouts and submit form mutations using GraphQL.',
+        imgSrc: GraphqlIcon,
+        linkWithDescription: 'headless/graphql',
+      },
+         {
+        title: 'Accessibility tested',
+        description: 'We have tested our sample templates to ensure that they are accessible to everyone, using best-practice accessibility implementations.',
+        imgSrc: UserCheckIcon,
+      },
+         {
+        title: 'Translatable',
+        description: 'Ability to translate the Freeform control panel, form messages, and field options using static translation files.',
+        imgSrc: TranslationIcon,
+        linkWithDescription: 'configuration/translating/',
+      },
+         {
+        title: 'Developer-friendly',
+        description: 'Freeform is highly customizable and provides a wide range of developer events to easily extend it for your needs.',
+        imgSrc: DeveloperIcon,
+        linkWithDescription: 'developer/events',
       },
     ]}
   />
