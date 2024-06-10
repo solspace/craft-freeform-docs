@@ -1,4 +1,39 @@
+import { FlexCards } from '@site/src/components/docs';
+
+import ReviewIcon from '../../assets/icons/review.png';
+import MagicWandIcon from '../../assets/icons/magic-wand.png';
+import CodeIcon from '../../assets/icons/code.png';
+
 # User Guides for Freeform
+
+Check out the user guides below to see solutions to common problems and questions:
+
+:::tip
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](troubleshooting-form-issues)
+:::
+
+<FlexCards
+  items={[
+    {
+      title: 'Form Validation',
+      description: 'Explore additional validation options for your forms.',
+      imgSrc: ReviewIcon,
+      fullCardLink: '#form-validation',
+    },
+    {
+      title: 'Dynamic Data',
+      description: 'Learn how to integrate external data dynamically.',
+      imgSrc: MagicWandIcon,
+      fullCardLink: '#dynamic-data',
+    },
+    {
+      title: 'Templating',
+      description: 'A variety of commonly requested templating tips.',
+      imgSrc: CodeIcon,
+      fullCardLink: '#templating',
+    },
+  ]}
+/>
 
 ## Form Validation
 
