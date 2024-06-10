@@ -123,6 +123,10 @@ import SurveyIcon from './assets/icons/survey.png';
 import TranslationIcon from './assets/icons/translation.png';
 import UserCheckIcon from './assets/icons/user-check.png';
 import WorldIcon from './assets/icons/world.png';
+import HeadlessIcon from './assets/icons/headless.png';
+import NextjsIcon from './assets/icons/nextjs.png';
+import ReactIcon from './assets/icons/react.png';
+import VuejsIcon from './assets/icons/vue-js.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
@@ -1129,75 +1133,35 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   title="Headless"
   subtitle="Full support for your headless implementation."
   description="Freeform supports headless website architecture making it easy to use JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more! Freeform also supports querying form layouts and using mutations to create submissions via GraphQL."
-   imgSrc={ShieldIcon}
+  imgSrc={HeadlessIcon}
 
 >
 
   <FlexCards
     items={[
       {
-        title: 'Store Submission Data',
-        description: "Save submission data or don't store it at all, but only send it through email notifications or an API integration, etc.",
-        imgSrc: ArchiveIcon,
+        title: 'Vue.js',
+        description: "Full support for implementation Freeform with Vue.js.",
+        imgSrc: VuejsIcon,
+        linkWithDescription: 'headless/vuejs'
       },
          {
-        title: 'GDPR Compliant',
-        description: 'Freeform simplifies GDPR compliance for your forms with thorough documentation and many configuration options.',
-        imgSrc: GdprIcon,
-        linkWithDescription: 'configuration/gdpr-compliance/',
+        title: 'React JS',
+        description: 'Full support for implementation Freeform with React JS.',
+        imgSrc: ReactIcon,
+        linkWithDescription: 'headless/reactjs',
       },
          {
-        title: 'Manage Submissions',
-        description: 'View, manage, edit and delete submission data inside the control panel as well as front end templates!',
-        imgSrc: DataManageIcon,
-        linkWithDescription: 'submissions/overview/',
+        title: 'Next.js',
+        description: 'Full support for implementation Freeform with Next.js.',
+        imgSrc: NextjsIcon,
+        linkWithDescription: 'headless/nextjs',
       },
          {
-        title: 'Exporting',
-        description: 'Quickly export submission data or generate Export Profile reports in Excel, CSV, Text, XML, or JSON formats.',
-        imgSrc: ExportIcon,
-        linkWithDescription: 'forms/exoprting',
-      },
-         {
-        title: 'Reviews & Comments',
-        description: 'Freeform can be customized to effectively manage discussion comments, product reviews, and more.',
-        imgSrc: CommentReviewIcon,
-      },
-         {
-        title: 'Surveys',
-        description: 'Freeform offers a vast selection of field types to effortlessly create visually appealing survey forms.',
-        imgSrc: SurveyIcon,
-        linkWithDescription: 'forms/types/surveys-polls/',
-      },
-         {
-        title: 'Front End Editing',
-        description: 'Enable front-end editing of form submissions for both admins and users to handle a wide variety of use cases.',
-        imgSrc: EditIcon,
-        linkWithDescription: 'submissions/overview/#editing-submissions',
-      },
-         {
-        title: 'Save & Continue Later',
-        description: 'Users can save their form progress securely and come back later to complete it.',
-        imgSrc: PlayButtonIcon,
-        linkWithDescription: 'forms/save-continue-later/',
-      },
-         {
-        title: 'Limit Submissions',
-        description: 'Limit submissions per user, allow only one submission, require login, or set a close date for the form submission period.',
-        imgSrc: StopIcon,
-        linkWithDescription: 'submissions/overview/#submission-limits',
-      },
-         {
-        title: 'Relate to other Elements',
-        description: 'Easily relate Freeform submissions with other element types, such as Craft Entries, allowing endless use cases.',
-        imgSrc: RelationIcon,
-        linkWithDescription: 'forms/relations/',
-      },
-         {
-        title: 'Custom Statuses',
-        description: 'Create unlimited statuses that can be applied to form submissions, allowing you to sort and filter submissions.',
-        imgSrc: CategoryIcon,
-        linkWithDescription: 'configuration/settings/#statuses',
+        title: 'GraphQL',
+        description: 'With Freeform, you can easily query form layouts and submit form mutations using GraphQL.',
+        imgSrc: GraphqlIcon,
+        linkWithDescription: 'headless/graphql',
       }
     ]}
   />
