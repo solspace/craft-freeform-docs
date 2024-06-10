@@ -329,3 +329,24 @@ html[data-theme='light'] .feature-api-grid a {
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
+
+/* Photo */
+.photo {
+  margin-bottom: 1rem;
+}
+
+.photo img {
+  border-radius: 0.5rem;
+}
+
+/* Iframe Video */
+.video-iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #36205e;
+  border-radius: 15px;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}

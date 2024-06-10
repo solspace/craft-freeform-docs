@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface StepMarkdownProps {
+  stepTitle?: string;
   stepNumber?: number;
   children?: React.ReactNode;
 }
@@ -8,6 +9,7 @@ interface StepMarkdownProps {
 const StepMarkdown: React.FC<StepMarkdownProps> = ({
   children,
   stepNumber,
+  stepTitle,
 }) => {
   return (
     <div className="flex">
@@ -19,7 +21,10 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
           <div className="w-px min-h-12 h-full bg-gray-300" />
         </div>
       )}
-      <div className="flex flex-col">{children}</div>
+      <div className="flex flex-col">
+        {stepTitle && <h4>{stepTitle}</h4>}
+        {children}
+      </div>
     </div>
   );
 };

@@ -2,6 +2,10 @@ import Image from '@theme/IdealImage';
 import { ThemedComponent } from '@docusaurus/theme-common';
 import { Props as ThemedImageProps } from '@theme/ThemedImage';
 
+const Photo = (props) => {
+  return <Image className="photo" {...props} />;
+};
+
 const ThemedIdealImage = (props: ThemedImageProps): JSX.Element => {
   const { sources, className: parentClassName, alt, ...propsRest } = props;
   return (
@@ -35,4 +39,4 @@ const BrowserMockupWithPhoto = ({ src, alt }) => {
   );
 };
 
-export { BrowserMockupWithPhoto, ThemedIdealImage };
+export { BrowserMockupWithPhoto, ThemedIdealImage, Photo };
