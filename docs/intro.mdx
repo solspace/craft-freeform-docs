@@ -103,6 +103,26 @@ import CRMIcon from './assets/icons/crm.png';
 import DocumentCloudIcon from './assets/icons/document-cloud.png';
 import MegaphoneIcon from './assets/icons/megaphone.png';
 import WebhookIcon from './assets/icons/webhook.png';
+import ArchiveIcon from './assets/icons/archive.png';
+import CategoryIcon from './assets/icons/category.png';
+import CommentReviewIcon from './assets/icons/comment-review.png';
+import ConfigPageIcon from './assets/icons/config-page.png';
+import DataManageIcon from './assets/icons/data-manage.png';
+import DeveloperIcon from './assets/icons/developer.png';
+import DevelopmentIcon from './assets/icons/development.png';
+import EditIcon from './assets/icons/edit.png';
+import GdprIcon from './assets/icons/gdpr.png';
+import GraphqlIcon from './assets/icons/graphql.png';
+import HourglassIcon from './assets/icons/hourglass.png';
+import JSCodeIcon from './assets/icons/js-code.png';
+import PlayButtonIcon from './assets/icons/play-button.png';
+import ReferralIcon from './assets/icons/referral.png';
+import RelationIcon from './assets/icons/relation.png';
+import StopIcon from './assets/icons/stop.png';
+import SurveyIcon from './assets/icons/survey.png';
+import TranslationIcon from './assets/icons/translation.png';
+import UserCheckIcon from './assets/icons/user-check.png';
+import WorldIcon from './assets/icons/world.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
@@ -1026,7 +1046,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="Submission Data"
   subtitle="Capture and do what you please with submission data."
-   imgSrc={ShieldIcon}
+   imgSrc={ArchiveIcon}
 
 >
 
@@ -1036,20 +1056,69 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   <FlexCards
     items={[
       {
-        title: 'Limited Users',
-        titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'user-guides/getting-started/',
+        title: 'Store Submission Data',
+        description: "Save submission data or don't store it at all, but only send it through email notifications or an API integration, etc.",
+        imgSrc: ArchiveIcon,
       },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'user-guides/getting-started/',
+         {
+        title: 'GDPR Compliant',
+        description: 'Freeform simplifies GDPR compliance for your forms with thorough documentation and many configuration options.',
+        imgSrc: GdprIcon,
+        linkWithDescription: 'configuration/gdpr-compliance/',
       },
+         {
+        title: 'Manage Submissions',
+        description: 'View, manage, edit and delete submission data inside the control panel as well as front end templates!',
+        imgSrc: DataManageIcon,
+        linkWithDescription: 'submissions/overview/',
+      },
+         {
+        title: 'Exporting',
+        description: 'Quickly export submission data or generate Export Profile reports in Excel, CSV, Text, XML, or JSON formats.',
+        imgSrc: ExportIcon,
+        linkWithDescription: 'forms/exoprting',
+      },
+         {
+        title: 'Reviews & Comments',
+        description: 'Freeform can be customized to effectively manage discussion comments, product reviews, and more.',
+        imgSrc: CommentReviewIcon,
+      },
+         {
+        title: 'Surveys',
+        description: 'Freeform offers a vast selection of field types to effortlessly create visually appealing survey forms.',
+        imgSrc: SurveyIcon,
+        linkWithDescription: 'forms/types/surveys-polls/',
+      },
+         {
+        title: 'Front End Editing',
+        description: 'Enable front-end editing of form submissions for both admins and users to handle a wide variety of use cases.',
+        imgSrc: EditIcon,
+        linkWithDescription: 'submissions/overview/#editing-submissions',
+      },
+         {
+        title: 'Save & Continue Later',
+        description: 'Users can save their form progress securely and come back later to complete it.',
+        imgSrc: PlayButtonIcon,
+        linkWithDescription: 'forms/save-continue-later/',
+      },
+         {
+        title: 'Limit Submissions',
+        description: 'Limit submissions per user, allow only one submission, require login, or set a close date for the form submission period.',
+        imgSrc: StopIcon,
+        linkWithDescription: 'submissions/overview/#submission-limits',
+      },
+         {
+        title: 'Relate to other Elements',
+        description: 'Easily relate Freeform submissions with other element types, such as Craft Entries, allowing endless use cases.',
+        imgSrc: RelationIcon,
+        linkWithDescription: 'forms/relations/',
+      },
+         {
+        title: 'Custom Statuses',
+        description: 'Create unlimited statuses that can be applied to form submissions, allowing you to sort and filter submissions.',
+        imgSrc: CategoryIcon,
+        linkWithDescription: 'configuration/settings/#statuses',
+      }
     ]}
   />
 </Section>
@@ -1067,20 +1136,69 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   <FlexCards
     items={[
       {
-        title: 'Limited Users',
-        titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'user-guides/getting-started/',
+        title: 'Store Submission Data',
+        description: "Save submission data or don't store it at all, but only send it through email notifications or an API integration, etc.",
+        imgSrc: ArchiveIcon,
       },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'user-guides/getting-started/',
+         {
+        title: 'GDPR Compliant',
+        description: 'Freeform simplifies GDPR compliance for your forms with thorough documentation and many configuration options.',
+        imgSrc: GdprIcon,
+        linkWithDescription: 'configuration/gdpr-compliance/',
       },
+         {
+        title: 'Manage Submissions',
+        description: 'View, manage, edit and delete submission data inside the control panel as well as front end templates!',
+        imgSrc: DataManageIcon,
+        linkWithDescription: 'submissions/overview/',
+      },
+         {
+        title: 'Exporting',
+        description: 'Quickly export submission data or generate Export Profile reports in Excel, CSV, Text, XML, or JSON formats.',
+        imgSrc: ExportIcon,
+        linkWithDescription: 'forms/exoprting',
+      },
+         {
+        title: 'Reviews & Comments',
+        description: 'Freeform can be customized to effectively manage discussion comments, product reviews, and more.',
+        imgSrc: CommentReviewIcon,
+      },
+         {
+        title: 'Surveys',
+        description: 'Freeform offers a vast selection of field types to effortlessly create visually appealing survey forms.',
+        imgSrc: SurveyIcon,
+        linkWithDescription: 'forms/types/surveys-polls/',
+      },
+         {
+        title: 'Front End Editing',
+        description: 'Enable front-end editing of form submissions for both admins and users to handle a wide variety of use cases.',
+        imgSrc: EditIcon,
+        linkWithDescription: 'submissions/overview/#editing-submissions',
+      },
+         {
+        title: 'Save & Continue Later',
+        description: 'Users can save their form progress securely and come back later to complete it.',
+        imgSrc: PlayButtonIcon,
+        linkWithDescription: 'forms/save-continue-later/',
+      },
+         {
+        title: 'Limit Submissions',
+        description: 'Limit submissions per user, allow only one submission, require login, or set a close date for the form submission period.',
+        imgSrc: StopIcon,
+        linkWithDescription: 'submissions/overview/#submission-limits',
+      },
+         {
+        title: 'Relate to other Elements',
+        description: 'Easily relate Freeform submissions with other element types, such as Craft Entries, allowing endless use cases.',
+        imgSrc: RelationIcon,
+        linkWithDescription: 'forms/relations/',
+      },
+         {
+        title: 'Custom Statuses',
+        description: 'Create unlimited statuses that can be applied to form submissions, allowing you to sort and filter submissions.',
+        imgSrc: CategoryIcon,
+        linkWithDescription: 'configuration/settings/#statuses',
+      }
     ]}
   />
 </Section>
