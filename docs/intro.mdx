@@ -83,6 +83,18 @@ import SelectIcon from './assets/icons/select.png';
 import SignatureIcon from './assets/icons/signature.png';
 import TableIcon from './assets/icons/table.png';
 import TextareaIcon from './assets/icons/textarea.png';
+import CodingIcon from './assets/icons/textarea.png';
+import EmailFileIcon from './assets/icons/email-file.png';
+import EmailGroupIcon from './assets/icons/email-group.png';
+import EmailListIcon from './assets/icons/email-list.png';
+import EmailPlaneIcon from './assets/icons/email-plane.png';
+import EmailUserIcon from './assets/icons/email-user.png';
+import EmailsIcon from './assets/icons/emails.png';
+import ExportIcon from './assets/icons/export.png';
+import MultipleEmailTemplateIcon from './assets/icons/multiple-email-template.png';
+import OpenLetterIcon from './assets/icons/open-letter.png';
+import ResendEmailIcon from './assets/icons/resend-email.png';
+import SketchIcon from './assets/icons/sketch.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
@@ -125,6 +137,8 @@ import FeatureVideo from './assets/videos/builder-feature.mp4';
 import BuilderRulesVideo from './assets/videos/builder-rules.mp4';
 import BuilderIntegrationsVideo from './assets/videos/builder-integrations.mp4';
 import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4';
+import BuilderNotificationsVideo from './assets/videos/builder-notifications.mp4';
+import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 
 # Overview
 
@@ -677,51 +691,87 @@ import BuilderUserRegisterVideo from './assets/videos/builder-user-register.mp4'
   title="Email Notifications"
   subtitle="Every conceivable option for sending fully customizable email notifications."
   description="Have as many templates as you like, and use different ones for every type."
-   imgSrc={ShieldIcon}
-
+  imgSrc={OpenLetterIcon}
 >
 
-  <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
-  <BrowserMockupWithPhoto src={SpamDetailPhoto} alt="Spam Folder" />
+  <Player url={BuilderNotificationsVideo} muted loop playing width="100%" height="100%" />
+  <Player url={EmailNotificationsVideo} muted loop playing width="100%" height="100%" />
   <FlexCards
     items={[
       {
-        title: 'Limited Users',
+        title: 'Notify Admins',
+        description: 'Send email notifications for successful form submissions.',
+        imgSrc: EmailGroupIcon,
+        linkWithDescription: 'forms/email-notifications/#admin-notifications',
+      },
+           {
+        title: 'Notify Submitter',
+        description: 'Upon success, send an email notification to the submitter of the form.',
+        imgSrc: EmailUserIcon,
+        linkWithDescription: 'forms/email-notifications/#email-fields',
+      },
+            {
+        title: "User Select's Recipient",
+        description: 'Let users select the email recipient of the form submission from a list of predefined options.',
+        imgSrc: EmailListIcon,
+        linkWithDescription: 'forms/email-notifications/#user-select',
+      },
+            {
+        title: 'Conditional Notifications',
         titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'User%20Guides/getting-started/',
+        description: 'Conditionally send notifications based on the contents and/or option selection of any field(s).',
+        imgSrc: LogicIcon,
+        linkWithDescription: 'forms/email-notifications/#conditional',
+      },
+            {
+        title: 'Template-level Recipients',
+        description: 'Set email address(es) at template-level to be notified, allowing you to pass a value from another element dynamically.',
+        imgSrc: CodingIcon,
+        linkWithDescription: 'forms/email-notifications/#dynamic-template-notifications',
+      },
+            {
+        title: 'Tell-a-Friend',
+        description: "Include additional Email fields inside your form to allow users to type out a friend's email address to receive a separate notification.",
+        imgSrc: EmailPlaneIcon,
+        linkWithDescription: 'forms/email-notifications/#user-defined',
+      },
+            {
+        title: 'Multiple Notifications',
+        description: "There's no limit to the number of email notifications you can send, each with different templates/messages, etc.",
+        imgSrc: EmailGroupIcon,
+        linkWithDescription: 'forms/email-notifications',
+      },
+            {
+        title: 'Export Notifications',
+        description: 'You can set up customized export reports and receive them via email on a daily or weekly basis automatically.',
+        imgSrc: ExportIcon,
+        linkWithDescription: 'forms/exporting/#export-email-notifications',
+      },
+            {
+        title: 'Auto Plain Text',
+        description: 'Personalize the plain text version of email notifications or let Freeform convert it automatically.',
+        imgSrc: OpenLetterIcon,
+      },
+            {
+        title: 'Attach Files',
+        description: "Select asset file(s) to pre-attach to your email notification templates, allowing for the inclusion of 'welcome' documents, a PDF ticket, etc.",
+        imgSrc: EmailFileIcon,
+      },
+            {
+        title: 'Resend Email Notifications',
+        description: 'Freeform allows you to resend an email notification (or set of them) for one or more submissions at a time.',
+        imgSrc: ResendEmailIcon,
+      },
+            {
+        title: 'Unlimited Templates',
+        description: 'Create as many notification templates as needed, with the option to use the same one for all forms or tailor them to each use case.',
+        imgSrc: MultipleEmailTemplateIcon,
       },
       {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
-        description:
-          'Questions or issues? We want to help your project go smoothly!',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
-      },
-      {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'User%20Guides/getting-started/',
-      },
-      {
-        title: 'Support',
-        description:
-          'Questions or issues? We want to help your project go smoothly!',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Support',
-        linkWithDescription: 'https://docs.solspace.com/support/',
+        title: 'Fully Customizable',
+        description: "You can customize your email notifications with your own design using HTML and Twig.",
+        imgSrc: SketchIcon,
+        linkWithDescription: 'forms/email-notifications/#examples',
       },
     ]}
   />
