@@ -95,12 +95,14 @@ import MultipleEmailTemplateIcon from './assets/icons/multiple-email-template.pn
 import OpenLetterIcon from './assets/icons/open-letter.png';
 import ResendEmailIcon from './assets/icons/resend-email.png';
 import SketchIcon from './assets/icons/sketch.png';
+import SettingsIcon from './assets/icons/settings.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
 import SubmissionsListPhoto from './assets/img/submissions-list.png';
 import SubmissionsDetailPhoto from './assets/img/submissions-detail.png';
 import SubmissionsQuickExport from './assets/img/submissions-quick-export.png';
+import DemoBasicLightPhoto from './assets/img/demo-basic-light.png';
 
 import Mailchimp from './assets/icons/integrations/mailchimp.png';
 import HubSpot from './assets/icons/integrations/hubspot.png';
@@ -783,27 +785,31 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   title="Flexible Templating"
   subtitle="Fast and easy, yet highly customizable."
   description="Templates are highly customizable for even the most complex forms. With our ready-to-use demo templates and features, you can be up and running in just a few minutes!"
-   imgSrc={ShieldIcon}
-
+  imgSrc={CodeIcon}
 >
-
-  <BrowserMockupWithPhoto src={SpamFolderPhoto} alt="Spam Folder" />
+  <BrowserMockupWithPhoto src={DemoBasicLightPhoto} alt="Spam Folder" />
   <FlexCards
     items={[
       {
-        title: 'Limited Users',
-        titleBadge: 'New!',
-        description: 'Learn the basics about Freeform and setting up forms.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'Getting started',
-        linkWithDescription: 'user-guides/getting-started/',
+        title: 'Sample Templates',
+        description:
+          'Includes a diverse selection of examples that can be used as a starting poinnt for building your own.',
+        imgSrc: StarterTemplatesIcon,
+        linkWithDescription: 'templates/formatting',
       },
       {
-        title: 'User Guides',
-        description: 'See solutions to common problems and questions.',
-        imgSrc: TapWhiteIcon,
-        imgAlt: 'User Guides',
-        linkWithDescription: 'user-guides/getting-started/',
+        title: 'Demo Templates',
+        description:
+          'By simply clicking a few buttons, the demo templates offer a complete and operational section for your website.',
+        imgSrc: StarterTemplatesIcon,
+        linkWithDescription: 'configuration/demo-templates/',
+      },
+      {
+        title: 'Template Overrides',
+        description:
+          'Configure template overrides on attributes and field values, labels and more.',
+        imgSrc: SettingsIcon,
+        linkWithDescription: 'templates/formatting',
       },
     ]}
   />
