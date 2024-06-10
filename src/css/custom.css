@@ -350,3 +350,45 @@ html[data-theme='light'] .feature-api-grid a {
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2);
   margin-top: 10px;
 }
+
+/* Answer Card */
+.answer-card .circle {
+  position: relative;
+  display: inline-block;
+  background: #64b75d;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.answer-card .circle .checkmark {
+  position: absolute;
+  transform: rotate(45deg) translate(-50%, -50%);
+  left: 25%;
+  top: 50%;
+  height: 11px;
+  width: 6px;
+  border-bottom: 3px solid #17261f;
+  border-right: 3px solid #17261f;
+}
+
+@keyframes secret-glow {
+  0% {
+    color: #9778f1;
+  }
+  100% {
+    color: #78b1f1;
+  }
+}
+
+.answer-card secret {
+  display: flex;
+  color: #9778f1;
+  animation: secret-glow 2s infinite alternate;
+}
+
+.answer-card secret:before {
+  content: '\1F48E';
+  margin-right: 5px;
+}

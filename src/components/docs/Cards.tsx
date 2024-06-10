@@ -41,6 +41,25 @@ interface FieldCardsProps {
   items: FieldProps[];
 }
 
+interface AnswerCardProps {
+  children: React.ReactNode;
+}
+
+const AnswerCard: React.FC<AnswerCardProps> = ({ children }) => {
+  return (
+    <div className="border border-solid border-lime-800 p-5 rounded-lg bg-gray-100 dark:bg-lime-950 answer-card">
+      <div className="flex">
+        <div className="circle">
+          <div className="checkmark"></div>
+        </div>
+        <h4>Answer</h4>
+      </div>
+
+      {children}
+    </div>
+  );
+};
+
 const Card: React.FC<CardProps> = ({
   fullCardLink,
   linkWithDescription,
@@ -194,4 +213,4 @@ const IntegrationPhotoCards: React.FC<IntegrationPhotoCardsProps> = ({
   );
 };
 
-export { Card, FlexCards, FieldCards, IntegrationPhotoCards };
+export { Card, FlexCards, FieldCards, IntegrationPhotoCards, AnswerCard };
