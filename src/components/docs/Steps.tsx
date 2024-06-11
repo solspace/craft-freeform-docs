@@ -21,7 +21,7 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
           <div className="w-px min-h-12 h-full bg-gray-300" />
         </div>
       )}
-      <div className="flex flex-col">
+      <div className="flex flex-col max-w-[1045px]">
         {stepTitle && <h4>{stepTitle}</h4>}
         {children}
       </div>
