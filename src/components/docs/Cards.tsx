@@ -45,6 +45,31 @@ interface AnswerCardProps {
   children: React.ReactNode;
 }
 
+interface ChecklistItem {
+  text: React.ReactNode;
+}
+
+interface ChecklistSection {
+  items: ChecklistItem[];
+}
+
+const AnswerChecklist: React.FC<ChecklistSection> = ({ items }) => {
+  return (
+    <div className="checklist">
+      <ul>
+        {items.map((item, index) => (
+          <li key={index} className="flex items-start mb-4">
+            <input type="checkbox" id={`item-${index}`} className="mt-1 mr-2" />
+            <label htmlFor={`item-${index}`} className="flex flex-col">
+              {item.text}
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 const AnswerCard: React.FC<AnswerCardProps> = ({ children }) => {
   return (
     <div className="border border-solid border-lime-800 p-5 rounded-lg bg-gray-100 dark:bg-lime-950 answer-card">
@@ -213,4 +238,11 @@ const IntegrationPhotoCards: React.FC<IntegrationPhotoCardsProps> = ({
   );
 };
 
-export { Card, FlexCards, FieldCards, IntegrationPhotoCards, AnswerCard };
+export {
+  Card,
+  FlexCards,
+  FieldCards,
+  IntegrationPhotoCards,
+  AnswerCard,
+  AnswerChecklist,
+};
