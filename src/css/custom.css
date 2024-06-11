@@ -392,3 +392,78 @@ html[data-theme='light'] .feature-api-grid a {
   content: '\1F48E';
   margin-right: 5px;
 }
+
+/* Form styling */
+.form-styling {
+  font-style: italic;
+  border-left: 10px solid rgba(5, 143, 254, 0.2) !important;
+  border-radius: 5px;
+  background: rgba(5, 143, 254, 0.05) !important;
+  padding: 10px 15px;
+  color: #999;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+/* Docs demo Freeform checkbox */
+
+label.docs-demo-freeform-checkbox {
+  cursor: pointer;
+  display: inline-block;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 10px 0 !important;
+}
+.docs-demo-freeform-checkbox .docs-demo-switch {
+  display: inline-block;
+  background: #8c8c8c;
+  border-radius: 16px;
+  width: 50px;
+  height: 28px;
+  position: relative;
+  vertical-align: middle;
+  transition: all 0.25s;
+}
+.docs-demo-freeform-checkbox .docs-demo-switch:before,
+.docs-demo-switch:after {
+  content: '';
+}
+.docs-demo-freeform-checkbox .docs-demo-switch:before {
+  display: block;
+  background: #fafafa;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: left 0.25s;
+}
+.docs-demo-freeform-checkbox:hover .docs-demo-switch:before {
+  background: #ffffff;
+}
+.docs-demo-freeform-checkbox
+  input[type='checkbox']:checked
+  + .docs-demo-switch {
+  background: #52cd00;
+}
+.docs-demo-freeform-checkbox
+  input[type='checkbox']:checked
+  + .docs-demo-switch:before {
+  left: 24px;
+}
+.docs-demo-freeform-checkbox input[type='checkbox'] {
+  position: absolute;
+  visibility: hidden;
+}
+.docs-demo-freeform-checkbox span {
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
+
+/* Color Picker Box */
+#rc-editable-input-7 {
+  background-color: white;
+}

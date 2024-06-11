@@ -16,6 +16,7 @@ It's possible to easily implement `range` field type styling/handling on regular
 
 <VerticalStepWrapper>
 <StepMarkdown>
+### Step 1
 To familiarize yourself with the Range field type, a basic code example looks something like this:
 
 ```html showLineNumbers
@@ -35,7 +36,7 @@ To familiarize yourself with the Range field type, a basic code example looks so
 
 This will output the following (go ahead and play with it!):
 
-<div className="text-sm font-italic border-t-4 border-indigo-500 border-solid rounded-md p-4 my-2">
+<blockquote className="text-sm font-italic rounded-md p-4 mb-7 form-styling">
   <p className="text-blue-500 mb-2">How many pies do you eat per year?</p>
   <input
     type="range"
@@ -45,10 +46,11 @@ This will output the following (go ahead and play with it!):
     defaultValue="0"
     class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
   />
-</div>
+</blockquote>
 
 </StepMarkdown>
 <StepMarkdown>
+### Step 2
 What you might like to do is replace [Number](../forms/fields/#number) fields with a range slider. The Number field allows you to configure the Range features from inside the form builder. Your code can then include things like `minValue`, `maxValue`, `step`, and `defaultValue`:
 
 ```twig showLineNumbers
@@ -61,6 +63,7 @@ What you might like to do is replace [Number](../forms/fields/#number) fields wi
 
 </StepMarkdown>
 <StepMarkdown>
+### Step 3
 To add a bit of your own styling to the Range field, you can begin with the following CSS:
 
 ```css showLineNumbers
@@ -141,6 +144,8 @@ The result should look something like this:
 
 </StepMarkdown>
 <StepMarkdown>
+### Step 4
+
 In order for this to automatically happen inside a [formatting template](../forms/formatting-templates/), you'll want to create a new one if you haven't already. If you using the [Basic Light](../templates/formatting/basic-light/) formatting template as a starting point, your code might look something like this:
 
 ```twig {4-11} showLineNumbers
