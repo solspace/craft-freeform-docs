@@ -1,0 +1,8 @@
+{
+  "label": "Field Styling",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Implement custom styles on regular field types."
+  }
+}
