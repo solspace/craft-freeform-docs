@@ -1,7 +1,9 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+
 import tailwind from './plugins/tailwind-config.cjs';
+import docusaurusGithubRemoteContent from './plugins/docusaurus-github-remote-content';
 
 import type { Options as IdealImageOptions } from '@docusaurus/plugin-ideal-image';
 
@@ -50,6 +52,53 @@ const config: Config = {
 
   // External plugins
   plugins: [
+    [
+      docusaurusGithubRemoteContent,
+      {
+        contents: [
+          {
+            version: 5,
+            saveDir: 'docs/setup',
+            file: 'changelog.md',
+            url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v5/CHANGELOG.md',
+            meta: {
+              sidebar_label: 'Changelog',
+              sidebar_position: 5,
+            },
+          },
+          {
+            version: 4,
+            saveDir: 'versioned_docs/version-v4/setup',
+            file: 'changelog.md',
+            url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v4/CHANGELOG.md',
+            meta: {
+              sidebar_label: 'Changelog',
+              sidebar_position: 5,
+            },
+          },
+          {
+            version: 3,
+            saveDir: 'versioned_docs/version-v3/setup',
+            file: 'changelog.md',
+            url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v3/CHANGELOG.md',
+            meta: {
+              sidebar_label: 'Changelog',
+              sidebar_position: 5,
+            },
+          },
+          {
+            version: 2,
+            saveDir: 'versioned_docs/version-v2/setup',
+            file: 'changelog.md',
+            url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v2/CHANGELOG.md',
+            meta: {
+              sidebar_label: 'Changelog',
+              sidebar_position: 5,
+            },
+          },
+        ],
+      },
+    ],
     tailwind,
     [
       '@docusaurus/plugin-ideal-image',
