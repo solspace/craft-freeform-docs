@@ -1,13 +1,16 @@
 ---
+title: Changelog
 sidebar_label: Changelog
 sidebar_position: 5
 ---
+
+import { TitleDate } from '@site/src/components/docs'
 
 ## 2.5.27 - 2019-12-09 [CRITICAL]
 ### Fixed
 - Fixed a potential security vulnerability with submitting of forms.
 
-## 2.5.26 - 2019-06-26
+## 2.5.26 <TitleDate date="2019-06-26" />
 ### Changed
 - Updated Honeypot field to ensure screen readers don't see it and it can't be tabbed to, etc.
 
@@ -15,7 +18,7 @@ sidebar_position: 5
 - Fixed a bug where the Empty Option Label feature with predefined/element data options was not refreshing the value between selecting different fields.
 - Fixed a bug where OAuth-based integrations were not connecting properly.
 
-## 2.5.25 - 2019-06-19
+## 2.5.25 <TitleDate date="2019-06-19" />
 ### Added
 - Added Active Campaign CRM API integration (Pro edition).
 
@@ -30,7 +33,7 @@ sidebar_position: 5
 - Fixed a bug where Rating field stars sometimes looked plumper than they should in the CP.
 - Fixed some minor display issues with Date & Time fields in demo templates and sample formatting templates.
 
-## 2.5.24 - 2019-05-16
+## 2.5.24 <TitleDate date="2019-05-16" />
 ### Changed
 - Updated plugin icon.
 
@@ -38,25 +41,25 @@ sidebar_position: 5
 - Fixed a bug where entering the root template directory for directory path for Formatting Templates and Email Notifications settings would result in an error.
 - Fixed some CSS issues in CP submission detail views.
 
-## 2.5.23 - 2019-05-07
+## 2.5.23 <TitleDate date="2019-05-07" />
 ### Changed
 - Updated Flatpickr library (for Freeform date picker on Date fields) to v4.5.7, which resolves some issues.
 - Updated Pro edition to prepare for future official Editions support in Freeform.
 
-## 2.5.22 - 2019-04-30
+## 2.5.22 <TitleDate date="2019-04-30" />
 ### Fixed
 - Fixed a bug where the `allowAdminChanges` Project Config setting fix was causing errors for Craft 3.0.x users.
 
-## 2.5.21 - 2019-04-27
+## 2.5.21 <TitleDate date="2019-04-27" />
 ### Fixed
 - Fixed a bug where Settings area in CP was still visible when the `allowAdminChanges` setting is disabled for Project Config.
 - Reverted the Hidden fields order in CP Submission view change from v2.5.19 due to other side effects occurring from it.
 
-## 2.5.20 - 2019-04-25
+## 2.5.20 <TitleDate date="2019-04-25" />
 ### Fixed
 - Fixed a bug where the return URL could trigger an error in some cases.
 
-## 2.5.19 - 2019-04-23
+## 2.5.19 <TitleDate date="2019-04-23" />
 ### Added
 - Added Insightly CRM Lead integration for Freeform Pro edition.
 
@@ -70,7 +73,7 @@ sidebar_position: 5
 - Fixed a bug where the Resend Notifications feature errored when email notifications extended layouts.
 - Fixed a bug where permanently deleting fields could cause an error if assigned to an integration field list.
 
-## 2.5.18 - 2019-04-18
+## 2.5.18 <TitleDate date="2019-04-18" />
 ### Added
 - Added Active Campaign mailing list API integration (Pro edition).
 - Added `EVENT_AFTER_GENERATE_RETURN_URL` developer event, allowing modifying of the return URL of forms.
@@ -79,7 +82,7 @@ sidebar_position: 5
 - Updated the HubSpot integration to not create blank Deals if no Freeform data is mapped to Deal fields.
 - Updated the HubSpot integration to include an IP Address mapping setting, allowing you to map IP addresses to a custom field in Contacts.
 
-## 2.5.17 - 2019-04-08
+## 2.5.17 <TitleDate date="2019-04-08" />
 ### Added
 - Added a `getTagAttributes()` function to the Form component.
 
@@ -88,13 +91,13 @@ sidebar_position: 5
 - Fixed a bug where Users element connection was not always displaying all available fields for mapping for some User groups.
 - Fixed a bug where the `renderSingleInput()` method would not work with any directly applied custom attributes, etc.
 
-## 2.5.16 - 2019-03-28
+## 2.5.16 <TitleDate date="2019-03-28" />
 ### Fixed
 - Fixed a bug where multi-page tabs would not allow you to re-arrange them in CP.
 - Fixed a bug where user/group permissions for Settings didn't give access to create/edit API integrations and statuses.
 - Fixed a bug where trying to load mailing lists for API integration would error when using PostgreSQL.
 
-## 2.5.15 - 2019-03-25
+## 2.5.15 <TitleDate date="2019-03-25" />
 ### Changed
 - Updated Flash success message to return 'Form submitted successfully' instead of `true`.
 - Updated Dutch NL translation.
@@ -107,12 +110,12 @@ sidebar_position: 5
 - Fixed a bug where the CP Submissions chart could error when using PostgreSQL.
 - Fixed a bug where Freeform has unused class that caused the Craft Webhooks plugin to fail.
 
-## 2.5.14 - 2019-03-13
+## 2.5.14 <TitleDate date="2019-03-13" />
 ### Fixed
 - Fixed a bug where using the User element connection with the Password field on a page other than the last page of multi-page forms would have the mapping fail.
 - Fixed a bug where updating a mailing list integration's handle would cause it to duplicate instead.
 
-## 2.5.13 - 2019-02-26
+## 2.5.13 <TitleDate date="2019-02-26" />
 ### Changed
 - Updated Salesforce integrations to send over field data as strings (instead of integer) when mapping to a Salesforce Phone field type.
 
@@ -120,7 +123,7 @@ sidebar_position: 5
 - Fixed a bug where the Submissions CP index page would error for some customers.
 - Fixed a bug where submissions were not able to be restored (from soft delete) in Craft 3.1+.
 
-## 2.5.12 - 2019-02-21
+## 2.5.12 <TitleDate date="2019-02-21" />
 ### Added
 - Added getters for all form field attributes.
 
@@ -130,16 +133,16 @@ sidebar_position: 5
 - Fixed a bug where User Registration forms would error if an optional User Photo field was setup and mapped and the user submitted without a photo.
 - Fixed a bug where saving email notifications in the control panel would error in PHP 7.3. Updated the Markdownify dependency.
 
-## 2.5.11 - 2019-01-30
+## 2.5.11 <TitleDate date="2019-01-30" />
 ### Fixed
 - Fixed a bug where manually specifying field options (such as `fieldName.label`) in email notification templates were not working.
 
-## 2.5.10 - 2019-01-24
+## 2.5.10 <TitleDate date="2019-01-24" />
 ### Fixed
 - Fixed a bug where using the Export as CSV option was not exporting file uploads as the filename/full path.
 - Fixed a bug where assets for file upload fields in CP submission edit view were no longer linked to be downloadable.
 
-## 2.5.9 - 2019-01-21
+## 2.5.9 <TitleDate date="2019-01-21" />
 ### Added
 - Added two new methods for the `EVENT_BEFORE_PUSH` developer event: `setValues($values)` which will override all values, and `addValue($key, $value)` which allows for a quick and easy value addition to the existing values.
 
@@ -153,7 +156,7 @@ sidebar_position: 5
 - Fixed a potential XSS vulnerability on Email field types.
 - Fixed a bug where the 'Add criteria' button in Conditional Rules feature was not working in Firefox.
 
-## 2.5.8 - 2019-01-11
+## 2.5.8 <TitleDate date="2019-01-11" />
 ### Added
 - Added 'Automatically Scroll to Form on Errors and Multipage forms?' setting to allow the ability to disable this feature.
 
@@ -167,7 +170,7 @@ sidebar_position: 5
 - Fixed a bug where attempting to change the status of a submission in the control panel was not working.
 - Fixed a bug where the "Manage All Submissions" user/group permission was not allowing users to view or whitelist spam submissions.
 
-## 2.5.7 - 2018-12-20
+## 2.5.7 <TitleDate date="2018-12-20" />
 ### Changed
 - Updated Freeform's developer events for compatibility with the Craft Webhooks plugin.
 - Improved file cleanup and submission/spam purge. File cleanup no longer triggers on every request and does not clear DB cache to check for table existence.
@@ -177,7 +180,7 @@ sidebar_position: 5
 ### Fixed
 - Fixed a bug where updating submissions inside control panel would detach uploaded files.
 
-## 2.5.6 - 2018-12-18
+## 2.5.6 <TitleDate date="2018-12-18" />
 ### Added
 - Added `EVENT_AFTER_RESPONSE` developer event for all API integrations.
 
@@ -189,7 +192,7 @@ sidebar_position: 5
 - Fixed a bug where the `overrideValues` parameter was not working for pre-selecting options for multi-option field types.
 - Fixed a bug where Freeform Payments was logging credit card decline/fail errors to the Freeform error log.
 
-## 2.5.5 - 2018-12-11
+## 2.5.5 <TitleDate date="2018-12-11" />
 ### Fixed
 - Fixed a bug where Conditional Rules feature settings inside Composer stopped working correctly after 2.5.4 update.
 - Fixed a bug where Freeform would error when attempting to install on Craft 3.1.
@@ -197,7 +200,7 @@ sidebar_position: 5
 - Updated `freeform.submissions` to check if a Form object is passed to submission query form variable, and extract the form handle from that.
 - Fixed a bug where Freeform Payments subscription transactions that failed would not contain any (failed) Payment information attached to the submission.
 
-## 2.5.4 - 2018-12-07
+## 2.5.4 <TitleDate date="2018-12-07" />
 ### Changed
 - Updated Salesforce Lead and Opportunities integrations to work with Date/Time fields and more reliably with numeric data.
 
@@ -212,12 +215,12 @@ sidebar_position: 5
 - Fixed a bug where the US States predefined options list contained more than official states. Also added a States & Territories list that contains official states and territories.
 - Fixed a bug where the 'Spam Automatic Purge enabled' line in settings overview on Dashboard would always show 1 day.
 
-## 2.5.3 - 2018-11-28
+## 2.5.3 <TitleDate date="2018-11-28" />
 ### Fixed
 - Fixed a bug where the Recent Submissions widget was causing an error in the Craft Dashboard page.
 - Fixed a bug where `rand()` and other native SQL functions did not work for `orderBy` parameter in `freeform.submissions`.
 
-## 2.5.2 - 2018-11-27
+## 2.5.2 <TitleDate date="2018-11-27" />
 ### Added
 - Added Freeform Submissions Element Fieldtype.
 
@@ -231,7 +234,7 @@ sidebar_position: 5
 - Fixed a bug where Conditional Rules feature was not excluding fields hidden from logic in email notifications.
 - Fixed a bug where ordering Submissions in front end was not working correctly.
 
-## 2.5.1 - 2018-11-20
+## 2.5.1 <TitleDate date="2018-11-20" />
 ### Changed
 - Updated the way reCAPTCHA handles loading in templates. When loading an entire form via AJAX, you'll need to manually load the reCAPTCHA JS yourself now. AJAX demo templates are updated to reflect this.
 
@@ -240,7 +243,7 @@ sidebar_position: 5
 - Fixed a bug where the 'Export to CSV' feature would error for some users/user groups.
 - Fixed a bug where the 'Freeform Javascript Insertion Location' setting was not defaulting to 'Inside Form' (which offers better support for AJAX and other convenience features, etc) for fresh installs.
 
-## 2.5.0 - 2018-11-14
+## 2.5.0 <TitleDate date="2018-11-14" />
 ### Added
 - Added ability to 1-click enable built-in AJAX (anywhere) for forms via Composer.
 - Added ability to set attributes for labels, inputs, errors and instructions directly inside Composer property editor for fields.
@@ -266,12 +269,12 @@ sidebar_position: 5
 - Fixed a bug where File uploads were not being mapped to User Photo field correctly (in User Element Connection).
 - Fixed some visual bugs in Composer for required asterisks.
 
-## 2.4.3 - 2018-11-09
+## 2.4.3 <TitleDate date="2018-11-09" />
 ### Fixed
 - Fixed a bug where CSV exports could sometimes error on multi-option field types.
 - Fixed a bug where Widgets and the Freeform Dashboard could error in PostgreSQL and some versions of MySQL.
 
-## 2.4.2 - 2018-11-06
+## 2.4.2 <TitleDate date="2018-11-06" />
 ### Added
 - Added dotmailer mailing list integration for Freeform Pro edition.
 
@@ -284,7 +287,7 @@ sidebar_position: 5
 - Fixed a bug where submitting a form would error if an invalid/removed email notification template was assigned to that form.
 - Fixed a bug where the 'Reset' spam button would incorrectly show in CP Forms list page when using with Spam Folder.
 
-## 2.4.1 - 2018-10-12
+## 2.4.1 <TitleDate date="2018-10-12" />
 ### Changed
 - Updated Spam Counts for forms to correctly reflect the number of submissions in spam folder when Spam Folder is enabled.
 - Updated Element Feeder feature to include Site selector to allow specifying of alternate site content.
@@ -295,7 +298,7 @@ sidebar_position: 5
 - Fixed a bug where the Phone field type JS validation was causing issues in IE11.
 - Fixed a bug where uploaded files were no longer displaying in CP submission detail view.
 
-## 2.4.0 - 2018-10-05
+## 2.4.0 <TitleDate date="2018-10-05" />
 ### Added
 - Added Conditional Rules logic for fields and pages!
 - Added Dashboard that gives you convenient insights and an overview of your forms, submissions, settings and logged errors.
@@ -312,7 +315,7 @@ sidebar_position: 5
 - Fixed a bug where the Freeform 2.3 migration would not work correctly with PostgreSQL.
 - Fixed a bug where `Submission::__isset()` check was sometimes returning `null` instead of `false`.
 
-## 2.3.4 - 2018-09-24
+## 2.3.4 <TitleDate date="2018-09-24" />
 ### Changed
 - Updated page changes (forward and backward) in multipage forms to auto-scroll to form (helpful if your form is lower down on page).
 
@@ -321,21 +324,21 @@ sidebar_position: 5
 - Fixed a bug where the SharpSpring API integration was not connecting to SharpSpring.
 - Fixed a bug where forms would error on front end if Spam Blocking keywords contained regex-specific symbols.
 
-## 2.3.3 - 2018-09-17
+## 2.3.3 <TitleDate date="2018-09-17" />
 ### Fixed
 - Fixed a bug where Payments were not working correctly in Flexbox and Grid formatting templates and demo templates.
 
-## 2.3.2 - 2018-09-14
+## 2.3.2 <TitleDate date="2018-09-14" />
 ### Fixed
 - Various bug fixes for Freeform Payments feature.
 - Bug fixes and improvements to demo and sample templates to better accommodate Freeform Payments.
 
-## 2.3.1 - 2018-09-13
+## 2.3.1 <TitleDate date="2018-09-13" />
 ### Changed
 - Updated reCAPTCHA field to only be allowed once per form (disappears from Special fields list when in use).
 - Various tweaks and improvements for Freeform Payments compatibility.
 
-## 2.3.0 - 2018-09-12
+## 2.3.0 <TitleDate date="2018-09-12" />
 ### Added
 - Added ability to set Mailing List fields as hidden fields (automatically opting in users).
 
@@ -358,7 +361,7 @@ sidebar_position: 5
 - Fixed a bug where required asterisks were out of position in CP submission view.
 - Fixed a bug where permissions for Manage Export Profiles was not working correctly.
 
-## 2.2.2 - 2018-08-02
+## 2.2.2 <TitleDate date="2018-08-02" />
 ### Changed
 - Updated Element Connections feature to allow mapping Freeform File Upload fields to the User Photo field.
 - Updated SharpSpring integration to work with all custom field types.
@@ -366,7 +369,7 @@ sidebar_position: 5
 ### Fixed
 - Fixed a bug where the Element Connections feature would display an error for customers using Solo edition.
 
-## 2.2.1 - 2018-07-19
+## 2.2.1 <TitleDate date="2018-07-19" />
 ### Changed
 - Updated HubSpot integration to load custom fields from Contacts, Companies and Deals endpoints now, not just Deals.
 - Updated Composer to display an error if any fields are using the same handle.
@@ -376,7 +379,7 @@ sidebar_position: 5
 - Fixed a bug where JS validation for the Phone fieldtype was not working.
 - Fixed a bug where admin notification recipients were not being collected when using Windows newlines.
 
-## 2.2.0 - 2018-07-18
+## 2.2.0 <TitleDate date="2018-07-18" />
 
 :::tip
 There are updates in this release that affect the Phone fieldtype and Confirmation fieldtype. Please review change log below for more info.
@@ -406,12 +409,12 @@ There are updates in this release that affect the Phone fieldtype and Confirmati
 - Fixed a bug where the Formatting Template select menu options were not displaying cleaned up version of names in Composer.
 - Fixed a bug where some headings in the Property Editor were incorrect.
 
-## 2.1.1 - 2018-07-03
+## 2.1.1 <TitleDate date="2018-07-03" />
 ### Fixed
 - Fixed a bug where longer form layouts would not scroll vertically in Composer with Craft 3.0.13+.
 - Fixed a bug where submitting forms with emojis would result in an error and not correctly store submission.
 
-## 2.1.0 - 2018-06-27
+## 2.1.0 <TitleDate date="2018-06-27" />
 ### Added
 - Added the ability to move fields from one page to another in multipage forms in Composer.
 - Added ability to rearrange pages in multipage forms in Composer.
@@ -441,7 +444,7 @@ There are updates in this release that affect the Phone fieldtype and Confirmati
 - Fixed a bug where Demo Templates installer was stripping `-` from URI paths.
 - Fixed a bug where the "Manage all Submissions" permission was not allowing valid users to delete submissions.
 
-## 2.0.4 - 2018-05-31
+## 2.0.4 <TitleDate date="2018-05-31" />
 ### Added
 - Added a variety of thorough AJAX examples to demo templates!
 - Added `EVENT_BEFORE_RENDER` event for developers.
@@ -454,11 +457,11 @@ There are updates in this release that affect the Phone fieldtype and Confirmati
 - Fixed a bug where the Salesforce fetch token URL regex restriction was not allowing all types of URLs to pass through.
 - Fixed some issues Freeform when using with AJAX.
 
-## 2.0.3 - 2018-05-25
+## 2.0.3 <TitleDate date="2018-05-25" />
 ### Changed
 - Updated Symfony dependencies to avoid conflicting with other plugins.
 
-## 2.0.2 - 2018-05-24
+## 2.0.2 <TitleDate date="2018-05-24" />
 ### Changed
 - Updated `hashids` dependency to `^2.0` so Freeform doesn't conflict with other plugins.
 - Updated form validation to no longer allow a single space as a valid value for required fields.
@@ -468,7 +471,7 @@ There are updates in this release that affect the Phone fieldtype and Confirmati
 - Fixed a bug where Categories and Tags Feeders could break due to a JS error when setting the source.
 - Fixed a bug where setting the `maxlength` option for text and textarea fields to a value, and then changing back to nothing would result in Freeform not having the field accept no values.
 
-## 2.0.1 - 2018-05-17
+## 2.0.1 <TitleDate date="2018-05-17" />
 ### Added
 - Added automated Submission Purge feature.
 - Added automated Spam Folder Purge feature.
@@ -481,7 +484,7 @@ There are updates in this release that affect the Phone fieldtype and Confirmati
 ### Fixed
 - Fixed a bug where Craft Campaign mailing list option would show as available to create if you didn't have the plugin installed.
 
-## 2.0.0 - 2018-05-14
+## 2.0.0 <TitleDate date="2018-05-14" />
 ### Added
 - Added mailing list integration support for the Craft Campaign plugin, available on Lite and Pro editions.
 

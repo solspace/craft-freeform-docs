@@ -1,9 +1,12 @@
 ---
+title: Changelog
 sidebar_label: Changelog
 sidebar_position: 5
 ---
 
-## 5.3.4 - 2024-06-07
+import { TitleDate } from '@site/src/components/docs'
+
+## 5.3.4 <TitleDate date="2024-06-07" />
 
 ### Added
 - Added a list of active modules to the Freeform Diagnostics page.
@@ -14,12 +17,12 @@ sidebar_position: 5
 ### Fixed
 - Fixed a potential error when uninstalling Freeform 5.
 
-## 5.3.3.1 - 2024-06-05
+## 5.3.3.1 <TitleDate date="2024-06-05" />
 
 ### Changed
 - Reverted improved Twig template debugging for formatting templates change (5.1.17) for now, as it is causing issues with Windows servers.
 
-## 5.3.3 - 2024-06-05
+## 5.3.3 <TitleDate date="2024-06-05" />
 
 ### Changed
 - Updated the Password field type's Minimum Length setting to suppress Craft's minimum password length message when integrating with a Craft User to handle user registration.
@@ -29,7 +32,7 @@ sidebar_position: 5
 - Fixed a bug where Windows servers would show an error when attempting to load formatting templates.
 - Fixed a bug where a duplicate form filter could sometimes display in the CP Submissions index page.
 
-## 5.3.2 - 2024-05-31
+## 5.3.2 <TitleDate date="2024-05-31" />
 
 ### Changed
 - Updating the Surveys & Polls report/results page to include additional CSS that hides the Craft navbar and header for printing (or saving as PDF).
@@ -38,12 +41,12 @@ sidebar_position: 5
 - Fixed a bug where the Table field type's built-in JS and max rows settings inside the form builder did not affect the front end.
 - Fixed a bug where _en_ and _em_ dash characters were not saving in submission data on Radios, Dropdown, and Opinion Scale field types.
 
-## 5.3.1 - 2024-05-28
+## 5.3.1 <TitleDate date="2024-05-28" />
 
 ### Fixed
 - Fixed a bug that could cause the Craft search index to break if multiple forms had fields with the same handle.
 
-## 5.3.0 - 2024-05-24
+## 5.3.0 <TitleDate date="2024-05-24" />
 
 ### Changed
 - Improved the Script Insert feature:
@@ -65,7 +68,7 @@ sidebar_position: 5
 - Fixed a bug where displaying assets from File fields in CP Submissions was broken.
 - Fixed a bug where the _Theme_ setting was mislabeled for _File Drag & Drop_ fields inside the form builder.
 
-## 5.2.2 - 2024-05-22
+## 5.2.2 <TitleDate date="2024-05-22" />
 
 ### Added
 - Added `freeform-stripe-load` event for Payments forms and moved Mutation Observer outside of `window.onload`.
@@ -77,12 +80,12 @@ sidebar_position: 5
 - Fixed a bug where fetching Payment records (`freeform.payments`) in the Submissions query was not available.
 - Fixed a bug where an error about `freeform_feed` would be triggered when attempting to install Freeform.
 
-## 5.2.1 - 2024-05-21
+## 5.2.1 <TitleDate date="2024-05-21" />
 
 ### Fixed
 - Fixed a bug where the Express Forms migration was not working as of Freeform 5.1.19+.
 
-## 5.2.0 - 2024-05-15
+## 5.2.0 <TitleDate date="2024-05-15" />
 
 ### Added
 - Added optional **Site Filtering** setting for forms and submissions (Pro). This setting allows you to filter form lists by Sites and prevents other admins from accessing forms that belong to Sites they don't have access to.
@@ -97,13 +100,13 @@ sidebar_position: 5
 ### Fixed
 - Fixed a bug where Stripe payment information was unavailable in email notifications.
 
-## 5.1.19.1 - 2024-05-09
+## 5.1.19.1 <TitleDate date="2024-05-09" />
 
 ### Fixed
 - Fixed a bug where attempting to update to Freeform 5.1.19 could cause the process to crash.
 - Fixed input placeholder styles for Bootstrap sample formatting templates.
 
-## 5.1.19 - 2024-05-08
+## 5.1.19 <TitleDate date="2024-05-08" />
 
 ### Changed
 - Updated the **Settings → Statuses** to no longer have conflicting logic to set the default status for new forms. This is now done in the **Settings → Form Builder** area in Freeform 5+.
@@ -114,7 +117,7 @@ sidebar_position: 5
 - Fixed a bug where clicking the Source type an additional time would clear any option settings you currently have for Options-based field types.
 - Fixed a bug where setting `allowedGraphqlOrigins` to `false` in _general.php_ would cause form submissions to crash.
 
-## 5.1.18.1 - 2024-05-06
+## 5.1.18.1 <TitleDate date="2024-05-06" />
 
 :::warning
 If you are experiencing visual issues with form layouts and styles on the front end, please update Freeform and ensure you're adding the `|raw` filter to `form.attributes.success` and `form.attributes.errors` in any custom formatting templates you may have when not using AJAX.
@@ -123,7 +126,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 ### Changed
 - Added the `|raw` filter to `form.attributes.success` and `form.attributes.errors` in sample formatting templates as they began parsing with an extra set of quotes around them when not using AJAX.
 
-## 5.1.18 - 2024-05-06
+## 5.1.18 <TitleDate date="2024-05-06" />
 
 :::warning
 If you are experiencing visual issues with form layouts and styles on the front end, please update Freeform and ensure you're adding the `|raw` filter to `form.attributes.row` in any custom formatting templates you may have.
@@ -136,7 +139,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where forms would fail when loading if a **Confirm** field was used and the **Duplicate Check** setting was set to _Anyone - Once per Email Address_.
 - Fixed a bug where the form builder's field association badges for Checkbox, HTML, and Rich Text fields did not display correctly.
 
-## 5.1.17 - 2024-05-03
+## 5.1.17 <TitleDate date="2024-05-03" />
 
 ### Added
 - Added **Assets** as an Element source for populating Freeform field options.
@@ -155,12 +158,12 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where some integration could fail due to model properties being before EVENT_BEFORE_SAVE.
 - Fixed a bug where Notification Persistence would throw errors if the form upsert event has errors.
 
-## 5.1.16.1 - 2024-04-29
+## 5.1.16.1 <TitleDate date="2024-04-29" />
 
 ### Fixed
 - Fixed a bug where the update migration for 5.1.16 was not automatically being triggered.
 
-## 5.1.16 - 2024-04-26
+## 5.1.16 <TitleDate date="2024-04-26" />
 
 ### Added
 - Added the ability to set conditional rules that can prematurely fully submit the form if matched.
@@ -175,7 +178,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where submissions flagged as spam would still send data off to integrations instead of being queued.
 - Fixed some potential issues with submitting Checkbox fields.
 
-## 5.1.15 - 2024-04-24
+## 5.1.15 <TitleDate date="2024-04-24" />
 
 ### Changed
 - Updated GraphQL to include HTML and Rich Text field types.
@@ -187,18 +190,18 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where creating a new Site and setting it to be the Primary site (at the same time) would fail due to Freeform.
 - Fixed a bug where the old approach of `FreeformField_Submit` and `FreeformField_Save` were still showing under `fields` in the GraphQL explorer.
 
-## 5.1.14 - 2024-04-19
+## 5.1.14 <TitleDate date="2024-04-19" />
 
 ### Added
 - Added `freeform/submissions/generate` CLI command to allow the creation of fake submission data into forms. Useful for testing and troubleshooting some issues.
 - Added support for searching into specific fields in the CP Submission element search bar (e.g. `firstName:bob`). You may need to run `./craft freeform/submissions/resave --update-search-index` once for this to work.
 
-## 5.1.13.1 - 2024-04-18
+## 5.1.13.1 <TitleDate date="2024-04-18" />
 
 ### Fixed
 - Fixed an issue with the **Dotdigital** integration.
 
-## 5.1.13 - 2024-04-17
+## 5.1.13 <TitleDate date="2024-04-17" />
 
 ### Added
 - Added Craft element search support for submissions. You may need to run `./craft freeform/submissions/resave --update-search-index` once for this to work.
@@ -210,7 +213,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Express Forms migration utility would not work if there were no fields in a form.
 - Fixed a race condition issue where refreshing the browser in the form builder would sometimes show stale or invalid data on section tabs.
 
-## 5.1.12 - 2024-04-12
+## 5.1.12 <TitleDate date="2024-04-12" />
 
 ### Changed
 - Changed all `PUT` requests to `POST` requests for sites with strict method allowlists.
@@ -221,7 +224,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 ### Fixed
 - Fixed a bug where error validation was not working correctly in the form builder.
 
-## 5.1.11 - 2024-04-11
+## 5.1.11 <TitleDate date="2024-04-11" />
 
 ### Changed
 - Refactored Captcha loaders and added lazy load support.
@@ -244,13 +247,13 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Javascript Test was loading inside the CP Submission detail page.
 - Fixed a bug where an element query could execute before Craft loaded.
 
-## 5.1.10 - 2024-04-04
+## 5.1.10 <TitleDate date="2024-04-04" />
 
 ### Changed
 - Updated the `symfony/property-access`, `symfony/finder`, `symfony/filesystem` and `symfony/expression-language` dependencies to include `^7.0`.
 - Updated the `nesbot/carbon` dependency to include `^3.0.0"`.
 
-## 5.1.9 - 2024-04-03
+## 5.1.9 <TitleDate date="2024-04-03" />
 
 ### Added
 - Added an updated **Dotdigital** email marketing integration.
@@ -271,7 +274,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Submit button was prematurely becoming active again before the Stripe payment form was fully processed.
 - Fixed a bug where Captchas were loaded inside the CP submission detail page when enabled.
 
-## 5.1.8 - 2024-03-27
+## 5.1.8 <TitleDate date="2024-03-27" />
 
 ### Added
 - All _reCAPTCHA_ and _hCaptcha_ versions are now available for the **Lite** edition (as well as **Pro**).
@@ -287,7 +290,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where long field labels overlapped other field labels in the builder.
 - Fixed a bug where conditional rules for forms might not always migrate correctly from Freeform 4.
 
-## 5.1.7 - 2024-03-22
+## 5.1.7 <TitleDate date="2024-03-22" />
 
 ### Fixed
 - Fixed a bug where reCAPTCHA would conflict with forms using Stripe Payments.
@@ -295,7 +298,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where running the migration from Freeform 3.x could trigger a `Base table or view already exists` error.
 - Fixed some Safari browser stying issues with the horizontal scrollbar for page tabs.
 
-## 5.1.6 - 2024-03-20
+## 5.1.6 <TitleDate date="2024-03-20" />
 
 ### Added
 - Added a **Not Like** option for filtering on field values in Export Profiles.
@@ -308,12 +311,12 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where removing conditional rules did not always remove the correct rule set.
 - Fixed a bug where using multiple Stripe fields from multiple Stripe accounts in the same form would not work correctly.
 
-## 5.1.5.1 - 2024-03-20
+## 5.1.5.1 <TitleDate date="2024-03-20" />
 
 ### Fixed
 - Fixed a bug where a change for setting `nocache` headers in Freeform 5.1.5 broke the Craft CLI.
 
-## 5.1.5 - 2024-03-19
+## 5.1.5 <TitleDate date="2024-03-19" />
 
 ### Changed
 - Updated the CSRF input to send `nocache` headers when rendering. 
@@ -329,7 +332,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where changes to email notifications in the form builder were not sticking if you switched to another tab.
 - Fixed a bug where the default theme option for Stripe was incorrectly named `default` instead of `stripe`, causing console errors in the browser.
 
-## 5.1.4 - 2024-03-14
+## 5.1.4 <TitleDate date="2024-03-14" />
 
 ### Added
 - Added the ability to add attributes to Captcha containers at the template level.
@@ -341,7 +344,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Freeform 4 to 5 migration could fail when creating submission database tables in some circumstances.
 - Added clarity to the **Activate Users** setting for the User element integration.
 
-## 5.1.3 - 2024-03-11
+## 5.1.3 <TitleDate date="2024-03-11" />
 
 ### Fixed
 - Fixed a bug where Dynamic Recipient fields could sometimes fail in the Freeform 4 to 5 migration.
@@ -349,7 +352,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Calculations field type was not triggering the Stripe element refresh when set as the dynamic amount field while set as _Plain Text_.
 - Fixed a bug where the Empty Option Label feature was showing on fields other than Dropdowns.
 
-## 5.1.2 - 2024-03-07
+## 5.1.2 <TitleDate date="2024-03-07" />
 
 ### Fixed
 - Fixed a bug where Success Templates were not being mapped in the Freeform 4 to 5 migration.
@@ -357,7 +360,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where changing a form's Form Type had no effect.
 - Fixed a bug in conditional rules logic that prevented fields with handles beginning with a number from working correctly.
 
-## 5.1.1 - 2024-03-06
+## 5.1.1 <TitleDate date="2024-03-06" />
 
 ### Added
 - Added compatibility with Craft 5 beta (in addition to Craft 4.x).
@@ -375,7 +378,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where converting a field with Array data to a different field type without (e.g. _Checkboxes_ to _Dropdown_) would trigger an error.
 - Fixed a bug where the Calculation field was not being added to the Special field group on migration.
 
-## 5.1.0 - 2024-03-01
+## 5.1.0 <TitleDate date="2024-03-01" />
 
 ### Added
 - Added a Calculation field type, which allows you to perform dynamic calculations based on user-input values within forms.
@@ -385,12 +388,12 @@ If you are experiencing visual issues with form layouts and styles on the front 
 ### Fixed
 - Fixed a bug where page buttons were not translatable.
 
-## 5.0.16 - 2024-02-28
+## 5.0.16 <TitleDate date="2024-02-28" />
 
 ### Fixed
 - Fixed a bug where the Stripe payments field would not load correctly when logged out.
 
-## 5.0.15 - 2024-02-27
+## 5.0.15 <TitleDate date="2024-02-27" />
 
 ### Changed
 - Updated all sample formatting templates to include complete Stripe appearance API customization.
@@ -398,12 +401,12 @@ If you are experiencing visual issues with form layouts and styles on the front 
 ### Fixed
 - Fixed a bug where connecting to new integrations using OAuth 2.0 were not working due to the redirect URI being empty.
 
-## 5.0.14.1 - 2024-02-23
+## 5.0.14.1 <TitleDate date="2024-02-23" />
 
 ### Fixed
 - Fixed some remaining issues related to the migration from Freeform 4.
 
-## 5.0.14 - 2024-02-23
+## 5.0.14 <TitleDate date="2024-02-23" />
 
 ### Changed
 - Updated the reserved words list to make exceptions for `name`, `type`, and `username` as they are more likely to be used and don't appear to cause any issues.
@@ -414,7 +417,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where forms would error when Freeform Date fields were mapping to Craft date fields (e.g. Post Date, Expiry Date, etc) in Element integrations.
 - Fixed a bug where setting a template override for the submission status was not working.
 
-## 5.0.13 - 2024-02-23
+## 5.0.13 <TitleDate date="2024-02-23" />
 
 ### Added
 - Added a reserved word validator using Craft's reserved words to check against field handles.
@@ -431,7 +434,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Stripe Payments field was not working with the Tailwind sample formatting template (and potentially some custom templates).
 - Fixed a bug where some sample formatting templates showed unnecessary styling wrappers around Stripe Payments fields.
 
-## 5.0.12 - 2024-02-19
+## 5.0.12 <TitleDate date="2024-02-19" />
 
 ### Added
 - Added support for querying conditional rules for fields and pages in GraphQL.
@@ -440,7 +443,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where migrated forms with a Dynamic Recipients field (not User Select) would trigger an error loading/submitting the form.
 - Fixed a bug where Regex fields were triggering an error if left empty when submitting the form.
 
-## 5.0.11 - 2024-02-16
+## 5.0.11 <TitleDate date="2024-02-16" />
 
 ### Added
 - Added a setting to allow users to enable dashes in field handle names.
@@ -453,7 +456,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Stripe Webhook URL was incorrectly including a CP admin path. Any existing Stripe integrations will need to be manually adjusted.
 - Adjusted the JS in a few of the sample templates.
 
-## 5.0.10 - 2024-02-08
+## 5.0.10 <TitleDate date="2024-02-08" />
 
 ### Added
 - Added PKCE (Proof Key for Code Exchange) implementation for integrations using the OAuth2.0 flow.
@@ -466,14 +469,14 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the **Use Option Labels when Exporting** setting was causing exports to fail.
 - Fixed a bug where the Freeform was causing _Element query executed before Craft is fully initialized_ errors to be logged in the Craft logs.
 
-## 5.0.9 - 2024-02-07
+## 5.0.9 <TitleDate date="2024-02-07" />
 
 ### Fixed
 - Fixed a bug where the Mailchimp integration was only showing one audience/mailing list.
 - Fixed a bug where the `fieldIdPrefix` parameter was not working.
 - Fixed a bug where the Conditional Rules value input was not being hidden for empty condition rule types.
 
-## 5.0.8 - 2024-02-06
+## 5.0.8 <TitleDate date="2024-02-06" />
 
 ### Changed
 - Implemented better cache busting for loading script pointers.
@@ -485,7 +488,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the Stripe Payment field would sometimes not load on the front end.
 - Fixed a bug where all old integrations were not being cleared during the migration from Freeform 4.
 
-## 5.0.7 - 2024-02-02
+## 5.0.7 <TitleDate date="2024-02-02" />
 
 ### Added
 - Added support for querying page Submit buttons in GraphQL.
@@ -498,13 +501,13 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the GraphQL cache was not resetting after making form updates.
 - Fixed a bug where `maxLength` was included in Text and Textarea field types in GraphQL when not applicable.
 
-## 5.0.6.1 - 2024-02-01
+## 5.0.6.1 <TitleDate date="2024-02-01" />
 
 ### Fixed
 - Fixed a bug where integration settings pages were not being displayed in the navigation when `allowAdminChanges` was set to `false`.
 - Fixed a bug where the Dynamic Template Notifications feature was not working correctly.
 
-## 5.0.6 - 2024-01-31
+## 5.0.6 <TitleDate date="2024-01-31" />
 
 ### Added
 - Added the ability to manually render Submit buttons in forms.
@@ -519,7 +522,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where field values/default values were not returning correctly in GraphQL queries.
 - Fixed a bug where some sample formatting templates did not correctly style the File Upload Drag & Drop fields.
 
-## 5.0.5 - 2024-01-30
+## 5.0.5 <TitleDate date="2024-01-30" />
 
 ### Changed
 - Updated form rendering to work when iterating over rows directly in the `form` object for better backward compatibility with the Freeform 4.x approach.
@@ -530,7 +533,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where the weekly/daily email Digest feature was not always working correctly.
 - Fixed a visual bug where the breadcrumbs in the form builder would formulate incorrectly when refreshing the browser.
 
-## 5.0.4 - 2024-01-29
+## 5.0.4 <TitleDate date="2024-01-29" />
 
 ### Added
 - Added a _Page Header_ option for the **Freeform Javascript Insertion Location** setting.
@@ -542,7 +545,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where misconfigured options fields could crash the Freeform 4 migration.
 - Fixed a visual bug where the breadcrumbs in the form builder could formulate incorrectly when saving the form.
 
-## 5.0.3 - 2024-01-26
+## 5.0.3 <TitleDate date="2024-01-26" />
 
 ### Changed
 - Updated the weekly/daily email Digest to use Craft's queue jobs.
@@ -556,7 +559,7 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a bug where mandatory attributes were showing up in the form builder attribute editor.
 - Fixed the `extras/manual-form` demo template to work correctly with Freeform 5.
 
-## 5.0.2 - 2024-01-25
+## 5.0.2 <TitleDate date="2024-01-25" />
 
 ### Added
 - Verified compatibility with Craft 4.7.
@@ -565,13 +568,13 @@ If you are experiencing visual issues with form layouts and styles on the front 
 - Fixed a few compatibility issues with PHP 8.0.
 - Fixed a bug where the migration could potentially convert a couple of the default fields incorrectly in the first form.
 
-## 5.0.1 - 2024-01-23
+## 5.0.1 <TitleDate date="2024-01-23" />
 
 ### Fixed
 - Fixed an `instanceof` check issue on the Freeform 5 migration.
 - Fixed a bug where default form success/error messages were not being added if empty.
 
-## 5.0.0 - 2024-01-22
+## 5.0.0 <TitleDate date="2024-01-22" />
 
 :::warning
 If upgrading from Freeform 4, please see the special [upgrade guide](https://docs.solspace.com/craft/freeform/v5/setup/updating-freeform-4/) before proceeding.

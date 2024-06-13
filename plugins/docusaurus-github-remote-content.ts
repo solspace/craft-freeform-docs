@@ -74,6 +74,7 @@ function transformer(content: Content, data: string): string {
     );
   }
   df += '---\n\n';
+  df += "import { TitleDate } from '@site/src/components/docs'\n\n";
 
   if (content.header) {
     df += content.header + '\n\n';
@@ -120,6 +121,17 @@ function transformer(content: Content, data: string): string {
   filteredData = filteredData.replace(
     /{count}|{max}/g,
     (match) => `\`${match}\``
+  );
+
+  // Add TitleDate component to version titles
+  filteredData = filteredData.replace(
+    /^(## \d+\.\d+\.\d+(?:\.\d+)?)( - (\d{4}-\d{2}-\d{2}))?$/gm,
+    (match, version, _, date) => {
+      if (date) {
+        return `${version} <TitleDate date="${date}" />`;
+      }
+      return version;
+    }
   );
 
   return df + filteredData;

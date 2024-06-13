@@ -59,9 +59,10 @@ const config: Config = {
           {
             version: 5,
             saveDir: 'docs/setup',
-            file: 'changelog.md',
+            file: 'changelog.mdx',
             url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v5/CHANGELOG.md',
             meta: {
+              title: 'Changelog',
               sidebar_label: 'Changelog',
               sidebar_position: 5,
             },
@@ -69,9 +70,10 @@ const config: Config = {
           {
             version: 4,
             saveDir: 'versioned_docs/version-v4/setup',
-            file: 'changelog.md',
+            file: 'changelog.mdx',
             url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v4/CHANGELOG.md',
             meta: {
+              title: 'Changelog',
               sidebar_label: 'Changelog',
               sidebar_position: 5,
             },
@@ -79,9 +81,10 @@ const config: Config = {
           {
             version: 3,
             saveDir: 'versioned_docs/version-v3/setup',
-            file: 'changelog.md',
+            file: 'changelog.mdx',
             url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v3/CHANGELOG.md',
             meta: {
+              title: 'Changelog',
               sidebar_label: 'Changelog',
               sidebar_position: 5,
             },
@@ -89,9 +92,10 @@ const config: Config = {
           {
             version: 2,
             saveDir: 'versioned_docs/version-v2/setup',
-            file: 'changelog.md',
+            file: 'changelog.mdx',
             url: 'https://raw.githubusercontent.com/solspace/craft-freeform/v2/CHANGELOG.md',
             meta: {
+              title: 'Changelog',
               sidebar_label: 'Changelog',
               sidebar_position: 5,
             },
