@@ -6,42 +6,42 @@ sidebar_position: 5
 
 import { TitleDate } from '@site/src/components/docs'
 
-## 3.13.37 <TitleDate date="2024-05-08" />
+## 3.13.37<TitleDate date="2024-05-08" />
 
 ### Fixed
 - Fixed a bug where setting a Calendar Event to be **All Day** in the Calendar Events integration was not working.
 
-## 3.13.36 <TitleDate date="2024-04-12" />
+## 3.13.36<TitleDate date="2024-04-12" />
 
 ### Fixed
 - Fixed a bug where not all Stripe validation errors were accounted for and could cause the form to break.
 
-## 3.13.35 <TitleDate date="2024-03-01" />
+## 3.13.35<TitleDate date="2024-03-01" />
 
 ### Fixed
 - Fixed a bug where the _Fill Form Values from the GET Query String_ setting was not being respected.
 
-## 3.13.34 <TitleDate date="2024-02-09" />
+## 3.13.34<TitleDate date="2024-02-09" />
 
 ### Fixed
 - Fixed a bug where the File Upload Drag & Drop field type could use an incorrect URL if search params are used.
 
-## 3.13.33 <TitleDate date="2023-12-19" />
+## 3.13.33<TitleDate date="2023-12-19" />
 
 ### Added
 - Added support for additional mimetype file upload validation on `.dwg`, `.dxf`, `.msg`, `.sia`, `.stl`, `.stp`, and `.step`.
 
-## 3.13.32 <TitleDate date="2023-07-24" />
+## 3.13.32<TitleDate date="2023-07-24" />
 
 ### Changed
 - Refactored the Freeform lock service to use Yii's cache to prevent performance issues.
 
-## 3.13.31 <TitleDate date="2023-07-11" />
+## 3.13.31<TitleDate date="2023-07-11" />
 
 ### Added
 - Added support for mapping to multiple groups/interests in the Mailchimp integration.
 
-## 3.13.30 <TitleDate date="2023-07-04" />
+## 3.13.30<TitleDate date="2023-07-04" />
 
 ### Changed
 - Updated the Diagnostics and Craft 4 Preflight pages to still show when the `allowAdminChanges` setting is set to `false`.
@@ -50,28 +50,28 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug that could cause issues when using the JS Honeypot enhancement.
 - Fixed a bug where an erroneous database index existed for email marketing integrations that would sometimes cause an error.
 
-## 3.13.29 <TitleDate date="2023-05-08" />
+## 3.13.29<TitleDate date="2023-05-08" />
 
 ### Changed
 - Updated the JS Honeypot Enhancement feature to use the encrypted payload instead of PHP sessions when the 'Form Session Context' setting is 'Encrypted Payload'.
 
-## 3.13.28 <TitleDate date="2023-04-04" />
+## 3.13.28<TitleDate date="2023-04-04" />
 
 ### Fixed
 - Fixed a bug where some migrations and integrations could error when using Guzzle JSON calls.
 
-## 3.13.27 <TitleDate date="2023-03-23" />
+## 3.13.27<TitleDate date="2023-03-23" />
 
 ### Fixed
 - Fixed a bug where the Constant Contact integration could timeout when connecting if there were too many lists.
 
-## 3.13.26 <TitleDate date="2023-03-10" />
+## 3.13.26<TitleDate date="2023-03-10" />
 
 ### Changed
 - Addressed some minor Craft 3.8 compatibility issues in the control panel.
 - Improved Dutch (NL) language translations.
 
-## 3.13.25 <TitleDate date="2023-03-01" />
+## 3.13.25<TitleDate date="2023-03-01" />
 
 ### Added
 - Added support for `.eps` files in the Freeform file helper validation.
@@ -84,29 +84,29 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where many items were not translatable in the Freeform control panel.
 - Fixed a bug where using "Database Tables" for session storage context would result in an error when submitting forms.
 
-## 3.13.24 <TitleDate date="2023-02-14" />
+## 3.13.24<TitleDate date="2023-02-14" />
 
 ### Fixed
 - Fixed a bug where the Freeform Form element field type was not sorting form options alphabetically.
 - Fixed a bug where the `freeform_integrations` table's `accessToken` column was not being set to TEXT on fresh installs.
 
-## 3.13.23 <TitleDate date="2023-02-08" />
+## 3.13.23<TitleDate date="2023-02-08" />
 
 ### Fixed
 - Fixed a bug where POST Forwarding was not being triggered when approving submissions in the Spam Folder.
 
-## 3.13.22.1 <TitleDate date="2022-12-09" />
+## 3.13.22.1<TitleDate date="2022-12-09" />
 
 ### Fixed
 - Fixed a bug where the `sameSiteCookieValue` fix in 3.13.22 was not compatible with PHP 7.2.x.
 
-## 3.13.22 <TitleDate date="2022-12-06" />
+## 3.13.22<TitleDate date="2022-12-06" />
 
 ### Changed
 - Updated to only load reCAPTCHA scripts when form(s) have reCAPTCHA enabled.
 - Updated to support Craft's `sameSiteCookieValue`.
 
-## 3.13.21 <TitleDate date="2022-10-25" />
+## 3.13.21<TitleDate date="2022-10-25" />
 
 ### Added
 - Added success events for AJAX forms with `redirect-to-url` behavior.
@@ -114,7 +114,7 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed an error caused by different Craft version API's.
 
-## 3.13.20 <TitleDate date="2022-09-28" />
+## 3.13.20<TitleDate date="2022-09-28" />
 
 ### Changed
 - Updated the AJAX response payload to include posted values.
@@ -125,7 +125,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where the Diagnostics page could fail on remnants of old plugins.
 - Fixed a bug where the `form` reserved keyword was being allowed for field handles.
 
-## 3.13.19 <TitleDate date="2022-09-12" />
+## 3.13.19<TitleDate date="2022-09-12" />
 
 ### Changed
 - Updated the Google Tag Manager event to include the AJAX response.
@@ -136,7 +136,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where fetching existing tags for the ActiveCampaign integration was not working correctly.
 - Fixed a bug where duplicating forms could cause an error when more than one user group has permission to manage it.
 
-## 3.13.18 <TitleDate date="2022-08-23" />
+## 3.13.18<TitleDate date="2022-08-23" />
 
 ### Added
 - Added a new version of the HubSpot API integration to address new Private App token requirement. This is a required change for any existing HubSpot users.
@@ -146,7 +146,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where attempting to view a related Freeform submission element in the slideout in another element could error.
 - Fixed a bug where multiple instances of the same form are added when moving the form instance around the DOM.
 
-## 3.13.17 <TitleDate date="2022-08-05" />
+## 3.13.17<TitleDate date="2022-08-05" />
 
 ### Fixed
 - Fixed a bug where the amCharts library was not using a local copy for its scripts in the CP.
@@ -159,7 +159,7 @@ import { TitleDate } from '@site/src/components/docs'
 ### Security
 - Addressed some potential XSS vulnerabilities.
 
-## 3.13.16 <TitleDate date="2022-07-25" />
+## 3.13.16<TitleDate date="2022-07-25" />
 
 ### Changed
 - Switched over CP scripts to use local copies of external scripts.
@@ -171,7 +171,7 @@ import { TitleDate } from '@site/src/components/docs'
 ### Security
 - Addressed some potential XSS vulnerabilities.
 
-## 3.13.15 <TitleDate date="2022-07-19" />
+## 3.13.15<TitleDate date="2022-07-19" />
 
 ### Added
 - Added the ability to map Mailchimp Interests to a form field. Limited to finding and passing a single Interest based on first match within Interest names part of a List.
@@ -183,7 +183,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where Freeform's mutation observer was not attaching to nested forms.
 - Adjusted the NL translation word for `any` in the conditional rules feature.
 
-## 3.13.14 <TitleDate date="2022-06-30" />
+## 3.13.14<TitleDate date="2022-06-30" />
 
 ### Changed
 - Updated Dashboard and Forms listing to hide forms for users that do not have any form or submission access permissions to them.
@@ -194,7 +194,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where Stripe subscription plan names could possibly show up blank if no price plan description was provided. If so, Freeform will now autogenerate plan names.
 - Fixed a bug where the form builder didn't warn that `author` is a reserved handle name.
 
-## 3.13.13 <TitleDate date="2022-06-15" />
+## 3.13.13<TitleDate date="2022-06-15" />
 
 ### Fixed
 - Fixed a bug where passing through anonymous calls to the `freeform/api/form` endpoint alias was not working.
@@ -203,7 +203,7 @@ import { TitleDate } from '@site/src/components/docs'
 ### Security
 - Addressed some potential XSS vulnerabilities.
 
-## 3.13.12 <TitleDate date="2022-06-08" />
+## 3.13.12<TitleDate date="2022-06-08" />
 
 ### Added
 - Added support for date fields in the Campaign Monitor integration.
@@ -214,13 +214,13 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where exporting to Excel could fail if a field's value began with `=`.
 
-## 3.13.11 <TitleDate date="2022-06-01" />
+## 3.13.11<TitleDate date="2022-06-01" />
 
 ### Added
 - Added setting to have CSV and Excel exports use field handles for headings instead of field labels.
 - Added `data-skip-html-reload` form attribute option to bypass HTML reload for AJAX forms (when not using render method)
 
-## 3.13.10 <TitleDate date="2022-05-24" />
+## 3.13.10<TitleDate date="2022-05-24" />
 
 ### Added
 - Added Export Email Notifications feature. Allows you to send exports as email notifications automatically.
@@ -230,7 +230,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where the predefined "Yesterday" option for Export Profiles returned yesterday 0:00 until now instead of yesterday 0:00 to 23:59.
 - Fixed a bug with conditional Post Forwarding options check.
 
-## 3.13.9 <TitleDate date="2022-04-04" />
+## 3.13.9<TitleDate date="2022-04-04" />
 
 ### Fixed
 - Fixed a bug where users with permissions to Create New Forms would encounter issues in the New Form wizard modal.
@@ -238,7 +238,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where the Formatting Template setting in the New Form wizard modal would not default correctly if custom formatting templates did not exist.
 - Fixed a bug where Number fields with a minimum value above `0` would still allow `0` as a valid value.
 
-## 3.13.8 <TitleDate date="2022-04-02" />
+## 3.13.8<TitleDate date="2022-04-02" />
 
 ### Changed
 - Updated `symfony/property-access`, `symfony/finder` and `symfony/filesystem` dependency version requirements to resolve some conflicts.
@@ -252,7 +252,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where Checkbox Groups and Multi-Select field types would not show default options in rendered form.
 - Fixed a bug where the form builder tutorial would show an error if the `allowAdminChanges` setting was disabled.
 
-## 3.13.7 <TitleDate date="2022-03-28" />
+## 3.13.7<TitleDate date="2022-03-28" />
 
 ### Added
 - Added a preflight page to check for potential issues with upgrading to Freeform 4 (Craft 4) in the future.
@@ -262,19 +262,19 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where CORS handling might still not work under certain circumstances. Also added events for possible customization.
 - Fixed a bug where some permission-related migrations could cause issues with Project Config.
 
-## 3.13.6 <TitleDate date="2022-03-16" />
+## 3.13.6<TitleDate date="2022-03-16" />
 
 ### Fixed
 - Fixed a bug where some older migrations could error when upgrading to Freeform 3.13+.
 - Fixed a bug where mass allowing spam submissions would not populate field values in email notifications correctly.
 - Fixed a bug where the CORS Origin header was not working correctly when `allowedGraphqlOrigins` enabled.
 
-## 3.13.5.1 <TitleDate date="2022-03-11" />
+## 3.13.5.1<TitleDate date="2022-03-11" />
 
 ### Fixed
 - Fixed a bug where an error could display on sites using older versions of PHP.
 
-## 3.13.5 <TitleDate date="2022-03-11" />
+## 3.13.5<TitleDate date="2022-03-11" />
 
 ### Fixed
 - Fixed a bug where the reCAPTCHA v2 Checkbox field was not displaying in forms in Freeform Lite edition.
@@ -282,12 +282,12 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where creating or editing fields inside the Field Manager area could trigger an error in Freeform Pro edition.
 - Fixed a bug where the "New Form" wizard modal could sometimes not correctly continue to form when using an irregular admin URL.
 
-## 3.13.4 <TitleDate date="2022-03-04" />
+## 3.13.4<TitleDate date="2022-03-04" />
 
 ### Changed
 - Updated the Constant Contact email marketing integration to work with the latest API changes. This is an important update for anyone using Constant Contact with their forms.
 
-## 3.13.3 <TitleDate date="2022-03-03" />
+## 3.13.3<TitleDate date="2022-03-03" />
 
 ### Changed
 - Updated the "New Form" wizard to auto-focus the Form Name field.
@@ -295,18 +295,18 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where the reCAPTCHA v2 Checkbox field was not displaying in forms.
 
-## 3.13.2 <TitleDate date="2022-03-02" />
+## 3.13.2<TitleDate date="2022-03-02" />
 
 ### Added
 - Added "Send Additional Notification" feature, allowing you to send email notifications of submissions to other email addresses at any point.
 
-## 3.13.1 <TitleDate date="2022-03-01" />
+## 3.13.1<TitleDate date="2022-03-01" />
 
 ### Fixed
 - Fixed a bug where some special field types were not displaying in forms.
 - Fixed a bug where the demo templates submission edit link was not working correctly.
 
-## 3.13.0 <TitleDate date="2022-02-25" />
+## 3.13.0<TitleDate date="2022-02-25" />
 
 ### Added
 - Added "New Form" wizard that shows the key settings to ease users into creating new forms.
@@ -323,7 +323,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Added user/group permission for showing/hiding Quick Export and the "Export as CSV" option in the CP Submissions index page.
 - Added field `options` alias for Rating and Opinion Scale field types.
 
-## 3.12.13 <TitleDate date="2022-02-01" />
+## 3.12.13<TitleDate date="2022-02-01" />
 
 ### Added
 - Added a setting to allow global control of whether exporting submissions uses the field option labels or option values.
@@ -332,12 +332,12 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where Export Profiles were not correctly factoring in timezones when using date ranges on exports.
 - Fixed a bug where Drag & Drop File Upload fields were not working correctly with IE11.
 
-## 3.12.12.1 <TitleDate date="2022-01-26" />
+## 3.12.12.1<TitleDate date="2022-01-26" />
 
 ### Fixed
 - Fixed a bug where the default rendering of Rating fields would right-align the stars instead of left-align.
 
-## 3.12.12 <TitleDate date="2022-01-21" />
+## 3.12.12<TitleDate date="2022-01-21" />
 
 ### Added
 - Added support for HEIC and HEIF image file types in Freeform's mime validation layer.
@@ -347,7 +347,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where self-deletion feature (`deleteSubmissionByToken`) was only working for admins.
 - Fixed a bug where the Diagnostics page would error if there are plugins/modules that don't have the `enabled` property present.
 
-## 3.12.11 <TitleDate date="2021-12-23" />
+## 3.12.11<TitleDate date="2021-12-23" />
 
 ### Added
 - Added a setting for Date & Time fields in the form builder that lets you set/force a locale for the field.
@@ -358,7 +358,7 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where the custom form properties feature wasn't working correctly.
 
-## 3.12.10 <TitleDate date="2021-12-20" />
+## 3.12.10<TitleDate date="2021-12-20" />
 
 ### Added
 - Added the GraphQL `allowedGraphqlOrigins` config setting for CORS support in Freeform.
@@ -373,12 +373,12 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where deleting an uploaded file could clear the submission data.
 - Fixed a bug where blocked email and keyword error messages were not being displayed underneath applicable fields when the corresponding settings are enabled.
 
-## 3.12.9.1 <TitleDate date="2021-12-07" />
+## 3.12.9.1<TitleDate date="2021-12-07" />
 
 ### Fixed
 - Fixed a bug where new installs could potentially error on the `league/flysystem` dependency version.
 
-## 3.12.9 <TitleDate date="2021-12-07" />
+## 3.12.9<TitleDate date="2021-12-07" />
 
 ### Added
 - Added support for hCaptcha, which works similar to reCAPTCHA but easily complies with GDPR and other global data laws.
@@ -388,7 +388,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where it was not possible to submit forms directly to the Submit controller.
 - Fixed a bug where Opinion Scale fields were not defaulting to using values as labels if labels are empty.
 
-## 3.12.8 <TitleDate date="2021-12-02" />
+## 3.12.8<TitleDate date="2021-12-02" />
 
 ### Changed
 - Updated Freeform CSS to not load in templates where forms don't contain the Drag & Drop File Upload or Opinion Scale field types.
@@ -398,7 +398,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where multi-page forms with single checkbox field types would always assume checkboxes were checked.
 - Fixed a bug where instructions for single checkbox fields were not being displayed in the Bootstrap demo template as well as the Bootstrap 4, Bootstrap 5 and Tailwind sample formatting templates.
 
-## 3.12.7 <TitleDate date="2021-11-29" />
+## 3.12.7<TitleDate date="2021-11-29" />
 
 ### Added
 - Added the ability to map the Freeform submission ID, submission token, submission title, form ID, form handle and form name to other element fields via the Element Connections feature.
@@ -410,13 +410,13 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where sessions would not timeout (if set to expire early) for PHP Sessions and Database Table contexts.
 - Removed info log entry for the SharpSpring CRM integration.
 
-## 3.12.6 <TitleDate date="2021-11-23" />
+## 3.12.6<TitleDate date="2021-11-23" />
 
 ### Fixed
 - Fixed a bug where hidden Mailing List fields were not working properly.
 - Fixed a bug where Payment forms were showing a success message to the user even if the card was declined.
 
-## 3.12.5 <TitleDate date="2021-11-19" />
+## 3.12.5<TitleDate date="2021-11-19" />
 
 ### Fixed
 - Added backwards compatibility for forms without submit buttons with `data-freeform-action`.
@@ -424,7 +424,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where the `lang="en"` attribute was being added to Number fields.
 - Fixed a bug where submit buttons were not being aligned correctly in the new sample Bootstrap 5 formatting template.
 
-## 3.12.4 <TitleDate date="2021-11-17" />
+## 3.12.4<TitleDate date="2021-11-17" />
 
 :::warning
 Freeform 3.12+ introduces additional Form Session Context options for processing forms. For sites that have already upgraded to 3.12.0 - 3.12.3, we recommend switching the Freeform Session Context setting to "Encrypted Payload" instead of "PHP Sessions" and carefully reviewing your forms. If you prefer to continue using PHP Sessions and are caching your forms, you will need to add `{% do form.registerContext %}` below your form when loading the form in a cached template.
@@ -433,7 +433,7 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 ### Changed
 - Updated default Form Session Context to "Encrypted Payload" instead of PHP Sessions. If you previously updated to Freeform 3.12 and/or prefer to continue to use PHP Sessions and are caching your forms, you will need to add `{% do form.registerContext %}` below your form when loading the form in a cached template.
 
-## 3.12.3 <TitleDate date="2021-11-17" />
+## 3.12.3<TitleDate date="2021-11-17" />
 
 ### Fixed
 - Added backwards compatibility with `freeform/api/form` controller action.
@@ -441,7 +441,7 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a bug where the Encrypted Payload session context was not being included with `form.json` function.
 - Fixed a bug where any keystroke would reset field option values when creating fields in the Field Manager area of the control panel.
 
-## 3.12.2 <TitleDate date="2021-11-15" />
+## 3.12.2<TitleDate date="2021-11-15" />
 
 ### Fixed
 - Fixed a bug where Dynamic Notifications (template parameter) were not working.
@@ -449,13 +449,13 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a bug where queue jobs could fail on an undefined request method.
 - Fixed a bug where incomplete craft plugin info could cause the Freeform Diagnostics page to not display.
 
-## 3.12.1 <TitleDate date="2021-11-11" />
+## 3.12.1<TitleDate date="2021-11-11" />
 
 ### Fixed
 - Fixed a bug where element editing was not correctly mapping Lightswitch and Checkbox fields as well as Relation fields that mapped to single option field types.
 - Fixed a bug where some of the Welcome install wizard's new 3.12 settings weren't saving correctly.
 
-## 3.12.0 <TitleDate date="2021-11-10" />
+## 3.12.0<TitleDate date="2021-11-10" />
 
 :::warning
 Freeform 3.12+ introduces additional Form Session Context options for processing forms. The default Form Session Context will be switched to "Encrypted Payload" instead of "PHP Sessions" upon upgrade. If you prefer to continue to use PHP Sessions and are caching your forms, you will need to add `{% do form.registerContext %}` below your form when loading the form in a cached template.
@@ -501,18 +501,18 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a bug where the 3.11.0 permissions migration can trigger an error on the Craft Solo edition.
 - Fixed a bug where the Constant Contact integration would routinely trigger an authentication error in Freeform log.
 
-## 3.11.13.1 <TitleDate date="2021-11-10" />
+## 3.11.13.1<TitleDate date="2021-11-10" />
 
 ### Fixed
 - Fixed a bug where multi-option field types would not display their selected options in edit mode.
 
-## 3.11.13 <TitleDate date="2021-11-09" />
+## 3.11.13<TitleDate date="2021-11-09" />
 
 ### Fixed
 - Fixed a bug where Dynamic Recipients could run into performance issues when the options are populated by many Elements.
 - Fixed a bug where User accounts would not be created if the User Element Connection settings don't have any user groups checked.
 
-## 3.11.12 <TitleDate date="2021-10-29" />
+## 3.11.12<TitleDate date="2021-10-29" />
 
 ### Added
 - Added support for 'epub' mime type in file validation.
@@ -524,12 +524,12 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a bug where the Constant Contact integration would incorrectly log failed connection checks.
 - Fixed a bug where entry reindexing would sometimes fail on cookie set.
 
-## 3.11.11.1 <TitleDate date="2021-09-24" />
+## 3.11.11.1<TitleDate date="2021-09-24" />
 
 ### Fixed
 - Fixed a bug where the SharpSpring CRM integration wasn't working fully with custom fields.
 
-## 3.11.11 <TitleDate date="2021-09-15" />
+## 3.11.11<TitleDate date="2021-09-15" />
 
 ### Changed
 - Updated the SharpSpring CRM integration to work with the latest API changes.
@@ -539,13 +539,13 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a potential issue with Stripe subscription payments.
 - Fixed a bug where multi-page forms were not clearing visual errors correctly (after correction) when using with AJAX.
 
-## 3.11.10 <TitleDate date="2021-07-22" />
+## 3.11.10<TitleDate date="2021-07-22" />
 
 ### Fixed
 - Fixed a bug where sites using GMP and Stripe could run into issues when payment amounts included decimals/cents.
 - Fixed a bug where multipage Stripe Payment forms could not go back to the previous page unless credit card details were filled out.
 
-## 3.11.9 <TitleDate date="2021-07-01" />
+## 3.11.9<TitleDate date="2021-07-01" />
 
 ### Added
 - Added ability to display the Stripe credit card icon on Credit Card fields (with `event.showCardIcon = true` for the `freeform-stripe-styling` event).
@@ -556,13 +556,13 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a bug where using the `overrideValues` parameter to set a value on a number field would not correctly handle decimals in some cases.
 - Fixed a bug where the "spam reasons" feature database table migration could error in some cases.
 
-## 3.11.8 <TitleDate date="2021-06-23" />
+## 3.11.8<TitleDate date="2021-06-23" />
 
 ### Fixed
 - Fixed a bug where searching on submissions inside the Freeform CP could still sometimes trigger an error.
 - Fixed a bug where forms were not being correctly parsed within other element types when using GraphQL.
 
-## 3.11.7 <TitleDate date="2021-06-21" />
+## 3.11.7<TitleDate date="2021-06-21" />
 
 ### Added
 - Added an updated OAuth version of the Pardot integration to be compatible with the new API. Recommended replacement to anyone currently using the old Pardot integration.
@@ -572,14 +572,14 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a bug where searching on submissions inside the Freeform CP could sometimes trigger an error.
 - Fixed a bug where entering an invalid path to the template folders that contain Formatting Templates and Email Templates could sometimes cause the settings page to crash.
 
-## 3.11.6 <TitleDate date="2021-06-10" />
+## 3.11.6<TitleDate date="2021-06-10" />
 
 ### Fixed
 - Fixed a bug where adding contents to a Table field inside the form builder wouldn't work if you clicked the Table field in the list to add it to the layout.
 - Fixed a bug where the Purge Submissions feature was not removing the File Upload field type's actual file from the server.
 - Adjusted Hidden fields to no longer have a forced max length of 250 as a temporary workaround for those that have switched the field to TEXT in the database to collect longer data.
 
-## 3.11.5 <TitleDate date="2021-06-03" />
+## 3.11.5<TitleDate date="2021-06-03" />
 
 ### Added
 - Added support for mapping to custom fields and more standard fields in the Constant Contact integration.
@@ -589,18 +589,18 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed a bug where the Zoho authentication check was partially flawed.
 - Fixed a bug where GraphQL form fields were not resolving the selected form.
 
-## 3.11.4.1 <TitleDate date="2021-05-12" />
+## 3.11.4.1<TitleDate date="2021-05-12" />
 
 ### Fixed
 - Fixed a bug where the Stripe Payments integration could error if the BC Math PHP extension is not enabled on the server. Added a fallback for GMP and basic multiplication for calculating amounts.
 
-## 3.11.4 <TitleDate date="2021-05-06" />
+## 3.11.4<TitleDate date="2021-05-06" />
 
 ### Fixed
 - Fixed a bug where some amounts could add 1 cent to the amount sent off to Stripe in the Payments integration.
 - Fixed a bug where the Status sort order select was not working in Postgres.
 
-## 3.11.3 <TitleDate date="2021-04-29" />
+## 3.11.3<TitleDate date="2021-04-29" />
 
 ### Added
 - Added a post validation check for form errors.
@@ -608,7 +608,7 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 ### Fixed
 - Fixed a bug where the 3.11.0 user group permission migrations would not work correctly on setups with `allowAdminChanges` disabled.
 
-## 3.11.2 <TitleDate date="2021-04-28" />
+## 3.11.2<TitleDate date="2021-04-28" />
 
 ### Added
 - Added a new 'Freeform Script Insert Type' setting so you can now choose whether you want Freeform scripts loaded as static URLs, files, or inline.
@@ -617,12 +617,12 @@ Freeform 3.12+ introduces additional Form Session Context options for processing
 - Fixed an issue where sites with server rules applied to JS and CSS files could cause Freeform forms to no longer submit correctly.
 - Fixed a bug where the 'Previous' button was not correctly going backwards in Safari.
 
-## 3.11.1 <TitleDate date="2021-04-22" />
+## 3.11.1<TitleDate date="2021-04-22" />
 
 ### Fixed
 - Fixed an issue with submissions and element indexing requests.
 
-## 3.11.0 <TitleDate date="2021-04-20" />
+## 3.11.0<TitleDate date="2021-04-20" />
 
 :::warning
 Freeform 3.11+ introduces changes to how its front-end scripts are inserted into pages (as static URLs). If you have server rules applied to JS and CSS files, you may run into issues. If this is the case, you can switch the behavior back to previous approaches ('As Files' introduced in 3.10 or 'Inline' as it worked previously before 3.10+). This is a new setting available in the General Settings of Freeform or with Project Config as `scriptInsertType: files`.
@@ -660,7 +660,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where the 'OAuth Return URI' field would clear its value when creating a new integration, making it difficult to copy/paste during set up.
 - Fixed a bug where the Stripe Payments integration was not sending emails for charge success and failure events.
 
-## 3.10.11 <TitleDate date="2021-03-25" />
+## 3.10.11<TitleDate date="2021-03-25" />
 
 ### Changed
 - Updated the `egulias/email-validator` dependency version requirements to include `3.x` for compatibility with other plugins using it.
@@ -671,7 +671,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where exporting submissions as XML could sometimes fail if it contained empty array field data.
 - Fixed a bug where the Freeform JS plugin `init` included automatic submit disabling that could potentially interfere with some site setups.
 
-## 3.10.10 <TitleDate date="2021-03-15" />
+## 3.10.10<TitleDate date="2021-03-15" />
 
 ### Added
 - Added a toggle for showing field handles in the Conditional Rules feature selectors.
@@ -682,7 +682,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 ### Fixed
 - Fixed a bug where a source map loading error would occur in the browser console when loading Freeform forms.
 
-## 3.10.9 <TitleDate date="2021-03-05" />
+## 3.10.9<TitleDate date="2021-03-05" />
 
 ### Added
 - Added a setting to disable Search Index updating after each submission of a Freeform form.
@@ -694,7 +694,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where creating new fields in the Field Manager would not show a clear error about a field handle already existing.
 - Fixed a bug where an error could sometimes be incorrectly logged for the MailChimp integration.
 
-## 3.10.8 <TitleDate date="2021-02-16" />
+## 3.10.8<TitleDate date="2021-02-16" />
 
 ### Added
 - Added ability to include Twig in the Admin Recipients email textarea in the form builder (for more complex conditional notifications).
@@ -705,7 +705,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where reCAPTCHA v2 Invisible would sometimes conflict with other scripts on the page and not work correctly.
 - Fixed a bug where the Payments subscription cancelation URL was not correct.
 
-## 3.10.7 <TitleDate date="2021-02-08" />
+## 3.10.7<TitleDate date="2021-02-08" />
 
 ### Added
 - Added ability to include Payment info when exporting submission data.
@@ -714,12 +714,12 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where Purge Submissions jobs would fail due to an issue with Guzzle 7.x on Craft 3.6.x.
 - Fixed a bug where the datepicker JS would load on all Date/Time fields regardless of their setting for using the built-in datepicker JS.
 
-## 3.10.6 <TitleDate date="2021-02-04" />
+## 3.10.6<TitleDate date="2021-02-04" />
 
 ### Fixed
 - Fixed a bug where non-AJAX forms with an empty file upload field would trigger an error.
 
-## 3.10.5 <TitleDate date="2021-02-02" />
+## 3.10.5<TitleDate date="2021-02-02" />
 
 ### Added
 - Added support for Birthday field types in the MailChimp mailing list integration.
@@ -730,22 +730,22 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where File Upload fields might log errors in some rare cases.
 - Fixed an issue where the "What's New" dashboard feature could skip some updates that might be relevant in the future.
 
-## 3.10.4 <TitleDate date="2021-01-26" />
+## 3.10.4<TitleDate date="2021-01-26" />
 
 ### Added
 - Added a way to conveniently get a reCAPTCHA v2 Checkbox field instance from a manually constructed form with `form.get('recaptcha')`.
 
-## 3.10.3 <TitleDate date="2021-01-22" />
+## 3.10.3<TitleDate date="2021-01-22" />
 
 ### Fixed
 - Fixed a bug in the Export Profiles migration that prevented updating profiles with no date ranges set.
 
-## 3.10.2.1 <TitleDate date="2021-01-18" />
+## 3.10.2.1<TitleDate date="2021-01-18" />
 
 ### Fixed
 - Fixed a bug where front end forms could display an error when loading in some rare cases.
 
-## 3.10.2 <TitleDate date="2021-01-15" />
+## 3.10.2<TitleDate date="2021-01-15" />
 
 ### Added
 - Added developer events for modifying included Freeform script tags and honeypot.
@@ -756,7 +756,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 ### Fixed
 - Fixed a bug where Freeform was incompatible with Craft 3.4.x in some places and could error.
 
-## 3.10.1 <TitleDate date="2021-01-14" />
+## 3.10.1<TitleDate date="2021-01-14" />
 
 ### Fixed
 - Fixed a bug where Freeform CP Widgets with charts were not loading the chart library.
@@ -765,7 +765,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where there were no valid mime-types for empty text file uploads.
 - Fixed a potential issue with Pardot accounts that don't have custom fields.
 
-## 3.10.0 <TitleDate date="2021-01-05" />
+## 3.10.0<TitleDate date="2021-01-05" />
 
 ### Added
 - Added support for GraphQL.
@@ -808,12 +808,12 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where textareas inside the CP Submissions detail view were unnecessarily escaping data.
 - Fixed a bug where Signature fields were redrawing incorrectly on high DPI displays.
 
-## 3.9.11 <TitleDate date="2020-12-17" />
+## 3.9.11<TitleDate date="2020-12-17" />
 
 ### Fixed
 - Fixed a bug where the Active Campaign mailing list integration was not pulling in all mailing lists above 100.
 
-## 3.9.10 <TitleDate date="2020-12-16" />
+## 3.9.10<TitleDate date="2020-12-16" />
 
 ### Added
 - Added support for the Multi-select Picklist field type in the Zoho API integrations. ([#72](https://github.com/solspace/craft-freeform/pull/72))
@@ -822,12 +822,12 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where textareas inside the CP Submissions detail view were unnecessarily escaping data.
 - Fixed a potential issue with the 3.9 migration that might affect a small number of customers.
 
-## 3.9.9 <TitleDate date="2020-12-02" />
+## 3.9.9<TitleDate date="2020-12-02" />
 
 ### Fixed
 - Fixed a bug where older installs of Craft (3.5.9 and lower) could experience an error in the Forms and Fields CP index pages due to the `truncate` filter not existing yet.
 
-## 3.9.8 <TitleDate date="2020-12-01" />
+## 3.9.8<TitleDate date="2020-12-01" />
 
 ### Fixed
 - Fixed a bug where the Dashboard submissions chart would include spam submissions.
@@ -835,17 +835,17 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where the Active Campaign mailing list API integration was limited to fetching 50 mailing lists.
 - Fixed a bug where the Email Notifications CP page was not displaying the file name for file-based email notification templates.
 
-## 3.9.7 <TitleDate date="2020-11-26" />
+## 3.9.7<TitleDate date="2020-11-26" />
 
 ### Fixed
 - Fixed a bug where reCAPTCHA was not working correctly with IE 11.
 
-## 3.9.6 <TitleDate date="2020-11-20" />
+## 3.9.6<TitleDate date="2020-11-20" />
 
 ### Fixed
 - Fixed a bug where the Forms CP pages would error on sites using PHP 7.0.
 
-## 3.9.5 <TitleDate date="2020-11-19" />
+## 3.9.5<TitleDate date="2020-11-19" />
 
 ### Fixed
 - Fixed a bug where the 'Previous' button was not working correctly in multi-page forms.
@@ -857,7 +857,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where an empty tooltip would display when clicking the info icon for Update Notices and What's New features.
 - Fixed a bug where fields and forms with very long handle values could force other parts of their respective CP index pages out of view.
 
-## 3.9.4 <TitleDate date="2020-11-13" />
+## 3.9.4<TitleDate date="2020-11-13" />
 
 ### Added
 - Added the submission token to the AJAX response when submitting forms.
@@ -866,12 +866,12 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where Dynamic Recipients fields were not showing the new Commerce Products source option.
 - Fixed a bug where dismissing Update and What's New notices was not working on Craft versions below 3.5.0.
 
-## 3.9.3 <TitleDate date="2020-11-12" />
+## 3.9.3<TitleDate date="2020-11-12" />
 
 ### Fixed
 - Fixed a bug where the 'getTestToEmailAddress' addition to Freeform would error on Craft versions below 3.5.0.
 
-## 3.9.2 <TitleDate date="2020-11-11" />
+## 3.9.2<TitleDate date="2020-11-11" />
 
 ### Added
 - Added support for mapping to Contact Tags in the ActiveCampaign Mailing List API integration.
@@ -883,7 +883,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where declined or high risk Subscription payments were not correctly erroring on the front end.
 - Fixed a bug where some field errors were not being escaped.
 
-## 3.9.1 <TitleDate date="2020-11-06" />
+## 3.9.1<TitleDate date="2020-11-06" />
 
 ### Added
 - Added support for the 'testToEmailAddress' Craft config setting.
@@ -892,7 +892,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where sites using PostgreSQL would get an error when updating.
 - Fixed a bug where the Dashboard submissions chart was not considering current timezone.
 
-## 3.9.0 <TitleDate date="2020-11-05" />
+## 3.9.0<TitleDate date="2020-11-05" />
 
 ### Added
 - Added an 'Important Update Notices' area in the Dashboard that keeps you informed about issues that may specifically affect your site.
@@ -929,17 +929,17 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where very wide Table fields with many columns would overflow past the field layout in CP Submissions detail view.
 - Fixed a bug where the property editor column in the Composer form builder was clipping the top few pixels of text.
 
-## 3.8.4 <TitleDate date="2020-10-07" />
+## 3.8.4<TitleDate date="2020-10-07" />
 
 ### Fixed
 - Fixed a bug where Freeform jobs would be created upon console request.
 
-## 3.8.3 <TitleDate date="2020-10-05" />
+## 3.8.3<TitleDate date="2020-10-05" />
 
 ### Fixed
 - Fixed a potential security vulnerability.
 
-## 3.8.2 <TitleDate date="2020-09-25" />
+## 3.8.2<TitleDate date="2020-09-25" />
 
 ### Changed
 - Updated all API integration settings to have the ability to use environment variables.
@@ -952,14 +952,14 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where older legacy data from Dynamic Recipients fields might not show up correctly in exports.
 - Fixed a bug where Freeform status color styles might not show up correctly in edge cases.
 
-## 3.8.1 <TitleDate date="2020-09-09" />
+## 3.8.1<TitleDate date="2020-09-09" />
 
 ### Fixed
 - Fixed a bug where the Submissions Purge and Unfinalized Assets Purge jobs were not taking into account timezones, and could also sometimes get stuck in pending status.
 - Fixed a bug where selecting "Allowed File Kinds" checkboxes in File Upload fields were no longer working.
 - Fixed a bug where the Craft Campaign integration was not performing a duplicate contact check correctly and also not taking into account double opt-in settings.
 
-## 3.8.0 <TitleDate date="2020-08-31" />
+## 3.8.0<TitleDate date="2020-08-31" />
 
 ### Added
 - Added an Email Alert feature! It allows you to automatically send an email notification alerting the email address(es) specified when an email notification cannot be delivered. Very helpful for catching some website/email issues early.
@@ -975,13 +975,13 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where the Submissions Purge and Spam Folder Purge features were not reliably working. Switched them to now use Craft jobs. Added more time interval options as well.
 - Fixed a bug where API integrations in the dropdown list were not being sorted alphabetically.
 
-## 3.7.5 <TitleDate date="2020-08-27" />
+## 3.7.5<TitleDate date="2020-08-27" />
 
 ### Fixed
 - Fixed a bug where data of the chosen option of a field being populated with Craft Entries or other elements was no longer being included in email notifications and the Submission object in templates.
 - Fixed a bug where selecting a user group option in the User Element Connection feature was no longer working.
 
-## 3.7.4 <TitleDate date="2020-08-13" />
+## 3.7.4<TitleDate date="2020-08-13" />
 
 ### Changed
 - Updated the `symfony/property-access` and `symfony/finder` requirements to allow v5.x.
@@ -992,12 +992,12 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where allowing a submission from the Spam Folder would not carry over any updates to the Title and Status.
 - Fixed a bug where Date fields were not able to be mapped to with the HubSpot API integration.
 
-## 3.7.3 <TitleDate date="2020-08-12" />
+## 3.7.3<TitleDate date="2020-08-12" />
 
 ### Changed
 - Updated the `symfony/filesystem` requirement to allow v5.x.
 
-## 3.7.2 <TitleDate date="2020-08-11" />
+## 3.7.2<TitleDate date="2020-08-11" />
 
 ### Added
 - Added the ability to access the newly created Craft Elements in email notification templates when using the Element Connections feature.
@@ -1008,7 +1008,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where Datepicker localization wasn't respecting 4-character language codes.
 - Fixed a bug where user/group permissions were not correctly removing form category options in the Submissions CP index.
 
-## 3.7.1 <TitleDate date="2020-07-24" />
+## 3.7.1<TitleDate date="2020-07-24" />
 
 ### Changed
 - Updated the "Automatically Scroll to Form on Errors and Multipage forms?" feature/setting to no longer automatically insert an anchor at the top of the form if the setting is disabled.
@@ -1018,7 +1018,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a couple of compatibility issues with Craft 3.5+.
 - Fixed a bug where the Bootstrap 4 formatting template used `col-xs-12` instead of `col-12`.
 
-## 3.7.0 <TitleDate date="2020-07-03" />
+## 3.7.0<TitleDate date="2020-07-03" />
 
 ### Added
 - Added more granular User permissions for form management. New permissions for Creating New Forms, Deleting Forms and per form management.
@@ -1038,7 +1038,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where clicking on Form filters in the Submissions index page would not update the URL to contain the handle.
 - Fixed a bug where the MailChimp mailing list integration Contact Tags were not being updated when submitting a submission.
 
-## 3.6.12 <TitleDate date="2020-06-11" />
+## 3.6.12<TitleDate date="2020-06-11" />
 
 ### Changed
 - Updated the Zoho Lead and Deal CRM integrations to be simpler and correct a connection issue. You may need to recreate the integration inside Freeform settings if it doesn't begin to work immediately.
@@ -1047,12 +1047,12 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where Radio fields were not loading the `required` attribute when the `useRequiredAttribute: true` parameter was set.
 - Fixed the `freeform.loadFreeformScripts()` function to no longer load multiple instances of the same scripts in some cases.
 
-## 3.6.11 <TitleDate date="2020-06-04" />
+## 3.6.11<TitleDate date="2020-06-04" />
 
 ### Fixed
 - Fixed a bug where the refresh token was not fetching for the Constant Contact mailing list integration.
 
-## 3.6.10 <TitleDate date="2020-06-03" />
+## 3.6.10<TitleDate date="2020-06-03" />
 
 ### Changed
 - Optimized data stored in session as well as introduced a hard limit on active form session instances.
@@ -1061,7 +1061,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where Salesforce Contact Tasks for the Leads integration were not being assigned the correct Salesforce user.
 - Fixed a bug where campaigns may not be able to be mapped correctly to the Pardot API integration.
 
-## 3.6.9 <TitleDate date="2020-05-21" />
+## 3.6.9<TitleDate date="2020-05-21" />
 
 ### Added
 - Added ability for the Salesforce Lead API integration to optionally have submissions converted to Salesforce Contact Tasks for existing Contacts if the email address matches.
@@ -1074,7 +1074,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where an error would show from Pardot about fields that aren't objects.
 - Fixed a bug where error messages from Craft for image uploads would trigger an error on `htmlentities()` method.
 
-## 3.6.8 <TitleDate date="2020-05-14" />
+## 3.6.8<TitleDate date="2020-05-14" />
 
 ### Added
 - Added Pardot CRM integration.
@@ -1095,7 +1095,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug in the Tailwind example formatting template where a space was missing between some field classes.
 - Fixed a bug where the new Constant Contact integration would display an Unauthorized error in error log every day.
 
-## 3.6.7 <TitleDate date="2020-04-17" />
+## 3.6.7<TitleDate date="2020-04-17" />
 
 ### Added
 - Added developer events for Stripe Payments to modify the default description of payments in Stripe.
@@ -1115,7 +1115,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where Composer could give a deprecation notice about Code Packs.
 - Fixed a bug where there was no translation for "Tried uploading `{count}` files. Maximum `{max}` files allowed." front end error.
 
-## 3.6.6 <TitleDate date="2020-04-01" />
+## 3.6.6<TitleDate date="2020-04-01" />
 
 ### Changed
 - Updated file uploading to check mime type to help prevent possible security issues (e.g. stops `.txt` files being renamed to `.jpg`).
@@ -1128,7 +1128,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where submitting forms containing reCAPTCHA v3 on IE 11 would not work correctly.
 - Fixed a bug where a JS error would occur when creating/editing CRM integrations.
 
-## 3.6.5 <TitleDate date="2020-02-27" />
+## 3.6.5<TitleDate date="2020-02-27" />
 
 ### Fixed
 - Fixed a bug where Relation fields were not able to be mapped to with the Element Connections feature.
@@ -1137,12 +1137,12 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed various display/visual issues in Composer form builder under certain circumstances.
 - Fixed a bug where having more than 1 file upload field in a form and using the built-in AJAX would not display validation errors correctly in some cases.
 
-## 3.6.4 <TitleDate date="2020-02-21" />
+## 3.6.4<TitleDate date="2020-02-21" />
 
 ### Fixed
 - Fixed a bug where Quick Export was not working for some customers.
 
-## 3.6.3 <TitleDate date="2020-02-19" />
+## 3.6.3<TitleDate date="2020-02-19" />
 
 ### Added
 - Added Spam Reasons feature for the Freeform Spam Folder. It will now log the reason Freeform considered the submission to be spam and placed in the Spam Folder.
@@ -1156,13 +1156,13 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where Freeform form cookies were being set to expire in 50 years instead of 1 year.
 - Fixed a bug where the Quick Save button in Composer was getting incorrect positioning on smaller screens.
 
-## 3.6.2 <TitleDate date="2020-02-04" />
+## 3.6.2<TitleDate date="2020-02-04" />
 
 ### Changed
 - Updated Composer form builder to now have floating/locking columns, as it did prior to 3.6 UI update.
 - Updated Payments integration to automatically map Email field mapping to Stripe's `reciept_email` field in addition to its `email` field, in order for Stripe to send email notification receipts to successful payments.
 
-## 3.6.1 <TitleDate date="2020-01-29" />
+## 3.6.1<TitleDate date="2020-01-29" />
 
 ### Fixed
 - Fixed a bug where the Save button inside Composer form builder would disappear when changing a form's name.
@@ -1170,7 +1170,7 @@ Freeform 3.11+ introduces changes to how its front-end scripts are inserted into
 - Fixed a bug where email notifications would not send if using the Relations feature and including the related element inside the notification template.
 - Fixed a bug where Dynamic Recipients fields were not always exporting as the email address value when using Quick Export.
 
-## 3.6.0 <TitleDate date="2020-01-23" />
+## 3.6.0<TitleDate date="2020-01-23" />
 
 :::warning
 Freeform 3.6+ is now only available for Craft 3.4+, as this update includes various Craft 3.4+ compatibility fixes and changes. Also, existing Zoho CRM users will need to update and reauthorize their integrations due to a change made for better compatibility with European accounts.
@@ -1186,7 +1186,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a bug where using reCAPTCHA v3 and having more than 1 form loaded in the same page would display JS errors.
 - Fixed a bug where Composer and the front end could error if setting to hide default formatting templates was enabled, and there are no custom formatting templates available.
 
-## 3.5.10 <TitleDate date="2020-01-14" />
+## 3.5.10<TitleDate date="2020-01-14" />
 
 ### Changed
 - Updated the Date & Time field type to no longer include the `autocomplete` attribute by default.
@@ -1200,7 +1200,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a bug where Placeholders for fields were not translatable.
 - Fixed a bug where you could not select a formatting template if only 1 was available.
 
-## 3.5.9 <TitleDate date="2020-01-02" />
+## 3.5.9<TitleDate date="2020-01-02" />
 
 ### Changed
 - Updated reCAPTCHA settings to have the ability to use environment variables.
@@ -1211,7 +1211,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a bug where error messages on radio or checkbox group fields were not displaying correctly when options are displayed on a single line and using the built-in AJAX feature.
 - Fixed a bug where filtering the submissions overview in the CP by status (e.g. pending or closed), would return a 500 error in some cases.
 
-## 3.5.8 <TitleDate date="2019-12-16" />
+## 3.5.8<TitleDate date="2019-12-16" />
 
 ### Added
 - Added POST Forwarding feature, allowing your forms to automatically submit an extra POST to pass off submission data to an external API URL upon successful submit and validation of a form.
@@ -1219,7 +1219,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 ### Fixed
 - Fixed a bug where Stripe payment forms would fail if a declined credit card was used.
 
-## 3.5.7 <TitleDate date="2019-12-11" />
+## 3.5.7<TitleDate date="2019-12-11" />
 
 ### Added
 - Added Tailwind CSS formatting template to the built-in example options. Due to the nature of Tailwind, this likely won't be useable as-is for most customers, but will serve as a good starting point for creating your own. If you have any suggestions on how we can improve upon this template, please let us know. :)
@@ -1234,7 +1234,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a potential security vulnerability with submitting of forms.
 - Fixed a bug where Min Date and Max Date settings for Date & Time fields could error incorrectly in some cases.
 
-## 3.5.5 <TitleDate date="2019-12-04" />
+## 3.5.5<TitleDate date="2019-12-04" />
 
 ### Added
 - Added `allFieldsAndBlocks` to email notification templates, which does the same as `allFields` but includes HTML blocks and Rich Text blocks as well.
@@ -1247,7 +1247,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a bug where Table fields would not generate additional rows correctly if there was only a single column.
 - Fixed a bug where the submissions chart in the Submissions CP index page was not correctly factoring in timezones.
 
-## 3.5.4 <TitleDate date="2019-11-14" />
+## 3.5.4<TitleDate date="2019-11-14" />
 
 ### Fixed
 - Fixed a bug where Table field types could not be shown/hidden with Conditional Rules.
@@ -1260,7 +1260,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a bug where field options populated by Entries that are of a Structure type could not be sorted by their correct hierarchy.
 - Fixed a bug where setting an incorrect IP address field value for the HubSpot integration would not log an error to the log.
 
-## 3.5.3 <TitleDate date="2019-10-24" />
+## 3.5.3<TitleDate date="2019-10-24" />
 
 ### Added
 - Added Zoho Leads and Zoho Deals CRM API integrations (Pro).
@@ -1270,18 +1270,18 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a bug where using reCAPTCHA v2 Invisible would break form submitting in some cases.
 - Fixed a bug where you could get an internal server error when someone uploaded a 0 byte file attachment.
 
-## 3.5.2 <TitleDate date="2019-10-18" />
+## 3.5.2<TitleDate date="2019-10-18" />
 
 ### Fixed
 - Fixed a bug where using Microsoft Edge browser would sometimes create duplicates when the user submitted a form.
 
-## 3.5.1 <TitleDate date="2019-10-01" />
+## 3.5.1<TitleDate date="2019-10-01" />
 
 ### Fixed
 - Fixed a bug where submissions were falsely being flagged as spam when a custom Honeypot field name was not set.
 - Fixed a bug with a navigation permission check on Export Profiles.
 
-## 3.5.0 <TitleDate date="2019-09-25" />
+## 3.5.0<TitleDate date="2019-09-25" />
 
 ### Added
 - Added Table field type, which allows users to enter repeating data rows into predefined columns (Pro).
@@ -1299,7 +1299,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed an incompatiblity issue with the Scout plugin and potentially other plugins.
 - Fixed several IE 11 compatibility bugs with special field types.
 
-## 3.4.1 <TitleDate date="2019-09-16" />
+## 3.4.1<TitleDate date="2019-09-16" />
 
 ### Changed
 - Updated the Signature fieldtype to also include ability to style the signature pad/square and pen size, color, etc, inside Composer.
@@ -1307,12 +1307,12 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 ### Fixed
 - Fixed a bug where the Webhooks create/edit page was not showing options for the Type setting.
 
-## 3.4.0 <TitleDate date="2019-09-12" />
+## 3.4.0<TitleDate date="2019-09-12" />
 
 ### Added
 - Added Signature fieldtype that allows users to handwrite signatures inside forms (Pro).
 
-## 3.3.3 <TitleDate date="2019-09-11" />
+## 3.3.3<TitleDate date="2019-09-11" />
 
 ### Added
 - Added new `freeform.loadFreeformScripts()` function that allows you to manually insert Freeform's JS in the template.
@@ -1325,7 +1325,7 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 ### Fixed
 - Fixed a bug where using the User Element Connections feature would not work correctly if using a multi-page form and the Password field was on a page other than the last.
 
-## 3.3.2 <TitleDate date="2019-09-05" />
+## 3.3.2<TitleDate date="2019-09-05" />
 
 ### Fixed
 - Fixed a bug where a migration was causing the Payments `intervalCount` database table column to not allow null, which would trigger errors when submitting the form.
@@ -1335,14 +1335,14 @@ Freeform 3.6+ is now only available for Craft 3.4+, as this update includes vari
 - Fixed a bug where the Payments SCA popup was not being triggered in Firefox.
 - Fixed a bug where IP address collecting was not as reliable.
 
-## 3.3.1 <TitleDate date="2019-08-21" />
+## 3.3.1<TitleDate date="2019-08-21" />
 
 ### Fixed
 - Fixed a bug where the return URL was not present in AJAX responses.
 - Fixed a bug where rating and single checkbox fields were losing their values when being updated in the CP.
 - Fixed a bug where updating submissions status from CP index or front end editing would clear submission Notes.
 
-## 3.3.0 <TitleDate date="2019-08-20" />
+## 3.3.0<TitleDate date="2019-08-20" />
 
 :::warning
 This update includes a large change to the Stripe Payments integration to support the [Strong Customer Authentication (SCA)](https://stripe.com/docs/strong-customer-authentication) changes to the Stripe API. Please read changelog carefully and review notes in the [Freeform Payments documentation](https://docs.solspace.com/craft/freeform/v3/api-integrations/payments/#strong-customer-authentication-sca) to see what possible breaking changes might affect your forms and/or form flow.
@@ -1357,7 +1357,7 @@ This update includes a large change to the Stripe Payments integration to suppor
 ### Fixed
 - Fixed a bug where the Honeypot input field contained the "aria-hidden" attribute twice.
 
-## 3.2.5 <TitleDate date="2019-08-09" />
+## 3.2.5<TitleDate date="2019-08-09" />
 
 ### Added
 - Added German translations.
@@ -1369,7 +1369,7 @@ This update includes a large change to the Stripe Payments integration to suppor
 - Fixed a bug where soft deleted Section Entry Types were showing as options in the Element Connections feature.
 - Fixed a bug where elements were not being deleted via the Service method.
 
-## 3.2.4 <TitleDate date="2019-08-01" />
+## 3.2.4<TitleDate date="2019-08-01" />
 
 ### Changed
 - Updated the HubSpot integration to perform duplicate checks on Contacts and Companies and update them accordingly.
@@ -1379,7 +1379,7 @@ This update includes a large change to the Stripe Payments integration to suppor
 ### Fixed
 - Fixed a bug where the date picker wouldn't load for Date fields when loading more than 1 form in the same page.
 
-## 3.2.3 <TitleDate date="2019-07-23" />
+## 3.2.3<TitleDate date="2019-07-23" />
 
 ### Added
 - Added support for populating Dynamic Recipients field options with Craft Element data.
@@ -1396,7 +1396,7 @@ This update includes a large change to the Stripe Payments integration to suppor
 - Fixed a bug where the email notification template subject was encoding quotes, apostropies, etc.
 - Fixed a bug where Mailing List fields were missing their icon in Composer.
 
-## 3.2.2 <TitleDate date="2019-07-17" />
+## 3.2.2<TitleDate date="2019-07-17" />
 
 :::warning
 This update includes a change to the default loading of the Date & Time field type date picker. If you're using this field type in your custom templates (default sample ones have been updated), please be sure to review and/or remove the `addEventListener("flatpickr-ready"...` JS code from your templates.
@@ -1416,7 +1416,7 @@ This update includes a change to the default loading of the Date & Time field ty
 - Fixed a bug where creating Export Profiles for forms that contained a number in the handle would error.
 - Fixed some bugs in the Infusionsoft CRM API integration.
 
-## 3.2.1 <TitleDate date="2019-07-11" />
+## 3.2.1<TitleDate date="2019-07-11" />
 
 ### Changed
 - Updated Settings area to continue to allow access to API integrations, Statuses and Error Log when the Craft `allowAdminChanges` setting is false (as the aforementioned areas are not true settings available to project config, etc).
@@ -1424,7 +1424,7 @@ This update includes a change to the default loading of the Date & Time field ty
 ### Fixed
 - Fixed a bug where the Date & Time field datepicker was not loading other locales when specified.
 
-## 3.2.0 <TitleDate date="2019-07-09" />
+## 3.2.0<TitleDate date="2019-07-09" />
 
 ### Added
 - Added ability to automate relating of Freeform submissions to other Craft Elements, thus allowing robust comment, ratings/reviews, sign-up forms, and more! (Pro)
@@ -1446,7 +1446,7 @@ This update includes a change to the default loading of the Date & Time field ty
 - Fixed a bug where the `includeAttachments` setting in email notification templates was not working.
 - Fixed a bug where unchecking a checkbox when editing a form submission would continue to leave checkbox value as checked.
 
-## 3.1.0 <TitleDate date="2019-06-28" />
+## 3.1.0<TitleDate date="2019-06-28" />
 
 ### Added
 - Added `suppress` parameter that allows template-level suppression of email notifications, API integrations and Element Connections feature. Can be used for any reason, but more commonly used for editing existing submissions on front end.
@@ -1458,26 +1458,26 @@ This update includes a change to the default loading of the Date & Time field ty
 - Fixed a bug where Payments forms would not work correctly if the dynamic amount value field was on a different page from the Stripe credit card fields in a multi-page form.
 - Fixed a bug where using Export Profiles with PostgreSQL would return an error.
 
-## 3.0.6 <TitleDate date="2019-06-26" />
+## 3.0.6<TitleDate date="2019-06-26" />
 
 ### Fixed
 - Fixed a bug where a migration could error for some customers using PostgreSQL.
 - Fixed a bug where OAuth-based integrations were not connecting properly.
 
-## 3.0.5 <TitleDate date="2019-06-25" />
+## 3.0.5<TitleDate date="2019-06-25" />
 
 ### Fixed
 - Fixed a bug where Stripe credit card fields were not working in front end templates.
 - Fixed a bug where single checkbox fields weren't able to map to a Craft checkboxes field when using Element Connections feature.
 
-## 3.0.4 <TitleDate date="2019-06-25" />
+## 3.0.4<TitleDate date="2019-06-25" />
 
 ### Fixed
 - Fixed a bug where the Element Connections feature would error when using a multi-option field that was required on Freeform's side.
 - Fixed a bug where the Empty Option Label feature with predefined/element data options was not refreshing the value between selecting different fields.
 - Fixed a bug where customers using more recent versions of PHP 7 would see a `setcookie() expects parameter 3 to be integer, float given` error.
 
-## 3.0.3 <TitleDate date="2019-06-21" />
+## 3.0.3<TitleDate date="2019-06-21" />
 
 ### Added
 - Added Active Campaign CRM API integration (Pro edition).
@@ -1490,7 +1490,7 @@ This update includes a change to the default loading of the Date & Time field ty
 - Fixed a bug where using a Freeform field to generate the Reply-to, CC, and BCC fields that didn't contain a value (empty from submission) would cause the email notification to fail.
 - Fixed a bug where editing a form submission on the front end would not automatically update the submission title.
 
-## 3.0.2 <TitleDate date="2019-06-18" />
+## 3.0.2<TitleDate date="2019-06-18" />
 
 ### Fixed
 - Fixed a bug where the Freeform 3 migration had some incorrect foreign keys for some Pro and Payments database tables when upgrading from v2 Lite.
@@ -1500,7 +1500,7 @@ This update includes a change to the default loading of the Date & Time field ty
 - Fixed a bug where single checkbox fields would always be checked by default when placed in multipage forms on page 2 or greater.
 - Fixed some very minor visual errors in sample formatting templates.
 
-## 3.0.1 <TitleDate date="2019-06-14" />
+## 3.0.1<TitleDate date="2019-06-14" />
 
 ### Fixed
 - Fixed a bug where some update migrations were failing when the `allowAdminChanges` Project Config setting was set to `false`.
@@ -1509,7 +1509,7 @@ This update includes a change to the default loading of the Date & Time field ty
 - Fixed a bug where the Freeform 3 migration was missing some meta columns from Pro and Payments database tables when upgrading from v2 Lite.
 - Fixed a few minor regression bugs for notification template and formatting template path settings.
 
-## 3.0.0 <TitleDate date="2019-06-11" />
+## 3.0.0<TitleDate date="2019-06-11" />
 
 :::warning
 This is a larger and more complex update than usual, and there's a higher chance of a failed update attempt happening. Please ensure you have a recent database backup, and we recommend you test the update on a local/staging environment before updating your production server. [Please follow the upgrading guide available here](https://docs.solspace.com/craft/freeform/v3/setup/updating-freeform-2.html)!

@@ -6,7 +6,7 @@ sidebar_position: 5
 
 import { TitleDate } from '@site/src/components/docs'
 
-## 4.1.19 <TitleDate date="2024-05-31" />
+## 4.1.19<TitleDate date="2024-05-31" />
 
 ### Changed
 - Updated Diagnostics page to verify compatibility for PHP 8.2 and Craft 4.9.x.
@@ -15,12 +15,12 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where _en_ and _em_ dash characters were not saving in submission data on Radio, Select, and Opinion Scale field types.
 
-## 4.1.18 <TitleDate date="2024-05-08" />
+## 4.1.18<TitleDate date="2024-05-08" />
 
 ### Fixed
 - Fixed a bug where setting `allowedGraphqlOrigins` to `false` in _general.php_ would cause form submissions to crash.
 
-## 4.1.17 <TitleDate date="2024-04-29" />
+## 4.1.17<TitleDate date="2024-04-29" />
 
 ### Added
 - Added Craft element search support for submissions. You may need to run `./craft freeform/submissions/resave --update-search-index` once for this to work.
@@ -33,7 +33,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where setting a Calendar Event to be **All Day** in the Calendar Events integration was not working.
 - Fixed a bug where submission saving in the console could fail.
 
-## 4.1.16 <TitleDate date="2024-04-04" />
+## 4.1.16<TitleDate date="2024-04-04" />
 
 ### Changed
 - Updated the CSRF input to send `nocache` headers when rendering.
@@ -41,12 +41,12 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where Freeform was opening unnecessary sessions.
 
-## 4.1.15.1 <TitleDate date="2024-03-01" />
+## 4.1.15.1<TitleDate date="2024-03-01" />
 
 ### Fixed
 - Fixed a bug where Automatic Spam Purge Craft queue jobs would fail when using a database prefix.
 
-## 4.1.15 <TitleDate date="2024-03-01" />
+## 4.1.15<TitleDate date="2024-03-01" />
 
 ### Added
 - Added support for Automatic Spam Purging in the **Lite** edition of Freeform.
@@ -57,23 +57,23 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where the _Fill Form Values from the GET Query String_ setting was not being respected.
 
-## 4.1.14 <TitleDate date="2024-02-09" />
+## 4.1.14<TitleDate date="2024-02-09" />
 
 ### Fixed
 - Fixed a bug where Dynamic Recipients fields were not correctly selecting the option chosen when viewing submissions in the CP detail page.
 - Fixed a bug where the Field Manager would force `camelCase` without exceptions for field handles.
 
-## 4.1.13 <TitleDate date="2023-11-23" />
+## 4.1.13<TitleDate date="2023-11-23" />
 
 ### Changed
 - Updated all references to field names in the control panel and exported files to use the default field label as a fallback if the field label is blank in the form settings. To preserve legacy functionality, rendering forms on the front end will continue showing the field label blank.
 
-## 4.1.12.1 <TitleDate date="2023-11-15" />
+## 4.1.12.1<TitleDate date="2023-11-15" />
 
 ### Fixed
 - Fixed a bug where some Freeform widgets would error in the Craft dashboard due to a change in the previous version (4.1.12).
 
-## 4.1.12 <TitleDate date="2023-11-09" />
+## 4.1.12<TitleDate date="2023-11-09" />
 
 ### Changed
 - Updated GraphQL mutations to support multiple email marketing mailing list fields.
@@ -83,7 +83,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where form heading Success and Error messages were not being escaped.
 - Fixed a bug where removing a field from a form was not automatically removing it from any configured export profiles for that form.
 
-## 4.1.11 <TitleDate date="2023-10-24" />
+## 4.1.11<TitleDate date="2023-10-24" />
 
 ### Changed
 - Updated the GraphQL submission mutation to no longer require the custom header.
@@ -91,13 +91,13 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where locales were not working correctly when using more than one Date & Time field in the same form.
 
-## 4.1.10 <TitleDate date="2023-10-05" />
+## 4.1.10<TitleDate date="2023-10-05" />
 
 ### Changed
 - Updated File Upload fields to be realigned with Craft's file kind/extensions defaults. Removed the custom Freeform MIME type checks.
 - Updated existing feature announcement integrations to be visible to Admins only.
 
-## 4.1.9 <TitleDate date="2023-09-29" />
+## 4.1.9<TitleDate date="2023-09-29" />
 
 ### Changed
 - Updated the Salesforce integration to allow mapping to encrypted fields in Salesforce.
@@ -106,13 +106,13 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where hCaptcha was not working correctly.
 
-## 4.1.8 <TitleDate date="2023-09-15" />
+## 4.1.8<TitleDate date="2023-09-15" />
 
 ### Changed
 - Updated `stripe/stripe-php` dependency to align with Craft Commerce.
 - Updated the Stripe Payments integration to support mapping Phone field types.
 
-## 4.1.7 <TitleDate date="2023-09-08" />
+## 4.1.7<TitleDate date="2023-09-08" />
 
 ### Added
 - Added support for `.stl` files in the Freeform file helper validation.
@@ -124,7 +124,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where not all Stripe validation errors were accounted for and could cause the form to break.
 - Fixed a bug where CRM integration errors were sometimes too long to be logged in Freeform. Updated the column size to resolve this.
 
-## 4.1.6 <TitleDate date="2023-07-20" />
+## 4.1.6<TitleDate date="2023-07-20" />
 
 ### Added
 - Exposed all remaining form settings/properties for GraphQL queries, including `successMessage` and `errorMessage`.
@@ -135,12 +135,12 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed issues with reCAPTCHA when querying forms via GraphQL.
 
-## 4.1.5 <TitleDate date="2023-07-11" />
+## 4.1.5<TitleDate date="2023-07-11" />
 
 ### Added
 - Added conditional rule logic for form fields in GraphQL.
 
-## 4.1.4 <TitleDate date="2023-07-05" />
+## 4.1.4<TitleDate date="2023-07-05" />
 
 ### Added
 - Added support for mapping to multiple groups/interests in the Mailchimp integration.
@@ -148,17 +148,17 @@ import { TitleDate } from '@site/src/components/docs'
 ### Fixed
 - Fixed a bug where the element query was being executed before Craft was fully initialized.
 
-## 4.1.3 <TitleDate date="2023-06-28" />
+## 4.1.3<TitleDate date="2023-06-28" />
 
 ### Fixed
 - Fixed a bug where server-side field validation error messages were replaced with a GraphQL query error in production mode.
 
-## 4.1.2 <TitleDate date="2023-06-26" />
+## 4.1.2<TitleDate date="2023-06-26" />
 
 ### Fixed
 - Fixed a bug where forms using reCAPTCHA v2 Checkbox or hCaptcha Checkbox could behave incorrectly.
 
-## 4.1.1 <TitleDate date="2023-06-22" />
+## 4.1.1<TitleDate date="2023-06-22" />
 
 ### Changed
 - Updated the Diagnostics page to still show when the `allowAdminChanges` setting is set to `false`.
@@ -168,7 +168,7 @@ import { TitleDate } from '@site/src/components/docs'
 - Fixed a bug where the Submission Purge feature was not removing associated Asset files as well.
 - Fixed a bug where an error would occur when dynamically creating a sub-directory for file uploads upon submission of form.
 
-## 4.1.0 <TitleDate date="2023-06-13" />
+## 4.1.0<TitleDate date="2023-06-13" />
 
 :::warning
 If currently using GraphQL and/or headless javascript frameworks such as Vue.js, Next.js, React JS, etc, please proceed carefully and test your forms thoroughly after updating.
@@ -191,23 +191,23 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Deprecated `KeyValueMapInterface` for GraphQL. Please use `FreeformAttributeInterface` instead.
 - Deprecated `hash` and `timestamp` in `FreeformHoneypotInterface` for GraphQL. Please do not use.
 
-## 4.0.26 <TitleDate date="2023-06-12" />
+## 4.0.26<TitleDate date="2023-06-12" />
 
 ### Fixed
 - Fixed a bug that could cause issues when using the JS Honeypot enhancement.
 - Fixed a bug where an error would sometimes occur when opening the Diagnostics page.
 
-## 4.0.25 <TitleDate date="2023-06-05" />
+## 4.0.25<TitleDate date="2023-06-05" />
 
 ### Fixed
 - Fixed a bug where the Field Values Chart widget would error when attempting to add to the dashboard.
 
-## 4.0.24.1 <TitleDate date="2023-05-18" />
+## 4.0.24.1<TitleDate date="2023-05-18" />
 
 ### Fixed
 - Fixed a bug where an error would occur when attempting to submit a form that has the "Store Submission Data" setting disabled on sites using the Freeform 4.0.24 version.
 
-## 4.0.24 <TitleDate date="2023-05-16" />
+## 4.0.24<TitleDate date="2023-05-16" />
 
 ### Added
 - Added the ability to limit forms to be submitted once per email address only.
@@ -216,7 +216,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 ### Fixed
 - Fixed a bug where attempting to Allow a spam submission for a Payment form would result in an error.
 
-## 4.0.23 <TitleDate date="2023-04-28" />
+## 4.0.23<TitleDate date="2023-04-28" />
 
 ### Added
 - Added the ability to map submission data to `postDate` and `expiryDate` for Craft Entries.
@@ -229,7 +229,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where the hidden input for File Upload Drag & Drop fields was not getting an ID attribute applied to it.
 - Fixed some minor issues with demo templates.
 
-## 4.0.22 <TitleDate date="2023-04-14" />
+## 4.0.22<TitleDate date="2023-04-14" />
 
 ### Added
 - Added a "Floating Labels" basic formatting template. Ready-to-go and does not require any frameworks or toolkits.
@@ -242,12 +242,12 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where the Submission and Spam Purge features were not always working correctly.
 - Fixed a few minor styling issues in most of the sample formatting templates.
 
-## 4.0.21 <TitleDate date="2023-03-29" />
+## 4.0.21<TitleDate date="2023-03-29" />
 
 ### Fixed
 - Fixed a bug where the Honeypot could trigger an unserialization error in some cases.
 
-## 4.0.20 <TitleDate date="2023-03-23" />
+## 4.0.20<TitleDate date="2023-03-23" />
 
 ### Changed
 - Updated the JS Honeypot Enhancement feature to use the encrypted payload instead of PHP sessions when the 'Form Session Context' setting is 'Encrypted Payload'.
@@ -256,7 +256,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 ### Fixed
 - Fixed a bug where the Constant Contact integration could timeout when connecting if there were too many lists.
 
-## 4.0.19 <TitleDate date="2023-03-21" />
+## 4.0.19<TitleDate date="2023-03-21" />
 
 ### Added
 - Added two basic formatting template examples (dark and light modes) that are self-contained and complete to be added to any page. Does not require any frameworks or toolkits.
@@ -265,7 +265,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 ### Changed
 - Updated the `form_posted` cookie to only be created for users if a form uses a cookie check for limiting how many times a user can submit the form.
 
-## 4.0.18 <TitleDate date="2023-03-10" />
+## 4.0.18<TitleDate date="2023-03-10" />
 
 ### Changed
 - Addressed some minor Craft 4.4 compatibility issues in the control panel.
@@ -275,7 +275,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 ### Fixed
 - Fixed a bug where the "Email Template" dropdowns in the form builder displayed both Database and File groups even if just one was selected.
 
-## 4.0.17 <TitleDate date="2023-03-01" />
+## 4.0.17<TitleDate date="2023-03-01" />
 
 ### Added
 - Added support for `.eps` files in the Freeform file helper validation.
@@ -291,12 +291,12 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where using "Database Tables" for session storage context would result in an error when submitting forms.
 - Fixed a bug where some migrations and integrations could error when using Guzzle JSON calls.
 
-## 4.0.16 <TitleDate date="2023-02-23" />
+## 4.0.16<TitleDate date="2023-02-23" />
 
 ### Fixed
 - Fixed a bug where an erroneous database index existed for email marketing integrations that would sometimes cause an error.
 
-## 4.0.15 <TitleDate date="2023-02-14" />
+## 4.0.15<TitleDate date="2023-02-14" />
 
 ### Added
 - Added an example Conversational style formatting template that displays one field at a time and smoothly scrolls down to the next question until complete.
@@ -304,7 +304,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 ### Fixed
 - Fixed a bug where AJAX errors were not displaying correctly for Opinion Scale and Table fields.
 
-## 4.0.14 <TitleDate date="2023-02-08" />
+## 4.0.14<TitleDate date="2023-02-08" />
 
 ### Fixed
 - Fixed a bug where unfinalized files were not immediately being cleared upon successful submit of forms that are set not to store submission data.
@@ -312,32 +312,32 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where the `initHoneypot` function was triggering error warnings about premature initiation.
 - Fixed a bug where Multi-Select fields were missing some styles inside the form builder.
 
-## 4.0.13 <TitleDate date="2023-01-26" />
+## 4.0.13<TitleDate date="2023-01-26" />
 
 ### Fixed
 - Fixed a bug where single checkboxes were always being checked by default (as of 4.0.11).
 - Fixed a bug where custom table attributes were firing on all element types.
 
-## 4.0.12 <TitleDate date="2023-01-25" />
+## 4.0.12<TitleDate date="2023-01-25" />
 
 ### Added
 - Added additional data to the AJAX submit response payload for multi-page forms.
 - Added an example Bootstrap 5 formatting template that includes a preview/review of all fields across all pages.
 
-## 4.0.11 <TitleDate date="2023-01-19" />
+## 4.0.11<TitleDate date="2023-01-19" />
 
 ### Fixed
 - Fixed a bug where the opt-in data storage checkbox was not saving submission data when checked.
 - Fixed a bug where Dynamic Recipient fields would not export with labels when the "Use Option Labels when Exporting" setting was enabled.
 
-## 4.0.10 <TitleDate date="2023-01-17" />
+## 4.0.10<TitleDate date="2023-01-17" />
 
 ### Fixed
 - Fixed a bug where the "Once per logged in Users only" option for duplicate checking wasn't preventing guests from submitting the form.
 - Fixed a bug where extra returns were being inserted above H2s inside Rich Text fields (in the builder) when they were clicked on.
 - Fixed a bug where deleting a spam submission from the CP detail view was not working.
 
-## 4.0.9 <TitleDate date="2022-12-09" />
+## 4.0.9<TitleDate date="2022-12-09" />
 
 ### Added
 - Added back Excel support for exporting submissions.
@@ -350,7 +350,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 ### Fixed
 - Fixed a bug where the Submissions/Spam CP index includes an "Edit Submission" option that isn't usable.
 
-## 4.0.8 <TitleDate date="2022-11-21" />
+## 4.0.8<TitleDate date="2022-11-21" />
 
 ### Changed
 - Refactored the submission delete process to use batching.
@@ -362,7 +362,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where two sets of "set status" actions would appear in CP submissions index.
 - Fixed a bug where fetching existing tags for the ActiveCampaign integration was not working correctly.
 
-## 4.0.7 <TitleDate date="2022-10-25" />
+## 4.0.7<TitleDate date="2022-10-25" />
 
 ### Added
 - Verified compatibility with Craft 4.3.
@@ -372,7 +372,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where a warning was output in the Craft logs when loading dashboard widgets.
 - Fixed a bug where the "All Submissions" filter in Submissions and Spam Folder CP indexes would crash when there were more than 60 forms present.
 
-## 4.0.6 <TitleDate date="2022-10-12" />
+## 4.0.6<TitleDate date="2022-10-12" />
 
 ### Added
 - Added a "Floating Labels" version of the Bootstrap 5 example formatting template.
@@ -382,7 +382,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where the "Send Additional Notification" feature was not working correctly.
 - Fixed a bug where searching `freeform.submissions` across multiple forms was not working correctly.
 
-## 4.0.5 <TitleDate date="2022-10-05" />
+## 4.0.5<TitleDate date="2022-10-05" />
 
 ### Added
 - Added success events for AJAX forms with `redirect-to-url` behavior.
@@ -393,7 +393,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where users could create file-based email notification templates in the form builder when the setting for it is disabled.
 - Fixed a bug where using the `back` button in multi-page forms could potentially cause issues when using default browser validation.
 
-## 4.0.4 <TitleDate date="2022-09-28" />
+## 4.0.4<TitleDate date="2022-09-28" />
 
 ### Added
 - Added a setting to disable the creating and editing of File-based email notification templates.
@@ -407,7 +407,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where users without permissions to Freeform could add Freeform widgets to the Craft dashboard.
 - Fixed a bug where the `form` reserved keyword was being allowed for field handles.
 
-## 4.0.3 <TitleDate date="2022-09-12" />
+## 4.0.3<TitleDate date="2022-09-12" />
 
 ### Changed
 - Updated the Google Tag Manager event to include the AJAX response.
@@ -417,14 +417,14 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where duplicating forms could cause an error when more than one user group has permission to manage it.
 - Fixed a bug where the Tailwind 3 sample formatting template was not including custom input attributes when rendering Select fields.
 
-## 4.0.2 <TitleDate date="2022-08-24" />
+## 4.0.2<TitleDate date="2022-08-24" />
 
 ### Fixed
 - Fixed a bug where non-latin characters were being allowed in field handles in the field manager area.
 - Fixed a bug where predefined assets in email notifications showed a full file path instead of just the filename.
 - Fixed a bug where multiple instances of the same form are added when moving the form instance around the DOM.
 
-## 4.0.1 <TitleDate date="2022-08-23" />
+## 4.0.1<TitleDate date="2022-08-23" />
 
 ### Added
 - Added a v3 version of the Tailwind example formatting template.
@@ -439,7 +439,7 @@ If currently using GraphQL and/or headless javascript frameworks such as Vue.js,
 - Fixed a bug where attempting to view a related Freeform submission element in the slideout in another element could error.
 - Fixed a bug where attempting to attach a _Predefined Asset_ to an email notification template would give an Internal server error.
 
-## 4.0.0 <TitleDate date="2022-08-05" />
+## 4.0.0<TitleDate date="2022-08-05" />
 
 :::warning
 This is a larger and more complex update than usual, and there's a higher chance of a failed update attempt happening. Please ensure you have a recent database backup, and we recommend you test the update on a local/staging environment before updating your production server. Please follow the [Upgrading from Freeform 3.x guide](https://docs.solspace.com/craft/freeform/v4/setup/updating-freeform-3.html).

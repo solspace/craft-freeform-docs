@@ -128,7 +128,7 @@ function transformer(content: Content, data: string): string {
     /^(## \d+\.\d+\.\d+(?:\.\d+)?)( - (\d{4}-\d{2}-\d{2}))?$/gm,
     (match, version, _, date) => {
       if (date) {
-        return `${version} <TitleDate date="${date}" />`;
+        return `${version}<TitleDate date="${date}" />`;
       }
       return version;
     }
