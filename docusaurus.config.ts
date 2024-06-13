@@ -159,6 +159,7 @@ const config: Config = {
           type: 'localeDropdown',
           position: 'right',
         },
+        { to: '/support', label: 'Support', position: 'right' },
         {
           href: 'https://github.com/solspace',
           label: 'GitHub',

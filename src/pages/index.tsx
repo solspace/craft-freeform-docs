@@ -1,8 +1,10 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import { ThemedIdealImage } from '@site/src/components/utils';
+
+import FreeformIntroBlackPhoto from '@site/static/img/freeform-intro-black.png';
+import FreeformIntroWhitePhoto from '@site/static/img/freeform-intro-white.png';
 
 import {
   SimpleTextLink,
@@ -15,8 +17,8 @@ function HomepageHeader() {
     <header className="flex flex-col m-auto items-center gap-6 mt-32 max-w-7xl">
       <ThemedIdealImage
         sources={{
-          light: useBaseUrl('/img/freeform-intro-black.png'),
-          dark: useBaseUrl('/img/freeform-intro-white.png'),
+          light: FreeformIntroBlackPhoto,
+          dark: FreeformIntroWhitePhoto,
         }}
         className="max-w-3xl"
         alt="Freeform 5 for Craft CMS"
