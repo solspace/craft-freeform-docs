@@ -41,7 +41,7 @@ interface FieldCardsProps {
   items: FieldProps[];
 }
 
-interface AnswerCardProps {
+interface ChildrenProps {
   children: React.ReactNode;
 }
 
@@ -70,7 +70,7 @@ const AnswerChecklist: React.FC<ChecklistSection> = ({ items }) => {
   );
 };
 
-const AnswerCard: React.FC<AnswerCardProps> = ({ children }) => {
+const AnswerCard: React.FC<ChildrenProps> = ({ children }) => {
   return (
     <div className="border border-solid border-lime-800 p-5 rounded-lg bg-gray-100 dark:bg-lime-950 answer-card">
       <div className="flex">
@@ -238,6 +238,14 @@ const IntegrationPhotoCards: React.FC<IntegrationPhotoCardsProps> = ({
   );
 };
 
+const ColumnCardData: React.FC<ChildrenProps> = ({ children }) => {
+  return <div>{children}</div>;
+};
+
+const TwoColumnCards: React.FC<ChildrenProps> = ({ children }) => {
+  return <div className="grid grid-cols-2 gap-4">{children}</div>;
+};
+
 export {
   Card,
   FlexCards,
@@ -245,4 +253,6 @@ export {
   IntegrationPhotoCards,
   AnswerCard,
   AnswerChecklist,
+  TwoColumnCards,
+  ColumnCardData,
 };
