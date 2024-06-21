@@ -53,6 +53,44 @@ interface ChecklistSection {
   items: ChecklistItem[];
 }
 
+interface IconsCardItem {
+  iconSrc: string;
+  iconTitle: string;
+  link: string;
+  extraContent?: string;
+}
+
+interface IconsCardProps {
+  items: IconsCardItem[];
+}
+
+const IconCards: React.FC<IconsCardProps> = ({ items }) => {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 justify-start gap-4">
+      {items.map((item, index) => (
+        <Link
+          to={item.link}
+          key={index}
+          className="flex flex-col relative items-start rounded-2xl transition-all duration-500 bg-gray-100 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400"
+        >
+          {item.iconSrc && (
+            <Image
+              alt={item.iconTitle || 'Solspace Freeform'}
+              className="opacity-85 px-4 py-5"
+              img={item.iconSrc}
+            />
+          )}
+          {item.extraContent && (
+            <div className="absolute bottom-0 left-0 right-0 py-1.5 text-center rounded-b-2xl text-sm text-slate-400 bg-slate-900  w-full">
+              {item.extraContent}
+            </div>
+          )}
+        </Link>
+      ))}
+    </div>
+  );
+};
+
 const AnswerChecklist: React.FC<ChecklistSection> = ({ items }) => {
   return (
     <div className="checklist">
@@ -247,6 +285,7 @@ const TwoColumnCards: React.FC<ChildrenProps> = ({ children }) => {
 };
 
 export {
+  IconCards,
   Card,
   FlexCards,
   FieldCards,
