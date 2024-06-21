@@ -130,6 +130,8 @@ const config: Config = {
           },
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
         },
         theme: {
           customCss: './src/css/custom.css',
