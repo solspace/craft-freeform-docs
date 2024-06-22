@@ -1,0 +1,76 @@
+import { FlexCards } from '@site/src/components/docs';
+
+import EventsIcon from '../assets/icons/developer.png';
+import CustomFieldTypesIcon from '../assets/icons/field-text.png';
+import EmailMarketingIcon from '../assets/icons/megaphone.png';
+import WebhooksIcon from '../assets/icons/webhook.png';
+import FreeformApiIcon from '../assets/icons/gear-coding.png';
+import JsPluginIcon from '../assets/icons/js-code.png';
+import DatePickerIcon from '../assets/icons/date-time.png';
+import ConsoleCommandsIcon from './assets/icons/terminal.png';
+import GraphqlIcon from '../assets/icons/graphql.png';
+
+# Developer
+
+Freeform has a wide variety of developer events and is very customizable, allowing you to easily extend Freeform for all of your needs!
+
+<FlexCards
+  items={[
+    {
+      title: 'Events',
+      description:
+        'A wide range of events to easily extend Freeform for your needs.',
+      imgSrc: EventsIcon,
+      fullCardLink: 'events',
+    },
+    {
+      title: 'Custom Field Types',
+      description: 'Easily create your own custom field types.',
+      imgSrc: CustomFieldTypesIcon,
+      fullCardLink: 'field-types',
+    },
+    {
+      title: 'Custom Email Marketing',
+      description: 'Create your own email marketing and add it to Freeform.',
+      imgSrc: EmailMarketingIcon,
+      fullCardLink: 'email-marketing',
+    },
+    {
+      title: 'Custom Webhooks',
+      description: 'Create your own webhook and add it to Freeform.',
+      imgSrc: WebhooksIcon,
+      fullCardLink: 'webhooks',
+    },
+    {
+      title: 'Freeform API',
+      description: 'Find forms and submissions inside your controller.',
+      imgSrc: FreeformApiIcon,
+      fullCardLink: 'api',
+    },
+    {
+      title: 'JS Plugin',
+      description:
+        'Simplifies form customization for developers, regardless of website setup.',
+      imgSrc: JsPluginIcon,
+      fullCardLink: 'js-plugin',
+    },
+    {
+      title: 'Date Picker Events',
+      description: 'Javascript events to customize the Date & Time field type.',
+      imgSrc: DatePickerIcon,
+      fullCardLink: 'datepicker',
+    },
+    {
+      title: 'Console Commands',
+      description: 'Console commands to run cleanup tasks and other tasks.',
+      imgSrc: ConsoleCommandsIcon,
+      fullCardLink: 'console-commands',
+    },
+    {
+      title: 'GraphQL',
+      description: 'Easily query form layouts and submit form mutations.',
+      imgSrc: GraphqlIcon,
+      fullCardLink: '/headless/graphql',
+    },
+  ]}
+/>

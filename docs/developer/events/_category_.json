@@ -1,0 +1,8 @@
+{
+  "label": "Events",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "If you wish to extend the capabilities of Freeform, you can use any of the developer events included:"
+  }
+}
