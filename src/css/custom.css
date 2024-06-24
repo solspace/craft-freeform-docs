@@ -467,3 +467,8 @@ label.docs-demo-freeform-checkbox {
 #rc-editable-input-7 {
   background-color: white;
 }
+
+/* No Copy at Code Blocks*/
+.no-copy .clean-btn {
+  display: none;
+}

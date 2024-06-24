@@ -132,6 +132,10 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
+          admonitions: {
+            keywords: ['youtube'],
+            extendDefaults: true,
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
