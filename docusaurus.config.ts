@@ -130,8 +130,8 @@ const config: Config = {
           },
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          showLastUpdateTime: true,
-          showLastUpdateAuthor: true,
+          // showLastUpdateTime: true,
+          // showLastUpdateAuthor: true,
           admonitions: {
             keywords: ['youtube'],
             extendDefaults: true,
