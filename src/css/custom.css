@@ -472,3 +472,8 @@ label.docs-demo-freeform-checkbox {
 .no-copy .clean-btn {
   display: none;
 }
+
+/* Code Tabs */
+.code-tabs .photo img {
+  border-radius: 0;
+}
