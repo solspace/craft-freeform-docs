@@ -22,9 +22,11 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-link-hover-decoration: none;
   --ifm-container-width-xl: 1540px;
+  --ifm-table-border-color: transparent;
+  --edition-pro: #ff6624;
+  --table-border-color: #f2f2f2;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
@@ -34,6 +36,11 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --table-border-color: #173154;
+}
+
+html[data-theme='dark'] {
+  --ifm-table-stripe-background: transparent;
 }
 
 /**
@@ -479,23 +486,83 @@ label.docs-demo-freeform-checkbox {
 }
 
 /* Table Syles */
-/* table {
+table {
+  border: 0 !important;
+  table-layout: fixed !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
   border-collapse: collapse;
   margin: 1rem 0;
   display: block;
   overflow-x: auto;
 }
 
-tr {
-  border-top: 1px solid #dfe2e5;
+table tbody tr {
+  border-top: 2px solid var(--table-border-color);
 }
 
-tr:nth-child(2n) {
-  background-color: #f6f8fa;
+table td h2,
+table th h2 {
+  border: none !important;
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-td,
-th {
-  border: 1px solid #dfe2e5;
-  padding: 0.6em 1em;
-} */
+table td h3,
+table th h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.button {
+  border-bottom: none !important;
+}
+
+.button:hover {
+  border: none !important;
+}
+
+.icon.outbound {
+  color: #6d7789;
+  margin-left: 2px;
+  margin-bottom: 6px;
+}
+
+.orange {
+  color: $altAccentColor !important;
+}
+
+.green {
+  color: #17c32f !important;
+}
+
+.red {
+  color: #f00 !important;
+}
+
+.yellow {
+  color: #ffa500 !important;
+}
+
+.gray {
+  color: #b0b0b0 !important;
+}
+
+.edition-pro {
+  color: var(--edition-pro);
+}
+
+.edition-lite {
+  color: #ffb771 !important;
+}
+
+.edition-express {
+  color: #ebe0d5 !important;
+}
+
+.compare-none {
+  color: #122d4b !important;
+}

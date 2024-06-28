@@ -13,7 +13,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://emd.solspace.net',
+  url: 'https://emd.solspace.net/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/craft/freeform',
@@ -145,6 +145,20 @@ const config: Config = {
   ],
 
   themeConfig: {
+    // Algolia search
+    algolia: {
+      appId: '1DT1X6GS6A',
+      apiKey: '31f6b0738d7142090aea0e2191164eaa',
+      indexName: 'emd-solspace',
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+      searchParameters: {},
+      searchPagePath: 'search',
+      insights: false,
+    },
+
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
