@@ -1,2 +1,4 @@
-User-agent: Algolia Crawler
+User-agent: *
 Disallow:
+
+Sitemap: https://emd.solspace.net/craft/freeform/sitemap.xml
