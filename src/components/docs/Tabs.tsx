@@ -53,7 +53,7 @@ const TabItems = ({ children }) => {
     <div className="">
       <div className="border-b border-gray-200">
         <nav className="flex  bg-slate-100 dark:bg-slate-800 ">
-          <div className="flex rounded-t-lg bg-slate-200 dark:bg-slate-700 ">
+          <div className="flex flex-wrap rounded-t-lg bg-slate-200 dark:bg-slate-700 ">
             {items.map(
               (child, index) =>
                 React.isValidElement(child) && (
