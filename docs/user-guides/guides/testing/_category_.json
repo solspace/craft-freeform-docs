@@ -3,6 +3,7 @@
   "position": 8,
   "link": {
     "type": "generated-index",
-    "description": "Testing and troubleshooting guides for your forms."
+    "description": "Testing and troubleshooting guides for your forms.",
+    "slug": "user-guides/guides/testing"
   }
 }

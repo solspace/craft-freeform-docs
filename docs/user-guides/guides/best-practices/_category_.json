@@ -3,6 +3,7 @@
   "position": 7,
   "link": {
     "type": "generated-index",
-    "description": "Guides that show best practices with Freeform."
+    "description": "Guides that show best practices with Freeform.",
+    "slug": "user-guides/guides/best-practices"
   }
 }

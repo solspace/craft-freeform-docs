@@ -3,6 +3,7 @@
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "Explore additional validation options for your forms.."
+    "description": "Explore additional validation options for your forms..",
+    "slug": "user-guides/guides/form-validation"
   }
 }

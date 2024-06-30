@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Learn how to integrate external data dynamically."
+    "description": "Learn how to integrate external data dynamically.",
+    "slug": "user-guides/guides/dynamic-data"
   }
 }
