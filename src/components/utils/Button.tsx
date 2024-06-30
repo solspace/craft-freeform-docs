@@ -5,6 +5,7 @@ interface PrimaryButtonWithLink {
   label?: string;
   arrowDown?: boolean;
   classes?: string;
+  size?: string;
 }
 
 interface ButtonProps {
@@ -16,9 +17,15 @@ const PrimaryButtonWithLink: React.FC<PrimaryButtonWithLink> = ({
   label,
   arrowDown = false,
   classes,
+  size,
 }) => {
   return (
-    <Link to={to} className={`primary-btn ${classes}`}>
+    <Link
+      to={to}
+      className={`primary-btn ${classes} ${
+        size === 'sm' ? 'text-sm py-2 px-2' : 'text-lg py-2 px-6 '
+      }`}
+    >
       <span className={`${arrowDown ? 'arrow-down' : ''}`}>
         {label || 'Learn more'}
       </span>

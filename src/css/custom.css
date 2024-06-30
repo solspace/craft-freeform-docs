@@ -47,6 +47,11 @@ html[data-theme='dark'] {
 * Global css
 */
 
+/* Hide Pagination nav */
+.pagination-nav {
+  display: none;
+}
+
 /* Smooth Scroll */
 html {
   scroll-behavior: smooth;
@@ -54,7 +59,7 @@ html {
 
 /* Button */
 .primary-btn {
-  @apply relative w-fit text-lg font-medium py-2 px-6 rounded-full transition-all duration-500 bg-amber-600 text-white hover:text-white hover:bg-amber-700;
+  @apply relative w-fit font-medium rounded-full transition-all duration-500 bg-amber-600 text-white hover:text-white hover:bg-amber-700;
 }
 
 .primary-btn > span {
