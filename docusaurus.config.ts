@@ -133,7 +133,7 @@ const config: Config = {
           // showLastUpdateTime: true,
           // showLastUpdateAuthor: true,
           admonitions: {
-            keywords: ['youtube'],
+            keywords: ['youtube', 'guide'],
             extendDefaults: true,
           },
         },
