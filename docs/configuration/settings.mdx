@@ -192,7 +192,7 @@ Specify the way Freeform scripts are inserted.
 - **As Files** - (recommended if having issues with Static URLs) are actual physical files generated inside of the 'cpresources' folder by Craft's asset manager with no caching.
 - **Inline** - will add the scripts as inline scripts and may be useful as a workaround if the other 2 options are not working. This doesn't allow for caching, and pollutes the source code.
 
-### Freeform Session Context <Badge type="feature" text="Deprecated in 5.0+" />
+### Freeform Session Context<Badge type="feature" text="Deprecated in 5.0+" />
 
 Choose the way form context is passed between form submits.
 
@@ -212,7 +212,7 @@ Options are:
   - The key benefits are that the context is stored in the database reliably for as long as you wish, offering more control if you have large forms that take a very long time to complete.
   - The problems with this approach is that high traffic sites may run into performance issues as the database table fills up and attempts to clear regularly, etc.
 
-## Form Builder <Badge type="feature" text="Improved in 5.0+" />
+## Form Builder<Badge type="feature" text="Improved in 5.0+" />
 
 Control Freeform's form builder experience.
 
@@ -238,7 +238,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 | **Form Builder Notifications tab** <Badge type="feature" text="New in 5.0+" /> | `defaults: notifications: ...`                            | Set the default templates for each email notification type. Optionally lock values as well.                                                                                                                                                                                                                     |    <span class="edition-express">✓</span>    |  <span class="edition-lite">✓</span>   |  <span class="edition-pro">✓</span>  |
 | **Form Builder Settings tab** <Badge type="feature" text="New in 5.0+" />      | `defaults: settings: ...`                                 | Set the default values for settings. Optionally lock values as well.                                                                                                                                                                                                                                            |    <span class="edition-express">✓</span>    |  <span class="edition-lite">✓</span>   |  <span class="edition-pro">✓</span>  |
 
-## Limited Users <Badge type="feature" text="Coming Soon!" />
+## Limited Users<Badge type="feature" text="Coming Soon!" />
 
 With the _Limited Users_ feature, you can easily customize the form builder experience for specific users or groups. You have the ability to choose which [field types](../forms/fields/) are available and which settings and page tabs are visible. This ensures that these users are not overwhelmed by advanced settings and prevents them from accidentally breaking your forms or site.
 
@@ -247,7 +247,7 @@ With the _Limited Users_ feature, you can easily customize the form builder expe
   alt="Limited Users - Permission Settings"
 />
 
-## Template Manager <Badge type="feature" text="Improved in 5.0+" />
+## Template Manager<Badge type="feature" text="Improved in 5.0+" />
 
 The Template Manager settings page allows you to configure template directory paths and other settings for Formatting Templates, Email Notification Templates, and Success Templates.
 
@@ -363,13 +363,13 @@ Enabling the **Purge Submissions** feature and saving this settings page will re
 When attempting to block individual characters (e.g. Russian letters) or partial words or strings with the **Block Keywords** setting, be sure to make good use of the wildcard `*` character! E.g.: `*й*`, `*Д*`, `*url=http*`, etc.
 :::
 
-## Integrations <Badge type="feature" text="Improved in 5.0+" />
+## Integrations<Badge type="feature" text="Improved in 5.0+" />
 
 :::tip
 All integration pages and their settings remain accessible when the Craft `allowAdminChanges` config setting is set to `false`.
 :::
 
-### Email Marketing <Badge type="pro" text="Pro" />
+### Email Marketing<Badge type="pro" text="Pro" />
 
 The Email Marketing area allows you to manage your mailing list API integrations. Email Marketing integrations are set up here and are globally available to all forms, but are configured per form inside the form builder interface. To connect to an Email Marketing API, click the **New Integration** at the top right.
 
@@ -377,7 +377,7 @@ The Email Marketing area allows you to manage your mailing list API integrations
 
 <Photo img={SettingEmailMarktetingPhoto} alt="Email marketing" />
 
-### CRM <Badge type="pro" text="Pro" />
+### CRM<Badge type="pro" text="Pro" />
 
 The CRM area allows you to manage your CRM (Customer Relationship Management) API integrations. CRM integrations are set up here and are globally available to all forms, but are configured per form inside the form builder interface. To connect to a CRM API, click the **New Integration** at the top right.
 
@@ -385,7 +385,7 @@ The CRM area allows you to manage your CRM (Customer Relationship Management) AP
 
 <Photo img={SettingCrmPhoto} alt="CRM" />
 
-### Payments <Badge type="pro" text="Pro" />
+### Payments<Badge type="pro" text="Pro" />
 
 This area allows you to configure and manage Stripe Payments for your forms. The Stripe Payments integration is set up here and are globally available to all forms, but are configured per form inside the form builder interface. To create a new Stripe payment setup, click the **New Payment Integration** at the top right.
 
@@ -393,13 +393,13 @@ This area allows you to configure and manage Stripe Payments for your forms. The
 
 <Photo img={SettingPaymentsPhoto} alt="Payments" />
 
-### Captchas <Badge type="feature" text="Improved in 5.0+" />
+### Captchas<Badge type="feature" text="Improved in 5.0+" />
 
 This area allows you to configure and manage Captcha integrations. Freeform currently supports several options of _reCAPTCHA_ and _hCaptcha_.
 
 - View the [reCAPTCHA](../integrations/recaptcha/) or [hCaptcha](../integrations/hcaptcha/) integration documentation for more information about setting up and configuring.
 
-### Webhooks <Badge type="pro" text="Pro" />
+### Webhooks<Badge type="pro" text="Pro" />
 
 This area allows you to configure and manage **Slack**, **Zapier** and **generic** Webhooks for your forms. The Webhooks integrations are set up and completely managed here. You specify which form(s) each Webhook applies to, etc. To create a new Webhook, click the **New Webhook** at the top right.
 
@@ -408,7 +408,7 @@ This area allows you to configure and manage **Slack**, **Zapier** and **generic
 
 <Photo img={SettingSlackPhoto} alt="Slack Webhooks" />
 
-### Other <Badge type="feature" text="New in 5.0+" />
+### Other<Badge type="feature" text="New in 5.0+" />
 
 This area allows you to configure and manage singleton integrations for your forms. Currently the following are available:
 

@@ -52,7 +52,7 @@ Freeform includes a variety of robust spam control features to make managing for
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../user-guides/guides/testing/troubleshooting-form-issues)
 :::
 
-## Freeform Honeypot <Badge type="feature" text="Improved in 5.0+" />
+## Freeform Honeypot<Badge type="feature" text="Improved in 5.0+" />
 
 Freeform includes its own Honeypot spam protection feature. This is enabled by default, but can be disabled in the **Other** area of the _Integrations_ settings. You can then enable/disable per form.
 
@@ -76,7 +76,7 @@ If using the **Custom Input Name** setting, be careful when choosing a custom na
 
 The Freeform Honeypot will automatically be inserted in the form by Freeform when rendering the form.
 
-## Freeform Javascript Test <Badge type="feature" text="Improved in 5.0+" />
+## Freeform Javascript Test<Badge type="feature" text="Improved in 5.0+" />
 
 Freeform includes its own Javascript Test spam protection feature. When enabled, it will help fight spambots more aggressively by requiring that users have javascript enabled for their browser to submit the form. This is disabled by default, but can be enabled in the **Other** area of the _Integrations_ settings. You can then enable/disable per form.
 
@@ -180,11 +180,18 @@ This feature is intended for extreme conditions, such as preventing your site fr
 
 Freeform currently supports the following **Captcha** services:
 
-- [reCAPTCHA v2 Checkbox](../integrations/recaptcha/)
-- [reCAPTCHA v2 Invisible](../integrations/recaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
-- [reCAPTCHA v3](../integrations/recaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
-- [hCaptcha Checkbox](../integrations/hcaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
-- [hCaptcha Invisible](../integrations/hcaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+### reCAPTCHA
+
+The options below are compatible with the Enterprise API and the Classic legacy keys:
+
+- [Challenge - Checkbox (v2)](../integrations/recaptcha/)
+- [Challenge - Invisible (v2)](../integrations/recaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+- [Score Based (v3)](../integrations/recaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+
+### hCaptcha
+
+- [Checkbox](../integrations/hcaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+- [Invisible](../integrations/hcaptcha/) <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
 ### Setup Guides
 

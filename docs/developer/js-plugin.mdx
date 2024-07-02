@@ -76,7 +76,7 @@ document.addEventListener('freeform-on-submit', function (event) {
 
 You can add your custom form handler scripts anywhere in the page. The `freeform-ready` event is triggered for each form and dispatched via the `form` and `document` elements. The events are dispatched once the DOM is ready. If you add a form to the page via AJAX, it will automatically get initialized with the `Freeform` plugin and will also trigger the `freeform-ready` event.
 
-## Loading Freeform JS manually <Badge type='feature' text='Improved in 5.3+' />
+## Loading Freeform JS manually<Badge type='feature' text='Improved in 5.3+' />
 
 If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Freeform Javascript Insertion Location](../configuration/settings.md#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformPlugin()` function to your template where you'd like it to insert the JS. You can pass two variables to the function to add custom attributes to the script and style tags that Freeform generates.
 
@@ -502,7 +502,7 @@ The available options are:
 - [`string`] `errorClassField` - the `css` class name(-s) to be attached to the input field that has errors
 - [`string`] `successClassBanner` - the `css` class name(-s) to be attached to the success banner html element
 
-## Stripe Payments Events <Badge type="feature" text="Improved in 5.0+" />
+## Stripe Payments Events<Badge type="feature" text="Improved in 5.0+" />
 
 To style the Stripe Payment Element, you'll need to apply [Stripe's Appearance API variables](https://docs.stripe.com/elements/appearance-api?platform=web#variables) to the `elementOptions` and `paymentOptions` listeners.
 

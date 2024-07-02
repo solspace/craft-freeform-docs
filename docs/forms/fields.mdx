@@ -3,6 +3,8 @@ sidebar_position: 2
 ---
 
 import Player from 'react-player';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 import { FlexCards } from '@site/src/components/docs';
 import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
@@ -145,7 +147,7 @@ There is a standard number of settings available to all forms (with some excepti
 | **Attribute Editor**    |                                                                      | Apply any kind of attribute on the input, label, error, instruction in Freeform's automated rendering of the form.                                                                                                                                                                                                                                                                                                                                      |
 | **Options**             | `options`<ul><li>`label`</li><li>`value`</li><li>`checked`</li></ul> | Specify the option labels and values for applicable field types. Available only for the following field types: <ul><li>[Checkboxes](#checkboxes)</li><li>[Dropdown](#dropdown)</li><li>[Multiple Select](#multiple-select)</li><li>[Radios](#radios)</li></ul>                                                                                                                                                                                          |
 
-### Field Encryption <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
+### Field Encryption<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
 
 Each field includes the ability to optionally encrypt its submission data. Simply toggle the **Encrypt field data** setting inside the form builder for any field you wish to have encrypted. Freeform will take care of the rest.
 
@@ -155,7 +157,7 @@ For each field that is encrypted and contains submission data, the database row 
 Encryption is not retroactive. Each submission will need to be resaved to update older submissions.
 :::
 
-### Populating Field Options <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div>
+### Populating Field Options<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
 All multi-option field types (such as Dropdown, Checkboxes, etc) can have their option labels and values automatically populated with [Craft Elements or Pre-defined list options](#populating-fields-with-elements-predefined-options).
 
@@ -212,7 +214,7 @@ Any field can be a favorite field! If you have a number of fields that are commo
   height="100%"
 />
 
-## Calculation <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.1+" />
+## Calculation<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.1+" />
 
 The Calculation field allows you to perform dynamic calculations based on user-input values within your forms.
 
@@ -250,7 +252,31 @@ Utilizing [Symfony Expression Syntax](https://symfony.com/doc/current/reference/
 
 ##### Example
 
-This one left........
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+(field1 - field2) + field3
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+(12 - 3) + 45
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+54
+```
+
+</TabItem>
+</Tabs>
 
 #### Comparison
 
@@ -266,17 +292,69 @@ This one left........
 | `>=`      | Greater than or equal to |
 | `matches` | Regex match              |
 
-This one left........
+##### Example
+
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+field1 >= field2
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+40 >= 50
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+false
+```
+
+</TabItem>
+</Tabs>
 
 #### Logical
 
-| Operator      | Description |
-| ------------- | ----------- | ------- | --- |
-| `!` or `not`  | Not         |
-| `&&` or `and` | And         |
-| `             |             | `or`or` | Or  |
+| Operator       | Description |
+| -------------- | ----------- |
+| `!` or `not`   | Not         |
+| `&&` or `and`  | And         |
+| `\|\|` or `or` | Or          |
 
-This one left........
+##### Example
+
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+field1 > field2 || field1 < field3
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+10 > 10 || 10 < 20
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+true
+```
+
+</TabItem>
+</Tabs>
 
 #### String
 
@@ -284,7 +362,61 @@ This one left........
 | -------- | ------------- |
 | `~`      | Concatenation |
 
-This one left........
+##### Example 1
+
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+'Hello ' ~ firstName ~ ', ' ~ 'Welcome!'
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+'Hello ' ~ 'Bob' ~ ', ' ~ 'Welcome!'
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+Hello Bob, Welcome!
+```
+
+</TabItem>
+</Tabs>
+
+##### Example 2
+
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+nameTitle ~ ' ' ~ firstName ~ ' ' ~ lastName
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+'Dr.' ~ ' ' ~ 'Sarah' ~ ' ' ~ 'Connor'
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+Dr. Sarah Connor
+```
+
+</TabItem>
+</Tabs>
 
 #### Array
 
@@ -293,7 +425,33 @@ This one left........
 | `in`     | Contains         |
 | `not in` | Does not contain |
 
-This one left........
+##### Example
+
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+field1 in ['apple', 'orange', 'banana']
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+'banana' in ['apple', 'orange', 'banana']
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+true
+```
+
+</TabItem>
+</Tabs>
 
 #### Numeric
 
@@ -301,7 +459,33 @@ This one left........
 | -------- | ----------- |
 | `..`     | Range       |
 
-This one left........
+##### Example
+
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+field1 in 50..100
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+75 in 50..100
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+true
+```
+
+</TabItem>
+</Tabs>
 
 #### Ternary
 
@@ -309,7 +493,33 @@ This one left........
 | -------- | ---------------------------------- |
 | `?`      | Operator that takes three operands |
 
-This one left........
+##### Example
+
+<Tabs>
+<TabItem value="Formula" label="Formula" default>
+
+```
+field1 == 5 ? 'yes' : 'no'
+```
+
+</TabItem>
+
+<TabItem value="Values" label="Values">
+
+```
+5 == 5 ? 'yes' : 'no'
+```
+
+</TabItem>
+
+<TabItem value="Output" label="Output">
+
+```
+yes
+```
+
+</TabItem>
+</Tabs>
 
 ## Checkbox
 
@@ -329,7 +539,7 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 - [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../../guides/parsing-html-in-field-options/)
 - [Want to display single checkbox fields as a light switch toggle?](../../guides/toggle-switch-checkbox/)
 
-## Checkboxes <Badge type="feature" text="Renamed in 5.0+" />
+## Checkboxes<Badge type="feature" text="Renamed in 5.0+" />
 
 A group of checkboxes. The `field.type` property value is `checkboxes` (for conditionals).
 
@@ -347,7 +557,7 @@ A group of checkboxes. The `field.type` property value is `checkboxes` (for cond
 - [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../../guides/parsing-html-in-field-options/)
 - [Need to populate field options at template level? Check out the guide for workaround options.](../../guides/populate-field-options-at-template-level/)
 
-## Confirm <Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+## Confirm<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
 
 A field that allows you to force a user to re-enter a matching value for another text input field, including [Password](#password) fields (e.g. "Confirm Email Address", "Confirm Password"). It runs through additional validation to make sure field values match. If not, it'll show an error. This field stores the data as well, in case that is important for your site's needs. The `field.type` property value is `confirm` (for conditionals).
 
@@ -358,7 +568,7 @@ A field that allows you to force a user to re-enter a matching value for another
 - Choose a target field to validate against, e.g. **Email** field.
   - Available fields must be of text input type, but don't necessarily need to be of the [Text](#text) field type - you can use with [Email](#email) fields, [Password](#password) special fields, [Phone](#phone) fields, etc.
 
-## Date & Time <Badge type="pro" text="Pro" />
+## Date & Time<Badge type="pro" text="Pro" />
 
 A complex date and/or time field. Can be used as Date only, Time only, or both. Many configuration and validation options available as well. The `field.type` property value is `datetime` (for conditionals).
 
@@ -408,7 +618,7 @@ A complex date and/or time field. Can be used as Date only, Time only, or both. 
 - `minDate` (e.g. `five weeks ago`)
 - `maxDate` (e.g. `2024-12-31`)
 
-## Dropdown <Badge type="feature" text="Renamed in 5.0+" />
+## Dropdown<Badge type="feature" text="Renamed in 5.0+" />
 
 A select dropdown menu field. The `field.type` property value is `dropdown` (for conditionals).
 
@@ -426,7 +636,7 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 - [Need to populate field options at template level? Check out the guide for workaround options.](../../guides/populate-field-options-at-template-level/)
 - [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../../guides/other-option-for-fields/)
 
-## Email <Badge type="feature" text="Revised in 5.0+" />
+## Email<Badge type="feature" text="Revised in 5.0+" />
 
 A single-line text input field that includes additional validation to expect a valid email address as well as the possibility of attaching an email notification to it. Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their email address twice. The `field.type` property value is `email` (for conditionals).
 
@@ -565,7 +775,7 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 
 The form builder includes some options for controlling basic styling, but you can also customize the appearance of the Drag and Drop File Upload field by using your own CSS. To avoid name collision and have maximum flexibility, the CSS class names use [BEM](http://getbem.com/introduction/) methodology. You will also likely need to specify `!important` for each override to ensure it takes effect.
 
-#### CLASS NAMES <Badge type="feature" text="Renamed in 5.0+" />
+#### CLASS NAMES<Badge type="feature" text="Renamed in 5.0+" />
 
 Below is a list of all class names listed in SCSS:
 
@@ -641,7 +851,7 @@ Below is an example with regular CSS:
 }
 ```
 
-## Group <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
+## Group<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
 
 A field that contains other fields within it. To use, add a Group field into your form's layout, then add/drag other fields into that Group inside the form builder. This becomes especially powerful when using with [Conditional Rules](./conditional-rules/), as you'll be able create a single rule to show/hide an entire group of fields at once.
 
@@ -694,7 +904,7 @@ If you'd like to display submission data from previous pages, you can do this by
 </ul>
 ```
 
-## Invisible <Badge type="pro" text="Pro" />
+## Invisible<Badge type="pro" text="Pro" />
 
 A field that allows you to collect hidden data in form submissions without a hidden field being present in the template source code.
 
@@ -749,7 +959,7 @@ A single-line `number` type input field that is validated to contain certain num
 - `allowNegative` (e.g. `false`)
 - `step`
 
-## Opinion Scale <Badge type="pro" text="Pro" /><Badge type="feature" text="Revised in 5.0+" />
+## Opinion Scale<Badge type="pro" text="Pro" /><Badge type="feature" text="Revised in 5.0+" />
 
 A special field that allows for flexible opinion scoring using Freeform's built in CSS. The `field.type` property value is `opinion-scale` (for conditionals). This field type is included automatically with the _Pro_ edition of Freeform.
 
@@ -797,13 +1007,13 @@ To manually render an Opinion Scale field to use your own styles, your code migh
 {% endif %}
 ```
 
-## Password <Badge type="pro" text="Pro" />
+## Password<Badge type="pro" text="Pro" />
 
 A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/user-registration-forms.md) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
 
 <Photo img={PasswordPhoto} alt="Password field type" />
 
-### Settings <Badge type="feature" text="New in 5.2+" />
+### Settings<Badge type="feature" text="New in 5.2+" />
 
 - **Min Length** - the minimum number of characters the password should be.
 - **Max Length** - the maximum number of characters the password should be.
@@ -814,7 +1024,7 @@ A special field type that allows you to securely collect a password from a submi
 - Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../forms/email-notifications/#all-fields).
 - When using with the Users [Element integration](../integrations/elements/), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
 
-## Phone <Badge type="pro" text="Pro" />
+## Phone<Badge type="pro" text="Pro" />
 
 A `tel` type input field that is validated to contain phone numbers only, based on a configured pattern. The `field.type` property value is `phone` (for conditionals).
 
@@ -830,7 +1040,7 @@ A `tel` type input field that is validated to contain phone numbers only, based 
 
 - `pattern`
 
-## Radios <Badge type="feature" text="Renamed in 5.0+" />
+## Radios<Badge type="feature" text="Renamed in 5.0+" />
 
 A group of radio options. The `field.type` property value is `radios` (for conditionals).
 
@@ -849,7 +1059,7 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 - [Need to populate field options at template level? Check out the guide for workaround options.](../../guides/populate-field-options-at-template-level/)
 - [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../../guides/other-option-for-fields/)
 
-## Rating <Badge type="pro" text="Pro" />
+## Rating<Badge type="pro" text="Pro" />
 
 A special field that allows for star ratings using Freeform's built-in CSS. The `field.type` property value is `rating` (for conditionals).
 This field type is included automatically with the _Pro_ edition of Freeform.
@@ -879,7 +1089,7 @@ To manually render a Rating field using your own styles, your code might look so
 {% endfor %}
 ```
 
-## Regex <Badge type="pro" text="Pro" />
+## Regex<Badge type="pro" text="Pro" />
 
 An input field that is validated based on the specified regex pattern (e.g. `/^[a-zA-Z0-9]*$/`). The `field.type` property value is `regex` (for conditionals).
 
@@ -900,7 +1110,7 @@ An input field that is validated based on the specified regex pattern (e.g. `/^[
 - `pattern`
 - `message`
 
-## Rich Text <Badge type="pro" text="Pro" />
+## Rich Text<Badge type="pro" text="Pro" />
 
 A special field type that allows you include rich text inside your form layout in the form builder. The `field.type` property value is `rich-text` (for conditionals).
 
@@ -915,7 +1125,7 @@ A special field type that allows you include rich text inside your form layout i
 [Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](guides/tinymce-editor-textarea/)
 :::
 
-## Signature <Badge type="pro" text="Pro" />
+## Signature<Badge type="pro" text="Pro" />
 
 A field that allows users to handwrite signatures with their mouse inside your form. The `field.type` property value is `signature` (for conditionals).
 
@@ -938,7 +1148,7 @@ A field that allows users to handwrite signatures with their mouse inside your f
 - The Signature field, due to it's complexness, cannot easily be manually generated in a form, and is best done with render helpers, e.g. `field.render`.
 - There's currently no way to make the signature pad area "responsive" (like setting it to 100% width), as this would be quite difficult to account for with the need to display the signature image in various places, etc.
 
-## Submit buttons <Badge type="feature" text="Revised in 5.0+" />
+## Submit buttons<Badge type="feature" text="Revised in 5.0+" />
 
 Submit buttons are handled automatically by Freeform. They are automatically inserted at the end of your form in the form builder. This includes the **Submit/Continue**, **Previous** (where applicable), and **Save & Continue Later** buttons (where available).
 
@@ -951,7 +1161,7 @@ The Submit button settings allow you to edit the button label(s) and adjust the 
 - When using with multi-page forms, Freeform will detect when you're on a page after first page, and provide you with the option to toggle a **Back** button.
 - When using with the **Pro** edition, Freeform will provide you with the option to toggle a **Save** button.
 
-### Templating <Badge type="feature" text="Revised in 5.0+" />
+### Templating<Badge type="feature" text="Revised in 5.0+" />
 
 Controlling the format for submit buttons is now done through the new `buttons` namespace available in the [Template Overrides](../templates/formatting/#template-overrides) feature.
 
@@ -1037,7 +1247,7 @@ And finally, for maximum control, you can use a property attributes render inste
 {{ form.renderClosingTag }}
 ```
 
-### Save & Continue Later <Badge type="pro" text="Pro" />
+### Save & Continue Later<Badge type="pro" text="Pro" />
 
 This feature allows users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later/).
 
@@ -1054,13 +1264,13 @@ This feature allows users to save their form progress and continue/complete the 
   - Requires targeting of an [Email](#email) field that will contain the user's email address in order to send the email notification.
     - If the user hasn't yet filled out an email address, the email notification attempt will be suppressed (as there is no field validation to ensure the Email field is fillout out). A good way around this would be to have the first page include basic info like _name_ and _email_ but no option to save the form until the second page.
 
-## Stripe Payment <Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+## Stripe Payment<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
 
 When the [Stripe Payments](../integrations/payments/) integration is configured, a Stripe Payments special field type will become available. This field enables your forms to collect (but not store) credit card or other payment information and pass it off to Stripe.
 
 <Photo img={StripePhoto} alt="Stripe Payment field Layout Options" />
 
-## Table <Badge type="pro" text="Pro" />
+## Table<Badge type="pro" text="Pro" />
 
 A field that allows you to collect and handle repeating data. The `field.type` property value is `table` (for conditionals).
 
@@ -1239,13 +1449,13 @@ A multi-line text input field. The `field.type` property value is `textarea` (fo
 - [Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../../guides/line-breaks-in-textarea-fields/)
 - [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../../guides/tinymce-editor-textarea/)
 
-## Website <Badge type="pro" text="Pro" />
+## Website<Badge type="pro" text="Pro" />
 
 A `url` type input field that checks to see if the URL specified has valid syntax (`http://`, `https://`, `ftp://`, etc). The `field.type` property value is `website` (for conditionals).
 
 <Photo img={WebsitePhoto} alt="Website field type" />
 
-## Populating Fields with Elements & Predefined Options <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup> <Badge type="feature" text="Improved in 5.0+" />
+## Populating Fields with Elements & Predefined Options<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup> <Badge type="feature" text="Improved in 5.0+" />
 
 Inside the form builder (only), field types with options (such as _Dropdown_, _Radios_, etc) have the ability to be automatically fed options from Craft Elements or Freeform's own predefined options. This allows you to quickly build forms by having fields auto-generated.
 
@@ -1263,7 +1473,7 @@ The following field types can be auto-populated:
 - [Checkboxes](#checkboxes)
 - [Radios](#radios)
 
-### Available Craft Elements <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div>
+### Available Craft Elements <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
 The following Craft Elements can be fed to the above field types:
 
@@ -1292,7 +1502,7 @@ The following Craft Elements can be fed to the above field types:
   - **Option Label** and **Option Value** choices:
     - ID, Title, Slug, URI, SKU, Price, Fields (simple values)
 
-### Available Predefined Options <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div>
+### Available Predefined Options <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
 The following Freeform predefined options can be fed to the above field types:
 
@@ -1357,7 +1567,7 @@ The following Freeform predefined options can be fed to the above field types:
     - Abbreviated (Capitalized 3 letters), e.g. `Thu`
     - Single Number, e.g. `4`
 
-### Convert to Custom Options <Badge type="feature" text="New in 5.0+" />
+### Convert to Custom Options<Badge type="feature" text="New in 5.0+" />
 
 Sometimes you need a little more control over the populated data generated by the _Element_ or _Predefined_ options. You can click the **Convert to Custom Options** button at any time to have the generated option data converted to _Custom_ options that can then have its options edited, removed, added, renamed, and reordered.
 

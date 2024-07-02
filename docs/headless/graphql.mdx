@@ -8,7 +8,7 @@ import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
 import GraphqlPhoto from './assets/img/graphql.png';
 
-# GraphQL <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+# GraphQL<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
 Freeform supports querying form layouts and form submission mutations via GraphQL. This guide assumes you have some GraphQL experience. To learn more about GraphQL and Craft, please check out the [Fetch content with GraphQL](https://craftcms.com/docs/getting-started-tutorial/build/graphql.html) guide and [Craft's GraphQL API](https://craftcms.com/docs/5.x/development/graphql.html).
 
@@ -525,7 +525,7 @@ Use `FreeformSubmissionCaptchaInterface`.
 | `name`  | `String` | Name of the Captcha  |
 | `value` | `String` | Value of the Captcha |
 
-### Buttons Interface <Badge type="feature" text="New in 5.0+" />
+### Buttons Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformButtonsInterface`.
 
@@ -542,7 +542,7 @@ Use `FreeformButtonsInterface`.
 | `notificationTemplate` | [`FreeformNotificationTemplateInterface`](#notification-template-interface) |                                           |
 | `attributes`           | [`FreeformButtonsAttributesInterface`](#buttons-attributes-interface)       | The button attributes                     |
 
-### Buttons Attributes Interface <Badge type="feature" text="New in 5.0+" />
+### Buttons Attributes Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformButtonsAttributesInterface`.
 
@@ -555,7 +555,7 @@ Use `FreeformButtonsAttributesInterface`.
 | `back`          | [`FreeformAttributeInterface`](#attribute-interface) | Back button attributes    |
 | `save`          | [`FreeformAttributeInterface`](#attribute-interface) | Save button attributes    |
 
-### Notification Template Interface <Badge type="feature" text="New in 5.0+" />
+### Notification Template Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformNotificationTemplateInterface`.
 
@@ -578,7 +578,7 @@ Use `FreeformNotificationTemplateInterface`.
 | `textBody`           | `String`   | The text content of the notification template                                                                 |
 | `autoText`           | `Boolean`  | Whether Freeform will automatically provide a Text-only version of the notification based on the HTML version |
 
-### Rules Interface <Badge type="feature" text="New in 5.0+" />
+### Rules Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformRulesInterface`.
 
@@ -587,7 +587,7 @@ Use `FreeformRulesInterface`.
 | `pages`  | [`[FreeformPageRuleInterface]`](#page-rule-interface)   | The page rules  |
 | `fields` | [`[FreeformFieldRuleInterface]`](#field-rule-interface) | The field rules |
 
-### Page Rule Interface <Badge type="feature" text="New in 5.0+" />
+### Page Rule Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformPageRuleInterface`.
 
@@ -599,7 +599,7 @@ Use `FreeformPageRuleInterface`.
 | `combinator` | `String`                                                        | The combinator for the page rule |
 | `conditions` | [`[FreeformRuleConditionInterface]`](#rule-condition-interface) | The conditions for the page rule |
 
-### Field Rule Interface <Badge type="feature" text="New in 5.0+" />
+### Field Rule Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformFieldRuleInterface`.
 
@@ -611,7 +611,7 @@ Use `FreeformFieldRuleInterface`.
 | `combinator` | `String`                                                        | The combinator for the field rule |
 | `conditions` | [`[FreeformRuleConditionInterface]`](#rule-condition-interface) | The conditions for the field rule |
 
-### Rule Condition Interface <Badge type="feature" text="New in 5.0+" />
+### Rule Condition Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformRuleConditionInterface`.
 
@@ -622,7 +622,7 @@ Use `FreeformRuleConditionInterface`.
 | `operator` | `String`                                     | The operator for the rule condition |
 | `value`    | `String`                                     | The value for the rule condition    |
 
-### Form Properties Interface <Badge type="feature" text="New in 5.0+" />
+### Form Properties Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformFormPropertiesInterface`.
 
@@ -630,7 +630,7 @@ Use `FreeformFormPropertiesInterface`.
 | --------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `dynamicNotification` | [`FreeformDynamicNotificationInterface`](#dynamic-notification-interface)` | Allows using a dynamic template level notification for a more fine-grained control. |
 
-### Dynamic Notification Interface <Badge type="feature" text="New in 5.0+" />
+### Dynamic Notification Interface<Badge type="feature" text="New in 5.0+" />
 
 Use `FreeformDynamicNotificationInterface`.
 

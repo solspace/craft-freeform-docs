@@ -68,7 +68,7 @@ If the information is not sensitive, and meant to be public - like comments, you
 
 For more information about this, please visit the [Submissions query](../templates/queries/submissions/) documentation.
 
-## Submission Editing <Badge type="pro" text="Pro" />
+## Submission Editing<Badge type="pro" text="Pro" />
 
 Freeform allows you to edit submissions via the front end templates as well. Currently, this feature has no user/author check, and requires you use/provide the `submission.token` to work (as opposed to the ID). <secret>A future version will likely include ability to check on authors, etc.</secret> The editing uses the same [Form query](../templates/queries/form/), but knows you're in **edit mode** when you feed the `submissionToken` parameter a valid value.
 
@@ -150,7 +150,7 @@ OR
 }) %}
 ```
 
-## Submission Limits <Badge type="pro" text="Pro" />
+## Submission Limits<Badge type="pro" text="Pro" />
 
 If you need to set limits on the number of submissions a form may receive or who can submit the form, a few options are available:
 
@@ -179,7 +179,7 @@ If you need to set limits on the number of submissions a form may receive or who
   ]}
 />
 
-### Duplicate Check <Badge type="pro" text="Pro" /><Badge type="feature" text="Renamed and Improved in 5.0+" />
+### Duplicate Check<Badge type="pro" text="Pro" /><Badge type="feature" text="Renamed and Improved in 5.0+" />
 
 Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](./forms/), a **Duplicate Check** setting exists to allow you to limit the number of times a specific user can submit the form.
 
@@ -213,7 +213,7 @@ Freeform includes validation to prevent duplicate submissions (when the user tri
 {% endif %}
 ```
 
-### Total Submissions Per Form <Badge type="pro" text="Pro" />
+### Total Submissions Per Form<Badge type="pro" text="Pro" />
 
 Freeform includes the ability to set a limit on the maximum number of submissions a form may receive, and the reject any additional ones. This is a template-level feature. You can also include a template-based condition check and display an alternate message without ever presenting the form to the user in the event it's reached it's limit.
 

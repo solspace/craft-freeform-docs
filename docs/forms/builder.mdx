@@ -30,7 +30,7 @@ import BuilderSectionsVideo from './assets/videos/builder-sections.mp4';
 import BuilderSettingsVideo from './assets/videos/builder-settings.mp4';
 import FormDashboardVideo from './assets/videos/form-dashboard.mp4';
 
-# Form Builder <Badge type="feature" text="Improved in 5.0+" />
+# Form Builder<Badge type="feature" text="Improved in 5.0+" />
 
 What makes Freeform different from other form plugins is that it gives you full control to create simple or complex multi-page forms, and everything is at your fingertips in our elegant form builder. It has been expertly designed to minimize mouse movement and clicks. Freeform also features a long list of its own set of robust [field types](./fields/).
 
@@ -117,7 +117,7 @@ The form builder is divided into 5 sections:
   height="100%"
 />
 
-## Layout <Badge type="feature" text="Improved in 5.0+" />
+## Layout<Badge type="feature" text="Improved in 5.0+" />
 
 This is where you set up [fields](../fields) and [pages](#multi-page-forms), as well as design and configure the overall layout of the form.
 
@@ -159,7 +159,7 @@ The right column is where you position the form fields for the form.
   - To configure fields, simply click on them and the **property editor** will slide into the left column.
   - To remove a field from the layout, simply click the delete (`x`) icon that shows up on top right when you hover over a field.
 
-## Email Notifications <Badge type="feature" text="Improved in 5.0+" />
+## Email Notifications<Badge type="feature" text="Improved in 5.0+" />
 
 This is where you configure email notifications for the form. Freeform allows you to set up 6 different kinds of email notifications, including at template level with the [dynamicNotification](../templates/queries/form/#dynamicnotification) parameter in your [Form query](../templates/queries/form/).
 
@@ -178,13 +178,13 @@ Email notifications can be sent upon successful submit of the form to one or mor
 
 In the **Recipients** area, add any email address(es) you'd like to receive an email notification each time the form is submitted successfully. If you need to specify more than one email address, hit _Enter_ and additional email inputs will appear.
 
-### Conditional <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
+### Conditional<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
 
 Email notifications can be conditionally sent to one or more admin email addresses based on the contents and/or option selection of any Freeform field(s).
 
 In the **Recipients** area, add any email address(es) you'd like to receive an email notification each time the form is submitted successfully **when the following condition(s) are met**. If you need to specify more than one email address, hit _Enter_ and additional email inputs will appear.
 
-### User Select <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div><Badge type="feature" text="Renamed & Improved for 5.0+" />
+### User Select <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup><Badge type="feature" text="Renamed & Improved for 5.0+" />
 
 Email notifications can be sent to one or more pre-defined admin email addresses that are selected by the user filling out the form using any [Dropdown](../fields/#dropdown), [Checkboxes](../fields/#checkboxes), [Radios](../fields/#radios), [Multi-Select](../fields/#multiple-select) field types. For example, you might have a **Dropdown** field that contains different departments for the user to address the email to.
 
@@ -206,7 +206,7 @@ If you currently don't have any **Email** fields, please add one to your form la
 
 You can also enable "tell-a-friend" type forms by including additional [Email](./fields/#email) fields in your form. This would then allow the submitter of the form to specify a friend's email address and have them receive an email notification as well.
 
-## Conditional Rules <Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+## Conditional Rules<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
 
 This is where you can configure fields to **show or hide** based on the contents/selection of other fields, and even **skip pages** or submit the form based on the contents/selection of fields on a previous page.
 
@@ -231,7 +231,7 @@ Configuring rules for fields, groups and pages is straightforward:
 
 Please see the [Conditional Rules](../conditional-rules) documentation for more information about this feature.
 
-## Integrations <Badge type="feature" text="Improved in 5.0+" />
+## Integrations<Badge type="feature" text="Improved in 5.0+" />
 
 This is where you can configure various types of integrations for your form. It will only show integrations that have been configured/setup in the [Freeform Settings](../configuration/settings/) area.
 
@@ -250,17 +250,17 @@ If a **reCAPTCHA** or **hCaptcha** integration is available, click on it in the 
 
 Please see the [Spam Protection](./spam-protection/) documentation guide for more information about this feature.
 
-### CRM & Email Marketing <Badge type="pro" text="Pro" />
+### CRM & Email Marketing<Badge type="pro" text="Pro" />
 
 If any integrations are available, click on them in the left column. Once loaded in the right column, toggle the **Use integration for this form** switch ON and proceed to configuring settings and field mapping as necessary. It will differ slightly for each integration.
 
-### Payments <Badge type="pro" text="Pro" />
+### Payments<Badge type="pro" text="Pro" />
 
 If the **Stripe Payments** integration is available, click on it in the left column. Once loaded in the right column, toggle the **Use integration for this form** switch ON and proceed to configuring settings and field mapping as necessary. You will also need to add a [Stripe Payments](./fields/#stripe-payments) special field to the form layout.
 
 Please see the [Stripe Payments](../integrations/payments/) documentation guide for further instruction.
 
-### Elements <Badge type="pro" text="Pro" />
+### Elements<Badge type="pro" text="Pro" />
 
 This feature allows you to connect and map Freeform submission data to other Craft Elements such as [Craft Entries](https://craftcms.com/docs/5.x/reference/element-types/entries.html) and [Craft Users](https://craftcms.com/docs/5.x/reference/element-types/users.html). The possibilities are endless when you consider that it essentially allows you to easily create complex user registration forms or accept guest submitted content that maps to Craft entries for further management by site admins for publishing... or whatever else you can dream up!
 
@@ -268,14 +268,14 @@ If any Element integrations are available, click on them in the left column. Onc
 
 Please see the [Elements](../integrations/elements/) documentation for more information about this feature.
 
-### Google Tag Manager <div class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></div>
+### Google Tag Manager <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
 This allows you to enable Google Tag Manager to push successful form submission events to the data layer (when AJAX is enabled).
 
 - **Event Name** - specify a custom event name that you wish to assign to a successful form submission.
 - **GTM Account ID** - add this if you want Google Tag Manager scripts added to your page by Freeform. Leave blank if you are adding your own GTM scripts.
 
-### POST Forwarding <Badge type="pro" text="Pro" />
+### POST Forwarding<Badge type="pro" text="Pro" />
 
 This allows your forms to automatically submit an extra POST to pass off submission data to an external API URL upon successful submit and validation of a form. This option is available for simpler and/or limited integrations as an alternative to our traditional [Email Marketing](../integrations/) and [CRM](../integrations/) integrations.
 
@@ -399,7 +399,7 @@ Freeform allows for _multi-page_ forms (a POST submit per page). When editing fo
 
 When manually building submit buttons in multi-page forms, please refer to the [Submit buttons](./fields/#submit-buttons) guide for available options.
 
-## Form Types <Badge type="pro" text="Pro" />
+## Form Types<Badge type="pro" text="Pro" />
 
 <FlexCards
   items={[

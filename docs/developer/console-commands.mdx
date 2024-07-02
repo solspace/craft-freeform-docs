@@ -9,7 +9,7 @@ import { Badge, BadgeGroup } from '@site/src/components/utils';
 
 Freeform includes several console commands to allow you to run cleanup tasks and other tasks.
 
-## Generate Fake Submissions <Badge type="feature" text="5.1.14+" />
+## Generate Fake Submissions<Badge type="feature" text="5.1.14+" />
 
 If you ever need to generate fake submission data for testing purposes, you can do so with the `freeform/submissions/generate` CLI command.
 
@@ -73,7 +73,7 @@ Generate 50 submissions in English to the `quoteRequest` form with a mix of the 
 php craft freeform/submissions/generate -f=quoteRequest -c=50 -l=en -s="open,open,open,open,closed"
 ```
 
-## Resave Submissions <Badge type="feature" text="5.1.13+" />
+## Resave Submissions<Badge type="feature" text="5.1.13+" />
 
 If you need to resave all Freeform submissions, you can do so with the `freeform/submissions/resave` CLI command. Most of the arguments available to Craft's `resave/entries` command are available here too, so if you need to also update the Craft Search Index, be sure to add `--update-search-index`.
 
@@ -81,7 +81,7 @@ If you need to resave all Freeform submissions, you can do so with the `freeform
 php craft freeform/submissions/resave --update-search-index
 ```
 
-## Migrate Craft 4 Element Titles <Badge type="feature" text="5.1.13+" />
+## Migrate Craft 4 Element Titles<Badge type="feature" text="5.1.13+" />
 
 If you have upgraded your Craft 4 site to Craft 5, please note that the Craft migration process does not automatically migrate submission Element titles. In Craft 5, Element titles are now stored in the `elements_sites` table, and the `content` table which used to store Element titles is no longer used.
 
@@ -99,7 +99,7 @@ php craft freeform/submissions/fix-titles
 
 Freeform automatically attempts to routinely execute all of the below commands as Craft jobs, but they are available in the event you need to correct or troubleshoot an issue.
 
-### Purge Submissions <Badge type="pro" text="Pro" />
+### Purge Submissions<Badge type="pro" text="Pro" />
 
 Allows you to purge all submissions older than a specific number of days. Freeform automatically attempts to execute this service based on the specified number of days for the **Automatically Purge Submission Data** setting.
 
@@ -107,7 +107,7 @@ Allows you to purge all submissions older than a specific number of days. Freefo
 php craft freeform/purge/submissions --age-in-days=30
 ```
 
-### Purge Spam <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+### Purge Spam<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
 Allows you to purge all spam submissions older than a specific number of days. Freeform automatically attempts to execute this service based on the specified number of days for the **Automatically Purge Spam Submissions** setting.
 
