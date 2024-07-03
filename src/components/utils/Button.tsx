@@ -39,6 +39,7 @@ const FlexButton: React.FC<ButtonProps> = ({ items }) => {
       <div className="flex flex-wrap gap-3">
         {items.map((item) => (
           <PrimaryButtonWithLink
+            key={item.to}
             to={item.to}
             label={item.label || 'Learn more'}
             arrowDown={item?.arrowDown || false}

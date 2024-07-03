@@ -247,8 +247,6 @@ const PhotoCards: React.FC<IntegrationPhotoCardsProps> = ({ items }) => {
         <a
           key={`${item.title}-${index}`}
           href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
           className="flex flex-col items-center p-3 m-2 bg-gray-800 !dark:bg-red rounded-lg shadow-lg hover:bg-gray-700 transition-colors"
         >
           <Image img={item.iconSrc} alt={item.title} />

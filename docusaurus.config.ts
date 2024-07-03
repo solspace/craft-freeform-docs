@@ -124,8 +124,29 @@ const config: Config = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'v5 [latest]',
+              label: '5.x',
               path: 'v5',
+              badge: false,
+            },
+            v4: {
+              label: '4.x',
+              path: 'v4',
+              badge: false,
+            },
+            v3: {
+              label: '3.x',
+              path: 'v3',
+              badge: false,
+            },
+            v2: {
+              label: '2.x',
+              path: 'v2',
+              badge: false,
+            },
+            v1: {
+              label: '1.x',
+              path: 'v1',
+              badge: false,
             },
           },
           routeBasePath: '/',

@@ -644,3 +644,8 @@ table th h3 {
 .compare-none {
   color: #122d4b !important;
 }
+
+/* Version Badge */
+.version .navbar__link:after {
+  top: 4px;
+}

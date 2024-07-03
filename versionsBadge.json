@@ -1,0 +1,8 @@
+{
+  "versions": [
+    { "version": "current", "badge": "Latest" },
+    { "version": "v3", "badge": "Retired" },
+    { "version": "v2", "badge": "Retired" },
+    { "version": "v1", "badge": "Retired" }
+  ]
+}
