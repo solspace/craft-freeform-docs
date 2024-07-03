@@ -649,3 +649,25 @@ table th h3 {
 .version .navbar__link:after {
   top: 4px;
 }
+
+/* Navbar Icon */
+.github-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 3px;
+  margin: 0 10px;
+}
+
+.github-icon:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+@media (max-width: 996px) {
+  .navbar__item {
+    display: none !important;
+  }
+}
