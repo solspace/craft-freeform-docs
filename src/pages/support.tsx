@@ -20,24 +20,23 @@ const Support: React.FC = () => {
         <FlexCards
           items={[
             {
-              title: 'Ask on Github',
-              description: 'Lorem Ipsum is simply dummy text.',
+              title: 'GitHub Issues',
+              description: "Report an issue you're experiencing with Freeform",
               imgSrc: GithubIcon,
-              fullCardLink: 'https://github.com/solspace/',
+              fullCardLink: 'https://github.com/solspace/craft-freeform/issues',
+            },
+            {
+              title: 'GitHub Questions',
+              description: "Search questions others have asked or create your own if it hasn't been asked already.",
+              imgSrc: GithubIcon,
+              fullCardLink: 'https://github.com/solspace/craft-freeform/discussions',
             },
             {
               title: 'Craft Stack Exchange',
-              description: 'Lorem Ipsum is simply dummy text.',
+              description: 'Research or get advice from all over the Craft CMS community.',
               imgSrc: StackExchangeIcon,
               fullCardLink:
-                'https://craftcms.stackexchange.com/questions/tagged/solspace',
-            },
-            {
-              title: 'EE Stack Exchange',
-              description: 'Lorem Ipsum is simply dummy text.',
-              imgSrc: StackExchangeIcon,
-              fullCardLink:
-                'https://expressionengine.stackexchange.com/questions/tagged/solspace',
+                'https://craftcms.stackexchange.com/questions/tagged/plugin-freeform',
             },
           ]}
         />
@@ -46,8 +45,9 @@ const Support: React.FC = () => {
             Create a Support Ticket
           </h2>
           <p className="text-gray-200">
-            If you've encountered any issues, have a pre-sale question or need
-            help with anything else, please fill out the form below.
+            If you need help with anything, have a question before making a
+            purchase, or just want to reach out, please feel free to fill out
+            the form below.
           </p>
           <iframe
             title="Support Form"
