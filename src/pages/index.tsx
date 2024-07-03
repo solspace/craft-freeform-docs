@@ -23,9 +23,6 @@ function HomepageHeader() {
         className="max-w-3xl"
         alt="Freeform 5 for Craft CMS"
       />
-      <h2 className="text-amber-500	">
-        Ready for wherever your project takes you.
-      </h2>
       <p className="text-center">
         Freeform is a versatile form-building tool that can adjust to the
         evolving needs of your project, whether it's a simple or complex form.
@@ -56,8 +53,8 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title={`${siteConfig.title}`}
+      description="The most dependable and user-friendly forms plugin for Craft CMS."
     >
       <HomepageHeader />
       <main>
