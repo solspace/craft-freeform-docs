@@ -9,8 +9,7 @@ const Support: React.FC = () => {
   return (
     <Layout
       title="Support"
-      description="Description will go into a meta tag in <head />"
-    >
+      description="Need help with Freeform? We love helping our customers discover best practices, resolve issues, and achieve their goals!">
       <main className="max-w-5xl m-auto my-12">
         <h1>Support</h1>
         <p>
