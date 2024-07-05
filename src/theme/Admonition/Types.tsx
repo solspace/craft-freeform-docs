@@ -11,24 +11,12 @@ function YoutubeAdmonition(props) {
   );
 }
 
-function GuideAdmonition(props) {
-  return (
-    <div className="guide">
-      <div className="pl-3 flex flex-wrap gap-2">
-        <b>User Guide: </b>
-        {props.children}
-      </div>
-    </div>
-  );
-}
-
 const AdmonitionTypes = {
   ...DefaultAdmonitionTypes,
 
   // Add all your custom admonition types here...
   // You can also override the default ones if you want
   youtube: YoutubeAdmonition,
-  guide: GuideAdmonition,
 };
 
 export default AdmonitionTypes;
