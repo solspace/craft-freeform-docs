@@ -44,11 +44,11 @@ Freeform includes a variety of robust spam control features to make managing for
   ]}
 />
 
-:::guide
+:::tip
 [Check out the guide on Spam Protection best practices.](../user-guides/guides/best-practices/spam-protection-best-practices)
 :::
 
-:::guide
+:::tip
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../user-guides/guides/testing/troubleshooting-form-issues)
 :::
 
@@ -68,7 +68,7 @@ You can specify the behavior Freeform takes when the test fails with the [Spam P
   - Enter a new value to change the default error message for the Freeform Honeypot.
   - This is only applied if the **Spam Behavior** setting is set to _Display Error Messages_.
 
-:::tip
+:::info
 If using the **Custom Input Name** setting, be careful when choosing a custom name, as it's possible the user's browser auto-fill settings may accidentally fill out the field unbeknownst to them (e.g. `email_address2`).
 :::
 
@@ -92,7 +92,7 @@ You can specify the behavior Freeform takes when the test fails with the [Spam P
   - Enter a new value to change the default error message for the Freeform Javascript Test.
   - This is only applied if the **Spam Behavior** setting is set to _Display Error Messages_.
 
-:::tip
+:::info
 If using the **Custom Input Name** setting, be careful when choosing a custom name, as it's possible the user's browser auto-fill settings may accidentally fill out the field unbeknownst to them (e.g. `email_address2`).
 :::
 
@@ -122,7 +122,7 @@ When enabled, Freeform will not run any spam protection measures for logged in u
 
 When the [Spam Folder](../configuration/settings/#spam-folder) setting is enabled, all submissions caught by any spam measure (including Honeypot, reCAPTCHA, keyword blocking, etc) will be stored in the database but marked as spam. They will then be available to manage in a separate menu inside Freeform.
 
-:::tip
+:::info
 Enabling the **Spam Folder** feature will not retroactively bring back any previously blocked spam submissions. Any submissions that have been blocked in the past (without Spam Folder setting on) are never recorded in the database.
 :::
 

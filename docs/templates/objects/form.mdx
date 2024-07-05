@@ -8,7 +8,7 @@ import { Badge } from '@site/src/components/utils';
 
 The Form object contains its metadata and field objects. You can either render the form using the pre-selected formatting template by calling `form.render()` or achieve a more fine-grained control over it by iterating over its rows and fields and using `form.renderTag` and `form.renderClosingTag` methods.
 
-:::tip
+:::info
 Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection.md), Submit disable on click, and other special fieldtypes. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings.md#scripts-location) setting.
 :::
 
@@ -71,11 +71,11 @@ The form and each field have the ability to control **attributes**, **values** a
 - `fields` - controls the output of all [Fields](../../forms/fields/).
 - `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/).
 
-:::tip
+:::info
 Please see the [Template Overrides](../../templates/formatting/#template-overrides) documentation for detailed instructions.
 :::
 
-:::guide
+:::tip
 [Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](guides/passing-custom-property-to-formatting-template/)
 :::
 

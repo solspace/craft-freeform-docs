@@ -50,7 +50,7 @@ Freeform offers the most flexible and customizable options for handling the form
   ]}
 />
 
-:::guide
+:::tip
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](guides/troubleshooting-form-issues/)
 :::
 
@@ -115,7 +115,7 @@ The most common and hastle-free approach is to use the **formatting template** a
   }).render() }}
   ```
 
-:::guide
+:::tip
 [Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](guides/passing-custom-property-to-formatting-template/)
 :::
 
@@ -263,7 +263,7 @@ Freeform includes a large number of sample _formatting templates_ to choose from
 | <img src="../../../../../images/api/icons/tailwindcss.png" class="sample-template-icon" /> [Tailwind 3](./tailwind-3/)                                                             | Popular Framework       | An implementation of the Tailwind CSS 3 framework.                                                                                                                                                                         |
 | <img src="../../../../../images/api/icons/foundation.png" class="sample-template-icon" /> [Foundation 6](./foundation-6/)                                                          | Popular Framework       | An implementation of the Foundation 6 framework.                                                                                                                                                                           |
 
-:::tip
+:::info
 
 - _Framework Agnostic_: Plug-and-play neatly styled basic formatting templates that don't require any frameworks or toolkits, etc.
 - _Barebones_: Barebones starter templates that require additional CSS to complete the styling.
@@ -333,7 +333,7 @@ Here's a breakdown:
   - `"foo": "bar"`- unknown attributes - applied directly to the `<div data-freeform-recaptcha-container>` tag.
   - `class: "my-form-class"` - known attributes - applied directly to the corresponding attribute on the `<div data-freeform-recaptcha-container>` tag.
 
-:::tip
+:::info
 Field types and field handles can be mixed together to receive shared attributes. Just specify them like: `"@fieldtypename, @anotherfieldtypename, myFieldHandle"`.
 :::
 
@@ -1139,7 +1139,7 @@ You can pass any amount of attributes to the specific element this way:
 
 You can also edit submit, back and save button attributes and values:
 
-:::tip
+:::info
 For further customization of the submit buttons, please see the [options and instructions for manual implementation](#submit-button-customization).
 :::
 
@@ -1258,7 +1258,7 @@ You can override the value inside text fields, or pre-select a default option fo
 }) }}
 ```
 
-:::guide
+:::tip
 [Need to pass dynamic data such as the current URL, logged in user data, or data from another element to your form fields?](guides/passing-dynamic-data-to-forms/)
 :::
 
@@ -1557,6 +1557,6 @@ Freeform explicitly requires that all options exist for the field in the form bu
 {% else %}
 ```
 
-:::guide
+:::tip
 [Need to populate field options at template level for automated formatting templates? Check out the guide for workaround options.](guides/populate-field-options-at-template-level/)
 :::

@@ -25,7 +25,7 @@ All saved form progress submissions are stored in a separate encrypted database 
 
 The **Save** feature can be enabled or disabled for each form page by toggling the **Save** setting inside the [Submit button](fields/#submit-buttons), and can each have separate configuration including button label and email notification template. For example, you can optionally choose different return paths/email notification templates that could be customized based on the progress on the form (e.g. _"Thanks for starting your application!"_, _"You're almost done..."_, _"Thanks for completing the first 3 steps..."_, etc).
 
-:::tip
+:::info
 Submit buttons are handled automatically by Freeform. They are automatically inserted at the end of your form in the form builder.
 :::
 
@@ -86,7 +86,7 @@ You may also override the Return URL for the Saving feature by specifying the `s
 }) }}
 ```
 
-:::tip
+:::info
 If `savedSession` does not contain a valid key and token, the form will just render a fresh copy of the form with no saved data present and work as usual. This means that you don't necessarily need to have a unique template page to handle the continuation part.
 :::
 
@@ -141,7 +141,7 @@ It's entirely possible to resuse the existing template structure and path, but t
 
 Just like above in step 1, this example assumes that you will be passing the token and key into the URL as a query with `session-token` and `key`. This can be done in a variety of other ways if you wish.
 
-:::tip
+:::info
 
 If you wish to conditionally display an error message and/or display the form only if the session is valid, you can include a check on `savedSessionLoaded`, as follows:
 

@@ -9,7 +9,7 @@ Freeform includes its own built-in AJAX support for single and multi-page forms.
 
 The Freeform [javascript plugin](../developer/js-plugin.md) handles AJAX functionality and all other JS needed (such as Date fields, conditional rules, Stripe payments and more). Much of the default functionality (formatting, language, etc) can be overridden if necessary. See the [customization](#customization) reference guide below.
 
-:::guide
+:::tip
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](troubleshooting-form-issues/)
 :::
 
@@ -24,7 +24,7 @@ The Freeform [javascript plugin](../developer/js-plugin.md) handles AJAX functio
 
 The built-in AJAX functionality lets you completely customize the way your forms work if you're not satisfied with anything in the provided defaults.
 
-:::tip
+:::info
 Be sure to check out the [Freeform Javascript plugin](../developer/js-plugin.md) documentation, to learn how to further extend Freeform's functionality.
 :::
 
@@ -265,7 +265,7 @@ There are cases when an AJAX call has to be made manually. Usually it is because
 }
 ```
 
-:::tip
+:::info
 By default, Freeform will assume you're using its own built-in AJAX. To prevent Freeform from interfering with your custom AJAX implementation, you should also add a `data-skip-html-reload` form attribute to your form.
 :::
 

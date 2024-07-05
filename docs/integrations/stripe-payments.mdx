@@ -249,7 +249,7 @@ Open up another browser tab and go to your Stripe account:
 
 - On the top menu, click on the **Developers** button. On the next page click **API Keys**.
 
-:::tip
+:::info
 Stripe can be run in **Live** mode or **Test** mode. To toggle between Live and Test mode, click the **Test mode** toggle at the top of the page. When doing this, the _Publishable key_ and _Secret key_ will switch between live and test as well. We strongly recommend switching Stripe to **Test** mode first, and testing your site with those keys instead.
 
 <Photo img={PrepareStripePhoto} alt="Stripe Nav - Test Mode ON" />
@@ -259,7 +259,7 @@ Stripe can be run in **Live** mode or **Test** mode. To toggle between Live and 
 - Copy the token for **Publishable key** (e.g. `pk_test_fs7f6f8g8dfg68g68d76dgd8`) and paste into the **Public Key** field inside Freeform.
 - Copy the token (click _Reveal test key_ button to reveal) for **Secret key** (e.g. `sk_test_af7fa7gfdo78g6ddfg6d8d87`) and paste into the **Secret Key** field inside Freeform.
 
-:::tip
+:::info
 Consider using an **Environment Variable** for these settings instead. Then, store _Live_ keys on production and _Test_ keys on local dev environments.
 :::
 

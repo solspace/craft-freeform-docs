@@ -160,7 +160,7 @@
   },
   "theme.admonition.tip": {
     "message": "tip",
-    "description": "The default label used for the Tip admonition (:::tip)"
+    "description": "The default label used for the Tip admonition (:::info)"
   },
   "theme.admonition.warning": {
     "message": "warning",

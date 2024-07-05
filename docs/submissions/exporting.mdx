@@ -51,7 +51,7 @@ Freeform Pro's Export Profiles feature allows admins to create more complex pre-
   - Select a field name and check if it's **Equal To** / **Not Equal To** / **Like** / **Not Like** a value specified. - When searching on wildcards, use **Like** or **Not Like** and the `%` symbol, e.g. `cat%` will return values like `cat`, `catsup`, and `category`. - For searching into arrays (_Checkboxes_ fields), use **Like** or **Not Like**, quotes, and wrap values with `%`, e.g. `%"option a"%`.
   - Specify as many filters as you wish.
 
-:::tip
+:::info
 When searching on fields that contain an array of values (such as Checkboxes fields, etc), the data will be stored in the database like `["whatever","else"]`, so doing a search on `whatever` will never return any results. In this case, you'll need to use the following syntax: `%"whatever"%`.
 :::
 
@@ -109,7 +109,7 @@ To be used in conjunction with Export Profiles, you can automate email notificat
 
 The Express and Lite versions of Freeform include basic **CSV** exporting functionality.
 
-:::tip
+:::info
 This basic CSV export is currently limited by pagination. If you have more than 1 page of submission data, selecting the "Select All" checkbox at the top will only select the entire page's results, not results beyond the page currently being viewed. If you have a large number of submissions and need to export them all in a more robust manner, consider switching to the _Pro_ edition for more export options.
 :::
 

@@ -96,7 +96,7 @@ Freeform features its own set of robust field types. The form builder displays a
   ]}
 />
 
-:::guide
+:::tip
 [Need to build your own custom field type? Check out the guide.](developer/field-types/)
 :::
 
@@ -642,11 +642,11 @@ A single-line text input field that includes additional validation to expect a v
 
 <Photo img={EmailPhoto} alt="Email field type" />
 
-:::tip
+:::info
 It is required to use the **Email** field type if you wish for your users to receive an email notification when submitting the form and/or you're using an Email Marketing API integration.
 :::
 
-:::guide
+:::tip
 [Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?](guides/preventing-email-addresses/)
 :::
 
@@ -869,7 +869,7 @@ This field type only contains instructions and attributes for settings inside th
 
 A hidden input field.
 
-:::tip
+:::info
 Freeform will load fields of this type at the beginning of the form, regardless of where they are placed in the form builder layout.
 :::
 
@@ -923,7 +923,7 @@ A multiple-select field. The `field.type` property value is `multiple-select` (f
 
 <Photo img={MultipleSelectPhoto} alt="Multiple Select field type" />
 
-:::guide
+:::tip
 [Need to populate field options at template level? Check out the guide for workaround options.](guides/populate-field-options-at-template-level/)
 :::
 
@@ -939,7 +939,7 @@ A single-line `number` type input field that is validated to contain certain num
 
 <Photo img={NumberPhoto} alt="Number field type" />
 
-:::guide
+:::tip
 [Want to display a Number field as a range slider?](guides/range-slider-number/)
 :::
 
@@ -1125,7 +1125,7 @@ A special field type that allows you include rich text inside your form layout i
 - The Property Editor will load a Rich Text area for you to type into and style as necessary.
 - The Layout column in the form builder will live parse your content.
 
-:::guide
+:::tip
 [Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](guides/tinymce-editor-textarea/)
 :::
 
@@ -1434,7 +1434,7 @@ A single-line text input field. The `field.type` property value is `text` (for c
 
 <Photo img={TextFieldPhoto} alt="Text field type" />
 
-:::guide
+:::tip
 [Want to display a Text input as a Color Picker?](guides/color-picker-text/)
 :::
 
@@ -1463,7 +1463,7 @@ A `url` type input field that checks to see if the URL specified has valid synta
 
 Inside the form builder (only), field types with options (such as _Dropdown_, _Radios_, etc) have the ability to be automatically fed options from Craft Elements or Freeform's own predefined options. This allows you to quickly build forms by having fields auto-generated.
 
-:::guide
+:::tip
 [Need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template? Check out how to populate field options at template level.](guides/populate-field-options-at-template-level/)
 :::
 
