@@ -671,3 +671,34 @@ table th h3 {
     display: none !important;
   }
 }
+
+/* Changelog Styles */
+html[class*='docs-doc-id-setup/changelog'] h3 + ul li {
+  list-style: none;
+}
+
+html[class*='docs-doc-id-setup/changelog'] h3[id^='changed'] + ul li:before,
+html[class*='docs-doc-id-setup/changelog'] h3[id^='fixed'] + ul li:before,
+html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
+  content: '' !important;
+  display: inline-block !important;
+  height: 12px !important;
+  width: 12px !important;
+  margin-left: -20px;
+  margin-right: 8px;
+  background: url('https://emd.solspace.net/craft/freeform/icons/change.png');
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+html[class*='docs-doc-id-setup/changelog'] h3[id^='fixed'] + ul li:before {
+  background: url('https://emd.solspace.net/craft/freeform/icons/fix.png') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
+  background: url('https://emd.solspace.net/craft/freeform/icons/add.png');
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}

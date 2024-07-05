@@ -237,8 +237,9 @@ const config: Config = {
       copyright: `© ${new Date().getFullYear()} Solspace, Inc.`,
     },
     prism: {
-      theme: prismThemes.nightOwlLight,
-      darkTheme: prismThemes.nightOwl,
+      theme: prismThemes.github,
+      darkTheme: prismThemes.vsDark,
+
       additionalLanguages: ['markup-templating', 'twig'],
     },
   } satisfies Preset.ThemeConfig,
