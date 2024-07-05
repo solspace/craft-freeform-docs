@@ -192,7 +192,6 @@ const config: Config = {
         { to: '/v5/', label: 'Docs', position: 'left' },
         {
           type: 'docsVersionDropdown',
-          sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Docs',
         },

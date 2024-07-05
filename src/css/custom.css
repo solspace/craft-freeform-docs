@@ -59,7 +59,7 @@ html {
 
 /* Button */
 .primary-btn {
-  @apply relative w-fit font-medium rounded-full transition-all duration-500 bg-amber-600 text-white hover:text-white hover:bg-amber-700;
+  @apply relative w-fit font-medium rounded-full transition-all duration-500 bg-[#ff6624] text-white hover:text-white hover:bg-amber-700;
 }
 
 .primary-btn > span {
