@@ -10,7 +10,7 @@ const SimpleTextLink: React.FC<SimpleTextLink> = ({ to, label, classes }) => {
   return (
     <Link
       to={to}
-      className={`underline decoration-green-600  hover:decoration-amber-500 hover:underline ${classes}`}
+      className={`underline decoration-[#058ffe]  hover:decoration-amber-500 hover:underline ${classes}`}
     >
       {label}
     </Link>
