@@ -688,19 +688,19 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
   width: 12px !important;
   margin-left: -20px;
   margin-right: 8px;
-  background: url('https://emd.solspace.net/craft/freeform/icons/change.png');
+  background: url('https://docs.solspace.com/extras/icons/change.png');
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
 
 html[class*='docs-doc-id-setup/changelog'] h3[id^='fixed'] + ul li:before {
-  background: url('https://emd.solspace.net/craft/freeform/icons/fix.png') !important;
+  background: url('https://docs.solspace.com/extras/icons/fix.png') !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
 
 html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
-  background: url('https://emd.solspace.net/craft/freeform/icons/add.png');
+  background: url('https://docs.solspace.com/extras/icons/add.png');
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
