@@ -733,3 +733,51 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
   text-decoration: line-through;
   color: #767676;
 }
+
+/* Step styles */
+.step,
+.step-active .step-content h3,
+.step-active .step-number,
+.step-active {
+  transition: all 0.5s;
+}
+
+.step-line {
+  height: calc(100% - 2rem);
+}
+
+.step-line:after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #9b6624;
+  margin: 9px 0 0 -4.5px;
+  clear: both;
+  position: absolute;
+  bottom: -7px;
+}
+
+.step-active {
+  opacity: 0.4;
+  max-height: 300px !important;
+  overflow: hidden;
+  background: linear-gradient(transparent, rgba(43, 143, 34, 0.2)) !important;
+  border-color: rgba(43, 143, 34, 0.2) !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  filter: blur(0.8px);
+}
+
+.step-active .step-content h3 {
+  color: #2b8f22;
+}
+
+.step-active .step-number {
+  background-color: #2b8f22;
+}
+
+.step-active .step-line {
+  display: none;
+}

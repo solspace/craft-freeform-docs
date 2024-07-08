@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface StepMarkdownProps {
   stepTitle?: string;
@@ -11,18 +11,63 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
   stepNumber,
   stepTitle,
 }) => {
+  const [isDone, setIsDone] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    setIsDone((prevIsDone) => !prevIsDone);
+  };
+
+  useEffect(() => {
+    const contentElement = contentRef.current;
+
+    if (!stepTitle && contentElement) {
+      const h3Element = contentElement.querySelector('h3');
+
+      if (h3Element) {
+        h3Element.classList.add('text-[#ff6624]', 'cursor-pointer');
+        h3Element.addEventListener('click', handleClick);
+
+        return () => {
+          h3Element.removeEventListener('click', handleClick);
+        };
+      } else {
+        contentElement.classList.add('cursor-pointer');
+        contentElement.addEventListener('click', handleClick);
+
+        return () => {
+          contentElement.removeEventListener('click', handleClick);
+        };
+      }
+    }
+  }, [stepTitle]);
+
   return (
-    <div className="flex">
+    <div className={`flex mb-8 step ${isDone ? 'step-active' : ''}`}>
       {stepNumber && (
-        <div className="flex flex-col items-center mr-6">
-          <div className="flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full bg-orange-700">
+        <div className="flex flex-col items-center mr-6 step-number-wrapper">
+          <div className="flex w-8 h-8 items-center justify-center text-sm font-bold border rounded-lg bg-orange-700 text-white step-number">
             {stepNumber}
           </div>
-          <div className="w-px min-h-12 h-full bg-gray-300" />
+          {!isDone && (
+            <div className="w-px min-h-12 bg-[#9B6624] relative step-line" />
+          )}
         </div>
       )}
-      <div className="flex flex-col max-w-[1045px]">
-        {stepTitle && <h4>{stepTitle}</h4>}
+      <div
+        className="flex flex-col mt-1 max-w-[1045px] step-content"
+        ref={contentRef}
+      >
+        {stepTitle && (
+          <h3 className="text-[#ff6624] cursor-pointer" onClick={handleClick}>
+            {stepTitle}
+          </h3>
+        )}
+        {!stepTitle && !children && (
+          <div className="cursor-pointer" onClick={handleClick}>
+            Click here to toggle
+          </div>
+        )}
         {children}
       </div>
     </div>
@@ -50,8 +95,8 @@ const VerticalStepWrapper = ({ children }: { children: React.ReactNode }) => {
       {childrenWithStepNumbers}
       <div className="flex">
         <div className="flex flex-col md:items-center mr-6">
-          <div className="flex items-center justify-center py-2 px-3 text-xs font-medium border rounded-sm bg-orange-700">
-            Finished
+          <div className="flex items-center justify-center py-2 px-3 mb-8 text-xs font-medium border rounded-sm bg-orange-700 text-white">
+            Finished!
           </div>
         </div>
       </div>
