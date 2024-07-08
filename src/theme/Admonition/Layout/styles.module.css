@@ -1,7 +1,7 @@
 .admonition {
   margin-bottom: 1em;
   position: relative;
-  padding: 1.8rem 1rem 1.8rem 1.8rem;
+  padding: 0.9rem 0.9rem 0.9rem 1.5rem;
 }
 
 .admonitionHeading {
@@ -11,14 +11,14 @@
   position: absolute;
   border-radius: 50%;
   background-color: white;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--ifm-alert-border-color);
-  left: -22.5px;
-  top: 1.4rem;
+  left: -20px;
+  top: 11px;
 }
 
 /* Heading alone without content (does not handle fragment content) */
@@ -37,8 +37,8 @@
 
 .admonitionIcon svg {
   display: inline-block;
-  height: 1.6em;
-  width: 1.6em;
+  height: 1.3em;
+  width: 1.3em;
   fill: var(--ifm-alert-foreground-color);
 }
 
