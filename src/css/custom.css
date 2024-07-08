@@ -722,3 +722,14 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
   margin-top: 0.3px;
   margin-right: 0.1px;
 }
+
+/* Answer check list styles */
+.checklist input[type='checkbox'] + label {
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.checklist input[type='checkbox']:checked + label {
+  text-decoration: line-through;
+  color: #767676;
+}

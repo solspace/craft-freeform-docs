@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 import Link from '@docusaurus/Link';
 import Image from '@theme/IdealImage';
 
@@ -92,13 +94,19 @@ const IconCards: React.FC<IconsCardProps> = ({ items }) => {
 };
 
 const AnswerChecklist: React.FC<ChecklistSection> = ({ items }) => {
+  const id = useId();
+
   return (
     <div className="checklist">
       <ul>
         {items.map((item, index) => (
           <li key={index} className="flex items-start mb-4">
-            <input type="checkbox" id={`item-${index}`} className="mt-1 mr-2" />
-            <label htmlFor={`item-${index}`} className="flex flex-col">
+            <input
+              type="checkbox"
+              id={`${id}-${index}`}
+              className="mt-1.5 mr-2"
+            />
+            <label htmlFor={`${id}-${index}`} className="flex flex-col">
               {item.text}
             </label>
           </li>
@@ -110,7 +118,7 @@ const AnswerChecklist: React.FC<ChecklistSection> = ({ items }) => {
 
 const AnswerCard: React.FC<ChildrenProps> = ({ children }) => {
   return (
-    <div className="border border-solid border-lime-800 p-5 rounded-lg bg-gray-100 dark:bg-lime-950 answer-card">
+    <div className="border border-solid border-lime-800 p-5 rounded-lg bg-gray-100 dark:bg-[#15231d] answer-card">
       <div className="flex">
         <div className="circle">
           <div className="checkmark"></div>
