@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Line Breaks in Textarea Fields
 
-Textarea fields store data in the database as newlines. When displaying submission data in [email notifications](../forms/email-notifications.md) or on the front end with a [Submissions query](../templates/queries/submissions.md), the newlines will not be respected and render as a single clump of text with Twig.
+Textarea fields store data in the database as newlines. When displaying submission data in [email notifications](../../../forms/email-notifications) or on the front end with a [Submissions query](../../../templates/queries/submissions), the newlines will not be respected and render as a single clump of text with Twig.
 
 ## Instructions
 
@@ -20,7 +20,7 @@ To get textarea fields to display correctly with the line breaks, you can use th
 
 ### Email Notifications
 
-How this may look when displaying submission data in an [email notification](../forms/email-notifications.md) template when iterating through all fields:
+How this may look when displaying submission data in an [email notification](../../../forms/email-notifications) template when iterating through all fields:
 
 ```twig showLineNumbers {4-6}
 <p>Submitted on: {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}</p>
@@ -37,7 +37,7 @@ How this may look when displaying submission data in an [email notification](../
 
 ### Submissions on Front End
 
-How this may look when displaying submission data for a single submission [on the front end](../templates/queries/submissions.md) (assuming the ID is in 3rd segment) when iterating through all fields:
+How this may look when displaying submission data for a single submission [on the front end](../../../templates/queries/submissions) (assuming the ID is in 3rd segment) when iterating through all fields:
 
 ```twig showLineNumbers {11-13}
 {% set submissionId = craft.app.request.segment(3) %}

@@ -14,7 +14,7 @@ In the event you'd like to store URL tracking parameters (e.g. `utm_source`, `ut
 <StepMarkdown>
 ### Step 1
 - Open up an existing form in Freeform. For the purpose of this example, let's assume it's called `Contact`.
-- Create and add 3 new [Hidden](../forms/fields.md#hidden) fields to your form layout with the handles of:
+- Create and add 3 new [Hidden](../../../forms/fields#hidden) fields to your form layout with the handles of:
     - `utm_campaign`
     - `utm_source`
     - `utm_medium`
@@ -25,7 +25,7 @@ In the event you'd like to store URL tracking parameters (e.g. `utm_source`, `ut
 </StepMarkdown>
 <StepMarkdown>
 ### Step 2
-- In the regular template where you are loading the form, you'll need to add the [values](../templates/queries/form/#values) parameter and grab the values from the URL with `craft.app.request.getQueryParam('')`:
+- In the regular template where you are loading the form, you'll need to add the [values](../../../templates/queries/form#values) parameter and grab the values from the URL with `craft.app.request.getQueryParam('')`:
     ```twig showLineNumbers
     {{ freeform.form("myFormHandle", {
         fields: {
