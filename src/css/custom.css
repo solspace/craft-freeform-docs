@@ -26,7 +26,7 @@
   --edition-pro: #ff6624;
   --table-border-color: #f2f2f2;
   --ifm-color-primary: #058ffe;
-  --svg-foreground-color: rgb(255, 248, 230);
+  --svg-foreground-color: #fff;
 }
 
 [data-theme='dark'] {
@@ -40,7 +40,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --table-border-color: #173154;
   --ifm-color-primary: #058ffe;
-  --svg-foreground-color: rgb(77, 56, 0);
+  --svg-foreground-color: #000;
 }
 
 html[data-theme='dark'] {
@@ -736,6 +736,7 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='security'] + ul li:before {
 
 .theme-admonition.alert--warning svg {
   transform: scale(0.95);
+  margin-top: -2px;
 }
 
 .theme-admonition.alert--secondary svg,
