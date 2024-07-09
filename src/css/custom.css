@@ -683,26 +683,47 @@ html[class*='docs-doc-id-setup/changelog'] h3 + ul li {
 
 html[class*='docs-doc-id-setup/changelog'] h3[id^='changed'] + ul li:before,
 html[class*='docs-doc-id-setup/changelog'] h3[id^='fixed'] + ul li:before,
-html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
+html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before,
+html[class*='docs-doc-id-setup/changelog'] h3[id^='deprecated'] + ul li:before,
+html[class*='docs-doc-id-setup/changelog'] h3[id^='removed'] + ul li:before,
+html[class*='docs-doc-id-setup/changelog'] h3[id^='security'] + ul li:before {
   content: '' !important;
   display: inline-block !important;
   height: 12px !important;
   width: 12px !important;
   margin-left: -20px;
   margin-right: 8px;
-  background: url('https://docs.solspace.com/extras/icons/change.png');
+  background: url(/icons/change.svg);
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
 
 html[class*='docs-doc-id-setup/changelog'] h3[id^='fixed'] + ul li:before {
-  background: url('https://docs.solspace.com/extras/icons/fix.png') !important;
+  background: url(/icons/fix.svg) !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
 
 html[class*='docs-doc-id-setup/changelog'] h3[id^='added'] + ul li:before {
-  background: url('https://docs.solspace.com/extras/icons/add.png');
+  background: url(/icons/add.svg);
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+html[class*='docs-doc-id-setup/changelog'] h3[id^='deprecated'] + ul li:before {
+  background: url(/icons/deprecate.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+html[class*='docs-doc-id-setup/changelog'] h3[id^='removed'] + ul li:before {
+  background: url(/icons/remove.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+html[class*='docs-doc-id-setup/changelog'] h3[id^='security'] + ul li:before {
+  background: url(/icons/security.svg) !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
