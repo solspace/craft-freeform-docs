@@ -113,6 +113,10 @@ Freeform can be installed one of two ways:
 - [Install from the CLI](#install-from-the-cli) <Badge type="recommended" text="Recommended" />
 - [Install from the Control Panel](#install-from-the-control-panel)
 
+### Install from the CLI<Badge type="recommended" text="Recommended" />
+
+Freeform can be installed through the CLI:
+
 <VerticalStepWrapper>
 <StepMarkdown>
 Open your CLI app and go to your Craft project:
@@ -212,7 +216,7 @@ Freeform uses the **Craft Updates Service**, which means that every time there's
 
 Freeform can be updated one of three ways:
 
-- [Update from the CLI](#update-from-the-clil) <Badge type="recommended" text="Recommended" />
+- [Update from the CLI](#update-from-the-cli) <Badge type="recommended" text="Recommended" />
 - [Update via Composer from the CLI](#update-via-composer-from-the-cli)
 - [Update from the Control Panel](#update-from-the-control-panel)
 
@@ -553,9 +557,9 @@ Once you're ready to complete the purchase, you can visit the Cart inside your s
 Third-party plugin licenses are managed and validated entirely by Craft. Some issues may require that you contact the Craft Team directly if issues persist. The following troubleshooting tips account for the most common issues we've seen our customers report to us:
 
 - [Error: 'This license is tied to another Craft install'](#error-this-license-is-tied-to-another-craft-install)
-- [Error: 'This license isn't allowed to run version X.X.X.'](#error-this-license-isn-t-allowed-to-run-version-x-x-x)
-- [Plugin shows it's 'Missing'](#plugin-shows-it-s-missing)
-- [Can't purchase upgrade from Lite to Pro edition](#can-t-purchase-upgrade-from-lite-to-pro-edition)
+- [Error: 'This license isn't allowed to run version X.X.X.'](#error-this-license-isnt-allowed-to-run-version-xxx)
+- [Plugin shows it's 'Missing'](#plugin-shows-its-missing)
+- [Can't purchase upgrade from Lite to Pro edition](#cant-purchase-upgrade-from-lite-to-pro-edition)
 
 #### Error: 'This license is tied to another Craft install'
 
@@ -572,7 +576,7 @@ If you receive the error `This license isn't allowed to run version X.X.X.`, it 
 
 > When a license expires, you can keep using the version that's currently installed, however you won't be able to update it to newer versions until you've renewed the license.
 
-As for **_how_ this happened** in the first place, Craft's [CP updater](#updating-from-the-control-panel) and their recommended built-in [_update_ command](#update-from-the-cli) feature will make sure that you never update to a plugin version you don't have access to. However, if you used [Composer](#update-via-composer-from-the-cli) to update, it bypasses all of Craft's license validation and you can get yourself into the situation where you now have a version that your license shouldn't have access to, which then generates the error inside the Craft CP. The only way to resolve this would be reverting back to the previous version (which is not always recommended, as it's possible plugin update migration(s) could have taken place, and reverting could break your install), or renew your license. Please feel free to reach out to us for further clarification and assistance if you're in a bind with this, and we'll do the best we can to help.
+As for **_how_ this happened** in the first place, Craft's [CP updater](#update-from-the-control-panel) and their recommended built-in [_update_ command](#update-from-the-cli) feature will make sure that you never update to a plugin version you don't have access to. However, if you used [Composer](#update-via-composer-from-the-cli) to update, it bypasses all of Craft's license validation and you can get yourself into the situation where you now have a version that your license shouldn't have access to, which then generates the error inside the Craft CP. The only way to resolve this would be reverting back to the previous version (which is not always recommended, as it's possible plugin update migration(s) could have taken place, and reverting could break your install), or renew your license. Please feel free to reach out to us for further clarification and assistance if you're in a bind with this, and we'll do the best we can to help.
 
 #### Plugin shows it's 'Missing'
 
