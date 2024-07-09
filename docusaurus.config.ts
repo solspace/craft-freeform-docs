@@ -151,12 +151,14 @@ const config: Config = {
           },
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          // showLastUpdateTime: true,
-          // showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
           admonitions: {
             keywords: ['youtube', 'guide'],
             extendDefaults: true,
           },
+          editUrl:
+            'https://github.com/solspace/craft-freeform-docs/edit/develop',
         },
         theme: {
           customCss: './src/css/custom.css',
