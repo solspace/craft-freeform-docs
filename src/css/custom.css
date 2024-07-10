@@ -11,6 +11,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  --ifm-background-color: #fff;
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -44,12 +45,22 @@
 }
 
 html[data-theme='dark'] {
+  --ifm-background-color: #121825;
   --ifm-table-stripe-background: transparent;
 }
 
 /**
 * Global css
 */
+
+/* Background color */
+html[data-theme='light'] body {
+  background: linear-gradient(350deg, #ffffff 40%, #f1f8fe 75%, #e3f2ff 100%);
+}
+
+html[data-theme='dark'] body {
+  background: linear-gradient(350deg, #121825 40%, #0f2538 75%, #104571 100%);
+}
 
 /* Hide Pagination nav */
 .pagination-nav {
