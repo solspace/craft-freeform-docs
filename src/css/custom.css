@@ -28,6 +28,7 @@
   --table-border-color: #f2f2f2;
   --ifm-color-primary: #058ffe;
   --svg-foreground-color: #fff;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.9);
 }
 
 [data-theme='dark'] {
@@ -42,6 +43,7 @@
   --table-border-color: #173154;
   --ifm-color-primary: #058ffe;
   --svg-foreground-color: #000;
+  --ifm-navbar-background-color: rgba(13, 15, 21, 0.85);
 }
 
 html[data-theme='dark'] {
@@ -60,6 +62,17 @@ html[data-theme='light'] body {
 
 html[data-theme='dark'] body {
   background: linear-gradient(350deg, #121825 40%, #0f2538 75%, #104571 100%);
+}
+
+/* Container */
+.container {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* Sidebar */
+.theme-doc-sidebar-container {
+  border-right: 0 !important;
 }
 
 /* Hide Pagination nav */

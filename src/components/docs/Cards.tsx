@@ -145,7 +145,7 @@ const Card: React.FC<CardProps> = ({
     return (
       <Link
         to={fullCardLink}
-        className="group flex flex-row gap-2  border rounded-lg bg-gray-100 p-3 m-1 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400 hover:m-0 hover:p-4"
+        className="group flex flex-row gap-2  border rounded-lg bg-gray-100 p-3 m-1 max-w-80 2xl:max-w-full transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400 hover:m-0 hover:p-4"
       >
         <div className="max-w-10 pt-2">
           {imgSrc && (
