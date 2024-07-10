@@ -73,7 +73,7 @@ const IconCards: React.FC<IconsCardProps> = ({ items }) => {
         <Link
           to={item.link}
           key={index}
-          className="flex flex-col relative items-start rounded-2xl transition-all duration-500 bg-gray-100 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400"
+          className="flex flex-col relative items-start rounded-2xl transition-all duration-500 bg-blue-50 dark:text-white dark:bg-blue-900 hover:bg-blue-200 hover:dark:bg-blue-600"
         >
           {item.iconSrc && (
             <Image
@@ -145,19 +145,19 @@ const Card: React.FC<CardProps> = ({
     return (
       <Link
         to={fullCardLink}
-        className="group flex flex-row gap-2 border rounded-lg bg-gray-100 py-2 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400"
+        className="group flex flex-row gap-2 border rounded-lg bg-gray-100 py-3 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400"
       >
         <div className="max-w-10 pt-2">
           {imgSrc && (
             <Image alt={imgAlt || title} className="opacity-85" img={imgSrc} />
           )}
         </div>
-        <div className="">
+        <div className="pl-2">
           <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
             {title}
             {titleBadge && <Badge type="feature" text={titleBadge} />}
           </h3>
-          <p className="text-gray-700 mb-1 dark:text-gray-300 transition-all duration-500 dark:group-hover:text-gray-50 ">
+          <p className="text-sm text-gray-700 mb-1 dark:text-gray-300 transition-all duration-500 dark:group-hover:text-gray-50 ">
             {description}
           </p>
         </div>
@@ -197,7 +197,7 @@ const Card: React.FC<CardProps> = ({
 
 const FlexCards: React.FC<CardSectionProps> = ({ items }) => {
   return (
-    <div className="flex flex-wrap p-6 2xl:grid 2xl:grid-cols-3 justify-center gap-4">
+    <div className="flex flex-wrap py-6 2xl:grid 2xl:grid-cols-3 justify-center gap-4">
       {items.map((item, index) => (
         <Card
           key={`flex-cards-${index}`}
