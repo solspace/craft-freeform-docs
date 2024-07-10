@@ -8,10 +8,7 @@ interface SimpleTextLink {
 
 const SimpleTextLink: React.FC<SimpleTextLink> = ({ to, label, classes }) => {
   return (
-    <Link
-      to={to}
-      className={`underline decoration-[#058ffe]  hover:decoration-amber-500 hover:underline ${classes}`}
-    >
+    <Link to={to} className={`font-medium text-link ${classes}`}>
       {label}
     </Link>
   );
