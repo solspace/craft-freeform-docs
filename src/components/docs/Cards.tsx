@@ -145,7 +145,7 @@ const Card: React.FC<CardProps> = ({
     return (
       <Link
         to={fullCardLink}
-        className="group flex flex-row gap-2 border rounded-lg bg-gray-100 py-3 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400"
+        className="group flex flex-row gap-2  border rounded-lg bg-gray-100 p-3 m-1 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400 hover:m-0 hover:p-4"
       >
         <div className="max-w-10 pt-2">
           {imgSrc && (
@@ -197,7 +197,7 @@ const Card: React.FC<CardProps> = ({
 
 const FlexCards: React.FC<CardSectionProps> = ({ items }) => {
   return (
-    <div className="flex flex-wrap py-6 2xl:grid 2xl:grid-cols-3 justify-center gap-4">
+    <div className="flex flex-wrap py-6 2xl:grid 2xl:grid-cols-3 justify-center gap-3">
       {items.map((item, index) => (
         <Card
           key={`flex-cards-${index}`}
@@ -222,7 +222,7 @@ const FieldCards: React.FC<FieldCardsProps> = ({ items }) => {
         <Link
           key={`field-cards-${index}`}
           to={item.link}
-          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-100 py-7 px-10 max-w-80 transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-gray-200 hover:dark:bg-slate-900"
+          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-100 py-7 px-10 max-w-80 transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-gray-200 hover:dark:bg-slate-900 hover:scale-105"
         >
           <div className="max-w-10 pt-4">
             <Image
