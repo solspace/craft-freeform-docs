@@ -942,3 +942,24 @@ html[data-theme='dark']
     display: none !important;
   }
 }
+
+/* Formatting Templates Icons */
+.sample-templates-icon {
+  font-size: 15px;
+  color: #d8eeff !important;
+  white-space: wrap;
+  vertical-align: top;
+  text-align: left;
+  display: flex;
+  gap: 10px;
+}
+
+.sample-templates-icon .photo {
+  margin-bottom: 0 !important;
+}
+
+@media (min-width: 768px) {
+  .sample-templates-icon {
+    min-width: 200px;
+  }
+}
