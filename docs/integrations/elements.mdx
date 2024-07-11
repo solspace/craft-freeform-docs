@@ -57,7 +57,7 @@ Freeform includes the ability to map the Freeform submission ID, submission toke
 
 ## Overview
 
-Freeform includes the ability to map submission data to create and [edit](#editing-elements) other Craft elements, including [Craft Entries](#craft-entries), [Craft Users](#craft-users) and [Calendar Events](#solspace-calendar-events). Since Freeform already includes various other functionality such as [spam protection](../../forms/spam-protection/), [integrations](../../integrations/), [email notifications](../../forms/email-notifications/), [Stripe payments](../payments/) and much more, this allows you to quickly create very powerful forms.
+Freeform includes the ability to map submission data to create and [edit](#editing-elements) other Craft elements, including [Craft Entries](#craft-entries), [Craft Users](#craft-users) and [Calendar Events](#calendar-events). Since Freeform already includes various other functionality such as [spam protection](../forms/spam-protection/), [integrations](../integrations/), [email notifications](../forms/email-notifications/), [Stripe payments](./stripe-payments/) and much more, this allows you to quickly create very powerful forms.
 
 To use this feature, you set up integration(s) inside the Freeform settings area, and then configure them individually for each form you wish to use them on.
 
@@ -76,7 +76,7 @@ This integration allows you to map Freeform submission data to [Craft Entries](h
 <VerticalStepWrapper>
 <StepMarkdown stepTitle="Create the Integration">
 
-- Go to the [Element section in Freeform Settings](../../configuration/settings/#elements) (**Freeform → Settings → Elements**).
+- Go to the [Element section in Freeform Settings](../configuration/settings/#elements) (**Freeform → Settings → Elements**).
 - Click the **New Integration** button at the top right.
 - Select _Entry_ from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration. e.g. `My Entry Integration`.
@@ -119,7 +119,7 @@ This feature requires a **Craft Pro** license in order to work, as Users are a C
 <VerticalStepWrapper>
 <StepMarkdown stepTitle="Create the Integration">
 
-- Go to the [Element section in Freeform Settings](../../configuration/settings/#elements) (**Freeform → Settings → Elements**).
+- Go to the [Element section in Freeform Settings](../configuration/settings/#elements) (**Freeform → Settings → Elements**).
 - Click the **New Integration** button at the top right.
 - Select _User_ from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration. e.g. `My User Integration`.
@@ -148,7 +148,7 @@ This feature requires a **Craft Pro** license in order to work, as Users are a C
     When using a manual Admin approving approach, it's still possible for a **Pending** user to circumvent this process if a [Forgot Password](https://craftcms.com/knowledge-base/front-end-user-accounts#reset-password-forms) form is available to them, as Craft currently does not have a concept of Admin approval only, and allows users to verify their account either through an email notification or using a _Forgot Password_ form.
     :::
   - The **Attribute Mapping** table allows you to map standard Craft User fields.
-    - You will need to use the special [Password](../../forms/fields/#password) field for mapping passwords to User passwords. The Freeform **Password** field will NOT save any password data in the Freeform database tables. It is designed specifically for this purpose.
+    - You will need to use the special [Password](../forms/fields/#password) field for mapping passwords to User passwords. The Freeform **Password** field will NOT save any password data in the Freeform database tables. It is designed specifically for this purpose.
   - The **Field Mapping** table is where you map Freeform fields to the Craft User fields as needed.
 
 See [Mapping Guidelines](#mapping-guidelines) for more info.
@@ -159,14 +159,14 @@ See [Mapping Guidelines](#mapping-guidelines) for more info.
 
 ## Calendar Events
 
-This integration supports mapping to Solspace [Calendar Events](../../../../calendar/), providing you have the **Calendar** plugin installed. This works similarly to the [Craft Entries](#craft-entries) integration, but also allows you to specify **Start Date** (and Time), **End Date** (and Time) and if the event is **All Day** or not. Advanced settings like repeat rules are currently not available.
+This integration supports mapping to Solspace Calendar Events, providing you have the **Calendar** plugin installed. This works similarly to the [Craft Entries](#craft-entries) integration, but also allows you to specify **Start Date** (and Time), **End Date** (and Time) and if the event is **All Day** or not. Advanced settings like repeat rules are currently not available.
 
 ### Setup Instructions
 
 <VerticalStepWrapper>
 <StepMarkdown stepTitle="Create the Integration">
 
-- Go to the [Element section in Freeform Settings](../../configuration/settings/#elements) (**Freeform → Settings → Elements**).
+- Go to the [Element section in Freeform Settings](../configuration/settings/#elements) (**Freeform → Settings → Elements**).
 - Click the **New Integration** button at the top right.
 - Select _Calendar Events_ from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration. e.g. `My Calendar Integration`.
@@ -190,7 +190,7 @@ This integration supports mapping to Solspace [Calendar Events](../../../../cale
   - Toggle whether **all** new events created through Freeform should be considered **All Day** or not.
     - To have users only choose a Start date and End date for ALL events (and not worry about selecting times), toggle this ON.
     - To have users specify times in addition to dates of their events, leave this toggled OFF.
-    - To offer the ability for users to set that an event is "all day", leave this toggled OFF and then map a Freeform [Checkbox](../../forms/fields/#checkbox) field to the **All Day** field in the field mapping table.
+    - To offer the ability for users to set that an event is "all day", leave this toggled OFF and then map a Freeform [Checkbox](../forms/fields/#checkbox) field to the **All Day** field in the field mapping table.
   - The **Attribute Mapping** table allows you to map standard Calendar Event fields.
   - The **Field Mapping** table is where you map Freeform fields to the Calendar Event fields as needed.
 
@@ -213,7 +213,7 @@ While most traditional fields that are similar to each other should be able to c
   - If the field that is mapped to the Entry Title field is empty, validation will mention that "a title is required", etc. Entry Slug errors are suppressed for Freeform errors as not to confuse users.
   - If the fields that are mapped to essential fields like **username**, **email** and **password** are empty, validation will mention that "Email cannot be blank", etc.
 - While **multipage forms** will map correctly to the element, you may see some slightly unusual behavior. For example, if you have your **Title** field placed in the second page, when submitting from the first page to the second page, the second page will highlight the field mapped to the **Title** field highlighted with an error. This is a visual issue only.
-- If the submission is blocked or flagged as spam, there's currently **no way to retroactively map submission data to the element**. The best option for avoiding this would be using [Captchas](../../forms/spam-protection/) instead of Keyword Blocking, etc.
+- If the submission is blocked or flagged as spam, there's currently **no way to retroactively map submission data to the element**. The best option for avoiding this would be using [Captchas](../forms/spam-protection/) instead of Keyword Blocking, etc.
 
 ## Email Notification Templates
 
@@ -253,7 +253,7 @@ If you don't already have an integration setup for this (for the purpose of crea
 You can share a single integration for both creation of **new** elements and **editing existing** elements, e.g. _User Account Registration_ and _Edit Account_ forms.
 :::
 
-- Go to the [Element section in Freeform Settings](../../configuration/settings/#elements) (**Freeform → Settings → Elements**).
+- Go to the [Element section in Freeform Settings](../configuration/settings/#elements) (**Freeform → Settings → Elements**).
 - Click the **New Integration** button at the top right.
 - Select the element type from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration. e.g. `My User Integration`.
