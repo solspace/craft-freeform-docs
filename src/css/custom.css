@@ -860,3 +860,86 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='security'] + ul li:before {
 .step-active .step-line {
   display: none;
 }
+
+/* Docsearch Button */
+.theme-doc-sidebar-container .DocSearch.DocSearch-Button {
+  width: 100%;
+  box-shadow: inset 0 1px 0 0 #ffffff0d !important;
+  border-radius: 7px;
+  border: 1px solid rgb(164 161 161 / 40%);
+  background-color: transparent;
+}
+
+.theme-doc-sidebar-container .DocSearch-Button:active,
+.theme-doc-sidebar-container .DocSearch-Button:focus,
+.theme-doc-sidebar-container .DocSearch-Button:hover {
+  box-shadow: none !important;
+  background: transparent !important;
+  border: 1px solid rgb(164 161 161 / 75%);
+}
+
+.theme-doc-sidebar-container .DocSearch.DocSearch-Button {
+  margin-bottom: 1rem;
+}
+
+.theme-doc-sidebar-container
+  .DocSearch.DocSearch-Button
+  .DocSearch-Button-Placeholder {
+  padding-left: 0.5rem;
+  font-size: 0.875rem;
+  color: #97a3b6;
+}
+
+.theme-doc-sidebar-container
+  .DocSearch.DocSearch-Button:hover
+  .DocSearch-Button-Placeholder {
+  color: #97a3b6;
+}
+
+.theme-doc-sidebar-container .DocSearch.DocSearch-Button svg {
+  color: #97a3b6;
+  padding: 1px;
+  font-size: 0.875rem;
+}
+
+.theme-doc-sidebar-container .DocSearch-Button-Keys {
+  min-width: unset;
+  margin-right: 0.4rem;
+}
+
+.theme-doc-sidebar-container .DocSearch-Button-Key {
+  box-shadow: none;
+  background: none;
+  padding: unset;
+  width: unset;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Inter var', ui-sans-serif, system-ui, sans-serif;
+  margin-right: unset;
+}
+
+html[data-theme='dark']
+  .theme-doc-sidebar-container
+  .DocSearch.DocSearch-Button {
+  background-color: rgb(120 116 116 / 20%);
+}
+
+html[data-theme='dark']
+  .theme-doc-sidebar-container
+  .DocSearch.DocSearch-Button:hover {
+  background-color: rgb(120 116 116 / 30%) !important;
+}
+
+@media (min-width: 997px) {
+  .navbar
+    .navbarSearchContainer_node_modules-\@docusaurus-theme-classic-lib-theme-Navbar-Search-styles-module {
+    display: none;
+  }
+}
+
+@media (max-width: 997px) {
+  .DocSearch-Button-Keys,
+  .DocSearch-Button-Placeholder {
+    display: none !important;
+  }
+}
