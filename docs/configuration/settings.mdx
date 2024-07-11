@@ -46,7 +46,7 @@ import BuilderDefaultsVideo from './assets/videos/builder-defaults.mp4';
 
 # Plugin Settings
 
-Freeform includes a wide variety of settings that allow you to customize your form management experience. To adjust your settings, click the **Settings** menu item while in the Freeform plugin, or go to **Settings → Plugins → Freeform** and click the settings link. These can also be configured within your Craft [Project Config](./project-config.md) file
+Freeform includes a wide variety of settings that allow you to customize your form management experience. To adjust your settings, click the **Settings** menu item while in the Freeform plugin, or go to **Settings → Plugins → Freeform** and click the settings link. These can also be configured within your Craft [Project Config](./project-config) file
 
 <FlexCards
   items={[
@@ -171,7 +171,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 | **Maximum Number of Saved Forms Per Session**                      | `saveFormSessionLimit: '5'`     | The maximum number of saved forms per session for Save & Continue Later feature.                                                                                                                                                                                                                          |    <span class="compare-none">N/A</span>     |  <span class="edition-lite">✓</span>   |  <span class="edition-pro">✓</span>  |
 
 :::info
-The **Automatically Scroll to Form on Errors and Multipage forms** feature can have its behavior can been manipulated with the [Autoscroll Events](../developer/js-plugin.md#autoscroll-events).
+The **Automatically Scroll to Form on Errors and Multipage forms** feature can have its behavior can been manipulated with the [Autoscroll Events](../developer/js-plugin#autoscroll-events).
 :::
 
 ### Freeform Javascript Insertion Location
@@ -182,7 +182,7 @@ The location of where you want Freeform to insert it's scripts for form and fiel
 - **Page Header** <Badge type="feature" text="New in 5.0+" />
 - **Inside Form**
 - **None** (manually load the JS instead)
-  - If you choose this option, please be sure to manually load Freeform's JS with `/freeform/plugin.js` and CSS with `/freeform/plugin.css` (optional, as it's currently just for the Opinion field type handling) in your template(s). See [Freeform JS plugin](../developer/js-plugin.md#loading-freeform-js-manually) documentation for more information.
+  - If you choose this option, please be sure to manually load Freeform's JS with `/freeform/plugin.js` and CSS with `/freeform/plugin.css` (optional, as it's currently just for the Opinion field type handling) in your template(s). See [Freeform JS plugin](../developer/js-plugin#loading-freeform-js-manually) documentation for more information.
 
 ### Freeform Script Insert Type
 
@@ -259,7 +259,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 
 ### Formatting Templates
 
-[Formatting Templates](../forms/formatting-templates/) are predefined templates that you can specify for forms to handle simplified rendering of the form on the front end. You can have as many as you wish, and customize them however you like.
+[Formatting Templates](../templates/formatting/) are predefined templates that you can specify for forms to handle simplified rendering of the form on the front end. You can have as many as you wish, and customize them however you like.
 
 | Setting                                        | Project Config                                 | Description                                                                                                                                                                                                                                                                                                                                                   | <span class="edition-express">Express</span> | <span class="edition-lite">Lite</span> | <span class="edition-pro">Pro</span> |
 | ---------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------: | :------------------------------------: | :----------------------------------: |
@@ -267,7 +267,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 
 ### Email Templates
 
-Email Notification templates are available to be stored as files, in the database, or both. You can choose which one is best for your site. In order to send file-based email notifications, a directory path must be set for Freeform to manage these templates, as they are stored as Twig-based files. See [Email Notifications](../forms/email-notifications.md) documentation for more information about implementation.
+Email Notification templates are available to be stored as files, in the database, or both. You can choose which one is best for your site. In order to send file-based email notifications, a directory path must be set for Freeform to manage these templates, as they are stored as Twig-based files. See [Email Notifications](../forms/email-notifications) documentation for more information about implementation.
 
 | Setting                                                          | Project Config                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | <span class="edition-express">Express</span> | <span class="edition-lite">Lite</span> | <span class="edition-pro">Pro</span> |
 | ---------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------: | :------------------------------------: | :----------------------------------: |
@@ -316,7 +316,7 @@ This page and its settings all remain accessible when the Craft `allowAdminChang
 
 ## Demo Templates
 
-Allows you to install the [Demo Templates](./demo-templates.md) to get Freeform up and running on the front end with just a couple clicks!
+Allows you to install the [Demo Templates](./demo-templates) to get Freeform up and running on the front end with just a couple clicks!
 
 :::warning
 This page and its settings all become inaccessible when the Craft `allowAdminChanges` config setting is set to `false`.
@@ -326,7 +326,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 
 ## Spam Protection
 
-For more information about Freeform's spam protection features, visit the [Spam Protection documentation](../forms/spam-protection.md).
+For more information about Freeform's spam protection features, visit the [Spam Protection documentation](../forms/spam-protection).
 
 :::warning
 This page and its settings all become inaccessible when the Craft `allowAdminChanges` config setting is set to `false`.
@@ -389,7 +389,7 @@ The CRM area allows you to manage your CRM (Customer Relationship Management) AP
 
 This area allows you to configure and manage Stripe Payments for your forms. The Stripe Payments integration is set up here and are globally available to all forms, but are configured per form inside the form builder interface. To create a new Stripe payment setup, click the **New Payment Integration** at the top right.
 
-- View the [Payments API Integration](../integrations/payments/) documentation for more information about setting up and configuring.
+- View the [Payments API Integration](../integrations/stripe-payments) documentation for more information about setting up and configuring.
 
 <Photo img={SettingPaymentsPhoto} alt="Payments" />
 
@@ -397,7 +397,7 @@ This area allows you to configure and manage Stripe Payments for your forms. The
 
 This area allows you to configure and manage Captcha integrations. Freeform currently supports several options of _reCAPTCHA_ and _hCaptcha_.
 
-- View the [reCAPTCHA](../integrations/recaptcha/) or [hCaptcha](../integrations/hcaptcha/) integration documentation for more information about setting up and configuring.
+- View the [reCAPTCHA](../integrations/recaptcha/) or [hCaptcha](../integrations/hcaptha) integration documentation for more information about setting up and configuring.
 
 ### Webhooks<Badge type="pro" text="Pro" />
 
@@ -412,7 +412,7 @@ This area allows you to configure and manage **Slack**, **Zapier** and **generic
 
 This area allows you to configure and manage singleton integrations for your forms. Currently the following are available:
 
-- [Google Tag Manager](../integrations/google-tag-manager/)
+- [Google Tag Manager](../user-guides/guides/submission-data/google-tag-manager)
 - [Freeform Honeypot](../forms/spam-protection/#freeform-honeypot)
 - [Freeform Javascript Test](../forms/spam-protection/#freeform-javascript-test)
 - [POST Forwarding](../integrations/post-forwarding/) <Badge type="pro" text="Pro" />

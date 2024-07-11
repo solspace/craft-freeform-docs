@@ -127,7 +127,7 @@ Freeform features its own set of robust field types. The form builder displays a
 - All field types conveniently include the ability to set attributes for their **labels**, **inputs**, **errors** and **instructions** directly inside the form builder property editor.
   - This allows you to keep your hands clean of being inside formatting templates and specify one-off exceptions for fields such as `readonly` and `autocomplete="off"`, etc.
   - To use single attributes like `novalidate`, just enter the attribute in the **Attribute** column and leave the **Value** column empty.
-  - You can use anything inside the [Form](../templates/objects/form.md) and [Field](../templates/objects/field.md) objects as well, e.g.:
+  - You can use anything inside the [Form](../templates/objects/form) and [Field](../templates/objects/field) objects as well, e.g.:
     - `field.id` to access Field ID.
     - `form.handle` to access form handle.
 
@@ -893,7 +893,7 @@ A special field type that allows you include HTML and Twig inside your form layo
 - The Property Editor will load an HTML area for you to type or paste your code into.
 - The Layout column in the form builder will live parse your HTML (Twig will not be parse inside the form builder).
 - All HTML is allowed here.
-- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings.md#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.
+- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.
 
 ### Display Submission Data from Previous Pages
 
@@ -1013,7 +1013,7 @@ To manually render an Opinion Scale field to use your own styles, your code migh
 
 ## Password<Badge type="pro" text="Pro" />
 
-A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/user-registration-forms.md) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
+A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/user-registration-forms) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
 
 <Photo img={PasswordPhoto} alt="Password field type" />
 
@@ -1374,7 +1374,7 @@ For **manual** rendering of the Table field inside your form for full customizab
 
 ### Submission Data
 
-Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission.md):
+Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission):
 
 ```twig
 <table class="table">

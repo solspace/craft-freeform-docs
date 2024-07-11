@@ -9,7 +9,7 @@ import { Badge } from '@site/src/components/utils';
 The Form object contains its metadata and field objects. You can either render the form using the pre-selected formatting template by calling `form.render()` or achieve a more fine-grained control over it by iterating over its rows and fields and using `form.renderTag` and `form.renderClosingTag` methods.
 
 :::info
-Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection.md), Submit disable on click, and other special fieldtypes. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings.md#scripts-location) setting.
+Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection), Submit disable on click, and other special fieldtypes. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings#scripts-location) setting.
 :::
 
 ## Properties
@@ -48,15 +48,15 @@ Outputs the custom error message configured in the Validation tab for your form 
 
 ### `hasErrors`
 
-A bool variable, which will be `true` if there are any errors in any of the fields or the form. It might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error). This can be used in conjunction with the [Errors object](./errors.md) for displaying special and general errors.
+A bool variable, which will be `true` if there are any errors in any of the fields or the form. It might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error). This can be used in conjunction with the [Errors object](./errors) for displaying special and general errors.
 
 ### `pages`
 
-Returns a list of [Page objects](./page.md) each containing its label and index.
+Returns a list of [Page objects](./page) each containing its label and index.
 
 ### `currentPage`
 
-Returns the current [Page object](./page.md) containing its label and index.
+Returns the current [Page object](./page) containing its label and index.
 
 ### `duplicate` <Badge type="feature" text="Renamed and Revised in 5.0+" />
 

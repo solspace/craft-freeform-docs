@@ -66,7 +66,7 @@ Forms can be generated inside your front end templates one of 3 different ways:
 
 ### Formatting Template with Form Render<Badge type="recommended" text="Recommended" />
 
-The most common and hastle-free approach is to use the **formatting template** assigned to the form and load a [Form query](../queries/form.md) using the `render` method in your template. In templates that you want your forms to show up in, you simply just insert one line of code:
+The most common and hastle-free approach is to use the **formatting template** assigned to the form and load a [Form query](../queries/form) using the `render` method in your template. In templates that you want your forms to show up in, you simply just insert one line of code:
 
 ```twig
 {{ freeform.form("myFormHandle").render() }}
@@ -121,7 +121,7 @@ The most common and hastle-free approach is to use the **formatting template** a
 
 ### Code Your Form Directly in the Template
 
-If you absolutely prefer to do so, you can use a [Form query](../queries/form.md) with the `renderTag` to code your form directly inside the template you need it to load in. This can definitely work against you if you intend on placing the form in more than one page.
+If you absolutely prefer to do so, you can use a [Form query](../queries/form) with the `renderTag` to code your form directly inside the template you need it to load in. This can definitely work against you if you intend on placing the form in more than one page.
 
 - Your form formatting code is contained directly within the template that you want the form to appear in.
 - No matter what formatting template your form may have assigned to it in the form builder, the form always conforms to the template formatting used in this template.

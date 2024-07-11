@@ -7,7 +7,7 @@ sidebar_position: 1
 
 Freeform includes its own built-in AJAX support for single and multi-page forms. To enable it, simply check the **Enable AJAX** checkbox in the _Form Settings_ tab inside the form builder for any forms you wish to have it apply to. Freeform will then handle the rest. You may, however, override part of this and/or implement your own AJAX solution. If you need to use a manual approach for the AJAX call, usually because some sort of framework is used to generate the form such as [Vue.js](https://vuejs.org/), please see the [Manual Implementations](#manual-implementations) guide further below.
 
-The Freeform [javascript plugin](../developer/js-plugin.mdx) handles AJAX functionality and all other JS needed (such as Date fields, conditional rules, Stripe payments and more). Much of the default functionality (formatting, language, etc) can be overridden if necessary. See the [customization](#customization) reference guide below.
+The Freeform [javascript plugin](../developer/js-pluginx) handles AJAX functionality and all other JS needed (such as Date fields, conditional rules, Stripe payments and more). Much of the default functionality (formatting, language, etc) can be overridden if necessary. See the [customization](#customization) reference guide below.
 
 :::tip
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](guides/troubleshooting-form-issues/)
@@ -25,7 +25,7 @@ The Freeform [javascript plugin](../developer/js-plugin.mdx) handles AJAX functi
 The built-in AJAX functionality lets you completely customize the way your forms work if you're not satisfied with anything in the provided defaults.
 
 ::: tip
-Be sure to check out the [Freeform Javascript plugin](../developer/js-plugin.md) documentation, to learn how to further extend Freeform's functionality.
+Be sure to check out the [Freeform Javascript plugin](../developer/js-plugin) documentation, to learn how to further extend Freeform's functionality.
 :::
 
 ### Customize Success & Error Messages
@@ -213,11 +213,11 @@ When not using a formatting template, this can cause issues with some of Freefor
    - Save the form.
 2. Inside your regular template:
    - Open the regular template that contains the form.
-   - Add the `formAttributes: { "data-skip-html-reload": true },` parameter to your [Form query](../templates/queries/form.md).
+   - Add the `formAttributes: { "data-skip-html-reload": true },` parameter to your [Form query](../templates/queries/form).
 
 ## Advanced
 
-To attach your own functionality when the AJAX form successfully submits or fails, you have to listen to the respective events dispatched by the [Freeform JS plugin](../developer/js-plugin.md). For instance, redirecting after an AJAX submit is finished:
+To attach your own functionality when the AJAX form successfully submits or fails, you have to listen to the respective events dispatched by the [Freeform JS plugin](../developer/js-plugin). For instance, redirecting after an AJAX submit is finished:
 
 ```js
 // Find the form element
