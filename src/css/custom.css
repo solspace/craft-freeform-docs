@@ -931,8 +931,7 @@ html[data-theme='dark']
 }
 
 @media (min-width: 997px) {
-  .navbar
-    .navbarSearchContainer_node_modules-\@docusaurus-theme-classic-lib-theme-Navbar-Search-styles-module {
+  .navbar div:has(> .DocSearch-Button) {
     display: none;
   }
 }
