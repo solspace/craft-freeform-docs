@@ -15,7 +15,7 @@ The Freeform [javascript plugin](../developer/js-pluginx) handles AJAX functiona
 
 ## Caveats
 
-- **Payments**: When using Freeform's [Stripe Payments](../integrations/payments/) feature, Freeform will automatically force AJAX mode on the form in order to work with Stripe's validation.
+- **Payments**: When using Freeform's [Stripe Payments](../integrations/stripe-payments/) feature, Freeform will automatically force AJAX mode on the form in order to work with Stripe's validation.
 - **Manual Formatting**: When not using a formatting template, this can cause issues with some of Freeform's AJAX autoload features. Whenever possible, you should use a formatting template. However, you can work around it if using your own AJAX, however. [See the guide below](#not-using-a-formatting-template).
 - **Editing**: Editing existing submissions via the front end in multi-page AJAX forms will currently not work correctly.
 - **Multiple Forms**: If loading the same form more than once in the same template, be sure to specify the `id` parameter for each instance so that AJAX submit can account for this.

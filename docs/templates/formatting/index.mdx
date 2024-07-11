@@ -51,7 +51,7 @@ Freeform offers the most flexible and customizable options for handling the form
 />
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../user-guides/guides/testing/troubleshooting-form-issues)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../user-guides/guides/testing/troubleshooting-form-issues)
 :::
 
 <Photo img={BasicDarkPhoto} alt="Basic Dark Example Formatting Template" />
@@ -62,7 +62,7 @@ Forms can be generated inside your front end templates one of 3 different ways:
 
 - [Formatting Template with Form Render](#formatting-template-with-form-render) <Badge type="recommended" text="Recommended" />
 - [Code Your Form Directly in the Template](#code-your-form-directly-in-the-template)
-- [Headless using GraphQL and/or a Javascript framework](#headless-using-graphql-and-or-a-javascript-framework)
+- [Headless using GraphQL and/or a Javascript framework](#headless-using-graphql-andor-a-javascript-framework)
 
 ### Formatting Template with Form Render<Badge type="recommended" text="Recommended" />
 
@@ -74,7 +74,7 @@ The most common and hastle-free approach is to use the **formatting template** a
 
 - Your form formatting code is stored in a separate template and can be reused across as many of your forms as you wish (just like an include).
 - Formatting templates are Twig template files and are stored in a separate directory inside your Craft Templates directory, so they can still work nicely with version control.
-- Freeform includes several [formatting template examples](#example-formatting-templates) for you to use or user as a starting point for creating your own.
+- Freeform includes several [formatting template examples](#examples) for you to use or user as a starting point for creating your own.
 - This approach is especially handy when rendering forms that have been attached/related forms to entries or other element types.
 - You can have as many formatting templates as you wish. Just specify in the form builder which formatting template the form should use. You won't need to even adjust the page template the form is placed into. If you wish to override the formatting template for the form at template level, you can also specify the `formattingTemplate` parameter:
   ```twig {2}
@@ -221,25 +221,25 @@ Freeform supports headless website architecture making it easy to use JavaScript
       title: 'GraphQL',
       description: 'Query form layouts and form submission mutations.',
       imgSrc: GraphqlIcon,
-      fullCardLink: '/headless/graphql/',
+      fullCardLink: '../../headless/graphql/',
     },
     {
       title: 'Vue.js',
       description: 'How to implement Vue.js with Freeform.',
       imgSrc: VueJsIcon,
-      fullCardLink: '/headless/vuejs/',
+      fullCardLink: '../../headless/vuejs/',
     },
     {
       title: 'React JS',
       description: 'How to implement React JS with Freeform.',
       imgSrc: ReactJsIcon,
-      fullCardLink: '/headless/reactjs/',
+      fullCardLink: '../../headless/reactjs/',
     },
     {
       title: 'Next.js',
       description: 'How to implement Next.js with Freeform.',
       imgSrc: NextJsIcon,
-      fullCardLink: '/headless/nextjs/',
+      fullCardLink: '../../headless/nextjs/',
     },
   ]}
 />
@@ -1259,7 +1259,7 @@ You can override the value inside text fields, or pre-select a default option fo
 ```
 
 :::tip
-[Need to pass dynamic data such as the current URL, logged in user data, or data from another element to your form fields?](guides/passing-dynamic-data-to-forms/)
+[Need to pass dynamic data such as the current URL, logged in user data, or data from another element to your form fields?](../../user-guides/guides/dynamic-data/passing-dynamic-data-to-forms)
 :::
 
 ### Array Values & Conditionals
@@ -1558,5 +1558,5 @@ Freeform explicitly requires that all options exist for the field in the form bu
 ```
 
 :::tip
-[Need to populate field options at template level for automated formatting templates? Check out the guide for workaround options.](guides/populate-field-options-at-template-level/)
+[Need to populate field options at template level for automated formatting templates? Check out the guide for workaround options.](../../user-guides/guides/dynamic-data/populate-field-options-at-template-level)
 :::

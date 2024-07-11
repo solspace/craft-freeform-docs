@@ -15,15 +15,15 @@ import BasicDarkPhoto from '../assets/img/basic-dark.png';
 The Form query returns a [Form object](../objects/form/) containing its metadata and field objects. From there you can either render the form using the pre-selected formatting template by calling `form.render()` or take control of it by iterating over its fields and using `form.renderTag` and `form.renderClosingTag` methods.
 
 :::info
-Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection/), Submit disable on click, and other special field types. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../configuration/settings/#scripts-location) setting.
+Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection/), Submit disable on click, and other special field types. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings/#scripts-location) setting.
 :::
 
 :::tip
-[Using headless website architecture with JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more.](headless)
+[Using headless website architecture with JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more.](../../headless)
 :::
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../user-guides/guides/testing/troubleshooting-form-issues)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../user-guides/guides/testing/troubleshooting-form-issues)
 :::
 
 <Photo img={BasicDarkPhoto} alt="Basic Dark Example" />
@@ -202,16 +202,16 @@ formattingTemplate: 'template-name.twig'
 
 Allows you to disable email notifications, API integrations and [Element integrations](../../integrations/elements/) for a form by passing an object of items you wish to disable, typically used for [editing submissions](../../submissions/overview/#editing-submissions/), e.g.:
 
-- `adminNotifications: true` - disable [Admin](../forms/email-notifications/#admin) notifications
-- `conditionalNotifications: true` <Badge type="feature" text="New in 5.0+" /> - disable [Conditional](../forms/email-notifications/#conditional) notifications
-- `userSelectNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [User Select](../forms/email-notifications/#user-select) notifications
-- `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../forms/email-notifications/#email-fields) notifications
-- `api: true` - disable any **CRM** and **Email Marketing** [integrations](../integrations/)
-- `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable any [Element](../integrations/elements/) integrations
+- `adminNotifications: true` - disable [Admin](../../forms/email-notifications/#admin) notifications
+- `conditionalNotifications: true` <Badge type="feature" text="New in 5.0+" /> - disable [Conditional](../../forms/email-notifications/#conditional) notifications
+- `userSelectNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [User Select](../../forms/email-notifications/#user-select) notifications
+- `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../../forms/email-notifications/#email-fields) notifications
+- `api: true` - disable any **CRM** and **Email Marketing** [integrations](../../integrations/)
+- `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable any [Element](../../integrations/elements/) integrations
   ::: warning
   This will not disable Element _validation_, e.g. required fields, username already in use, etc.
   :::
-- `payments: true` - disable [Payment](../integrations/payments/) integrations
+- `payments: true` - disable [Payment](../../integrations/stripe-payments/) integrations
 - `webhooks: true` - disable any Webhooks
 - `captchas: true` <Badge type="feature" text="New in 5.0+" /> - disable any Captchas
 - `honeypots: true` <Badge type="feature" text="New in 5.0+" /> - disable the Freeform Honeypot
@@ -231,9 +231,9 @@ disable: {
 
 ### `relations` <Badge type="pro" text="Pro" />
 
-This is a powerful feature that allows you to relate the posted submission to any other Craft Element, as long as it contains a [Freeform Submissions element field type](../../forms/fieldtypes/). This allows you to quickly turn Freeform into a plugin replacement for Comments, Reviews, Ratings, and more!
+This is a powerful feature that allows you to relate the posted submission to any other Craft Element, as long as it contains a [Freeform Submissions element field type](../../forms/fieldtype/). This allows you to quickly turn Freeform into a plugin replacement for Comments, Reviews, Ratings, and more!
 
-You can specify as many element ID's to relate to as you wish. All you have to do is specify the [Freeform Submissions Field](../../forms/fieldtypes/) handle and supply an array of element ID's or just a single element ID that you wish to relate submissions for.
+You can specify as many element ID's to relate to as you wish. All you have to do is specify the [Freeform Submissions Field](../../forms/fieldtype/) handle and supply an array of element ID's or just a single element ID that you wish to relate submissions for.
 
 ```php
 relations: {
@@ -316,7 +316,7 @@ Then in your formatting template, use:
 ```
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](guides/passing-custom-property-to-formatting-template/)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../user-guides/guides/dynamic-data/passing-custom-property-to-formatting-template)
 :::
 
 :::info
@@ -790,7 +790,7 @@ Rendering the form that allows editing a specific submission and disables all of
 
 You can feed Element ID(s) however you like, but the below example shows how you might pass off a loaded Entry ID to the Freeform form so that the submission will be related to it.
 
-If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtypes/) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
+If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtype/) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
 
 ```twig{6-8}
 {# Fetch the entry however you wish #}
