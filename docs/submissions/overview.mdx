@@ -32,13 +32,13 @@ Similar to Craft Entries, every time a user submits a form, we refer to those as
       title: 'Front End Templates',
       description: "Overview of what's available in the front end templates.",
       imgSrc: CodeIcon,
-      fullCardLink: '#email-notifications',
+      fullCardLink: '#front-end-templates',
     },
     {
       title: 'Submission Editing',
       description: 'Front-end editing of form submissions for users.',
       imgSrc: EditIcon,
-      fullCardLink: '#conditional-rules',
+      fullCardLink: '#submission-editing',
     },
     {
       title: 'Submission Limits',
@@ -115,7 +115,7 @@ You can apply the `disable` parameter to the [Form](../templates/queries/form/) 
 - `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../forms/email-notifications/#email-fields) notifications
 - `api: true` - disable [CRM](../integrations/) and [Email Marketing](../integrations/) integrations
 - `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable creation of new elements via [Element integrations](../integrations/elements/) (will not disable Element _validation_, e.g. required fields, username already in use, etc).
-- `payments: true` - disable [Payment](../integrations/payments/) integrations
+- `payments: true` - disable [Payment](../integrations/stripe-payments) integrations
 - `webhooks: true` - disable any Webhooks for the form
 
 You can also just set this to `true` (`disable: true`) to disable all items at once.
@@ -181,7 +181,7 @@ If you need to set limits on the number of submissions a form may receive or who
 
 ### Duplicate Check<Badge type="pro" text="Pro" /><Badge type="feature" text="Renamed and Improved in 5.0+" />
 
-Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](./forms/), a **Duplicate Check** setting exists to allow you to limit the number of times a specific user can submit the form.
+Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](../forms/builder), a **Duplicate Check** setting exists to allow you to limit the number of times a specific user can submit the form.
 
 - _Do not limit_ (default - no duplicate check applied)
 - _Logged in Users Only - No Limit_
@@ -249,7 +249,7 @@ The key is applying the `submissionLimit` parameter to the [Form query](../templ
 
 ### Stop After Date
 
-Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](./forms/), a **Stop Submissions After Date** setting exists to allow you to prevent new submissions of the form after the specified date.
+Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](../forms/builder), a **Stop Submissions After Date** setting exists to allow you to prevent new submissions of the form after the specified date.
 
 :::warning
 This date will be validated against when [editing](#submission-editing) submissions as well.
