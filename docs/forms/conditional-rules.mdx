@@ -1,6 +1,6 @@
 ---
 title: 'Conditional Rules'
-sidebar_position: 1
+sidebar_position: 5
 ---
 
 import Player from 'react-player';
@@ -17,7 +17,7 @@ Freeform Pro edition includes Conditional Rules logic that can be added to forms
 To begin adding rules to your form, click on the **Rules** tab in the form builder and follow the options.
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](guides/troubleshooting-form-issues/)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../user-guides/guides/testing/troubleshooting-form-issues)
 :::
 
 <Player url={BuilderRulesVideo} muted loop playing width="100%" height="100%" />
@@ -38,7 +38,7 @@ For added convenience, Freeform includes a field map along with visual cues. Thi
 Configuring rules for fields, groups and pages is straightforward:
 
 - To set rules for a field, click on the field name in the left column.
-- To set rules for a [Group](/forms/conditional-rules#group) field, click on the group field name in the left column.
+- To set rules for a [Group](./fields/#group) field, click on the group field name in the left column.
 - To set rules for a page, click on the page name in the left column.
 
 :::warning
@@ -71,7 +71,7 @@ The following conditions are available for each field/page:
   - Text input (where you type out the criteria) for basic text/number field types.
   - Select dropdown (where you select a predefined option as criteria) for multi-option field types such as Checkboxes, Radios, Dropdowns, etc.
   - Checkbox (where you check the checkbox) for single Checkbox field types.
-:::
+    :::
 
 ### Page Skipping
 
@@ -129,7 +129,7 @@ There are 3 different approaches you can take:
 | Approach                                                                                    | Benefits                                                                                                                                                                                       | Drawbacks                                                                                                                                                                                                                                                                                                                                                                       |                                       |
 | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
 | `myFieldHandle.renderContainerOpeningTag()` <Badge type="recommended" text="Recommended" /> | Automatically generates the field wrapper `div`. Field attributes can still be applied to it. Maximum compatibility with attributes specified in the form builder and template overrides, etc. | A bit uglier to look at.                                                                                                                                                                                                                                                                                                                                                        | [Example](#rendercontaineropeningtag) |
-| `myFieldHandle.attributes.container`                                                        | Automatically generates the field wrapper attributes specified in the form builder and template overrides, etc.                                                                                | If the form builder or template overrides contain any of the already hard-coded attributes, it will have no way of knowing and ruin one of the definitions. For example, you hard code in `class="form-field"`, if there are any additional classes specified for the field inside the form builder, it will render as an additional `class` attribute which will cause issues. | [Example](#attributes-container)      |
+| `myFieldHandle.attributes.container`                                                        | Automatically generates the field wrapper attributes specified in the form builder and template overrides, etc.                                                                                | If the form builder or template overrides contain any of the already hard-coded attributes, it will have no way of knowing and ruin one of the definitions. For example, you hard code in `class="form-field"`, if there are any additional classes specified for the field inside the form builder, it will render as an additional `class` attribute which will cause issues. | [Example](#attributescontainer)       |
 | `data-field-container="myFieldHandle"`                                                      | Minimal template code and looks cleaner.                                                                                                                                                       | Any attributes set in the form builder or template overrides will not show up.                                                                                                                                                                                                                                                                                                  | [Example](#data-field-container)      |
 
 ### renderContainerOpeningTag<Badge type="recommended" text="Recommended" />

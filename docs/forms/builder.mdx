@@ -119,7 +119,7 @@ The form builder is divided into 5 sections:
 
 ## Layout<Badge type="feature" text="Improved in 5.0+" />
 
-This is where you set up [fields](../fields) and [pages](#multi-page-forms), as well as design and configure the overall layout of the form.
+This is where you set up [fields](./fields) and [pages](#multi-page-forms), as well as design and configure the overall layout of the form.
 
 <Player
   url={BuilderOverviewVideo}
@@ -153,7 +153,7 @@ The right column is where you position the form fields for the form.
 - **Page Tabs** - if you need to build a [multi-page form](#multi-page-forms), you can add and rename page tabs here.
   - Pages can be renamed, re-arranged, and deleted.
   - If you wish to move a field from one page to another, you can drag and drop the field onto the page tab of the page it should be moved to.
-- **Preview** - this is where you will actively see an interactive live preview of what your form will look like (roughly - ultimately the form styling and appearance is up to your [formatting template](./formatting-templates/)).
+- **Preview** - this is where you will actively see an interactive live preview of what your form will look like (roughly - ultimately the form styling and appearance is up to your [formatting template](../templates/formatting/)).
   - Fields can be dragged and dropped from the left column anywhere into the Layout (right column).
   - Freeform will automatically build rows and columns when you insert and rearrange fields.
   - To configure fields, simply click on them and the **property editor** will slide into the left column.
@@ -186,7 +186,7 @@ In the **Recipients** area, add any email address(es) you'd like to receive an e
 
 ### User Select <BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup><Badge type="feature" text="Renamed & Improved for 5.0+" />
 
-Email notifications can be sent to one or more pre-defined admin email addresses that are selected by the user filling out the form using any [Dropdown](../fields/#dropdown), [Checkboxes](../fields/#checkboxes), [Radios](../fields/#radios), [Multi-Select](../fields/#multiple-select) field types. For example, you might have a **Dropdown** field that contains different departments for the user to address the email to.
+Email notifications can be sent to one or more pre-defined admin email addresses that are selected by the user filling out the form using any [Dropdown](./fields/#dropdown), [Checkboxes](./fields/#checkboxes), [Radios](./fields/#radios), [Multi-Select](./fields/#multiple-select) field types. For example, you might have a **Dropdown** field that contains different departments for the user to address the email to.
 
 In the **Recipient Mapping** area, add email address(es) for each corresponding option. If you need to specify more than one email address for an option, hit _Enter_ and additional email inputs will appear.
 
@@ -198,7 +198,7 @@ Be sure to set up your option fields as usual, and do not set email addresses as
 
 ### Email Fields
 
-Email notifications can be sent to the user submitting the form as long as you're using the [Email](../fields/#email) field type. This is often used to send an email confirmation for the user.
+Email notifications can be sent to the user submitting the form as long as you're using the [Email](./fields/#email) field type. This is often used to send an email confirmation for the user.
 
 :::warning
 If you currently don't have any **Email** fields, please add one to your form layout. If you are using a regular [Text](./fields/#text) field to hold the email address, please switch it to an [Email](./fields/#email) field type first.
@@ -229,7 +229,7 @@ Configuring rules for fields, groups and pages is straightforward:
 - To set rules for a [Group](./fields/#group) field, click on the group field name in the left column.
 - To set rules for a page, click on the page name in the left column.
 
-Please see the [Conditional Rules](../conditional-rules) documentation for more information about this feature.
+Please see the [Conditional Rules](./conditional-rules) documentation for more information about this feature.
 
 ## Integrations<Badge type="feature" text="Improved in 5.0+" />
 
@@ -256,9 +256,9 @@ If any integrations are available, click on them in the left column. Once loaded
 
 ### Payments<Badge type="pro" text="Pro" />
 
-If the **Stripe Payments** integration is available, click on it in the left column. Once loaded in the right column, toggle the **Use integration for this form** switch ON and proceed to configuring settings and field mapping as necessary. You will also need to add a [Stripe Payments](./fields/#stripe-payments) special field to the form layout.
+If the **Stripe Payments** integration is available, click on it in the left column. Once loaded in the right column, toggle the **Use integration for this form** switch ON and proceed to configuring settings and field mapping as necessary. You will also need to add a [Stripe Payments](./fields/#stripe-payment) special field to the form layout.
 
-Please see the [Stripe Payments](../integrations/payments/) documentation guide for further instruction.
+Please see the [Stripe Payments](./fields/#stripe-payment) documentation guide for further instruction.
 
 ### Elements<Badge type="pro" text="Pro" />
 
@@ -338,14 +338,14 @@ This is where you configure all settings and behaviors for the form.
   - Options are:
     - **Reload form with a Success banner above** - upon successful submit of the form, Freeform will reload the form again and display a success banner above the form.
       - **Success Message** - the text to be shown at the top of the form if the submit is successful (AJAX), or load in your template with `form.settings.successMessage`.
-    - **Replace form with a Success message** - upon successful submit of the form, Freeform will stay on the same page but replace the form contents with the contents of the _Success Template_ that you specify. Please note that this will not work when manually rendering form formatting directly inside a regular template (not using a [Formatting Template](./formatting-templates/)).
+    - **Replace form with a Success message** - upon successful submit of the form, Freeform will stay on the same page but replace the form contents with the contents of the _Success Template_ that you specify. Please note that this will not work when manually rendering form formatting directly inside a regular template (not using a [Formatting Template](../templates/formatting/)).
       - **Success Template** - specify which [Success Template](../configuration/settings/#template-manager) you'd like to be used for this form.
     - **Return the Submitter to the following URL** - upon successful submit of the form, Freeform will redirect the user to the URL specified in the _Return URL_ setting.
       - **Return URL** - the URL that the form will redirect to after successful submit.
         - May contain:
           - `form.handle` - handle of form.
           - `submission.token` - secure token created for the submission.
-          - `submission.id` - newly created unique submission ID in the URL. This would allow you to use the [Submissions query](../../templates/queries/submissions) to display some or all of the users' submission on the success page.
+          - `submission.id` - newly created unique submission ID in the URL. This would allow you to use the [Submissions query](../templates/queries/submissions) to display some or all of the users' submission on the success page.
 - **Error Message** - the text to be shown at the top of the form if there are any errors upon submit (AJAX), or load in your template with `form.settings.errorMessage`.
 
 ### Limits
@@ -365,7 +365,7 @@ This is where you configure all settings and behaviors for the form.
 - **Stop Submissions After Date** <span class="badge-group"><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></span>
   - Allows you to prevent new submissions of the form after the set date.
 
-Please see the [Submission Limits](./submission-limits/) documentation for more information about available options, including setting limits for the entire form.
+Please see the [Submission Limits](../submissions/overview#submission-limits) documentation for more information about available options, including setting limits for the entire form.
 
 ### Form Attributes
 
@@ -378,11 +378,11 @@ Freeform allows for _multi-page_ forms (a POST submit per page). When editing fo
 <Player url={BuilderPagesVideo} muted loop playing width="100%" height="100%" />
 
 :::tip
-[Need to display submission data from previous pages as a confirmation screen, etc?](guides/displaying-submission-data-from-previous-pages/)
+[Need to display submission data from previous pages as a confirmation screen, etc?](../user-guides/guides/dynamic-data/displaying-submission-data-from-previous-pages)
 :::
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](guides/troubleshooting-form-issues/)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../user-guides/guides/testing/troubleshooting-form-issues)
 :::
 
 ### Important Notes
