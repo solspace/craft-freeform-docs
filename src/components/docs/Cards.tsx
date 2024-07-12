@@ -73,7 +73,7 @@ const IconCards: React.FC<IconsCardProps> = ({ items }) => {
         <Link
           to={item.link}
           key={index}
-          className="flex flex-col relative items-start rounded-2xl transition-all duration-500 bg-blue-50 dark:text-white dark:bg-blue-900 hover:bg-blue-200 hover:dark:bg-blue-600"
+          className="flex flex-col relative items-start rounded-2xl transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be]"
         >
           {item.iconSrc && (
             <Image
@@ -145,7 +145,7 @@ const Card: React.FC<CardProps> = ({
     return (
       <Link
         to={fullCardLink}
-        className="group flex flex-row gap-2  border rounded-lg bg-gray-100 p-3 m-1 max-w-80 2xl:max-w-full transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-sky-400 hover:dark:bg-sky-400 hover:m-0 hover:p-4"
+        className="group flex flex-row gap-2  border rounded-lg p-3 m-1 max-w-80 2xl:max-w-full transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:m-0 hover:p-4"
       >
         <div className="max-w-10 pt-2">
           {imgSrc && (
@@ -222,7 +222,7 @@ const FieldCards: React.FC<FieldCardsProps> = ({ items }) => {
         <Link
           key={`field-cards-${index}`}
           to={item.link}
-          className="group flex flex-col items-center gap-2 border rounded-lg bg-gray-100 py-7 px-10 max-w-80 transition-all duration-500 dark:text-white dark:bg-slate-800 hover:bg-gray-200 hover:dark:bg-slate-900 hover:scale-105"
+          className="group flex flex-col items-center gap-2 border rounded-lg p-3 max-w-80 transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:scale-105"
         >
           <div className="max-w-10 pt-4">
             <Image

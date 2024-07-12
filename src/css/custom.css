@@ -280,7 +280,7 @@ video {
 }
 
 html[data-theme='light'] .feature-api-grid a {
-  background: #567382;
+  background: rgba(0,127,230,0.2);
 }
 
 .feature-api-grid a img {
@@ -296,6 +296,10 @@ html[data-theme='light'] .feature-api-grid a {
   background: rgba(0, 105, 190, 0.35) !important;
   transform: scale(1.05);
   border-bottom: none !important;
+}
+
+html[data-theme='light'] .feature-api-grid a:hover {
+  background: #87c9ff;
 }
 
 .feature-api-grid a:hover img {
