@@ -1,0 +1,9 @@
+{
+  "label": "Submission Data",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "Tips and tricks for handling submission data.",
+    "slug": "guides/submission-data"
+  }
+}

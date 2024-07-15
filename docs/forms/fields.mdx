@@ -77,7 +77,7 @@ Freeform features its own set of robust field types. The form builder displays a
       title: 'Custom Field Types',
       description: 'Easily create your own custom field types.',
       imgSrc: GearCodingIcon,
-      fullCardLink: '../../developer/field-types',
+      fullCardLink: '../developer/field-types',
       titleBadge: 'New!',
     },
     {
@@ -127,7 +127,7 @@ Freeform features its own set of robust field types. The form builder displays a
 - All field types conveniently include the ability to set attributes for their **labels**, **inputs**, **errors** and **instructions** directly inside the form builder property editor.
   - This allows you to keep your hands clean of being inside formatting templates and specify one-off exceptions for fields such as `readonly` and `autocomplete="off"`, etc.
   - To use single attributes like `novalidate`, just enter the attribute in the **Attribute** column and leave the **Value** column empty.
-  - You can use anything inside the [Form](../templates/objects/form) and [Field](../templates/objects/fleld) objects as well, e.g.:
+  - You can use anything inside the [Form](../templates/objects/form) and [Field](../templates/objects/field) objects as well, e.g.:
     - `field.id` to access Field ID.
     - `form.handle` to access form handle.
 
@@ -536,8 +536,8 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/guides/field-styling/parsing-html-in-field-options/)
-- [Want to display single checkbox fields as a light switch toggle?](../guides/guides/field-styling/toggle-switch-checkbox/)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/field-styling/parsing-html-in-field-options/)
+- [Want to display single checkbox fields as a light switch toggle?](../guides/field-styling/toggle-switch-checkbox/)
 
 ## Checkboxes<Badge type="feature" text="Renamed in 5.0+" />
 
@@ -554,8 +554,8 @@ A group of checkboxes. The `field.type` property value is `checkboxes` (for cond
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/guides/field-styling/parsing-html-in-field-options/)
-- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/guides/dynamic-data/populate-field-options-at-template-level)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/field-styling/parsing-html-in-field-options/)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
 
 ## Confirm<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
 
@@ -633,8 +633,8 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 
 ### User Guides
 
-- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/guides/dynamic-data/populate-field-options-at-template-level)
-- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/guides/field-styling/other-option-for-fields)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/field-styling/other-option-for-fields)
 
 ## Email<Badge type="feature" text="Revised in 5.0+" />
 
@@ -647,7 +647,7 @@ It is required to use the **Email** field type if you wish for your users to rec
 :::
 
 :::tip
-[Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?](../guides/guides/form-validation/preventing-email-addresses)
+[Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?](../guides/form-validation/preventing-email-addresses)
 :::
 
 ### Settings
@@ -924,7 +924,7 @@ A multiple-select field. The `field.type` property value is `multiple-select` (f
 <Photo img={MultipleSelectPhoto} alt="Multiple Select field type" />
 
 :::tip
-[Need to populate field options at template level? Check out the guide for workaround options.](../guides/guides/dynamic-data/populate-field-options-at-template-level)
+[Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
 :::
 
 ### Settings
@@ -940,7 +940,7 @@ A single-line `number` type input field that is validated to contain certain num
 <Photo img={NumberPhoto} alt="Number field type" />
 
 :::tip
-[Want to display a Number field as a range slider?](guides/range-slider-number/)
+[Want to display a Number field as a range slider?](../guides/field-styling/range-slider-number)
 :::
 
 ### Settings
@@ -1013,7 +1013,7 @@ To manually render an Opinion Scale field to use your own styles, your code migh
 
 ## Password<Badge type="pro" text="Pro" />
 
-A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/guides/speciality-forms/user-registration-forms) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
+A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/speciality-forms/user-registration-forms) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
 
 <Photo img={PasswordPhoto} alt="Password field type" />
 
@@ -1059,9 +1059,9 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/guides/dynamic-data/populate-field-options-at-template-level)
-- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/guides/dynamic-data/populate-field-options-at-template-level)
-- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/guides/field-styling/other-option-for-fields)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/dynamic-data/populate-field-options-at-template-level)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/field-styling/other-option-for-fields)
 
 ## Rating<Badge type="pro" text="Pro" />
 
@@ -1126,7 +1126,7 @@ A special field type that allows you include rich text inside your form layout i
 - The Layout column in the form builder will live parse your content.
 
 :::tip
-[Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/guides/field-styling/tinymce-editor-textarea)
+[Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/field-styling/tinymce-editor-textarea)
 :::
 
 ## Signature<Badge type="pro" text="Pro" />
@@ -1435,7 +1435,7 @@ A single-line text input field. The `field.type` property value is `text` (for c
 <Photo img={TextFieldPhoto} alt="Text field type" />
 
 :::tip
-[Want to display a Text input as a Color Picker?](guides/color-picker-text/)
+[Want to display a Text input as a Color Picker?](../guides/field-styling/color-picker-text)
 :::
 
 ## Textarea
@@ -1451,7 +1451,7 @@ A multi-line text input field. The `field.type` property value is `textarea` (fo
 ### User Guides
 
 - [Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields)
-- [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/guides/field-styling/tinymce-editor-textarea)
+- [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/field-styling/tinymce-editor-textarea)
 
 ## Website<Badge type="pro" text="Pro" />
 
@@ -1464,7 +1464,7 @@ A `url` type input field that checks to see if the URL specified has valid synta
 Inside the form builder (only), field types with options (such as _Dropdown_, _Radios_, etc) have the ability to be automatically fed options from Craft Elements or Freeform's own predefined options. This allows you to quickly build forms by having fields auto-generated.
 
 :::tip
-[Need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template? Check out how to populate field options at template level.](../guides/guides/dynamic-data/populate-field-options-at-template-level)
+[Need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template? Check out how to populate field options at template level.](../guides/dynamic-data/populate-field-options-at-template-level)
 :::
 
 ### Applicable Field Types

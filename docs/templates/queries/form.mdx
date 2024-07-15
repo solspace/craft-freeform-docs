@@ -23,7 +23,7 @@ Freeform will automatically insert javascript in the footer of the page for feat
 :::
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/guides/testing/troubleshooting-form-issues)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/testing/troubleshooting-form-issues)
 :::
 
 <Photo img={BasicDarkPhoto} alt="Basic Dark Example" />
@@ -158,7 +158,7 @@ Overrides the return URL for the form. You can override the return URL manually 
 </Tabs>
 
 :::tip
-[Options for handling the Success Return URL on forms.](guides/success-return-on-forms/)
+[Options for handling the Success Return URL on forms.](../../guides/templating/success-return-on-forms)
 :::
 
 ### `status`
@@ -268,7 +268,7 @@ dynamicNotification: {
 - For Twig file based templates, specify the full file name including **.html** for `template`.
 
 ::: warning
-When using **PHP Sessions** for form context, this feature may not work properly if the page is cached with something like Varnish, etc. In order for it to work correctly, you would have to [refresh the tokens similar to what is described in this guide](../caching/#static-page-caching-cdn-blitz).
+When using **PHP Sessions** for form context, this feature may not work properly if the page is cached with something like Varnish, etc. In order for it to work correctly, you would have to [refresh the tokens similar to what is described in this guide](../../guides/templating/caching-forms).
 :::
 
 ### `postForwarding` <Badge type="pro" text="Pro" />
@@ -316,7 +316,7 @@ Then in your formatting template, use:
 ```
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/guides/dynamic-data/passing-custom-property-to-formatting-template)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
 :::
 
 :::info

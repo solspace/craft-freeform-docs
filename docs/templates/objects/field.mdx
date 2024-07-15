@@ -9,11 +9,11 @@ import FieldAttributeEditorPhoto from '../assets/img/field-attribute-editor.png'
 
 # Field object<Badge type="feature" text="Revised in 5.0+" />
 
-Each field object contains the metadata specified in the [form builder](../../../forms/builder). It can automatically render its container, label, input field, instructions and errors.
+Each field object contains the metadata specified in the [form builder](../../forms/builder). It can automatically render its container, label, input field, instructions and errors.
 
 ## Customization<Badge type="feature" text="Improved in 5.0+" />
 
-Fields can now be controlled in a variety of ways using the new [Template Overrides](../../formatting/#template-overrides) feature.
+Fields can now be controlled in a variety of ways using the new [Template Overrides](../formatting/#template-overrides) feature.
 
 :::warning
 This replaces the old custom attributes approach (e.g. `class`, `labelClass`, `inputAttributes`, etc).
@@ -28,7 +28,7 @@ This replaces the old custom attributes approach (e.g. `class`, `labelClass`, `i
 The advantage of this approach is that you can set overrides that apply to all fields as well as target specific types of fields so you don't need to repeat yourself.
 
 :::tip
-Please see the [Template Overrides](../../formatting/#template-overrides) documentation for detailed instructions.
+Please see the [Template Overrides](../formatting/#template-overrides) documentation for detailed instructions.
 :::
 
 ```twig
@@ -68,7 +68,7 @@ Please see the [Template Overrides](../../formatting/#template-overrides) docume
 The advantage of this approach is that you can fine-tune overrides that apply to a specific field or types of fields.
 
 :::info
-Please see the [Template Overrides](../../formatting/#template-overrides) documentation for detailed instructions.
+Please see the [Template Overrides](../formatting/#template-overrides) documentation for detailed instructions.
 :::
 
 ```twig
@@ -147,11 +147,11 @@ The `value` value rendered as a string. Array values get joined via a `,` separa
 
 ### `labels` <Badge type="feature" text="New in 5.0+" />
 
-The default or posted option label of the field. Can be a string, number or array. For use with option-based fields such as [Dropdowns](../../../forms/fields/#dropdown), [Radios](../../../forms/fields/#radios) and [Checkboxes](../../../forms/fields/#checkboxes).
+The default or posted option label of the field. Can be a string, number or array. For use with option-based fields such as [Dropdowns](../../forms/fields/#dropdown), [Radios](../../forms/fields/#radios) and [Checkboxes](../../forms/fields/#checkboxes).
 
 ### `labelsAsString` <Badge type="feature" text="New in 5.0+" />
 
-The `labels` value rendered as a string. Array values get joined via a `,` separator. For use with option-based fields such as [Dropdowns](../../../forms/fields/#dropdown), [Radios](../../../forms/fields/#radios) and [Checkboxes](../../../forms/fields/#checkboxes).
+The `labels` value rendered as a string. Array values get joined via a `,` separator. For use with option-based fields such as [Dropdowns](../../forms/fields/#dropdown), [Radios](../../forms/fields/#radios) and [Checkboxes](../../forms/fields/#checkboxes).
 
 ### `type`
 
@@ -162,27 +162,27 @@ The type of the field, e.g. `textarea`, `dropdown`, `rating`, etc.
 The form and each field have the ability to control **attributes**, **values** and more at the template level. Each one of them is entirely optional. There are several namespaces:
 
 - `attributes` - whatever you specify here will be set as an attribute on the form.
-- `buttons` - controls the output of the [Submit button(s)](../../../forms/fields/#submit-buttons).
-- `fields` - controls the output of all [Fields](../../../forms/fields/).
-- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../../integrations/recaptcha/) or [hCaptcha](../../../integrations/hcaptcha/).
+- `buttons` - controls the output of the [Submit button(s)](../../forms/fields/#submit-buttons).
+- `fields` - controls the output of all [Fields](../../forms/fields/).
+- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/).
 
 :::info
-Please see the [Template Overrides](../../formatting/#template-overrides) documentation for detailed instructions.
+Please see the [Template Overrides](../formatting/#template-overrides) documentation for detailed instructions.
 :::
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../../guides/guides/dynamic-data/passing-custom-property-to-formatting-template)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
 :::
 
 ## Field Specific Properties
 
-Each field type has their own specific properties available to them. Some are more complex than others. To see all available properties, check out the [Fields documentation](../../../forms/fields/).
+Each field type has their own specific properties available to them. Some are more complex than others. To see all available properties, check out the [Fields documentation](../../forms/fields/).
 
 ## Methods
 
 ### `render()`
 
-Renders the complete field block containing its container, label, input field, instructions and list of errors. To customize this, please see the [Template Overrides](../../formatting/#template-overrides) for fields.
+Renders the complete field block containing its container, label, input field, instructions and list of errors. To customize this, please see the [Template Overrides](../formatting/#template-overrides) for fields.
 
 ### `renderLabel()`
 

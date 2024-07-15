@@ -1,0 +1,9 @@
+{
+  "label": "Field Styling",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Implement custom styles on regular field types.",
+    "slug": "guides/form-styling"
+  }
+}

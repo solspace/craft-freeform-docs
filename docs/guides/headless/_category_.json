@@ -1,0 +1,9 @@
+{
+  "label": "Headless",
+  "position": 12,
+  "link": {
+    "type": "generated-index",
+    "description": "Demos of common headless frameworks and GraphQL.",
+    "slug": "guides/headless"
+  }
+}
