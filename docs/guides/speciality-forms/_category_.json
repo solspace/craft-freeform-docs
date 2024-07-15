@@ -2,8 +2,6 @@
   "label": "Specialty Forms",
   "position": 9,
   "link": {
-    "type": "generated-index",
-    "description": "Guides for building specialty forms like user registration.",
     "slug": "guides/specialty-forms"
   }
 }

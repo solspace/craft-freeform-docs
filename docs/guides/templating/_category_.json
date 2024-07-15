@@ -2,8 +2,6 @@
   "label": "Templating",
   "position": 4,
   "link": {
-    "type": "generated-index",
-    "description": "A variety of commonly requested templating tips.",
     "slug": "guides/templating"
   }
 }

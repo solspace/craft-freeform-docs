@@ -2,7 +2,6 @@
   "label": "Installing & Updating",
   "position": 2,
   "link": {
-    "type": "generated-index",
     "slug": "setup"
   }
 }

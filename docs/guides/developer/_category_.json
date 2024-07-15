@@ -2,8 +2,6 @@
   "label": "Developer",
   "position": 13,
   "link": {
-    "type": "generated-index",
-    "description": "Guides for custom development and building modules.",
     "slug": "guides/developer"
   }
 }

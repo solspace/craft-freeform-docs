@@ -2,8 +2,6 @@
   "label": "Best Practices",
   "position": 10,
   "link": {
-    "type": "generated-index",
-    "description": "Guides that show best practices with Freeform.",
     "slug": "guides/best-practices"
   }
 }

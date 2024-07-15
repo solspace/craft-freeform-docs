@@ -2,8 +2,6 @@
   "label": "Types",
   "position": 8,
   "link": {
-    "slug": "forms/types",
-    "type": "generated-index",
-    "description": "Form types add additional specialized behavior and features to your forms. Additional form types are available on the Pro edition of Freeform."
+    "slug": "forms/types"
   }
 }
