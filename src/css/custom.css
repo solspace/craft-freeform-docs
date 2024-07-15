@@ -967,3 +967,21 @@ html[data-theme='dark']
     min-width: 200px;
   }
 }
+
+/* Navbar Style */
+.navbar__title {
+  font-size: 25px;
+}
+
+.navbar__title:after {
+  content: 'for Craft';
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  margin-left: 8px;
+}
+
+.version {
+  border-left: 1px solid hsla(0, 0%, 100%, 0.1);
+  margin-top: 6px;
+}

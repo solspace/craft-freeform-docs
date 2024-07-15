@@ -1,8 +1,8 @@
 {
   "label": "User Guides",
-  "position": 1,
+  "position": 3,
   "link": {
     "type": "generated-index",
-    "slug": "user-guides"
+    "slug": "guides"
   }
 }

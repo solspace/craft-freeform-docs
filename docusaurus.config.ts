@@ -185,13 +185,12 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'Freeform for Craft',
+      title: 'Freeform',
       logo: {
         alt: 'Freeform',
         src: 'img/freeform-icon.png',
       },
       items: [
-        { to: '/v5/', label: 'Docs', position: 'left' },
         {
           type: 'docsVersionDropdown',
           position: 'left',
@@ -201,6 +200,13 @@ const config: Config = {
         //   type: 'localeDropdown',
         //   position: 'right',
         // },
+        {
+          href: 'https://plugins.craftcms.com/freeform',
+          label: 'Plugin Store',
+          position: 'right',
+        },
+        { to: '/v5/', label: 'Docs', position: 'right' },
+
         { to: '/support', label: 'Support', position: 'right' },
         {
           type: 'html',
@@ -240,7 +246,6 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.vsDark,
-
       additionalLanguages: ['markup-templating', 'twig'],
     },
   } satisfies Preset.ThemeConfig,

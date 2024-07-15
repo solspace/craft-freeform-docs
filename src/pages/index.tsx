@@ -36,7 +36,7 @@ function HomepageHeader() {
         items={[
           { to: '/v5#reliability', label: 'Feature Tour' },
           { to: '/v5#compare', label: 'Primary' },
-          { to: '/v5/user-guides/getting-started/', label: 'Getting Started' },
+          { to: '/v5/guides/getting-started/', label: 'Getting Started' },
         ]}
       />
       <small>
