@@ -280,7 +280,7 @@ video {
 }
 
 html[data-theme='light'] .feature-api-grid a {
-  background: rgba(0,127,230,0.2);
+  background: rgba(0, 127, 230, 0.2);
 }
 
 .feature-api-grid a img {
@@ -714,20 +714,30 @@ table th h3 {
   top: 4px;
 }
 
-/* Navbar Icon */
+/* Navbar Github Icon */
 .github-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  padding: 3px;
-  margin: 0 10px;
+  padding-left: 29px;
+  padding-right: 25px;
+  margin-left: 10px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
 }
 
-.github-icon:hover {
-  background-color: var(--ifm-color-emphasis-200);
+html[data-theme='dark'] .github-icon {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.github-icon svg {
+  transition: all 0.3s;
+}
+
+.github-icon:hover svg {
+  fill: var(--ifm-color-primary);
 }
 
 @media (max-width: 996px) {
@@ -883,7 +893,7 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='security'] + ul li:before {
 }
 
 .theme-doc-sidebar-container .DocSearch.DocSearch-Button {
-  margin-bottom: 1rem;
+  margin-bottom: 1.3rem;
 }
 
 .theme-doc-sidebar-container
@@ -909,6 +919,9 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='security'] + ul li:before {
 .theme-doc-sidebar-container .DocSearch-Button-Keys {
   min-width: unset;
   margin-right: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
 }
 
 .theme-doc-sidebar-container .DocSearch-Button-Key {
@@ -982,6 +995,21 @@ html[data-theme='dark']
 }
 
 .version {
-  border-left: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 6px;
+}
+
+html[data-theme='dark'] .version {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Padding adjustments content & body */
+.padding-top--md {
+  padding-top: 1.75rem !important;
+}
+
+@media (min-width: 997px) {
+  .menu {
+    padding: 1.75rem 0 0.5rem 0.5rem !important;
+  }
 }
