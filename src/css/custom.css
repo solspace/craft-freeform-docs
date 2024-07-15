@@ -1013,3 +1013,10 @@ html[data-theme='dark'] .version {
     padding: 1.75rem 0 0.5rem 0.5rem !important;
   }
 }
+
+/* Hide title from intro page */
+.docs-doc-id-intro h1,
+.docs-doc-id-intro h2:not(#title) {
+  opacity: 0;
+  font-size: 0;
+}

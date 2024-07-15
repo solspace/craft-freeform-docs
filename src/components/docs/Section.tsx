@@ -24,7 +24,9 @@ const Section: React.FC<SectionProps> = ({
               <Image img={imgSrc} alt={title} />
             </div>
           )}
-          <h2 className="text-6xl font-normal text-[#ff6624] mb-2">{title}</h2>
+          <h2 className="text-6xl font-normal text-[#ff6624] mb-2" id="title">
+            {title}
+          </h2>
           <h3 className="text-2xl text-center font-normal dark:text-gray-300 mb-4">
             {subtitle}
           </h3>
