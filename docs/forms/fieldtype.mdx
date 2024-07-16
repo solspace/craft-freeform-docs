@@ -79,7 +79,7 @@ The following template properties are available for the _Form_ field type:
 
 An example of template code you would use to display a Freeform form (with field handle of _myFreeformFieldName_) that is attached to a Craft Entry would look something like this:
 
-```twig{5-8}
+```twig {5-8}
 {% for entry in craft.entries.section('news').limit(10) %}
     <div class="entry">
         <h2><a href="{{ entry.url }}">{{ entry.title }}</a></h2>

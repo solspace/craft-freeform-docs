@@ -792,7 +792,7 @@ You can feed Element ID(s) however you like, but the below example shows how you
 
 If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtype/) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
 
-```twig{6-8}
+```twig {6-8}
 {# Fetch the entry however you wish #}
 {% set entry = craft.entries.slug("submitted-contacts").one %}
 

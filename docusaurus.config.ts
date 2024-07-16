@@ -246,7 +246,16 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.vsDark,
-      additionalLanguages: ['markup-templating', 'twig'],
+      additionalLanguages: [
+        'markup-templating',
+        'twig',
+        'diff',
+        'php',
+        'yaml',
+        'nginx',
+        'json',
+        'nix',
+      ],
     },
   } satisfies Preset.ThemeConfig,
 };
