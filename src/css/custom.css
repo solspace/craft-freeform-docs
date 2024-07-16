@@ -721,15 +721,8 @@ table th h3 {
   align-items: center;
   width: 32px;
   height: 32px;
-  padding-left: 29px;
   padding-right: 25px;
-  margin-left: 10px;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
-}
-
-html[data-theme='dark'] .github-icon {
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .github-icon svg {
@@ -743,6 +736,57 @@ html[data-theme='dark'] .github-icon {
 @media (max-width: 996px) {
   .navbar__item {
     display: none !important;
+  }
+
+  .github-icon {
+    padding-left: 25px;
+  }
+}
+
+/* Navbar Search icon */
+.navbar-search-icon > button:hover {
+  box-shadow: none;
+}
+
+.navbar-search-icon svg {
+  transition: all 0.3s;
+}
+
+.navbar-search-icon:hover svg {
+  color: var(--ifm-color-primary);
+}
+
+.navbar-search-icon .DocSearch-Button-Placeholder,
+.navbar-search-icon .DocSearch-Button-Keys,
+.navbar-search-icon .DocSearch-Button-Placeholder {
+  display: none !important;
+}
+
+@media (min-width: 997px) {
+  .navbar-search-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0 25px 29px 10px !important;
+    margin-left: 10px;
+    margin-right: 25px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-search-icon .DocSearch-Button {
+    background-color: transparent;
+  }
+
+  .navbar-search-icon svg {
+    margin-bottom: 2px;
+  }
+
+  .navbar-search-icon .DocSearch-Button-Keys,
+  .navbar-search-icon .DocSearch-Button-Placeholder {
+    display: none !important;
+  }
+
+  html[data-theme='dark'] .navbar-search-icon {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -945,19 +989,6 @@ html[data-theme='dark']
   .theme-doc-sidebar-container
   .DocSearch.DocSearch-Button:hover {
   background-color: rgb(120 116 116 / 30%) !important;
-}
-
-@media (min-width: 997px) {
-  .navbar div:has(> .DocSearch-Button) {
-    display: none;
-  }
-}
-
-@media (max-width: 997px) {
-  .DocSearch-Button-Keys,
-  .DocSearch-Button-Placeholder {
-    display: none !important;
-  }
 }
 
 /* Formatting Templates Icons */

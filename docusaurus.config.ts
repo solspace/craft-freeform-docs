@@ -209,6 +209,11 @@ const config: Config = {
 
         { to: '/support', label: 'Support', position: 'right' },
         {
+          type: 'search',
+          position: 'right',
+          className: 'navbar-search-icon',
+        },
+        {
           type: 'html',
           position: 'right',
           className: 'github-icon',
