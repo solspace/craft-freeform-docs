@@ -1016,7 +1016,8 @@ html[data-theme='dark'] .version {
 
 /* Hide title from intro page */
 .docs-doc-id-intro h1,
-.docs-doc-id-intro h2:not(#title) {
+.docs-doc-id-intro
+  h2:not(#title):not(#faq):not(#why-freeform):not(#testimonials) {
   opacity: 0;
-  font-size: 0;
+  font-size: 10px;
 }
