@@ -222,32 +222,6 @@ const config: Config = {
         },
       ],
     },
-    footer: {
-      links: [
-        {
-          label: 'Home',
-          to: '/',
-        },
-        {
-          label: 'Support',
-          to: 'https://docs.solspace.com/support/',
-        },
-        {
-          label: 'Premium Support',
-          to: 'hhttps://docs.solspace.com/support/premium/',
-        },
-        {
-          label: 'License Agreement',
-          to: 'https://docs.solspace.com/license-agreement/',
-        },
-        {
-          label: 'Legacy Account',
-          to: 'https://docs.solspace.com/legacy-account/',
-        },
-      ],
-
-      copyright: `© ${new Date().getFullYear()} Solspace, Inc.`,
-    },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.vsDark,
