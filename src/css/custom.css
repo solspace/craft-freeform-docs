@@ -241,6 +241,13 @@ video {
   border-bottom-left-radius: 0 !important;
 }
 
+h2 > .badge:first-child,
+h2 > .badge-group:first-child,
+h3 > .badge:first-child,
+h3 > .badge-group:first-child {
+  margin-left: 7px;
+}
+
 /* Integrations api grid */
 .api-grid-wrapper-outer {
   display: block;
@@ -711,7 +718,7 @@ table th h3 {
 }
 
 .orange {
-  color: $altAccentColor !important;
+  color: #ff9b3b !important;
 }
 
 .green {
