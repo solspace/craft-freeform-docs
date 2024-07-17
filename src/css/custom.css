@@ -29,6 +29,9 @@
   --ifm-color-primary: #058ffe;
   --svg-foreground-color: #fff;
   --ifm-navbar-background-color: rgba(255, 255, 255, 0.9);
+  --ifm-dropdown-background-color: rgba(255, 255, 255, 0.95);
+  --ifm-toc-border-color: rgba(0, 0, 0, 0.1);
+  --ifm-table-stripe-background: #fdfdfd;
 }
 
 [data-theme='dark'] {
@@ -44,11 +47,13 @@
   --ifm-color-primary: #058ffe;
   --svg-foreground-color: #000;
   --ifm-navbar-background-color: rgba(13, 15, 21, 0.85);
+  --ifm-dropdown-background-color: rgba(0, 0, 0, 0.95);
 }
 
 html[data-theme='dark'] {
   --ifm-background-color: #121825;
-  --ifm-table-stripe-background: transparent;
+  --ifm-table-stripe-background: rgba(0, 0, 0, 0.1);
+  --ifm-toc-border-color: rgba(255, 255, 255, 0.1);
 }
 
 /**
@@ -119,7 +124,12 @@ html {
 
 /* Button */
 .primary-btn {
-  @apply relative w-fit font-medium rounded-full transition-all duration-500 bg-[#ff6624] text-white hover:text-white hover:bg-amber-700;
+  @apply relative w-fit font-medium rounded-full transition-all duration-500 bg-[#ff6624] text-white hover:text-white;
+}
+
+/* Button */
+.primary-btn:hover {
+  background-color: rgba(255, 102, 36, 0.8);
 }
 
 .primary-btn > span {
@@ -629,7 +639,6 @@ html[data-theme='light'] .guide a:hover {
 
 /* Table Syles */
 table {
-  border: 0 !important;
   table-layout: fixed !important;
   min-width: 100% !important;
   max-width: 100% !important;
@@ -637,10 +646,20 @@ table {
   margin: 1rem 0;
   display: block;
   overflow-x: auto;
+  box-sizing: border-box;
 }
 
-table tbody tr {
-  border-top: 2px solid var(--table-border-color);
+table th {
+  text-align: left;
+}
+
+table td,
+table th {
+  border-bottom: 1px solid var(--table-border-color);
+}
+
+table tbody tr:last-of-type td {
+  border-bottom: none !important;
 }
 
 table td h2,
@@ -698,14 +717,26 @@ table th h3 {
 }
 
 .edition-lite {
+  color: #ff9b3b !important;
+}
+
+html[data-theme='dark'] .edition-lite {
   color: #ffb771 !important;
 }
 
 .edition-express {
+  color: #7f7a76 !important;
+}
+
+html[data-theme='dark'] .edition-express {
   color: #ebe0d5 !important;
 }
 
 .compare-none {
+  color: #dfdfdf !important;
+}
+
+html[data-theme='dark'] .compare-none {
   color: #122d4b !important;
 }
 
