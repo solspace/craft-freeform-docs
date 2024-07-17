@@ -22,110 +22,10 @@ import {
   Section,
 } from '@site/src/components/docs';
 
+import Icons from '@site/static/card-icons';
+
 import FreeformIntroWhite from './assets/img/freeform-intro-white.png';
 import FreeformIntroBlack from './assets/img/freeform-intro-black.png';
-import TapWhiteIcon from './assets/icons/tap-white.png';
-import ShieldIcon from './assets/icons/shield.png';
-import TapIcon from './assets/icons/tap.png';
-import DiscussionIcon from './assets/icons/discussion.png';
-import GraduationCapIcon from './assets/icons/graduation-cap.png';
-import AlertIcon from './assets/icons/alert.png';
-import FolderAttentionIcon from './assets/icons/folder-attention.png';
-import GuaranteeCertificateIcon from './assets/icons/guarantee-certificate.png';
-import UpdateNotificationIcon from './assets/icons/update-notification.png';
-import EmailReportIcon from './assets/icons/email-report.png';
-import SupportIcon from './assets/icons/support.png';
-import MagicWandIcon from './assets/icons/magic-wand.png';
-import TrolleyICon from './assets/icons/trolley.png';
-import AnalyticsIcon from './assets/icons/guarantee-certificate.png';
-import DashboardIcon from './assets/icons/update-notification.png';
-import JSFormatIcon from './assets/icons/email-report.png';
-import PadlockIcon from './assets/icons/support.png';
-import PagesIcon from './assets/icons/pages.png';
-import StarterTemplatesIcon from './assets/icons/starter-templates.png';
-import UploadIcon from './assets/icons/upload.png';
-import ValidCheckIcon from './assets/icons/valid-check.png';
-import WidgetsIcon from './assets/icons/widgets.png';
-import CarrotIcon from './assets/icons/carrot.png';
-import BlockedIcon from './assets/icons/blocked.png';
-import CaptchaIcon from './assets/icons/captcha.png';
-import SpamIcon from './assets/icons/spam.png';
-import ThrottlingIcon from './assets/icons/throttling.png';
-import TimeDeleteIcon from './assets/icons/time-delete.png';
-import CheckListIcon from './assets/icons/check-list.png';
-import FieldTextIcon from './assets/icons/field-text.png';
-import GearCodingIcon from './assets/icons/gear-coding.png';
-import LockIcon from './assets/icons/lock.png';
-import LogicIcon from './assets/icons/logic.png';
-import RecycleIcon from './assets/icons/recycle.png';
-import ReviewIcon from './assets/icons/review.png';
-import AttachecdIcon from './assets/icons/attached.png';
-import CalculationIcon from './assets/icons/calculation.png';
-import CheckboxIcon from './assets/icons/checkbox.png';
-import CodeIcon from './assets/icons/code.png';
-import ConfirmIcon from './assets/icons/confirm.png';
-import CreditCardIcon from './assets/icons/credit-card.png';
-import DateTimeIcon from './assets/icons/date-time.png';
-import EmailIcon from './assets/icons/email.png';
-import GlobeIcon from './assets/icons/globe.png';
-import HiddenIcon from './assets/icons/hidden.png';
-import InvisibleIcon from './assets/icons/invisible.png';
-import ListIcon from './assets/icons/list.png';
-import NumbersIcon from './assets/icons/numbers.png';
-import OpinionScaleIcon from './assets/icons/opinion-scale.png';
-import PhoneIcon from './assets/icons/phone.png';
-import RadioListIcon from './assets/icons/radio-list.png';
-import RatingIcon from './assets/icons/rating.png';
-import RegexIcon from './assets/icons/regex.png';
-import RichTextIcon from './assets/icons/rich-text.png';
-import SelectIcon from './assets/icons/select.png';
-import SignatureIcon from './assets/icons/signature.png';
-import TableIcon from './assets/icons/table.png';
-import TextareaIcon from './assets/icons/textarea.png';
-import CodingIcon from './assets/icons/textarea.png';
-import EmailFileIcon from './assets/icons/email-file.png';
-import EmailGroupIcon from './assets/icons/email-group.png';
-import EmailListIcon from './assets/icons/email-list.png';
-import EmailPlaneIcon from './assets/icons/email-plane.png';
-import EmailUserIcon from './assets/icons/email-user.png';
-import EmailsIcon from './assets/icons/emails.png';
-import ExportIcon from './assets/icons/export.png';
-import MultipleEmailTemplateIcon from './assets/icons/multiple-email-template.png';
-import OpenLetterIcon from './assets/icons/open-letter.png';
-import ResendEmailIcon from './assets/icons/resend-email.png';
-import SketchIcon from './assets/icons/sketch.png';
-import SettingsIcon from './assets/icons/settings.png';
-import CloudApiIcon from './assets/icons/cloud-api.png';
-import ApiGearIcon from './assets/icons/api-gear.png';
-import ContentIcon from './assets/icons/content.png';
-import CRMIcon from './assets/icons/crm.png';
-import DocumentCloudIcon from './assets/icons/document-cloud.png';
-import MegaphoneIcon from './assets/icons/megaphone.png';
-import WebhookIcon from './assets/icons/webhook.png';
-import ArchiveIcon from './assets/icons/archive.png';
-import CategoryIcon from './assets/icons/category.png';
-import CommentReviewIcon from './assets/icons/comment-review.png';
-import ConfigPageIcon from './assets/icons/config-page.png';
-import DataManageIcon from './assets/icons/data-manage.png';
-import DeveloperIcon from './assets/icons/developer.png';
-import DevelopmentIcon from './assets/icons/development.png';
-import EditIcon from './assets/icons/edit.png';
-import GdprIcon from './assets/icons/gdpr.png';
-import GraphqlIcon from './assets/icons/graphql.png';
-import HourglassIcon from './assets/icons/hourglass.png';
-import JSCodeIcon from './assets/icons/js-code.png';
-import PlayButtonIcon from './assets/icons/play-button.png';
-import ReferralIcon from './assets/icons/referral.png';
-import RelationIcon from './assets/icons/relation.png';
-import StopIcon from './assets/icons/stop.png';
-import SurveyIcon from './assets/icons/survey.png';
-import TranslationIcon from './assets/icons/translation.png';
-import UserCheckIcon from './assets/icons/user-check.png';
-import WorldIcon from './assets/icons/world.png';
-import HeadlessIcon from './assets/icons/headless.png';
-import NextjsIcon from './assets/icons/nextjs.png';
-import ReactIcon from './assets/icons/react.png';
-import VuejsIcon from './assets/icons/vue-js.png';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
@@ -215,23 +115,20 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     {
       title: 'Getting Started',
       description: 'Learn the basics about Freeform and setting up forms.',
-      imgSrc: TapIcon,
-      imgAlt: 'Getting started',
+      icon: Icons.TapIcon,
       fullCardLink: 'guides/getting-started/',
     },
     {
       title: 'User Guides',
       description: 'See solutions to common problems and questions.',
-      imgSrc: GraduationCapIcon,
-      imgAlt: 'User Guides',
+      icon: Icons.GraduationCapIcon,
       fullCardLink: 'guides',
     },
     {
       title: 'Support',
       description:
         'Questions or issues? We want to help your project go smoothly!',
-      imgSrc: DiscussionIcon,
-      imgAlt: 'Support',
+      icon: Icons.DiscussionIcon,
       fullCardLink: '/support',
     },
 
@@ -244,7 +141,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   title="Reliability"
   subtitle="Functional forms are crucial. Impressive features are useless if they don't work."
   description="Losing customer leads can result in significant revenue loss and a negative impression on potential clients. We prioritize reliability above all else in Freeform to address this issue."
-  imgSrc={ShieldIcon}
+  imgSrc={Icons.ShieldIcon}
 >
   <FlexCards
     items={[
@@ -252,40 +149,40 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         title: 'Email Failure Alerts',
         description:
           'Freeform will email you if there is a template or setup issue with your site.',
-        imgSrc: AlertIcon,
+        icon: Icons.AlertIcon,
         linkWithDescription: 'configuration/notices-alerts/',
       },
       {
         title: 'Automatic Update Notices',
         description:
           'Freeform alerts you to potential website issues, catching errors before you notice.',
-        imgSrc: UpdateNotificationIcon,
+        icon: Icons.UpdateNotificationIcon,
         linkWithDescription: 'configuration/notices-alerts/',
       },
       {
         title: 'Weekly / Daily Digest Email',
         description:
           "Get email updates about what's happening on your site with weekly or daily digests.",
-        imgSrc: EmailReportIcon,
+        icon: Icons.EmailReportIcon,
         linkWithDescription: 'configuration/notices-alerts/',
       },
       {
         title: 'Error Logging',
         description:
           'The error logging system tells you quickly about any problems on your website.',
-        imgSrc: GuaranteeCertificateIcon,
+        icon: Icons.GuaranteeCertificateIcon,
       },
       {
         title: 'Satisfaction Guaranteed',
         description:
           'Try Freeform risk-free with our 90-day full refund guarantee.',
-        imgSrc: GuaranteeCertificateIcon,
+        icon: Icons.GuaranteeCertificateIcon,
       },
       {
         title: 'Private Support Tickets',
         description:
           "If you need help with Freeform, send us a private support ticket and we'll be happy to assist you.",
-        imgSrc: GuaranteeCertificateIcon,
+        icon: Icons.GuaranteeCertificateIcon,
         linkWithDescription: '/support',
         linkWithDescriptionLabel: 'Private support'
       },
@@ -306,7 +203,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   title="Form Builder"
   subtitle="Everything is at your fingertips in our elegant and intuitive form builder."
   description="The Freeform form builder is an all-in-one interface that lets you take control of almost every aspect of your forms."
-   imgSrc={MagicWandIcon}
+   imgSrc={Icons.MagicWandIcon}
 
 >
 
@@ -323,7 +220,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="Convenience"
   subtitle="So many plug-and-play features that make form building and templating a breeze!"
-  imgSrc={TrolleyICon}
+  imgSrc={Icons.TrolleyICon}
 >
   <FlexCards
     items={[
@@ -331,33 +228,33 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         title: 'Forms Dashboard',
         description:
           'The Forms Dashboard provides a clear overview of your forms, submissions, and updates in one convenient location.',
-        imgSrc: DashboardIcon,
+        icon: Icons.DashboardIcon,
         linkWithDescription: 'forms/builder',
       },
       {
         title: 'Multi-Page Forms',
         description:
           'Do you have a lengthy form? With Freeform, you can divide your form into several pages.',
-        imgSrc: PagesIcon,
+        icon: Icons.PagesIcon,
         linkWithDescription: 'forms/builder/#multi-page-forms',
       },
       {
         title: 'Complete Validation',
         description:
           'Freeform has validation features for fields, including making them required and ensuring specific data.',
-        imgSrc: ValidCheckIcon,
+        icon: Icons.ValidCheckIcon,
       },
       {
         title: 'Built-in AJAX',
         description:
           'By simply checking a checkbox, Freeform will handle the AJAX processing for your form effortlessly.',
-        imgSrc: JSFormatIcon,
+        icon: Icons.JSFormatIcon,
       },
       {
         title: 'Drag & Drop File Upload',
         description:
           'The premium JS-based file uploading field shows progress and thumbnails and remembers existing files when editing.',
-        imgSrc: UploadIcon,
+        icon: Icons.UploadIcon,
         linkWithDescription: 'forms/fields/#file-upload',
       },
       {
@@ -365,27 +262,27 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         titleBadge: 'New!',
         description:
           'Customize the form builder experience for specific users or groups.',
-        imgSrc: PadlockIcon,
+        icon: Icons.PadlockIcon,
         linkWithDescription: 'configuration/limited-users/',
       },
       {
         title: 'Google Tag Manager',
         description:
           'Built-in flexible Google Tag Manager support with AJAX implementations.',
-        imgSrc: AnalyticsIcon,
+        icon: Icons.AnalyticsIcon,
       },
       {
         title: 'Sample Templates',
         description:
           'Offers a variety of popular framework formatting templates that you can use as a starting point to develop your own project.',
-        imgSrc: StarterTemplatesIcon,
+        icon: Icons.StarterTemplatesIcon,
         linkWithDescription: 'templates/formatting/',
       },
       {
         title: 'Widgets',
         description:
           'Enhance your Craft Dashboard with stunning widgets like linear charts, radial charts, and recent submissions widgets.',
-        imgSrc: WidgetsIcon,
+        icon: Icons.WidgetsIcon,
       },
     ]}
   />
@@ -396,7 +293,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="Spam Protection"
   subtitle="Fight spam effectively."
-   imgSrc={CarrotIcon}
+   imgSrc={Icons.CarrotIcon}
 
 >
 
@@ -407,39 +304,39 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       {
         title: 'Freeform Honeypot',
         description: 'The Honeypot feature included in the system effectively deals with simple bot spam.',
-        imgSrc: CarrotIcon,
+        icon: Icons.CarrotIcon,
         linkWithDescription: './forms/spam-protection/#freeform-honeypot',
       },
       {
         title: 'Built-in Spam Folder',
         description: 'Use the Spam Folder to catch any potential spam without risking missing legitimate submissions.',
-        imgSrc: SpamIcon,
+        icon: Icons.SpamIcon,
         linkWithDescription: './forms/spam-protection/#spam-folder',
       },
       {
         title: 'reCAPTCHA & hCaptcha',
         description:
           'To enhance your spam-fighting capabilities, you can choose to enable either reCAPTCHA or hCaptcha.',
-        imgSrc: CaptchaIcon,
+        icon: Icons.CaptchaIcon,
         linkWithDescription: './forms/spam-protection/#recaptcha',
       },
       {
         title: 'Keyword Blocking',
         description: 'With Freeform, you have the power to target and block specific email addresses, keywords, and IP addresses.',
-        imgSrc: BlockedIcon,
+        icon: Icons.BlockedIcon,
         linkWithDescription: './forms/spam-protection/#spam-blocking',
       },
       {
         title: 'Throttling / Submit Time',
         description:
           'Limit form submissions by settƒing restrictions such as submission frequency, waiting period, or time limit for completion.',
-        imgSrc: ThrottlingIcon,
+        icon: Icons.ThrottlingIcon,
       },
         {
         title: 'Automatic Purging',
         description:
           'Freeform can automatically delete submissions marked as spam after a set number of days.',
-        imgSrc: TimeDeleteIcon,
+        icon: Icons.TimeDeleteIcon,
       },
     ]}
   />
@@ -450,7 +347,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="Powerful Fields"
   subtitle="Freeform offers a diverse range of fieldtypes and advanced features to populate and control them."
-  imgSrc={FieldTextIcon}
+  imgSrc={Icons.FieldTextIcon}
 
 >
 
@@ -461,14 +358,14 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       title: 'Conditional Rules',
       description:
         'Customize your form by setting pages to skip and fields to appear/disappear based on other field contents or selections.',
-      imgSrc: LogicIcon,
+      icon: Icons.LogicIcon,
       linkWithDescription: 'forms/conditional-rules',
     },
     {
       title: 'Populate Field Options',
       description:
         'Use Craft Element data or predefined Freeform options such as countries or months to populate dropdowns, checkboxes, and radios.',
-      imgSrc: CheckListIcon,
+      icon: Icons.CheckListIcon,
       linkWithDescription:
         'forms/fields/#populating-fields-with-elements--predefined-options-',
     },
@@ -477,7 +374,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       titleBadge: 'New!',
       description:
         'Save common fields as favorites, or quickly search across all forms to reuse an existing field.',
-      imgSrc: RecycleIcon,
+      icon: Icons.RecycleIcon,
       linkWithDescription: 'forms/builder',
     },
     {
@@ -485,21 +382,21 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       titleBadge: 'New!',
       description:
         'Each field includes the ability to optionally encrypt its submission data. Simply toggle the setting and Freeform will take care of the rest.',
-      imgSrc: LockIcon,
+      icon: Icons.LockIcon,
       linkWithDescription: 'forms/fields/#field-encryption',
     },
     {
       title: 'Custom Field Types',
       titleBadge: 'New!',
       description: 'Easily create your own custom field types!',
-      imgSrc: GearCodingIcon,
+      icon: Icons.GearCodingIcon,
       linkWithDescription: 'developer/field-types/',
     },
     {
       title: 'Include a Review Page',
       description:
         'Use Twig code in an HTML block to create a custom review page for users to double-check form data from previous pages before submission.',
-      imgSrc: ReviewIcon,
+      icon: Icons.ReviewIcon,
     },
   ]}
 />
@@ -511,35 +408,35 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         title: 'Text',
         description:
           'Regular text inputs',
-        imgSrc: FieldTextIcon,
+        icon: Icons.FieldTextIcon,
       },
            {
         link: 'forms/fields#textarea',
         title: 'Textarea',
         description:
           'Multi-line text inputs',
-        imgSrc: TextareaIcon,
+        icon: Icons.TextareaIcon,
       },
            {
         link: 'forms/fields#email',
         title: 'Email',
         description:
           'Email validation and notifications',
-        imgSrc: EmailIcon,
+        icon: Icons.EmailIcon,
       },
            {
         link: 'forms/fields#number',
         title: 'Number',
         description:
           'Numeric validation and options',
-        imgSrc: NumbersIcon,
+        icon: Icons.NumbersIcon,
       },
            {
         link: 'forms/fields#hidden',
         title: 'Hidden',
         description:
           'Hide field data',
-        imgSrc: HiddenIcon,
+        icon: Icons.HiddenIcon,
       },
 
            {
@@ -547,70 +444,70 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         title: 'Dropdown',
         description:
           'Dropdown field with powerful options to populate data',
-        imgSrc: SelectIcon,
+        icon: Icons.SelectIcon,
       },
            {
         link: 'forms/fields#multiple-select',
         title: 'Multiple Select',
         description:
           'Multi-select field with powerful options to populate data',
-        imgSrc: ListIcon,
+        icon: Icons.ListIcon,
       },
            {
         link: 'forms/fields#checkbox',
         title: 'Checkbox ',
         description:
           "Single checkbox, e.g. 'Accept Terms'",
-        imgSrc: CheckboxIcon,
+        icon: Icons.CheckboxIcon,
       },
            {
         link: 'forms/fields#checkboxes',
         title: 'Checkboxes',
         description:
           'Multi-checkboxes field with powerful options to populate data',
-        imgSrc: CheckListIcon,
+        icon: Icons.CheckListIcon,
       },
            {
         link: 'forms/fields#radios',
         title: 'Radios',
         description:
           'Radio options field with powerful options to populate data',
-        imgSrc: RadioListIcon,
+        icon: Icons.RadioListIcon,
       },
            {
         link: 'forms/fields#file-upload',
         title: 'File Upload',
         description:
           'Upload and validate one or multiple files to be attached to the submission',
-        imgSrc: AttachecdIcon,
+        icon: Icons.AttachedIcon,
       },
            {
         link: 'forms/fields#file-upload-drag--drop',
         title: 'File Drag & Drop',
         description:
           'Smart file uploader shows progress, thumbnails and memory when editing',
-        imgSrc: UploadIcon,
+        icon: Icons.UploadIcon,
       },
            {
         link: 'forms/fields#date--time',
         title: 'Date & Time',
         description:
           'Date and time picker with JS validation',
-        imgSrc: DateTimeIcon,
+        icon: Icons.DateTimeIcon,
       },
            {
         link: 'forms/fields#phone',
         title: 'Phone',
         description:
           'Set a phone pattern with JS validation',
-        imgSrc: PhoneIcon,
+        icon: Icons.PhoneIcon,
       },
            {
         link: 'forms/fields#table',
         title: 'Table',
         description:
           'Collect tabular or repeating data, allow users to add/remove rows',
-        imgSrc: TableIcon,
+        icon: Icons.TableIcon,
       },
            {
         link: 'forms/fields#group',
@@ -618,21 +515,21 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
        title: 'Group',
         description:
           'Contains other fields within it',
-        imgSrc: TableIcon,
+        icon: Icons.TableIcon,
       },
            {
         link: 'forms/fields#rating',
         title: 'Rating',
         description:
           'Plug and play rating stars',
-        imgSrc: RatingIcon,
+        icon: Icons.RatingIcon,
       },
          {
         link: 'forms/fields#opinion-scale',
         title: 'Opinion Scale',
         description:
           'Users can select ranges for surveys',
-        imgSrc: OpinionScaleIcon,
+        icon: Icons.OpinionScaleIcon,
       },
     {
     link: 'forms/fields#calculation',
@@ -640,7 +537,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     title: 'Calculation',
     description:
     'Perform dynamic calculations based on user-input values within forms',
-    imgSrc: CalculationIcon,
+    icon: Icons.CalculationIcon,
     },
 
     {
@@ -648,7 +545,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     title: 'Signature',
     description:
     'Users can digitally sign submissions',
-    imgSrc: SignatureIcon,
+    icon: Icons.SignatureIcon,
     },
 
     {
@@ -656,7 +553,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     title: 'Invisible',
     description:
     'Include hidden data that is not visible in rendered source code',
-    imgSrc: InvisibleIcon,
+    icon: Icons.InvisibleIcon,
     },
 
     {
@@ -664,49 +561,49 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     title: 'Regex',
     description:
     'Come up with your own validation for data syntax',
-    imgSrc: RegexIcon,
+    icon: Icons.RegexIcon,
     },
     {
     link: 'forms/fields#website',
     title: 'Website',
     description:
     "Validate inputted data includes 'http://', etc",
-    imgSrc: GlobeIcon,
+    icon: Icons.GlobeIcon,
     },
     {
     link: 'forms/fields#html',
     title: 'Html Block',
     description:
     'Include HTML/Twig inside form layouts',
-    imgSrc: CodeIcon,
+    icon: Icons.CodeIcon,
     },
     {
     link: 'forms/fields#rich-text',
     title: 'Rich Text Block',
     description:
     'Include Rich Text inside form layouts',
-    imgSrc: RichTextIcon,
+    icon: Icons.RichTextIcon,
     },
     {
     link: 'forms/fields#confirm',
     title: 'Confirm',
     description:
     'Target another field that should be retyped (e.g. email)',
-    imgSrc: FieldTextIcon,
+    icon: Icons.FieldTextIcon,
     },
     {
     link: 'forms/fields#password',
     title: 'Password',
     description:
     'Process a password value but do not store it (for user registation forms)',
-    imgSrc: LockIcon,
+    icon: Icons.LockIcon,
     },
        {
     link: 'forms/fields#stripe-payment',
     title: 'Stripe Payments',
     description:
     'Allow users to securely enter payment data for Payment-enabled forms',
-    imgSrc: CreditCardIcon,
+    icon: Icons.CreditCardIcon,
     }
 
 ]} />
@@ -719,7 +616,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   title="Email Notifications"
   subtitle="Every conceivable option for sending fully customizable email notifications."
   description="Have as many templates as you like, and use different ones for every type."
-  imgSrc={OpenLetterIcon}
+  imgSrc={Icons.OpenLetterIcon}
 >
 
   <Player url={BuilderNotificationsVideo} muted loop playing width="100%" height="100%" />
@@ -729,74 +626,74 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       {
         title: 'Notify Admins',
         description: 'Send email notifications for successful form submissions.',
-        imgSrc: EmailGroupIcon,
+        icon: Icons.EmailGroupIcon,
         linkWithDescription: 'forms/email-notifications',
       },
            {
         title: 'Notify Submitter',
         description: 'Upon success, send an email notification to the submitter of the form.',
-        imgSrc: EmailUserIcon,
+        icon: Icons.EmailUserIcon,
         linkWithDescription: 'forms/email-notifications/#email-fields',
       },
             {
         title: "User Select's Recipient",
         description: 'Let users select the email recipient of the form submission from a list of predefined options.',
-        imgSrc: EmailListIcon,
+        icon: Icons.EmailListIcon,
         linkWithDescription: 'forms/email-notifications/#user-select',
       },
             {
         title: 'Conditional Notifications',
         titleBadge: 'New!',
         description: 'Conditionally send notifications based on the contents and/or option selection of any field(s).',
-        imgSrc: LogicIcon,
+        icon: Icons.LogicIcon,
         linkWithDescription: 'forms/email-notifications/#conditional',
       },
             {
         title: 'Template-level Recipients',
         description: 'Set email address(es) at template-level to be notified, allowing you to pass a value from another element dynamically.',
-        imgSrc: CodingIcon,
+        icon: Icons.CodingIcon,
       },
             {
         title: 'Tell-a-Friend',
         description: "Include additional Email fields inside your form to allow users to type out a friend's email address to receive a separate notification.",
-        imgSrc: EmailPlaneIcon,
+        icon: Icons.EmailPlaneIcon,
         linkWithDescription: 'forms/email-notifications/#user-defined',
       },
             {
         title: 'Multiple Notifications',
         description: "There's no limit to the number of email notifications you can send, each with different templates/messages, etc.",
-        imgSrc: EmailGroupIcon,
+        icon: Icons.EmailGroupIcon,
         linkWithDescription: 'forms/email-notifications',
       },
             {
         title: 'Export Notifications',
         description: 'You can set up customized export reports and receive them via email on a daily or weekly basis automatically.',
-        imgSrc: ExportIcon,
+        icon: Icons.ExportIcon,
       },
       {
         title: 'Auto Plain Text',
         description: 'Personalize the plain text version of email notifications or let Freeform convert it automatically.',
-        imgSrc: OpenLetterIcon,
+        icon: Icons.OpenLetterIcon,
       },
             {
         title: 'Attach Files',
         description: "Select asset file(s) to pre-attach to your email notification templates, allowing for the inclusion of 'welcome' documents, a PDF ticket, etc.",
-        imgSrc: EmailFileIcon,
+        icon: Icons.EmailFileIcon,
       },
             {
         title: 'Resend Email Notifications',
         description: 'Freeform allows you to resend an email notification (or set of them) for one or more submissions at a time.',
-        imgSrc: ResendEmailIcon,
+        icon: Icons.ResendEmailIcon,
       },
             {
         title: 'Unlimited Templates',
         description: 'Create as many notification templates as needed, with the option to use the same one for all forms or tailor them to each use case.',
-        imgSrc: MultipleEmailTemplateIcon,
+        icon: Icons.MultipleEmailTemplateIcon,
       },
       {
         title: 'Fully Customizable',
         description: "You can customize your email notifications with your own design using HTML and Twig.",
-        imgSrc: SketchIcon,
+        icon: Icons.SketchIcon,
         linkWithDescription: 'forms/email-notifications/#examples',
       },
     ]}
@@ -809,7 +706,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   title="Flexible Templating"
   subtitle="Fast and easy, yet highly customizable."
   description="Templates are highly customizable for even the most complex forms. With our ready-to-use demo templates and features, you can be up and running in just a few minutes!"
-  imgSrc={CodeIcon}
+  imgSrc={Icons.CodeIcon}
 >
   <BrowserMockupWithPhoto src={DemoBasicLightPhoto} alt="Spam Folder" />
   <FlexCards
@@ -818,21 +715,21 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         title: 'Sample Templates',
         description:
           'Includes a diverse selection of examples that can be used as a starting poinnt for building your own.',
-        imgSrc: StarterTemplatesIcon,
+        icon: Icons.StarterTemplatesIcon,
         linkWithDescription: 'templates/formatting',
       },
       {
         title: 'Demo Templates',
         description:
           'By simply clicking a few buttons, the demo templates offer a complete and operational section for your website.',
-        imgSrc: StarterTemplatesIcon,
+        icon: Icons.StarterTemplatesIcon,
         linkWithDescription: 'configuration/demo-templates/',
       },
       {
         title: 'Template Overrides',
         description:
           'Configure template overrides on attributes and field values, labels and more.',
-        imgSrc: SettingsIcon,
+        icon: Icons.SettingsIcon,
         linkWithDescription: 'templates/formatting',
       },
     ]}
@@ -844,7 +741,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="Integrations"
   subtitle="Integrate your forms with anything."
-   imgSrc={CloudApiIcon}
+   imgSrc={Icons.CloudApiIcon}
 
 >
 
@@ -991,47 +888,47 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       {
         title: 'CRMs',
         description: 'Easily integrate your forms with popular CRMs like Salesforce and HubSpot.',
-        imgSrc: CRMIcon,
+        icon: Icons.CrmIcon,
         linkWithDescription: 'integrations',
       },
         {
         title: 'Email Marketing',
         description: 'Connect your forms to Email Marketing services like Mailchimp and Constant Contact to streamline mailing list sign-ups.',
-        imgSrc: MegaphoneIcon,
+        icon: Icons.MegaphoneIcon,
         linkWithDescription: 'integrations#email-marketing',
       },
         {
         title: 'Webhooks',
         description: 'Connect submissions to Slack, create workflows with Zapier, or use the generic webhook for custom endpoints.',
-        imgSrc: WebhookIcon,
+        icon: Icons.WebhookIcon,
         linkWithDescription: 'integrations#webhooks',
       }
       ,
         {
         title: 'Craft Elements',
         description: 'Create stunning forms that create or modify entries, users, Calendar events and complex user registration forms.',
-        imgSrc: ContentIcon,
+        icon: Icons.ContentIcon,
         linkWithDescription: 'integrations/elements/',
       }
       ,
         {
         title: 'Accept Payments',
         description: 'You can start accepting payments and subscriptions for your forms through Stripe in just a few minutes.',
-        imgSrc: CreditCardIcon,
+        icon: Icons.CreditCardIcon,
         linkWithDescription: 'integrations/stripe-payments/',
       }
       ,
         {
         title: 'POST Forwarding',
         description: 'Automatically submit form data to an external API URL after successful submission of the form.',
-        imgSrc: DocumentCloudIcon,
+        icon: Icons.DocumentCloudIcon,
         linkWithDescription: 'integrations/post-forwarding/',
       }
       ,
         {
         title: 'Custom',
         description: 'Create your own integration by developing a custom module that utilizes any of the numerous developer events available.',
-        imgSrc: ApiGearIcon,
+        icon: Icons.ApiGearIcon,
         linkWithDescription: 'developer/events/',
       }
     ]}
@@ -1043,8 +940,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 <Section
   title="Submission Data"
   subtitle="Capture and do what you please with submission data."
-   imgSrc={ArchiveIcon}
-
+  imgSrc={Icons.ArchiveIcon}
 >
 
   <BrowserMockupWithPhoto src={SubmissionsListPhoto} alt="Submissions List" />
@@ -1055,63 +951,63 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       {
         title: 'Store Submission Data',
         description: "Save submission data or don't store it at all, but only send it through email notifications or an API integration, etc.",
-        imgSrc: ArchiveIcon,
+        icon: Icons.ArchiveIcon,
       },
          {
         title: 'GDPR Compliant',
         description: 'Freeform simplifies GDPR compliance for your forms with thorough documentation and many configuration options.',
-        imgSrc: GdprIcon,
+        icon: Icons.GdprIcon,
         linkWithDescription: 'configuration/gdpr-compliance/',
       },
          {
         title: 'Manage Submissions',
         description: 'View, manage, edit and delete submission data inside the control panel as well as front end templates!',
-        imgSrc: DataManageIcon,
+        icon: Icons.DataManageIcon,
         linkWithDescription: 'submissions/overview/',
       },
          {
         title: 'Exporting',
         description: 'Quickly export submission data or generate Export Profile reports in Excel, CSV, Text, XML, or JSON formats.',
-        imgSrc: ExportIcon,
+        icon: Icons.ExportIcon,
       },
          {
         title: 'Reviews & Comments',
         description: 'Freeform can be customized to effectively manage discussion comments, product reviews, and more.',
-        imgSrc: CommentReviewIcon,
+        icon: Icons.CommentReviewIcon,
       },
          {
         title: 'Surveys',
         description: 'Freeform offers a vast selection of field types to effortlessly create visually appealing survey forms.',
-        imgSrc: SurveyIcon,
+        icon: Icons.SurveyIcon,
         linkWithDescription: 'forms/types/surveys-polls/',
       },
          {
         title: 'Front End Editing',
         description: 'Enable front-end editing of form submissions for both admins and users to handle a wide variety of use cases.',
-        imgSrc: EditIcon,
+        icon: Icons.EditIcon,
         linkWithDescription: 'submissions/overview',
       },
          {
         title: 'Save & Continue Later',
         description: 'Users can save their form progress securely and come back later to complete it.',
-        imgSrc: PlayButtonIcon,
+        icon: Icons.PlayButtonIcon,
         linkWithDescription: 'forms/save-continue-later/',
       },
          {
         title: 'Limit Submissions',
         description: 'Limit submissions per user, allow only one submission, require login, or set a close date for the form submission period.',
-        imgSrc: StopIcon,
+        icon: Icons.StopIcon,
         linkWithDescription: 'submissions/overview/#submission-limits',
       },
          {
         title: 'Relate to other Elements',
         description: 'Easily relate Freeform submissions with other element types, such as Craft Entries, allowing endless use cases.',
-        imgSrc: RelationIcon,
+        icon: Icons.RelationIcon,
       },
          {
         title: 'Custom Statuses',
         description: 'Create unlimited statuses that can be applied to form submissions, allowing you to sort and filter submissions.',
-        imgSrc: CategoryIcon,
+        icon: Icons.CategoryIcon,
         linkWithDescription: 'configuration/settings/#statuses',
       }
     ]}
@@ -1124,7 +1020,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
   title="Headless"
   subtitle="Full support for your headless implementation."
   description="Freeform supports headless website architecture making it easy to use JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more! Freeform also supports querying form layouts and using mutations to create submissions via GraphQL."
-  imgSrc={HeadlessIcon}
+  imgSrc={Icons.HeadlessIcon}
 
 >
 
@@ -1133,25 +1029,25 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       {
         title: 'Vue.js',
         description: "Full support for implementation Freeform with Vue.js.",
-        imgSrc: VuejsIcon,
+        icon: Icons.VuejsIcon,
         linkWithDescription: 'headless/vuejs'
       },
          {
         title: 'React JS',
         description: 'Full support for implementation Freeform with React JS.',
-        imgSrc: ReactIcon,
+        icon: Icons.ReactIcon,
         linkWithDescription: 'headless/reactjs',
       },
          {
         title: 'Next.js',
         description: 'Full support for implementation Freeform with Next.js.',
-        imgSrc: NextjsIcon,
+        icon: Icons.NextjsIcon,
         linkWithDescription: 'headless/nextjs',
       },
          {
         title: 'GraphQL',
         description: 'With Freeform, you can easily query form layouts and submit form mutations using GraphQL.',
-        imgSrc: GraphqlIcon,
+        icon: Icons.GraphqlIcon,
         linkWithDescription: 'headless/graphql',
       }
     ]}
@@ -1170,53 +1066,53 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
       {
         title: 'User Group Permissions',
         description: 'Finely control user groups and permissions to restrict access to certain forms, sections, and submissions.',
-        imgSrc: PadlockIcon,
+        icon: Icons.PadlockIcon,
         linkWithDescription: 'configuration/permissions/',
       },
      {
         title: 'Attach Forms to Elements',
         description: 'Easily relate Freeform forms with other element types, such as Craft Entries, allowing endless use cases.',
-        imgSrc: ReferralIcon,
+        icon: Icons.ReferralIcon,
       },
          {
         title: 'Loads of Settings',
         description: 'Access to an extensive range of settings to tailor the management, behavior, and overall user experience of your forms.',
-        imgSrc: ConfigPageIcon,
+        icon: Icons.ConfigPageIcon,
         linkWithDescription: 'configuration/settings/',
       },
          {
         title: 'Site Filtering',
         description: 'Optionally enable Site filtering for forms and submissions to show/hide them for specific Sites.',
-        imgSrc: WorldIcon,
+        icon: Icons.WorldIcon,
         linkWithDescription: 'configuration/sites/',
       },
          {
         title: 'Javascript Plugin',
         description: "Freeform's Javascript plugin simplifies form customization for developers, regardless of website setup.",
-        imgSrc: JSCodeIcon,
+        icon: Icons.JsCodeIcon,
         linkWithDescription: 'developer/js-plugin/',
       },
          {
         title: 'GraphQL',
         description: 'With Freeform, you can easily query form layouts and submit form mutations using GraphQL.',
-        imgSrc: GraphqlIcon,
+        icon: Icons.GraphqlIcon,
         linkWithDescription: 'headless/graphql',
       },
          {
         title: 'Accessibility tested',
         description: 'We have tested our sample templates to ensure that they are accessible to everyone, using best-practice accessibility implementations.',
-        imgSrc: UserCheckIcon,
+        icon: Icons.UserCheckIcon,
       },
          {
         title: 'Translatable',
         description: 'Ability to translate the Freeform control panel, form messages, and field options using static translation files.',
-        imgSrc: TranslationIcon,
+        icon: Icons.TranslationIcon,
         linkWithDescription: 'configuration/translating/',
       },
          {
         title: 'Developer-friendly',
         description: 'Freeform is highly customizable and provides a wide range of developer events to easily extend it for your needs.',
-        imgSrc: DeveloperIcon,
+        icon: Icons.DeveloperIcon,
         linkWithDescription: 'developer/events',
       },
     ]}
@@ -1335,21 +1231,21 @@ Rest assured that Freeform and the team behind it are committed to providing you
       title: 'Top Notch Support',
       description:
         'Our commitment to providing top-notch customer support is well-known in the Craft CMS community. We always aim to deliver the best and most dependable assistance to our valued customers.',
-      imgSrc: SupportIcon,
+      icon: Icons.SupportIcon,
       linkWithDescription: 'https://docs.solspace.com/support',
     },
     {
       title: '20+ Years Experience',
       description:
         'For over 20 years, Solspace has been creating, maintaining, and providing support for software to more than 20,000 customers. In total, over 400,000 plugins have been sold or downloaded for free.',
-      imgSrc: HourglassIcon,
+      icon: Icons.HourglassIcon,
       linkWithDescription: 'https://solspace.com',
     },
     {
       title: 'Active Development',
       description:
         'Craft CMS users widely prefer Freeform, a plugin that boasts an impressive track record of continuous development, including numerous feature upgrades, enhancements, and bug fixes.',
-      imgSrc: DevelopmentIcon,
+      icon: Icons.DevelopmentIcon,
       linkWithDescription: 'setup/changelog',
     },
   ]}

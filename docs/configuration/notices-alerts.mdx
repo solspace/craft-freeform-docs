@@ -7,9 +7,7 @@ import Player from 'react-player';
 import { FlexCards } from '@site/src/components/docs';
 import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
 
-import UpdateNotificationIcon from '../assets/icons/update-notification.png';
-import AlertIcon from '../assets/icons/alert.png';
-import EmailReportIcon from '../assets/icons/email-report.png';
+import Icons from '@site/static/card-icons';
 
 import NoticeAlertDashboardPhoto from './assets/img/notices-alerts-dashboard.png';
 import EmailAlertPhoto from './assets/img/email-alert.png';
@@ -29,20 +27,20 @@ Solspace is dedicated to providing the best form plugin for Craft CMS. Our team 
       title: 'Update Notices',
       description:
         'Alerts you of potential issues that specifically may affect your site.',
-      imgSrc: UpdateNotificationIcon,
+      icon: Icons.UpdateNotificationIcon,
       fullCardLink: '#update-notices--announcements',
     },
     {
       title: 'Email Failure Alerts',
       description:
         'Send notifications when an email fails to send due to an error on your site.',
-      imgSrc: AlertIcon,
+      icon: Icons.AlertIcon,
       fullCardLink: '#email-failure-alerts',
     },
     {
       title: 'Weekly/Daily Digest',
       description: 'Helps keep your finger on the pulse of your site.',
-      imgSrc: EmailReportIcon,
+      icon: Icons.EmailReportIcon,
       fullCardLink: '#weekly--daily-digests',
     },
   ]}

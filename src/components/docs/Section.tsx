@@ -1,4 +1,4 @@
-import Image from '@theme/IdealImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 interface SectionProps {
   imgSrc?: string;
@@ -21,7 +21,11 @@ const Section: React.FC<SectionProps> = ({
         <div className="flex flex-col items-center gap-2 w-full xl:w-3/4">
           {imgSrc && (
             <div className="max-w-24">
-              <Image img={imgSrc} alt={title} />
+              <img
+                className="min-w-20 filter-icons"
+                src={useBaseUrl(`/card-icons/${imgSrc}.svg`)}
+                alt={title}
+              />
             </div>
           )}
           <h2 className="text-6xl font-normal text-[#ff6624] mb-2" id="title">

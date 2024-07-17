@@ -6,9 +6,7 @@ import Player from 'react-player';
 
 import { FlexCards } from '@site/src/components/docs';
 
-import MagicWandIcon from '../assets/icons/magic-wand.png';
-import LightBulbIcon from './assets/icons/light-bulb.png';
-import RoadmapIcon from './assets/icons/roadmap.png';
+import Icons from '@site/static/card-icons';
 
 import BuilderFeatureVideo from './assets/videos/builder-feature.mp4';
 import BuilderFavoritesVideo from './assets/videos/builder-favorites.mp4';
@@ -28,20 +26,20 @@ Many of our best ideas come from listening carefully to our customers! Check out
     {
       title: "What's New",
       description: "Check out what's new with Freeform!",
-      imgSrc: MagicWandIcon,
+      icon: Icons.MagicWandIcon,
       fullCardLink: '#whats-new',
     },
     {
       title: 'Roadmap',
       description:
         'Check out what we have planned for the future for Freeform.',
-      imgSrc: RoadmapIcon,
+      icon: Icons.RoadmapIcon,
       fullCardLink: '#roadmap',
     },
     {
       title: 'Feature Requests',
       description: 'We appreciate hearing what our customers have to say!',
-      imgSrc: LightBulbIcon,
+      icon: Icons.LightBulbIcon,
       fullCardLink: '#feature-requests',
     },
   ]}

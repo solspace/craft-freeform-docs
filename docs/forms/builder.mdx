@@ -8,15 +8,7 @@ import Player from 'react-player';
 import { FlexCards } from '@site/src/components/docs';
 import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
 
-import ClipboardIcon from './assets/icons/clipboard.png';
-import EmailGroupIcon from '../assets/icons/email-group.png';
-import LogicIcon from '../assets/icons/logic.png';
-import CRMIcon from '../assets/icons/crm.png';
-import ConfigPageIcon from '../assets/icons/config-page.png';
-import PagesIcon from '../assets/icons/pages.png';
-import SurveyIcon from '../assets/icons/survey.png';
-import DashboardIcon from '../assets/icons/dashboard.png';
-import FreeformSurveyIcon from './assets/icons/freeform-surveys.png';
+import Icons from '@site/static/card-icons';
 
 import FieldAttributeEditorPhoto from './assets/img/field-attribute-editor.png';
 
@@ -39,49 +31,49 @@ What makes Freeform different from other form plugins is that it gives you full 
     {
       title: 'Overview',
       description: 'A general overview of the form builder.',
-      imgSrc: ClipboardIcon,
+      icon: Icons.ClipboardIcon,
       fullCardLink: '#overview',
     },
     {
       title: 'Email Notifications',
       description: 'Configure all email notification types for the form.',
-      imgSrc: EmailGroupIcon,
+      icon: Icons.EmailGroupIcon,
       fullCardLink: '#email-notifications',
     },
     {
       title: 'Conditional Rules',
       description: 'Set which fields and pages should be shown/hidden.',
-      imgSrc: LogicIcon,
+      icon: Icons.LogicIcon,
       fullCardLink: '#conditional-rules',
     },
     {
       title: 'Integrations',
       description: 'Configure various integrations for your form.',
-      imgSrc: CRMIcon,
+      icon: Icons.CrmIcon,
       fullCardLink: '#integrations',
     },
     {
       title: 'Settings',
       description: 'Variety of settings to control the form behavior.',
-      imgSrc: ConfigPageIcon,
+      icon: Icons.ConfigPageIcon,
       fullCardLink: '#settings',
     },
     {
       title: 'Multi-Page Forms',
       description: 'Divide lengthy forms into several pages.',
-      imgSrc: PagesIcon,
+      icon: Icons.PagesIcon,
       fullCardLink: '#multi-page-forms',
     },
     {
       title: 'Form Types',
       description: 'Enable specialized behavior and features to your forms.',
-      imgSrc: SurveyIcon,
+      icon: Icons.SurveyIcon,
       fullCardLink: '#form-types',
     },
     {
       title: 'Dashboard',
       description: 'An overview of your forms, submissions, and updates.',
-      imgSrc: DashboardIcon,
+      icon: Icons.DashboardIcon,
       fullCardLink: '#dashboard',
     },
   ]}
@@ -407,7 +399,7 @@ When manually building submit buttons in multi-page forms, please refer to the [
       title: 'Survey & Polls',
       description:
         'Add customizable results reporting to Survey and Poll type forms.',
-      imgSrc: FreeformSurveyIcon,
+      icon: Icons.FreeformSurveyIcon,
       fullCardLink: '#overview',
     },
   ]}

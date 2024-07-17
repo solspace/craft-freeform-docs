@@ -479,6 +479,15 @@ html[data-theme='light'] .feature-api-grid a:hover {
   margin-right: 5px;
 }
 
+/* Card Icons */
+.filter-icons {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme='light'] .filter-icons {
+  filter: brightness(0%);
+}
+
 /* Form styling */
 .form-styling {
   font-style: italic;

@@ -9,12 +9,7 @@ import TabItem from '@theme/TabItem';
 import { FlexCards } from '@site/src/components/docs';
 import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
 
-import ClipboardIcon from './assets/icons/clipboard.png';
-import FieldTextIcon from '../assets/icons/field-text.png';
-import LoveIcon from './assets/icons/love.png';
-import GearCodingIcon from '../assets/icons/gear-coding.png';
-import ListChecksIcon from './assets/icons/list-checks.png';
-import LockIcon from '../assets/icons/lock.png';
+import Icons from '@site/static/card-icons';
 
 import FieldAttributeEditorPhoto from './assets/img/field-attribute-editor.png';
 import CheckboxPhoto from './assets/img/checkbox.png';
@@ -57,39 +52,39 @@ Freeform features its own set of robust field types. The form builder displays a
     {
       title: 'Overview',
       description: 'Overview of fields and important notes.',
-      imgSrc: ClipboardIcon,
+      icon: Icons.ClipboardIcon,
       fullCardLink: '#overview',
     },
     {
       title: 'Field Types',
       description: 'The field types available in Freeform.',
-      imgSrc: FieldTextIcon,
+      icon: Icons.FieldTextIcon,
       fullCardLink: '#field-types',
     },
     {
       title: 'Favorite Fields',
       description: 'Manage a set of favorite fields to use in other forms.',
-      imgSrc: LoveIcon,
+      icon: Icons.LoveIcon,
       fullCardLink: '#favorite-fields',
       titleBadge: 'New!',
     },
     {
       title: 'Custom Field Types',
       description: 'Easily create your own custom field types.',
-      imgSrc: GearCodingIcon,
+      icon: Icons.GearCodingIcon,
       fullCardLink: '../developer/field-types',
       titleBadge: 'New!',
     },
     {
       title: 'Populating Field Options',
       description: 'With predefined data or other Craft Elements.',
-      imgSrc: ListChecksIcon,
+      icon: Icons.ListChecksIcon,
       fullCardLink: '#populating-fields-with-elements--predefined-options',
     },
     {
       title: 'Field Encryption',
       description: 'Optionally encrypt the submitted data for each field.',
-      imgSrc: LockIcon,
+      icon: Icons.LockIcon,
       fullCardLink: '#field-encryption',
       titleBadge: 'New!',
     },

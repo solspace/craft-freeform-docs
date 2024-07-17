@@ -9,36 +9,40 @@ const Support: React.FC = () => {
   return (
     <Layout
       title="Support"
-      description="Need help with Freeform? We love helping our customers discover best practices, resolve issues, and achieve their goals!">
+      description="Need help with Freeform? We love helping our customers discover best practices, resolve issues, and achieve their goals!"
+    >
       <main className="max-w-5xl m-auto my-12">
         <h1>Support</h1>
         <p>
           Need help with Freeform? We love helping our customers discover best
           practices, resolve issues, and achieve their goals!
         </p>
-        <FlexCards
+        {/* <FlexCards
           items={[
             {
               title: 'GitHub Issues',
               description: "Report an issue you're experiencing with Freeform",
-              imgSrc: GithubIcon,
+              icon: GithubIcon,
               fullCardLink: 'https://github.com/solspace/craft-freeform/issues',
             },
             {
               title: 'GitHub Questions',
-              description: "Search questions others have asked or create your own if it hasn't been asked already.",
-              imgSrc: GithubIcon,
-              fullCardLink: 'https://github.com/solspace/craft-freeform/discussions',
+              description:
+                "Search questions others have asked or create your own if it hasn't been asked already.",
+              icon: GithubIcon,
+              fullCardLink:
+                'https://github.com/solspace/craft-freeform/discussions',
             },
             {
               title: 'Craft Stack Exchange',
-              description: 'Research or get advice from all over the Craft CMS community.',
-              imgSrc: StackExchangeIcon,
+              description:
+                'Research or get advice from all over the Craft CMS community.',
+              icon: StackExchangeIcon,
               fullCardLink:
                 'https://craftcms.stackexchange.com/questions/tagged/plugin-freeform',
             },
           ]}
-        />
+        /> */}
         <div className="mx-auto mt-10 p-6 bg-[#181d27] text-white rounded-md">
           <h2 className="text-2xl font-bold mb-4 text-gray-200">
             Create a Support Ticket

@@ -2,6 +2,7 @@ import { useId } from 'react';
 
 import Link from '@docusaurus/Link';
 import Image from '@theme/IdealImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import { SimpleTextLink, Badge } from '@site/src/components/utils';
 
@@ -12,8 +13,7 @@ interface CardProps {
   title: string;
   titleBadge?: string;
   description: string;
-  imgAlt?: string;
-  imgSrc?: string;
+  icon?: string;
 }
 
 interface FieldProps {
@@ -21,8 +21,7 @@ interface FieldProps {
   title: string;
   titleBadge?: string;
   description: string;
-  imgSrc?: string;
-  imgAlt?: string;
+  icon?: string;
 }
 
 interface IntegrationPhotoProps {
@@ -138,20 +137,26 @@ const Card: React.FC<CardProps> = ({
   title,
   titleBadge,
   description,
-  imgSrc,
-  imgAlt,
+  icon,
 }) => {
+  const iconSrc = icon && useBaseUrl(`/card-icons/${icon}.svg`);
+
   if (fullCardLink) {
     return (
       <Link
         to={fullCardLink}
         className="group flex flex-row gap-2  border rounded-lg p-3 m-1 max-w-80 2xl:max-w-full transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:m-0 hover:p-4"
       >
-        <div className="max-w-10 pt-2">
-          {imgSrc && (
-            <Image alt={imgAlt || title} className="opacity-85" img={imgSrc} />
-          )}
-        </div>
+        {iconSrc && (
+          <div className="flex justify-center">
+            <img
+              className="min-w-10 max-w-full !max-h-[50px] opacity-70	duration-500 transition-all filter-icons"
+              src={iconSrc}
+              alt={title || 'Freeform'}
+            />
+          </div>
+        )}
+
         <div className="pl-2">
           <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
             {title}
@@ -167,11 +172,15 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div className="group flex flex-row gap-2 border rounded-lg py-2 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white">
-      <div className="max-w-10 pt-2">
-        {imgSrc && (
-          <Image alt={imgAlt || title} className="opacity-85	" img={imgSrc} />
-        )}
-      </div>
+      {iconSrc && (
+        <div className="flex justify-center">
+          <img
+            className="min-w-10 max-w-full !max-h-[50px] opacity-70	duration-500 transition-all filter-icons"
+            src={iconSrc}
+            alt={title || 'Freeform'}
+          />
+        </div>
+      )}
       <div className="">
         <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
           {title}
@@ -207,8 +216,7 @@ const FlexCards: React.FC<CardSectionProps> = ({ items }) => {
           title={item.title}
           titleBadge={item?.titleBadge}
           description={item.description}
-          imgSrc={item.imgSrc}
-          imgAlt={item.imgAlt}
+          icon={item.icon}
         />
       ))}
     </div>
@@ -224,13 +232,16 @@ const FieldCards: React.FC<FieldCardsProps> = ({ items }) => {
           to={item.link}
           className="group flex flex-col items-center gap-2 border rounded-lg p-3 max-w-80 transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:scale-105"
         >
-          <div className="max-w-10 pt-4">
-            <Image
-              alt={item.imgAlt || item.title}
-              className="opacity-85	"
-              img={item.imgSrc}
-            />
-          </div>
+          {item.icon && (
+            <div className="flex justify-center pt-6">
+              <img
+                className="w-10 h-10 opacity-70	duration-500 transition-all filter-icons"
+                src={useBaseUrl(`/card-icons/${item.icon}.svg`)}
+                alt={item.title}
+              />
+            </div>
+          )}
+
           <div className="text-center pb-4">
             <h3 className="flex justify-center text-base font-semibold mb-0 text-black dark:text-white">
               {item.title}{' '}
