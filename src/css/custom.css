@@ -663,8 +663,17 @@ table th {
 }
 
 table td,
-table th {
+table th,
+table thead tr {
   border-bottom: 1px solid var(--table-border-color);
+}
+
+table thead {
+  background: rgba(23, 49, 84, 0.05);
+}
+
+html[data-theme='dark'] table thead {
+  background: rgba(23, 49, 84, 0.5);
 }
 
 table tbody tr:last-of-type td {
