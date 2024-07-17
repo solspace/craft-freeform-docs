@@ -111,17 +111,6 @@ export default function DocItemFooter() {
             .
           </p>
         </div>
-        <a
-          href="https://solspace.com/services/second-chair-development?_gl=1*17jxj3w*_ga*MTIyMjkzNTcwNy4xNjk2OTIwNDIy*_ga_ZH27K6C83C*MTcxNzU3MzMxMC4xNDAuMS4xNzE3NTc0NjMxLjExLjAuMTEyNTY4ODI2OA.."
-          className="max-w-4xl bg-slate-200 dark:bg-gray-800 py-4 px-6 rounded-lg hover:bg-gray-300 dark:hover:bg-emerald-900 transition duration-500"
-        >
-          <p className="mb-0 text-sm text-gray-800 dark:text-white leading-6 text-center text--semibold">
-            Solspace is not just a plugin company. We also build and maintain
-            websites. In fact, we often help other developers with their website
-            builds. Learn more about our{' '}
-            <b>second chair development services</b> today.
-          </p>
-        </a>
       </div>
     </footer>
   );
