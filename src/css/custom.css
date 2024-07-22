@@ -1113,9 +1113,40 @@ html[data-theme='dark'] .version {
 .docs-footer .social-icons a svg {
   height: 2rem;
   width: 2rem;
-  transition: all 0.3s;
+  transition: all 0.5s;
 }
 
 .docs-footer .social-icons a:hover svg {
   fill: #058ffe;
+}
+
+/* Edit page */
+.edit-page {
+  color: black;
+  transition: all 0.5s;
+}
+
+html[data-theme='dark'] .edit-page {
+  color: white;
+}
+
+.edit-page:hover {
+  background-color: var(--ifm-link-color);
+  opacity: 1;
+  color: white;
+}
+
+.edit-page img {
+  transition: all 0.5s;
+}
+
+html[data-theme='dark'] .edit-page img,
+.edit-page:hover img {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 640px) {
+  .edit-page {
+    margin-right: auto;
+  }
 }
