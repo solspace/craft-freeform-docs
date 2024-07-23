@@ -61,7 +61,7 @@ export default function DocItemFooter() {
           </div>
         </div>
       )}
-      {canDisplayEditMetaRow && (
+      {/* {canDisplayEditMetaRow && (
         <EditMetaRow
           className={clsx(
             'margin-top--sm',
@@ -71,7 +71,7 @@ export default function DocItemFooter() {
           lastUpdatedAt={lastUpdatedAt}
           lastUpdatedBy={lastUpdatedBy}
         />
-      )}
+      )} */}
       <div className="flex flex-col m-auto mb-16 mt-32 items-center gap-6 max-w-7xl">
         <div className="pt-12 pb-8 px-6 md:px-12 lg:px-24 lg:pb-12 text-center rounded-lg transition-all duration-500">
           <h4 className="text-3xl md:text-4xl font-bold mb-4">
