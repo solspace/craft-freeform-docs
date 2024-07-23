@@ -1116,8 +1116,12 @@ html[data-theme='dark'] .version {
   transition: all 0.5s;
 }
 
+html[data-theme='dark'] .docs-footer .social-icons a svg {
+  fill: white;
+}
+
 .docs-footer .social-icons a:hover svg {
-  fill: #058ffe;
+  fill: #058ffe !important;
 }
 
 /* Edit page */
