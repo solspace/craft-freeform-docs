@@ -158,7 +158,7 @@ const Footer: React.FC = () => {
             title="Freepik from Flaticon"
           >
             Freepik from Flaticon
-          </a>{' '}
+          </a>
           .
         </p>
       </div>
