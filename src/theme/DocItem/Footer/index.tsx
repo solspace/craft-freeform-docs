@@ -199,14 +199,10 @@ export default function DocItemFooter() {
           <p className="text-xs italic">
             Icons created by{' '}
             <a
-              href="https://www.flaticon.com/authors/smashicons"
-              title="Smashicons"
+              href="https://www.flaticon.com/authors/freepik"
+              title="Freepik from Flaticon"
             >
-              Smashicons
-            </a>{' '}
-            from{' '}
-            <a href="https://www.flaticon.com/" title="Flaticon">
-              Flaticon
+              Freepik from Flaticon
             </a>
             .
           </p>
