@@ -7,6 +7,9 @@ import docusaurusGithubRemoteContent from './plugins/docusaurus-github-remote-co
 
 import type { Options as IdealImageOptions } from '@docusaurus/plugin-ideal-image';
 
+import PrismLight from './src/utils/prismLight';
+import PrismDark from './src/utils/prismDark';
+
 const config: Config = {
   title: 'Freeform for Craft',
   tagline: 'Freeform is cool',
@@ -223,8 +226,8 @@ const config: Config = {
       ],
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.vsDark,
+      theme: PrismLight,
+      darkTheme: PrismDark,
       additionalLanguages: [
         'markup-templating',
         'twig',

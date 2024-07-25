@@ -2,6 +2,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 
 import { ThemedIdealImage } from '@site/src/components/utils';
+import { Footer } from '@site/src/components/layout';
 
 import FreeformIntroBlackPhoto from '@site/static/img/freeform-intro-black.png';
 import FreeformIntroWhitePhoto from '@site/static/img/freeform-intro-white.png';
@@ -82,6 +83,9 @@ export default function Home(): JSX.Element {
           </div>
         </section>
       </main>
+      <footer className="docusaurus-mt-lg docs-footer">
+        <Footer />
+      </footer>
     </Layout>
   );
 }
