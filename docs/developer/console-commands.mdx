@@ -51,25 +51,25 @@ The following arguments are available:
 
 Generate 10 spam submissions in French to the `contactForm` form:
 
-```sh
+```sh showLineNumbers
 php craft freeform/submissions/generate --form=contactForm --spam --count=10 --locale=fr
 ```
 
 Generate 100 submissions in English to the `survey2024` form between 3 weeks ago and tomorrow:
 
-```sh
+```sh showLineNumbers
 php craft freeform/submissions/generate --form=survey2024 --count=100 --locale=en --range-start="3 weeks ago" --range-end="tomorrow"
 ```
 
 Generate 50 submissions in English to the `quoteRequest` form with a mix of the statuses `open`, `pending`, and `closed`:
 
-```sh
+```sh showLineNumbers
 php craft freeform/submissions/generate -f=quoteRequest -c=50 -l=en -s="open,pending,closed"
 ```
 
 Generate 50 submissions in English to the `quoteRequest` form with a mix of the statuses `open` and `closed`, with a much higher proportion of them being `open`:
 
-```sh
+```sh showLineNumbers
 php craft freeform/submissions/generate -f=quoteRequest -c=50 -l=en -s="open,open,open,open,closed"
 ```
 
@@ -77,7 +77,7 @@ php craft freeform/submissions/generate -f=quoteRequest -c=50 -l=en -s="open,ope
 
 If you need to resave all Freeform submissions, you can do so with the `freeform/submissions/resave` CLI command. Most of the arguments available to Craft's `resave/entries` command are available here too, so if you need to also update the Craft Search Index, be sure to add `--update-search-index`.
 
-```sh
+```sh showLineNumbers
 php craft freeform/submissions/resave --update-search-index
 ```
 
@@ -91,7 +91,7 @@ While most plugins could include a separate migration script to handle this, Fre
 This CLI command is only applicable to sites that have migrated from Craft 4 to Craft 5 while Freeform was installed.
 :::
 
-```sh
+```sh showLineNumbers
 php craft freeform/submissions/fix-titles
 ```
 
@@ -103,7 +103,7 @@ Freeform automatically attempts to routinely execute all of the below commands a
 
 Allows you to purge all submissions older than a specific number of days. Freeform automatically attempts to execute this service based on the specified number of days for the **Automatically Purge Submission Data** setting.
 
-```sh
+```sh showLineNumbers
 php craft freeform/purge/submissions --age-in-days=30
 ```
 
@@ -111,7 +111,7 @@ php craft freeform/purge/submissions --age-in-days=30
 
 Allows you to purge all spam submissions older than a specific number of days. Freeform automatically attempts to execute this service based on the specified number of days for the **Automatically Purge Spam Submissions** setting.
 
-```sh
+```sh showLineNumbers
 php craft freeform/purge/spam --age-in-days=30
 ```
 
@@ -119,6 +119,6 @@ php craft freeform/purge/spam --age-in-days=30
 
 Allows you to purge all unfinalized assets older than a specific number of minutes. Freeform automatically attempts to execute this service every 3 hours.
 
-```sh
+```sh showLineNumbers
 php craft freeform/purge/unfinalized-assets --age-in-minutes=180
 ```

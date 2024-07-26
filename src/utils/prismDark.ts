@@ -1,74 +1,109 @@
-import { themes, type PrismTheme } from 'prism-react-renderer';
+import { PrismTheme } from 'prism-react-renderer';
 
-const baseTheme = themes.vsDark;
-
-export default {
+const theme: PrismTheme = {
   plain: {
-    color: '#D4D4D4',
-    backgroundColor: '#212121',
+    color: '#ffffff',
+    backgroundColor: '#1d222d',
   },
   styles: [
-    ...baseTheme.styles,
     {
-      types: ['title'],
+      types: ['comment', 'prolog', 'doctype', 'cdata', 'block-comment'],
       style: {
-        color: '#569CD6',
+        color: '#999',
+      },
+    },
+    {
+      types: ['punctuation'],
+      style: {
+        color: '#ccc',
+      },
+    },
+    {
+      types: ['tag', 'deleted', 'attr-name', 'namespace'],
+      style: {
+        color: '#e2777a',
+      },
+    },
+    {
+      types: ['function-name'],
+      style: {
+        color: '#6196cc',
+      },
+    },
+    {
+      types: ['function', 'boolean', 'number'],
+      style: {
+        color: '#f08d49',
+      },
+    },
+    {
+      types: ['class-name', 'constant', 'property', 'symbol'],
+      style: {
+        color: '#f8c555',
+      },
+    },
+    {
+      types: ['atrule', 'builtin', 'important', 'keyword', 'selector'],
+      style: {
+        color: '#cc99cd',
+      },
+    },
+    {
+      types: ['attr-value', 'char', 'regex', 'string', 'variable'],
+      style: {
+        color: '#7ec699',
+      },
+    },
+
+    {
+      types: ['entity', 'operator', 'url'],
+      style: {
+        color: '#67cdcc',
+      },
+    },
+    {
+      types: ['important', 'bold'],
+      style: {
         fontWeight: 'bold',
       },
     },
     {
-      types: ['property', 'parameter'],
+      types: ['italic'],
       style: {
-        color: '#9CDCFE',
+        fontStyle: 'italic',
       },
     },
     {
-      types: ['script'],
+      types: ['entity'],
       style: {
-        color: '#D4D4D4',
+        cursor: 'help',
       },
     },
     {
-      types: ['boolean', 'arrow', 'atrule', 'tag'],
+      types: ['namespace'],
       style: {
-        color: '#569CD6',
+        opacity: 0.7,
       },
     },
     {
-      types: ['number', 'color', 'unit'],
+      types: ['deleted'],
       style: {
-        color: '#B5CEA8',
+        backgroundColor: 'rgba(255,0,24,.15)',
       },
     },
     {
-      types: ['font-matter'],
+      types: ['inserted'],
       style: {
-        color: '#CE9178',
+        backgroundColor: 'rgba(60,255,0,.15)',
       },
     },
     {
-      types: ['keyword', 'rule'],
+      types: ['line-highlight'],
       style: {
-        color: '#C586C0',
-      },
-    },
-    {
-      types: ['regex'],
-      style: {
-        color: '#D16969',
-      },
-    },
-    {
-      types: ['maybe-class-name'],
-      style: {
-        color: '#4EC9B0',
-      },
-    },
-    {
-      types: ['constant'],
-      style: {
-        color: '#4FC1FF',
+        backgroundColor: 'rgba(5, 143, 254, 0.1)',
       },
     },
   ],
-} satisfies PrismTheme;
+};
+
+export default theme;

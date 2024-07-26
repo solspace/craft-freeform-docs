@@ -1,10 +1,7 @@
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 
-import { FlexCards } from '@site/src/components/docs';
 import { Footer } from '@site/src/components/layout';
-
-import Icons from '@site/static/card-icons';
 
 const Support: React.FC = () => {
   return (
@@ -20,8 +17,8 @@ const Support: React.FC = () => {
         </p>
         <p>
           For more extensive or urgent needs, consider our
-          <a href="/support/premium">premium support services</a>.
-          Get direct, high-priority access to our Software team for complex
+          <Link href="/support/premium"> premium support services</Link>. Get
+          direct, high-priority access to our Software team for complex
           questions, custom modules, and complicated upgrades.
         </p>
         <div className="mt-10">

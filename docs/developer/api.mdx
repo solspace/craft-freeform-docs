@@ -8,7 +8,7 @@ sidebar_position: 5
 
 To get any Freeform object, all you have to do is access the right service and use the methods provided within. You can access Freeform services by getting the Freeform plugin instance and then accessing the services directly:
 
-```php
+```php showLineNumbers
 $plugin = Freeform::getInstance();
 
 // Most commonly used services
@@ -27,7 +27,7 @@ $plugin->honeypot;
 
 To get a specific form, one would access the `FormsService` and ask for the form providing an ID or a handle:
 
-```php
+```php showLineNumbers
 // Access a form by ID
 $form = Freeform::getInstance()->forms->getFormById($myFormId);
 if ($form) {
@@ -45,14 +45,14 @@ $forms = Freeform::getInstance()->forms->getAllForms();
 
 There are many ways to fetch a submission. You might use the `SubmissionsService` and fetch a submissions by ID or a token:
 
-```php
+```php showLineNumbers
 $submission = Freeform::getInstance()->submissions->getSubmissionById($myId);
 $submission = Freeform::getInstance()->submissions->getSubmissionByToken($myToken);
 ```
 
 Or you might use the `SubmissionQuery` to find more than just one submission that matches your criteria:
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Elements\Submission;
 
 $submissions = Submission::find()
@@ -67,7 +67,7 @@ When using Freeform's [built-in Honeypot spam protection](../forms/spam-protecti
 
 In such cases, one should ask for a fresh honeypot using the `HoneypotService`.
 
-```php
+```php showLineNumbers
 // Get the form model
 $formModel = Freeform::getInstance()->forms->getFormById($myFormId);
 if (!$formModel) {
@@ -89,7 +89,7 @@ return $this->render(
 
 Then in your view file, you can either add a script that handles refreshing the honeypot, or if you're using _Vue.js_ or _React.js_, you could pass those new values to the form somewhere in your flow.
 
-```html
+```html showLineNumbers
 <script>
   // Locate the form
   var form = document.getElementById('my-form');

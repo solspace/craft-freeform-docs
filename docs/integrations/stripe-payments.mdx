@@ -346,7 +346,7 @@ To send a success or fail email notification to the site Admin or the customer f
 
 Example template code might look something like this:
 
-```twig {9-21}
+```twig {9-21} showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
 <h2>Customer Information</h2>
 <ul>
@@ -434,7 +434,7 @@ The following properties are available for use inside email notification templat
 
 For displaying the **submission data**, your code may look something like this:
 
-```twig
+```twig showLineNumbers
 {% set submissionId = craft.app.request.segment(3) %}
 {% set payments = freeform.payments(submissionId) %}
 {% if payments %}
@@ -456,13 +456,13 @@ For displaying the **submission data**, your code may look something like this:
 
 For rendering the _Stripe Payment Element_ field inside your form, it simply works like any other field:
 
-```twig
+```twig showLineNumbers
 {{ field.render() }}
 ```
 
 If you wish to make any customization to the handling of Stripe payment fields, you can use the [Template Overrides](../templates/formatting/#template-overrides) feature and do this at form level:
 
-```twig
+```twig showLineNumbers
 {{ form.renderTag({
     fields: {
         "@stripe": {
@@ -478,7 +478,7 @@ If you wish to make any customization to the handling of Stripe payment fields, 
 
 Or at the field level by using a conditional like this:
 
-```twig {2}
+```twig showLineNumbers {2}
 ...
 {% elseif field.type == "stripe" %}`
     {{ field.render({
@@ -543,7 +543,7 @@ Full documentation can be found here: [Stripe Elements Appearance API](https://s
 
 #### Example
 
-```html
+```html showLineNumbers
 <script>
   var form = document.querySelector('[data-id="{{ form.anchor }}"]');
   if (form) {
@@ -596,7 +596,7 @@ Full documentation can be found here: [Stripe Elements Appearance API](https://s
 
 ### Example Usage
 
-```twig {9-21}
+```twig showLineNumbers {9-21}
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
 <h2>Customer Information</h2>
 <ul>

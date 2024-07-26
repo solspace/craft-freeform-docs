@@ -79,7 +79,7 @@ There are currently some limitations with this feature. Please note that:
 
 When linking to the form edit, you might use something like this inside the [Submissions query](../templates/queries/submissions/):
 
-```twig
+```twig showLineNumbers
 {% if currentUser and currentUser.admin %}
     <a href="{{ siteUrl }}page/{{ form.handle }}/edit/{{ submission.token }}">
         {{ "Edit"|t("freeform") }}
@@ -89,7 +89,7 @@ When linking to the form edit, you might use something like this inside the [Sub
 
 Then in your template that includes the [Form query](../templates/queries/form/), be sure that the `submissionToken` parameter is included and checking the URL for a value:
 
-```twig{1,5}
+```twig showLineNumbers{1,5}
 {% set submissionToken = craft.app.request.segment(4) %}
 
 {% set form = freeform.form('myForm', {
@@ -117,7 +117,7 @@ You can also just set this to `true` (`disable: true`) to disable all items at o
 
 ### Examples
 
-```twig {7-11}
+```twig showLineNumbers {7-11}
 {% set form = freeform.form("myForm", {
     attributes: {
         id: "myform",
@@ -134,7 +134,7 @@ You can also just set this to `true` (`disable: true`) to disable all items at o
 
 OR
 
-```twig {7}
+```twig showLineNumbers {7}
 {% set form = freeform.form("myForm", {
     attributes: {
         id: "myform",
@@ -190,7 +190,7 @@ Inside the [Settings → Limits](../forms/builder/#settings) area in the [form b
 
 Freeform includes validation to prevent duplicate submissions (when the user tries to submit the form again), but if you wish to prevent users from even being able to see the form (and display an error/notice in its place), you can use `duplicate` ([form object](../templates/objects/form/)) as a conditional. It's a bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled and the user has already submitted the form.
 
-```twig {4-5}
+```twig showLineNumbers {4-5}
 {# Replace 'myForm' with your form handle. #}
 {% set form = freeform.form("myForm") %}
 
@@ -216,7 +216,7 @@ Freeform includes the ability to set a limit on the maximum number of submission
 
 The key is applying the `submissionLimit` parameter to the [Form query](../templates/queries/form/) and feeding it a number value. This could be hardcoded or you could grab this value from somewhere else such as another element or global variable, etc. Here's an example of what that may look like:
 
-```twig {4-8}
+```twig showLineNumbers {4-8}
 {# Replace 'myForm' with your form handle. #}
 {% set form = freeform.form("myForm") %}
 

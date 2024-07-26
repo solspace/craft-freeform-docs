@@ -10,7 +10,7 @@ You can extend the Mailer service functionality to manipulate emails that are se
 
 This event is called before all notification values are parsed with Twig. Use this event to add your own values or manipulate the existing ones.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Services\MailerService;
 use Solspace\Freeform\Events\Mailer\RenderEmailEvent;
 
@@ -36,7 +36,7 @@ Event::on(
 
 Use this event to change the emails that are sent out, or perform any other tasks that need to be done before emails are sent out.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Services\MailerService;
 use Solspace\Freeform\Events\Mailer\SendEmailEvent;
 
@@ -60,7 +60,7 @@ Event::on(
 
 This event is fired right after an email is sent out. You might use this event to log the sent out email somewhere.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Services\MailerService;
 use Solspace\Freeform\Events\Mailer\SendEmailEvent;
 

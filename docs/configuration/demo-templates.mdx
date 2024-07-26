@@ -63,7 +63,7 @@ To install the demo templates manually, just follow the instructions below:
 3. Inside the `/vendor/solspace/craft-freeform/packages/plugin/src/codepack/` directory, copy the **assets** folder into the public `/assets/` directory, and rename the Freeform **assets** folder to **demo** (so it should now be located at `/assets/demo/`).
 4. Copy and paste the following routes into your _routes.php_ configuration file (`/config/routes.php`):
 
-```php
+```php showLineNumbers
 'demo/templates/<*:[^\/]+>' => ['template' => 'demo/templates'],
 'demo/templates/<*:[^\/]+>/<*:[^\/]+>' => ['template' => 'demo/templates/form'],
 'demo/templates/<*:[^\/]+>/<*:[^\/]+>/edit/<*:[^\/]+>' => ['template' => 'demo/templates/form'],

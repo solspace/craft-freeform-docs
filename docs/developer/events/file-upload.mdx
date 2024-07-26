@@ -10,7 +10,7 @@ To perform manipulations with uploaded form files, use the events below:
 
 This event is called before the file is made into a Craft Asset, before it's moved from the temp upload directory. Use this event to do something with the raw file, or do any other operations you might deem necessary.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Services\FilesService;
 use Solspace\Freeform\Events\Files\UploadEvent;
 
@@ -43,7 +43,7 @@ Event::on(
 
 This event is called when Craft has moved the file to the appropriate location and created an Asset entry. You could use this event to attach the created Asset ID to some other entry.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Services\FilesService;
 use Solspace\Freeform\Events\Files\UploadEvent;
 

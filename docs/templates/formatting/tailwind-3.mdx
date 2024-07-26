@@ -34,7 +34,7 @@ Video: Preview of Formatting Template Examples
 <TabItems>
 <CodeTabItem filetype="twig" value="index" label="index.twig" default>
 
-```twig
+```twig showLineNumbers
 {# Pull in CSS and field rendering #}
 <style>
 {% include "freeform/_templates/formatting/tailwind-3/_main.css" %}
@@ -166,7 +166,7 @@ Video: Preview of Formatting Template Examples
 </CodeTabItem>
 <CodeTabItem filetype="twig" value="row" label="_row.twig">
 
-```twig
+```twig showLineNumbers
 {% macro getFieldTemplate(type) -%}
     {% set fieldTemplatePath = "freeform/_templates/formatting/tailwind-3/fields/" %}
     {{- fieldTemplatePath ~ type ~ ".twig" -}}
@@ -209,7 +209,7 @@ Video: Preview of Formatting Template Examples
 
 <CodeTabItem filetype="css" value="_main" label="_main.css">
 
-```css
+```css showLineNumbers
 /* LAYOUT */
 html,
 body {
@@ -259,7 +259,7 @@ button[type='submit'].freeform-processing:before {
 
 <CodeTabItem filetype="js" value="_main.js" label="_main.js">
 
-```js
+```js showLineNumbers
 var form = document.querySelector('[data-id="{{ form.anchor }}"]');
 if (form) {
   // Styling for AJAX responses
@@ -352,7 +352,7 @@ if (form) {
 <TabItems>
 <CodeTabItem filetype="twig" value="_default_" label="_default.twig" default>
 
-```twig
+```twig showLineNumbers
 {{ field.render }}
 ```
 
@@ -360,7 +360,7 @@ if (form) {
 
 <CodeTabItem filetype="twig" value="checkbbox" label="checkbox.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 <div class="flex items-center">
@@ -378,7 +378,7 @@ if (form) {
 
 <CodeTabItem filetype='twig' value="checkboxes" label="checkboxes.twig">
 
-```twig
+```twig showLineNumbers
 {% do field.setParameters({
     attributes: {
         container: {
@@ -415,7 +415,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="radios" label="radios.twig">
 
-```twig
+```twig showLineNumbers
 {% do field.setParameters({
     attributes: {
         container: {
@@ -452,7 +452,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="group" label="group.twig">
 
-```twig
+```twig showLineNumbers
 {% import "freeform/_templates/formatting/tailwind-3/_row.twig" as rowMacro %}
 
 <div{{ field.attributes.container }}>
@@ -466,7 +466,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="table" label="table.twig">
 
-```twig
+```twig showLineNumbers
 {% set tableColumnCount = field.tableLayout|length %}
 
 {{ field.render({
@@ -496,7 +496,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="opinion-scale" label="opinion-scale.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 {{ field.renderLabel }}
@@ -551,7 +551,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="dropdown" label="dropdown.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 {{ field.renderLabel }}
@@ -575,7 +575,7 @@ if (form) {
 
 Tailwind CSS is typically installed via CLI, but for the purposes of this example template, we use a CDN. The following CDN link for Tailwind CSS 3 is for v3.3.3, which may no longer be the latest version. Please see official [Tailwind CSS 3 documentation](https://tailwindcss.com/docs/installation) for latest versions and CDN links.
 
-```html
+```html showLineNumbers
 <!-- Latest compiled and minified CSS -->
 <script src="https://cdn.tailwindcss.com/3.3.3"></script>
 ```

@@ -71,7 +71,7 @@ Forms can be generated inside your front end templates one of 3 different ways:
 
 The most common and hastle-free approach is to use the **formatting template** assigned to the form and load a [Form query](../queries/form) using the `render` method in your template. In templates that you want your forms to show up in, you simply just insert one line of code:
 
-```twig
+```twig showLineNumbers
 {{ freeform.form("myFormHandle").render() }}
 ```
 
@@ -80,13 +80,13 @@ The most common and hastle-free approach is to use the **formatting template** a
 - Freeform includes several [formatting template examples](#examples) for you to use or user as a starting point for creating your own.
 - This approach is especially handy when rendering forms that have been attached/related forms to entries or other element types.
 - You can have as many formatting templates as you wish. Just specify in the form builder which formatting template the form should use. You won't need to even adjust the page template the form is placed into. If you wish to override the formatting template for the form at template level, you can also specify the `formattingTemplate` parameter:
-  ```twig {2}
+  ```twig showLineNumbers {2}
   {{ freeform.form("myFormHandle", {
       formattingTemplate: 'template-name.html'
   }).render() }}
   ```
 - You can override most of the template attributes and values with the available [template overrides](#template-overrides):
-  ```twig
+  ```twig showLineNumbers
   {{ freeform.form("myFormHandle", {
       attributes: {
           novalidate: true,
@@ -129,7 +129,7 @@ If you absolutely prefer to do so, you can use a [Form query](../queries/form) w
 - Your form formatting code is contained directly within the template that you want the form to appear in.
 - No matter what formatting template your form may have assigned to it in the form builder, the form always conforms to the template formatting used in this template.
 
-  ```twig
+  ```twig showLineNumbers
   {% set form = freeform.form("myFormHandle", {
       attributes: { class: "my-form-class" }
   }) %}
@@ -157,7 +157,7 @@ If you absolutely prefer to do so, you can use a [Form query](../queries/form) w
 
 - For ultimate control, forms can be manually built and even include a mix of render helpers as well:
 
-  ```twig
+  ```twig showLineNumbers
   {% set form = freeform.form("myFormHandle") %}
 
   {{ form.renderTag({
@@ -351,7 +351,7 @@ You can control the behavior of attributes by specifying a `+`, `-`, or `=` symb
 
 For example:
 
-```twig {11,17-18,25}
+```twig showLineNumbers {11,17-18,25}
 {{ form.render({
     fields: {
         "@global": {
@@ -393,7 +393,7 @@ In the above example:
 
 The resulting code might look something like this:
 
-```jsx
+```jsx showLineNumbers
 
 // Each field input would render as:
 <label class="form-label" ... >
@@ -691,7 +691,7 @@ The example below shows the hierarchy and behavior of each option.
 
 Submit buttons are automatically inserted at the end of the form by default. However, you can control their appearance by using the following overrides:
 
-```twig
+```twig showLineNumbers
 {{ form.render({
     buttons: {
         attributes: {
@@ -719,7 +719,7 @@ The following are available:
 - `renderBack` - render a complete **Back** button
 - `renderSave` - render a complete **Save** button
 
-```twig
+```twig showLineNumbers
 {{ form.renderTag({
     returnUrl: "contact/success",
     disable: ["submitButtons"]
@@ -746,7 +746,7 @@ And finally, for maximum control, you can use a property attributes render inste
 - `renderBackProps` - render the property attributes to attach to your **Back** button
 - `renderSaveProps` - render the property attributes to attach to your **Save** button
 
-```twig
+```twig showLineNumbers
 {{ form.renderTag({
     returnUrl: "contact/success",
     disable: ["submitButtons"]
@@ -777,7 +777,7 @@ And finally, for maximum control, you can use a property attributes render inste
 
 These parameters can be passed to any of the render functions, or done separately before.
 
-```twig
+```twig showLineNumbers
 {# Set the parameters like this at any time #}
 {% do field.setParameters({
     attributes: { ... }
@@ -802,7 +802,7 @@ Freeform allows you to also specify attributes for each field inside the form bu
 
 If you were to set up your formatting template to include the following:
 
-```twig
+```twig showLineNumbers
 {{ form.render({
     fields: {
         attributes: {
@@ -818,7 +818,7 @@ All fields will be given a `class` with a value of `field` on the input when ren
 
 If you were to also apply a `class` with a value of `input-class` on the input in the form builder, the resulting code might look something like this:
 
-```jsx
+```jsx showLineNumbers
 // Each field input would render as:
 <input class="field" ... />
 
@@ -834,7 +834,7 @@ If you were to also apply a `class` with a value of `input-class` on the input i
 
 In most cases, attributes will automatically be applied in the right spots by Freeform. However, if you ever need to manually access these properties, you can do as follows...
 
-```twig
+```twig showLineNumbers
 // Access the complete attribute
 {{ form.attributes.whatever|raw }}
 
@@ -846,7 +846,7 @@ In most cases, attributes will automatically be applied in the right spots by Fr
 
 If you have this in your template:
 
-```twig {4}
+```twig showLineNumbers {4}
 {{ form.renderTag({
     attributes: {
         row: { class: "freeform-row" },
@@ -857,19 +857,19 @@ If you have this in your template:
 
 And you place the following in your formatting template:
 
-```twig
+```twig showLineNumbers
 {{ form.attributes.success|raw }}
 ```
 
 It will render as:
 
-```html
+```html showLineNumbers
 class="freeform-form-success"
 ```
 
 A more complete example might be:
 
-```twig {1}
+```twig showLineNumbers {1}
 <div{{ form.attributes.success|raw }}>
     <p>{{ form.settings.successMessage | t('freeform') }}</p>
 </div>
@@ -877,7 +877,7 @@ A more complete example might be:
 
 Which renders as:
 
-```html {1}
+```html showLineNumbers  {1}
 <div class="freeform-form-success">
   <p>Thank you!</p>
 </div>
@@ -885,19 +885,19 @@ Which renders as:
 
 You could also approach it differently by accessing the `class` attribute value directly:
 
-```twig
+```twig showLineNumbers
 {{ form.attributes.success.get("class") }}
 ```
 
 Which will render only as:
 
-```html
+```html showLineNumbers
 freeform-form-success
 ```
 
 A more complete example might be:
 
-```twig {1}
+```twig showLineNumbers {1}
 <div class="form-banner {{ form.attributes.success.get("class") }}">
     <p>{{ form.settings.successMessage | t('freeform') }}</p>
 </div>
@@ -905,7 +905,7 @@ A more complete example might be:
 
 Which renders as:
 
-```html {1}
+```html showLineNumbers  {1}
 <div class="form-banner freeform-form-success">
   <p>Thank you!</p>
 </div>
@@ -919,7 +919,7 @@ Check out the examples below to see how the template code will render in your pa
 
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
-```twig
+```twig showLineNumbers
 {{ form.render({
     attributes: {
         novalidate: true,
@@ -938,7 +938,7 @@ Check out the examples below to see how the template code will render in your pa
 ````
   </TabItem>
   <TabItem value="output" label="Output">
-```html
+```html showLineNumbers
 <form novalidate data-my-form class="my-form-class">
     <div class="row" data-row>
         // ... Fields render here
@@ -961,7 +961,7 @@ You can also pass down attributes to all fields, or specific field types or fiel
 
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
-``` twig
+```twig
 {{ form.render({
     attributes: {
         novalidate: true,
@@ -1020,7 +1020,7 @@ You can also pass down attributes to all fields, or specific field types or fiel
 ```
   </TabItem>
   <TabItem value="output" label="Output">
-``` html
+```html showLineNumbers
 // Output (assuming we have a form with two text fields and a dropdown field).
 <form novalidate>
     // all rows have the class "row" set
@@ -1065,7 +1065,7 @@ If you would like to add a certain class and a `data-container` attribute to the
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
 
-```twig
+```twig showLineNumbers
 {{ field.render({
     attributes: {
         container: {
@@ -1078,7 +1078,7 @@ If you would like to add a certain class and a `data-container` attribute to the
 
   </TabItem>
   <TabItem value="output" label="Output">
-``` html
+```html showLineNumbers
 // Output would generate that class on the container element
 <div class="certain-class" data-container>
     <label />
@@ -1095,7 +1095,7 @@ You can pass any amount of attributes to the specific element this way:
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
 
-```twig
+```twig showLineNumbers
 {{ field.render({
     label: "My Field Label Override",
     instructions: "My field instructions override.",
@@ -1123,7 +1123,7 @@ You can pass any amount of attributes to the specific element this way:
 
   </TabItem>
   <TabItem value="output" label="Output">
-``` html
+```html showLineNumbers
 // Output (assuming it has an error)
 <div class="container">
     <label class="label">My Field Label Override</label>
@@ -1150,7 +1150,7 @@ For further customization of the submit buttons, please see the [options and ins
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
 
-```twig
+```twig showLineNumbers
 {{ form.render({
     buttons: {
         attributes: {
@@ -1182,7 +1182,7 @@ For further customization of the submit buttons, please see the [options and ins
 
   </TabItem>
   <TabItem value="output" label="Output">
-``` html
+```html showLineNumbers
 // Output (assuming you are on page 2 of a multipage form with the Back button enabled)
 <form>
     <div data-freeform-controls style="border: 1px solid red;">
@@ -1209,7 +1209,7 @@ You can add attributes to the main Captcha wrapper automatically inserted by Fre
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
 
-```twig
+```twig showLineNumbers
 {{ form.render({
     captchas: {
         class: ["custom-class", "another-class"],
@@ -1221,7 +1221,7 @@ You can add attributes to the main Captcha wrapper automatically inserted by Fre
   </TabItem>
   <TabItem value="output" label="Output">
 
-```html
+```html showLineNumbers
 // Output (truncated for example) ...
 <div
   class="custom-class another-class"
@@ -1239,7 +1239,7 @@ You can add attributes to the main Captcha wrapper automatically inserted by Fre
 
 You can override the value inside text fields, or pre-select a default option for multi-option field types (specify option values in this case).
 
-```twig
+```twig showLineNumbers
 // Grab the title from the Craft entry slug in the second segment of URL.
 // Used just for the "entryTitle" example below.
 {% set entry = craft.entries.slug(craft.app.request.getSegment(2)).one() %}
@@ -1273,7 +1273,7 @@ You can supply an array of strings to the attribute as well, which can make the 
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
 
-```twig
+```twig showLineNumbers
 {{ field.render({
     attributes: {
         label: {
@@ -1292,7 +1292,7 @@ You can supply an array of strings to the attribute as well, which can make the 
   </TabItem>
   <TabItem value="output" label="Output">
 
-```html
+```html showLineNumbers
 // Assuming the field (handle "myField") is a checkbox, doesn't have errors, //
 but is required, the rendered label tag would look like this:
 <label
@@ -1311,7 +1311,7 @@ You can pass boolean values to attributes and it will render the standalone attr
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
 
-```twig
+```twig showLineNumbers
 {{ field.render({
     attributes: {
         label: {
@@ -1326,7 +1326,7 @@ You can pass boolean values to attributes and it will render the standalone attr
   </TabItem>
   <TabItem value="output" label="Output">
 
-```html
+```html showLineNumbers
 <label data-is-blue data-is-some-data></label>
 ```
 
@@ -1337,7 +1337,7 @@ You can pass boolean values to attributes and it will render the standalone attr
 
 The following is a basic example of what your formatting template can look like to generate form display. A starting template like this (along with CSS) can be generated for you by visiting the [Formatting Templates](../../configuration/settings/#formatting-templates) section in Freeform Settings.
 
-```twig
+```twig showLineNumbers
 {# Render the opening form tag #}
 {{ form.renderTag({
     attributes: {
@@ -1470,7 +1470,7 @@ The following is a basic example of what your formatting template can look like 
 
 Form formatting can also be extremely manual, if that is something you prefer. Here's an example of different levels of manual you can use:
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myForm") %}
 
 {{ form.renderTag({
@@ -1547,7 +1547,7 @@ If you'd like to populate a Freeform field with data from another element such a
 Freeform explicitly requires that all options exist for the field in the form builder work with field types like Dropdown, Checkboxes, etc. To work around this, you can create the field as a regular **Text** field instead, and then modify the formatting template to account for it and include your own Twig code to pull in dynamic options.
 :::
 
-```twig
+```twig showLineNumbers
 {% elseif field.handle == "myFieldHandle") %}
 
     <select name="{{ field.handle }}">

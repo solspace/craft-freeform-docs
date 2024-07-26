@@ -37,7 +37,7 @@ Create a new Craft field inside the Craft CP with a field handle of `productRevi
 <StepMarkdown>
 Now, for the templating part. To start, you might be pulling your Entry data like the following:
 
-```twig
+```twig showLineNumbers
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -47,7 +47,7 @@ Now, for the templating part. To start, you might be pulling your Entry data lik
 <StepMarkdown>
 Let's add a simple form to the page template using the Freeform simple `render` approach now:
 
-```twig {5}
+```twig showLineNumbers {5}
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -59,7 +59,7 @@ Let's add a simple form to the page template using the Freeform simple `render` 
 <StepMarkdown>
 And here's the special sauce... this is where we add the `relations` parameter and feed it the Entry ID to allow attaching the submission to the Entry:
 
-```twig {6-8}
+```twig showLineNumbers {6-8}
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -91,7 +91,7 @@ Create another Craft field with a handle of `userReviews`, using the **Freeform 
 <StepMarkdown>
 Now, for the templating part. To start, you might be pulling your Entry data like the following:
 
-```twig
+```twig showLineNumbers
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -101,7 +101,7 @@ Now, for the templating part. To start, you might be pulling your Entry data lik
 <StepMarkdown>
 Let's add a simple form to the page template using the Freeform simple `render` approach now:
 
-```twig {5}
+```twig showLineNumbers {5}
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -113,7 +113,7 @@ Let's add a simple form to the page template using the Freeform simple `render` 
 <StepMarkdown>
 And now let's relate the form submissions to both the current Craft Entry and the currently logged in User by feeding those ID's to the `relations` parameter:
 
-```twig {6-9}
+```twig showLineNumbers {6-9}
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -142,7 +142,7 @@ Let's work off of the [Relating More Than One Element](#relating-more-than-one-e
 <StepMarkdown>
 To start, you might be pulling your Entry data like the following:
 
-```twig
+```twig showLineNumbers
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -152,7 +152,7 @@ To start, you might be pulling your Entry data like the following:
 <StepMarkdown>
 And with the Freeform form using the Freeform simple `render` approach and the `relations` parameter setup:
 
-```twig {5-10}
+```twig showLineNumbers {5-10}
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -169,7 +169,7 @@ And with the Freeform form using the Freeform simple `render` approach and the `
 <StepMarkdown>
 Now let's pull Freeform submissions that have been related to the Craft Entry, and also use the related User ID to populate User data about the user that submitted the review (submission):
 
-```twig {12-35}
+```twig showLineNumbers {12-35}
 <h2>{{ entry.title }}</h2>
 <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 <p>{{ entry.description }}</p>
@@ -214,7 +214,7 @@ Now let's pull Freeform submissions that have been related to the Craft Entry, a
 
 To display the Craft element(s) you have related the Freeform submission to inside of an email notification, you can do that with the following code inside your email notification template:
 
-```twig
+```twig showLineNumbers
 <ul>
 {% for element in craft.entries.relatedTo(submission.id).all %}
     <li>{{ element.title }}</li>

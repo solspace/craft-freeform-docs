@@ -38,13 +38,13 @@ Please see the [Template Overrides](../../templates/formatting/#template-overrid
 
 A basic implementation of the `Form` query would look like this:
 
-```twig
+```twig showLineNumbers
 {{ freeform.form("myFormHandle").render() }}
 ```
 
 Once [Template Overrides](../../templates/formatting/#template-overrides) have been implemented, your code might look something like this:
 
-```twig
+```twig showLineNumbers
 {{ freeform.form("myFormHandle", {
     attributes: {
         novalidate: true,
@@ -107,7 +107,7 @@ Overrides the return URL for the form. You can override the return URL manually 
 
 <Tabs>
   <TabItem value="checkbox" label="Checkbox" default>
-    ```twig
+    ```twig showLineNumbers
     <label>
       <input
         type="checkbox"
@@ -119,7 +119,7 @@ Overrides the return URL for the form. You can override the return URL manually 
     ```
   </TabItem>
   <TabItem value="radios" label="Radios">
-    ```twig
+    ```twig showLineNumbers
     <label>
       <input
         type="radio"
@@ -147,7 +147,7 @@ Overrides the return URL for the form. You can override the return URL manually 
     ```
   </TabItem>
   <TabItem value="hidden" label="Hidden">
-    ```twig
+    ```twig showLineNumbers
     <input
       type="hidden"
       name="formReturnUrl"
@@ -167,7 +167,7 @@ Overrides the default status of the generated submission. Can be either a `handl
 
 <Tabs>
   <TabItem value="handle" label="Handle" default>
-    ``` twig {2}
+    ```twig {2}
     {{ form.render({
         status: "pending",
         attributes: {
@@ -178,7 +178,7 @@ Overrides the default status of the generated submission. Can be either a `handl
     ```
   </TabItem>
   <TabItem value="id" label="ID">
-    ``` twig {2}
+    ```twig {2}
     {{ form.render({
         status: 1,
         attributes: {
@@ -194,7 +194,7 @@ Overrides the default status of the generated submission. Can be either a `handl
 
 Allows you to override/set a formatting template for a form at template level. When using file-based email notification templates, be sure to include the file extension:
 
-```php
+```php showLineNumbers
 formattingTemplate: 'template-name.twig'
 ```
 
@@ -220,7 +220,7 @@ Allows you to disable email notifications, API integrations and [Element integra
 
 You can also just set this to `true` (`disable: true`) to disable all items (except `submitButtons`) at once.
 
-```php
+```php showLineNumbers
 disable: {
 	adminNotifications: true,
 	emailFieldNotifications: true,
@@ -235,7 +235,7 @@ This is a powerful feature that allows you to relate the posted submission to an
 
 You can specify as many element ID's to relate to as you wish. All you have to do is specify the [Freeform Submissions Field](../../forms/fieldtype/) handle and supply an array of element ID's or just a single element ID that you wish to relate submissions for.
 
-```php
+```php showLineNumbers
 relations: {
 	myFreeformSubmissionsFieldHandle: [55, 106],
 	myOtherFreeformSubmissionFieldHandle: 251
@@ -248,7 +248,7 @@ The above would map the posted submission to the Elements with ID's `55`, `106` 
 
 Adds a prefix value on field outputs. Helpful if you have more than 1 form on the same template and are sharing fields.
 
-```php
+```php showLineNumbers
 fieldIdPrefix: 'myform-'
 ```
 
@@ -256,7 +256,7 @@ fieldIdPrefix: 'myform-'
 
 Allows using a dynamic template level notification for a more fine-grained control.
 
-```php
+```php showLineNumbers
 dynamicNotification: {
 	recipients: ["admin@example.com", "support@example.com"],
 	template: "my-notification-template.twig"
@@ -275,7 +275,7 @@ When using **PHP Sessions** for form context, this feature may not work properly
 
 Allows you to override POST Forwarding settings (in form builder) for the form at template level.
 
-```php
+```php showLineNumbers
 postForwarding: {
 	url: "https://somesite.com/stuff",
 	triggerPhrase: "success"
@@ -303,13 +303,13 @@ Please see the [Template Overrides](../../templates/formatting/#template-overrid
 
 You can pass custom properties and values into the form payload and then display or perform conditionals on them. For example, in your main template (where `showFormTitle` is just a custom property):
 
-```php
+```php showLineNumbers
 {{ form.render({ showFormTitle: true }) }}
 ```
 
 Then in your formatting template, use:
 
-```php
+```php showLineNumbers
 {% if form.properties.showFormTitle %}
 	{{ form.name }}
 {% endif %}
@@ -327,7 +327,7 @@ If displaying the exact same form more than once in a single template, some of t
 
 Render the form using its formatting template:
 
-```twig
+```twig showLineNumbers
 {{ freeform.form("myForm").render() }}
 ```
 
@@ -335,7 +335,7 @@ Render the form using its formatting template:
 
 Render the form using its formatting template, but overriding some classes:
 
-```twig
+```twig showLineNumbers
 {{ freeform.form("myForm", {
     attributes: {
         novalidate: true,
@@ -398,7 +398,7 @@ Get the form object and manually iterate through fields:
 
 Manually iterate through form fields inside your regular template:
 
-```twig
+```twig showLineNumbers
 {# Set the form and overrides #}
 {% set form = freeform.form("myFormHandle", {
     attributes: {
@@ -535,7 +535,7 @@ Manually iterate through form fields inside your regular template:
 
 Form formatting can also be extremely manual, if that is something you prefer. Here's an example of different levels of manual you can use:
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myForm") %}
 
 {{ form.renderTag({
@@ -618,7 +618,7 @@ Form formatting can also be extremely manual, if that is something you prefer. H
 
 You can manually format multi-page forms as well. The key is to wrap page context with `form.currentPage.index` conditionals. Here's an example of different levels of manual you can use:
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myFormHandle") %}
 
 {{ form.renderTag({
@@ -762,7 +762,7 @@ You can manually format multi-page forms as well. The key is to wrap page contex
 
 You can also iterate over fields directly with `layout.fields` instead of [Row objects](../objects/row/):
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myForm") %}
 
 {% for field in form.layout.fields %}
@@ -774,7 +774,7 @@ You can also iterate over fields directly with `layout.fields` instead of [Row o
 
 Rendering the form that allows editing a specific submission and disables all of the email notifications, api integrations, payments and element integrations:
 
-```twig
+```twig showLineNumbers
 {{ freeform.form("myForm").render({
     submissionToken: mySubmissionTokenVariable,
     disable: {
@@ -792,7 +792,7 @@ You can feed Element ID(s) however you like, but the below example shows how you
 
 If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtype/) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
 
-```twig {6-8}
+```twig showLineNumbers {6-8}
 {# Fetch the entry however you wish #}
 {% set entry = craft.entries.slug("submitted-contacts").one %}
 

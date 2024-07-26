@@ -64,7 +64,7 @@ Specify an object of field handles as keys and search parameters as values to se
 
 Display a simple list of submissions:
 
-```twig
+```twig showLineNumbers
 {% set submissions = freeform.submissions({
   orderBy: "firstName ASC, lastName DESC",
   status: ["pending", "closed"],
@@ -81,7 +81,7 @@ Display a simple list of submissions:
 
 Display all submissions and check if fields exist for the submitted form, before displaying them:
 
-```twig
+```twig showLineNumbers
 {% set submissions = freeform.submissions({
   orderBy: "firstName ASC, lastName DESC",
   status: ["pending", "closed"],
@@ -106,7 +106,7 @@ Display all submissions and check if fields exist for the submitted form, before
 
 To paginate submissions, use Craft's [Pagination](https://craftcms.com/docs/5.x/reference/twig/tags.html#paginate). Here's an example:
 
-```twig
+```twig showLineNumbers
 {% paginate freeform.submissions({limit: 5}) as pageInfo, submissions %}
 
 {% for submission in submissions %}
@@ -127,7 +127,7 @@ To paginate submissions, use Craft's [Pagination](https://craftcms.com/docs/5.x/
 
 To display a single submission (see [Submission object](../objects/submission) for more info):
 
-```twig
+```twig showLineNumbers
 {% set submissionId = craft.app.request.segment(5) %}
 {% set submission = freeform.submissions({id: submissionId}).one() %}
 
@@ -171,7 +171,7 @@ To display a single submission (see [Submission object](../objects/submission) f
 
 The following is an example that shows how to render uploaded [Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html) in your form submissions:
 
-```twig
+```twig showLineNumbers
 {% set formHandle = 'yourFormHandle' %}
 {% set submissions = freeform.submissions({
   form: formHandle,
@@ -229,7 +229,7 @@ The following is an example that shows how to render uploaded [Assets](https://c
 
 If you wish to loop through multi-option fields such as Dropdowns, Checkboxes, Radios, etc, to show all options and then highlight which options were selected, you can use `submission[field.handle].options` to loop through the values and compare the `submission[field.handle].option` value against the `option.value` to indicate which options were selected.
 
-```twig
+```twig showLineNumbers
 <ul>
 {% for option in submission[field.handle].options %}
     <li{% if submission[field.handle].value == option.value %} class="selected"{% endif %}>{{ option.value }}</li>
@@ -239,7 +239,7 @@ If you wish to loop through multi-option fields such as Dropdowns, Checkboxes, R
 
 If you wish to omit the empty options, you can do something like this instead:
 
-```twig
+```twig showLineNumbers
 {#
     Create empty array
     Add the checked items to array
@@ -259,7 +259,7 @@ If you wish to omit the empty options, you can do something like this instead:
 
 Only select submissions that have `Bill` as the first name and has their favorite food end with `pie`.
 
-```twig {4-7}
+```twig showLineNumbers {4-7}
 {% set submissions = freeform.submissions({
   orderBy: "firstName ASC, lastName DESC",
   status: ["pending", "closed"],
@@ -280,7 +280,7 @@ Only select submissions that have `Bill` as the first name and has their favorit
 
 If you'd like to limit submission results by a date range, e.g. last 2 weeks until today, you can use something like this:
 
-```twig
+```twig showLineNumbers
 {% set start = now|date_modify('-2 weeks')|atom %}
 {% set end = now|atom %}
 

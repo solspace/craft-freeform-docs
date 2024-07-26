@@ -85,7 +85,7 @@ Please see the [Template Overrides](../../templates/formatting/#template-overrid
 
 A basic implementation might look like this:
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myFormHandle") %}
 
 {{ form.render() }}
@@ -95,7 +95,7 @@ A basic implementation might look like this:
 
 Once [Template Overrides](../../templates/formatting/#template-overrides) have been implemented, your code might look something like this:
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myFormHandle") %}
 
 {{ form.render({
@@ -158,7 +158,7 @@ Once [Template Overrides](../../templates/formatting/#template-overrides) have b
 
 Manually iterate through form fields inside your regular template:
 
-```twig
+```twig showLineNumbers
 {# Set the form #}
 {% set form = freeform.form("myFormHandle") %}
 
@@ -295,7 +295,7 @@ Manually iterate through form fields inside your regular template:
 
 When not using AJAX, the session success flash message (displays only once) when the form is successfully submitted:
 
-```twig {3-5}
+```twig showLineNumbers {3-5}
 {% set form = freeform.form("myForm") %}
 
 {% if form.submittedSuccessfully %}
@@ -309,7 +309,7 @@ When not using AJAX, the session success flash message (displays only once) when
 
 Display a message when the submission is a [duplicate](../../submissions/overview/#submission-limits#per-user):
 
-```twig {3-6}
+```twig showLineNumbers {3-6}
 {% set form = freeform.form("myForm") %}
 
 {% if form.duplicate %}

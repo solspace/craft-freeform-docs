@@ -37,7 +37,7 @@ Video: Preview of Formatting Template Examples
 <TabItems>
 <CodeTabItem filetype="twig" value="index" label="index.twig" default>
 
-```twig
+```twig showLineNumbers
 {# Pull in CSS and field rendering #}
 <style>
 {% include "freeform/_templates/formatting/bootstrap-5-floating-labels/_main.css" %}
@@ -175,7 +175,7 @@ Video: Preview of Formatting Template Examples
 </CodeTabItem>
 <CodeTabItem filetype="twig" value="row" label="_row.twig">
 
-```twig
+```twig showLineNumbers
 {% macro getFieldTemplate(type) -%}
     {%- set fieldTemplatePath = "freeform/_templates/formatting/bootstrap-5-floating-labels/fields/" -%}
     {%- if type in ["text", "email", "website", "confirm", "regex", "phone", "datetime", "number", "password"] -%}
@@ -220,7 +220,7 @@ Video: Preview of Formatting Template Examples
 
 <CodeTabItem filetype="css" value="_main" label="_main.css">
 
-```css
+```css showLineNumbers
 button[type='submit'].freeform-processing {
   display: inline-flex;
   flex-wrap: nowrap;
@@ -269,7 +269,7 @@ label.required:after {
 
 <CodeTabItem filetype="js" value="_main.js" label="_main.js">
 
-```js
+```js showLineNumbers
 var form = document.querySelector('[data-id="{{ form.anchor }}"]');
 if (form) {
   // Styling for AJAX responses
@@ -345,7 +345,7 @@ if (form) {
 <TabItems>
 <CodeTabItem filetype="twig" value="_default_" label="_default.twig" default>
 
-```twig
+```twig showLineNumbers
 {{ field.render }}
 ```
 
@@ -353,7 +353,7 @@ if (form) {
 
 <CodeTabItem filetype="twig" value="checkbbox" label="checkbox.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
     <div class="form-check">
         {{ field.renderInput }}
@@ -368,7 +368,7 @@ if (form) {
 
 <CodeTabItem filetype='twig' value="checkboxes" label="checkboxes.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
     {{ field.renderLabel }}
@@ -401,7 +401,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="radios" label="radios.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
     {{ field.renderLabel }}
@@ -434,7 +434,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="group" label="group.twig">
 
-```twig
+```twig showLineNumbers
 {% import "freeform/_templates/formatting/bootstrap-5-floating-labels/_row.twig" as rowMacro %}
 
 <div{{ field.attributes.container }}>
@@ -453,7 +453,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="table" label="table.twig">
 
-```twig
+```twig showLineNumbers
 {{ field.render({
     addButtonLabel: "Add +",
     removeButtonLabel: "x",
@@ -471,7 +471,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="textarea" label="textarea.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 {% set inputAttributes = ('height:' ~ (25 * field.rows|default(5)) ~ 'px') %}
@@ -496,7 +496,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="dropdown" label="dropdown.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 {{ field.renderInput -}}
@@ -510,7 +510,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="multiple-select" label="multiple-select.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 {% set inputAttributes = ('height:' ~ (25 * 5) ~ 'px') %}
@@ -534,7 +534,7 @@ if (form) {
 </CodeTabItem>
 <CodeTabItem filetype='twig' value="floating" label="floating.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 {% do field.setParameters({
@@ -559,7 +559,7 @@ if (form) {
 
 The following CDN links for Bootstrap 5 are for v5.3.1, which may no longer be the latest version. Please see official [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.3/getting-started/download/) for latest versions and CDN links.
 
-```html
+```html showLineNumbers
 <!-- Latest compiled and minified CSS -->
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"

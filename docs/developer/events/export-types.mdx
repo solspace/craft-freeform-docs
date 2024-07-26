@@ -12,7 +12,7 @@ Use this event to attach your own export types.
 
 First, create your own export type, which extends the Export Interface:
 
-```php
+```php showLineNumbers
 <?php
 
 namespace My\Exporter;
@@ -54,7 +54,7 @@ class CustomExport implements ExportInterface
 
 Then register your exporter:
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Services\ExportProfilesService;
 use Solspace\Freeform\Events\ExportProfiles\RegisterExporterEvent;
 use My\Exporter\CustomExport;

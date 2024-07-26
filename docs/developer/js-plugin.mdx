@@ -16,7 +16,7 @@ In the event you wish to override or extend any of Freeform's default JS behavio
 
 For the sake of this article, let's assume that you have this form in your page:
 
-```html
+```html showLineNumbers
 <form id="my-form" data-handle="mySpecificFormHandle" data-freeform>
   ... form content here ...
 </form>
@@ -26,7 +26,7 @@ To hook into the Freeform JS plugin once the plugin has been initialised, your c
 
 Here's a small preview of the things possible:
 
-```js
+```js showLineNumbers
 const myForm = document.getElementById('my-form');
 myForm.addEventListener('freeform-ready', function (event) {
   const freeform = event.freeform;
@@ -82,7 +82,7 @@ If you wish to manually load the Freeform JS elsewhere in your template (rather 
 
 Here's a simple example of how this may look in your template:
 
-```twig{4}
+```twig {4} showLineNumbers
 <body>
   {# your template code #}
 
@@ -92,7 +92,7 @@ Here's a simple example of how this may look in your template:
 
 Will generate:
 
-```twig{4-5}
+```twig {4-5} showLineNumbers
 <body>
   {# your template code #}
 
@@ -103,7 +103,7 @@ Will generate:
 
 #### Or by passing custom attributes:
 
-```twig{4-7}
+```twig {4-7} showLineNumbers
 <body>
   {# your template code #}
 
@@ -116,7 +116,7 @@ Will generate:
 
 Will generate:
 
-```twig{4-5}
+```twig {4-5} showLineNumbers
 <body>
   {# your template code #}
 
@@ -139,7 +139,7 @@ This event has the following properties:
 - `freeform` - the Freeform JS Plugin instance
 - `options` - an object which lets you modify the [Plugin Options](#plugin-options)
 
-```js
+```js showLineNumbers
 const myForm = document.getElementById('my-form');
 myForm.addEventListener('freeform-ready', function (event) {
   event.options.ajax = true;
@@ -158,7 +158,7 @@ This event has the following properties:
 - `addCallback(callback: () => Promise<void | boolean>, prority?: number)` <Badge type="feature" text="New in 5.0+" /> - an async function which lets you add a callback to be executed before the form is submitted. It will lock the submit process until finished. The callback should return `true` or nothing to allow the form to be submitted, or `false` to prevent the form from being submitted.
 - `isBackButtonPressed` - a `boolean` value which specifies if the Back button was pressed or not.
 
-```js
+```js showLineNumbers
 const myForm = document.getElementById('my-form');
 myForm.addEventListener('freeform-on-submit', function (event) {
   const form = event.form;
@@ -185,7 +185,7 @@ myForm.addEventListener('freeform-on-submit', function (event) {
 
 To add a blocking synchronous callback to the form submit process, you can use the `addCallback` method:
 
-```js
+```js showLineNumbers
 // Priorities of the callbacks are 0 by default, and are optional.
 // The bigger the priority, the faster the callback will be executed.
 // The smaller the priority, the slower the callback will be executed.
@@ -223,7 +223,7 @@ This event has the following properties:
 - `data` - a `FormData` object with all of the `POST` values added to it
 - `request` - an `XMLHttpRequest` object that is about to be executed
 
-```js
+```js showLineNumbers
 const myForm = document.getElementById('my-form');
 myForm.addEventListener('freeform-ajax-before-submit', function (event) {
   const form = event.form;
@@ -257,7 +257,7 @@ This event has the following properties:
 - `request` - an `XMLHttpRequest` object that was executed
 - `response` - the response `JSON` object, already deserialized
 
-```js
+```js showLineNumbers
 const myForm = document.getElementById('my-form');
 myForm.addEventListener('freeform-ajax-success', function (event) {
   const form = event.form;
@@ -271,7 +271,7 @@ myForm.addEventListener('freeform-ajax-success', function (event) {
 
 If you need to control a custom return on the form, you would do that with the following code:
 
-```js
+```js showLineNumbers
 // Find the form element
 const form = document.getElementById('my-form');
 // Do something on a successful ajax submit
@@ -299,7 +299,7 @@ This event has the following properties:
 - `errors` - an object of all field handles as keys containing an array of error message strings each. (e.g. `{ firstName: ['This field is Required', 'Some other error'], lastName: ['error happened']`)
 - `formErrors` - an array of all form error strings (e.g. `['invalid recaptcha', 'some other error']`)
 
-```js
+```js showLineNumbers
 const myForm = document.getElementById('my-form');
 myForm.addEventListener('freeform-ajax-error', function (event) {
   const form = event.form;
@@ -321,7 +321,7 @@ This event has the following properties:
 - `request` - an `XMLHttpRequest` object that was executed
 - `response` - the response `JSON` object, already deserialized
 
-```js
+```js showLineNumbers
 // Count the number of times the submit button was pressed
 let numberOfSubmissions = 0;
 const myForm = document.getElementById('my-form');
@@ -340,7 +340,7 @@ This event has the following properties:
 - `form` - the `<form>` element
 - `freeform` - the Freeform JS Plugin instance
 
-```js
+```js showLineNumbers
 document.addEventListener('freeform-render-success', function (event) {
   // Stop the default success message rendering
   event.preventDefault();
@@ -369,7 +369,7 @@ This event has the following properties:
 - `freeform` - the Freeform JS Plugin instance
 - `errors` - an array of all form error strings
 
-```js
+```js showLineNumbers
 document.addEventListener('freeform-render-form-errors', function (event) {
   // Stop the default form error rendering
   event.preventDefault();
@@ -399,7 +399,7 @@ This event has the following properties:
 - `freeform` - the Freeform JS Plugin instance
 - `errors` - an object with field handles as keys, that contains an array of error messages for each key.
 
-```js
+```js showLineNumbers
 document.addEventListener('freeform-render-field-errors', function (event) {
   // Stop the default field error rendering
   event.preventDefault();
@@ -427,7 +427,7 @@ This event has the following properties:
 - `form` - the `<form>` element
 - `freeform` - the Freeform JS Plugin instance
 
-```js
+```js showLineNumbers
 document.addEventListener('freeform-remove-messages', function (event) {
   const form = event.form;
 
@@ -452,7 +452,7 @@ This event has the following properties:
 - `freeform` - the Freeform JS Plugin instance
 - `field` - the field input element
 
-```js
+```js showLineNumbers
 document.addEventListener('freeform-remove-field-messages', function (event) {
   const form = event.form;
   const field = event.field;
@@ -476,7 +476,7 @@ The Freeform JS Plugin has several options that let you override the way it work
 
 You can override the options by passing your own option values during the `freeform-ready` event
 
-```js
+```js showLineNumbers
 const form = document.getElementById('my-form');
 form.addEventListener('freeform-ready', function (event) {
   // Enable AJAX. This happens automatically if you enable AJAX via the form builder
@@ -553,7 +553,7 @@ Full documentation can be found here: [Stripe Elements Appearance API](https://s
 
 ### Example
 
-```html
+```html showLineNumbers
 <script>
   var form = document.querySelector('[data-id="{{ form.anchor }}"]');
   if (form) {
@@ -610,7 +610,7 @@ The Freeform [Date & Time](../forms/fields) field comes packed with a built-in, 
 
 When using the [Automatically Scroll to Form on Errors and Multipage forms?](../configuration/settings#automatically-scroll-to-form-on-errors-and-multipage-forms) setting, Freeform will automatically handle scrolling the the browser down to the form. However, if you have a floating header or other situation you need to account for, you can override the scroll offset as well as the anchor to scroll to. You can attach your own logic to the events by listening on the following events:
 
-```js
+```js showLineNumbers
 document.addEventListener('freeform-ready', (event) => {
   // scrolling offset in pixels from the top of the form.
   // defaults to 0
@@ -618,7 +618,7 @@ document.addEventListener('freeform-ready', (event) => {
 });
 ```
 
-```js
+```js showLineNumbers
 document.addEventListener('freeform-ready', (event) => {
   // element to call `.scrollTo()` on
   // defaults to `window`
@@ -631,7 +631,7 @@ document.addEventListener('freeform-ready', (event) => {
 
 The Freeform [Table](../forms/fields) field comes with its own optional javascript functionality for adding and removing rows. You can attach your own logic to the events by listening on the following events:
 
-```js
+```js showLineNumbers
 const form = document.getElementById('my-form');
 form.addEventListener('freeform-field-table-on-add-row', function (event) {
   const form = event.form;
@@ -645,7 +645,7 @@ form.addEventListener('freeform-field-table-on-add-row', function (event) {
 });
 ```
 
-```js
+```js showLineNumbers
 const form = document.getElementById('my-form');
 form.addEventListener('freeform-field-table-after-row-added', function (event) {
   const form = event.form;
@@ -659,7 +659,7 @@ form.addEventListener('freeform-field-table-after-row-added', function (event) {
 });
 ```
 
-```js
+```js showLineNumbers
 const form = document.getElementById('my-form');
 form.addEventListener('freeform-field-table-on-remove-row', function (event) {
   const form = event.form;
@@ -673,7 +673,7 @@ form.addEventListener('freeform-field-table-on-remove-row', function (event) {
 });
 ```
 
-```js
+```js showLineNumbers
 const form = document.getElementById('my-form');
 form.addEventListener(
   'freeform-field-table-after-remove-row',

@@ -38,7 +38,7 @@ You get this by extending the `\Solspace\Freeform\Library\Integrations\Types\Ema
 
 Let's start with a basic Email Marketing integration class and go from there:
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules\EmailMarketing;
@@ -100,7 +100,7 @@ Here we have a barebones Email Marketing integration type defined. There are 5 m
 
 We likely will need some sort of authorization mechanism to be able to push data to our endpoint. For this example, we will assume that a simple access token is enough. Let's add a property that will store our `accessToken` in the database in an encrypted format.
 
-```php
+```php showLineNumbers
 // ...
 use Solspace\Freeform\Attributes\Property\Input;
 use Solspace\Freeform\Attributes\Property\Validators;
@@ -142,7 +142,7 @@ Now that we have an access token, we need to attach it to the requests that are 
 
 We need to listen to the `\Solspace\Freeform\Bundles\Integrations\Providers\IntegrationClientProvider::EVENT_GET_CLIENT` event, so let's edit our module to take care of this:
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules;
@@ -194,7 +194,7 @@ To make our integration type available in the integration settings when creating
 
 In your custom module, we must listen to the `\Solspace\Freeform\Services\Integrations\IntegrationsService::EVENT_REGISTER_INTEGRATION_TYPES` event, and register our integration.
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -233,7 +233,7 @@ To test the connection, we will write a very simple API server for this integrat
 
 Here are the contents of the file:
 
-```php
+```php showLineNumbers
 <?php
 
 header('Content-Type: application/json');
@@ -261,7 +261,7 @@ It's super simple. If there's an `Access-Token` header provided, and its value i
 
 Now let's run the server, by going to the directory where the `server.php` is located and starting the PHP's built-in server on `localhost:8000`.
 
-```sh
+```sh showLineNumbers
 $ cd [craft-root-dir]/modules/ApiMock
 $ php -S localhost:8000 server.php
 ```
@@ -272,7 +272,7 @@ You can test if the server is running by opening `http://localhost:8000` and see
 
 Let's write implementations for the `::checkConnection()` and `::getApiRootUrl()` methods:
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -345,7 +345,7 @@ For us to be able to display mailing lists and utilize their custom fields, we n
 
 Let's update our API server example to return two mailing lists when accessing the mailing list endpoint `GET /lists`:
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -369,7 +369,7 @@ Now when we call the `http://localhost/lists` with a valid Access Token, we will
 
 Let's implement the `::fetchLists()` method to convert these lists into the Freeform Integration list objects that are ready for storage (this lets us cache the fetched lists without making additional calls to the API every time we need them):
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -410,7 +410,7 @@ Choose the **Email** field as the target email field, which will be used to subs
 
 For the sake of this demonstration, let's add a third list to our API Server.
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -436,7 +436,7 @@ Categories let us split field mappings into separate groups, allowing for easier
 
 First things first, let's update our API Server to return a list of fields when fetching fields. In this example, we will only return custom fields for the List with ID `2`, for the others, we will return an empty array:
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -470,7 +470,7 @@ Now, when we do `GET /lists/2/fields` we will receive a JSON of 4 fields.
 
 Let's implement the fetching logic in our Integration Type
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -529,7 +529,7 @@ The `FieldMapping` property is also extremely flexible in letting you decide how
 
 We do have a preset endpoint just for handling mailing list field mappings for convenience:
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -573,7 +573,7 @@ You can add as many visibility filters as you like.
 
 As for the #[Input\Special\Properties\FieldMapping] attribute - it requires you to specify the source which is an URL that will be queried for the data. For field mappings you need to specify the response as this type
 
-```ts
+```ts showLineNumbers
 type Payload = Array<{
   id: string;
   label: string;
@@ -598,7 +598,7 @@ We can now open up the form builder and select the Second List and observe our f
 
 And now for the most important part of the integration - actually pushing the submitted data. To achieve this, we will implement the ::push() method. In it we will receive the Form object with all of the currently submitted values as well as the authorized Client object.
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -656,7 +656,7 @@ class CustomEmailMarketingIntegration extends EmailMarketingIntegration
 
 For testing purposes, let's update our API Server to receive the posted json data and output it to the console, so we can see it in action.
 
-```php
+```php showLineNumbers
 <?php
 
 // ...
@@ -687,7 +687,7 @@ I mapped the fullName to Name and privateEmail and companyEmail both to a single
 
 This is the result I get in my console.
 
-```json
+```json showLineNumbers
 {
   "email": "john@doe.com",
   "fields": {
@@ -705,7 +705,7 @@ This is the result I get in my console.
 
 The file structure used in this example:
 
-```yaml
+```yaml showLineNumbers
 [craft-root]/modules
   ├── ApiMock
   │   └── server.php
@@ -718,7 +718,7 @@ The file structure used in this example:
 
 Contents of the `server.php` file:
 
-```php
+```php showLineNumbers
 <?php
 
 header('Content-Type: application/json');
@@ -786,7 +786,7 @@ switch ($url) {
 
 Contents of the `CustomEmailMarketingIntegration.php` file:
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules\EmailMarketing;

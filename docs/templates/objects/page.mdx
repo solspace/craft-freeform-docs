@@ -28,7 +28,7 @@ Use this to iterate over all [Rows](./row) in this page. You can also just itera
 
 Render the page label and its index:
 
-```twig
+```twig showLineNumbers
 {{ form.currentPage.label }}
 {{ form.currentPage.index }}
 ```
@@ -37,7 +37,7 @@ Render the page label and its index:
 
 Render all form pages and add a class to the currently shown page:
 
-```twig
+```twig showLineNumbers
 <ul>
   {% for page in form.pages %}
     <li>
@@ -55,7 +55,7 @@ Render all form pages and add a class to the currently shown page:
 
 Iterate through all rows and its fields of the current page:
 
-```twig
+```twig showLineNumbers
 {% for row in form.currentPage %}
   <div class="row">
     {% for field in row %}
@@ -69,7 +69,7 @@ Iterate through all rows and its fields of the current page:
 
 Iterating over the form yields the same results:
 
-```twig
+```twig showLineNumbers
 {% for row in form %}
   <div class="row">
     {% for field in row %}
@@ -85,6 +85,6 @@ Iterating over the form yields the same results:
 
 How to display the total number of pages in a form:
 
-```twig
+```twig showLineNumbers
 {{ form.pages|length }}
 ```

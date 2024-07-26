@@ -19,7 +19,7 @@ If you'd like to display a lightswitch/toggle field instead of a regular checkbo
 ### Step 1
 A basic code example to display a checkbox as a lightswitch relies heavily on CSS and looks something like this:
 
-```html
+```html showLineNumbers
 <style>
   .freeform-checkbox {
     cursor: pointer;
@@ -92,7 +92,7 @@ This will output the following (go ahead and play with it!):
 ### Step 2
 To replace any checkbox fields with the new lightswitch toggle styles, your basic formatting template code would look something like this:
 
-```twig
+```twig showLineNumbers
 <label for="form-input-{{ field.handle }}" class="freeform-checkbox">
     {{ field.renderInput() }}
     <div class="switch"></div>
@@ -105,7 +105,7 @@ To replace any checkbox fields with the new lightswitch toggle styles, your basi
 ### Step 3
 Then add the following CSS:
 
-```css
+```css showLineNumbers
 .freeform-checkbox {
   cursor: pointer;
   display: inline-block;
@@ -166,7 +166,7 @@ The result should look something like this:
 ### Step 4
 In order for this to automatically happen inside a [formatting template](../../templates/formatting/) for all [single Checkboxes](../../forms/fields#checkbox) (and [Email Marketing Checkboxes](../../forms/fields#email-marketing)), you'll want to create a new one if you haven't already. If you using the [Basic Light](../../templates/formatting/basic-light/) formatting template as a starting point, your code might look something like this:
 
-```twig {4-10}
+```twig {4-10} showLineNumbers
 {# Shortened for Example #}
 ...
     <div class="freeform-fieldtype-{{ field.type }}">

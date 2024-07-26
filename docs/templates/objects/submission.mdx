@@ -58,7 +58,7 @@ Also required if you wish to allow [editing of submissions on front end](../../s
 
 A way to access all submitted field values, excluding HTML fields, submit fields, email-marketing fields. You can automate accessing all field data by using markup like this:
 
-```twig
+```twig showLineNumbers
 <ul>
 	{% for field in submission %}
 		<li>{{ field.label }}: {{ submission[field.handle] }}</li>
@@ -80,7 +80,7 @@ Some properties are field type specific. For example, you wouldn't be able to ge
 
 Below is a basic example of how to display a list of submissions for a given form:
 
-```twig
+```twig showLineNumbers
 {% set formHandle = 'yourFormHandle' %}
 {% set submissions = freeform.submissions({
 	form: formHandle,
@@ -142,7 +142,7 @@ Below is a basic example of how to display a list of submissions for a given for
 
 Below is a basic example of how to display a single view submission, assuming the submission ID is in the third segment:
 
-```twig
+```twig showLineNumbers
 {% set submission = freeform.submissions({
 	form: 'yourFormHandle',
 	id: craft.app.request.segment(3),

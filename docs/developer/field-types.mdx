@@ -30,7 +30,7 @@ The field type must implement `FieldInterface`. For convenience, you can extend 
 
 To create a field type which essentially does nothing except render in the front end, you would do this:
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules\Fields;
@@ -86,7 +86,7 @@ class CustomField extends AbstractField
 
 To register the newly created field type in our custom module or plugin, listen to the `FieldTypesProvider::EVENT_REGISTER_FIELD_TYPES` event.
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules;
@@ -125,7 +125,7 @@ We will need an input field for entering the API key from _Google Maps_, as well
 
 So let's add an input for entering the API key of your _Google Maps_ account and the textarea, too. We will also change the input render to render the `<iframe>` with the properties that we added.
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules\Fields;
@@ -210,7 +210,7 @@ Additionally, we would like to add more properties for customizing the `<iframe>
 
 Right now, our field in the builder shows nothing, but we would like to preview the map. Let's open up the `display-address-field.ejs` file and update the template.
 
-```html
+```html showLineNumbers
 <iframe
   width="100%"
   height="300"

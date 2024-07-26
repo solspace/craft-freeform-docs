@@ -8,7 +8,7 @@ sidebar_position: 12
 
 You can use this event if you need to attach any attributes to the `<script>` and `<style>` tags which are added by Freeform.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Events\Forms\RegisterRenderObjectOptionsEvent;
 use Solspace\Freeform\Library\DataObjects\FormRenderObject\AbstractFormRenderObject;
 use yii\base\Event;
@@ -27,7 +27,7 @@ Event::on(
 
 If you need to change something on the honeypot markup which is added by Freeform, use this event.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Services\HoneypotService;
 use Solspace\Freeform\Events\Honeypot\RenderHoneypotEvent;
 

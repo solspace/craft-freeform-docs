@@ -15,10 +15,14 @@ export default function prismIncludeLanguages(PrismObject) {
   globalThis.Prism = PrismObject;
 
   additionalLanguages.forEach((lang) => {
+    if (lang === 'twig') {
+      require(`@site/src/utils/lang/prism-twig`);
+      return;
+    }
+
     // eslint-disable-next-line global-require, import/no-dynamic-require
     require(`prismjs/components/prism-${lang}`);
   });
 
-  // [Comment this because twig error]
-  // delete (globalThis as Optional<typeof globalThis, 'Prism'>).Prism;
+  delete globalThis.Prism;
 }

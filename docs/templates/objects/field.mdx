@@ -31,7 +31,7 @@ The advantage of this approach is that you can set overrides that apply to all f
 Please see the [Template Overrides](../formatting/#template-overrides) documentation for detailed instructions.
 :::
 
-```twig
+```twig showLineNumbers
 {{ freeform.form("myFormHandle", {
     attributes: {
         novalidate: true,
@@ -71,7 +71,7 @@ The advantage of this approach is that you can fine-tune overrides that apply to
 Please see the [Template Overrides](../formatting/#template-overrides) documentation for detailed instructions.
 :::
 
-```twig
+```twig showLineNumbers
 {{ field.render({
     label: "My Field Label Override",
     instructions: "My field instructions override.",
@@ -212,7 +212,7 @@ Returns a boolean value of `true` if the form has been posted and this field doe
 
 Render the whole field (container, label, input field, instructions and errors) with a single line:
 
-```twig
+```twig showLineNumbers
 {{ field.render() }}
 ```
 
@@ -220,7 +220,7 @@ Render the whole field (container, label, input field, instructions and errors) 
 
 Render each part of the field separately:
 
-```twig
+```twig showLineNumbers
 {{ field.renderLabel() }}
 {{ field.renderInstructions() }}
 {{ field.renderInput() }}
@@ -231,7 +231,7 @@ Render each part of the field separately:
 
 Fully customize the output of your field:
 
-```twig
+```twig showLineNumbers
 <label data-label class="label">
 	{{ field.label }}
 	{% if field.instructions %}
@@ -250,7 +250,7 @@ Fully customize the output of your field:
 
 Render the whole field but override any part of it:
 
-```twig
+```twig showLineNumbers
 {{ field.render({
     label: "My Field Label Override",
     instructions: "My field instructions override.",

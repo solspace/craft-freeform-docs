@@ -35,7 +35,7 @@ Video: Preview of Formatting Template Examples
 <TabItems>
 <CodeTabItem filetype="twig" value="index" label="index.twig" default>
 
-```twig
+```twig showLineNumbers
 {# Pull in CSS and field rendering #}
 <style>
 {% include "freeform/_templates/formatting/basic-dark/_main.css" %}
@@ -136,7 +136,7 @@ Video: Preview of Formatting Template Examples
 </CodeTabItem>
 <CodeTabItem filetype="twig" value="row" label="_row.twig">
 
-```twig
+```twig showLineNumbers
 {% macro getFieldTemplate(type) -%}
     {% set fieldTemplatePath = "freeform/_templates/formatting/basic-dark/fields/" %}
     {{- fieldTemplatePath ~ type ~ ".twig" -}}
@@ -177,7 +177,7 @@ Video: Preview of Formatting Template Examples
 
 <CodeTabItem filetype="css" value="_main" label="_main.css">
 
-```css
+```css showLineNumbers
 /* LAYOUT */
 html,
 body {
@@ -746,7 +746,7 @@ button:disabled {
 
 <CodeTabItem filetype="js" value="_main.js" label="_main.js">
 
-```js
+```js showLineNumbers
 var form = document.querySelector('[data-id="{{ form.anchor }}"]');
 if (form) {
   form.addEventListener('freeform-stripe-appearance', function (event) {
@@ -803,7 +803,7 @@ if (form) {
 <TabItems>
 <CodeTabItem filetype="twig" value="_default_" label="_default.twig" default>
 
-```twig
+```twig showLineNumbers
 {{ field.render }}
 ```
 
@@ -811,7 +811,7 @@ if (form) {
 
 <CodeTabItem filetype="twig" value="checkbbox" label="checkbox.twig">
 
-```twig
+```twig showLineNumbers
 <div{{ field.attributes.container }}>
 
 {{ field.renderInput -}}
@@ -826,7 +826,7 @@ if (form) {
 
 <CodeTabItem filetype='twig' value="group" label="group.twig">
 
-```twig
+```twig showLineNumbers
 {% import "freeform/_templates/formatting/basic-dark/_row.twig" as rowMacro %}
 
 <div{{ field.attributes.container }}>

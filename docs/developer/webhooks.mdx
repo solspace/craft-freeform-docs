@@ -33,7 +33,7 @@ For the sake of this example, let's assume you just want your webhook to post th
 <StepMarkdown>
 ### Create the Webhook Integration
 
-```php
+```php showLineNumbers
 <?php
 
 namespace Modules\Webhooks;
@@ -93,7 +93,7 @@ class BasicWebhook extends WebhookIntegration
 
 Now that the integration type has been created, we need to register it with Freeform to make it available when creating new integrations. We do this by listening to the `\Solspace\Freeform\Services\Integrations\IntegrationsService::EVENT_REGISTER_INTEGRATION_TYPES` event.
 
-```php
+```php showLineNumbers
 <?php
 
 namespace Modules;

@@ -178,7 +178,7 @@ The following are several examples of how to iterate over fields' submission dat
 
 The following example will generate survey or poll results for a specific field.
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myFormHandle") %}
 
 {% set field = form.get('myFieldHande') %}
@@ -201,7 +201,7 @@ The below example uses the [Bootstrap](https://getbootstrap.com/) library to gen
   alt="Surveys & Polls Template Report"
 />
 
-```twig
+```twig showLineNumbers
 <style>
     .chart-textarea-responses {
         max-height: 300px;
@@ -256,7 +256,7 @@ The below example uses the [Bootstrap](https://getbootstrap.com/) library to gen
 
 The below example uses the [Chart.js](https://www.chartjs.org/) library to generate charts with your survey or poll questions and responses for all eligible survey/poll field types.
 
-```twig
+```twig showLineNumbers
 <style>
     .chart-textarea-responses {
         max-height: 300px;
@@ -354,7 +354,7 @@ The below example uses the [Chart.js](https://www.chartjs.org/) library to gener
 
 The following example will iterate over all fields, compatible with _Survey & Polls_ special behavior or not.
 
-```twig
+```twig showLineNumbers
 {% set form = freeform.form("myFormHandle") %}
 
 {% for row in form %}

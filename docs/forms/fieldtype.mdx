@@ -79,7 +79,7 @@ The following template properties are available for the _Form_ field type:
 
 An example of template code you would use to display a Freeform form (with field handle of _myFreeformFieldName_) that is attached to a Craft Entry would look something like this:
 
-```twig {5-8}
+```twig {5-8} showLineNumbers
 {% for entry in craft.entries.section('news').limit(10) %}
     <div class="entry">
         <h2><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
@@ -96,7 +96,7 @@ An example of template code you would use to display a Freeform form (with field
 
 If you're using the _Freeform Form_ field inside a Matrix field, your code might look something like this:
 
-```twig {6-7}
+```twig {6-7} showLineNumbers
 <div class="entry">
     <h1>{{ entry.title }}</h1>
     {{ entry.body }}
@@ -118,7 +118,7 @@ If you'd like to automatically pass content from another element (such as a Craf
 
 For example, if you want to pass the title of an entry to a Freeform field, and the entry slug is in the second segment of your URL, you should set that in your formatting template. Also, be sure to include a hidden Freeform field in your form (in this case called `entryTitle`). Your template code might look something like this:
 
-```twig
+```twig showLineNumbers
 {% set entry = craft.entries.slug(craft.app.request.getSegment(2)).one() %}
 
 {{ form.renderTag({

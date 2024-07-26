@@ -32,7 +32,7 @@ Freeform has a root `freeform` query, which contains all the possible queries ne
 
 To query all or some forms, you have to use the `forms` query:
 
-```graphql{3}
+```graphql {3} showLineNumbers
 query {
   freeform {
     forms {
@@ -99,7 +99,7 @@ Example response data:
 
 You can query a single form directly by using the `form` query:
 
-```graphql{3}
+```graphql {3} showLineNumbers
 query {
   freeform {
     form (handle: "my-form") {
@@ -150,12 +150,12 @@ Example response data:
 You can query an Entry form field by using the form field name in the query:
 Assuming the form field's handle is `myFormFieldHandle` and the section is called `Blog`
 
-```graphql{5-15}
+```graphql {5-15} showLineNumbers
 query {
   entries {
     id
     title
-    ...on blog_blog_Entry {
+    ... on blog_blog_Entry {
       myFormFieldHandle {
         id
         name
@@ -210,7 +210,7 @@ The following arguments are available when querying single or multiple forms:
 | `orderBy` | `String`   | Order the forms by a specific property               |
 | `sort`    | `String`   | Sort by `asc` or `desc` order                        |
 
-```graphql
+```graphql showLineNumbers
 query {
   freeform {
     # This is just an example
@@ -239,7 +239,7 @@ You can query fields by the following arguments:
 | `id`     | `[Int]`    | Narrow the queried fields by one or more field's ID's    |
 | `handle` | `[String]` | Narrow the queried fields by one or more field's handles |
 
-```graphql
+```graphql showLineNumbers
 query {
   freeform {
     forms {
@@ -270,7 +270,7 @@ You can grab these values using form-specific GraphQL queries or by creating an 
 
 See [How to Render a Form](#how-to-render-a-form).
 
-```graphql
+```graphql showLineNumbers
 // Query
 mutation SaveContactSubmission(
     $formProperties: FreeformFormPropertiesInputType,
@@ -648,7 +648,7 @@ Use `FreeformDynamicNotificationInterface`.
 | `value`       | `String` | The default value             |
 | `placeholder` | `String` | Input's placeholder attribute |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Text {
     value
@@ -665,7 +665,7 @@ fields {
 | `rows`        | `Int`    | Number of rows shown for this textarea |
 | `placeholder` | `String` | Input's placeholder attribute          |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Textarea {
     value
@@ -682,7 +682,7 @@ fields {
 | `value`   | `String`                                         | The default value    |
 | `options` | [`[FreeformOptionInterface]`](#option-interface) | The assigned options |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Dropdown {
     value
@@ -702,7 +702,7 @@ fields {
 | `value`   | `String`  | The default value                         |
 | `checked` | `Boolean` | Should the checkbox be checked by default |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Checkbox {
     value
@@ -718,7 +718,7 @@ fields {
 | `values`  | `[String]`                                       | The default values   |
 | `options` | [`[FreeformOptionInterface]`](#option-interface) | The assigned options |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_MultipleSelect {
     values
@@ -739,7 +739,7 @@ fields {
 | `oneLine` | `Boolean`                                        | Should this be shown in a single line |
 | `options` | [`[FreeformOptionInterface]`](#option-interface) | The assigned options                  |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Checkboxes {
     values
@@ -760,7 +760,7 @@ fields {
 | `value`   | `String`                                         | The default value    |
 | `options` | [`[FreeformOptionInterface]`](#option-interface) | The assigned options |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Radios {
     value
@@ -779,7 +779,7 @@ fields {
 | ------------- | -------- | ----------------------------- |
 | `placeholder` | `String` | Input's placeholder attribute |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Email {
     placeholder
@@ -801,7 +801,7 @@ fields {
 | `allowNegative`      | `Bool`   | Allow negative numbers        |
 | `placeholder`        | `String` | Input's placeholder attribute |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Number {
     value
@@ -825,7 +825,7 @@ fields {
 | `maxFileSizeKB` | `Int`      | Maximum allowed filesize in KB              |
 | `fileCount`     | `Int`      | Number of allowed simultaneous file uploads |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_File {
     fileKinds
@@ -841,7 +841,7 @@ fields {
 | ----------------- | -------- | ------------------------------------------ |
 | `targetFieldHash` | `String` | Hash of the field that has to be confirmed |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Confirmation {
     targetFieldHash
@@ -867,7 +867,7 @@ fields {
 | `minDate`             | `String`  | Specifies the minimum allowed date that can be picked           |
 | `maxDate`             | `String`  | Specifies the maximum allowed date that can be picked           |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Datetime {
     value
@@ -895,7 +895,7 @@ fields {
 | `legends` | `[String]`                                                    | A list of all the assigned Legends                                     |
 | `scales`  | [`[FreeformOpinionScaleInterface]`](#opinion-scale-interface) | The assigned [FreeformOpinionScaleInterface](#opinion-scale-interface) |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_OpinionScale {
     value
@@ -916,7 +916,7 @@ fields {
 | `pattern`   | `String`  | Phone number pattern                                      |
 | `useJsMask` | `Boolean` | Should the built-in pattern matcher javascript be enabled |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Phone {
     value
@@ -936,7 +936,7 @@ fields {
 | `colorHover`    | `String` | Color of the hovered rating star               |
 | `colorSelected` | `String` | Color of the selected rating star              |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Rating {
     value
@@ -956,7 +956,7 @@ fields {
 | `pattern` | `String` | Regex pattern                     |
 | `message` | `String` | The error message to be displayed |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Regex {
     value
@@ -978,7 +978,7 @@ fields {
 | `penColor`        | `String`  | Signature field pen color                            |
 | `penDotSize`      | `Float`   | The size of the pen dot                              |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Signature {
     width
@@ -1004,7 +1004,7 @@ fields {
 | `removeButtonMarkup` | `String`  | Custom html for the "delete row" button                        |
 | `tableLayout`        | `String`  | JSON of the table layout                                       |
 
-```graphql
+```graphql showLineNumbers
 fields {
   ... on FreeformField_Table {
     useScript
@@ -1062,7 +1062,7 @@ Make sure to read [How to Build a Module](https://craftcms.com/docs/5.x/extend/m
 
 Below is an example of what your `/modules/FreeformModule.php` file should look like:
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules;
@@ -1092,7 +1092,7 @@ class FreeformModule extends Module
 
 Add your module to your project's application configuration by listing it in the `/config/app.php` file:
 
-```php
+```php showLineNumbers
 <?php
 
 use modules\FreeformModule;
@@ -1110,7 +1110,7 @@ return [
 
 Create a new controller for Freeform located at `/modules/controllers/FormController.php`:
 
-```php
+```php showLineNumbers
 <?php
 
 namespace modules\controllers;
@@ -1146,7 +1146,7 @@ class FormController extends Controller
 
 Update the `/config/routes.php` with your new module controller actions:
 
-```php
+```php showLineNumbers
 <?php
 
 return [
@@ -1162,7 +1162,7 @@ return [
 
 The JSON response looks like this:
 
-```json
+```json showLineNumbers
 {
     "id": 1,
     "hash": "xxxxxxxx-xxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",

@@ -10,7 +10,7 @@ If you have to perform any special checks or extra steps when validating or conn
 
 This event lets you add your own validations to the element validation process.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Events\Integrations\ElementIntegrations\ValidateEvent;
 use Solspace\Freeform\Library\Integrations\Types\Elements\ElementIntegrationInterface;
 
@@ -34,7 +34,7 @@ Event::on(
 
 ## After an Element is validated
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Events\Integrations\ElementIntegrations\ValidateEvent;
 use Solspace\Freeform\Library\Integrations\Types\Elements\ElementIntegrationInterface;
 
@@ -57,7 +57,7 @@ Event::on(
 
 This event is fired before the created and validated Element is saved.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Events\Integrations\ElementIntegrations\ConnectEvent;
 use Solspace\Freeform\Library\Integrations\Types\Elements\ElementIntegrationInterface;
 
@@ -78,7 +78,7 @@ Event::on(
 
 This event is fired before after the validated Element has been saved successfully.
 
-```php
+```php showLineNumbers
 use Solspace\Freeform\Events\Integrations\ElementIntegrations\ConnectEvent;
 use Solspace\Freeform\Library\Integrations\Types\Elements\ElementIntegrationInterface;
 

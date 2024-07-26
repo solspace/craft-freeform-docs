@@ -84,7 +84,7 @@ Carefully review the [changelog](./changelog/) for Freeform 5.x as well as the n
 <StepMarkdown>
 Edit your project's `composer.json` file and update the Freeform version to 5.x:
 
-```diff
+```diff showLineNumbers
   "require": {
       "craftcms/cms": "^5.0.0",
       "vlucas/phpdotenv": "^5.4.0",
@@ -95,65 +95,65 @@ Edit your project's `composer.json` file and update the Freeform version to 5.x:
 ```
 
 - Get the latest 5.x package of Freeform by running the following command:
-  ```sh command-line
+  ```sh showLineNumbers
   php craft update freeform
   ```
   - To get a specific version, run the following command:
-    ```sh command-line
+    ```sh showLineNumbers
     php craft update freeform:5.3.0
     ```
 - Perform the migration one of two ways: - In your CLI, run one of the following commands (all plugins including Craft, or just Freeform): <Badge type="recommended" text="Recommended" />
-  `sh command-line
+  `sh showLineNumbers
  php craft migrate/all
 `
   **OR**
-  `sh command-line
+  `sh showLineNumbers
  php craft migrate --plugin=freeform
 `
   The CLI will then present something like this:
 
-             ``` nix app-window
-             [username@Computer site.test % php craft migrate --plugin=freeform
-             Checking for pending Freeform migrations ...
-             Total 29 new migrations to be applied:
-                 m230101_100000_ConvertJsonToLongTextColumns
-                 m230101_100010_FF4to5_MigrateForms
-                 m230101_100020_FF4to5_MigrateLayout
-                 m230101_100030_FF4to5_MigrateNotifications
-                 m230101_100050_FF4to5_MigrateIntegrations
-                 m230101_100060_FF4to5_MigrateConditionalRules
-                 m230101_200000_FF4to5_MigrateData
-                 m230101_300100_FF4RemoveOldTables
-                 m230224_141036_RemoveRedundantFieldsFromIntegrationsTable
-                 m230224_141037_RenameIntegrationTableColumns
-                 m230227_102619_MoveCRMIntegrationClasses
-                 m230301_124411_MoveMailingListIntegrationClasses
-                 m230712_120518_RemoveIntegrationsQueueMailingListFieldIndex
-                 m230725_124256_AddCategoryToCrmFields
-                 m230809_081815_AddCategoryToMailingListFields
-                 m230824_111101_ChangeMailingListsToEmailMarketing
-                 m230824_163145_RemoveWebhooksTable
-                 m230920_103014_RemoveLastUpdateFromIntegrations
-                 m230925_162351_AddEnabledToIntegrations
-                 m231020_115409_MigrateIntegrationNamespaces
-                 m231116_104621_AlterPaymentTables
-                 m231128_142144_AddLinkToPaymentsTable
-                 m231206_132139_RemoveLockTable
-                 m231219_105754_AddUsersToFormsTable
-                 m231229_155623_CreateSurveysPreferencesTable
-                 m231230_074448_CreateFieldsTypeGroupsTable
-                 m240109_142124_UpdatePageButtonMetadata
-                 m240110_111258_ChangeFormFieldRowForeignKey
-                 m240111_162954_RemoveStatisticsWidgetFromWidgetsTable
+                         ```nix app-window
+                         [username@Computer site.test % php craft migrate --plugin=freeform
+                         Checking for pending Freeform migrations ...
+                         Total 29 new migrations to be applied:
+                             m230101_100000_ConvertJsonToLongTextColumns
+                             m230101_100010_FF4to5_MigrateForms
+                             m230101_100020_FF4to5_MigrateLayout
+                             m230101_100030_FF4to5_MigrateNotifications
+                             m230101_100050_FF4to5_MigrateIntegrations
+                             m230101_100060_FF4to5_MigrateConditionalRules
+                             m230101_200000_FF4to5_MigrateData
+                             m230101_300100_FF4RemoveOldTables
+                             m230224_141036_RemoveRedundantFieldsFromIntegrationsTable
+                             m230224_141037_RenameIntegrationTableColumns
+                             m230227_102619_MoveCRMIntegrationClasses
+                             m230301_124411_MoveMailingListIntegrationClasses
+                             m230712_120518_RemoveIntegrationsQueueMailingListFieldIndex
+                             m230725_124256_AddCategoryToCrmFields
+                             m230809_081815_AddCategoryToMailingListFields
+                             m230824_111101_ChangeMailingListsToEmailMarketing
+                             m230824_163145_RemoveWebhooksTable
+                             m230920_103014_RemoveLastUpdateFromIntegrations
+                             m230925_162351_AddEnabledToIntegrations
+                             m231020_115409_MigrateIntegrationNamespaces
+                             m231116_104621_AlterPaymentTables
+                             m231128_142144_AddLinkToPaymentsTable
+                             m231206_132139_RemoveLockTable
+                             m231219_105754_AddUsersToFormsTable
+                             m231229_155623_CreateSurveysPreferencesTable
+                             m231230_074448_CreateFieldsTypeGroupsTable
+                             m240109_142124_UpdatePageButtonMetadata
+                             m240110_111258_ChangeFormFieldRowForeignKey
+                             m240111_162954_RemoveStatisticsWidgetFromWidgetsTable
 
-             Apply the above migrations? (yes|no) [no]:
-             ```
+                         Apply the above migrations? (yes|no) [no]:
+                         ```
 
-         **OR**
-         - Proceed to the Craft control panel and click the **Finish Updates** button when it shows.
-             ::: warning
-             Sites with a larger number of forms, fields, and submission data could experience issues doing it this way, which is why we strongly recommend the CLI approach instead.
-             :::
+                     **OR**
+                     - Proceed to the Craft control panel and click the **Finish Updates** button when it shows.
+                         :::warning
+                         Sites with a larger number of forms, fields, and submission data could experience issues doing it this way, which is why we strongly recommend the CLI approach instead.
+                         :::
 
 </StepMarkdown>
 <StepMarkdown>

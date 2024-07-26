@@ -197,7 +197,7 @@ Be sure to have an email notification template ready before proceding.
 
 In your regular Twig template where the form is located, add the following parameter to your [Form query](../templates/queries/form/):
 
-```twig
+```twig showLineNumbers
 dynamicNotification: {
     recipients: "admin@example.com",
     template: "my-template.twig"
@@ -206,7 +206,7 @@ dynamicNotification: {
 
 For multiples, use the array brackets:
 
-```twig
+```twig showLineNumbers
 dynamicNotification: {
     recipients: ["admin@example.com", "support@example.com"],
     template: "my-template.twig"
@@ -239,7 +239,7 @@ If adding a brand new email notification template inside the form builder, Freef
 
 When editing templates directly inside the control panel, Freeform will automatically handle the structure of the template file. If you're creating/editing template files directly, there should be a heading comment block of code for all configuration options that might look something like this:
 
-```twig
+```twig showLineNumbers
 {# subject: New submission from your {{ form.name }} form #}
 {# fromEmail: {{ craft.app.projectConfig.get('email.fromEmail') }} #}
 {# fromName: {{ craft.app.projectConfig.get('email.fromName') }} #}
@@ -273,7 +273,7 @@ Email Notification templates may contain the following options:
     :::
 - **From Name** - the email address the email notification will appear from.
   - May include any Freeform field variables (`fieldName`), e.g.
-    ```twig
+    ```twig showLineNumbers
     {{ firstName }} {{ lastName }}
     ```
     ::: warning
@@ -334,13 +334,13 @@ Email Notification templates may contain the following options:
       - `field.handle` - displays the handle of the field.
       - `field.placeholder` - displays the placeholder of the field.
     - To parse only fields with data, you can use:
-      ```twig
+      ```twig showLineNumbers
       {% for field in allFields if field.valueAsString %}
       ```
     - Excludes _File Upload_ fields. To render these manually, [see example here](#including-file-upload-data).
     - Excludes _Email Marketing_ (mailing list checkbox) selection. To render manually, [see example here](#including-email-marketing-selection-data).
     - Excludes _Signature_ fields. To render manually, use:
-      ```twig
+      ```twig showLineNumbers
       <img src="{{ submission.myFieldHandle.value }}" alt="Signature" />
       ```
   - You may iterate over submission values from the [Submission object](../templates/objects/submission/) (as long as you're [storing submitted data](./builder/#settings))
@@ -350,7 +350,7 @@ Email Notification templates may contain the following options:
       - `element.title` will return the title of the newly created Craft Entry
       - `element.username` will return the username of the newly created Craft User
     - If you have more than 1 element integration for the form, you can use either:
-      ```twig
+      ```twig showLineNumbers
       {% for item in element %}
       {{ element[0].id }}, {{ element[1].id }}, etc
       ```
@@ -365,7 +365,7 @@ Email Notification templates may contain the following options:
 
 Below is a basic automated example for the Email Body setting:
 
-```twig
+```twig showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
 <ul>
 {% for field in allFields %}
@@ -385,7 +385,7 @@ Below is a basic automated example for the Email Body setting:
 
 Below is a manually built example for the Email Body setting:
 
-```twig
+```twig showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
 <p>Here are the details:</p>
 <ul>
@@ -414,7 +414,7 @@ Below is a manually built example for the Email Body setting:
 
 Below is what a basic template might look like when editing notification template files directly (outside of the CP):
 
-```twig
+```twig showLineNumbers
 {# subject: New submission from your {{ form.name }} form #}
 {# fromEmail: {{ craft.app.projectConfig.get('email.fromEmail') }} #}
 {# fromName: {{ craft.app.projectConfig.get('email.fromName') }} #}
@@ -444,7 +444,7 @@ Below is what a basic template might look like when editing notification templat
 
 When wanting to add a text-only version of the Email Body when editing notification template files directly (outside of the CP), wrap an additional set of email body contents with `{# text #} {# /text #}`:
 
-```twig {25-35}
+```twig {25-35} showLineNumbers
 {# subject: New submission from your {{ form.name }} form #}
 {# fromEmail: {{ craft.app.projectConfig.get('email.fromEmail') }} #}
 {# fromName: {{ craft.app.projectConfig.get('email.fromName') }} #}
@@ -486,7 +486,7 @@ The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia')
 
 To only parse fields that include data submitted with them, you would add the following conditional:
 
-```twig {4}
+```twig {4} showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
 <p>Here are the details:</p>
 <ul>
@@ -500,7 +500,7 @@ To only parse fields that include data submitted with them, you would add the fo
 
 If you wish to include HTML and Rich Text blocks in the output, use the `allFieldsAndBlocks` variable instead of `allFields`. You'll need to perform the additional step of using a conditional to sniff out these fields and apply the `|raw` filter:
 
-```twig
+```twig showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
 <p>Here are the details:</p>
 {% for field in allFieldsAndBlocks %}
@@ -516,7 +516,7 @@ If you wish to include HTML and Rich Text blocks in the output, use the `allFiel
 
 You may also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission/) (as long as you're [storing submitted data](./builder/#settings)) like this:
 
-```twig
+```twig showLineNumbers
 {% if submission is not null %}
     <h4>{{ submission.id }}: {{ submission.title }}</h4>
     <ul>
@@ -537,7 +537,7 @@ Create a layout template anywhere in your Craft Templates directory (e.g. `_layo
 Please note that any additional template files (e.g. `_layout.twig`, `_footer.html`, etc) must NOT be stored inside of the _Email Notification Templates_ directory, as Freeform expects that every file in here is a complete email notification template and will choke on any additional files.
 :::
 
-```twig
+```twig showLineNumbers
 <html>
 <head>
     <title>Global Layout</title>
@@ -555,7 +555,7 @@ Please note that any additional template files (e.g. `_layout.twig`, `_footer.ht
 
 And then in your Freeform email notification template, something like:
 
-```twig
+```twig showLineNumbers
 {% extends "_layout/email-notifications" %}
 
 {% block content %}
@@ -574,7 +574,7 @@ And then in your Freeform email notification template, something like:
 
 [File Upload](./fields/#file-upload) field data is excluded from automated rendering in `allFields` variable. You may of course include files as attachments, but if you wish to include an uploaded image rendered into the notification or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission/), and then using the [Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html) query:
 
-```twig{9-15}
+```twig {9-15} showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
 <p>Here are the details:</p>
 <ul>
@@ -596,13 +596,13 @@ And then in your Freeform email notification template, something like:
 
 If you need to pass a Freeform field value (such as an ID) into another Craft query like `craft.entries` or `craft.users` in email notification templates or elsewhere, be sure to specify the Freeform field as `myFreeformFieldHandle.value`. So for example:
 
-```twig
+```twig showLineNumbers
 {{ craft.users.id(myFFfieldHandle.value).one().name }}
 ```
 
 OR
 
-```twig
+```twig showLineNumbers
 {% set item = craft.entries.section('section').id(myFFfieldHandle.value).one %}
 ```
 
@@ -610,7 +610,7 @@ OR
 
 Textarea data is stored in the database as newlines, which obviously don't parse as line breaks when trying to display in email notifications or on front end with Submissions object. To make this happen, use the `nl2br` Twig filter:
 
-```twig
+```twig showLineNumbers
 {{ coverLetter|nl2br }}
 ```
 
