@@ -105,7 +105,7 @@ If you wish to set the Return URL at template level, whether you're doing this t
 1. Open up your page template.
 2. Inside the [Form query](../../templates/queries/form) or the [form object](../../templates/objects/form), add the `returnUrl: "contact/success"` parameter.
    - You can add most variables such as `form.handle`, `submission.id`, `submission.token` as well as perform conditional checks, etc:
-     ```twig
+     ```twig showLineNumbers
      returnUrl: "{{ siteUrl }}freeform-demo/bootstrap/{{ form.handle }}/{% if submission %}submissions/{{ submission.id }}/{% endif %}success"
      ```
 
