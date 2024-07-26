@@ -16,10 +16,11 @@ const Support: React.FC = () => {
       <main className="max-w-5xl m-auto my-12">
         <h1>Premium Support</h1>
         <p>
-          Solspace now offers premium paid support services for our plugins!
-          Have lots of questions or building something complex? Need help with a
-          custom module? Have a complicated upgrade? Get direct high-priority
-          email/chat/web call access to the Software team.
+          Solspace offers premium paid support services for its plugins. If you
+          have lots of questions or are building something complex, need help
+          with a custom module, or have a complicated upgrade, you can get
+          direct, high-priority email, chat, or web call access to the Solspace
+          Software team.
         </p>
         <blockquote className="text-sm font-italic rounded-md p-4 mb-7 form-styling">
           <p className="text-blue-500 mb-2">

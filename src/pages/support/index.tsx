@@ -18,32 +18,12 @@ const Support: React.FC = () => {
           Need help with Freeform? We love helping our customers discover best
           practices, resolve issues, and achieve their goals!
         </p>
-        <FlexCards
-          items={[
-            {
-              title: 'GitHub Issues',
-              description: "Report an issue you're experiencing with Freeform",
-              icon: Icons.GithubIcon,
-              fullCardLink: 'https://github.com/solspace/craft-freeform/issues',
-            },
-            {
-              title: 'GitHub Questions',
-              description:
-                "Search questions others have asked or create your own if it hasn't been asked already.",
-              icon: Icons.GithubIcon,
-              fullCardLink:
-                'https://github.com/solspace/craft-freeform/discussions',
-            },
-            {
-              title: 'Craft Stack Exchange',
-              description:
-                'Research or get advice from all over the Craft CMS community.',
-              icon: Icons.StackExchangeIcon,
-              fullCardLink:
-                'https://craftcms.stackexchange.com/questions/tagged/plugin-freeform',
-            },
-          ]}
-        />
+        <p>
+          For more extensive or urgent needs, consider our
+          <a href="/support/premium">premium support services</a>.
+          Get direct, high-priority access to our Software team for complex
+          questions, custom modules, and complicated upgrades.
+        </p>
         <div className="mt-10">
           <div className="flex gap-1">
             <h2 className="leading-0 mb-0 px-6 py-4 bg-[#ff6624] rounded-t-md">
@@ -75,9 +55,8 @@ const Support: React.FC = () => {
               Create a Support Ticket
             </h2>
             <p className="text-gray-200">
-              If you need help with anything, have a question before making a
-              purchase, or just want to reach out, please feel free to fill out
-              the form below.
+              If you need assistance, have a question before making a purchase,
+              or simply want to get in touch, please fill out the form below.
             </p>
             <iframe
               title="Support Form"
