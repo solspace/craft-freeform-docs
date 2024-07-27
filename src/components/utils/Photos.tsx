@@ -3,7 +3,10 @@ import { ThemedComponent } from '@docusaurus/theme-common';
 import { Props as ThemedImageProps } from '@theme/ThemedImage';
 
 const Photo = (props) => {
-  return <Image className="photo" {...props} />;
+  const { className, ...otherProps } = props;
+  const combinedClassName = `${className ? `${className} ` : ''}photo`;
+
+  return <Image {...otherProps} className={combinedClassName} />;
 };
 
 const ThemedIdealImage = (props: ThemedImageProps): JSX.Element => {

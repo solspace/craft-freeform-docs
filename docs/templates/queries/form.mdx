@@ -208,7 +208,7 @@ Allows you to disable email notifications, API integrations and [Element integra
 - `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../../forms/email-notifications/#email-fields) notifications
 - `api: true` - disable any **CRM** and **Email Marketing** [integrations](../../integrations/)
 - `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable any [Element](../../integrations/elements/) integrations
-  ::: warning
+  :::warning
   This will not disable Element _validation_, e.g. required fields, username already in use, etc.
   :::
 - `payments: true` - disable [Payment](../../integrations/stripe-payments/) integrations
@@ -267,7 +267,7 @@ dynamicNotification: {
 - For Database entry based templates, specify the handle for `template`.
 - For Twig file based templates, specify the full file name including **.html** for `template`.
 
-::: warning
+:::warning
 When using **PHP Sessions** for form context, this feature may not work properly if the page is cached with something like Varnish, etc. In order for it to work correctly, you would have to [refresh the tokens similar to what is described in this guide](../../guides/templating/caching-forms).
 :::
 

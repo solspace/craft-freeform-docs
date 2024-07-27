@@ -262,21 +262,21 @@ Email Notification templates may contain the following options:
   - May include any Freeform field variables (`fieldName`) as well as `form.name`.
 - **From Email** - the email address the email notification will appear from.
   - May include any Freeform field variable (`fieldName`).
-    ::: warning
+    :::warning
     Using a dynamic approach with variables like above could have your emails marked as spam. It would be better to use something general here and set these in the _Reply-to Email_ and _Reply-to Name_ settings instead.
     :::
-    ::: tip
+    :::tip
     If you are using **SMTP** or a service that uses SMTP (like _Sendgrid_, etc), please make sure that the email address you have configured in the **From Email** setting for the email notification exactly matches what you have set in the Craft **Email Settings** area. If you wish to use the submitters email address as the "From" email, use the **Reply-to Email** setting instead.
     :::
-    ::: guide ../../guides/admin-notifications-replyto-submitter/
-    Need to use the submitter of the form as Reply-to email address in admin email notifications?
+    :::guide
+    [Need to use the submitter of the form as Reply-to email address in admin email notifications?](../guides/best-practices/admin-notifications-replyto-submitter)
     :::
 - **From Name** - the email address the email notification will appear from.
   - May include any Freeform field variables (`fieldName`), e.g.
     ```twig showLineNumbers
     {{ firstName }} {{ lastName }}
     ```
-    ::: warning
+    :::warning
     Using a dynamic approach with variables like above could have your emails marked as spam. It would be better to use something general here and set these in the _Reply-to Email_ and _Reply-to Name_ settings instead.
     :::
 - **Reply-to Email** - the email address the email notification will have set for Reply-to.
@@ -310,7 +310,7 @@ Email Notification templates may contain the following options:
       - `fieldName.labels` or `fieldName.labelsAsString` - displays the option label(s) submitted (for fields with options). <Badge type="feature" text="New in 5.0+" />
         - Example: `Apples`
         - Array of data example: `Apples, Oranges`
-          ::: tip
+          :::tip
           Avoid using `fieldName.value` or `fieldName.labels`, as it may not be a string and could trigger an error.
           :::
       - `fieldName.instructions` - displays the instructions for the field.
@@ -327,7 +327,7 @@ Email Notification templates may contain the following options:
       - `field.labelsAsString` - displays the option label(s) submitted (for fields with options). <Badge type="feature" text="New in 5.0+" />
         - Example: `Apples`
         - Array of data example: `Apples, Oranges`
-          ::: tip
+          :::tip
           Avoid using `field.value` or `field.labels`, as it may not be a string and could trigger an error.
           :::
       - `field.instructions` - displays the instructions for the field.
