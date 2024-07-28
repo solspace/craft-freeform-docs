@@ -1210,3 +1210,37 @@ html[data-theme='dark'] .language-sh:before {
   font-weight: 700;
   content: '$' !important;
 }
+
+/* React Player */
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.player-wrapper .react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.react-player iframe {
+  border-radius: 7px;
+}
+
+.react-player:before {
+  content: '\25B6';
+  background: #6f42c1;
+  display: block;
+  color: #121825;
+  width: 25px;
+  height: 25px;
+  font-weight: 700;
+  line-height: 25px;
+  text-align: center;
+  position: absolute;
+  margin: 6px 0 0 -33px !important;
+  top: -18px;
+  left: 20px;
+  border: none;
+  border-radius: 50%;
+}

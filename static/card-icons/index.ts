@@ -52,6 +52,7 @@ export default {
   EmailsIcon: 'emails',
   EventManagementIcon: 'event-management',
   ExportIcon: 'export',
+  FreeformSurveyIcon: 'freeform-survey',
   FieldTextIcon: 'field-text',
   FolderAttentionIcon: 'folder-attention',
   GdprIcon: 'gdpr',

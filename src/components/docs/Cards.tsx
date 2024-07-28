@@ -67,7 +67,7 @@ interface IconsCardProps {
 
 const IconCards: React.FC<IconsCardProps> = ({ items }) => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 justify-start gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-6 mb-6 justify-start gap-4">
       {items.map((item, index) => (
         <Link
           to={item.link}
