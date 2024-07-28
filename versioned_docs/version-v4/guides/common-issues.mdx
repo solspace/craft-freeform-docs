@@ -473,6 +473,26 @@ This is almost always because Craft's CSRF token is invalid or expired. The most
 
 </AnswerCard>
 
+## Multiple emails being sent for Dynamic Recipients field
+
+When using the [Dynamic Recipients](../forms/email-notifications/#dynamic-recipients) field type, I sometimes am receiving duplicate email notifications when the form is submitted.
+
+<AnswerCard>
+
+This is likely because you've specified more than one option with the same email address value. This is a current limitation of Freeform, as Freeform will perceive the user submitting all of the matching options at once, sending off emails as many times as there are duplicate options.
+
+There are a few workaround for this:
+
+1. Create an email address alias for each option so that each option in the Dynamic Recipients field type settings will be unique.
+2. Add sub-address tags to the affected email addresses so their values are unique. For example: `joe+whatever@example.com`, `joe+somethingelse@example.com`, etc.
+3. [Build a custom module](../guides/developer/building-a-custom-module) that sends an email notification to a recipient based upon the selection of a Select/Checkbox Group/Radio fields' option using the `EVENT_AFTER_SUBMIT` event. We've created [a guide](../guides/developer/building-a-custom-module) that will get you 99% of the way there.
+
+<secret>
+  A future version of Freeform (v5) will resolve this issue entirely.
+</secret>
+
+</AnswerCard>
+
 ## Error when loading form in templates
 
 I am getting an error when trying to load a form in my template. It looks like this:

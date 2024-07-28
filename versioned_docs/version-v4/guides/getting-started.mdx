@@ -9,6 +9,14 @@ import { Photo } from '@site/src/components/utils';
 import TemplatingPhoto from './assets/img/templating.png';
 import SubmissionsDetailPhoto from '../assets/img/submissions-detail.png';
 import SubmissionsListPhoto from '../assets/img/submissions-list.png';
+import FormBuilderPhoto from './assets/img/form-builder.png';
+import FormBuilderFields from './assets/img/form-builder-fields.png';
+import EmailNotificationsListPhoto from './assets/img/email-notifications-list.png';
+import BasicLightPhoto from './assets/img/basic-light.png';
+import CrmIntBuilderPhoto from './assets/img/crm-integration-builder.png';
+import EmailNotificationsTemplatePhoto from './assets/img/email-notifications-template.png';
+import FormBuilderFieldsPhoto from './assets/img/form-builder-fields.png';
+import StripePaymentsPhoto from './assets/img/stripe-payments.png';
 
 import FeatureVideo from '../assets/videos/builder-feature.mp4';
 import EmailNotificationsVideo from '../assets/videos/email-notifications.mp4';
@@ -17,73 +25,62 @@ import BuilderIntegrationsVideo from '../assets/videos/builder-integrations.mp4'
 
 # Getting Started
 
-This guide provides a brief overview of Freeform's features, with links to more information.
+This guide provides an overview of how Freeform works without going into too much detail about each feature, so it's easier to digest. Links to more information will be sprinkled throughout.
 
 ## Introduction
 
-Freeform is a plugin that provides an intuitive interface for admins and clients to build and manage simple or complex forms. The [form builder](../forms/builder/) feature allows users to see a live preview of the forms they're building, making it easy to customize and modify. Freeform is designed to be user-friendly and allows users to access almost everything they need without navigating to other areas in the control panel. Despite its simplicity, Freeform is also powerful and flexible - offering a range of features, settings, and options to meet different requirements.
+Freeform centers itself around letting admins and clients enjoy the experience of building and managing simple or complex forms in an intuitive interface that lets you see a live preview of the forms you're building. We refer to this as the [form builder](../forms/builder/), where almost everything is at your fingertips as it aims to stay out of your way and let you do as much as possible without moving around to other areas in the control panel. At the same time, Freeform is very powerful and flexible, so there is also a wide variety of other features, settings and options.
 
 ## Forms
 
 Each form is built inside the intuitive [form builder](../forms/builder/). This is where you can design the form layout, configure which fields are required, set up integrations, email notifications, conditional rules, validation and more. Freeform also allows for [multi-page forms](../forms/builder/#multi-page-forms) and has built-in [spam protection](../forms/spam-protection/) options.
 
-The form builder is a workspace divided into 5 sections:
+The form builder is a workspace divided into three columns:
 
-- **Layout**
-  - This is where you set up [fields](../forms/fields/) and [pages](../forms/builder/#multi-page-forms), as well as design and configure the overall layout of the form.
-- **Notifications**
-  - This is where you configure email notifications for the form. Freeform allows you to set up 6 different kinds of email notifications, including at template level with the [dynamicNotification](../templates/queries/form/#dynamicnotification) parameter in your [Form query](../templates/queries/form/).
-- **Rules**
-  - This is where you can configure fields to **show or hide** based on the contents/selection of other fields, and even **skip pages** or submit the form based on the contents/selection of fields on a previous page.
-- **Integrations**
-  - This is where you can configure various types of integrations for your form. It will only show integrations that have been configured/set up in the [Freeform Settings](../configuration/settings/) area.
-- **Settings**
-  - This is where you configure all settings and behaviors for the form.
+- **Fields**: the left column, where you can see the fields available (and create new ones).
+- **Layout**: the middle column, where you can drag and drop fields (from the left column) into and can rearrange each field however you please.
+- **Settings/Property Editor**: the right column, which is where you can configure the form settings, email notifications, integrations, and properties for each field and page, etc.
 
-<Player url={FeatureVideo} muted loop playing width="100%" height="100%" />
+<Photo img={FormBuilderPhoto} alt="Form Builder" />
+
+:::youtube[94H5c9T4EHE]
+Video: Overview of the Form Builder
+:::
 
 ## Fields
 
-Freeform uses its own set of [field types](../forms/fields/). The form builder will display all available field types for the form (will differ between editions of Freeform). These can then be added to forms indefinitely.
+Freeform uses its own set of [field & field types](../forms/fields/). Fields are global and available in all forms but can also be overwritten per form. This allows you to save time reusing existing fields when making other forms and will enable you to adjust them when needed. So to clarify, you can create fields with labels and options common to all forms but also override those on each form.
 
-<Player url={FeatureVideo} muted loop playing width="100%" height="100%" />
+Freeform includes several standard fields preinstalled for you, which should get you started. Fields can be created and managed in the main field creation area (**Freeform > Fields > New Field**) and can also be made directly within the [form builder](../forms/builder/) interface. The field manager area (**Freeform > Fields > New Field**) essentially stores the default labels, options, etc, for each field (which can be adjusted for each form inside the form builder).
+
+<Photo img={FormBuilderPhoto} alt="Form Builder Firlds" />
 
 ## Email Notifications
 
-[Email notification templates](../forms/email-notifications/) are global and can be reused for multiple forms, saving you time when managing many forms. Email templates can be managed within the control panel (saved to the database) or as template files. All notification templates can be created and customized at **Freeform → Notifications** (or if using files, you can edit them in your favorite editor, etc).
+[Email notification templates](../forms/email-notifications/) are global and can be reused for multiple forms, saving you time when managing many forms. Email templates can be managed within the control panel (saved to the database) or as template files. All notification templates can be created and customized at Freeform > Email Notifications (of if using files, you can edit them in your favorite editor, etc).
 
-Freeform allows you to send email notifications upon submittal of a form 6 different ways, each with its content/template:
+Freeform allows you to send email notifications upon submittal of a form 5 different ways, each with its content/template:
 
-- [Admin](../forms/email-notifications/#admin)
-  - Specify the email address(es) you'd like to be notified of the successful submission of the form.
-- [Conditional](../forms/email-notifications/#conditional)
-  - Specify the email address(es) you'd like to be notified of the successful submission of the form.
-- [User Select](../forms/email-notifications/#user-select)
-  - Allow the user to choose from a predefined list of options to be emailed via select dropdown/radios/checkboxes field.
-- [Template-based](../forms/email-notifications/#template-based)
+- [Admin Notifications](../forms/email-notifications/#admin)
+  - Specify the email address(es) you'd like to be notified upon successful submission of form.
+- [Dynamic Recipients](../forms/email-notifications/#dynamic-recipients)
+  - Allow the user to choose from a predefined list of options to be emailed via select dropdown/radio group/checkbox group field.
+- [Dynamic Template Notifications](../forms/email-notifications/#dynamic-template-notifications)
   - At the template level with the `dynamicNotification` parameter in the [Form query](../templates/queries/form/).
-- [Email Fields](../forms/email-notifications/#email-fields)
+- [User/Submitter Notifications](../forms/email-notifications/#user-submitter-notifications)
   - To the user submitting the form, with the email addresses specified/selected in the [Email](../forms/fields/#email) field type.
 - [User-Defined](../forms/email-notifications/#user-defined)
   - To a user-defined email address (e.g. Tell-a-Friend form), with the email addresses specified/selected in the [Email](../forms/fields/#email) field type.
 
-<Player
-  url={EmailNotificationsVideo}
-  muted
-  loop
-  playing
-  width="100%"
-  height="100%"
+<Photo img={EmailNotificationsListPhoto} alt="Email Notifications List" />
+<Photo
+  img={EmailNotificationsTemplatePhoto}
+  alt="Create an Email Notification"
 />
 
-<Player
-  url={BuilderNotificationsVideo}
-  muted
-  loop
-  playing
-  width="100%"
-  height="100%"
-/>
+:::youtube[M_VRSj1wR7M]
+Video: Overview of Email Notifications
+:::
 
 ## Formatting Templates
 
@@ -101,14 +98,15 @@ Forms can be generated on the front-end templates two different ways:
 
 Freeform supports various popular [integrations](../integrations/) so you can do more with your forms, such as accepting payments, subscribing users to email marketing lists, and capturing data in CRMs, etc.
 
-<Player
-  url={BuilderIntegrationsVideo}
-  muted
-  loop
-  playing
-  width="100%"
-  height="100%"
-/>
+- [CRMs](../integrations/#crm)
+- [Email Marketing](../integrations/#email-marketing)
+- [Stripe Payments](../integrations/#other)
+- [Webhooks](../integrations/#webhooks)
+- [POST Forwarding](../integrations/#other)
+- [Craft Elements](../integrations/#craft-elements)
+
+<Photo img={StripePaymentsPhoto} alt="Accept Payments through Stripe" />
+<Photo img={CrmIntBuilderPhoto} alt="CRM Integrations" />
 
 ## Templating
 
@@ -118,61 +116,26 @@ We strived to make things as flexible as possible while also coming up with temp
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](./testing/troubleshooting-form-issues)
 :::
 
-<Photo img={TemplatingPhoto} alt="Templating" />
+<Photo img={BasicLightPhoto} alt="Basic Light Example" />
 
 ### Form Query
 
 To display a form inside a page, add a [Form template query](../templates/queries/form/) to the template. This will automatically use the [formatting template](../templates/formatting/) assigned to the form inside the [form builder](../forms/builder/).
 
-```twig showLineNumbers
-{{ freeform.form("myFormHandle").render() }}
+```twig
+{{ craft.freeform.form("yourFormHandle").render() }}
 ```
 
-To add some [overrides](../templates/formatting/#template-overrides) to the form at the template level, such as setting some classes or even [inserting values dynamically](./dynamic-data/passing-dynamic-data-to-forms) from the page, your code might look something like this:
+To add some overrides to the form, such as setting some classes or even [inserting values dynamically](./dynamic-data/passing-dynamic-data-to-forms) from the page, your code might look something like this:
 
 ```twig showLineNumbers
-{{ freeform.form("myFormHandle", {
-    attributes: {
-        novalidate: true,
-        row: {
-            class: "row",
-        },
-    },
-    fields: {
-        "@global": {
-            attributes: {
-                input: { class: "input-class" },
-                label: { class: "label-class" },
-            },
-        },
-        "@dropdown": {
-            attributes: {
-                input: { "+class": "select fullwidth" },
-            },
-        },
-        "@checkboxes, @multiple-select": {
-            instructions: "Select all that apply.",
-        },
-        ":required": {
-            attributes: {
-                label: { "+class": "form-required" },
-            },
-        },
-        "myFieldHandle": {
-            value: "John Doe",
-            label: "First Name",
-            instructions: "This is a test",
-            attributes: {
-                container: {
-                    "data-my-input-container": true,
-                },
-                input: {
-                    id: "my-special-id",
-                    "+class": "my-special-class",
-                },
-            },
-        },
-    },
+{{ craft.freeform.form("yourFormHandle", {
+	labelClass: "form-label",
+	inputClass: "form-control",
+	instructionsBelowField: true,
+	overrideValues: {
+		hiddenFieldHandle: entry.id,
+	}
 }).render() }}
 ```
 
@@ -185,15 +148,15 @@ A couple of good starting points would be these plug-and-play examples that are 
 - [Basic Light](../templates/formatting/basic-light/)
 - [Basic Dark](../templates/formatting/basic-dark/)
 
-:::info
-When experiencing issues with custom formatting templates, always consider switching to one of the sample ones (such as [Basic Light](../templates/formatting/basic-light/)) and see if your form works correctly. Often the issue can be detected and resolved by comparing your template/approach with what is used in a sample template.
+:::tip
+When experiencing issues with custom formatting templates, always consider switching to one of the sample ones (such as [Basic Light](./templates/formatting/basic-light/)) and see if your form works correctly. Often the issue can be detected and resolved by comparing your template/approach with what is used in a sample template.
 :::
 
 ### Demo Templates
 
 Freeform includes a complete set of [demo templates](../configuration/demo-templates/). These demo templates give you a fully functioning area on your website with just a few clicks! Furthermore, it allows you to see real-world examples of the template code in action, which will help you get acquainted with Freeform more quickly.
 
-:::info
+:::tip
 When experiencing issues with your regular templates, always consider returning to the demo templates and see if your form works correctly there. Often the problem can be detected and resolved by comparing your template/approach with what is used in the demo templates.
 :::
 
@@ -208,7 +171,7 @@ To display submissions inside a page, add a [Submissions template query](../temp
 Display a simple list of submissions:
 
 ```twig showLineNumbers
-{% set submissions = freeform.submissions({
+{% set submissions = craft.freeform.submissions({
     orderBy: "firstName ASC, lastName DESC",
     status: ["pending", "closed"],
 }) %}
@@ -222,9 +185,9 @@ Display a simple list of submissions:
 
 To display a single submission, your template code might look something like this (see [Submission object](../templates/objects/submission/) for more info):
 
-```twig showLineNumbers
+```twig
 {% set submissionId = craft.app.request.segment(5) %}
-{% set submission = freeform.submissions({id: submissionId}).one() %}
+{% set submission = craft.freeform.submissions({id: submissionId}).one() %}
 
 {% if submission %}
 
