@@ -765,6 +765,10 @@ html[data-theme='dark'] .compare-none {
   color: #122d4b !important;
 }
 
+.compare-feature {
+  margin-top: 20px !important;
+}
+
 /* Version Badge */
 .version .navbar__link:after {
   top: 4px;
