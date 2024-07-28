@@ -93,6 +93,11 @@ html[data-theme='dark'] body {
   margin-left: 1px;
 }
 
+/* Markdown strike tag */
+strike {
+  text-decoration: line-through;
+}
+
 /* A tag */
 .text-link {
   border-bottom: 1px solid #058ffe !important;
@@ -1170,6 +1175,7 @@ html[data-theme='dark'] .prism-code {
 
 .language-nix,
 .language-sh {
+  position: relative;
   margin-top: 20px;
   border: 1px solid #c1d4ff;
   border-top: 15px solid #c1d4ff;
@@ -1187,8 +1193,8 @@ html[data-theme='dark'] .language-sh {
   margin-top: 13px;
 }
 
-.language-nix:before,
-.language-sh:before {
+.language-nix.theme-code-block:before,
+.language-sh.theme-code-block:before {
   background-color: #8b1a10 !important;
   border-radius: 50% !important;
   box-shadow: 0 0 0 3px #ec6a5e, 20px 0 0 3px #f4be4f, 40px 0 0 3px #61c554 !important;
