@@ -67,7 +67,7 @@ form.addEventListener('freeform-ready', function (event) {
 
 // Override the way those messages are removed
 form.addEventListener('freeform-remove-messages', function () {
-  // Prevent the default behavior
+  // Prevent the default behaviour
   event.preventDefault();
 
   form.querySelectorAll('.my-custom-error-banner').forEach(function (element) {
@@ -85,7 +85,7 @@ form.addEventListener('freeform-remove-messages', function () {
 
 // Override the way form submit success message is displayed
 form.addEventListener('freeform-render-success', function () {
-  // Prevent the default behavior
+  // Prevent the default behaviour
   event.preventDefault();
 
   const successMessage = document.createElement('div');
@@ -99,7 +99,7 @@ form.addEventListener('freeform-render-success', function () {
 
 // Override the way form errors are displayed
 form.addEventListener('freeform-render-form-errors', function (event) {
-  // Prevent the default behavior
+  // Prevent the default behaviour
   event.preventDefault();
 
   const errors = event.errors;
@@ -128,7 +128,7 @@ form.addEventListener('freeform-render-form-errors', function (event) {
 
 // Override the way field errors are displayed
 form.addEventListener('freeform-render-field-errors', function (event) {
-  // Prevent the default behavior
+  // Prevent the default behaviour
   event.preventDefault();
 
   const errors = event.errors;
@@ -396,3 +396,7 @@ Have a look at our headless demos to get a feel for what's possible with Ajax:
 - [VueJS + AJAX demo for Freeform 4.x for Craft](https://github.com/solspace/craft-freeform-demo-vuejs-ajax)
 - [ReactJS + AJAX demo for Freeform 4.x for Craft](https://github.com/solspace/craft-freeform-demo-reactjs-ajax)
 - [NextJS + AJAX demo for Freeform 4.x for Craft](https://github.com/solspace/craft-freeform-demo-nextjs-ajax)
+
+```
+
+```
