@@ -30,8 +30,9 @@ You can use all or any combination of these. In many cases, using a combination 
 Typically, the most effective spam controls (in order) are:
 
 1. [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/)
-2. [Freeform Honeypot](../../forms/spam-protection/#freeform-honeypot) and [Freeform Javascript Test](../../forms/spam-protection/#freeform-javascript-test)
-3. Freeform Honeypot only
+2. Freeform Honeypot and [Javascript Enhancement](../../forms/spam-protection/#javascript-enhancement)
+   - Be careful when using the JS enhancement setting, as it could cause issues for you when you're caching the site and/or using something like _Vue.js_. Be sure to check out the [overview and warnings about it here](../../forms/spam-protection/#javascript-enhancement).
+3. Freeform Honeypot
 4. Keyword Blocking / Email Blocking
    - When attempting to block individual characters (e.g. Russian letters) or partial words or strings, be sure to make good use of the wildcard `*` character! E.g.: `*й*`, `*Д*`, `*url=http*`, etc.
 

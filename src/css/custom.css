@@ -32,6 +32,12 @@
   --ifm-dropdown-background-color: rgba(255, 255, 255, 0.95);
   --ifm-toc-border-color: rgba(0, 0, 0, 0.1);
   --ifm-table-stripe-background: #fdfdfd;
+  --ifm-blockquote-border-left-width: 10px;
+  --ifm-blockquote-border-color: rgba(5, 143, 254, 0.2);
+  --ifm-blockquote-padding-vertical: 10px;
+  --ifm-blockquote-padding-horizontal: 15px;
+  --ifm-blockquote-font-size: 15px;
+  --ifm-blockquote-color: #999;
 }
 
 [data-theme='dark'] {
@@ -75,6 +81,12 @@ html[data-theme='dark'] body {
   padding-right: 25px;
 }
 
+/* Blockquote */
+blockquote {
+  background: rgba(5, 143, 254, 0.05) !important;
+  border-radius: 5px;
+}
+
 /* Markdown A tag */
 .docs-doc-page .theme-doc-markdown a:not([class]) {
   border-bottom: 1px solid #058ffe;
@@ -108,8 +120,32 @@ strike {
   border-bottom: 1px solid #ff6624 !important;
 }
 
-.theme-admonition p a {
+/* Theme admonition */
+.theme-admonition a {
+  transition: all 0.5s;
   border-bottom: 0 !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--ifm-alert-border-color) !important;
+}
+
+.theme-admonition a:hover {
+  text-decoration-color: #ff6624 !important;
+}
+
+.theme-admonition.alert--success svg {
+  margin-right: 1px;
+  margin-top: 1px;
+}
+
+.theme-admonition.alert--warning svg {
+  transform: scale(0.95);
+  margin-top: -2px;
+}
+
+.theme-admonition.alert--secondary svg,
+.theme-admonition.alert--info svg {
+  margin-top: 0.3px;
+  margin-right: 0.1px;
 }
 
 /* Sidebar */
@@ -129,7 +165,7 @@ html {
 
 /* Button */
 .primary-btn {
-  @apply relative w-fit font-medium rounded-full transition-all duration-500 bg-[#ff6624] text-white hover:text-white;
+  @apply relative w-fit mb-2 inline-block font-medium rounded-full transition-all duration-500 bg-[#ff6624] text-white hover:text-white;
 }
 
 /* Button */
@@ -498,18 +534,6 @@ html[data-theme='light'] .feature-api-grid a:hover {
 
 html[data-theme='light'] .filter-icons {
   filter: brightness(0%);
-}
-
-/* Form styling */
-.form-styling {
-  font-style: italic;
-  border-left: 10px solid rgba(5, 143, 254, 0.2) !important;
-  border-radius: 5px;
-  background: rgba(5, 143, 254, 0.05) !important;
-  padding: 10px 15px;
-  color: #999;
-  font-size: 15px;
-  line-height: 20px;
 }
 
 /* Docs demo Freeform checkbox */
@@ -905,23 +929,6 @@ html[class*='docs-doc-id-setup/changelog'] h3[id^='security'] + ul li:before {
   background: url(/icons/security.svg) !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
-}
-
-/* Adjust SVG styles */
-.theme-admonition.alert--success svg {
-  margin-right: 1px;
-  margin-top: 1px;
-}
-
-.theme-admonition.alert--warning svg {
-  transform: scale(0.95);
-  margin-top: -2px;
-}
-
-.theme-admonition.alert--secondary svg,
-.theme-admonition.alert--info svg {
-  margin-top: 0.3px;
-  margin-right: 0.1px;
 }
 
 /* Answer check list styles */

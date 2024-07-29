@@ -18,6 +18,9 @@ In the event you'd like to store URL tracking parameters (e.g. `utm_source`, `ut
     - `utm_campaign`
     - `utm_source`
     - `utm_medium`
+
+    <br />
+
     :::info
     The field names/handles do not have to match the query parameter names, but we've done it that way for this example.
     :::
@@ -27,22 +30,17 @@ In the event you'd like to store URL tracking parameters (e.g. `utm_source`, `ut
 ### Step 2
 - In the regular template where you are loading the form, you'll need to add the [values](../../templates/queries/form#values) parameter and grab the values from the URL with `craft.app.request.getQueryParam('')`:
     ```twig showLineNumbers
-    {{ freeform.form("myFormHandle", {
-        fields: {
-            "utm_campaign": {
-                value: craft.app.request.getQueryParam('utm_campaign'),
-            },
-            "utm_source": {
-                value: craft.app.request.getQueryParam('utm_source'),
-            },
-            "utm_medium": {
-                value: craft.app.request.getQueryParam('utm_medium'),
-            },
-        },
-    }).render() }}
+    {% set form = craft.freeform.form("contact", {
+        overrideValues: {
+            utm_campaign: craft.app.request.getQueryParam('utm_campaign'),
+            utm_source: craft.app.request.getQueryParam('utm_source'),
+            utm_medium: craft.app.request.getQueryParam('utm_medium')
+        }
+    }) %}
     ```
+
 - Assuming your URL looks something like the following, Freeform will then grab those values and plug them into the corresponding hidden fields:
-    - `https://mysite.net/contact?utm_campaign=my_campaign&utm_source=google_jobs_apply&utm_medium=organic`
+  - `https://mysite.net/contact?utm_campaign=my_campaign&utm_source=google_jobs_apply&utm_medium=organic`
 
 </StepMarkdown>
 </VerticalStepWrapper>

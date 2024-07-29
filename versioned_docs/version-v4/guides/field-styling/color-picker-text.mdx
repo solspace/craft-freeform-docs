@@ -84,17 +84,36 @@ The result should look something like this:
 ### Step 4
 In order for this to automatically happen inside a [formatting template](../../templates/formatting/), you'll want to create a new one if you haven't already. If you using the [Basic Light](../../templates/formatting/basic-light/) formatting template as a starting point, your code might look something like this:
 
-```twig {4-8} showLineNumbers
+```twig {13-17} showLineNumbers
 {# Shortened for Example #}
 ...
-    <div class="freeform-fieldtype-{{ field.type }}">
+{% for row in form %}
+<div class="freeform-row {{ form.customAttributes.rowClass }}">
+    {% for field in row %}
+    {% set width = (12 / (row|length)) %}
+    {% set columnClass = "freeform-col-" ~ width %}
+    {% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+    {% if field.type == "submit" or field.type == "save" %}
+        {% set columnClass = columnClass ~ " freeform-column-content-align-" ~ field.position %}
+    {% endif %}
+    <div class="{{ columnClass }} freeform-fieldtype-{{ field.type }}"{{ field.rulesHtmlData }}>
         {% if field.handle == "selectColor" %}
-            {{ field.renderLabel() }}
-            {{ field.renderInstructions() }}
+            {{ field.renderLabel({ labelClass: "freeform-label" ~ (field.inputOnly ? " freeform-input-only-label" : "") ~ (field.required ? " freeform-required" : "") }) }}
             <input type="color" id="form-input-{{ field.handle }}" name="{{ field.handle }}" value="#058ffe">
-            {{ field.renderErrors() }}
+            {{ field.renderInstructions({ instructionsClass: "freeform-instructions" }) }}
+            {{ field.renderErrors({ errorClass: "freeform-errors" }) }}
+        {% elseif field.type in ["checkbox", "mailing_list"] %}
+            {{ field.renderInput({ class: "freeform-input" ~ (field.hasErrors ? " is-invalid") }) -}}
+            {{- field.renderLabel({ labelClass: "freeform-label" ~ (field.inputOnly ? " freeform-input-only-label" : "") ~ (field.required ? " freeform-required" : "") }) }}
+            {{ field.renderInstructions({ instructionsClass: "freeform-instructions" }) }}
+            {{ field.renderErrors({ errorClass: "freeform-errors" }) }}
         {% else %}
-            {{ field.render() }}
+            {{ field.render({
+                class: field.type not in ["submit", "save", "signature"] ? "freeform-input" : "",
+                labelClass: "freeform-label" ~ (field.inputOnly ? " freeform-input-only-label" : "") ~ (field.required ? " freeform-required" : ""),
+                errorClass: "freeform-errors",
+                instructionsClass: "freeform-instructions",
+            }) }}
 ...
 {# Shortened for Example #}
 ```

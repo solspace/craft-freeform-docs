@@ -10,8 +10,12 @@ If you like, you can enter basic HTML (`<b>`, `<i>`, `<a>`, etc) into Freeform f
 
 The demo and sample templates will likely handle the HTML in the form rendering automatically, but in cases where it doesn't, you may need to apply the `raw` Twig filter:
 
-```twig {11} showLineNumbers
-{{ field.renderLabel() }}
+```twig {15} showLineNumbers
+{{ field.renderLabel({
+    labelClass: (field.required ? " required" : ""),
+    instructionsClass: "help-block",
+    errorClass: "help-block",
+}) }}
 
 {% for option in field.options %}
     <div class="checkbox">
@@ -25,4 +29,5 @@ The demo and sample templates will likely handle the HTML in the form rendering 
         </label>
     </div>
 {% endfor %}
+
 ```

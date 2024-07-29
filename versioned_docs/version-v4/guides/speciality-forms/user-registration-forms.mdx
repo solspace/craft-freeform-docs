@@ -12,6 +12,8 @@ import UserRegistrationPhoto from '../assets/img/user-registration.png';
 
 Freeform allows you to easily create and manage beautiful [User](https://craftcms.com/docs/5.x/system/user-management.html#public-registration-pro) registration forms in only minutes! Using the [Elements integration](../../integrations/elements#craft-users), you can enhance your forms with 1-click to enable AJAX, set [conditional field logic](../../forms/conditional-rules/) to show and hide fields, confirm emails and passwords, add Captchas and send custom email notifications! Pair with [Payments](../../integrations/stripe-payments) and you can even accept one time or recurring subscription payments for membership! _Leave the heavy lifting to Freeform!_
 
+<Photo img={UserRegistrationPhoto} alt="User Registration" />
+
 ## Instructions
 
 :::info
@@ -90,4 +92,5 @@ Once that's all finished, you'll have something that looks like the screenshots 
 - Freeform attempts to route User-based errors to the mapped fields. In some cases you might see more than 1 error for a Freeform field because of this. The fields that are mapped to essential fields like **username**, **email** and **password** will mention that "Email cannot be blank", etc.
 - While multipage forms do appear to map correctly to **users**, you may see some slightly unusual behavior. For example, if you have your **Password** field placed in the second page, when submitting from the first page to the second page, the second page will highlight the field mapped to the **Password** field highlighted with an error. The whole process still works, but there's that visual issue.
 - If the submission is blocked or flagged as spam, there's currently no way to retroactively map submission data to Users. The best option for avoiding this would be using [Captchas](../../integrations#captchas-spam-protection).
-  :::
+
+:::
