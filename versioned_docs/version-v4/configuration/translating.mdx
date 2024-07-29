@@ -20,10 +20,14 @@ It's important to note that you have full control over what and how it's transla
 
 To see how all parts of form formatting templates are translated, [have a look at the examples we've included](../templates/formatting/). When using `render` helpers, Freeform will generally handle the translation (`|t('freeform')`) setting for you. However, once you go manual or semi-manual, for example, radio and checkbox field options should look something like this in your templates:
 
-```twig {18} showLineNumbers
+```twig {21} showLineNumbers
 {% elseif field.type == "radio_group" %}
 
-    {{ field.renderLabel() }}
+    {{ field.renderLabel({
+        labelClass: labelClass,
+        instructionsClass: instructionClass,
+        errorClass: errorClass,
+    }) }}
 
     {{ field.oneLine ? "<div>"|raw }}
 
@@ -34,10 +38,10 @@ To see how all parts of form formatting templates are translated, [have a look a
                     value="{{ option.value }}"
                     id="{{ field.idAttribute }}-{{ index }}"
                     class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
-                    {{ option.value in field.value ? "checked" }}
+                    {{ option.checked ? "checked" : "" }}
             />
             <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
-                {{ option.label|t('freeform')|raw }}
+                {{ option.label|t|raw }}
             </label>
         </div>
     {% endfor %}
@@ -57,14 +61,14 @@ freeform.setOption('errorBannerMessage', 'My custom error message');
 
 That _might_ look something like the below example, but **depending on several factors**, _please_ see the [AJAX Forms documentation guide](../guides/templating/ajax-forms) for more information about how to use this and where to place it, etc:
 
-```js {3-4} showLineNumbers
+```js {3-10} showLineNumbers
 const form = document.getElementById('my-form');
 form.addEventListener('freeform-ready', function (event) {
-  event.freeform.setOption(
+  event.target.freeform.setOption(
     'successBannerMessage',
     'This is a custom success message.'
   );
-  event.freeform.setOption(
+  event.target.freeform.setOption(
     'errorBannerMessage',
     'This is a custom error message.'
   );

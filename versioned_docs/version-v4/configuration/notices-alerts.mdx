@@ -2,8 +2,6 @@
 sidebar_position: 4
 ---
 
-import Player from 'react-player';
-
 import { FlexCards } from '@site/src/components/docs';
 import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
 
@@ -13,13 +11,13 @@ import NoticeAlertDashboardPhoto from './assets/img/notices-alerts-dashboard.png
 import EmailAlertPhoto from './assets/img/email-alert.png';
 import DigestPhoto from './assets/img/digest.png';
 
-import NoticeAlertVideo from './assets/videos/notices-alerts.mp4';
-
 # Notices & Alerts
 
 Solspace is dedicated to providing the best form plugin for Craft CMS. Our team has spent years perfecting and testing our product, which is trusted by thousands of websites. However, we understand that each site is unique and may encounter issues. That's why we offer a comprehensive error logging feature, email alerts for issues, and an _update notices_ feature to keep you informed about important updates. Additionally, we provide a weekly or daily digest email to help you stay in the loop with your form's performance and potential issues.
 
-<Player url={NoticeAlertVideo} muted loop playing width="100%" height="100%" />
+:::youtube[DoB0OXSzyu0]
+Video: Overview of Reliability Features
+:::
 
 <FlexCards
   items={[
@@ -76,7 +74,7 @@ This feature requires any activity to happen on your site (e.g. someone visiting
 
 <Photo img={NoticeAlertDashboardPhoto} alt="Update Notices preview" />
 
-## Email Failure Alerts<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+## Email Failure Alerts
 
 Freeform offers the ability to automatically send an email notification alerting the email address(es) specified when an email notification cannot be delivered.
 
@@ -92,7 +90,7 @@ This feature is not guaranteed to catch every possible email failure. There migh
 
 <Photo img={EmailAlertPhoto} alt="Email Alert preview" />
 
-## Weekly & Daily Digests<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
+## Weekly & Daily Digests
 
 The Freeform _Weekly or Daily Digest_ email notifications will keep you in the loop about your website's Freeform form performance and status. It includes a snapshot of the previous week's performance and any logged errors and upgrade notices (if enabled).
 
