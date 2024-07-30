@@ -2,7 +2,7 @@
 title: 'Integrations'
 ---
 
-import { Badge } from '@site/src/components/utils';
+import { Badge, Photo } from '@site/src/components/utils';
 import { IconCards } from '@site/src/components/docs';
 
 import ActiveCampaignIcon from './assets/icons/active-campaign.png';
@@ -37,6 +37,10 @@ import SolspaceCalendarIcon from './assets/icons/solspace-calendar.png';
 import StripeIcon from './assets/icons/stripe.png';
 import ZapierIcon from './assets/icons/zapier.png';
 import ZohoIcon from './assets/icons/zoho.png';
+import HireUsIcon from './assets/icons/hire-us.png';
+
+import CRMIntrgrationsPhoto from './assets/img/crm-integration-builder.png';
+import EmailMarketingPhoto from './assets/img/email-marketing.png';
 
 # Integrations<Badge type="pro" text="Pro" />
 
@@ -48,7 +52,9 @@ Freeform includes a wide variety of integrations with popular CRMs, email market
 
 ## CRM
 
-Not seeing one that you need? [Hire us](/support/premium/) to build one custom for your needs.
+Freeform Pro supports some popular CRM (Customer Relationship Management) API integrations. Inside the [Settings](../configuration/settings#integrations) area of Freeform, there is a CRM Integration Manager, which allows you to manage your CRM API integrations. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
+
+The following CRM integrations are currently available for **Freeform Pro** only (click each one for individual setup instructions):
 
 <IconCards
   items={[
@@ -108,12 +114,37 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       link: '../guides/developer/custom-integrations',
       extraContent: 'Make Your Own',
     },
+    {
+      iconSrc: HireUsIcon,
+      iconTitle: 'Hire Us',
+      link: '../guides/developer/custom-integrations',
+      extraContent: 'Hire Us',
+    },
   ]}
 />
 
+Not seeing one that you need? [Hire us](/support/premium/) to build one custom for
+your needs.
+
+<Photo img={CRMIntrgrationsPhoto} alt="CRM Integrations" />
+
+:::tip
+[Can I make my own CRM or Email Marketing API integration?](../guides/developer/custom-integrations)
+:::
+
+Some important things to know about CRM integrations are:
+
+- CRM integrations are globally available to all forms, but are configured per form inside the form builder interface.
+- Most - if not all - integrations attempt to map all available fields and custom fields, but some may have limitations if the API is too complex or doesn't allow it.
+- If a CRM integration has been configured, you will see a **CRM** button at the top of the **Property Editor** (right column) in the form builder. To configure the CRM for a form, click that button and then select an integration name from the options. You may then map out your Freeform fields to your CRM's fields.
+
+Every integration is a little bit different, so we have detailed instructions for setting up each integration on their own page.
+
 ## Email Marketing
 
-Not seeing one that you need? [Hire us](/support/premium/) to build one custom for your needs.
+Freeform supports some popular email marketing / mailing list integrations. Inside the [Settings](../configuration/settings#integrations) area of Freeform, there is an Email Marketing Integration Manager, which allows you to manage your mailing list API integrations. Every integration is a little bit different, so we have detailed instructions for setting up each integration on their own page.
+
+The following Email Marketing integrations are currently available for **Freeform Pro** only (click each one for individual setup instructions):
 
 <IconCards
   items={[
@@ -153,8 +184,37 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       link: '../developer/email-marketing/',
       extraContent: 'Make Your Own',
     },
+    {
+      iconSrc: HireUsIcon,
+      iconTitle: 'Hire Us',
+      link: '../guides/developer/custom-integrations',
+      extraContent: 'Hire Us',
+    },
   ]}
 />
+Not seeing one that you need? [Hire us](/support/premium/) to build one custom for
+your needs.
+
+:::tip
+[Can I make my own CRM or Email Marketing API integration?](../guides/developer/custom-integrations)
+:::
+
+Some important things to know about Email Marketing integrations are:
+
+- Mailing list integrations are globally available to all forms, but are configured per form inside the form builder interface.
+- Most - if not all - integrations attempt to map all available fields and custom fields, but some may have limitations if the API is too complex or doesn't allow it.
+- Mailing list integrations appear as a checkbox that can be drag and dropped into the form builder interface:
+  - Can only be displayed as a single checkbox, or as hidden field (as an automatic opt-in when using specifically for mailing list signups). If you want more than 1 mailing list, you can drag and drop another field into your layout (but the checkboxes cannot be displayed as a group, unless of course you made some manual adjustments to the formatting template).
+    - Label of the checkbox is customizable per form.
+    - Checkbox can be checked by default.
+  - You can specify the mailing list to be used for the mailing list integration.
+  - Your form must include an [Email](../forms/fields#email) field type, which must then be assigned to the **Target Email Field** setting.
+  - When available, **Field Mapping** setting allows you to map Freeform fields to available mailing list integration fields.
+- To get access to all integrations, purchase (or purchase an upgrade to) _Freeform Pro_.
+
+:::warning
+While data is passed along to the Email Marketing provider, Freeform does not store whether or not Email Marketing fields were opted in, so CP submission views will not display whether or not the user subscribed.
+:::
 
 ## Craft Elements
 
@@ -181,6 +241,12 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       iconSrc: EditElementsIcon,
       iconTitle: 'Edit Elements',
       link: './elements/#editing-elements',
+    },
+    {
+      iconSrc: HireUsIcon,
+      iconTitle: 'Hire Us',
+      link: '../guides/developer/custom-integrations',
+      extraContent: 'Hire Us',
     },
   ]}
 />
@@ -211,6 +277,12 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       iconTitle: 'Freeform Javascript Test',
       link: '../forms/spam-protection/#freeform-javascript-test',
     },
+    {
+      iconSrc: HireUsIcon,
+      iconTitle: 'Hire Us',
+      link: '../guides/developer/custom-integrations',
+      extraContent: 'Hire Us',
+    },
   ]}
 />
 
@@ -240,6 +312,12 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       iconTitle: 'Make Your Own',
       link: '../developer/webhooks',
       extraContent: 'Make Your Own',
+    },
+    {
+      iconSrc: HireUsIcon,
+      iconTitle: 'Hire Us',
+      link: '../guides/developer/custom-integrations',
+      extraContent: 'Hire Us',
     },
   ]}
 />
@@ -274,6 +352,12 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       iconSrc: ClickDimensionsIcon,
       iconTitle: 'ClickDimensions',
       link: './clickdimensions',
+    },
+    {
+      iconSrc: HireUsIcon,
+      iconTitle: 'Hire Us',
+      link: '../guides/developer/custom-integrations',
+      extraContent: 'Hire Us',
     },
   ]}
 />
