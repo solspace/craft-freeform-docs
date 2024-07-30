@@ -516,13 +516,13 @@ html[data-theme='light'] .feature-api-grid a:hover {
   }
 }
 
-.answer-card secret {
+secret {
   display: flex;
   color: #9778f1;
   animation: secret-glow 2s infinite alternate;
 }
 
-.answer-card secret:before {
+secret:before {
   content: '\1F48E';
   margin-right: 5px;
 }

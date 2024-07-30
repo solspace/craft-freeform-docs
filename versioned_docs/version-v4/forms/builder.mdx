@@ -13,6 +13,7 @@ import FormBuilderPhoto from './assets/img/form-builder.png';
 import StripePaymentsPhoto from './assets/img/stripe-payments.png';
 import IntegrationsPhoto from './assets/img/crm-integration-builder.png';
 import UserRegistrationPhoto from './assets/img/user-registration.png';
+import FreeformDashboardPhoto from './assets/img/freeoform-dashboard.png';
 
 # Form Builder<Badge type="feature" text="Improved in 5.0+" />
 
@@ -236,3 +237,45 @@ The **CRM Integrations** tab (cloud icon) is where you configure any [CRM integr
 The **Payments** tab (dollar sign icon) is where you configure a [Stripe Payments](../integrations/stripe-payments) integration on a per-form level. Simply choose the Payment integration name and then configure the form and map out your Freeform fields to your Stripe fields. This tab will only show if you have a Payment integration configured. You will also need to add a [Credit Card](./fields#credit-card) special field to the form layout.
 
 <Photo img={StripePaymentsPhoto} alt="Stripe Payments" />
+
+## Freeform Dashboard
+
+Freeform contains its own dashboard page that gives you convenient insights and an overview of your forms, submissions, and any logged errors or update warnings and notices. The data displayed here will respect all Permissions set for users / user groups.
+
+<Photo img={FreeformDashboardPhoto} alt="Freeform Dashboard" />
+
+### Errors
+
+Conveniently let's you know if something is wrong by displaying a banner (not shown in screenshot above) indicating the number of errors that Freeform logged, if available.
+
+### Important Update Notices
+
+The [Important Update Notices](../configuration/notices-alerts#update-notices--announcements) area keeps you informed about issues that may specifically affect your site.
+
+:::tip
+We respect your privacy, so this feature only pulls update notices from the Solspace.com site and **does not and cannot send any information back**. Solspace collects **no** information at all. The comparison check happens on your Freeform site environment, not on the Solspace site. This feature can also be disabled in the plugin settings.
+:::
+
+### Submissions
+
+A chart with submissions for the last 60 days will show here. You can customize the zoom on the data by dragging the left and right circles at the top. Clicking form names in the legend on the right will toggle them including their submission data in the chart.
+
+### Forms
+
+All available forms will display here as cards. You can manage and reorder them here as well.
+
+Each form card displays the following:
+
+- Form name, handle and description.
+- Stats:
+  - Number of submissions
+  - Number of spam submissions (if spam folder disabled, this will be the blocked count... and button to reset it)
+- Exporting of all submissions for the form:
+  - `CSV` for both _Lite_ and _Pro_ editions.
+  - Additionally `Excel`, `JSON`, `XML` and `Text` for _Pro_ edition.
+- Right side of card (on hover) includes:
+  - Delete form
+  - Duplicate form
+  - Reorder form
+
+Clicking on the name of the form will bring you into the form builder interface that allows you to setup and configure the form.

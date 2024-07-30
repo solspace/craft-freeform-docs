@@ -1,7 +1,4 @@
 {
   "label": "Headless",
-  "position": 9,
-  "link": {
-    "slug": "headless"
-  }
+  "position": 9
 }
