@@ -3,15 +3,21 @@ title: 'Surveys & Polls'
 sidebar_position: 1
 ---
 
-import { Badge, Photo } from '@site/src/components/utils';
+import {
+  Badge,
+  Photo,
+  FlexButton,
+  SimpleTextLink,
+} from '@site/src/components/utils';
 
 import SurveyReportPhoto from '../assets/img/surveys-polls-report.png';
 import SurveyReport2Photo from '../assets/img/surveys-polls-report-2.png';
 import SurveyPollsDashboardPhoto from '../assets/img/surveys-polls-dashboard.png';
 import SurveyPollsPhoto from '../assets/img/surveys-polls.png';
 import TemplatesSurveyPollsReportPhoto from '../assets/img/templates_surveys-polls-report.png';
+import SurveyPollsSettings from '../assets/img/surveys-polls-settings.png';
 
-# Surveys & Polls Form Type <Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+# Surveys & Polls Form Type <Badge type="addon" text="Add-on" />
 
 Expand the possibilities of Freeform with the _Surveys & Polls_ form type! If you have the _Pro_ edition of Freeform, this is a plug and play feature that instantly adds access to a special reporting area inside the Freeform control panel that allows you to view stats and charts for each field type. The reports can be customized to use different chart types and hide specific fields. You can even generate a PDF exported document to share with other members of your team.
 
@@ -20,6 +26,23 @@ If you already have some forms used as surveys or polls, simply switch the **For
 :::
 
 <Photo img={SurveyReportPhoto} alt="Surveys polls report" />
+
+<div className="flex flex-col items-center gap-2">
+  <FlexButton
+    items={[
+      {
+        to: 'https://plugins.craftcms.com/freeform-surveys-polls',
+        label: 'Get it in the Plugin Store!',
+      },
+    ]}
+  />
+  <small>
+    <SimpleTextLink
+      to="https://plugins.craftcms.com/freeform"
+      label="INSTALL A FREE, UNLIMITED TRIAL TODAY!"
+    />
+  </small>
+</div>
 
 ## Key Features
 
@@ -41,7 +64,15 @@ The following features are available for any form in Freeform, but become even m
 - Allow users to [save & continue](../save-continue-later/) completing the survey later.
 - A wide variety of built-in [spam protection](../spam-protection/) measures.
 - Send [email notifications](../email-notifications/) to form submitters and/or site admins upon completion.
-- Connect forms to a variety of [integration](../../integrations/) options including CRM, Email Marketing and more.
+- Connect forms to [CRM](../../integrations#crm)'s and [Email Marketing](../../integrations#email-marketing) integrations.
+
+## Requirements
+
+Freeform Surveys & Polls has the following requirements:
+
+- [Freeform](../../) 4.0+
+  - Either _Lite_ or _Pro_ edition.
+- [Craft CMS](https://craftcms.com) 4.0+
 
 ## Eligible Field Types
 
@@ -49,31 +80,28 @@ While you can certainly use any field type in your survey and poll forms, Freefo
 
 | Field Type                                                 | CP Reports | Charts | Average Score\* |
 | ---------------------------------------------------------- | ---------- | ------ | --------------- |
-| **Checkboxes**                                             | ✓          | ✓      | ✓               |
-| **Radios**                                                 | ✓          | ✓      | ✓               |
-| **Dropdown**                                               | ✓          | ✓      | ✓               |
-| **Multiple Select**                                        | ✓          | ✓      | ✓               |
-| **Opinion Scale**                                          | ✓          | ✓      | ✓               |
+| **Checkbox group**                                         | ✓          | ✓      | ✓               |
+| **Radio group**                                            | ✓          | ✓      | ✓               |
+| **Select**                                                 | ✓          | ✓      | ✓               |
+| **Multiple select**                                        | ✓          | ✓      | ✓               |
+| **Opinion scale**                                          | ✓          | ✓      | ✓               |
 | **Rating**                                                 | ✓          | ✓      | ✓               |
 | **Text** _(includes Email, Number, Phone, Regex, Website)_ | ✓          |        |
 | **Textarea**                                               | ✓          |        |
 
-<small>
-  *Average score available when the field contains only numeric option values,
-  e.g. <code>1</code>, <code>2</code>, <code>3</code>.
-</small>
+\*Average score available when the field contains only numeric option values, e.g. `1`, `2`, `3`.
 
-There is currently no support for displaying the following field types in reports: Date & Time, File Upload, File Upload Drag & Drop, Hidden, Invisible, Signature, and Table.
+There is currently no support for displaying the following field types in reports: Date & Time, Dynamic Recipients, File Upload, File Upload Drag & Drop, Hidden, Invisible, Signature, and Table.
 
-## Reports <Badge type="feature" text="Improved in 5.0+" />
+## Dashboard & Reports
 
-When a form is assigned a Form Type of _Surveys & Polls_, its form card on the dashboard will include a **Survey Results** link to access the results.
+The _Surveys & Polls_ area includes a dashboard that is similar to the regular Freeform dashboard, but will only display all forms that belong to the _Surveys & Polls_ form type. This will provide an overview of all available surveys and polls, and you can click on each one to view the results.
 
 <Photo img={SurveyPollsDashboardPhoto} alt="Surveys & Polls Dashboard" />
 
 An individual report page is available for each _Survey & Poll_ form, which will show the results of the survey or poll as a report summary. Applicable field types will appear as charts and graphs, and you'll have the option to change the chart type for each question/field to whatever suits it better (changes are saved and apply to all users). And finally, an option to generate a PDF export is available if you wish to share the results with other team members.
 
-Charts can be used with **Checkboxes**, **Radios**, **Dropdown**, **Multiple Select**, **Opinion Scale**, and **Rating** field types. Available chart types are:
+Charts can be used with **Checkbox group**, **Radio group**, **Select**, **Multiple select**, **Opinion scale**, and **Rating** field types. Available chart types are:
 
 - Horizontal Bar
 - Vertical Bar
@@ -101,12 +129,12 @@ With the magnitude of features and options Freeform offers, there isn't any one 
 
 To create a new survey, the process is almost identical to creating a regular form, but be aware of a few things that are necessary for Freeform to properly handle and recognize your survey forms:
 
-- Be sure to have the _Pro_ edition of Freeform installed.
+- Be sure to have both _Freeform_ and _Freeform Surveys & Polls_ plugins installed on your site.
 - Inside the form builder (or form wizard), be sure to set the **Type** setting to _Surveys & Polls_ from the available options.
-- For questions you want to show up as charts in reports, stick to using the **Checkboxes**, **Radios**, **Dropdown**, **Multiple Select**, **Opinion Scale**, and **Rating** field types.
+- For questions you want to show up as charts in reports, stick to using the **Checkbox group**, **Radio group**, **Select**, **Multiple select**, **Opinion scale**, and **Rating** field types.
 - For questions you want to show up as text in reports, be sure to use only **Text**, **Textarea**, **Email**, **Number**, **Phone**, **Regex**, and **Website** fields. All other field types such as File Upload, Signatures, etc will not appear in the _Surveys & Polls_ reports area.
-- If you want to restrict people from submitting the survey more than once, be sure to select an option in the **Duplicate Check** setting, which is located in the form builder's _Settings_ → _Limits_ tab.
-- If you want to stop people from submitting the survey after a certain date, be sure to specify a date in the **Stop Submissions After Date** setting, which is located in the form builder's _Settings_ → _Limits_ tab.
+- If you want restrict people from submitting the survey more than once, be sure to select an option in the **Limit Form Submission Rate** setting, which is located in the _Validation_ tab.
+- If you want to stop people from submitting the survey after a certain date, be sure to specify a date in the **Stop Submissions After** setting, which is located in the _Validation_ tab.
 
 ### Convert an Existing Form
 
@@ -114,31 +142,12 @@ To convert an existing form to be a _Surveys & Polls_ form, simply follow the in
 
 1. Go to the **Forms** page in the Freeform control panel.
 2. Click on the form to edit it inside the form builder.
-3. Inside the _Settings_ tab, change the **Form Type** setting from _Regular_ to _Surveys & Polls_.
+3. Inside the _Form Settings_ tab, change the **Form Type** setting from _Regular_ to _Surveys & Polls_.
 4. Save the form.
-
-## Configuration
-
-The _Surveys & Polls_ form type offers a handful of settings that help you set defaults and styling for reports.
-
-:::tip
-This page and its settings all become inaccessible when the Craft `allowAdminChanges` config setting is set to `false`.
-:::
-
-<Photo img={SurveyPollsPhoto} alt="Surveys & Polls Settings" />
-
-| Setting                              | Description                                                                                                   |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| **Highlight Highest Ranking Option** | The highest ranking option chosen for each question will be highlighted with an alternate color.              |
-| **Default Chart Types**              | Select the default chart types for each field type. These can be overridden for each form in the report view. |
-
-:::tip
-For page usibility, the Surveys & Polls report page will automatically switch the default chart type from **vertical bar** to **horizontal bar** if the field contains more than 10 values. You can change it back to vertical bar inside the report page if you wish.
-:::
 
 ## Usage in Templates
 
-The `surveyResults` method becomes available for use in your templates though the [Form query](../../templates/queries/form/) query:
+The `surveyResults` method becomes available for use in your templates though the [Form query](../../templates/queries/form) query:
 
 - Iterate over all results (`{% for result in form.surveyResults %}`):
   - `votes` - get the total number answers for this field.
@@ -379,3 +388,44 @@ The following example will iterate over all fields, compatible with _Survey & Po
     </div>
 {% endfor %}
 ```
+
+## Settings
+
+The _Surveys & Polls_ form type offers a handful of settings that help you set defaults and styling for reports. While the settings for _Surveys & Polls_ are available in the main Freeform settings area, they are stored separately in a `freeform-surveys-polls` section of the Craft project config `project.yaml` file.
+
+:::tip
+This page and its settings all become inaccessible when the Craft `allowAdminChanges` config setting is set to `false`.
+:::
+
+<Photo img={SurveyPollsSettings} alt="Surveys & Polls Settings" />
+
+| Setting                               | Description                                                                                                         |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Checkbox group default chart**      | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Radio group default chart**         | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Select default chart**              | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Multiple select default chart**     | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Opinion scale default chart**       | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Rating default chart**              | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Text default chart**                | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Textarea default chart**            | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Email default chart**               | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Number default chart**              | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Phone default chart**               | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Regex default chart**               | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Website default chart**             | The default chart type to be used for all fields of this type. They can be overridden per form in the reports page. |
+| **Highlight highest ranking option?** | When enabled, Freeform will highlight the highest ranking option chosen for each question with an alternate color.  |
+
+:::tip
+For page usibility, the Surveys & Polls report page will automatically switch the default chart type from **vertical bar** to **horizontal bar** if the field contains more than 10 values. You can change it back to vertical bar inside the report page if you wish.
+:::
+
+## Permissions
+
+The following user / group permissions become available with the _Surveys & Polls_ form type:
+
+- **Access Surveys & Polls**
+  - Allow access to the Surveys & Polls dashboard and reports pages.
+  - Users will still need valid form permissions to administrate forms and valid submission permissions to view individual survey responses.
+  - **Manage Reports**
+    - Allow changes to the chart style for each question in Surveys & Polls reports.

@@ -3,11 +3,10 @@ sidebar_position: 4
 title: 'Save & Continue Later'
 ---
 
-import Player from 'react-player';
-
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
+import { Photo } from '@site/src/components/utils';
 
-import BuilderRulesVideo from './assets/videos/builder-rules.mp4';
+import SaveContinuePhoto from './assets/img/save-continue.png';
 
 # Save & Continue Later
 
@@ -19,7 +18,7 @@ Inside the form builder you can toggle the **Save** feature for the Submit butto
 
 All saved form progress submissions are stored in a separate encrypted database table. When a user clicks the **Save** button, all field validation is circumvented. Other validation such as spam protection measures still apply.
 
-![Save & Continue Later feature](./assets/img/save-continue.png)
+<Photo img={SaveContinuePhoto} alt="Save & Continue Later feature" />
 
 ## Configuration
 
