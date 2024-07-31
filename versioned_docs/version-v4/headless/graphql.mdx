@@ -47,6 +47,7 @@ query {
             label
             handle
             required
+            rules
           }
         }
       }
@@ -57,7 +58,7 @@ query {
 
 Example response data:
 
-```json
+```json showLineNumbers
 {
   "data": {
     "freeform": {
@@ -82,6 +83,17 @@ Example response data:
                       "label": "Last Name",
                       "handle": "lastName",
                       "required": true
+                    }
+                  ]
+                },
+                {
+                  "fields": [
+                    {
+                      "type": "submit",
+                      "label": "Submit",
+                      "handle": null,
+                      "required": false,
+                      "rules": "{\"show\":false,\"type\":\"any\",\"criteria\":[{\"tgt\":\"lastName\",\"o\":\"=\",\"val\":\"\"}]}"
                     }
                   ]
                 }
@@ -115,7 +127,7 @@ query {
 
 Example response data:
 
-```json
+```json showLineNumbers
 {
   "data": {
     "freeform": {
@@ -172,7 +184,7 @@ query {
 
 Example response data:
 
-```json
+```json showLineNumbers
 {
   "data": {
     "entries": [
@@ -187,6 +199,11 @@ Example response data:
               "handle": "firstName",
               "label": "First Name",
               "type": "text"
+            },
+            {
+              "handle": null,
+              "label": "Submit",
+              "type": "submit"
             }
           ]
         }
@@ -237,6 +254,7 @@ You can query fields by the following arguments:
 | Argument | Type       | Description                                              |
 | -------- | ---------- | -------------------------------------------------------- |
 | `id`     | `[Int]`    | Narrow the queried fields by one or more field's ID's    |
+| `hash`   | `[String]` | Narrow the queried fields by one or more field's UID's   |
 | `handle` | `[String]` | Narrow the queried fields by one or more field's handles |
 
 ```graphql showLineNumbers
@@ -245,16 +263,21 @@ query {
     forms {
       # This is just an example
       # You can either pass a single value or an array of values for each argument
-      fields(id: [1, 2, 3], handle: ["firstName", "lastName"]) {
+      fields(
+        id: [1, 2, 3]
+        handle: ["firstName", "lastName"]
+        hash: "some-hash"
+      ) {
         id
         handle
+        hash
       }
     }
   }
 }
 ```
 
-## Mutations
+## Mutations<Badge type="feature" text="4.1.0+" />
 
 GraphQL mutations provide a way to modify data. The actual mutations will vary depending on the schema and what it allows. There are common mutations per GraphQL object type and additional type-specific mutations.
 
@@ -264,7 +287,7 @@ To create a new submission we use form-specific mutations in the form of `save_<
 
 Mutations take the data as arguments. We pass the values we want to use in the query as query variables.
 
-In this example, we're using a form with the handle of `contact` which contains form fields for first name, last name and email. Our form also has Honeypot and ReCaptcha V3 enabled. We also pass some form property overrides, setting dynamic notification recipients.
+In this example, we're using a form with the handle of `contact` which contains form fields for first name, last name and email. Our form also has Honeypot and ReCaptcha V3 enabled.
 
 You can grab these values using form-specific GraphQL queries or by creating an custom endpoint on your site.
 
@@ -273,22 +296,24 @@ See [How to Render a Form](#how-to-render-a-form).
 ```graphql showLineNumbers
 // Query
 mutation SaveContactSubmission(
-    $formProperties: FreeformFormPropertiesInputType,
     $honeypot: FreeformHoneypotInputType,
-    $captcha: FreeformSubmissionCaptchaInputType,
+    $reCaptcha: FreeformSubmissionReCaptchaInputType,
     $csrfToken: FreeformCsrfTokenInputType,
     $firstName: String,
     $lastName: String,
     $email: String,
+    $mailingList_1bkqk7kOQ: Int,
+    $mailingList_kj1l1a9qg: Int,
 ) {
     save_contact_Submission(
-        formProperties: $formProperties
         honeypot: $honeypot
-        captcha: $captcha
+        reCaptcha: $reCaptcha
         csrfToken: $csrfToken
         firstName: $firstName
         lastName: $lastName
         email: $email
+        mailingList_1bkqk7kOQ: $mailingList_1bkqk7kOQ
+        mailingList_kj1l1a9qg: $mailingList_kj1l1a9qg
     ) {
         submissionId
         success
@@ -297,17 +322,11 @@ mutation SaveContactSubmission(
 
 // Query Variables
 {
-    "formProperties": {
-		"dynamicNotification": {
-    	    "recipients": ["support@solspace.com", "user@solspace.com"],
-            "template": "new_template_1.twig"
-  	    }
-	}
     "honeypot": {
         "name": "freeform_form_handle",
         "value": ""
     }
-    "captcha": {
+    "reCaptcha": {
         "name": "g-recaptcha-response",
         "value": "INSERT RECAPCTHA RESPONSE",
     },
@@ -317,13 +336,15 @@ mutation SaveContactSubmission(
     },
     "firstName": "Solspace",
     "lastName": "Freeform",
-    "email": "support@solspace.com"
+    "email": "support@solspace.com",
+    "mailingList_1bkqk7kOQ": 0,
+    "mailingList_kj1l1a9qg": 1
 }
 ```
 
 Example response data:
 
-```json
+```json showLineNumbers
 {
   "data": {
     "save_contact_Submission": {
@@ -342,64 +363,92 @@ Example response data:
 
 ## Interfaces
 
-### Form Interface
+### Form Interface<Badge type="feature" text="Revised 4.1.0+" />
 
 These are the fields available for the `FreeformFormInterface`:
 
-| Field                                                     | Type                                                      | Description                                                            |
-| --------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `id`                                                      | `Int`                                                     | ID                                                                     |
-| `uid`                                                     | `String`                                                  | UID                                                                    |
-| `name`                                                    | `String`                                                  | Name                                                                   |
-| `handle`                                                  | `String`                                                  | Handle                                                                 |
-| `type`                                                    | `String`                                                  | Type                                                                   |
-| `hash`                                                    | `String`                                                  | The form's hash needed to submit forms                                 |
-| `color`                                                   | `String`                                                  | Color                                                                  |
-| `description`                                             | `String`                                                  | Description                                                            |
-| `returnUrl`                                               | `String`                                                  | The specified return URL                                               |
-| `storeData`                                               | `Boolean`                                                 | Are submissions being stored for this form                             |
-| `submissionTitleFormat`                                   | `String`                                                  | Title format used for new submission titles                            |
-| `submissionMutationName`                                  | `String`                                                  | The forms GraphQL mutation name for submissions                        |
-| `ipCollectingEnabled`                                     | `Boolean`                                                 | Are the IP addresses being stored                                      |
-| `ajax` <Badge type="feature" text="Renamed in 5.0+" />    | `Boolean`                                                 | Is the ajax enabled for this form                                      |
-| `showProcessingSpinner`                                   | `Boolean`                                                 | Should the submit button show a spinner when submitting                |
-| `showProcessingText`                                      | `Boolean`                                                 | Should the submit button change the button label while submitting      |
-| `processingText`                                          | `String`                                                  | The submit button loading label text                                   |
-| `defaultStatus`                                           | `Int`                                                     | The assigned default status ID of new submissions                      |
-| `formTemplate`                                            | `String`                                                  | The assigned default formatting template                               |
-| `gtmEnabled`                                              | `Boolean`                                                 | Is the Google Tag Manager enabled for this form?                       |
-| `honeypot`                                                | [`FreeformHoneypotInterface`](#honeypot-interface)        | A fresh honeypot instance                                              |
-| `csrfToken`                                               | [`FreeformCsrfTokenInterface`](#csrf-token-interface)     | A fresh csrf token                                                     |
-| `captcha` <Badge type="feature" text="Renamed in 5.0+" /> | [`FreeformFormCaptchaInterface`](#form-captcha-interface) | The captcha for this form                                              |
-| `fields`                                                  | [`[FreeformFieldInterface]`](#field-interface)            | A list of Form's `Field`                                               |
-| `pages`                                                   | [`[FreeformPageInterface]`](#page-interface)              | A list of Form's `Page` entities                                       |
-| `successMessage`                                          | `String`                                                  | The specified success message                                          |
-| `errorMessage`                                            | `String`                                                  | The specified error message                                            |
-| `disableSubmit`                                           | `Boolean`                                                 | Should the form’s submit button be disabled when the form is submitted |
-| `disableReset`                                            | `Boolean`                                                 | Should the form’s submit button be disabled state be reset             |
-| `enctype`                                                 | `String`                                                  | The form’s enctype                                                     |
-| `rules`                                                   | [`FreeformRulesInterface`](#rules-interface)              | The form’s rules                                                       |
+:::warning
+`FormInterface` is deprecated. Please use `FreeformFormInterface` instead. `ajax` is deprecated. Please use `ajaxEnabled` instead.
+:::
 
-### Field Interface
+| Field                                                                       | Type                                                          | Description                                                                                                                                                   |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                        | `Int`                                                         | ID                                                                                                                                                            |
+| `uid`                                                                       | `String`                                                      | UID                                                                                                                                                           |
+| `name`                                                                      | `String`                                                      | Name                                                                                                                                                          |
+| `handle`                                                                    | `String`                                                      | Handle                                                                                                                                                        |
+| `hash`                                                                      | `String`                                                      | The form's hash needed to submit forms                                                                                                                        |
+| `color`                                                                     | `String`                                                      | Color                                                                                                                                                         |
+| `description`                                                               | `String`                                                      | Description                                                                                                                                                   |
+| `returnUrl`                                                                 | `String`                                                      | The specified return URL                                                                                                                                      |
+| `storeData`                                                                 | `Boolean`                                                     | Are submissions being stored for this form                                                                                                                    |
+| `submissionTitleFormat`                                                     | `String`                                                      | Title format used for new submission titles                                                                                                                   |
+| `submissionMutationName`                                                    | `String`                                                      | The forms GraphQL mutation name for submissions                                                                                                               |
+| `extraPostUrl`                                                              | `String`                                                      | An URL that will get a POST call with the submitted data                                                                                                      |
+| `extraPostTriggerPhrase`                                                    | `String`                                                      | A keyword or phrase Freeform should check for in the output of the POST URL to know if and when there’s an error to log, e.g. ‘error’ or ‘an error occurred’. |
+| `ipCollectingEnabled`                                                       | `Boolean`                                                     | Are the IP addresses being stored                                                                                                                             |
+| `ajaxEnabled`                                                               | `Boolean`                                                     | Is the ajax enabled for this form                                                                                                                             |
+| `showSpinner`                                                               | `Boolean`                                                     | Should the submit button show a spinner when submitting                                                                                                       |
+| `showLoadingText`                                                           | `Boolean`                                                     | Should the submit button change the button label while submitting                                                                                             |
+| `loadingText`                                                               | `String`                                                      | The submit button loading label text                                                                                                                          |
+| `defaultStatus`                                                             | `Int`                                                         | The assigned default status ID of new submissions                                                                                                             |
+| `formTemplate`                                                              | `String`                                                      | The assigned default formatting template                                                                                                                      |
+| `gtmEnabled`                                                                | `Boolean`                                                     | Is the Google Tag Manager enabled for this form?                                                                                                              |
+| `gtmId`                                                                     | `String`                                                      | The Google Tag Manager ID                                                                                                                                     |
+| `gtmEventName`                                                              | `String`                                                      | The name of the Event that will be added to Google Tag Manager's data layer                                                                                   |
+| `honeypot`                                                                  | [`FreeformHoneypotInterface`](#honeypot-interface)            | A fresh honeypot instance                                                                                                                                     |
+| `csrfToken`                                                                 | [`FreeformCsrfTokenInterface`](#csrf-token-interface)         | A fresh csrf token                                                                                                                                            |
+| `reCaptcha`                                                                 | [`FreeformFormReCaptchaInterface`](#form-recaptcha-interface) | The ReCaptcha for this form                                                                                                                                   |
+| `fields`                                                                    | [`[FreeformFieldInterface]`](#field-interface)                | A list of Form's `Field`                                                                                                                                      |
+| `pages`                                                                     | [`[FreeformPageInterface]`](#page-interface)                  | A list of Form's `Page` entities                                                                                                                              |
+| `mailingListName`<Badge type="feature" text="4.1.6+, Revised in 4.1.12+" /> | `[String]`                                                    | The form's mailing list field handles. Use `mailingList_` + unique handle/hash for mailing list field, e.g. `mailingList_1bkqk7kOQ`.                          |
+| `successMessage`<Badge type="feature" text="4.1.6+" />                      | `String`                                                      | The specified success message                                                                                                                                 |
+| `errorMessage`<Badge type="feature" text="4.1.6+" />                        | `String`                                                      | The specified error message                                                                                                                                   |
+| `disableSubmit`<Badge type="feature" text="4.1.6+" />                       | `Boolean`                                                     | Should the form’s submit button be disabled when the form is submitted                                                                                        |
+| `disableReset`<Badge type="feature" text="4.1.6+" />                        | `Boolean`                                                     | Should the form’s submit button be disabled state be reset                                                                                                    |
+| `enctype`<Badge type="feature" text="4.1.6+" />                             | `String`                                                      | The form’s enctype                                                                                                                                            |
 
-Use `FreeformFieldInterface`.
+### Field Interface<Badge type="feature" text="Revised 4.1.0+" />
+
+:::warning
+`FieldInterface` is deprecated. Please use `FreeformFieldInterface` instead.
+:::
 
 The base `FreeformFieldInterface` implemented by all field types. You can see specific Field Type fields [here](#field-types).
 
-| Field                                                    | Type                                                     | Description                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------------- |
-| `id`                                                     | `Int`                                                    | ID                                       |
-| `type`                                                   | `String`                                                 | Type                                     |
-| `label`                                                  | `String`                                                 | Label                                    |
-| `handle`                                                 | `String`                                                 | Handle                                   |
-| `instruction`                                            | `String`                                                 | Instructions                             |
-| `required`                                               | `Boolean`                                                | Is the field required                    |
-| `pageIndex`                                              | `Int`                                                    | The page index this field is assigned to |
-| `attributes` <Badge type="feature" text="New in 5.0+" /> | [`[FreeformAttributesInterface]`](#attributes-interface) | Field's attributes                       |
+| Field                                         | Type                                                   | Description                              |
+| --------------------------------------------- | ------------------------------------------------------ | ---------------------------------------- |
+| `id`                                          | `Int`                                                  | ID                                       |
+| `type`                                        | `String`                                               | Type                                     |
+| `label`                                       | `String`                                               | Label                                    |
+| `hash`                                        | `String`                                               | Generated unique field hash              |
+| `handle`                                      | `String`                                               | Handle                                   |
+| `instruction`                                 | `String`                                               | Instructions                             |
+| `required`                                    | `Boolean`                                              | Is the field required                    |
+| `pageIndex`                                   | `Int`                                                  | The page index this field is assigned to |
+| `inputAttributes`                             | [`[FreeformAttributeInterface]`](#attribute-interface) | Field's input attributes                 |
+| `labelAttributes`                             | [`[FreeformAttributeInterface]`](#attribute-interface) | Field's label attributes                 |
+| `errorAttributes`                             | [`[FreeformAttributeInterface]`](#attribute-interface) | Field's error attributes                 |
+| `instructionAttributes`                       | [`[FreeformAttributeInterface]`](#attribute-interface) | Field's instruction attributes           |
+| `rules`<Badge type="feature" text="4.1.5+" /> | `String`                                               | Field's rules as a JSON string           |
 
-### Page Interface
+#### Conditional Rules<Badge type="feature" text="4.1.5+" />
 
-Use `FreeformPageInterface`.
+The `rules` JSON string contains the following properties:
+
+- `show` Show or hide this item
+- `type` when _all_ or _any_ of its `criteria` match.
+- `criteria` will contain an array with the target handle, operand and value.
+  - The example below would result in hiding the email field when its value is blank/empty:
+    ```json
+    {\"show\":false,\"type\":\"any\",\"criteria\":[{\"tgt\":\"email\",\"o\":\"=\",\"val\":\"\"}]}
+    ```
+
+### Page Interface<Badge type="feature" text="Revised 4.1.0+" />
+
+:::warning
+`PageInterface` is deprecated. Please use `FreeformPageInterface` instead.
+:::
 
 Each page contains a list of [`FreeformRowInterface`](#row-interface) objects:
 
@@ -409,9 +458,11 @@ Each page contains a list of [`FreeformRowInterface`](#row-interface) objects:
 | `label` | `String`                                   | Page's label                             |
 | `rows`  | [`[FreeformRowInterface]`](#row-interface) | A list of `FreeformRowInterface` objects |
 
-### Row Interface
+### Row Interface<Badge type="feature" text="Revised 4.1.0+" />
 
-Use `FreeformRowInterface`.
+:::warning
+`RowInterface` is deprecated. Please use `FreeformRowInterface` instead.
+:::
 
 Each row contains a list of [fields](#field-interface):
 
@@ -420,37 +471,39 @@ Each row contains a list of [fields](#field-interface):
 | `id`     | `String`                                       | A unique hash generated for each row       |
 | `fields` | [`[FreeformFieldInterface]`](#field-interface) | A list of `FreeformFieldInterface` objects |
 
-### Submission Interface
+### Submission Interface<Badge type="feature" text="Revised 4.1.0+" />
 
 These are the fields available for the `FreeformSubmissionInterface`:
 
-| Field                                                       | Type                                                                  | Description                                       |
-| ----------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------- |
-| `id`                                                        | `Int`                                                                 | The ID of the submission                          |
-| `finished`                                                  | `Boolean`                                                             | Whether the submission is finished or not         |
-| `freeformPayload`                                           | `String`                                                              | The payload of the submission                     |
-| `hash`                                                      | `String`                                                              | The generated hash for the submission             |
-| `captcha` <Badge type="feature" text="Renamed in 5.0+" />   | [`FreeformSubmissionCaptchaInterface`](#submission-captcha-interface) | The Captcha (name and value) of the submission    |
-| `csrfToken`                                                 | [`FreeformCsrfTokenInterface`](#csrf-token-interface)                 | The CSRF token (name and value) of the submission |
-| `honeypot`                                                  | [`FreeformHoneypotInterface`](#honeypot-interface)                    | The Honeypot (name and value) of the submission   |
-| `html`                                                      | `String`                                                              | The generated HTML for the submission             |
-| `multiPage`                                                 | `Boolean`                                                             | Whether the submission has multiple pages or not  |
-| `onSuccess`                                                 | `String`                                                              | The success behavior of the submission            |
-| `returnUrl`                                                 | `String`                                                              | The return URL of the submission                  |
-| `submissionId`                                              | `Int`                                                                 | The ID of the submission                          |
-| `duplicate` <Badge type="feature" text="Renamed in 5.0+" /> | `Boolean`                                                             | Whether the form submission is a duplicate or not |
-| `submissionToken`                                           | `String`                                                              | The generated token for the submission            |
-| `success`                                                   | `Boolean`                                                             | Whether the submission is a success or not        |
-| `dateCreated`                                               | `DateTime`                                                            | The created date for the submission               |
-| `dateUpdated`                                               | `DateTime`                                                            | The updated date for the submission               |
-| `isSpam`                                                    | `Boolean`                                                             | Whether the submission is a spam or not           |
-| `spamReasons`                                               | `String`                                                              | Spam reasons for the submission                   |
-| `user`                                                      | `User`                                                                | The author of the submission                      |
-| `assets`                                                    | `[Asset]`                                                             | The assets of the submission                      |
+| Field                    | Type                                                                      | Description                                                    |
+| ------------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `id`                     | `Int`                                                                     | The ID of the submission                                       |
+| `finished`               | `Boolean`                                                                 | Whether the submission is finished or not                      |
+| `freeformPayload`        | `String`                                                                  | The payload of the submission                                  |
+| `hash`                   | `String`                                                                  | The generated hash for the submission                          |
+| `reCaptcha`              | [`FreeformSubmissionReCaptchaInterface`](#submission-recaptcha-interface) | The ReCaptcha (name and value) of the submission               |
+| `csrfToken`              | [`FreeformCsrfTokenInterface`](#csrf-token-interface)                     | The CSRF token (name and value) of the submission              |
+| `honeypot`               | [`FreeformHoneypotInterface`](#honeypot-interface)                        | The Honeypot (name and value) of the submission                |
+| `html`                   | `String`                                                                  | The generated HTML for the submission                          |
+| `multiPage`              | `Boolean`                                                                 | Whether the submission has multiple pages or not               |
+| `onSuccess`              | `String`                                                                  | The success behaviour of the submission                        |
+| `returnUrl`              | `String`                                                                  | The return URL of the submission                               |
+| `submissionId`           | `Int`                                                                     | The ID of the submission                                       |
+| `submissionLimitReached` | `Boolean`                                                                 | Whether the form submission rate limit has been reached or not |
+| `submissionToken`        | `String`                                                                  | The generated token for the submission                         |
+| `success`                | `Boolean`                                                                 | Whether the submission is a success or not                     |
+| `dateCreated`            | `DateTime`                                                                | The created date for the submission                            |
+| `dateUpdated`            | `DateTime`                                                                | The updated date for the submission                            |
+| `isSpam`                 | `Boolean`                                                                 | Whether the submission is a spam or not                        |
+| `spamReasons`            | `String`                                                                  | Spam reasons for the submission                                |
+| `user`                   | `User`                                                                    | The author of the submission                                   |
+| `assets`                 | `[Asset]`                                                                 | The assets of the submission                                   |
 
-### Option Interface
+### Option Interface<Badge type="feature" text="Revised 4.1.0+" />
 
-Use `FreeformOptionInterface`.
+:::warning
+`OptionsInterface` is deprecated. Please use `FreeformOptionInterface` instead.
+:::
 
 | Field     | Type      | Description           |
 | --------- | --------- | --------------------- |
@@ -458,46 +511,42 @@ Use `FreeformOptionInterface`.
 | `label`   | `String`  | Option's label        |
 | `checked` | `Boolean` | Is the option checked |
 
-### Opinion Scale Interface
+### Opinion Scale Interface<Badge type="feature" text="Revised 4.1.0+" />
 
-Use `FreeformOpinionScaleInterface`.
+:::warning
+`ScalesInterface` is deprecated. Please use `FreeformOpinionScaleInterface` instead.
+:::
 
 | Field   | Type     | Description |
 | ------- | -------- | ----------- |
 | `value` | `String` | Value       |
 | `label` | `String` | Label       |
 
-### Attributes Interface<Badge type="feature" text="New in 5.0+" />
+### Attribute Interface<Badge type="feature" text="Revised 4.1.0+" />
 
-Use `FreeformAttributesInterface`.
-
-| Field          | Type                                                 | Description             |
-| -------------- | ---------------------------------------------------- | ----------------------- |
-| `input`        | [`FreeformAttributeInterface`](#attribute-interface) | Input attributes        |
-| `label`        | [`FreeformAttributeInterface`](#attribute-interface) | Label attributes        |
-| `instructions` | [`FreeformAttributeInterface`](#attribute-interface) | Instructions attributes |
-| `container`    | [`FreeformAttributeInterface`](#attribute-interface) | Container attributes    |
-| `error`        | [`FreeformAttributeInterface`](#attribute-interface) | Error attributes        |
-
-### Attribute Interface
-
-Use `FreeformAttributeInterface`.
+:::warning
+`KeyValueMapInterface` is deprecated. Please use `FreeformAttributeInterface` instead.
+:::
 
 | Field       | Type     | Description            |
 | ----------- | -------- | ---------------------- |
 | `attribute` | `String` | Name of the Attribute  |
 | `value`     | `String` | Value of the Attribute |
 
-### Honeypot Interface
+### Honeypot Interface<Badge type="feature" text="4.1.0+" />
 
 Use `FreeformHoneypotInterface`.
+
+:::warning
+`hash` and `timestamp` are deprecated. Please do not use.
+:::
 
 | Field   | Type     | Description       |
 | ------- | -------- | ----------------- |
 | `name`  | `String` | Name of Honeypot  |
 | `value` | `String` | Value of Honeypot |
 
-### CSRF Token Interface
+### CSRF Token Interface<Badge type="feature" text="4.1.0+" />
 
 Use `FreeformCsrfTokenInterface`.
 
@@ -506,152 +555,40 @@ Use `FreeformCsrfTokenInterface`.
 | `name`  | `String` | Name of the CSRF token  |
 | `value` | `String` | Value of the CSRF token |
 
-### Form Captcha Interface<Badge type="feature" text="Renamed in 5.0+" />
+### Form ReCaptcha Interface<Badge type="feature" text="4.1.0+" />
 
-Use `FreeformFormCaptchaInterface`.
+Use `FreeformFormReCaptchaInterface`.
 
 | Field     | Type      | Description                                       |
 | --------- | --------- | ------------------------------------------------- |
 | `name`    | `String`  | The forms GraphQL mutation name for submissions   |
 | `handle`  | `String`  | The forms GraphQL mutation handle for submissions |
-| `enabled` | `Boolean` | Is Captcha enabled for this form                  |
+| `enabled` | `Boolean` | Is ReCaptcha enabled for this form                |
 
-### Submission Captcha Interface
+### Submission ReCaptcha Interface<Badge type="feature" text="4.1.0+" />
 
-Use `FreeformSubmissionCaptchaInterface`.
+Use `FreeformSubmissionReCaptchaInterface`.
 
-| Field   | Type     | Description          |
-| ------- | -------- | -------------------- |
-| `name`  | `String` | Name of the Captcha  |
-| `value` | `String` | Value of the Captcha |
-
-### Buttons Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformButtonsInterface`.
-
-| Field                  | Type                                                                        | Description                               |
-| ---------------------- | --------------------------------------------------------------------------- | ----------------------------------------- |
-| `layout`               | `String`                                                                    | The button layout                         |
-| `submitLabel`          | `String`                                                                    | The button submit label                   |
-| `back`                 | `Boolean`                                                                   | Whether the button has back button or not |
-| `backLabel`            | `String`                                                                    | The button back label                     |
-| `save`                 | `Boolean`                                                                   | Whether the button has save button or not |
-| `saveLabel`            | `String`                                                                    | The button save label                     |
-| `saveRedirectUrl`      | `String`                                                                    | The button save redirect URL              |
-| `emailField`           | [`FreeformFieldInterface`](#field-interface)                                | The button email notification recipient   |
-| `notificationTemplate` | [`FreeformNotificationTemplateInterface`](#notification-template-interface) |                                           |
-| `attributes`           | [`FreeformButtonsAttributesInterface`](#buttons-attributes-interface)       | The button attributes                     |
-
-### Buttons Attributes Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformButtonsAttributesInterface`.
-
-| Field           | Type                                                 | Description               |
-| --------------- | ---------------------------------------------------- | ------------------------- |
-| `container`     | [`FreeformAttributeInterface`](#attribute-interface) | Container attributes      |
-| `column`        | [`FreeformAttributeInterface`](#attribute-interface) | Column attributes         |
-| `buttonWrapper` | [`FreeformAttributeInterface`](#attribute-interface) | Button Wrapper attributes |
-| `submit`        | [`FreeformAttributeInterface`](#attribute-interface) | Submit button attributes  |
-| `back`          | [`FreeformAttributeInterface`](#attribute-interface) | Back button attributes    |
-| `save`          | [`FreeformAttributeInterface`](#attribute-interface) | Save button attributes    |
-
-### Notification Template Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformNotificationTemplateInterface`.
-
-| Field                | Type       | Description                                                                                                   |
-| -------------------- | ---------- | ------------------------------------------------------------------------------------------------------------- |
-| `id`                 | `Int`      | The ID of the notification template                                                                           |
-| `name`               | `String`   | The name of the notification template                                                                         |
-| `handle`             | `String`   | The file name of the notification template                                                                    |
-| `description`        | `String`   | The description of the notification template                                                                  |
-| `fromEmail`          | `String`   | The from email that will appear in the notification template                                                  |
-| `fromName`           | `String`   | The from name that will appear in the notification template                                                   |
-| `replyToName`        | `String`   | The reply to name that will appear in the notification template                                               |
-| `replyToEmail`       | `String`   | The reply to email that will appear in the notification template                                              |
-| `cc`                 | `String`   | The email address(es) you would like to be CC'd in the notification template                                  |
-| `bcc`                | `String`   | The email address(es) you would like to be BCC'd in the notification template                                 |
-| `includeAttachments` | `Boolean`  | Whether to include attachments in the notification template or not                                            |
-| `presetAssets`       | `[String]` | Assets included as attachments in the notification template                                                   |
-| `subject`            | `String`   | The subject of the notification template                                                                      |
-| `body`               | `String`   | The HTML content of the notification template                                                                 |
-| `textBody`           | `String`   | The text content of the notification template                                                                 |
-| `autoText`           | `Boolean`  | Whether Freeform will automatically provide a Text-only version of the notification based on the HTML version |
-
-### Rules Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformRulesInterface`.
-
-| Field    | Type                                                    | Description     |
-| -------- | ------------------------------------------------------- | --------------- |
-| `pages`  | [`[FreeformPageRuleInterface]`](#page-rule-interface)   | The page rules  |
-| `fields` | [`[FreeformFieldRuleInterface]`](#field-rule-interface) | The field rules |
-
-### Page Rule Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformPageRuleInterface`.
-
-| Field        | Type                                                            | Description                      |
-| ------------ | --------------------------------------------------------------- | -------------------------------- |
-| `id`         | `Int`                                                           | The ID for the page rule         |
-| `uid`        | `String`                                                        | The UID for the page rule        |
-| `page`       | [`FreeformPageInterface`](#page-interface)                      | The page for the rule            |
-| `combinator` | `String`                                                        | The combinator for the page rule |
-| `conditions` | [`[FreeformRuleConditionInterface]`](#rule-condition-interface) | The conditions for the page rule |
-
-### Field Rule Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformFieldRuleInterface`.
-
-| Field        | Type                                                            | Description                       |
-| ------------ | --------------------------------------------------------------- | --------------------------------- |
-| `id`         | `Int`                                                           | The ID for the field rule         |
-| `uid`        | `String`                                                        | The UID for the field rule        |
-| `field`      | [`FreeformFieldInterface`](#field-interface)                    | The field for the field rule      |
-| `combinator` | `String`                                                        | The combinator for the field rule |
-| `conditions` | [`[FreeformRuleConditionInterface]`](#rule-condition-interface) | The conditions for the field rule |
-
-### Rule Condition Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformRuleConditionInterface`.
-
-| Field      | Type                                         | Description                         |
-| ---------- | -------------------------------------------- | ----------------------------------- |
-| `uid`      | `String`                                     | The UID for the rule condition      |
-| `field`    | [`FreeformFieldInterface`](#field-interface) | The field for the rule condition    |
-| `operator` | `String`                                     | The operator for the rule condition |
-| `value`    | `String`                                     | The value for the rule condition    |
-
-### Form Properties Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformFormPropertiesInterface`.
-
-| Field                 | Type                                                                       | Description                                                                         |
-| --------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `dynamicNotification` | [`FreeformDynamicNotificationInterface`](#dynamic-notification-interface)` | Allows using a dynamic template level notification for a more fine-grained control. |
-
-### Dynamic Notification Interface<Badge type="feature" text="New in 5.0+" />
-
-Use `FreeformDynamicNotificationInterface`.
-
-| Field        | Type       | Description                           |
-| ------------ | ---------- | ------------------------------------- |
-| `recipients` | `[String]` | The recipients of the notification    |
-| `template`   | `String`   | The name of the notification template |
+| Field   | Type     | Description            |
+| ------- | -------- | ---------------------- |
+| `name`  | `String` | Name of the ReCaptcha  |
+| `value` | `String` | Value of the ReCaptcha |
 
 ## Field Types
 
 ### Text
 
-| Field         | Type     | Description                   |
-| ------------- | -------- | ----------------------------- |
-| `value`       | `String` | The default value             |
-| `placeholder` | `String` | Input's placeholder attribute |
+| Field         | Type     | Description                                    |
+| ------------- | -------- | ---------------------------------------------- |
+| `value`       | `String` | The default value                              |
+| `maxLength`   | `Int`    | Maximum length of chars allowed for this field |
+| `placeholder` | `String` | Input's placeholder attribute                  |
 
 ```graphql showLineNumbers
 fields {
   ... on FreeformField_Text {
     value
+    maxLength
     placeholder
   }
 }
@@ -659,23 +596,25 @@ fields {
 
 ### Textarea
 
-| Field         | Type     | Description                            |
-| ------------- | -------- | -------------------------------------- |
-| `value`       | `String` | The default value                      |
-| `rows`        | `Int`    | Number of rows shown for this textarea |
-| `placeholder` | `String` | Input's placeholder attribute          |
+| Field         | Type     | Description                                    |
+| ------------- | -------- | ---------------------------------------------- |
+| `value`       | `String` | The default value                              |
+| `maxLength`   | `Int`    | Maximum length of chars allowed for this field |
+| `rows`        | `Int`    | Number of rows shown for this textarea         |
+| `placeholder` | `String` | Input's placeholder attribute                  |
 
 ```graphql showLineNumbers
 fields {
   ... on FreeformField_Textarea {
     value
+    maxLength
     rows
     placeholder
   }
 }
 ```
 
-### Dropdown
+### Select
 
 | Field     | Type                                             | Description          |
 | --------- | ------------------------------------------------ | -------------------- |
@@ -684,7 +623,7 @@ fields {
 
 ```graphql showLineNumbers
 fields {
-  ... on FreeformField_Dropdown {
+  ... on FreeformField_Select {
     value
     options {
       value
@@ -731,7 +670,7 @@ fields {
 }
 ```
 
-### Checkboxes
+### Checkbox Group
 
 | Field     | Type                                             | Description                           |
 | --------- | ------------------------------------------------ | ------------------------------------- |
@@ -741,7 +680,7 @@ fields {
 
 ```graphql showLineNumbers
 fields {
-  ... on FreeformField_Checkboxes {
+  ... on FreeformField_CheckboxGroup {
     values
     oneLine
     options {
@@ -753,7 +692,7 @@ fields {
 }
 ```
 
-### Radios
+### Radio Group
 
 | Field     | Type                                             | Description          |
 | --------- | ------------------------------------------------ | -------------------- |
@@ -762,7 +701,7 @@ fields {
 
 ```graphql showLineNumbers
 fields {
-  ... on FreeformField_Radios {
+  ... on FreeformField_RadioGroup {
     value
     options {
       value
@@ -775,14 +714,44 @@ fields {
 
 ### Email
 
-| Field         | Type     | Description                   |
-| ------------- | -------- | ----------------------------- |
-| `placeholder` | `String` | Input's placeholder attribute |
+| Field            | Type     | Description                                  |
+| ---------------- | -------- | -------------------------------------------- |
+| `notificationId` | `String` | The ID or the filename of the email template |
+| `placeholder`    | `String` | Input's placeholder attribute                |
 
 ```graphql showLineNumbers
 fields {
   ... on FreeformField_Email {
+    notificationId
     placeholder
+  }
+}
+```
+
+### Dynamic Recipients
+
+| Field              | Type                                             | Description                                               |
+| ------------------ | ------------------------------------------------ | --------------------------------------------------------- |
+| `values`           | `[String]`                                       | The default values                                        |
+| `notificationId`   | `String`                                         | The ID or the filename of the email template              |
+| `showAsRadio`      | `Boolean`                                        | Should the field be shown as a list of radio inputs       |
+| `showAsCheckboxes` | `Boolean`                                        | Should the field be shown as a list of checkbox inputs    |
+| `oneLine`          | `Boolean`                                        | Should radios or checkboxes be displayed in a single line |
+| `options`          | [`[FreeformOptionInterface]`](#option-interface) | The assigned options                                      |
+
+```graphql showLineNumbers
+fields {
+  ... on FreeformField_DynamicRecipients {
+    values
+    notificationId
+    showAsRadio
+    showAsCheckboxes
+    oneLine
+    options {
+      valuel
+      label
+      checked
+    }
   }
 }
 ```
@@ -1018,7 +987,41 @@ fields {
 }
 ```
 
-## How to Render a Form
+### Email Marketing
+
+| Field    | Type      | Description                                       |
+| -------- | --------- | ------------------------------------------------- |
+| `hidden` | `Boolean` | Should this field be a hidden field or a checkbox |
+
+```graphql showLineNumbers
+fields {
+  ... on FreeformField_MailingList {
+    hidden
+  }
+}
+```
+
+### Submit
+
+| Field         | Type      | Description                       |
+| ------------- | --------- | --------------------------------- |
+| `labelNext`   | `String`  | Label for the "next" button       |
+| `labelPrev`   | `String`  | Label for the "previous" button   |
+| `disablePrev` | `Boolean` | Is the "previous" button disabled |
+| `position`    | `String`  | Position of the buttons           |
+
+```graphql showLineNumbers
+fields {
+  ... on FreeformField_Submit {
+    labelNext
+    labelPrev
+    disablePrev
+    position
+  }
+}
+```
+
+## How to Render a Form <Badge type="feature" text="Revised 4.1.0+" />
 
 Below are the steps for being able to render your own form in the front-end using GraphQL data and another headless solution such as (but not limited to) [Vue.js](./vuejs/), [Next.js](./nextjs/), or [React JS](./reactjs/).
 
@@ -1029,29 +1032,30 @@ To be able to make a form submittable you will need several things:
 - An `action` entry in the POST payload that points to `freeform/submit`.
 - A `formHash` entry which you will have to retrieve from an endpoint you create.
 - A `honeypot` entry if you're using the [Freeform Honeypot](../forms/spam-protection#freeform-honeypot).
-- A `captcha` entry if you're using the [Freeform Captchas](../forms/spam-protection#captchas).
-- A `csrfToken` entry if you're using [Craft's CSRF tokens](https://craftcms.com/docs/5.x/development/forms.html#csrf).
+- A `reCaptcha` entry if you're using the [Freeform Captchas](../forms/spam-protection#captchas).
+- A `csrfToken` entry if you're using [Craft's CSRF tokens](https://craftcms.com/docs/4.x/dev/controller-actions.html#csrf).
 - A `freeform_payload` entry if you're using `Encrypted Payload` as the session storage type.
 
-To get a valid `formHash`, `honeypot`, `captcha`, `csrfToken` and `freeform_payload`, you will have to create an endpoint on your site.
+To get a valid `formHash`, `honeypot`, `reCaptcha`, `csrfToken` and `freeform_payload`, you will have to create an endpoint on your site.
 
 ### Twig
 
 If you're using **Twig**, here's how to return the form properties data:
 
-```twig
+```twig showLineNumbers
 {# You can attach custom form properties #}
-{# https://docs.solspace.com/craft/freeform/v5/templates/queries/form/#parameters #}
+{# https://docs.solspace.com/craft/freeform/v4/templates/queries/form/#parameters #}
 {% set formProperties = {} %}
-{% set form = freeform.form('your_form_handle', formProperties) %}
+{% set form = craft.freeform.form('your_form_handle') %}
+{{ form.json(formProperties) }}
 ```
 
 ### PHP
 
 If you're making your own endpoint via **PHP**, then we've outlined some simple steps to follow in order to set up a custom Freeform Module.
 
-:::info
-Make sure to read [How to Build a Module](https://craftcms.com/docs/5.x/extend/module-guide.html#the-module-class) if you are new to extending Craft with custom modules.
+:::tip
+Make sure to read [How to Build a Module](https://craftcms.com/docs/4.x/extend/module-guide.html#the-module-class) if you are new to extending Craft with custom modules.
 :::
 
 <VerticalStepWrapper>
@@ -1088,6 +1092,8 @@ class FreeformModule extends Module
 ```
 
 </StepMarkdown>
+
+<StepMarkdown>
 ### Update the Application Config
 
 Add your module to your project's application configuration by listing it in the `/config/app.php` file:
@@ -1104,6 +1110,8 @@ return [
     'bootstrap' => ['freeform-module'],
 ];
 ```
+
+</StepMarkdown>
 
 <StepMarkdown>
 ### Add Controller
@@ -1130,10 +1138,14 @@ class FormController extends Controller
 
     public function actionProperties(int $formId): Response
     {
-        $form = Freeform::getInstance()->forms->getFormById($formId);
+        $formProperties = [];
 
-        if ($form) {
-            return $this->asJson($form->toArray());
+        $formModel = Freeform::getInstance()->forms->getFormById($formId);
+
+        if ($formModel) {
+            $form = $formModel->getForm()->json($formProperties);
+
+            return $this->asJson(json_decode($form));
         }
 
         return $this->asJson(['message' => 'Form was not found']);
@@ -1142,6 +1154,9 @@ class FormController extends Controller
 ```
 
 </StepMarkdown>
+
+<StepMarkdown>
+
 ### Update the Routes
 
 Update the `/config/routes.php` with your new module controller actions:
@@ -1156,6 +1171,8 @@ return [
 ];
 ```
 
+</StepMarkdown>
+
 <StepMarkdown>
 
 ### Example JSON Response
@@ -1164,53 +1181,19 @@ The JSON response looks like this:
 
 ```json showLineNumbers
 {
-    "id": 1,
     "hash": "xxxxxxxx-xxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "name": "My Form Handle",
     "handle": "my-form-handle",
-    "class": "Solspace\\Freeform\\Form\\Types\\Regular",
+    "ajaxEnabled": true,
+    "disableSubmit": true,
+    "disableReset": false,
+    "showSpinner": false,
+    "showLoadingText": false,
+    "loadingText": "Loading...",
+    "class": "",
+    "method": "post",
     "enctype": "application\/x-www-form-urlencoded",
-    "properties": {
-        "hash": "YNkW4Jzye-O2Gd90zeo-tY6a9U8ihSaw0zdJ9yUKne7P7OiLNVnuMVi9Nf5v",
-        "init-time": 1694603762,
-        "secret": "F2okR1p8To6y1nAZaY5n"
-    },
-    "attributes": {
-        "row": {},
-        "success": {},
-        "errors": {}
-    },
-    "settings": {
-        "behavior": {
-            "ajax": true,
-            "showProcessingSpinner": true,
-            "showProcessingText": true,
-            "processingText": "Its Processing...",
-            "successBehavior": "reload",
-            "successTemplate": "successsample.twig",
-            "returnUrl": "/",
-            "successMessage": "Form has been submitted successfully!",
-            "errorMessage": "Sorry, there was an error submitting the form. Please try again.",
-            "duplicateCheck": "limit_once_per_email",
-            "stopSubmissionsAfter": "2023-09-15T23:00:00.000000Z"
-        },
-        "general": {
-            "name": "My Form Handle",
-            "handle": "my-form-handle",
-            "type": "Solspace\\Freeform\\Form\\Types\\Regular",
-            "submissionTitle": "{{ dateCreated|date(\"Y-m-d H:i:s\") }}",
-            "formattingTemplate": "basic-dark/index.twig",
-            "description": "Test Form",
-            "color": "#d0021b",
-            "postForwardingUrl": "",
-            "postForwardingErrorTriggerPhrase": "",
-            "storeData": true,
-            "defaultStatus": 3,
-            "collectIpAddresses": true,
-            "allowUsersToOptIn": true,
-            "optInCheckbox": null
-        }
-    },
+    "successMessage": "Form has been submitted successfully!",
+    "errorMessage": "Sorry, there was an error submitting the form. Please try again.",
     "honeypot": {
         "name": "freeform_form_handle",
         "value": ""
@@ -1223,12 +1206,14 @@ The JSON response looks like this:
         "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     },
     "action": "freeform\/submit"
-    // If using Captcha:
-    "captcha": {
+    // If using ReCaptcha:
+    "reCaptcha": {
         "enabled": true,
-        "handle": "captcha",
+        "handle": "reCaptcha",
         "name": "g-recaptcha-response" // or h-captcha-response
-    }
+    },
+    // If using mailing lists:
+    "mailingListName": ["mailingList_xxxxxx"]
 }
 ```
 
@@ -1237,6 +1222,6 @@ The JSON response looks like this:
 
 Have a look at our headless demos to get a feel for what's possible with GraphQL:
 
-- [VueJS + GraphQL implementations](vuejs)
-- [ReactJS + GraphQL implementations](reactjs)
-- [NextJS + GraphQL implementations](nextjs)
+- [VueJS + GraphQL implementations](./vuejs/)
+- [ReactJS + GraphQL implementations](./reactjs/)
+- [NextJS + GraphQL implementations](./nextjs/)
