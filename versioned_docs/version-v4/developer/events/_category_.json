@@ -1,7 +1,4 @@
 {
   "label": "Events",
-  "position": 1,
-  "link": {
-    "slug": "developer/events"
-  }
+  "position": 1
 }

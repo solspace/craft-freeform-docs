@@ -1,5 +1,6 @@
 ---
-sidebar_position: 9
+title: Stripe Payments
+sidebar_position: 13
 ---
 
 import { Badge } from '@site/src/components/utils';
@@ -8,20 +9,36 @@ import { Badge } from '@site/src/components/utils';
 
 To extend Freeform's Stripe Payments, use the events listed below:
 
-## When updating Payment metadata<Badge type="feature" text="5.1.9+" />
+## When updating Payment Intent data
 
-This event lets you add your own data that gets sent to Stripe for Payment Intents and Subscriptions:
+This event lets you add your own data that gets sent to Stripe for Payment Intents (to replace `Payment for FF Submission #123`):
 
 ```php showLineNumbers
 use Solspace\Freeform\Integrations\PaymentGateways\Stripe;
-use Solspace\Freeform\Integrations\PaymentGateways\Events\UpdateMetadataEvent;
+use Solspace\Freeform\Events\Payments\UpdateDataEvent;
 
 Event::on(
   Stripe::class,
-  Stripe::EVENT_UPDATE_PAYMENT_METADATA,
-  function (UpdateMetadataEvent $event) {
+  Stripe::EVENT_UPDATE_PAYMENT_INTENT_DATA,
+  function (UpdateDataEvent $event) {
     $event->addData('description', 'My custom payment intent description');
-    $event->addData('custom metadata entry', 'Some more data to be persisted in metadata');
+  }
+)
+```
+
+## When updating Subscription data
+
+This event lets you add your own data that gets sent to Stripe for Subscriptions:
+
+```php showLineNumbers
+use Solspace\Freeform\Integrations\PaymentGateways\Stripe;
+use Solspace\Freeform\Events\Payments\UpdateDataEvent;
+
+Event::on(
+  Stripe::class,
+  Stripe::EVENT_UPDATE_SUBSCRIPTION_DATA,
+  function (UpdateDataEvent $event) {
+    $event->addData('description', 'My custom subscription description');
   }
 )
 ```

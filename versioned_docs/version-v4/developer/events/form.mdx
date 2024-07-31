@@ -1,4 +1,5 @@
 ---
+title: Form
 sidebar_position: 1
 ---
 
@@ -305,6 +306,8 @@ Event::on(
   function (HandleRequestEvent $event) {
     $form = $event->getForm();
     $request = $event->getRequest();
+
+    $event->add('myCustomProperty', ['anything' => 'here']);
   }
 )
 ```
@@ -317,10 +320,12 @@ use Solspace\Freeform\Events\Forms\HandleRequestEvent;
 
 Event::on(
   Form::class,
-  Form::EVENT_AFTER_HANDLE_REQUEST,
+  Form::EVENT_BEFORE_HANDLE_REQUEST,
   function (HandleRequestEvent $event) {
     $form = $event->getForm();
     $request = $event->getRequest();
+
+    $event->add('myCustomProperty', ['anything' => 'here']);
   }
 )
 ```
@@ -378,6 +383,28 @@ Event::on(
     $form = $event->getForm();
 
     // your logic here...
+  }
+)
+```
+
+## Hydrating the Form
+
+This event is called when the form object is being built. It parses the form builder settings and attaches them
+to the form object. You can use this event to attach various default form properties in the property bag. Freeform uses this event to attach the Post Forwarding data to the property bag.
+
+```php showLineNumbers
+use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Events\Forms\SendNotificationsEvent;
+
+Event::on(
+  Form::class,
+  Form::EVENT_HYDRATE_FORM,
+  function (HydrateEvent $event) {
+    $form = $event->getForm();
+
+    // We attach a custom property which will be always present in every form
+    // and be accessible via `{{ form.propertyBag.get('always-attached-to-form') }}
+    $form->getPropertyBag()->set('always-attached-to-form', 'my value here');
   }
 )
 ```

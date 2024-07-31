@@ -1,8 +1,7 @@
 ---
-sidebar_position: 6
+title: JS Plugin
+sidebar_position: 3
 ---
-
-import { Badge } from '@site/src/components/utils';
 
 # Freeform Javascript Plugin
 
@@ -76,7 +75,7 @@ document.addEventListener('freeform-on-submit', function (event) {
 
 You can add your custom form handler scripts anywhere in the page. The `freeform-ready` event is triggered for each form and dispatched via the `form` and `document` elements. The events are dispatched once the DOM is ready. If you add a form to the page via AJAX, it will automatically get initialized with the `Freeform` plugin and will also trigger the `freeform-ready` event.
 
-## Loading Freeform JS manually<Badge type='feature' text='Improved in 5.3+' />
+## Loading Freeform JS manually
 
 If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Freeform Javascript Insertion Location](../configuration/settings#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformPlugin()` function to your template where you'd like it to insert the JS. You can pass two variables to the function to add custom attributes to the script and style tags that Freeform generates.
 
@@ -153,10 +152,9 @@ This event is cancelable and lets you do something as soon as the form submit bu
 
 This event has the following properties:
 
-- `form` - the `<form>` element.
-- `freeform` - the Freeform JS Plugin instance.
-- `addCallback(callback: () => Promise<void | boolean>, prority?: number)` <Badge type="feature" text="New in 5.0+" /> - an async function which lets you add a callback to be executed before the form is submitted. It will lock the submit process until finished. The callback should return `true` or nothing to allow the form to be submitted, or `false` to prevent the form from being submitted.
-- `isBackButtonPressed` - a `boolean` value which specifies if the Back button was pressed or not.
+- `form` - the `<form>` element
+- `freeform` - the Freeform JS Plugin instance
+- `isBackButtonPressed` - a `boolean` value which specifies if the Back button was pressed or not
 
 ```js showLineNumbers
 const myForm = document.getElementById('my-form');
@@ -180,35 +178,6 @@ myForm.addEventListener('freeform-on-submit', function (event) {
 
   // Force everyone to always be a Smith
   form.querySelector('input[name="lastName"]').value = 'Smith';
-});
-```
-
-To add a blocking synchronous callback to the form submit process, you can use the `addCallback` method:
-
-```js showLineNumbers
-// Priorities of the callbacks are 0 by default, and are optional.
-// The bigger the priority, the faster the callback will be executed.
-// The smaller the priority, the slower the callback will be executed.
-// Negative numbers are allowed.
-
-const myForm = document.getElementById('my-form');
-myForm.addEventListener('freeform-on-submit', function (event) {
-  // Add priority 100 to make sure this callback is executed before others
-  event.addCallback(async () => {
-    const json = await fetch('/some/long/api/call').then((response) =>
-      response.json()
-    );
-
-    if (json.errors.length) {
-      alert('There was an error');
-      return false;
-    }
-  }, 100);
-
-  // Add priority -100 to make sure this callback is executed after others
-  event.addCallback(async () => {
-    // execute some blocking code here
-  }, -100);
 });
 ```
 
@@ -333,7 +302,7 @@ myForm.addEventListener('freeform-ajax-after-submit', function (event) {
 
 ### Rendering success messages: `freeform-render-success`
 
-This event is cancelable. Use this event to do something in addition to the default success message renderer. Or write your own success rendering logic by preventing the default behavior of the event.
+This event is cancelable. Use this event to do something in addition to the default success message renderer. Or write your own success rendering logic by preventing the default behaviour of the event.
 
 This event has the following properties:
 
@@ -391,7 +360,7 @@ document.addEventListener('freeform-render-form-errors', function (event) {
 
 ### Rendering field errors: `freeform-render-field-errors`
 
-This event is cancelable. Use this event to do something on field error rendering, or write your own field rendering logic by preventing the default behavior of the event.
+This event is cancelable. Use this event to do something on field error rendering, or write your own field rendering logic by preventing the default behaviour of the event.
 
 This event has the following properties:
 
@@ -492,9 +461,9 @@ The available options are:
 - [`bool`] `ajax` - Determines if AJAX is used on this form or not
 - [`bool`] `disableSubmit` - Enables the automatic disabling/enabling of submit buttons once the form is submitted
 - [`bool`] `scrollToAnchor` - Will automatically scroll to the top of the form upon submit
-- [`bool`] `showProcessingSpinner` - Shows the spinner icon in the submit button when submitted
-- [`bool`] `showProcessingText` - Changes the text of the submit button when the form is submitted
-- [`string`] `processingText` - The text to use when `showProcessingText` is enabled
+- [`bool`] `showSpinner` - Shows the spinner icon in the submit button when submitted
+- [`bool`] `showLoadingText` - Changes the text of the submit button when the form is submitted
+- [`string`] `loadingText` - The text to use when `showLoadingText` is enabled
 - [`string`] `successBannerMessage` - The text that will be shown in the success banner
 - [`string`] `errorBannerMessage` - The text that will be shown in the error banner
 - [`string`] `errorClassBanner` - the `css` class name(-s) to be attached to the error banner html element
@@ -502,104 +471,34 @@ The available options are:
 - [`string`] `errorClassField` - the `css` class name(-s) to be attached to the input field that has errors
 - [`string`] `successClassBanner` - the `css` class name(-s) to be attached to the success banner html element
 
-## Stripe Payments Events<Badge type="feature" text="Improved in 5.0+" />
+## Stripe Payments Events
 
-To style the Stripe Payment Element, you'll need to apply [Stripe's Appearance API variables](https://docs.stripe.com/elements/appearance-api?platform=web#variables) to the `elementOptions` and `paymentOptions` listeners.
-
-### elementOptions.appearance
-
-Below is a list of commonly used variables. See [Stripe documentation](https://docs.stripe.com/elements/appearance-api?platform=web#additional-variables) for a complete list of other variables.
-
-| Variable          | Description                                                                                                                                                          |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `fontFamily`      | The font family used throughout Elements. Elements supports custom fonts by passing the fonts option to the Elements group.                                          |
-| `fontSizeBase`    | The font size that's set on the root of the Element. By default, other font size variables like fontSizeXs or fontSizeSm are scaled from this value using rem units. |
-| `spacingUnit`     | The base spacing unit that all other spacing is derived from. Increase or decrease this value to make your layout more or less spacious.                             |
-| `borderRadius`    | The border radius used for tabs, inputs, and other components in the Element.                                                                                        |
-| `colorPrimary`    | A primary color used throughout the Element. Set this to your primary brand color.                                                                                   |
-| `colorBackground` | The color used for the background of inputs, tabs, and other components in the Element.                                                                              |
-| `colorText`       | The default text color used in the Element.                                                                                                                          |
-| `colorDanger`     | A color used to indicate errors or destructive actions in the Element.                                                                                               |
-
-The `rules` option is a map of CSS-like selectors to CSS properties, allowing granular customization of individual components. After defining your `theme` and `variables`, use `rules` to seamlessly integrate **Elements** to match the design of your site.
-
-The selector for a rule can target any of the public class names in the Element, as well as the supported states, pseudo-classes, and pseudo-elements for each class. For example, the following are valid selectors:
-
-- `.Tab`, `.Label`, `.Input`
-- `.Tab:focus`
-- `.Input--invalid`, `.Label--invalid`
-- `.Input::placeholder`
-
-The following are not valid selectors:
-
-- `.p-SomePrivateClass`, `img` - only public class names can be targeted
-- `.Tab .TabLabel` - ancestor-descendant relationships in selectors are unsupported
-- `.Tab--invalid` - the `.Tab` class does not support the `--invalid` state
-
-See [Stripe documentation](https://docs.stripe.com/elements/appearance-api?platform=web#rules) for a complete list.
-
-### paymentOptions.layout
-
-Options for creating the Payment Element.
-
-| Property                        | Description                                                                                                                                                                                                                                                                            |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `defaultCollapsed: true`        | Controls if the Payment Element renders in a collapsed state (where no payment method is selected by default). When you leave this undefined, Stripe renders the experience that it determines will have the best conversion.                                                          |
-| `radios: true`                  | Renders each Payment Method with a radio input next to its logo. The radios visually indicate the current selection of the Payment Element. This property is only applicable to the accordion layout.                                                                                  |
-| `spacedAccordionItems: false`   | When true, the Payment Methods render as standalone buttons with space in between them. This property is only applicable to the accordion layout.                                                                                                                                      |
-| `visibleAccordionItemsCount: 2` | Sets the max number of Payment Methods visible before using the "More" button to hide additional Payment Methods. Set this value to 0 to disable the "More" button and render all available Payment Methods. Default is `5`. This property is only applicable to the accordion layout. |
-
-Full documentation can be found here: [Stripe Elements Appearance API](https://stripe.com/docs/elements/appearance-api)
-
-### Example
+To style the Freeform Stripe credit card fields, you'll need to add a listener for the `freeform-stripe-styling` event like this (example for Bootstrap):
 
 ```html showLineNumbers
 <script>
-  var form = document.querySelector('[data-id="{{ form.anchor }}"]');
-  if (form) {
-    form.addEventListener('freeform-stripe-appearance', function (event) {
-      event.elementOptions.appearance = Object.assign(
-        event.elementOptions.appearance,
-        {
-          variables: {
-            colorPrimary: '#0d6efd',
-            fontFamily:
-              '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-            fontSizeBase: '16px',
-            spacingUnit: '0.2em',
-            tabSpacing: '10px',
-            gridColumnSpacing: '20px',
-            gridRowSpacing: '20px',
-            colorText: '#eaeaea',
-            colorBackground: '#1d1f23',
-            colorDanger: '#dc3545',
-            borderRadius: '5px',
-          },
-          rules: {
-            '.Tab, .Input': {
-              border: '1px solid #6c757d',
-              boxShadow: 'none',
-            },
-            '.Tab:focus, .Input:focus': {
-              border: '1px solid #0b5ed7',
-              boxShadow: 'none',
-              outline: '0',
-              transition: 'border-color .15s ease-in-out',
-            },
-            '.Label': {
-              fontSize: '16px',
-              fontWeight: '400',
-            },
-          },
-        }
-      );
-      event.paymentOptions.layout = Object.assign(event.paymentOptions.layout, {
-        defaultCollapsed: true,
-        visibleAccordionItemsCount: 3,
+  document.addEventListener('freeform-stripe-styling', function (event) {
+    (event.detail.base = {
+      fontSize: '16px',
+      color: '#adb5bd',
+      fontFamily:
+        '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+    }),
+      (event.detail.invalid = {
+        color: '#dc3545',
       });
-    });
-  }
+  });
 </script>
+```
+
+Some styling might need to be done with a typical CSS approach targeting the `.StripeElement` class, e.g.
+
+```css showLineNumbers
+.StripeElement {
+  padding: 8px 10px !important;
+  background: #1a1d20;
+  height: 36px;
+}
 ```
 
 ## Date Picker Events

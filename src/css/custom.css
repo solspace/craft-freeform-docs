@@ -1221,12 +1221,13 @@ html[data-theme='dark'] .language-sh:before {
   opacity: 0.5;
 }
 
-.language-sh .token-line > span:before {
+/* .language-nix .token-line > span:first-child:before,
+.language-sh .token-line > span:first-child:before {
   visibility: visible;
   margin-left: -8px;
   font-weight: 700;
   content: '$' !important;
-}
+} */
 
 /* React Player */
 .player-wrapper {

@@ -1,5 +1,6 @@
 ---
-sidebar_position: 11
+title: Post Forwarding
+sidebar_position: 15
 ---
 
 # Post Forwarding
@@ -9,13 +10,13 @@ sidebar_position: 11
 Use this event to add/remove things to the posted payload or make modifications to the Guzzle Client and Request objects.
 
 ```php showLineNumbers
-use Solspace\Freeform\Events\PostForwarding\PostForwardingEvent;
-use Solspace\Freeform\Integrations\Single\PostForwarding\PostForwarding;
+use Solspace\Freeform\Bundles\Form\PayloadForwarding\PayloadForwarding;
+use Solspace\Freeform\Events\PayloadForwarding\PayloadForwardEvent;
 
 Event::on(
-    PostForwarding::class,
-    PostForwarding::EVENT_POST_FORWARDING,
-    function (PostForwardingEvent $event) {
+    PayloadForwarding::class,
+    PayloadForwarding::EVENT_POST_FORWARDING,
+    function (PayloadForwardEvent $event) {
         // Get the existing payload
         $payload = $event->getPayload();
 

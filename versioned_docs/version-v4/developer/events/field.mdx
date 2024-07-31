@@ -1,5 +1,6 @@
 ---
-sidebar_position: 3
+title: Fields
+sidebar_position: 4
 ---
 
 import { Badge } from '@site/src/components/utils';
@@ -7,43 +8,6 @@ import { Badge } from '@site/src/components/utils';
 # Field Events
 
 To extend Freeform Field functionality use the following events:
-
-## Adding field attributes<Badge type="feature" text="New in 5.0+" />
-
-To add attributes to field components, you need to extend this event and modify the `attributes` object on it.
-
-```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\FieldInterface;
-use Solspace\Freeform\Events\Fields\FieldRenderEvent;
-use Solspace\Freeform\Fields\TextField;
-
-Event::on(
-  FieldInterface::class,
-  FieldInterface::EVENT_COMPILE_ATTRIBUTES,
-  function (CompileFieldAttributesEvent $event) {
-    $field = $event->getField();
-    $attributes = $event->getAttributes();
-
-    // Attach a "data-foo" attribute to all container elements
-    $attributes->getContainer()->set('data-foo', 'bar');
-
-    // Append a green border rule to any existing input styles, if present, or create if not present
-    $attributes->getInput()->append('style', 'border: 2px solid green;');
-
-    // Add a "required" attribute to all text fields
-    // Make labels for those fields green
-    // Set a class for the label
-    if ($field instanceof TextField) {
-      $attributes->getInput()->set('required', 'required');
-      $attributes
-        ->getLabel()
-        ->append('style', 'color: green;')
-        ->set('class', 'label-class')
-      ;
-    }
-  }
-)
-```
 
 ## Parsing a `POST` value
 
@@ -56,7 +20,7 @@ use Solspace\Freeform\Fields\TextField;
 
 Event::on(
   FieldInterface::class,
-  FieldInterface::EVENT_TRANSFORM_FROM_POST,
+  FieldInterface::EVENT_BEFORE_VALIDATE,
   function (TransformValueEvent $event) {
     $form = $event->getForm();
     $field = $event->getField();
@@ -84,7 +48,7 @@ use Solspace\Freeform\Events\Fields\ValidateEvent;
 
 Event::on(
   FieldsService::class,
-  FieldsService::EVENT_VALIDATE,
+  FieldsService::EVENT_BEFORE_VALIDATE,
   function (ValidateEvent $event) {
     $form = $event->getForm();
     $field = $event->getField();
@@ -98,6 +62,102 @@ Event::on(
     if ($field->getHandle() === 'firstName' && $field->getValue() === 'John') {
       $field->addError("Sorry, John, we didn't make the rules.");
     }
+  }
+)
+```
+
+## After a field is validated
+
+This event is fired for every active Freeform field right after it has been validated.
+
+```php showLineNumbers
+use Solspace\Freeform\Services\FieldsService;
+use Solspace\Freeform\Events\Fields\ValidateEvent;
+
+Event::on(
+  FieldsService::class,
+  FieldsService::EVENT_AFTER_VALIDATE,
+  function (ValidateEvent $event) {
+    $form = $event->getForm();
+    $field = $event->getField();
+
+    // Perform some actions here
+  }
+)
+```
+
+## Before saving a field
+
+This event is fired before a field is saved.
+
+```php showLineNumbers
+use Solspace\Freeform\Services\FieldsService;
+use Solspace\Freeform\Events\Fields\SaveEvent;
+
+Event::on(
+  FieldsService::class,
+  FieldsService::EVENT_BEFORE_SAVE,
+  function (SaveEvent $event) {
+    $fieldModel = $event->getModel();
+    $isNew = $event->isNew();
+
+    // Perform some actions here
+  }
+)
+```
+
+## After saving a field
+
+This event is fired after a field is saved.
+
+```php showLineNumbers
+use Solspace\Freeform\Services\FieldsService;
+use Solspace\Freeform\Events\Fields\SaveEvent;
+
+Event::on(
+  FieldsService::class,
+  FieldsService::EVENT_AFTER_SAVE,
+  function (SaveEvent $event) {
+    $fieldModel = $event->getModel();
+    $isNew = $event->isNew();
+
+    // Perform some actions here
+  }
+)
+```
+
+## Before deleting a field
+
+```php showLineNumbers
+use Solspace\Freeform\Services\FieldsService;
+use Solspace\Freeform\Events\Fields\DeleteEvent;
+
+Event::on(
+  FieldsService::class,
+  FieldsService::EVENT_BEFORE_DELETE,
+  function (DeleteEvent $event) {
+    $form = $event->getForm();
+    $field = $event->getField();
+
+    // Perform some actions here
+  }
+)
+```
+
+## After deleting a field
+
+```php showLineNumbers
+use Solspace\Freeform\Services\FieldsService;
+use Solspace\Freeform\Events\Fields\DeleteEvent;
+
+Event::on(
+  FieldsService::class,
+  FieldsService::EVENT_AFTER_DELETE,
+  function (DeleteEvent $event) {
+    $form = $event->getForm();
+    $field = $event->getField();
+
+    // Perform some actions here
   }
 )
 ```

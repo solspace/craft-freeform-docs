@@ -190,7 +190,7 @@ Specify the field `handle` as key, and provide the custom value override as its 
 
 An object of attributes which will be added to the form.
 
-```php
+```php showLineNumbers
 formAttributes: {
 	"novalidate": true,
 	"data-form-id": "test"
@@ -201,7 +201,7 @@ formAttributes: {
 
 An object of attributes which will be added to all input fields.
 
-```php
+```php showLineNumbers
 inputAttributes: {
 	"readonly": true,
 	"data-field-id": "test"
@@ -220,7 +220,7 @@ useRequiredAttribute: true
 
 Adds a prefix value on field outputs. Helpful if you have more than 1 form on the same template and are sharing fields.
 
-```php
+```php showLineNumbers
 fieldIdPrefix: 'myform-'
 ```
 
@@ -228,7 +228,7 @@ fieldIdPrefix: 'myform-'
 
 Allows using a dynamic template level notification for a more fine-grained control.
 
-```php
+```php showLineNumbers
 dynamicNotification: {
 	recipients: ["admin@example.com", "support@example.com"],
 	template: "test.html"
