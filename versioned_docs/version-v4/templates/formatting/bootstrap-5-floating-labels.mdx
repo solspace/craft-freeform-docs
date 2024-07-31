@@ -4,18 +4,12 @@ sidebar_position: 10
 ---
 
 import { Badge, Photo } from '@site/src/components/utils';
-import {
-  CodeTabs,
-  CodeTabItem,
-  FolderTitle,
-  TabItems,
-} from '@site/src/components/docs';
 
 import Bootstrap5FloatingLabelsPhoto from '../assets/img/bootstrap-5-floating-labels.png';
 
-# Bootstrap 5 with Floating Labels<Badge type="feature" text="Improved in 5.0+" />
+# Bootstrap 5 with Floating Labels
 
-This example makes use of Bootstrap's [Floating Labels](https://getbootstrap.com/docs/5.3/forms/floating-labels/) feature. The following example assumes you're including necessary [Bootstrap 5](https://getbootstrap.com) JS and CSS. You can place the additional CSS and JS inside the formatting template or add to your site's CSS / JS files.
+This example makes use of Bootstrap's [Floating Labels](https://getbootstrap.com/docs/5.2/forms/floating-labels/) feature. The following example assumes you're including necessary [Bootstrap 5](https://getbootstrap.com) JS and CSS. You can place the additional CSS and JS inside the formatting template or add to your site's CSS / JS files.
 
 ## Preview
 
@@ -30,548 +24,347 @@ This example makes use of Bootstrap's [Floating Labels](https://getbootstrap.com
 
 :::
 
-## Templates
-
-<CodeTabs>
-<FolderTitle directoryName="/bootstrap-5-floating-labels/" />
-<TabItems>
-<CodeTabItem filetype="twig" value="index" label="index.twig" default>
+## Formatting
 
 ```twig showLineNumbers
-{# Pull in CSS and field rendering #}
-<style>
-{% include "freeform/_templates/formatting/bootstrap-5-floating-labels/_main.css" %}
-</style>
-{% import "freeform/_templates/formatting/bootstrap-5-floating-labels/_row.twig" as rowMacro %}
+{# Opening <form> tag #}
+{{ form.renderTag() }}
 
-{# Render the opening form tag #}
-{{ form.renderTag({
-    attributes: {
-        row: { class: "row" },
-        success: { class: "alert alert-success" },
-        errors: { class: "alert alert-danger" },
-        novalidate: true,
-    },
-    buttons: {
-        attributes: {
-            submit: { class: "btn btn-primary" },
-            back: { class: "btn btn-secondary" },
-            save: { class: "btn btn-primary" },
-        },
-    },
-    fields: {
-        "@global": {
-            attributes: {
-                container: { class: "mb-3 col-12" },
-                input: {
-                    class: "form-control"
-                },
-                label: { class: "mb-1" },
-                instructions: { class: "form-text text-muted mt-1" },
-                error: { class: "list-unstyled m-0 fst-italic text-danger" },
-            },
-        },
-        ":required": {
-            attributes: {
-                label: { "+class": "required" },
-            },
-        },
-        ":errors": {
-            attributes: {
-                input: { "+class": "is-invalid" },
-            },
-        },
-        "@text, @textarea, @email, @website, @confirm, @regex, @phone, @datetime, @dropdown, @multiple-select, @number, @password, @file-dnd, @signature": {
-            attributes: {
-                container: { "+class": "form-floating" },
-            },
-        },
-        "@group": {
-            attributes: {
-            label: { "+class": "group-label" },
-            },
-        },
-        "@checkbox" : {
-            attributes: {
-                input: { "=class": "form-check-input checkbox" },
-                label: { "+class": "form-check-label" },
-            },
-        },
-        "@dropdown" : {
-            attributes: {
-                input: { "+class": "form-select" },
-            },
-        },
-        "@file" : {
-            attributes: {
-             input: { "+class": "form-control-file" },
-            },
-        },
-        "@signature": {
-            attributes: {
-                input: {
-                    "-class": "form-control",
-                    "+class": "btn btn-light"
-                },
-            },
-        },
-        "@stripe": {
-            attributes: {
-                input: {
-                    "-class": "form-control",
-                },
-            },
-        },
-    },
-}) }}
-
-{# Pull in JS overrides #}
-<script>
-{% include "freeform/_templates/formatting/bootstrap-5-floating-labels/_main.js" %}
-</script>
-
-{# Success and error message handling for non-AJAX forms #}
-{% if not form.settings.ajax %}
-    {% if form.submittedSuccessfully %}
-        <div{{ form.attributes.success|raw }}>
-            <p>{{ form.settings.successMessage | t('freeform') }}</p>
-        </div>
-    {% endif %}
-    {% if form.hasErrors %}
-        <div{{ form.attributes.errors|raw }}>
-            <p>{{ form.settings.errorMessage | t('freeform') }}</p>
-
-            {% if form.errors|length %}
-                <ul class="mb-0">
-                    {% for error in form.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
-    {% endif %}
-{% endif %}
-
-{# Render page tabs if multi-page #}
+{# Display page tabs if Multi-page form #}
 {% if form.pages|length > 1 %}
-    <ul class="nav nav-tabs mb-4">
-        {% for page in form.pages %}
-            <li class="nav-item">
-                <span class="nav-link{{ form.currentPage.index == page.index ? ' fw-bold active' : ' disabled' }}">
-                    {{ page.label }}
-                </span>
-            </li>
-        {% endfor %}
+    <ul class="nav nav-tabs freeform-page-tabs">
+    {% for page in form.pages %}
+        <li class="nav-item">
+            <span class="nav-link{{ form.currentPage.index == page.index ? ' font-weight-bold active' : ' disabled' }}">{{ page.label }}</span>
+        </li>
+    {% endfor %}
     </ul>
 {% endif %}
 
-{# Display form field rows and columns #}
-{{ rowMacro.render(form.rows, form) }}
+{# Display Error banner and general errors if applicable #}
+{% if form.hasErrors %}
+    <div class="alert alert-danger freeform-alert">
+        {{ form.errorMessage | t('freeform') }}
 
-{# Render the closing form tag #}
+        {% if form.errors|length %}
+            <ul class="mb-0">
+                {% for error in form.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endif %}
+
+{# Render form fields #}
+{% for row in form %}
+    <div class="row {{ form.customAttributes.rowClass }}">
+        {% for field in row %}
+            {% set width = (12 / (row|length)) %}
+
+            {% set isCheckbox = field.type in ["checkbox","mailing_list"] %}
+
+            {% set columnClass = "mb-3" %}
+            {% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+            {% set columnClass = columnClass ~ " col-sm-" ~ width ~ " col-12" %}
+
+            {% set class = "form-control" ~ (field.hasErrors ? " is-invalid has-validation") %}
+            {% if field.type == "file" %}
+                {% set class = "form-control-file" ~ (field.hasErrors ? " is-invalid") %}
+            {% elseif field.type == "select" or field.type == "dynamic_recipients" and (field.showAsSelect) %}
+                {% set class = "form-select" %}
+            {% elseif field.type == "signature" %}
+                {% set class = "btn btn-light" %}
+            {% elseif field.type == "table" %}
+                {% set class = "table" %}
+            {% elseif isCheckbox %}
+                {% set class = "checkbox" %}
+            {% endif %}
+
+            {% set labelClass = (field.required ? " required" : "") %}
+            {% set errorClass = "invalid-feedback" %}
+            {% set instructionClass = "form-text text-muted" %}
+
+            {% if field.type == "submit" or field.type == "save" %}
+                {% set columnClass = columnClass ~ " submit-align-" ~ field.position %}
+            {% endif %}
+
+            <div class="{{ columnClass }} ff-fieldtype-{{ field.type }}{% if field.type in ['text', 'email', 'confirmation', 'datetime', 'select', 'website', 'password', 'phone', 'textarea', 'multiple_select', 'number', 'regex'] or field.type == 'dynamic_recipients' and (field.showAsSelect) %} form-floating{% endif %}"{{ field.rulesHtmlData }}>
+                {% if field.type == "checkbox_group" %}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.oneLine ? "<div>"|raw }}
+
+                    {% for index, option in field.options %}
+                        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                            <input type="checkbox"
+                                   name="{{ field.handle }}[]"
+                                   value="{{ option.value }}"
+                                   id="{{ field.idAttribute }}-{{ index }}"
+                                   class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                    {{ option.checked ? "checked" : "" }}
+                            />
+
+                            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                {{ option.label|t('freeform')|raw }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                    {{ field.oneLine ? "</div>"|raw }}
+
+                    {{ field.renderInstructions() }}
+                    {{ field.renderErrors({ errorClass: errorClass }) }}
+
+                {% elseif field.type == "radio_group" %}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.oneLine ? "<div>"|raw }}
+
+                    {% for index, option in field.options %}
+                        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                            <input type="radio"
+                                   name="{{ field.handle }}"
+                                   value="{{ option.value }}"
+                                   id="{{ field.idAttribute }}-{{ index }}"
+                                   class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
+                                    {{ option.checked ? "checked" : "" }}
+                            />
+                            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                {{ option.label|t('freeform')|raw }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                    {{ field.oneLine ? "</div>"|raw }}
+
+                    {{ field.renderInstructions() }}
+                    {{ field.renderErrors() }}
+
+                {% elseif field.type == "dynamic_recipients" and (field.showAsRadio or field.showAsCheckboxes) %}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.oneLine ? "<div>"|raw }}
+
+                    {% for index, option in field.options %}
+                        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
+                            <input type="{{ field.showAsRadio ? "radio" : "checkbox" }}"
+                                   name="{{ field.handle }}[]"
+                                   value="{{ loop.index0 }}"
+                                   class="form-check-input"
+                                   id="{{ field.idAttribute }}-{{ index }}"
+                                    {{ option.checked ? "checked" : "" }}
+                            />
+
+                            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
+                                {{ option.label|t('freeform')|raw }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                    {{ field.oneLine ? "</div>"|raw }}
+
+                    {{ field.renderInstructions() }}
+                    {{ field.renderErrors() }}
+
+                {% elseif field.type in ["checkbox", "mailing_list"] %}
+
+                    <div class="form-check">
+                        {{ field.renderInput({ class: class ~ " form-check-input" ~ (field.hasErrors ? " is-invalid") }) }}
+                        {{ field.renderLabel({ labelClass: "form-check-label" ~ (field.hasErrors ? " is-invalid") ~ (field.required ? " required") }) }}
+                        {{ field.renderInstructions({ instructionsClass: instructionClass }) }}
+                        {{ field.renderErrors({ errorClass: errorClass }) }}
+                    </div>
+
+                {% elseif field.type == "submit" or field.type == "save" %}
+
+                    {{ field.render({ class: "btn btn-primary" }) }}
+
+                {% elseif field.type == "table" %}
+
+                    {{ field.render({
+                        class: class,
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        instructionsBelowField: true,
+                        errorClass: errorClass,
+                        addButtonLabel: "Add +",
+                        addButtonClass: "btn btn-sm btn-primary",
+                        removeButtonLabel: "x",
+                        removeButtonClass: "btn btn-sm btn-danger",
+                        tableTextInputClass: "form-control",
+                        tableSelectInputClass: "form-select",
+                        tableCheckboxInputClass: "form-check-input"
+                    }) }}
+
+                {% elseif field.type == "cc_details" %}
+
+                    {# FOR FREEFORM PAYMENTS #}
+
+                    {{ field.renderLabel({
+                        labelClass: (field.required ? " required" : ""),
+                        instructionsClass: "help-block",
+                        errorClass: "help-block",
+                    }) }}
+
+                    {% for layoutRow in field.layoutRows %}
+                        <div class="row mb-3{{ form.customAttributes.rowClass }}">
+                            {% for layoutField in layoutRow %}
+                                {% set layoutWidth = (12 / (layoutRow|length)) %}
+                                {% set columnClass = columnClass|replace(' col-sm-' ~ width) %}
+                                {% set columnClass = columnClass ~ " col-sm-" ~ layoutWidth %}
+                                <div class="{{ columnClass }}">
+                                    {{ layoutField.render({
+                                        class: isCheckbox ? "checkbox" : "form-control",
+                                        instructionsClass: "help-block",
+                                        instructionsBelowField: true,
+                                        labelClass: (layoutField.required ? " required" : ""),
+                                        errorClass: "help-block",
+                                    }) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                    {{ field.renderInput({
+                        instructionsClass: "help-block",
+                        instructionsBelowField: true,
+                        labelClass: (field.required ? " required" : ""),
+                        errorClass: "help-block",
+                    }) }}
+
+                    {{ field.renderInstructions }}
+                    {{ field.renderErrors }}
+
+                {% elseif field.type in ["rating", "file", "opinion_scale", "signature", "html", "rich_text"] %}
+
+                    {{ field.render({
+                        class: class,
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        instructionsBelowField: true,
+                        errorClass: errorClass,
+                    }) }}
+
+                {% else %}
+
+                    {% set inputAttributes = {} %}
+                    {% if field.type in ['textarea', 'multiple_select'] %}
+                        {% set inputAttributes = { style: 'height:' ~ (25 * field.rows|default(5)) ~ 'px' } %}
+                    {% endif %}
+
+                    {{ field.renderInput({
+                        class: class,
+                        instructionsBelowField: true,
+                        errorClass: errorClass,
+                        placeholder: field.label,
+                        inputAttributes: inputAttributes,
+                    }) }}
+
+                    {{ field.renderLabel({
+                        labelClass: labelClass,
+                        instructionsClass: instructionClass,
+                        errorClass: errorClass,
+                    }) }}
+
+                    {{ field.renderInstructions }}
+                    {{ field.renderErrors }}
+
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+{# Closing </form> tag #}
 {{ form.renderClosingTag }}
 ```
 
-</CodeTabItem>
-<CodeTabItem filetype="twig" value="row" label="_row.twig">
+## CSS
 
-```twig showLineNumbers
-{% macro getFieldTemplate(type) -%}
-    {%- set fieldTemplatePath = "freeform/_templates/formatting/bootstrap-5-floating-labels/fields/" -%}
-    {%- if type in ["text", "email", "website", "confirm", "regex", "phone", "datetime", "number", "password"] -%}
-        {{- fieldTemplatePath ~ "floating.twig" -}}
-    {%- else -%}
-        {{- fieldTemplatePath ~ type ~ ".twig" -}}
-    {%- endif -%}
-{%- endmacro %}
-
-{% macro render(rows, form) %}
-    {% import _self as self %}
-
-    {% for row in rows %}
-
-        {% set width = (12 / (row|length)) %}
-
-        <div{{ form.attributes.row|raw }}>
-            {% for field in row %}
-
-                {% do field.setParameters({
-                    attributes: {
-                        container: {
-                            class: [
-                                "col-sm-" ~ width,
-                                "freeform-fieldtype-" ~ field.type,
-                            ],
-                        },
-                    }
-                }) %}
-
-                {% include [self.getFieldTemplate(field.type), self.getFieldTemplate("_default")] %}
-
-            {% endfor %}
-        </div>
-
-    {% endfor %}
-
-{% endmacro %}
-```
-
-</CodeTabItem>
-
-<CodeTabItem filetype="css" value="_main" label="_main.css">
+The following CSS is a supplemental starting point to get forms appearing robustly.
 
 ```css showLineNumbers
-button[type='submit'].freeform-processing {
-  display: inline-flex;
-  flex-wrap: nowrap;
-  align-items: center;
+.freeform-page-tabs {
+  margin: 30px 0;
 }
-button[type='submit'].freeform-processing:before {
-  content: '';
-  display: block;
-  flex: 1 0 11px;
-  width: 11px;
-  height: 11px;
-  margin-right: 10px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: transparent transparent #fff #fff;
-  border-radius: 50%;
-  animation: freeform-processing 0.5s linear infinite;
-}
-@keyframes freeform-processing {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(1turn);
-  }
-}
-label.required:after {
-  content: '*';
-  color: #d00;
-  margin-left: 3px;
-}
-.alert p:last-of-type {
+.freeform-alert p:last-of-type {
   margin-bottom: 0;
 }
-.mt-n1 {
-  margin-top: -0.5rem !important;
-}
-
-/* FLOATING LABELS SPECIFIC STYLES */
 .form-floating > label {
   left: 12px;
 }
 ```
 
-</CodeTabItem>
+## JS
 
-<CodeTabItem filetype="js" value="_main.js" label="_main.js">
+The following JS is a supplemental starting point to handle additional elements in the form.
 
 ```js showLineNumbers
-var form = document.querySelector('[data-id="{{ form.anchor }}"]');
-if (form) {
-  // Styling for AJAX responses
-  form.addEventListener('freeform-ready', function (event) {
-    var freeform = event.freeform;
-
-    freeform.setOption('errorClassBanner', ['alert', 'alert-danger']);
-    freeform.setOption('errorClassList', [
-      'list-unstyled',
-      'm-0',
-      'fst-italic',
-      'text-danger',
-    ]);
-    freeform.setOption('errorClassField', ['is-invalid']);
-    freeform.setOption('successClassBanner', ['alert', 'alert-success']);
-  });
-  // Styling for Stripe Payments field
-  form.addEventListener('freeform-stripe-appearance', function (event) {
-    event.elementOptions.appearance = Object.assign(
-      event.elementOptions.appearance,
-      {
-        variables: {
-          colorPrimary: '#0d6efd',
-          fontFamily:
-            '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-          fontSizeBase: '1rem',
-          spacingUnit: '0.2em',
-          tabSpacing: '10px',
-          gridColumnSpacing: '20px',
-          gridRowSpacing: '20px',
-          colorText: '#212529',
-          colorBackground: '#ffffff',
-          colorDanger: '#dc3545',
-          borderRadius: '0.375rem',
-        },
-        rules: {
-          '.Tab, .Input': {
-            border: '1px solid #dee2e6',
-            boxShadow: 'none',
-          },
-          '.Tab:focus, .Input:focus': {
-            border: '1px solid #0b5ed7',
-            boxShadow: 'none',
-            outline: '0',
-            transition: 'border-color .15s ease-in-out',
-          },
-          '.Label': {
-            fontSize: '1rem',
-            fontWeight: '400',
-          },
-        },
-      }
-    );
-  });
-}
+// Styling for AJAX responses
+document.addEventListener('freeform-ready', function (event) {
+  var freeform = event.target.freeform;
+  freeform.setOption('errorClassBanner', [
+    'alert',
+    'alert-danger',
+    'errors',
+    'freeform-alert',
+  ]);
+  freeform.setOption('errorClassList', [
+    'help-block',
+    'errors',
+    'invalid-feedback',
+  ]);
+  freeform.setOption('errorClassField', ['is-invalid', 'has-error']);
+  freeform.setOption('successClassBanner', [
+    'alert',
+    'alert-success',
+    'form-success',
+    'freeform-alert',
+  ]);
+});
+// Styling for Stripe Payments field
+document.addEventListener('freeform-stripe-styling', function (event) {
+  event.detail.base = {
+    fontSize: '16px',
+    fontFamily:
+      '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+  };
+});
 ```
-
-</CodeTabItem>
-
-<CodeTabItem
-  filetype="link"
-  label="fields/"
-  link="#/bootstrap-5-floating-labels/fields/"
-/>
-
-</TabItems>
-</CodeTabs>
-
-<CodeTabs>
-
-<FolderTitle directoryName="/bootstrap-5-floating-labels/fields/" />
-
-<TabItems>
-<CodeTabItem filetype="twig" value="_default_" label="_default.twig" default>
-
-```twig showLineNumbers
-{{ field.render }}
-```
-
-</CodeTabItem>
-
-<CodeTabItem filetype="twig" value="checkbbox" label="checkbox.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-    <div class="form-check">
-        {{ field.renderInput }}
-        {{ field.renderLabel }}
-        {{ field.renderInstructions }}
-        {{ field.renderErrors }}
-    </div>
-</div>
-```
-
-</CodeTabItem>
-
-<CodeTabItem filetype='twig' value="checkboxes" label="checkboxes.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-    {{ field.renderLabel }}
-
-    {% if field.oneLine %}<div>{% endif %}
-
-    {% for index, option in field.options %}
-        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
-            <input type="checkbox"
-                   name="{{ field.handle }}[]"
-                   value="{{ option.value }}"
-                   id="{{ field.idAttribute }}-{{ index }}"
-                   class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
-                    {{ option.value in field.value ? "checked" }}
-            />
-            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
-                {{ option.label|t('freeform')|raw }}
-            </label>
-        </div>
-    {% endfor %}
-
-    {% if field.oneLine %}</div>{% endif %}
-
-    {{ field.renderInstructions }}
-    {{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-<CodeTabItem filetype='twig' value="radios" label="radios.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-    {{ field.renderLabel }}
-
-    {% if field.oneLine %}<div>{% endif %}
-
-    {% for index, option in field.options %}
-        <div class="form-check{{ field.oneLine ? " form-check-inline" }}">
-            <input type="radio"
-                   name="{{ field.handle }}"
-                   value="{{ option.value }}"
-                   id="{{ field.idAttribute }}-{{ index }}"
-                   class="form-check-input{{ field.hasErrors ? " is-invalid" }}"
-                    {{ option.value == field.value ? "checked" }}
-            />
-            <label class="form-check-label" for="{{ field.idAttribute }}-{{ index }}">
-                {{ option.label|t('freeform')|raw }}
-            </label>
-        </div>
-    {% endfor %}
-
-    {% if field.oneLine %}</div>{% endif %}
-
-    {{ field.renderInstructions }}
-    {{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-<CodeTabItem filetype='twig' value="group" label="group.twig">
-
-```twig showLineNumbers
-{% import "freeform/_templates/formatting/bootstrap-5-floating-labels/_row.twig" as rowMacro %}
-
-<div{{ field.attributes.container }}>
-    <div class="card">
-        <div class="card-header">
-            {{ field.renderLabel }}
-            {{ field.renderInstructions }}
-        </div>
-        <div class="card-body pb-0">
-            {{ rowMacro.render(field.layout, form) }}
-        </div>
-    </div>
-</div>
-```
-
-</CodeTabItem>
-<CodeTabItem filetype='twig' value="table" label="table.twig">
-
-```twig showLineNumbers
-{{ field.render({
-    addButtonLabel: "Add +",
-    removeButtonLabel: "x",
-    tableAttributes: {
-        table: { class: "table table-sm table-borderless" },
-        input: { class: "form-control" },
-        dropdown: { class: "form-control form-select" },
-        checkbox: { class: "form-check-input" },
-        removeButton: { class: "btn btn-sm btn-danger" },
-        addButton: { class: "btn btn-sm btn-success" },
-    },
-}) }}
-```
-
-</CodeTabItem>
-<CodeTabItem filetype='twig' value="textarea" label="textarea.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-{% set inputAttributes = ('height:' ~ (25 * field.rows|default(5)) ~ 'px') %}
-
-{% do field.setParameters({
-    attributes: {
-        input: {
-            "placeholder": field.placeholder,
-            "style": inputAttributes
-        },
-    }
-}) %}
-
-{{ field.renderInput -}}
-{{- field.renderLabel }}
-{{ field.renderInstructions }}
-{{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-<CodeTabItem filetype='twig' value="dropdown" label="dropdown.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-{{ field.renderInput -}}
-{{- field.renderLabel }}
-{{ field.renderInstructions }}
-{{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-<CodeTabItem filetype='twig' value="multiple-select" label="multiple-select.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-{% set inputAttributes = ('height:' ~ (25 * 5) ~ 'px') %}
-
-{% do field.setParameters({
-    attributes: {
-        input: {
-            "style": inputAttributes
-        },
-    }
-}) %}
-
-{{ field.renderInput -}}
-{{- field.renderLabel }}
-{{ field.renderInstructions }}
-{{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-<CodeTabItem filetype='twig' value="floating" label="floating.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-{% do field.setParameters({
-    attributes: {
-        input: { "placeholder": field.placeholder },
-    }
-}) %}
-
-{{ field.renderInput -}}
-{{- field.renderLabel }}
-{{ field.renderInstructions }}
-{{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-</TabItems>
-</CodeTabs>
 
 ## CDN Links
 
-The following CDN links for Bootstrap 5 are for v5.3.1, which may no longer be the latest version. Please see official [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.3/getting-started/download/) for latest versions and CDN links.
+The following CDN links for Bootstrap 5 are for v5.2.3, which may no longer be the latest version. Please see official [Bootstrap 5 documentation](https://getbootstrap.com/docs/5.2/getting-started/download/) for latest versions and CDN links.
 
 ```html showLineNumbers
 <!-- Latest compiled and minified CSS -->
 <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
   rel="stylesheet"
-  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
   crossorigin="anonymous"
 />
 
 <!-- Latest compiled and minified JavaScript -->
 <script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
   crossorigin="anonymous"
 ></script>
 ```

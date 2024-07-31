@@ -4,16 +4,10 @@ sidebar_position: 3
 ---
 
 import { Photo, Badge } from '@site/src/components/utils';
-import {
-  CodeTabs,
-  CodeTabItem,
-  FolderTitle,
-  TabItems,
-} from '@site/src/components/docs';
 
 import BasicFloatingLabelsPhoto from '../assets/img/basic-floating-labels.png';
 
-# Basic Floating Labels<Badge type="feature" text="Improved in 5.0+" />
+# Basic Floating Labels
 
 The _Basic Floating Labels_ template is intended to be a neatly styled basic formatting template that is plug-and-play and doesn't require any frameworks or toolkits, etc. It displays labels in the center of the inputs and shrinks them to the top-right when clicked and/or contains a value. This formatting template is ready-to-go on "light" pages and does not require any additional styling unless you wish to do so. You can place the CSS and JS inside the formatting template or add to your site's CSS / JS files.
 
@@ -28,80 +22,25 @@ The _Basic Floating Labels_ template is intended to be a neatly styled basic for
 
 :::
 
-<CodeTabs>
-<FolderTitle directoryName="/basic-floating-labels/" />
-<TabItems>
-<CodeTabItem filetype="twig" value="index" label="index.twig" default>
+## Formatting
 
 ```twig showLineNumbers
-{# Pull in CSS and field rendering #}
-<style>
-{% include "freeform/_templates/formatting/basic-floating-labels/_main.css" %}
-</style>
-{% import "freeform/_templates/formatting/basic-floating-labels/_row.twig" as rowMacro %}
-
-{# Render the opening form tag #}
+{# Opening <form> tag #}
 {{ form.renderTag({
-    attributes: {
-        row: { class: "freeform-row" },
-        success: { class: "freeform-form-success" },
-        errors: { class: "freeform-form-errors" },
-        novalidate: true,
-    },
-    fields: {
-        "@global": {
-            attributes: {
-                input: {
-                    class: "freeform-input",
-                },
-                label: { class: "freeform-label" },
-                instructions: { class: "freeform-instructions" },
-                error: { class: "freeform-errors" },
-            }
-        },
-        ":required": {
-            attributes: {
-                label: { "+class": "freeform-required" },
-            }
-        },
-        ":errors": {
-            attributes: {
-                input: { "+class": "is-invalid has-validation" },
-            },
-        },
-        "@group": {
-            attributes: {
-                label: { "+class": "group-label" },
-            }
-        },
-        "@signature": {
-            attributes: {
-                input: { "-class": "freeform-input" },
-            },
-        },
-        "@text, @textarea, @email, @website, @confirm, @regex, @phone, @datetime, @file, @dropdown, @multiple-select, @number, @password, @file-dnd, @signature": {
-            attributes: {
-                container: { "+class": "floating" },
-            },
-        },
-    },
+    instructionsBelowField: true
 }) }}
 
-{# Pull in JS overrides #}
-<script>
-{% include "freeform/_templates/formatting/basic-floating-labels/_main.js" %}
-</script>
-
-{# Success and error message handling for non-AJAX forms #}
-{% if not form.settings.ajax %}
-    {% if form.submittedSuccessfully %}
-        <div{{ form.attributes.success|raw }}>
-            <p>{{ form.settings.successMessage | t('freeform') }}</p>
+{# Display Success or Error banner and general errors if applicable #}
+<div id="freeform-success-error-banner">
+    {% if not form.ajaxEnabled and form.submittedSuccessfully %}
+        <div class="freeform-form-success">
+            <p>{{ form.successMessage | t('freeform') }}</p>
         </div>
     {% endif %}
+
     {% if form.hasErrors %}
-        <div{{ form.attributes.errors|raw }}>
-            <p>{{ form.settings.errorMessage | t('freeform') }}</p>
+        <div class="freeform-form-errors">
+            <p>{{ form.errorMessage | t('freeform') }}</p>
 
             {% if form.errors|length %}
                 <ul>
@@ -112,86 +51,85 @@ The _Basic Floating Labels_ template is intended to be a neatly styled basic for
             {% endif %}
         </div>
     {% endif %}
-{% endif %}
+</div>
 
 {# Render page tabs if multi-page #}
 {% if form.pages|length > 1 %}
     <ul class="freeform-pages">
         {% for page in form.pages %}
             <li {% if form.currentPage.index == page.index %}class="active"{% endif %}>
-                {% if form.currentPage.index == page.index %}
-                    <b>{{ page.label }}</b>
-                {% else %}
-                    {{ page.label }}
-                {% endif %}
+                {{ page.label }}
             </li>
         {% endfor %}
     </ul>
 {% endif %}
 
-{# Display form field rows and columns #}
-{{ rowMacro.render(form.rows, form) }}
+{# Render form fields #}
+{% for row in form %}
+<div class="freeform-row {{ form.customAttributes.rowClass }}">
+    {% for field in row %}
+    {% set width = (12 / (row|length)) %}
+    {% set columnClass = "freeform-col-" ~ width %}
+    {% set columnClass = columnClass ~ form.customAttributes.columnClass %}
+    {% if field.type == "submit" or field.type == "save" %}
+        {% set columnClass = columnClass ~ " freeform-column-content-align-" ~ field.position %}
+    {% endif %}
+    <div class="{{ columnClass }} freeform-fieldtype-{{ field.type }}{% if field.type in ["text", "textarea", "email", "website", "confirmation", "regex", "phone", "datetime", "file", "select", "multiple_select", "number", "password", "file_drag_and_drop", "signature", "cc_details"] or (field.type == "dynamic_recipients" and (field.showAsSelect)) %} floating{% endif %}"{{ field.rulesHtmlData }}>
+        {% if field.type in ["text", "textarea", "email", "website", "confirmation", "regex", "phone", "datetime", "number", "password", "checkbox", "mailing_list"] %}
+            {% if field.type in ["checkbox", "mailing_list"] %}
+                {% set fieldPlaceholder = "" %}
+            {% else %}
+                {% set fieldPlaceholder = (field.placeholder ? field.placeholder : " ") %}
+            {% endif %}
+            {{ field.renderInput({ class: "freeform-input" ~ (field.hasErrors ? " is-invalid"), placeholder: fieldPlaceholder }) -}}
+            {{- field.renderLabel({ labelClass: "freeform-label" ~ (field.required ? " freeform-required" : "") }) }}
+            {{ field.renderInstructions({ instructionsClass: "freeform-instructions" }) }}
+            {{ field.renderErrors({ errorClass: "freeform-errors" }) }}
+        {% else %}
+            {{ field.render({
+                class: field.type not in ["submit", "save", "signature"] ? "freeform-input" : "",
+                labelClass: "freeform-label" ~ (field.inputOnly ? " freeform-input-only-label" : "") ~ (field.required ? " freeform-required" : ""),
+                errorClass: "freeform-errors",
+                instructionsClass: "freeform-instructions",
+            }) }}
+            {# FOR FREEFORM PAYMENTS #}
+            {% if field.layoutRows is defined %}
+                {% for layoutRow in field.layoutRows %}
+                    <div class="freeform-row freeform-payments {{ form.customAttributes.rowClass }}">
+                        {% for layoutField in layoutRow %}
+                            {% set layoutWidth = (12 / (layoutRow|length)) %}
+                            {% set paymentColumnClass = "freeform-col-" ~ layoutWidth %}
+                            <div class="{{ paymentColumnClass }}">
+                                {{ layoutField.render({
+                                    class: "freeform-input",
+                                    labelClass: "freeform-label" ~ (layoutField.inputOnly ? " freeform-input-only-label" : "") ~ (layoutField.required ? " freeform-required" : ""),
+                                    errorClass: "freeform-errors",
+                                    instructionsClass: "freeform-instructions",
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
 
-{# Render the closing form tag #}
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+
+{# Closing </form> tag #}
 {{ form.renderClosingTag }}
 ```
 
-</CodeTabItem>
-<CodeTabItem filetype="twig" value="_row" label="_row.twig">
+## CSS
 
-```twig showLineNumbers
-{% macro getFieldTemplate(type) -%}
-    {%- set fieldTemplatePath = "freeform/_templates/formatting/basic-floating-labels/fields/" -%}
-    {%- if type in ["text", "textarea", "email", "website", "confirm", "regex", "phone", "datetime", "number", "password"] -%}
-        {{- fieldTemplatePath ~ "floating.twig" -}}
-    {%- else -%}
-        {{- fieldTemplatePath ~ type ~ ".twig" -}}
-    {%- endif -%}
-{%- endmacro %}
-
-{% macro render(rows, form) %}
-    {% import _self as self %}
-
-    {% for row in rows %}
-
-        {% set width = (12 / (row|length)) %}
-
-        <div{{ form.attributes.row|raw }}>
-            {% for field in row %}
-
-                {% do field.setParameters({
-                    attributes: {
-                        container: {
-                            class: [
-                                "freeform-col-" ~ width,
-                                "freeform-fieldtype-" ~ field.type,
-                            ],
-                        }
-                    }
-                }) %}
-
-                {% include [self.getFieldTemplate(field.type), self.getFieldTemplate("_default")] %}
-
-            {% endfor %}
-        </div>
-
-    {% endfor %}
-
-{% endmacro %}
-```
-
-</CodeTabItem>
-
-<CodeTabItem filetype="css" value="_main" label="_main.css">
+The following CSS is a supplemental starting point to get forms appearing robustly.
 
 ```css showLineNumbers
 /* LAYOUT */
-html,
-body {
+.freeform-form-container {
   font-family: sans-serif;
-}
-* {
-  box-sizing: border-box;
 }
 .freeform-row::after {
   content: '';
@@ -242,12 +180,12 @@ button[data-freeform-action='back']:hover {
   background-color: #6c757d;
   border-color: #6c757d;
 }
-button[type='submit'].freeform-processing {
+button[type='submit'].ff-loading {
   display: inline-flex;
   flex-wrap: nowrap;
   align-items: center;
 }
-button[type='submit'].freeform-processing:before {
+button[type='submit'].ff-loading:before {
   content: '';
   display: block;
   flex: 1 0 11px;
@@ -258,15 +196,9 @@ button[type='submit'].freeform-processing:before {
   border-width: 2px;
   border-color: transparent transparent #fff #fff;
   border-radius: 50%;
-  animation: freeform-processing 0.5s linear infinite;
+  animation: ff-loading 0.5s linear infinite;
 }
-button:disabled {
-  color: #ffffff;
-  background-color: #5082cc;
-  border-color: #497bc5;
-  cursor: not-allowed;
-}
-@keyframes freeform-processing {
+@keyframes ff-loading {
   0% {
     transform: rotate(0);
   }
@@ -318,17 +250,7 @@ button:disabled {
   display: block;
   margin: 0 0 5px 0;
 }
-.freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-group
-  label.group-label {
-  font-size: 18px;
-  font-weight: 600;
-}
-.freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-group
-  > .freeform-row {
-  margin: -10px;
-}
+
 .freeform-row [class*='freeform-col-'] .freeform-input[type='checkbox'],
 .freeform-row [class*='freeform-col-'] .freeform-input[type='radio'] {
   margin-right: 10px;
@@ -343,21 +265,30 @@ button:disabled {
   [class*='freeform-col-']
   label:has(> .freeform-input[type='radio'].freeform-has-errors),
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-checkboxes:has(ul.freeform-errors)
+  [class*='freeform-col-'].freeform-fieldtype-checkbox_group:has(
+    ul.freeform-errors
+  )
   label:not(:first-child),
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-checkboxes:has(ul.freeform-errors)
+  [class*='freeform-col-'].freeform-fieldtype-checkbox_group:has(
+    ul.freeform-errors
+  )
   div.input-group-one-line
   label,
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-radios:has(ul.freeform-errors)
+  [class*='freeform-col-'].freeform-fieldtype-radio_group:has(
+    ul.freeform-errors
+  )
   label:not(:first-child),
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-radios:has(ul.freeform-errors)
+  [class*='freeform-col-'].freeform-fieldtype-radio_group:has(
+    ul.freeform-errors
+  )
   div.input-group-one-line
   label {
   color: #dc3545 !important;
 }
+
 .freeform-row [class*='freeform-col-'] .input-group-one-line {
   display: flex;
   flex-wrap: wrap;
@@ -394,7 +325,7 @@ button:disabled {
 /* FLOATING LABELS */
 .freeform-row [class*='freeform-col-'].floating,
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-credit-card.floating
+  [class*='freeform-col-'].freeform-fieldtype-cc_details.floating
   > div
   > div {
   display: block;
@@ -412,7 +343,7 @@ button:disabled {
   transition: all 0.5s;
 }
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-file-dnd.floating
+  [class*='freeform-col-'].freeform-fieldtype-file_drag_and_drop.floating
   label,
 .freeform-row
   [class*='freeform-col-'].freeform-fieldtype-signature.floating
@@ -422,11 +353,13 @@ button:disabled {
   z-index: 10;
 }
 .freeform-row [class*='freeform-col-'].floating input,
+.freeform-row [class*='freeform-col-'].floating .StripeElement,
 .freeform-row [class*='freeform-col-'].floating textarea,
 .freeform-row [class*='freeform-col-'].floating select {
   color: #212529 !important;
   font: normal 16px sans-serif;
 }
+
 .freeform-row [class*='freeform-col-'].floating input::placeholder,
 .freeform-row [class*='freeform-col-'].floating textarea::placeholder,
 .freeform-row [class*='freeform-col-'].floating select::placeholder {
@@ -469,6 +402,7 @@ button:disabled {
   outline: 0;
 }
 .freeform-row [class*='freeform-col-'].floating input::placeholder,
+.freeform-row [class*='freeform-col-'].floating .StripeElement--placeholder,
 .freeform-row [class*='freeform-col-'].floating textarea::placeholder,
 .freeform-row [class*='freeform-col-'].floating select::placeholder {
   opacity: 1;
@@ -514,6 +448,7 @@ button:disabled {
 
 /* BASIC FIELD STYLES */
 .freeform-row [class*='freeform-col-'] input,
+.freeform-row [class*='freeform-col-'] .freeform-input.StripeElement,
 .freeform-row [class*='freeform-col-'] textarea,
 .freeform-row [class*='freeform-col-'] select {
   box-sizing: border-box;
@@ -543,6 +478,7 @@ button:disabled {
   -moz-appearance: none;
 }
 .freeform-row [class*='freeform-col-'] input:focus,
+.freeform-row [class*='freeform-col-'] .freeform-input.StripeElement--focus,
 .freeform-row [class*='freeform-col-'] textarea:focus,
 .freeform-row [class*='freeform-col-'] select:focus {
   border: 1px solid #0b5ed7;
@@ -555,6 +491,7 @@ button:disabled {
   color: #abb5be;
 }
 .freeform-row [class*='freeform-col-'] input.freeform-has-errors,
+.freeform-row [class*='freeform-col-'] .freeform-input.StripeElement--invalid,
 .freeform-row [class*='freeform-col-'] textarea.freeform-has-errors,
 .freeform-row [class*='freeform-col-'] select.freeform-has-errors,
 .freeform-row [class*='freeform-col-'] input:has(+ ul.freeform-errors),
@@ -562,6 +499,7 @@ button:disabled {
 .freeform-row [class*='freeform-col-'] select:has(+ ul.freeform-errors) {
   border: 1px solid #dc3545;
 }
+
 .freeform-row [class*='freeform-col-'] .freeform-input-only-label {
   font-weight: normal;
 }
@@ -573,7 +511,8 @@ button:disabled {
   width: auto;
   margin-right: 10px;
 }
-.freeform-row [class*='freeform-col-'] .freeform-errors {
+.freeform-row [class*='freeform-col-'] .freeform-errors,
+.freeform-row [class*='freeform-col-'] .ff-errors {
   margin: -5px 0 0 0;
   padding: 0;
   list-style: none;
@@ -581,19 +520,27 @@ button:disabled {
   width: 100%;
 }
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-radios
+  [class*='freeform-col-'].freeform-fieldtype-radio_group
   .freeform-errors,
 .freeform-row
-  [class*='freeform-col-'].freeform-fieldtype-checkboxes
-  .freeform-errors {
+  [class*='freeform-col-'].freeform-fieldtype-radio_group
+  .ff-errors,
+.freeform-row
+  [class*='freeform-col-'].freeform-fieldtype-checkbox_group
+  .freeform-errors,
+.freeform-row
+  [class*='freeform-col-'].freeform-fieldtype-checkbox_group
+  .ff-errors {
   margin-top: 0;
 }
-.freeform-row [class*='freeform-col-'] .freeform-errors > li {
+.freeform-row [class*='freeform-col-'] .freeform-errors > li,
+.freeform-row [class*='freeform-col-'] .ff-errors > li {
   font: italic 400 15px sans-serif;
   color: #dc3545;
   margin-top: 10px;
 }
-.freeform-row [class*='freeform-col-'] .freeform-errors > li:not(:first-child) {
+.freeform-row [class*='freeform-col-'] .freeform-errors > li:not(:first-child),
+.freeform-row [class*='freeform-col-'] .ff-errors > li:not(:first-child) {
   margin-top: 3px;
 }
 .freeform-row [class*='freeform-col-'] .freeform-instructions {
@@ -608,12 +555,16 @@ button:disabled {
 }
 
 /* SINGLE CHECKBOX FIELDS */
-.freeform-row [class*='freeform-col-'].freeform-fieldtype-checkbox label {
+.freeform-row [class*='freeform-col-'].freeform-fieldtype-checkbox label,
+.freeform-row [class*='freeform-col-'].freeform-fieldtype-mailing_list label {
   display: inline-block;
   margin: 0 0 10px 0;
 }
 .freeform-row
   [class*='freeform-col-'].freeform-fieldtype-checkbox
+  input[type='checkbox'],
+.freeform-row
+  [class*='freeform-col-'].freeform-fieldtype-mailing_list
   input[type='checkbox'] {
   margin-right: 10px;
   width: auto;
@@ -634,11 +585,11 @@ button:disabled {
 }
 
 /* OPINION SCALE FIELDS */
-.freeform-fieldtype-opinion-scale .opinion-scale-scales {
+.freeform-fieldtype-opinion_scale .opinion-scale-scales {
   border: 1px solid #cbced0;
   border-radius: 5px;
 }
-.freeform-fieldtype-opinion-scale .opinion-scale-scales li label {
+.freeform-fieldtype-opinion_scale .opinion-scale-scales li label {
   color: #464747 !important;
   background-color: #ffffff;
   border: 0;
@@ -647,26 +598,26 @@ button:disabled {
   margin: 0;
   cursor: pointer;
 }
-.freeform-fieldtype-opinion-scale .opinion-scale-scales li:first-child label {
+.freeform-fieldtype-opinion_scale .opinion-scale-scales li:first-child label {
   border: 0;
   border-left: 0;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.freeform-fieldtype-opinion-scale .opinion-scale-scales li label:hover {
+.freeform-fieldtype-opinion_scale .opinion-scale-scales li label:hover {
   background-color: #eaeaea;
 }
-.freeform-fieldtype-opinion-scale input[type='radio']:checked + label {
-  background-color: #cbced0 !important;
+.freeform-fieldtype-opinion_scale input[type='radio']:checked + label {
+  background-color: #cbced0;
 }
-.freeform-fieldtype-opinion-scale
+.freeform-fieldtype-opinion_scale
   .opinion-scale-scales:has(> li input.freeform-has-errors),
-.freeform-fieldtype-opinion-scale
+.freeform-fieldtype-opinion_scale
   .opinion-scale:has(+ ul.freeform-errors)
   .opinion-scale-scales {
   border: 1px dashed #dc3545;
 }
-.freeform-fieldtype-opinion-scale .opinion-scale-legends li {
+.freeform-fieldtype-opinion_scale .opinion-scale-legends li {
   font: normal 15px sans-serif;
   color: #6c757d;
   padding: 10px 0;
@@ -683,27 +634,27 @@ button:disabled {
 }
 
 /* FILE UPLOAD DRAG & DROP FIELDS */
-.freeform-file-dnd__input {
+.freeform-file-drag-and-drop {
   background-color: #ffffff !important;
   border: 1px dashed #6c757d !important;
 }
-.freeform-file-dnd__input input {
+.freeform-file-drag-and-drop input {
   display: none !important;
 }
-.freeform-file-dnd[data-contains-files] {
+.freeform-file-drag-and-drop[data-contains-files] {
   padding-top: 35px;
 }
-.freeform-file-dnd__placeholder {
+.freeform-file-drag-and-drop__placeholder {
   font: italic 200 16px sans-serif !important;
   color: #969696;
 }
-.freeform-file-dnd__input [data-messages] > li[data-error],
-.freeform-file-dnd__input [data-field-errors] > li[data-error] {
+.freeform-file-drag-and-drop [data-messages] > li[data-error],
+.freeform-file-drag-and-drop [data-field-errors] > li[data-error] {
   font: 200 16px sans-serif;
   color: #dc3545;
   margin-top: 15px;
 }
-.freeform-file-dnd__input [data-field-errors] > li {
+.freeform-file-drag-and-drop [data-field-errors] > li {
   color: #dc3545;
 }
 
@@ -789,6 +740,7 @@ button:disabled {
   content: '+';
   margin-left: 5px;
 }
+
 .freeform-row [class*='freeform-col-'].freeform-fieldtype-table input,
 .freeform-row [class*='freeform-col-'].freeform-fieldtype-table select {
   padding: 10px;
@@ -807,6 +759,44 @@ button:disabled {
   min-width: 200px;
 }
 
+/* SUBMIT BUTTON ALIGNMENT */
+.freeform-row [class*='freeform-col-'].freeform-column-content-align-left {
+  display: flex;
+  justify-content: flex-start;
+}
+.freeform-row
+  [class*='freeform-col-'].freeform-column-content-align-left
+  > button:not(:first-of-type) {
+  margin-left: 5px;
+}
+.freeform-row [class*='freeform-col-'].freeform-column-content-align-center {
+  display: flex;
+  justify-content: center;
+}
+.freeform-row
+  [class*='freeform-col-'].freeform-column-content-align-center
+  > button:not(:first-of-type) {
+  margin-left: 5px;
+}
+.freeform-row [class*='freeform-col-'].freeform-column-content-align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+.freeform-row
+  [class*='freeform-col-'].freeform-column-content-align-right
+  > button:not(:first-of-type) {
+  margin-left: 5px;
+}
+.freeform-row [class*='freeform-col-'].freeform-column-content-align-spread {
+  display: flex;
+  justify-content: space-between;
+}
+.freeform-row
+  [class*='freeform-col-'].freeform-column-content-align-spread
+  > button:not(:first-of-type) {
+  margin-left: 5px;
+}
+
 /* ERRORS AND SUCCESS */
 .freeform-form-success,
 .freeform-form-errors {
@@ -814,7 +804,6 @@ button:disabled {
   margin-right: auto;
   margin-bottom: 20px;
   padding: 15px 20px;
-  width: 100%;
   border-radius: 5px;
 }
 .freeform-form-success p,
@@ -889,133 +878,34 @@ button:disabled {
 }
 ```
 
-</CodeTabItem>
+## JS
 
-<CodeTabItem filetype="js" value="_main.js" label="_main.js">
+The following JS is a supplemental starting point to handle additional elements in the form.
 
 ```js showLineNumbers
-var form = document.querySelector('[data-id="{{ form.anchor }}"]');
-if (form) {
-  form.addEventListener('freeform-stripe-appearance', function (event) {
-    event.elementOptions.appearance = Object.assign(
-      event.elementOptions.appearance,
-      {
-        variables: {
-          colorPrimary: '#0d6efd',
-          fontFamily:
-            '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-          fontSizeBase: '16px',
-          spacingUnit: '0.2em',
-          tabSpacing: '10px',
-          gridColumnSpacing: '20px',
-          gridRowSpacing: '20px',
-          colorText: '#212529',
-          colorBackground: '#ffffff',
-          colorDanger: '#dc3545',
-          borderRadius: '5px',
-        },
-        rules: {
-          '.Tab, .Input': {
-            border: '1px solid #cbced0',
-            boxShadow: 'none',
-          },
-          '.Tab:focus, .Input:focus': {
-            border: '1px solid #0b5ed7',
-            boxShadow: 'none',
-            outline: '0',
-            transition: 'border-color .15s ease-in-out',
-          },
-          '.Label--resting': {
-            fontSize: '16px',
-            fontWeight: '400',
-          },
-          '.Label--floating': {
-            fontSize: '13px',
-            fontWeight: 'normal',
-          },
-        },
-      }
-    );
-  });
-}
+// Adjustments for Success and Errors classes
+document.addEventListener('freeform-ready', function (event) {
+  event.options.errorClassBanner = 'freeform-form-errors';
+  event.options.errorClassList = 'freeform-errors';
+  event.options.errorClassField = 'freeform-has-errors';
+  event.options.successClassBanner = 'freeform-form-success';
+});
+// Styling for Stripe Payments field
+document.addEventListener('freeform-stripe-styling', function (event) {
+  (event.detail.base = {
+    fontSize: '16px',
+    color: '#464747',
+    fontFamily:
+      '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+    '::placeholder': {
+      color: '#abb5be',
+    },
+  }),
+    (event.detail.invalid = {
+      color: '#dc3545',
+    });
+});
 ```
-
-</CodeTabItem>
-
-<CodeTabItem
-  filetype="link"
-  label="fields/"
-  link="#/basic-floating-labels/fields/"
-/>
-
-</TabItems>
-</CodeTabs>
-
-<CodeTabs>
-
-<FolderTitle directoryName="/basic-floating-labels/fields/" />
-
-<TabItems>
-<CodeTabItem filetype="twig" value="_default_" label="_default.twig" default>
-
-```twig showLineNumbers
-{{ field.render }}
-```
-
-</CodeTabItem>
-
-<CodeTabItem filetype="twig" value="checkbbox" label="checkbox.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-{{ field.renderInput -}}
-{{- field.renderLabel }}
-{{ field.renderInstructions }}
-{{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-
-<CodeTabItem filetype='twig' value="group" label="group.twig">
-
-```twig showLineNumbers
-{% import "freeform/_templates/formatting/basic-floating-labels/_row.twig" as rowMacro %}
-
-<div{{ field.attributes.container }}>
-    {{ field.renderLabel }}
-    {{ field.renderInstructions }}
-
-    {{ rowMacro.render(field.layout, form) }}
-</div>
-```
-
-</CodeTabItem>
-
-<CodeTabItem filetype='twig' value="floating" label="floating.twig">
-
-```twig showLineNumbers
-<div{{ field.attributes.container }}>
-
-{% do field.setParameters({
-    attributes: {
-        input: { "placeholder": field.placeholder },
-    }
-}) %}
-
-{{ field.renderInput -}}
-{{- field.renderLabel }}
-{{ field.renderInstructions }}
-{{ field.renderErrors }}
-
-</div>
-```
-
-</CodeTabItem>
-</TabItems>
-</CodeTabs>
 
 ## Live Demo
 
@@ -1024,7 +914,7 @@ The demo below is a live [demo site](https://demo.solspace.net/craft/freeform-de
 <iframe
   title="App Demo"
   id="app-demo"
-  src="https://demo.solspace.net/craft/freeform-demo/templates/basic-light/contact"
+  src="https://demo.solspace.net/craft/freeform-demo/templates/basic-floating-labels/contact"
   scrolling="yes"
   height="1600px"
   width="100%"

@@ -58,24 +58,69 @@ Returns a list of [Page objects](./page) each containing its label and index.
 
 Returns the current [Page object](./page) containing its label and index.
 
-### `duplicate` <Badge type="feature" text="Renamed and Revised in 5.0+" />
+### `ajaxEnabled`
 
-A bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled ([duplicate submission check](../../submissions/overview/#submission-limits)) and the user has already submitted the form.
+A bool variable, which will be `true` if the form has the built-in AJAX setting enabled.
 
-### Template Overrides<Badge type="feature" text="New in 5.0+" />
+### `limitFormSubmissions`
 
-The form and each field have the ability to control **attributes**, **values** and more at the template level. Each one of them is entirely optional. There are several namespaces:
+A bool variable, which will be `true` if the form has the submit limit setting enabled.
 
-- `attributes` - whatever you specify here will be set as an attribute on the form.
-- `buttons` - controls the output of the [Submit button(s)](../../forms/fields/#submit-buttons).
-- `fields` - controls the output of all [Fields](../../forms/fields/).
-- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/).
+You can run a conditional check on this with the following:
 
-:::info
-Please see the [Template Overrides](../../templates/formatting/#template-overrides) documentation for detailed instructions.
-:::
+- `auth_unlimited` - Logged in Users only (no limit)
+- `cookie` - Once per Cookie only
+- `ip_cookie` - Once per IP/Cookie combo
+- `auth` - Once per logged in Users only
+- `auth_cookie` - Once per logged in User or Guest Cookie only
+- `auth_ip_cookie` - Once per logged in User or Guest IP/Cookie combo
+
+### `submissionLimitReached` <Badge type="feature" text="4.0.9+" />
+
+A bool variable, which will be `true` if the form has the **Limit Form Submission Rate** setting enabled ([duplicate submission check](../../submissions/submission-limits#per-user)) and the user has already submitted the form.
+
+### **Custom Attributes** (`customAttributes`)
+
+The following properties are available to ease the customizability of field rendering if set as parameters (each one is `null` if not set):
+
+- `id` - the ID attribute of the HTML form tag.
+- `class` - the CLASS attribute of the HTML form tag.
+- `method` - the METHOD attribute for the form tag.
+- `action` - the ACTION attribute for the form tag.
+- `status` - the status ID or handle.
+- `returnUrl` - allows overriding the return URL of the form upon successful submit.
+  ::: v-pre
+  - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
+    :::
+- `rowClass` - the CLASS attribute of all HTML row tags.
+- `columnClass` - the CLASS attribute of all HTML column tags.
+- `submitClass` - the CLASS attribute of submit field input elements.
+- `inputClass` - the CLASS attribute of all HTML input fields.
+- `labelClass` - the CLASS attribute of all HTML label fields.
+- `errorClass` - the CLASS attribute of all HTML error lists.
+- `instructionsClass` - the CLASS attribute of all instruction fields.
+- `instructionsBelowField` - set to true to render instructions below, not above the input field.
+- `overrideValues` - allows you to override the value inside Text fields, or pre-select a default option for multi-option field types (specify option values in this case).
+  - Specify the field `handle` as key, and provide the custom value override as its value.
+  - If a [Field](./field) uses an `overrideValue` attribute, it will take precedence over the value specified in this attribute.
+  - E.g.:
+    - `hiddenFieldHandle: entry.id` - pull in an entry ID from a Craft Entry.
+    - `stateSelect: "AZ"` - pre-select **Arizona** state in a State select field.
+    - `availability: ["tue", "thu"]` - pre-check **Tuesday** and **Thursday** checkbox options in a checkbox group field type.
+    - `firstName: currentUser.name` - pull in the currently logged in user's name into the Name field.
+- `formAttributes` - an object of attributes which will be added to the form.
+  - E.g. `formAttributes: { "novalidate": true, "data-form-id": "test" }`
+- `inputAttributes` - an object of attributes which will be added to all input fields.
+  - E.g. `inputAttributes: { "readonly": true, "data-field-id": "test" }`
+- `useRequiredAttribute: true` - adds `required` attribute to input fields that have been set to be required in the form builder.
 
 :::tip
+If displaying the exact same form more than once in a single template, some of the `<form>` tag attributes set on one form may carry over to other ones. To work around this, you can unset the attribute on the other forms (unless they have their own attributes set). For example, if one form has `class: 'something'`, it may end up applying to other instances of the form, but you can add `class: null` to those others to work around it.
+:::
+
+When iterating over the form, you will iterate through [Row](./row) objects for the currently active [Page](./page), each [Row](./row) can be iterated over to get [Field](./field) objects. Check the [Field](./field) documentation to see available parameters for those objects.
+
+:::guide
 [Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
 :::
 
@@ -83,220 +128,100 @@ Please see the [Template Overrides](../../templates/formatting/#template-overrid
 
 ### Simple Render
 
-A basic implementation might look like this:
+Render the form using its formatting template:
 
 ```twig showLineNumbers
-{% set form = freeform.form("myFormHandle") %}
-
 {{ form.render() }}
 ```
 
 ### Override Classes & Values
 
-Once [Template Overrides](../../templates/formatting/#template-overrides) have been implemented, your code might look something like this:
+Render the form using its formatting template, but overriding some classes and default values:
 
 ```twig showLineNumbers
-{% set form = freeform.form("myFormHandle") %}
-
 {{ form.render({
-    attributes: {
-        novalidate: true,
-        class: "my-form-class",
+    labelClass: "form-label",
+    inputClass: "form-control",
+    instructionsBelowField: true,
+    submitClass: "btn btn-success",
+    overrideValues: {
+        hiddenFieldHandle: entry.id,
+        stateSelect: "AZ",
+        availability: ["tue", "thu"],
     },
-    buttons: {
-        attributes: {
-            submit: { class: "form-field-button blue" },
-            back: { class: "form-field-button gray" },
-        },
+    formAttributes: {
+        "novalidate": true,
+        "data-form-id": "whatever",
     },
-    fields: {
-        "@global": {
-            attributes: {
-                input: {
-                    class: "form-field-input",
-                },
-                label: {
-                    class: "form-field-label",
-                },
-            },
-        },
-        ":required": {
-            attributes: {
-                label: { "+class": "form-field-required" },
-            },
-        },
-        ":errors": {
-            attributes: {
-                input: { "+class": "form-field-is-invalid" },
-            },
-        },
-        "@dropdown": {
-            attributes: {
-                container: {
-                    "data-select-container": true,
-                },
-                input: {
-                    "+class": "form-field-select fullwidth",
-                },
-            },
-        },
-        "@checkboxes, @radios" : {
-            attributes: {
-                input: {
-                    "+class": "form-field-options",
-                },
-            },
-        },
-        "myFieldHandle": {
-            value: entry.id,
-        },
-    },
+    inputAttributes: {
+        "readonly": true,
+        "data-field-id": field.id,
+    }
 }) }}
 ```
 
 ### Manually Iterate
 
-Manually iterate through form fields inside your regular template:
+Manually iterate through form fields:
 
 ```twig showLineNumbers
-{# Set the form #}
-{% set form = freeform.form("myFormHandle") %}
+{{ form.renderTag({rowClass: "sample-row-class"}) }}
 
-{# Render the opening form tag #}
-{{ form.renderTag({
-    attributes: {
-        row: { class: "freeform-row" },
-        success: { class: "freeform-form-success" },
-        errors: { class: "freeform-form-errors" },
-        novalidate: true,
-    },
-    buttons: {
-        attributes: {
-            container: { class: "freeform-button-container" },
-            column: { class: "freeform-button-column" },
-            buttonWrapper: { class: "freeform-button-wrapper" },
-            submit: { class: "freeform-button-submit" },
-            back: { class: "freeform-button-back" },
-            save: { class: "freeform-button-save" },
-        },
-    },
-    fields: {
-        "@global": {
-            attributes: {
-                container: { class: "freeform-column" },
-                input: {
-                    "data-field": true,
-                    class: "freeform-input",
-                },
-                label: { class: "freeform-label" },
-                instructions: { class: "freeform-instructions" },
-                error: { class: "freeform-errors" },
-            },
-        },
-        ":required": {
-            attributes: {
-                label: { "+class": "freeform-required" },
-            },
-        },
-        ":errors": {
-            attributes: {
-                input: { "+class": "is-invalid has-validation" },
-            },
-        },
-        "@group": {
-            attributes: {
-                label: { "+class": "group-label" },
-            },
-        },
-        "@signature": {
-            attributes: {
-                input: { "-class": "freeform-input" },
-            },
-        }
-    },
-}) }}
+{% if form.hasErrors %}
+    <div class="freeform-form-has-errors">
+        {{ "Error! Please review the form and try submitting again."|t('freeform') }}
 
-{# Success and error message handling for non-AJAX forms #}
-{% if not form.settings.ajax %}
-    {% if form.submittedSuccessfully %}
-        <div{{ form.attributes.success|raw }}>
-            <p>{{ form.settings.successMessage | t('freeform') }}</p>
-        </div>
-    {% endif %}
-    {% if form.hasErrors %}
-        <div{{ form.attributes.errors|raw }}>
-            <p>{{ form.settings.errorMessage | t('freeform') }}</p>
-
-            {% if form.errors|length %}
-                <ul>
-                    {% for error in form.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
-    {% endif %}
-{% endif %}
-
-{# Render page tabs if multi-page #}
-{% if form.pages|length > 1 %}
-    <ul class="freeform-pages">
-        {% for page in form.pages %}
-            <li {% if form.currentPage.index == page.index %}class="active"{% endif %}>
-                {% if form.currentPage.index == page.index %}
-                    <b>{{ page.label }}</b>
-                {% else %}
-                    {{ page.label }}
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-{# Build form rows and fields #}
-{% macro renderRows(form, rows) %}
-    {% for row in rows %}
-        {% set width = (12 / (row|length)) %}
-        <div{{ form.attributes.row|raw }}>
-            {% for field in row %}
-                {% do field.setParameters({
-                    attributes: {
-                        container: { class: [
-                            "freeform-column-" ~ width,
-                            "freeform-fieldtype-" ~ field.type,
-                        ]},
-                    },
-                }) %}
-                {% if field.type == "group" %}
-                    <div class="freeform-group">
-                        <label{{ field.attributes.label }}>
-                            {{ field.label }}
-                        </label>
-                        <div>
-                            {{ _self.renderRows(form, field.layout) }}
-                        </div>
-                    </div>
-                {% else %}
-                    {{ field.render }}
-                {% endif %}
+        {% if form.errors|length %}
+            <ul>
+            {% for error in form.errors %}
+                <li>{{ error }}</li>
             {% endfor %}
-        </div>
-    {% endfor %}
-{% endmacro %}
+            </ul>
+        {% endif %}
+    </div>
+{% endif %}
 
-{# Display form field rows and columns #}
-{{ _self.renderRows(form, form.rows) }}
+{% for row in form %}
+    <div class="{{ form.customAttributes.rowClass }}">
+        {% for field in row %}
+            {% set columnClass = "sample-column " ~ form.customAttributes.columnClass %}
+            {% if field.type == "submit" %}
+                {% set columnClass = columnClass ~ " submit-column" %}
+            {% endif %}
 
-{# Render the closing form tag #}
+            <div class="{{ columnClass }}"{{ field.rulesHtmlData }}>
+                {{ field.render({
+                    class: field.type != "submit" ? "freeform-input" : "",
+                    labelClass: "sample-label" ~ (field.required ? " required" : ""),
+                    errorClass: "sample-errors",
+                    instructionsClass: "sample-instructions",
+                }) }}
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+
 {{ form.renderClosingTag }}
+```
+
+### Iterate over `layout.fields`
+
+You can also iterate over fields directly with `layout.fields` instead of [Row objects](./row):
+
+```twig {3-5} showLineNumbers
+{% set form = craft.freeform.form("myForm") %}
+
+{% for field in form.layout.fields %}
+    <div>{{ field.label }}</div>
+{% endfor %}
 ```
 
 ### Success Flash
 
-When not using AJAX, the session success flash message (displays only once) when the form is successfully submitted:
+Use session success flash message variable (displays only once) for when form is successfully submitted:
 
-```twig showLineNumbers {3-5}
-{% set form = freeform.form("myForm") %}
+```twig {3-5} showLineNumbers
+{% set form = craft.freeform.form("myForm") %}
 
 {% if form.submittedSuccessfully %}
     <div>You've successfully submitted this form!</div>
@@ -305,15 +230,15 @@ When not using AJAX, the session success flash message (displays only once) when
 {{ form.render }}
 ```
 
-### Error when Duplicate
+### Error when Limit Reached
 
-Display a message when the submission is a [duplicate](../../submissions/overview/#submission-limits#per-user):
+Display a message when form [submission limit (per user)](../../submissions/submission-limits#per-user) is reached:
 
-```twig showLineNumbers {3-6}
-{% set form = freeform.form("myForm") %}
+```twig {3-6} showLineNumbers
+{% set form = craft.freeform.form("myForm") %}
 
-{% if form.duplicate %}
-    <div class="alert alert-warning duplicate">
+{% if form.submissionLimitReached %}
+    <div class="alert alert-warning submission-limit-reached" role="alert">
         You've already submitted this form!
     </div>
 {% else %}
