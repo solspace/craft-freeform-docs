@@ -8,9 +8,9 @@ import { Badge, Photo } from '@site/src/components/utils';
 
 import SlackAppPhoto from './assets/img/slack-app.png';
 
-# Zapier <Badge type="pro" text="Pro" />
+# Zapier Integration<Badge type="pro" text="Pro" />
 
-The Zapier integration allows you to map Freeform submission data off to virtually every popular service available such as Slack, Trello, Google Docs, Salesforce, Mailchimp, and more! You can setup as many as you like.
+The Zapier Webhooks integration allows you to map Freeform submission data off to virtually every popular service available such as Slack, Trello, Google Docs, Salesforce, Mailchimp, and more! You can setup as many as you like.
 
 We will assume you already have a [Zapier](https://zapier.com/) account and some general knowledge about how to use it. While it seems just about anything is available with the free version of Zapier, having many _Zaps_ and/or complex _workflows_ will require [purchasing a paid plan](https://zapier.com/pricing).
 
@@ -47,21 +47,8 @@ We will assume you already have a [Zapier](https://zapier.com/) account and some
 ### Finish Integration on your site
 
 - Paste the _Custom Webhook URL_ you copied earlier into the **Webhook URL** field in Freeform.
-- Click the **Save** button.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Configure the Form
-
-To use this integration on your form(s), you'll need to configure each form individually.
-
-- Visit the form inside the form builder.
-- Click on the **Integrations** tab.
-- Click on **Zapier** in the list of available integrations.
-- On the right side of the page:
-  - Enable the integration.
+- Select the form(s) you want this Webhook to apply to in the **Forms** field.
+- At the top right corner of Freeform page, click **Save** button.
 
 </StepMarkdown>
 
@@ -69,7 +56,7 @@ To use this integration on your form(s), you'll need to configure each form indi
 
 ### Send test data to Zapier
 
-In order for Zapier to know that Freeform exists and what data is available to it, you need to submit a test submission for the form(s) that will be using the webhook/Zap. Go to your form in the front end and submit the form with as much sample data as possible. Zapier will then be listening for the data...
+- In order for Zapier to know that Freeform exists and what data is available to it, you need to submit a test submission for the form(s) that will be using the webhook/Zap. Go to your form in the front end and submit the form with as much sample data as possible. Zapier will then be listening for the data...
 
 </StepMarkdown>
 
@@ -91,32 +78,7 @@ In order for Zapier to know that Freeform exists and what data is available to i
 
 - Try submitting one of your forms that use this webhook, and check if Freeform posts successfully to it and Zapier maps correctly.
 - If there are any issues on Freeform's end, you'll see errors in the Freeform error log. If there's an issue on Zapier's end, you'll see errors inside Zapier.
-  ave the Zap and be sure to switch the **OFF** toggle to **ON** before trying to use the _Zap_.
 
 </StepMarkdown>
 
 </VerticalStepWrapper>
-
-## Example Output
-
-The payload posted to Zapier will look something like this:
-
-```json showLineNumbers
-{
-  "form__id": 1,
-  "form__name": "Freeform form",
-  "form__handle": "freeformForm",
-  "form__color": "#8ba2a8",
-  "form__description": "This is a Freeform Form",
-  "form__returnUrl": "",
-  "id": 1001,
-  "dateCreated__date": "2018-12-31 14:00:00.000000",
-  "dateCreated__timezone_type": 3,
-  "dateCreated__timezone": "America/Los_Angeles",
-  "uid": "18ca11b9-bd4f-4530-9e51-f7a67ac84ec2",
-  "token": "v3bJsQf5o1cYaLhzJTnn8NAiWI9gn1J4JmTpPS4Es1OZetyQS5wDO2DrAdNieiEc9KFnaBh6CcTRD9xjBf48NQfr8XxxUr1HDvj6",
-  "firstName": "John",
-  "lastName": "Doe",
-  "message": "A custom message"
-}
-```

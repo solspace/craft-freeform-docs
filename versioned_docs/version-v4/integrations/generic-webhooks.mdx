@@ -6,11 +6,11 @@ sidebar_position: 9
 import { Badge, PrimaryButtonWithLink } from '@site/src/components/utils';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
-# Generic Webhooks<Badge type="pro" text="Pro" />
+# Generic Webhooks <Badge type="pro" text="Pro" />
 
 Freeform's Generic Webhooks feature allows you to generate and POST the JSON from the Freeform submission data off to your own custom endpoint. It also contains a few form identifying entries.
 
-This guide assumes you are familiar with what is necessary to connect Freeform data with a webhook from an external service, whether it's third party service or your own custom one, etc. For that matter, we cannot provide any assistance with setting this up, aside from the basics, and letting you know what kind of data to expect.
+This documentation resource assumes you are familiar with what is necessary to connect Freeform data with a webhook from an external service, whether it's third party service or your own custom one, etc. For that matter, we cannot provide any assistance with setting this up, aside from the basics, and letting you know what kind of data to expect.
 
 ## Setup Instructions
 
@@ -22,24 +22,11 @@ This guide assumes you are familiar with what is necessary to connect Freeform d
 
 - Go to the [Webhooks section in Freeform Settings](../configuration/settings/#webhooks) (**Freeform → Settings → Webhooks**)
 - Click the **New Webhook** button at the top right.
-- For _Service Provider_, select **Generic**.
-- Enter a name for the **Name** field.
+- For _Type_, select **Generic**.
+- Enter a name for the **Webhook Name** field.
 - Add the webhook URL from your external source into the **Webhook URL** field in Freeform.
-- Click the **Save** button.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Configure the Form
-
-To use this integration on your form(s), you'll need to configure each form individually.
-
-- Visit the form inside the form builder.
-- Click on the **Integrations** tab.
-- Click on your **Generic** webhook in the list of available integrations.
-- On the right side of the page:
-  - Enable the integration.
+- Select the form(s) you want this Webhook to apply to in the **Forms** field.
+- At the top right corner of Freeform page, click **Save** button.
 
 </StepMarkdown>
 
@@ -54,8 +41,6 @@ To use this integration on your form(s), you'll need to configure each form indi
 </VerticalStepWrapper>
 
 ## Example Output
-
-The payload posted will look something like this:
 
 ```json showLineNumbers
 {

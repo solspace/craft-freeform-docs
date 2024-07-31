@@ -6,34 +6,21 @@ sidebar_position: 13
 import { Badge, PrimaryButtonWithLink } from '@site/src/components/utils';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
-# Infusionsoft<Badge type="pro" text="Pro" />
+# Infusionsoft CRM Integration<Badge type="pro" text="Pro" />
 
-This guide assumes you have an [Infusionsoft](https://keap.com/infusionsoft) account already.
+This documentation page assumes you have read over the [CRM Integration Overview page](./index.mdx#crm). If you have not yet read it, please do so now. We also assume that you have an [Infusionsoft](https://keap.com/infusionsoft) account already. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
 
 ## Compatibility
 
-Uses OAuth flow on `v1` of the REST API.
-
-### Endpoints
-
-Maps data to the following endpoints:
-
-- **Contacts**
-
-Does your project require something else? &nbsp; <PrimaryButtonWithLink to='/support' label='Contact Us' />
-
-### Fields
-
-Maps data to the following field types:
-
-- **Standard**
-- **Custom**
+- Field mapping to standard and custom fields in _Contacts_.
 
 ## Duplicate Check & Update
 
 - Duplicate detection is based on the email address.
 
 ## Setup Instructions
+
+The Infusionsoft API integration is a little uglier since they include another layer of API calls by using _Mashery_ API Management. Don't trust your instincts and just follow the steps below closely and it won't be as bad as it looks. Please follow the steps below:
 
 <VerticalStepWrapper>
 
@@ -42,8 +29,8 @@ Maps data to the following field types:
 ### Prepare your site's end for Integration
 
 - Go to the [CRM section in Freeform Settings](../configuration/settings/#crm) (**Freeform → Settings → CRM**).
-- Click the **New Integration** button at the top right.
-- Select _Infusionsoft (v1)_ from the **Service Provider** select dropdown.
+- Click the **New CRM Integration** at the top right.
+- Select _Infusionsoft_ from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration.
   - In the **OAuth 2.0 Return URI** field, a URL will be automatically populated for you. Do not change or adjust this.
 - Copy the URL in the **OAuth 2.0 Return URI** field to your clipboard.
@@ -55,8 +42,8 @@ Maps data to the following field types:
 
 ### Sign up for a Mashery API Management account
 
-- Infusionsoft runs its API through Mashery, so you will need to sign up or log into a Mashery account inside the Infusionsoft Developers site.
-- [Visit the Infusionsoft Developers site to sign up for or log into a Mashery account](https://keys.developer.infusionsoft.com/apps/myapps)
+- Infusionsoft runs it's API through Mashery, so you will need to sign up or log into a Mashery account inside the Infusionsoft Developers site.
+- [Visit the Infusionsoft Developers site site to sign up for or log into a Mashery account](https://keys.developer.infusionsoft.com/apps/myapps)
 - Fill out the form and then click **Register** button.
 - You'll receive a confirmation email with a link to click to verify your account.
 
@@ -77,10 +64,10 @@ Maps data to the following field types:
 
 ### Prepare the Connection
 
-- Go back to your Craft/Freeform browser tab.
-- Copy the `client_id` value from Infusionsoft and paste it into the **Client ID** field in Freeform.
-- Copy the `client_secret` value from Infusionsoft and paste it into the **Client Secret** field in Freeform.
-- Click the **Save** button.
+- Go back to your your Craft/Freeform browser tab.
+- Copy the `client_id` value from Infusionsoft and paste it into the the **Client ID** field in Freeform.
+- Copy the `client_secret` value from Infusionsoft and paste it into the the **Client Secret** field in Freeform.
+- At the top right corner of Freeform page, click **Save** button.
 
 </StepMarkdown>
 
@@ -96,30 +83,12 @@ Maps data to the following field types:
 
 </StepMarkdown>
 
-<StepMarkdown>
-
-### Configure the Form
-
-To use this integration on your form(s), you'll need to configure each form individually.
-
-- Visit the form inside the form builder.
-- Click on the **Integrations** tab.
-- Click on **Infusionsoft** in the list of available integrations.
-- On the right side of the page:
-  - Enable the integration.
-  - Select the API endpoints you wish to map to.
-  - Map Freeform fields to the Infusionsoft fields as needed.
-
-</StepMarkdown>
-
 </VerticalStepWrapper>
 
-:::info
-For mapping to Provinces or States, you'll map to the **Region** field. The **Region** field expects values like `US-CA` for California state in USA, or `CA-MB` for Manitoba province in Canada. When mapping to Regions, it's required you map the Country code as well.
+:::tip
+There are some odd things with Infusionsoft to note (hopefully this save you some time and frustration when setting up):
 
-Country code mapping uses 3-digit codes like `USA` for United States of America, `CAN` for Canada, `GBR` for United Kingdom, etc.
-:::
+- For mapping to Provinces or States, you'll map to the **Region** field. The **Region** field expects values like `US-CA` for California state in USA, or `CA-MB` for Manitoba province in Canada. When mapping to Regions, it's required you map the Country code as well.
+- Country code mapping uses 3-digit codes like `USA` for United States of America, `CAN` for Canada, `GBR` for United Kingdom, etc.
 
-:::warning
-Please note that if you set this up initially on a development environment, you will need to update your callback URL and reauthorize the connection on your production environment. However, your settings and field mappings will remain intact.
 :::

@@ -6,28 +6,14 @@ sidebar_position: 21
 import { Badge, PrimaryButtonWithLink } from '@site/src/components/utils';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
-# SharpSpring<Badge type="pro" text="Pro" />
+# SharpSpring CRM Integration<Badge type="pro" text="Pro" />
 
-This guide assumes you have a [SharpSpring](https://sharpspring.com) account already.
+This documentation page assumes you have read over the [CRM Integration Overview](./#crm). If you have not yet read it, please do so now. We also assume that you have a [SharpSpring](https://sharpspring.com) account already. This integration requires that you have _Freeform Pro_. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
 
 ## Compatibility
 
-Uses `v1.2` of the REST API.
-
-### Endpoints
-
-Maps data to the following endpoints:
-
-- **Contacts**
-
-Does your project require something else? &nbsp; <PrimaryButtonWithLink to='/support' label='Contact Us' />
-
-### Fields
-
-Maps data to the following field types:
-
-- **Standard**
-- **Custom**
+- Field mapping to standard SharpSpring fields and all custom field types.
+- Maps data to **Contacts**.
 
 ## Setup Instructions
 
@@ -50,11 +36,11 @@ Maps data to the following field types:
 ### Set up Integration on your site
 
 - Go to the [CRM section in Freeform Settings](../configuration/settings/#crm) (**Freeform → Settings → CRM**).
-- Click the **New Integration** button at the top right.
-- Select _SharpSpring (v1.2)_ from the **Service Provider** select dropdown.
+- Click the **New CRM Integration** at the top right.
+- Select _SharpSpring_ from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration.
 - Paste the SharpSpring **Account ID** and **Secret Key** into the **Account ID** and **Secret Key** field, respectively, in Freeform.
-- Click the **Save** button.
+- At the top right corner of Freeform page, click **Save** button.
 
 </StepMarkdown>
 
@@ -64,23 +50,7 @@ Maps data to the following field types:
 
 - After the integration is saved, it'll return you to the list of CRM integrations.
 - Click into the newly created integration.
-- Confirm that there is a green circle with **Authorized** in the middle of the page.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Configure the Form
-
-To use this integration on your form(s), you'll need to configure each form individually.
-
-- Visit the form inside the form builder.
-- Click on the **Integrations** tab.
-- Click on **SharpSpring** in the list of available integrations.
-- On the right side of the page:
-  - Enable the integration.
-  - Select the API endpoints you wish to map to.
-  - Map Freeform fields to the SharpSpring fields as needed.
+- Confirm that there is green circle with **Authorized** in the middle of the page.
 
 </StepMarkdown>
 

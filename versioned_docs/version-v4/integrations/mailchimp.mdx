@@ -6,42 +6,40 @@ sidebar_position: 15
 import { Badge, PrimaryButtonWithLink } from '@site/src/components/utils';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
-# Mailchimp<Badge type="pro" text="Pro" />
+# Mailchimp Integration <Badge type="pro" text="Pro" />
 
-This guide assumes you have a [Mailchimp](https://mailchimp.com) account already.
+This documentation page assumes you have read over the [Email Marketing Integration Overview](./index.mdx#email-marketing). If you have not yet read it, please do so now. We also assume that you have a [Mailchimp](http://mailchimp.com) account already, along with mailing list(s) already created. This integration requires that you have _Freeform Pro_. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
+
+:::youtube[xeMdWeIG1N4]
+
+<i>Video: Setting up a Mailchimp integration</i>
+:::
 
 ## Compatibility
 
-Uses OAuth flow on `v3` of the REST API.
+Mailchimp integration includes support for field mapping to standard and custom fields of the following types:
 
-### Endpoints
+- Text
+- Website
+- URL
+- Dropdown
+- Radio
+- Date
+- Zip
+- Tags ([see below for details](#additional-features))
+- Interests/Groups ([see below for details](#additional-features))
+- GDPR consent / Marketing settings ([see below for details](#additional-features))
 
-Maps data to the following endpoints:
+## Additional Features
 
-- **Members** (Contacts)
-- **Member Tags** (Contact Tags)
-- **Interests** (Contact Groups)
+The Mailchimp email marketing integration also allows support for _Contact Tags_, individual _Interests/Groups_ and _GDPR consent / Marketing settings_.
 
-Does your project require something else? &nbsp; <PrimaryButtonWithLink to='/support' label='Contact Us' />
-
-### Fields
-
-Maps data to the following **Standard** and **Custom** field types:
-
-- **Text**
-- **Website**
-- **URL**
-- **Dropdown**
-- **Radio**
-- **Date**
-- **Zip**
-- **[Contact Tags](#contact-tags)**
-- **[Contact Groups](#contact-groups)**
-- **[GDPR consent / Marketing settings](#marketing-permissions)**
-
-## Duplicate Check & Update
-
-If a duplicate email address is found in _Mailchimp_, the profile data will be updated with the latest information submitted.
+- To map _Contact Tags_, in the **Tags** field mapping area in the form builder for the form, select a Freeform field that will contain Tag value(s). This could be a select dropdown, a checkbox group, radio field, hidden field, etc. When specifying multiples, separate by comma.
+  - By default, the Mailchimp integration will replace/overwrite any existing Contact Tags if it finds an existing contact for the email address in Mailchimp. If you'd like it to append/add to the existing Contact Tags instead, enable the **Append Mailchimp Contact Tags on update instead of overwriting?** setting inside the integration settings. <Badge type="feature" text="4.0.24+" />
+- To map a _Contact Interest/Group_, in the **Group or Interest** field mapping area in the form builder for the form, select a Freeform field that will contain an Interest/Group name value(s). This could be a select dropdown, a checkbox group, radio field, hidden field, etc.
+  - Values are case-sensitive and should be entered exactly as it is in Mailchimp, e.g. `My Group Name`.
+  - It can accept more than one group. <Badge type="feature" text="4.1.4+" />
+- To map _GDPR consent / Marketing settings_ options, in the **GDPR** field mapping area in the form builder for the form, select the Freeform field(s) which will represent opting into the corresponding options. ANY value included in these will be considered an opt-in (regardless of whether it's `yes` or `y`, etc). You will need to map a field to each GDPR setting individually, so you'll likely need to use a separate checkbox field for each.
 
 ## Setup Instructions
 
@@ -49,96 +47,37 @@ If a duplicate email address is found in _Mailchimp_, the profile data will be u
 
 <StepMarkdown>
 
-### Prepare your site's end for Integration
+### Create & get API Key from Mailchimp
 
-- Go to the [Email Marketing section in Freeform Settings](../configuration/settings/#email-marketing) (**Freeform → Settings → Email Marketing**).
-- Click the **New Integration** button at the top right.
-- Select _Mailchimp (v3)_ from the **Service Provider** select dropdown.
+- Open a new tab and go to [Mailchimp website](https://mailchimp.com) and log into your account.
+- Click on your account avatar at bottom left corner and choose **Account & Billing**.
+- On the next page, select the **Extras > API keys** sub navigation option.
+- Click the **Create New Key** button at the bottom of the page.
+- After the page reloads, copy the newly created key under the **API key** column.
+
+</StepMarkdown>
+
+<StepMarkdown>
+
+### Set up Integration on your site
+
+- Go to the [Email Marketing section in Freeform Settings](../configuration/settings#email-marketing) (**Freeform > Settings > Email Marketing**).
+- Click the **New Email Marketing Integration** at the top right.
+- Select _Mailchimp_ from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration.
-- Copy the URL in the **OAuth 2.0 Return URI** field to your clipboard.
-- Leave this page open.
+- Paste the Mailchimp API key into the **API Key** field in Freeform.
+- At the top right corner of Freeform page, click **Save** button.
 
 </StepMarkdown>
 
 <StepMarkdown>
 
-### Prepare Mailchimp's end for Integration
+### Verify Authorization
 
-- Open up a new browser tab and go to [Mailchimp website](https://mailchimp.com) and log into your account.
-- Click on your account avatar at the top right corner and choose **Account & Billing**.
-- On the next page, select the **Extras → Registered Apps** sub navigation option.
-- Click the **Register an App** button.
-- Fill out all of the fields for the app (all are mandatory except _Upload a logo_).
-- On the next page, paste the value you copied from Freeform's **OAuth 2.0 Return URI** field into the Mailchimp **Redirect URI** field.
-- Click the **Create** button at the bottom to save the app.
-- After the page reloads, scroll down to the bottom of the page and copy the following newly created credentials:
-  - **Client ID**
-  - **Client Secret**
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Prepare the Connection
-
-- Flip back to the Freeform CP browser tab.
-- Paste the Mailchimp **Client ID** value into the **Client ID** field in Freeform.
-- Paste the Mailchimp **Client Secret** value into the **Client Secret** field in Freeform.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Finish the Connection
-
-- Click the **Save** button.
-- You will be redirected to a Mailchimp OAuth page to allow permissions.
-  - If not currently logged in, fill in your credentials.
-  - Click **Allow** when asked for permissions.
-- You will then be redirected back to the **Freeform Email Marketing Integration** page.
-- Confirm that there is a green circle with **Authorized** in the middle of the page.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Configure the Form
-
-To use this integration on your form(s), you'll need to configure each form individually.
-
-- Visit the form inside the form builder.
-- Click on the **Integrations** tab.
-- Click on **Mailchimp** in the list of available integrations.
-- On the right side of the page:
-  - Enable the integration.
-  - Choose a Freeform field to be the target opt-in field.
-  - Select a mailing list that new users should be subscribed to.
-  - Map Freeform fields to the Mailchimp fields as you wish.
-  - Configure _Contact Tags_, _Contact Groups_ and _Marketing Permissions_ as needed.
+- After the integration is saved, it'll return you to the list of mailing list integrations.
+- Click into the newly created integration.
+- Confirm that there is green circle with **Authorized** in the middle of the page.
 
 </StepMarkdown>
 
 </VerticalStepWrapper>
-
-## Additional Features
-
-### Contact Tags
-
-To map _Contact Tags_, in the **Contact Tags** field mapping area in the form builder for the form, select a Freeform field that will contain Tag value(s). This could be a select dropdown, checkboxes, radios, hidden field, etc. When specifying multiples, separate by comma.
-
-- By default, the Mailchimp integration will replace/overwrite any existing Contact Tags if it finds an existing contact for the email address in Mailchimp. If you'd like it to append/add to the existing Contact Tags instead, enable the **Append Mailchimp Contact Tags on update instead of overwriting?** setting inside the integration settings.
-
-### Contact Groups
-
-To map a _Contact Interest/Group_, in the **Contact Groups** field mapping area in the form builder for the form, select a Freeform field that will contain an Interest/Group name value(s). This could be a select dropdown, a checkboxes, radios, hidden field, etc.
-
-- Values are case-sensitive and should be entered exactly as it is in Mailchimp, e.g. `My Group Name`.
-- It can accept more than one group.
-
-### Marketing Permissions
-
-To map _GDPR consent / Marketing settings_ options, in the **Marketing Permissions** field mapping area in the form builder for the form, select the Freeform field(s) which will represent opting into the corresponding options. ANY value included in these will be considered an opt-in (regardless of whether it's `yes` or `y`, etc). You will need to map a field to each setting individually, so you'll likely need to use a separate checkbox field for each.
-
-:::warning
-Please note that if you set this up initially on a development environment, you will need to update your callback URL and reauthorize the connection on your production environment. However, your settings and field mappings will remain intact.
-:::

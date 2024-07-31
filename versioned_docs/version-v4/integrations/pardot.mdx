@@ -6,31 +6,13 @@ sidebar_position: 16
 import { Badge, PrimaryButtonWithLink } from '@site/src/components/utils';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
-# Pardot<Badge type="pro" text="Pro" />
+# Pardot CRM Integration<Badge type="pro" text="Pro" />
 
-This guide assumes you have a [Pardot](https://www.pardot.com) account already.
+This documentation page assumes you have read over the [CRM Integration Overview](./index.mdx#crm). If you have not yet read it, please do so now. We also assume that you have a [Pardot](https://www.pardot.com) account already. This integration requires that you have _Freeform Pro_. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
 
 ## Compatibility
 
-Uses OAuth flow on `v4` of the REST API.
-
-### Endpoints
-
-Maps data to the following endpoints:
-
-- **Prospect**
-
-Does your project require something else? &nbsp; <PrimaryButtonWithLink to='/support' label='Contact Us' />
-
-### Fields
-
-Maps data to the following field types:
-
-- **Standard**
-- **Custom**
-  - There may be some limitations on types of fields that can be mapped.
-
-## Setup Instructions
+- Field mapping to standard and most custom _Prospect_ object fields. There may be some limitations on types of fields that can be mapped.
 
 <VerticalStepWrapper>
 
@@ -39,10 +21,10 @@ Maps data to the following field types:
 ### Prepare Freeform's end for Integration
 
 - Go to the [CRM section in Freeform Settings](../configuration/settings/#crm) (**Freeform → Settings → CRM**).
-- Click the **New Integration** button at the top right.
-- Select _Pardot (v4)_ from the **Service Provider** select dropdown.
+- Click the **New CRM Integration** at the top right.
+- Select _Pardot (v5)_ from the **Service Provider** select dropdown.
 - Enter a name and handle for the integration. e.g. `My Pardot Integration`
-- Copy the URL value generated in the **OAuth 2.0 Return URI** field, e.g. `https://mysite.net/admin/freeform/oauth/authorize`.
+- Copy the URL value generated in the **OAuth 2.0 Return URI** field, e.g. `https://mysite.net/admin/freeform/settings/crm/myPardotIntegration`.
 - Leave this page open and open a new tab to go to the Salesforce site...
 
 </StepMarkdown>
@@ -77,7 +59,7 @@ Maps data to the following field types:
 
 <StepMarkdown>
 
-### Prepare the Connection
+### Finish the Integration on your site
 
 - Flip back to the Freeform CP browser tab.
 - Enter Salesforce credentials in the next 2 fields:
@@ -85,16 +67,9 @@ Maps data to the following field types:
   - Paste the Salesforce **Consumer Secret** value into the **Client Secret** field in Freeform.
 - Enter your Pardot Business ID into the **Pardot Business Unit ID** field.
   - To find the Pardot Business Unit ID, go to _Marketing Setup_, in the _Quick Find_ box, enter `Pardot`, and then select _Pardot Account Setup_. Copy the business unit ID for the Pardot instance you want to use.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Finish the Integration
-
-- Click the **Save** button.
-- You will be redirected to a Salesforce OAuth page to allow permissions.
-  - If not currently logged in, fill in your credentials.
+- At the top right corner of Freeform page, click **Save** button.
+- You will be redirected to a Salesforce login page.
+  - Fill in your credentials.
   - Click **Allow** when asked for permissions.
 - You will then be redirected back to the **Freeform CRM Integration** page.
 
@@ -110,24 +85,4 @@ Maps data to the following field types:
 
 </StepMarkdown>
 
-<StepMarkdown>
-
-### Configure the Form
-
-To use this integration on your form(s), you'll need to configure each form individually.
-
-- Visit the form inside the form builder.
-- Click on the **Integrations** tab.
-- Click on **Pardot** in the list of available integrations.
-- On the right side of the page:
-  - Enable the integration.
-  - Select the API endpoints you wish to map to.
-  - Map Freeform fields to the Pardot fields as needed.
-
-</StepMarkdown>
-
 </VerticalStepWrapper>
-
-:::warning
-Please note that if you set this up initially on a development environment, you will need to update your callback URL and reauthorize the connection on your production environment. However, your settings and field mappings will remain intact.
-:::
