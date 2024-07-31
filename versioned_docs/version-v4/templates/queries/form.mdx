@@ -87,7 +87,7 @@ Applies a `<form>` class name.
 
 ### `id`
 
-Overrides the `<form>` ID attribute. If using [AJAX](../ajax-forms.md) and loading the same form more than once in the same template, be sure to specify this parameter for each instance so that AJAX submit can account for it correctly.
+Overrides the `<form>` ID attribute. If using [AJAX](../../guides/templating/ajax-forms) and loading the same form more than once in the same template, be sure to specify this parameter for each instance so that AJAX submit can account for it correctly.
 
 ### `returnUrl`
 
@@ -290,11 +290,11 @@ Then in your formatting template, use:
 {% endif %}
 ```
 
-::: guide ../../../guides/passing-custom-property-to-formatting-template/
-Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?
+:::tip
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
 :::
 
-::: tip showLineNumbers
+:::tip showLineNumbers
 If displaying the exact same form more than once in a single template, some of the `<form>` tag attributes set on one form may carry over to other ones. To work around this, you can unset the attribute on the other forms (unless they have their own attributes set). For example, if one form has `class: 'something'`, it may end up applying to other instances of the form, but you can add `class: null` to those others to work around it.
 :::
 

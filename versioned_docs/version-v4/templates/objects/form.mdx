@@ -89,7 +89,7 @@ The following properties are available to ease the customizability of field rend
 - `action` - the ACTION attribute for the form tag.
 - `status` - the status ID or handle.
 - `returnUrl` - allows overriding the return URL of the form upon successful submit.
-  ::: v-pre
+  :::v-pre
   - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
     :::
 - `rowClass` - the CLASS attribute of all HTML row tags.
@@ -120,7 +120,7 @@ If displaying the exact same form more than once in a single template, some of t
 
 When iterating over the form, you will iterate through [Row](./row) objects for the currently active [Page](./page), each [Row](./row) can be iterated over to get [Field](./field) objects. Check the [Field](./field) documentation to see available parameters for those objects.
 
-:::guide
+:::tip
 [Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
 :::
 
