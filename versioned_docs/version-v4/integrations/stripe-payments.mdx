@@ -29,7 +29,7 @@ import Icons from '@site/static/card-icons';
 The Stripe payment gateway requires HTTPS. You can however, use in Testing mode with HTTP.
 :::
 
-Payments in Freeform allow you to easily collect payments and subscriptions from your site users. It's available only in the _Pro_ edition. Adding payment processing to forms in Freeform is so intuitive and simple to do. Within minutes you can have anything from a form accepting donations to a [membership registration form](../../guides/user-registration-forms.md) that has users pay for a subscription at any interval level. Currently there is only an integration with Stripe, but we hope to have others in the future.
+Payments in Freeform allow you to easily collect payments and subscriptions from your site users. It's available only in the _Pro_ edition. Adding payment processing to forms in Freeform is so intuitive and simple to do. Within minutes you can have anything from a form accepting donations to a [membership registration form](../guides/speciality-forms/user-registration-forms) that has users pay for a subscription at any interval level. Currently there is only an integration with Stripe, but we hope to have others in the future.
 
 Freeform Payments accepts two different types of payments: _Single_ one-time payments, and recurring _Subscriptions_. The necessary credit card fields will integrate seamlessly into your form and appear like the rest of your fields (and can be styled as such). For an even smoother feel for error handling and validation, try using AJAX with your form.
 
@@ -39,7 +39,7 @@ Payments data can be displayed in templates and email notifications, as well as 
 
 It's important to note that Freeform does not store any sensitive credit card data, except for the last 4 digits of the credit card number.
 
-:::tip
+:::info
 When using the Stripe Payments feature, Freeform will automatically force [AJAX mode](../guides/templating/ajax-forms) on the form in order to work with Stripe's validation.
 :::
 
@@ -53,7 +53,7 @@ Freeform Payments has the following requirements:
 - Publicly accessible site to **fully** test or use Stripe.
   - You can forego **webhooks** testing (Payments success/fail email notifications, payment status future updates) if you like however, and use non-public local dev site.
 
-:::tip
+:::info
 If you need to include more than 1 Payments-enabled form inside the same template or page, be sure to apply the `fieldIdPrefix: "myprefix-"` parameter to your forms so that the Stripe fields (and others) have unique ID's on the same page, which is required to work correctly. Freeform Payments will also automatically only load one instance of Stripe JS in the page.
 :::
 
@@ -69,7 +69,7 @@ Freeform Payments uses the [Payment Element](https://stripe.com/docs/payments/pa
 
 ## Setting up the Payment Gateway
 
-:::tip
+:::info
 To fully test or use the **webhooks** part of Stripe payment gateway (Payments success/fail email notifications, payment status future updates), your site needs to be accessible publicly. If you're using a local dev machine, you can work around this by using a service like **[ngrok](https://ngrok.com/product)**. You can still access your site via the local dev URL, as long as the public version is working and Stripe is aware of it.
 :::
 
@@ -145,11 +145,11 @@ Setting up your form to collect payments will generally consist of the following
 
 </VerticalStepWrapper>
 
-:::tip
+:::info
 Freeform will still record failed payment attempts as submissions in the database, as well as send out email notifications and trigger API integrations. You may want to consider adding Payment-specific information in the email notification templates to indicate if the payment was successful or if it failed. Additionally, you can suppress this behavior by toggling the **Suppress Email Notifications & Integrations when Payments Fail** setting for the Payment Gateway.
 :::
 
-:::tip
+:::info
 When having the **Send Success Email from Stripe to Submitter** setting enabled, be sure to require the Email field that is mapped to the Stripe Email field otherwise it could result in an error if not filled in by the user.
 :::
 
@@ -321,7 +321,7 @@ You can also perform a check with `{% elseif field.type == "cc_details" %}`.
 
 #### STYLING STRIPE FIELDS
 
-For styling the Stripe credit card fields in the form, you'll need to use the [Freeform JS Plugin](../../developer/js-plugin.md) to control it, specifically adding a listener for the `freeform-stripe-styling` event like this (example for Bootstrap):
+For styling the Stripe credit card fields in the form, you'll need to use the [Freeform JS Plugin](../developer/js-plugin) to control it, specifically adding a listener for the `freeform-stripe-styling` event like this (example for Bootstrap):
 
 ```html showLineNumbers
 <script>
@@ -363,7 +363,7 @@ If you wish to display the credit card icon in the Credit Card Number field, you
 
 #### CUSTOM RETURN URL
 
-If you need to control a custom return on the form, you would do that with the following code implemented with the [Freeform JS Plugin](../../developer/js-plugin.md) like this:
+If you need to control a custom return on the form, you would do that with the following code implemented with the [Freeform JS Plugin](../developer/js-plugin) like this:
 
 ```js showLineNumbers
 <script>

@@ -128,7 +128,7 @@ The **Form Settings** tab (cog icon) handles the overall settings for the form. 
         - May contain:
           - `form.handle` - handle of form.
           - `submission.token` - secure token created for the submission.
-          - `submission.id` - newly created unique submission ID in the URL. This would allow you to use the [Submissions query](../../templates/queries/submissions) to display some or all of the users' submission on the success page.
+          - `submission.id` - newly created unique submission ID in the URL. This would allow you to use the [Submissions query](../templates/queries/submissions) to display some or all of the users' submission on the success page.
 - **Default Status** - the default status to be used when users submit the form, unless overwritten at template level.
   - See [Statuses documentation](../configuration/settings#statuses) for managing statuses.
 - **Formatting Template** (optional) - if using the [render() method](../templates/queries/form#render), this essentially allows you to "attach" a formatting template to a form so that you don't need to include formatting inside the template(s) you place the form inside.
@@ -180,7 +180,7 @@ Freeform's **Validation** tab (lock icon) is where you can configure certain for
 
 Freeform allows you to send an email to admins (or other predefined email addresses) 2 different ways:
 
-- With the [Dynamic Recipients](../fields#dynamic-recipients) field type, allowing the user to select from a few different predefined options to direct their email notification to.
+- With the [Dynamic Recipients](./fields#dynamic-recipients) field type, allowing the user to select from a few different predefined options to direct their email notification to.
 - As a hard coded option set for the form.
 
 To use the latter approach, click the **Admin Notifications** tab (envelope icon) to set up admin email notifications. Select the email notification template (or quickly create a new one - users/groups need to have permissions access for **Email Notifications** to create new notification templates), and then enter the admin email address(es), each on a new line, you wish to receive an email notification upon users successfully submitting the form.
@@ -252,7 +252,7 @@ Conveniently let's you know if something is wrong by displaying a banner (not sh
 
 The [Important Update Notices](../configuration/notices-alerts#update-notices--announcements) area keeps you informed about issues that may specifically affect your site.
 
-:::tip
+:::info
 We respect your privacy, so this feature only pulls update notices from the Solspace.com site and **does not and cannot send any information back**. Solspace collects **no** information at all. The comparison check happens on your Freeform site environment, not on the Solspace site. This feature can also be disabled in the plugin settings.
 :::
 

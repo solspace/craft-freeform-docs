@@ -7,7 +7,7 @@ import { Badge } from '@site/src/components/utils';
 
 # Submission Editing<Badge type="pro" text="Pro" />
 
-Freeform allows you to edit submissions via the front end templates as well. Currently, this feature has no user/author check, and requires you use/provide the `submission.token` to work (as opposed to the ID). <secret>A future version will likely include ability to check on authors, etc.</secret> The editing uses the same [Form query](../templates/queries/form.md), but knows you're in **edit mode** when you feed the `submissionToken` parameter a valid value.
+Freeform allows you to edit submissions via the front end templates as well. Currently, this feature has no user/author check, and requires you use/provide the `submission.token` to work (as opposed to the ID). <secret>A future version will likely include ability to check on authors, etc.</secret> The editing uses the same [Form query](../templates/queries/form), but knows you're in **edit mode** when you feed the `submissionToken` parameter a valid value.
 
 :::warning
 There are currently some limitations with this feature. Please note that:
@@ -49,7 +49,7 @@ You can apply the `suppress` parameter to the [Form](../templates/queries/form) 
 - `adminNotifications: true` - suppress [Admin notifications](../forms/email-notifications#admin-notifications)
 - `dynamicRecipients: true` - suppress [Dynamic Recipient notifications](../forms/email-notifications#dynamic-recipients)
 - `submitterNotifications: true` - suppress [Submitter email notifications](../forms/email-notifications#user-submitter-notifications)
-- `api: true` - suppress [CRM](../integrations/crm/README.md) and [Email Marketing](../integrations/#email-marketing) integrations
+- `api: true` - suppress [CRM](../integrations#crm) and [Email Marketing](../integrations/#email-marketing) integrations
 - `connections: true` - suppress [Element Connections](../integrations/#elements)
 - `payments: true` - suppress [Payment](../integrations/#other) integrations
 

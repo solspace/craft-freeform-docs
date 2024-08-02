@@ -302,7 +302,7 @@ A special field, displayable as a Select, Radio or Checkbox Group that contains 
 - Can include more than 1 of this field type in your forms, allowing for multiple sets of recipients to be notified.
 - When parsing this field semi-manually, be sure to use `loop.index0` to generate numeric values of options instead of `fieldName.value`.
 
-:::tip
+:::info
 **Make sure that each option value is unique.**
 
 If you're receiving duplicate or multiple email notifications from the Dynamic Recipients field, it's likely because you've specified more than one option with the same email address. This is a current limitation of Freeform, as it will perceive the user submitting all of the matching options at once, sending off emails as many times as there are duplicate options.
@@ -1131,7 +1131,7 @@ If you'd like to display submission data from previous pages, you can do this by
 - Email Marketing / Mailing list integrations are globally available to all forms, but are configured per form inside the form builder interface.
 - Most - if not all - integrations attempt to map all available fields and custom fields, but some may have limitations if the API is too complex or doesn't allow it.
 
-:::tip
+:::info
 While data is passed along to the Email Marketing provider, Freeform does not store whether or not Email Marketing fields were opted in, so CP submission views will not display whether or not the user subscribed.
 :::
 

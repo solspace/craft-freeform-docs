@@ -67,7 +67,7 @@ The Honeypot can also be manually rendered as follows:
 {{ honeypot.hash }}
 ```
 
-:::tip
+:::info
 To disable the Freeform Honeypot per form at template level, add the `disableHoneypot: true` parameter to the [Form query](../templates/queries/form).
 :::
 
@@ -99,11 +99,11 @@ Whenever a submission is flagged by Freeform as spam, it will save the reason(s)
 
 Freeform gives you the ability to block multiple [email addresses](../configuration/settings#block-email), [keywords](../configuration/settings#block-keywords) and [IP addresses](../configuration/settings#block-ip). Separate multiples on new lines, and use `*` for wildcard (except on IP addresses). To block phrases, use quotes (e.g. `"generate new leads"`).
 
-:::tip
+:::info
 When attempting to block individual characters (e.g. Russian letters) or partial words or strings, be sure to make good use of the wildcard `*` character! E.g.: `*й*`, `*Д*`, `*url=http*`, etc.
 :::
 
-- If the submission fails, it will then match the behavior of the [Spam Protection Behavior](../setup/settings.md#spam-behavior) setting.
+- If the submission fails, it will then match the behavior of the [Spam Protection Behavior](../configuration/settings#spam-behavior) setting.
 - If you have the [Spam Folder](#spam-folder) feature enabled, spammy submissions will go through to the Spam Folder in the Freeform control panel.
 - You have the option to display errors for fields using a blocked email address or keyword, but we recommend only using this for troubleshooting purposes.
 
@@ -147,7 +147,7 @@ Here's an overview of how each one of these works:
 
 In all cases of Captchas, unless you're doing something very radical, you will not need to do anything inside your templates to account for it. Freeform will handle all of this automatically.
 
-:::tip
+:::info
 reCAPTCHA v2 Invisible and reCAPTCHA v3 will automatically load a reCAPTCHA icon in the bottom right corner of your site containing the form. This is required by Google's terms of service. There are CSS workarounds if you wish to locate the icon to the left side of the browser page, etc.
 :::
 

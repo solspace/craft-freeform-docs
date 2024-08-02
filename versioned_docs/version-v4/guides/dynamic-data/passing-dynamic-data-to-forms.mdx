@@ -32,7 +32,7 @@ The parameter allows you to override the value inside Text fields, or even pre-s
 
 Depending on what you're wanting to do with the data, you might have parts of your form pre-selected or pre-filled out for the user based on where the form is loaded (part of a Craft entry, etc) or which user is logged in (preloading their user data). Or, it might be something you want to silently collect in a hidden field, like the current URL they're at when submitting the form, etc.
 
-You can also dynamically send email notifications with the [dynamicNotification](../templates/queries/form.md#param-dynamicnotification) parameter:
+You can also dynamically send email notifications with the [dynamicNotification](../../templates/queries/form#param-dynamicnotification) parameter:
 
 ```twig showLineNumbers
 dynamicNotification: {
@@ -92,7 +92,7 @@ overrideValues: {
 }
 ```
 
-Where `utm_campaign`, `utm_source`, and `utm_medium` are the handle names of [Hidden](../overview/fields.md#hidden) fields added to your form layout, and assuming your URL looks something like: `https://mysite.net/contact?utm_campaign=my_campaign&utm_source=google_jobs_apply&utm_medium=organic`
+Where `utm_campaign`, `utm_source`, and `utm_medium` are the handle names of [Hidden](../../forms/fields#hidden) fields added to your form layout, and assuming your URL looks something like: `https://mysite.net/contact?utm_campaign=my_campaign&utm_source=google_jobs_apply&utm_medium=organic`
 
 ## Manually Pre-define Options
 
