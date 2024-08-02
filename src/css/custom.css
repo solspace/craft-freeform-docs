@@ -68,7 +68,7 @@ html[data-theme='dark'] {
 
 /* Background color */
 html[data-theme='light'] body {
-  background: linear-gradient(350deg, #ffffff 40%, #f1f8fe 75%, #e3f2ff 100%);
+  background: linear-gradient(350deg, #ffffff 40%, #edf6ff 75%, #e1f1ff 100%);
 }
 
 html[data-theme='dark'] body {
