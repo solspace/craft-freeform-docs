@@ -105,12 +105,6 @@ const config: Config = {
         ],
       },
     ],
-    [
-      'docusaurus-pushfeedback',
-      {
-        project: 'o9vrsuaik2',
-      },
-    ],
     tailwind,
     [
       '@docusaurus/plugin-ideal-image',
