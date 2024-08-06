@@ -112,11 +112,7 @@ Please be cautious about the order of your rules, and be careful not to make any
 
 ## Usage in Formatting Templates
 
-:::v-pre
-
 Due to the complex nature of this feature and its reliance on automation, it generally assumes you're automating the render (rather than manually hardcoding each field, etc). All of the Solspace demo templates and sample default formatting templates include this already (and work out of the box), but if you're customizing a formatting template, be sure that `{{ field.rulesHtmlData }}` is on the `div` wrapper for each field inside of `{% for field in row %}`. For example:
-
-:::
 
 ```twig {25} showLineNumbers
 {{ form.renderTag({rowClass: "sample-row-class"}) }}

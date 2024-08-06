@@ -1262,3 +1262,76 @@ html[data-theme='dark'] .language-sh:before {
   border: none;
   border-radius: 50%;
 }
+
+/* Version Banner */
+.top-notice {
+  color: #000;
+  display: block;
+  top: 0 !important;
+  margin: 5px 0 40px 0 !important;
+  background: linear-gradient(
+    50deg,
+    rgba(0, 173, 156, 0.3),
+    rgba(172, 198, 0, 0.3) 50%,
+    rgba(115, 0, 250, 0.3)
+  ) !important;
+  transition: all 0.5s;
+  left: 0;
+  padding: 15px 25px 15px 15px !important;
+  border: 0 !important;
+  position: relative;
+  z-index: 3;
+  border-radius: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+html[data-theme='dark'] .top-notice {
+  color: #fff;
+}
+
+.top-notice:hover {
+  text-decoration: none !important;
+  border: none !important;
+  background: linear-gradient(
+    50deg,
+    rgba(172, 198, 0, 0.3),
+    rgba(115, 0, 250, 0.3) 50%,
+    rgba(0, 173, 156, 0.3)
+  ) !important;
+  transition: all 0.5s;
+}
+
+.top-notice:before {
+  content: '\272D';
+  color: #14314b;
+  font-size: 16px;
+  line-height: 23px;
+  background: #acc600;
+  text-align: center;
+  position: absolute;
+  margin: 7px 0 0 -31px !important;
+  top: 6px !important;
+  left: 20px;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-weight: 700;
+  transition: all 0.5s;
+}
+
+.top-notice .latest-version-link {
+  border-bottom: 1px solid #acc600;
+  transition: all 0.5s;
+}
+
+.top-notice .latest-version-link:hover {
+  font-weight: bold;
+  color: #000 !important;
+}
+
+html[data-theme='dark'] .top-notice .latest-version-link:hover {
+  color: #fff !important;
+}

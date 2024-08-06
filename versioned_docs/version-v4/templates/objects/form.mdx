@@ -89,9 +89,7 @@ The following properties are available to ease the customizability of field rend
 - `action` - the ACTION attribute for the form tag.
 - `status` - the status ID or handle.
 - `returnUrl` - allows overriding the return URL of the form upon successful submit.
-  :::v-pre
   - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
-    :::
 - `rowClass` - the CLASS attribute of all HTML row tags.
 - `columnClass` - the CLASS attribute of all HTML column tags.
 - `submitClass` - the CLASS attribute of submit field input elements.
