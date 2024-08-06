@@ -21,7 +21,7 @@ const badgeObj = {
     </div>
   ),
   Retired: (
-    <div className="inline-block relative bg-gray-100 text-gray-800 text-[9px] font-medium me-2 px-2 py-0.5 rounded-full dark:bg-gray-900 dark:text-gray-300">
+    <div className="inline-block relative bg-gray-200 text-gray-800 text-[9px] font-medium me-2 px-2 py-0.5 rounded-full dark:bg-gray-800 dark:text-gray-300">
       Retired
     </div>
   ),
