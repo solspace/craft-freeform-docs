@@ -12,7 +12,8 @@ If you need to render form data as a JSON string, you can use the `json_encode` 
 Here's an example in Twig:
 
 ```twig showLineNumbers
-{{ freeform.form('myForm') | json_encode }}
+{% set form = craft.freeform.form('myForm') %}
+{{ form.json }}
 ```
 
 Here's the output:

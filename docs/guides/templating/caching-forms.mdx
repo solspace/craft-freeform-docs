@@ -18,6 +18,10 @@ Forms and pages can be cached in a variety of ways. Here are 2 different solutio
 
 When using simple [Craft Caching](https://craftcms.com/docs/5.x/reference/twig/tags.html#cache), you'll need to make sure that you are refreshing the [CSRF token](https://craftcms.com/docs/5.x/development/forms.html#csrf) and the Freeform form hash. Here's how that may look inside your template:
 
+### Refresh Form Hash & CSRF Token only
+
+For when NOT using with the [JS Enhancement](../../forms/spam-protection#javascript-enhancement) feature:
+
 ```twig showLineNumbers
 {# Initialize the form #}
 {% set form = freeform.form("myFormHandle") %}

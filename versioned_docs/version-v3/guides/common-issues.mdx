@@ -15,10 +15,6 @@ import CommonIssuePluginPhoto from './assets/img/common-issues_plugin-js-400.png
 
 Check out this documentation resource to troubleshoot common problems or find answers to common questions.
 
-:::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](./testing/troubleshooting-form-issues)
-:::
-
 <h2>On this page:</h2>
 
 <TOCInline toc={toc} />
@@ -30,7 +26,7 @@ Some fields and other JS in my form is not working correctly. I'm also seeing th
 <AnswerCard>
 If the JS in your form is not working and you're seeing an error like `freeform/plugin.js net::ERR_ABORTED 404 (Not Found)` in the browser console, it's almost certainly due to your site having server rules you have applied to JS and CSS files to see if they are actual files. The default for Freeform is to load its scripts as **Static URLs**, which becomes a problem in this case. To resolve this issue, you can switch the _Freeform Script Insert Type_ setting (_Craft CP → Freeform → Settings → Form Behavior_) to **As Files** instead.
 
-- **As Static URLs** <Badge type="recommended" text="Recommended" /> offers built-in browser caching and a static endpoint that delivers the latest Freeform scripts, but are not physical files and therefore cannot have server rules applied.
+- **As Static URLs** offers built-in browser caching and a static endpoint that delivers the latest Freeform scripts, but are not physical files and therefore cannot have server rules applied.
 - **As Files** (recommended if having issues with _Static URLs_) are actual physical files generated inside of the `cpresources` folder by Craft's asset manager with no caching.
 - **Inline** will add the scripts as inline scripts and may be useful as a workaround if the other 2 options are not working. This doesn't allow for caching, and pollutes the source code.
 
@@ -527,7 +523,7 @@ To correct this issue, ensure that:
     },
   ]}
 />
-<Admonition type="tip">
+<Admonition type="info">
     If you want to change the name of the formatting template file while it is already in use for form(s), you should:
 
     1. Assign the form(s) a different formatting template
@@ -654,27 +650,6 @@ Textarea data is stored in the database as newlines, which obviously don't parse
 
 </AnswerCard>
 
-## Submission data in fields showing HTML entities
-
-When rendering submission data in email notifications or the front end, several characters such as `'` are parsing as `&#39;`, e.g. `You&#39;re a wizard Harry!`.
-
-<AnswerCard>
-In rare circumstances, some customers have reported this issue happening. A solution for this would be adding the `|raw` filter to the field property, or wrapping `{% autoescape false %}` around it:
-
-```twig showLineNumbers
-{{ message.value|raw }}
-```
-
-OR
-
-```twig showLineNumbers
-{% autoescape false %}
-   {{ ​message.value }}​
-{% endautoescape %}
-```
-
-</AnswerCard>
-
 ## Can I parse basic HTML in field labels?
 
 <AnswerCard>
@@ -685,7 +660,11 @@ The demo and sample templates will likely handle the HTML in the form rendering 
 Getting HTML (`b`, `i`, etc) to parse for field option labels:
 
 ```twig showLineNumbers {11}
-{{ field.renderLabel() }}
+{{ field.renderLabel({
+    labelClass: (field.required ? " required" : ""),
+    instructionsClass: "help-block",
+    errorClass: "help-block",
+}) }}
 
 {% for option in field.options %}
     <div class="checkbox">

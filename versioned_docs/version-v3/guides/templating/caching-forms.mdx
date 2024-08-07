@@ -6,17 +6,21 @@ title: Caching Forms
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 import { Badge } from '@site/src/components/utils';
 
-# Caching Forms<Badge type="feature" text="Improved in 5.0+" />
+# Cacheable Forms
 
-Forms and pages can be cached in a variety of ways. Here are 2 different solutions, depending on your caching approach.
-
-:::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../testing/troubleshooting-form-issues/)
+:::info
+**NEW IN FREEFORM 3.12+**: If using _PHP Sessions_ or _Database Tables_ for the _Freeform Session Context_ setting, please be sure to include `{% do form.registerContext %}` below your form. <Badge type="feature" text="3.12+" />
 :::
+
+Forms and pages can cached in a variety of ways. Here's 2 different solutions, depending on your caching approach:
 
 ## Twig Template Caching
 
 When using simple [Craft Caching](https://craftcms.com/docs/5.x/reference/twig/tags.html#cache), you'll need to make sure that you are refreshing the [CSRF token](https://craftcms.com/docs/5.x/development/forms.html#csrf) and the Freeform form hash. Here's how that may look inside your template:
+
+### Refresh Form Hash & CSRF Token only
+
+For when NOT using with the [JS Enhancement](../../forms/spam-protection#javascript-enhancement) feature:
 
 ```twig showLineNumbers
 {# Initialize the form #}
@@ -57,7 +61,7 @@ If using **PHP Sessions** or **Database Tables** for _Freeform Session Context_,
 
 For when using the [JS Enhancement](../../forms/spam-protection#javascript-enhancement) feature:
 
-```twig
+```twig showLineNumbers
 {# Initialize the form #}
 {% set form = craft.freeform.form("myFormHandle") %}
 
@@ -112,7 +116,7 @@ You can overcome this problem of expired CSRF tokens in Craft CMS with some simp
    }|json_encode|raw }}
    ```
    - If using **PHP Sessions** or **Database Tables** for _Freeform Session Context_, be sure to include `{% do form.registerContext %}`:
-     ```twig {2}
+     ```twig {2} showLineNumbers
      {% set form = craft.freeform.form(craft.app.request.get('form')) %}
      {% do form.registerContext %}
      {{ {

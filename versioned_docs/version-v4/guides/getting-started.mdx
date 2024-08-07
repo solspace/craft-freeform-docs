@@ -185,7 +185,7 @@ Display a simple list of submissions:
 
 To display a single submission, your template code might look something like this (see [Submission object](../templates/objects/submission/) for more info):
 
-```twig
+```twig showLineNumbers
 {% set submissionId = craft.app.request.segment(5) %}
 {% set submission = craft.freeform.submissions({id: submissionId}).one() %}
 

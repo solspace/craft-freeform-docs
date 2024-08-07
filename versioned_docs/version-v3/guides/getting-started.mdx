@@ -7,12 +7,11 @@ import Player from 'react-player';
 import { Photo } from '@site/src/components/utils';
 
 import TemplatingPhoto from './assets/img/templating.png';
-import SubmissionsDetailPhoto from '../assets/img/submissions-detail.png';
-import SubmissionsListPhoto from '../assets/img/submissions-list.png';
+import SubmissionsDetailPhoto from './assets/img/submissions-detail.png';
+import SubmissionsListPhoto from './assets/img/submissions-list.png';
 import FormBuilderPhoto from './assets/img/form-builder.png';
 import FormBuilderFields from './assets/img/form-builder-fields.png';
 import EmailNotificationsListPhoto from './assets/img/email-notifications-list.png';
-import BasicLightPhoto from './assets/img/basic-light.png';
 import CrmIntBuilderPhoto from './assets/img/crm-integration-builder.png';
 import EmailNotificationsTemplatePhoto from './assets/img/email-notifications-template.png';
 import FormBuilderFieldsPhoto from './assets/img/form-builder-fields.png';
@@ -42,10 +41,6 @@ The form builder is a workspace divided into three columns:
 - **Settings/Property Editor**: the right column, which is where you can configure the form settings, email notifications, integrations, and properties for each field and page, etc.
 
 <Photo img={FormBuilderPhoto} alt="Form Builder" />
-
-:::youtube[94H5c9T4EHE]
-Video: Overview of the Form Builder
-:::
 
 ## Fields
 
@@ -78,10 +73,6 @@ Freeform allows you to send email notifications upon submittal of a form 5 diffe
   alt="Create an Email Notification"
 />
 
-:::youtube[M_VRSj1wR7M]
-Video: Overview of Email Notifications
-:::
-
 ## Formatting Templates
 
 Freeform attempts to do all the heavy lifting when it comes to templating. Our looping templating approach allows you to automate all or almost all of your form formatting. This can be achieved by using [ready-made options](../templates/formatting/#sample-templates) or custom-building your own [formatting templates](../templates/formatting/).
@@ -112,12 +103,6 @@ Freeform supports various popular [integrations](../integrations/) so you can do
 
 We strived to make things as flexible as possible while also coming up with templating that can automate much of the handling of parsing your forms. Freeform figures out as much of this as possible for you. This can be achieved by building [formatting templates](../templates/formatting/) for your forms.
 
-:::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](./testing/troubleshooting-form-issues)
-:::
-
-<Photo img={BasicLightPhoto} alt="Basic Light Example" />
-
 ### Form Query
 
 To display a form inside a page, add a [Form template query](../templates/queries/form/) to the template. This will automatically use the [formatting template](../templates/formatting/) assigned to the form inside the [form builder](../forms/builder/).
@@ -142,11 +127,6 @@ To add some overrides to the form, such as setting some classes or even [inserti
 ### Formatting Templates
 
 Freeform includes a large number of example [formatting templates](../templates/formatting/) to choose from. You can use these as a starting point and adjust them to suit your needs or create your own from scratch.
-
-A couple of good starting points would be these plug-and-play examples that are neatly styled basic templates that don't require any frameworks or toolkits, etc:
-
-- [Basic Light](../templates/formatting/basic-light/)
-- [Basic Dark](../templates/formatting/basic-dark/)
 
 :::info
 When experiencing issues with custom formatting templates, always consider switching to one of the sample ones (such as [Basic Light](../templates/formatting/basic-light/)) and see if your form works correctly. Often the issue can be detected and resolved by comparing your template/approach with what is used in a sample template.
@@ -185,7 +165,7 @@ Display a simple list of submissions:
 
 To display a single submission, your template code might look something like this (see [Submission object](../templates/objects/submission/) for more info):
 
-```twig
+```twig showLineNumbers
 {% set submissionId = craft.app.request.segment(5) %}
 {% set submission = craft.freeform.submissions({id: submissionId}).one() %}
 
