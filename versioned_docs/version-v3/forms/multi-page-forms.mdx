@@ -3,54 +3,45 @@ title: 'Multi-Page Forms'
 sidebar_position: 4
 ---
 
-import { Photo } from '@site/src/components/utils';
+import { Photo, Badge } from '@site/src/components/utils';
 
 import MultipagePhoto from './assets/img/cp_forms-composer-multipage.png';
 import MultipageTemplatesPhoto from './assets/img/templates_form-multipage.png';
 
 # Multi-Page Forms
 
-Freeform allows for _multi-page_ forms (a POST submit per page). When editing forms in the form builder, if you wish to rearrange pages, simply drag and drop the tabs. If you need to move a field from one page to another, drag and drop the field onto the page tab you'd like it to be moved to. It will then appear at the top of that page, and you can finish placing it where it should be on that page.
-
-:::tip
-[Need to display submission data from previous pages as a confirmation screen, etc?](../guides/dynamic-data/displaying-submission-data-from-previous-pages)
-:::
-
-:::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../guides/testing/troubleshooting-form-issues)
-:::
+<Photo img={MultipagePhoto} alt="Form Builder - Multi-page" />
+<Photo img={MultipageTemplatesPhoto} alt="Form" />
 
 ## Overview
 
-### Important Notes
+Freeform allows for true _multi-page_ forms (a POST submit per page). Here's some important information to know about them:
 
-- Each page is submitted through `POST`.
-- There is no unique URI segment per page at this time.
-- Users cannot jump ahead to different pages, only forward and backward (if enabled) 1 page.
-- Multi-page forms work with the [built-in AJAX](../guides/templating/ajax-forms) feature.
-  - **Editing** existing submissions via the front end in multi-page AJAX forms will currently not work correctly.
-- To allow users to stop and return at a later time to complete the form, it will require use of the [Save & Continue Later](./save-continue-later) feature. Otherwise, the process has to be a continuous one, but the user has 3 hours before the form will timeout the submission.
+- Each page is submitted through POST
+  - There is no unique URI segment per page at this time.
+  - Users cannot jump ahead to different pages, only forward and backward 1 page.
+  - Multi-page forms work with the built-in AJAX feature. <Badge type="feature" text="3.10.0+" />
+    :::info
+    In versions prior to **Freeform 3.10.0**, AJAX will not work with multi-page forms.
+    :::
+    :::warning
+    Please note that **editing** existing submissions via the front end in multi-page AJAX forms will currently not work correctly. We hope to be able to resolve this issue in an upcoming release.
+    :::
+- Sessions for incomplete submissions are stored for 3 hours, and then are removed after that.
+  :::warning
+  Multi-page forms **cannot** be started, stopped and returned to again at a later time to finish. The process has to be a continuous one, but the user has 3 hours before the form will timeout the submission.
+  :::
+- Users can go backward in forms (if enabled).
+  :::info
+  In versions prior to **Freeform 3.8.0**, you will experience the following behavior (if using an older version of Freeform, please upgrade to the latest to resolve this issue):
+  - Any data entered into the current page that has NOT yet been submitted "forward" will not be saved when clicking **Previous** submit button. As in, clicking the Previous button will not save any changes you made to that form page.
+  - Multi-page forms will not go backward when using in conjunction with reCAPTCHA v2 Invisible and reCAPTCHA v3 (it works fine with reCAPTCHA v2 Checkbox).
+    <br />
+    <br />
+    :::
 - If an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
-  - After 3 hours (by default), Freeform will automatically remove any uploaded files if the form isn't finished being submitted.
-  - If you require a longer period of time, we recommend using the [File Upload Drag & Drop](./fields#file-upload-drag--drop) field and the [Save & Continue Later](./save-continue-later) feature.
+  - If the form is never completed, the submission clearing (described above) will remove the file after 3 hours.
 
-### Manual Submit Buttons in Multi-page Forms
+### Rearranging Pages and Fields
 
-When manually building submit buttons in multi-page forms, be sure to include a `data-freeform-action` attribute to it.
-
-The attribute value differs between various types of submit buttons:
-
-- For the regular submit button that advances forms forward, its value must be `submit`.
-- For the _back_ buttons (if applicable) in multi-page forms, the value must be `back`.
-- For the [Save & Continue Later](./save-continue-later) buttons (if applicable), the value must be `save`.
-
-```html showLineNumbers
-<button type="submit" data-freeform-action="submit">Submit</button>
-<button type="submit" data-freeform-action="back">Go Back</button>
-<button type="submit" data-freeform-action="save">Save & Continue Later</button>
-```
-
-### Screenshots
-
-<Photo img={MultipagePhoto} alt="Form Builder - Multi-page" />
-<Photo img={MultipageTemplatesPhoto} alt="Form" />
+When editing forms in the Form Builder interface inside the control panel, if you wish to rearrange pages, simply drag and drop the tabs. If you need to move a field from one page to another, drag and drop the field onto the page tab you'd like it to be moved to. It will then appear at the top of that page, and you can finish placing it where it should be on that page.

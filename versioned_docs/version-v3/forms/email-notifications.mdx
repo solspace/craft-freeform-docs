@@ -9,7 +9,6 @@ import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
 import EmailNotificationsListPhoto from './assets/img/email-notifications-list.png';
 import EmailNotificationsTemplatePhoto from './assets/img/email-notifications-template.png';
 import EmailNotificationsResendPhoto from './assets/img/email-notifications-resend.png';
-import EmailNotificationsSendAdditionalPhoto from './assets/img/email-notifications-send-additional.png';
 
 # Email Notifications
 
@@ -23,10 +22,6 @@ Be sure to configure the [Email Alert](../configuration/settings/#notices--alert
 [Email notifications may not work as expected when using **Sendmail** on your local dev environment. Check out our _Mailtrap_ setup guide.](../guides/testing/email-testing-mailtrap)
 :::
 
-:::tip
-[Need to use the submitter of the form as Reply-to email address in admin email notifications?](../guides/best-practices/admin-notifications-replyto-submitter)
-:::
-
 ## Types of Email Notifications
 
 Freeform allows you to send email notifications 6 different ways (all of them each being able to have their own notification templates, etc):
@@ -36,11 +31,6 @@ Freeform allows you to send email notifications 6 different ways (all of them ea
 - [Dynamic Template Notifications](#dynamic-template-notifications)
 - [User/Submitter Notifications](#user-submitter-notifications)
 - [User Defined](#user-defined)
-
-:::youtube[M_VRSj1wR7M]
-
-<i>Video: Overview of Email Notifications</i>
-:::
 
 ### Admin Notifications
 
@@ -64,18 +54,10 @@ hotsauce@acmewidgets.net
 {% endif %}
 ```
 
-#### Checking on an array of multiple selected values from a field such as Checkbox group, Multi-select, etc:
+OR
 
 ```twig showLineNumbers
-{% if 'option1' in myCheckboxGroupField.value %}
-bigbob@acmewidgets.net
-{% endif %}
-{% if 'option2' in myCheckboxGroupField.value %}
-fuzzypants@acmewidgets.net
-{% endif %}
-{% if 'option3' in myCheckboxGroupField.value %}
-hotsauce@acmewidgets.net
-{% endif %}
+{{ firstName == 'Bob' ? 'some@email.com' : 'other@email.com' }}
 ```
 
 ### Dynamic Recipients
@@ -167,15 +149,10 @@ Email Notification templates may contain the following options:
   - May include any Freeform field variables (`fieldName`) as well as `form.name`.
 - **From Email** - the email address the email notification will appear from.
   - May include any Freeform field variable (`fieldName`).
-    :::warning
-    Using a dynamic approach with variables like above could have your emails marked as spam. It would be better to use something general here and set these in the _Reply-to Email_ and _Reply-to Name_ settings instead.
-    :::
-    :::info
-    If you are using **SMTP** or a service that uses SMTP (like _Sendgrid_, etc), please make sure that the email address you have configured in the **From Email** setting for the email notification exactly matches what you have set in the Craft **Email Settings** area. If you wish to use the submitters email address as the "From" email, use the **Reply-to Email** setting instead.
-    :::
-    :::tip
-    [Need to use the submitter of the form as Reply-to email address in admin email notifications?](../guides/best-practices/admin-notifications-replyto-submitter)
-    :::
+    - **NOTE:** Using a dynamic approach with variables like above could have your emails marked as spam. It would be better to use something general here and set these in the _Reply-to Email_ and _Reply-to Name_ settings instead.
+      :::info
+      If you are using **SMTP** or a service that uses SMTP (like _Sendgrid_, etc), please make sure that the email address you have configured in the **From Email** setting for the email notification exactly matches what you have set in the Craft **Email Settings** area. If you wish to use the submitters email address as the "From" email, use the **Reply-to Email** setting instead.
+      :::
 - **From Name** - the email address the email notification will appear from.
   - May include any Freeform field variables (`fieldName`), e.g.
     ```twig showLineNumbers
@@ -184,7 +161,7 @@ Email Notification templates may contain the following options:
     :::warning
     Using a dynamic approach with variables like above could have your emails marked as spam. It would be better to use something general here and set these in the _Reply-to Email_ and _Reply-to Name_ settings instead.
     :::
-- **Reply-to Email** - the email address the email notification will have set for Reply-to.
+- **Reply-to Email**<Badge type="feature" text="3.9+" /> - the email address the email notification will have set for Reply-to.
   - May include any Freeform field variable (`fieldName`).
   - Leave blank to use the _From Email_ value.
 - **Reply-to Name** - the name of the email/sender the email notification will have set for Reply-to.
@@ -202,7 +179,7 @@ Email Notification templates may contain the following options:
 - **Predefined Assets** <Badge type="pro" text="Pro" /> - select any Assets you wish to include as attachments on all email notifications using this template.
   - Useful if you wish to include a PDF ticket or instructions document to submitter email notifictions, etc.
   - Can also preparse Twig, allowing you to dynamically attach an asset to the email notification based on a user's selection, etc.
-- **Auto 'Text-Only' version** - when enabled, Freeform will automatically provide a Text-only version of the notification based on the HTML version. If disabled, a **Text-Only** Body setting will display for manually handling this.
+- **Auto 'Text-Only' version**<Badge type="feature" text="3.10+" /> - when enabled, Freeform will automatically provide a Text-only version of the notification based on the HTML version. If disabled, a **Text-Only** Body setting will display for manually handling this.
 - **Email Body (HTML)** - the HTML body of the email notification to be sent.
   - A Plain Text email notification option is also available.
     - To use HTML only, leave the Plain Text field empty. To use Plain Text only, leave the HTML field empty. To use HTML with a Plain Text fallback, use both.
@@ -464,6 +441,24 @@ And then in your Freeform email notification template, something like:
 </ul>
 ```
 
+### Including Email Marketing Selection Data
+
+[Email Marketing](./fields#mailing-list-checkbox) checkbox selections are excluded from automated rendering in `allFields` variable. Since they are special fields and not part of the regular fields, this data isn't available in the control panel or _Submission_ object, etc. However, you can access the user's selection via the _Form_ object (and specify the hash available in the Handle area of the property editor for the _Email Marketing_ field inside the Form Builder). The example below will render as `1` if the user checked the checkbox:
+
+```twig showLineNumbers
+{{ form.get("BmLxw1ONn").value }}
+```
+
+This could be used as a conditional like this:
+
+```twig showLineNumbers
+{% if form.get("BmLxw1ONn").value == 1 %}
+  Opted into mailing list.
+{% else %}
+  Did NOT Opt into mailing list.
+{% endif %}
+```
+
 ### Passing Freeform data to another Template Query
 
 If you need to pass a Freeform field value (such as an ID) into another Craft query like `craft.entries` or `craft.users` in email notification templates or elsewhere, be sure to specify the Freeform field as `myFreeformFieldHandle.value`. So for example:
@@ -480,15 +475,16 @@ OR
 
 ### Show textarea line breaks in Email Notifications
 
-Textarea data is stored in the database as newlines, which obviously don't parse as line breaks when trying to display in email notifications or on front end with Submissions object. To make this happen, use the `nl2br` Twig filter:
+Textarea data is stored in the database as newlines, which obviously don't parse as line breaks when trying to display in email notifications or on front end with Submissions object. To make this happen, use the `nl2br` Twig filter, which can be done in a variety of ways:
 
 ```twig showLineNumbers
 {{ coverLetter|nl2br }}
-```
 
-:::tip
-[Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields)
-:::
+{{ coverLetter|nl2br|raw }}
+
+{% set letter = coverLetter|nl2br %}
+{{ letter|raw }}
+```
 
 ### Show all Admin Recipients that received the Email Notification
 
@@ -507,13 +503,8 @@ If you ever run into any issues where email notifications did not send correctly
   alt="Resending Email Notifications"
 />
 
-### Send Additional Notification<Badge type="pro" text="Pro" />
+### Send Additional Notification<Badge type="pro" text="Pro" /><Badge type="feature" text="3.13.2+" />
 
 If you ever need to send additional notifications to other email addresses for any reason at any time, you can use the _Send Additional Notification_ feature. This is an email notification that is independent of other notifications, so it may use a different email notification template and contain different wording or data, etc.
 
 Simply select the applicable submission(s) from the CP Submissions list page, and then click the cog (gears) icon at bottom right and select **Send Additional Notification**. Freeform will then present you with a modal that allows you to select an email notification template and specify email address (es) to notify.
-
-<Photo
-  img={EmailNotificationsSendAdditionalPhoto}
-  alt="Send Additional Email Notifications"
-/>

@@ -22,7 +22,7 @@ import EmailPhoto from './assets/img/email.png';
 import FileUploadPhoto from './assets/img/file-upload.png';
 import FileDragDropPhoto from './assets/img/file-upload-drag-drop.png';
 import HTMLPhoto from './assets/img/html.png';
-import MultipleSelectPhoto from './assets/img/miltiple-select.png';
+import MultipleSelectPhoto from './assets/img/multiple-select.png';
 import NumberPhoto from './assets/img/number.png';
 import OpinionScalePhoto from './assets/img/opinion-scale.png';
 import PasswordPhoto from './assets/img/password.png';
@@ -175,14 +175,6 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 
 <Photo img={CheckboxPhoto} alt="Checkbox" />
 
-:::tip
-[Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/field-styling/parsing-html-in-field-options)
-:::
-
-:::tip
-[Want to display single checkbox fields as a light switch toggle?](../guides/field-styling/toggle-switch-checkbox)
-:::
-
 #### Form Builder Settings
 
 - Specify a value (e.g. `y` or `yes`, etc).
@@ -198,14 +190,6 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 A group of checkboxes. The `field.type` property value is `checkbox_group` (for conditionals).
 
 <Photo img={CheckboxGroupPhoto} alt="Checkboxes field type" />
-
-:::tip
-[Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/field-styling/parsing-html-in-field-options/)
-:::
-
-:::tip
-[Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-:::
 
 #### Form Builder Settings
 
@@ -290,7 +274,7 @@ A special field, displayable as a Select, Radio or Checkbox Group that contains 
   - Emails are never parsed in source code (they're replaced with **0**, **1**, **2**, etc).
     - When parsing this field semi-manually, be sure to use `loop.index0` to generate numeric values of options instead of `fieldName.value`.
   - To make the first option empty (when displaying as Select), set the first option having something like **Please select...** for the label, and leave option blank.
-- Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
+- Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options). <Badge type="feature" text="3.2.3+" />
 - Can be switched to display as Radio or Checkbox options at form level inside the form builder.
   - Can be rendered vertically or horizontally.
 - Choose an email notification template to be used to send to the option(s) chosen.
@@ -330,10 +314,6 @@ A single-line text input field that includes additional validation to expect a v
 
 :::info
 It is required to use the **Email** field type if you wish for your users to receive an email notification when submitting the form and/or you're using an Email Marketing API integration.
-:::
-
-:::tip
-[Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?](../guides/form-validation/preventing-email-addresses)
 :::
 
 #### Form Builder Settings
@@ -402,13 +382,9 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
     - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
 
     <br />
+
     :::warning
-
-    **Before Freeform 4.1.10:** <br />
     If you're still getting a `Unknown file type` error, this is likely because Freeform also includes its own layer of file security checks (`/vendor/solspace/craft-freeform/packages/plugin/src/Library/Helpers/FileHelper.php`). You can modify this core file to get it working for you, but please contact us if there's a missing file extension/mime type that needs to be added to Freeform and we'll likely add support for it.
-
-    **In Freeform 4.1.10+:** <Badge type="feature" text="Improved 4.1.10+" /> <br />
-    The above error should no longer be an issue as Freeform File Upload fields were realigned with Craft's file kind/extensions defaults and we removed the custom Freeform MIME type checks.
     :::
 
   - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off).
@@ -476,12 +452,7 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
     - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
 
     :::warning
-
-    **Before Freeform 4.1.10:** <br />
     If you're still getting a `Unknown file type` error, this is likely because Freeform also includes its own layer of file security checks (`/vendor/solspace/craft-freeform/packages/plugin/src/Library/Helpers/FileHelper.php`). You can modify this core file to get it working for you, but please contact us if there's a missing file extension/mime type that needs to be added to Freeform and we'll likely add support for it.
-
-    **In Freeform 4.1.10+:** <Badge type="feature" text="Improved 4.1.10+" />
-    The above error should no longer be an issue as Freeform File Upload fields were realigned with Craft's file kind/extensions defaults and we removed the custom Freeform MIME type checks.
     :::
 
 - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off). However, please note that image file thumbnails will only be present directly after initial upload. Afterward (error when submitting, multi-page forms, returning to edit) the image thumbnails will no longer be accessible to Freeform.
@@ -500,12 +471,12 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
 
 The form builder includes some options for controlling basic styling, but you can also customize the appearance of the Drag and Drop File Upload field by using your own CSS. To avoid name collision and have maximum flexibility, the CSS class names use [BEM](http://getbem.com/introduction/) methodology. You will also likely need to specify `!important` for each override to ensure it takes effect.
 
-#### CLASS NAMES<Badge type="feature" text="Renamed in 5.0+" />
+#### CLASS NAMES
 
 Below is a list of all class names listed in SCSS:
 
 ```scss showLineNumbers
-.freeform-file-dnd__input {
+.freeform-field-drag-and-drop {
   &__placeholder {
   }
   &__messages {
@@ -593,11 +564,7 @@ Freeform will load fields of this type at the beginning of the form, regardless 
 
 - `placeholder`
 
-#### Special Notes
-
-- To access hidden fields in GraphQL queries you have to loop through the `form > fields` as they are not added to `form > pages > rows > fields`.
-
-## Invisible<Badge type="pro" text="Pro" />
+## Invisible<Badge type="pro" text="Pro" /><Badge type="feature" text="3.5.0+" />
 
 A field that allows you to collect hidden data in form submissions without a hidden field being present in the template source code. You might typically use this in conjunction with the `overrideValues` parameter to set a dynamic value into the field. It can also be given a hard coded value inside the Property Editor in the CP form builder interface while building your form.
 
@@ -606,10 +573,6 @@ A field that allows you to collect hidden data in form submissions without a hid
 A multiple-select field. The `field.type` property value is `multiple-select` (for conditionals).
 
 <Photo img={MultipleSelectPhoto} alt="Multiple Select field type" />
-
-:::tip
-[Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-:::
 
 #### Form Builder Settings
 
@@ -625,10 +588,6 @@ A multiple-select field. The `field.type` property value is `multiple-select` (f
 A single-line `number` type input field that is validated to contain certain numbers only. The `field.type` property value is `number` (for conditionals).
 
 <Photo img={NumberPhoto} alt="Number field type" />
-
-:::tip
-[Want to display a Number field as a range slider?](../guides/field-styling/range-slider-number)
-:::
 
 #### Form Builder Settings
 
@@ -727,26 +686,9 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 
 - Can specify labels (with values assumed) or labels and values (that differ).
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
-- Can be used as a [User Select](./email-notifications/#user-select) email notification.
 - Can be rendered vertically or horizontally.
 
-:::tip
-[Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/dynamic-data/populate-field-options-at-template-level)
-:::
-:::tip
-[Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-:::
-:::tip
-[Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/field-styling/other-option-for-fields)
-:::
-
-#### Form Builder Settings
-
-- Can specify labels (with values assumed) or labels and values (that differ).
-- Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
-- Can be rendered vertically or horizontally.
-
-#### Templating Properties
+r#### Templating Properties
 
 - `options` (an array of option objects with `label` and `value` properties)
 
@@ -810,14 +752,6 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 
 <Photo img={DropdownPhoto} alt="Dropdown field type" />
 
-:::tip
-[Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-:::
-
-:::tip
-[Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/field-styling/other-option-for-fields)
-:::
-
 #### Form Builder Settings
 
 - Can specify labels (with values assumed) or labels and values (that differ).
@@ -828,7 +762,7 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 
 - `options` (an array of option objects with `label` and `value` properties)
 
-## Signature<Badge type="pro" text="Pro" />
+## Signature<Badge type="pro" text="Pro" /><Badge type="feature" text="3.4.0+" />
 
 A field that allows users to handwrite signatures with their mouse inside your form. The `field.type` property value is `signature` (for conditionals).
 
@@ -851,7 +785,7 @@ A field that allows users to handwrite signatures with their mouse inside your f
 - The Signature field, due to it's complexness, cannot easily be manually generated in a form, and is best done with render helpers, e.g. `field.render`.
 - There's currently no way to make the signature pad area "responsive" (like setting it to 100% width), as this would be quite difficult to account for with the need to display the signature image in various places, etc.
 
-## Table<Badge type="pro" text="Pro" />
+## Table<Badge type="pro" text="Pro" /><Badge type="feature" text="3.5.0+" />
 
 A field that allows you to collect and handle repeating data. The `field.type` property value is `table` (for conditionals).
 
@@ -1006,10 +940,6 @@ A single-line text input field. The `field.type` property value is `text` (for c
 
 <Photo img={TextFieldPhoto} alt="Text field type" />
 
-:::tip
-[Want to display a Text input as a Color Picker?](../guides/field-styling/color-picker-text)
-:::
-
 #### Templating Properties
 
 - `placeholder`
@@ -1019,14 +949,6 @@ A single-line text input field. The `field.type` property value is `text` (for c
 A multi-line text input field. The `field.type` property value is `textarea` (for conditionals).
 
 <Photo img={TextareaPhoto} alt="Textare field type" />
-
-:::tip
-[Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields)
-:::
-
-:::tip
-[Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/field-styling/tinymce-editor-textarea)
-:::
 
 #### Form Builder Settings
 
@@ -1050,7 +972,7 @@ A `url` type input field that checks to see if the URL specified has valid synta
 
 Special fields are ones that either every form needs (such as Submit button), ones that assist in setting up form behaviors (such as Confirm and Password), and ones that aid in the layout and content of forms (such as the HTML block). None of these fields store any submission data in the database. The following special fields are available to use:
 
-### Confirm<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+### Confirm<Badge type="pro" text="Pro" />
 
 A field that allows you to force a user to re-enter a matching value for another text input field, including [Password](#password) fields (e.g. "Confirm Email Address", "Confirm Password"). It runs through additional validation to make sure field values match. If not, it'll show an error. This field stores the data as well, in case that is important for your site's needs. The `field.type` property value is `confirm` (for conditionals).
 
@@ -1091,10 +1013,10 @@ A special field type that allows you include HTML and Twig inside your form layo
 - The Property Editor will load an HTML area for you to type or paste your code into.
 - The Layout column in the form builder will live parse your HTML (Twig will not be parse inside the form builder).
 - All HTML is allowed here.
-- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.
+- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.<Badge type="feature" text="3.10+" />
 - You can include as many of these in your form as you wish.
 
-#### Displaying Submission Data from Previous Pages
+#### Displaying Submission Data from Previous Pages<Badge type="feature" text="3.10+" />
 
 If you'd like to display submission data from previous pages, you can do this by using an HTML block field with Twig code that might look something like this:
 
@@ -1107,13 +1029,9 @@ If you'd like to display submission data from previous pages, you can do this by
 </ul>
 ```
 
-### Email Marketing<Badge type="pro" text="Pro" />
+### Mailing List Checkbox<Badge type="pro" text="Pro" />
 
 <Photo img={EmailMarketingPhoto} alt="Mailing list field type" />
-
-:::tip
-[Want to display this checkbox as a light switch toggle?](../guides/field-styling/toggle-switch-checkbox)
-:::
 
 #### Form Builder Settings
 
@@ -1158,7 +1076,7 @@ A special field type that displays and handles the [reCAPTCHA](https://www.googl
 
 #### Templating
 
-- When a _reCAPTCHA v2 Checkbox_ or _hCaptcha Checkbox_ field is placed into a form layout in the Freeform form builder, it will render automatically like the rest of your fields. However, if you're building a form manually, you'd call it like this:
+- When a _reCAPTCHA v2 Checkbox_ or _hCaptcha Checkbox_ field is placed into a form layout in the Freeform form builder, it will render automatically like the rest of your fields. However, if you're building a form manually, you'd call it like this:<Badge type="feature" text="3.10.4+" />
   ```twig showLineNumbers
   {% set captcha = form.get('recaptcha') %}
   {{ captcha.renderInput }}
@@ -1185,15 +1103,9 @@ A special field type that allows you include rich text inside your form layout i
 - The Layout column in the form builder will live parse your content.
 - You can include as many of these in your form as you wish.
 
-:::tip
-[Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/field-styling/tinymce-editor-textarea)
-:::
-
-### Save & Continue Later<Badge type="pro" text="Pro" />
+### Save & Continue Later<Badge type="pro" text="Pro" /><Badge type="feature" text="3.12+" />
 
 A special field type that lets you place "save" button(s) inside your form layout in the form builder, allowing users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later). The `field.type` property value is `save` (for conditionals).
-
-<Photo img={SaveContinueLaterPhoto} alt="Save & Continue later field type" />
 
 #### Form Builder Settings
 
@@ -1246,7 +1158,7 @@ A special field type that lets you place submit button(s) inside your form layou
 
 #### Special Notes
 
-When manually building submit buttons in forms, be sure to include a `data-freeform-action` attribute to it.
+When manually building submit buttons in forms, be sure to include a `data-freeform-action` attribute to it.<Badge type="feature" text="3.12+" />
 
 The attribute value differs between various types of submit buttons:
 
@@ -1269,12 +1181,15 @@ The attribute value differs between various types of submit buttons:
 - `disablePrev`
   - A boolean value. If `true` the **Previous** button should not be rendered.
 
-## Populating Fields with Elements & Predefined Options<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup><Badge type="feature" text="Improved in 5.0+" />
+## Populating Fields with Elements & Predefined Options
 
 Inside the form builder (only), field types with options (such as _Dropdown_, _Radios_, etc) have the ability to be automatically fed options from Craft Elements or Freeform's own predefined options. This allows you to quickly build forms by having fields auto-generated.
 
-:::tip
-[Need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template? Check out how to populate field options at template level.](../guides/dynamic-data/populate-field-options-at-template-level)
+:::info
+For cases where you need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template), please see this guide:
+
+- **GUIDE:** [Populate Field Options at Template Level](../guides/dynamic-data/populate-field-options-at-template-level)
+
 :::
 
 ### Applicable Field Types
@@ -1287,7 +1202,7 @@ The following field types can be auto-populated:
 - [Checkboxe Group](#checkbox-group)
 - [Radio Group](#radio-group)
 
-* [Dynamic Recipients](#dynamic-recipients) (Elements only)
+* [Dynamic Recipients](#dynamic-recipients) (Elements only)<Badge type="feature" text="3.2.3+" />
 
 ### Available Craft Elements
 
@@ -1333,7 +1248,7 @@ The following Craft Elements can be fed to the above field types:
     - Filename
     - ID
     - Fields (simple values)
-- **[Craft Commerce Products](https://craftcms.com/docs/commerce/3.x/products.html)**
+- **[Craft Commerce Products](https://craftcms.com/docs/commerce/3.x/products.html)**<Badge type="feature" text="3.9.0+" />
   - **Target** asset groups or all groups.
   - **Option Label** and **Option Value** choices:
     - ID

@@ -13,9 +13,9 @@ import FormBuilderPhoto from './assets/img/form-builder.png';
 import StripePaymentsPhoto from './assets/img/stripe-payments.png';
 import IntegrationsPhoto from './assets/img/crm-integration-builder.png';
 import UserRegistrationPhoto from './assets/img/user-registration.png';
-import FreeformDashboardPhoto from './assets/img/freeoform-dashboard.png';
+import FreeformDashboardPhoto from './assets/img/freeform-dashboard.png';
 
-# Form Builder<Badge type="feature" text="Improved in 5.0+" />
+# Form Builder
 
 What makes Freeform different from other form plugins is that it gives you full control to create simple or complex multi-page forms, and everything is at your fingertips in our elegant form builder. It has been expertly designed to minimize mouse movement and clicks. Freeform also features a long list of its own set of robust [field types](./fields/).
 
@@ -158,23 +158,23 @@ The **Form Settings** tab (cog icon) handles the overall settings for the form. 
 
 Freeform's **Validation** tab (lock icon) is where you can configure certain form-specific behaviors such as messages and submit button indicators.
 
-- **Success Message** - the text to be shown at the top of the form if the submit is successful (AJAX), or load in your template with `form.successMessage`.
-- **Error Message** - the text to be shown at the top of the form if there are any errors upon submit (AJAX), or load in your template with `form.errorMessage`.
-- **Show Loading Indicator on Submit** - show a loading indicator on the submit button upon submittal of the form.
-- **Show Loading Text**
+- **Success Message** <Badge type="feature" text="3.9+" /> - the text to be shown at the top of the form if the submit is successful (AJAX), or load in your template with `form.successMessage`.
+- **Error Message** <Badge type="feature" text="3.9+" /> - the text to be shown at the top of the form if there are any errors upon submit (AJAX), or load in your template with `form.errorMessage`.
+- **Show Loading Indicator on Submit** <Badge type="feature" text="3.9+" /> - show a loading indicator on the submit button upon submittal of the form.
+- **Show Loading Text** <Badge type="feature" text="3.9+" />
   - Enabling this will change the submit button's label to the text of your choice.
   - **Loading Text** - enter the custom value you'd like to be displayed when the form is processing.
 - **Limit Form Submission Rate** <Badge type="pro" text="Pro" /> - allows you to limit the number of times a user can submit the form.
   - Options are:
     - _Do not limit_
-    - _Logged in Users only (no limit)_
+    - _Logged in Users only (no limit)_ <Badge type="feature" text="3.13+" />
     - _Once per Cookie only_
     - _Once per IP/Cookie combo_
-    - _Once per logged in Users only_
-    - _Once per logged in User or Guest Cookie only_
-    - _Once per logged in User or Guest IP/Cookie combo_
+    - _Once per logged in Users only_ <Badge type="feature" text="3.13+" />
+    - _Once per logged in User or Guest Cookie only_ <Badge type="feature" text="3.13+" />
+    - _Once per logged in User or Guest IP/Cookie combo_ <Badge type="feature" text="3.13+" />
   - Please see [Submission Limits](../submissions/overview#submission-limits) documentation for more information about available options, including setting limits for the entire form.
-- **Stop Submissions After** (date) - allows you to prevent new submissions of the form after the set date.
+- **Stop Submissions After** (date) <Badge type="feature" text="3.13+" /> - allows you to prevent new submissions of the form after the set date.
 
 ## Admin Email Notifications
 
@@ -221,11 +221,6 @@ The possibilities are endless when you consider that it essentially allows you t
 
 Please see the [Element Connections](../integrations#craft-elements) documentation for more information about this feature.
 
-<Photo
-  img={UserRegistrationPhoto}
-  alt="Map Submission Data to Craft Elements - User Registration form"
-/>
-
 ## CRM Integrations <Badge type="pro" text="Pro" />
 
 The **CRM Integrations** tab (cloud icon) is where you configure any [CRM integrations](../integrations#crm) you may have on a per-form level. Simply choose an integration name and then map out your Freeform fields to your CRM's fields. This tab will only show if you have any CRM integrations configured.
@@ -236,11 +231,9 @@ The **CRM Integrations** tab (cloud icon) is where you configure any [CRM integr
 
 The **Payments** tab (dollar sign icon) is where you configure a [Stripe Payments](../integrations/stripe-payments) integration on a per-form level. Simply choose the Payment integration name and then configure the form and map out your Freeform fields to your Stripe fields. This tab will only show if you have a Payment integration configured. You will also need to add a [Credit Card](./fields#credit-card) special field to the form layout.
 
-<Photo img={StripePaymentsPhoto} alt="Stripe Payments" />
+## Freeform Dashboard<Badge type="feature" text="Improved in 3.9.0" />
 
-## Freeform Dashboard
-
-Freeform contains its own dashboard page that gives you convenient insights and an overview of your forms, submissions, and any logged errors or update warnings and notices. The data displayed here will respect all Permissions set for users / user groups.
+Freeform contains its own dashboard page that gives you convenient insights and an overview of your forms, submissions, and any logged errors or update warnings and notices. The data displayed here will respect all [Permissions](../configuration/permissions) set for users / user groups. The Dashboard page will likely receive more enhancements in the future!
 
 <Photo img={FreeformDashboardPhoto} alt="Freeform Dashboard" />
 

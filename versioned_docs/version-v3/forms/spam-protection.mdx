@@ -19,14 +19,6 @@ import JavascriptTestIcon from './assets/icons/freeform-javascript-test.png';
 
 Freeform includes a variety of robust spam control features to make managing forms easier.
 
-:::tip
-[Check out the guide on Spam Protection best practices.](../guides/best-practices/spam-protection-best-practices)
-:::
-
-:::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../guides/testing/troubleshooting-form-issues)
-:::
-
 ## Freeform Honeypot
 
 Freeform includes its own Honeypot spam protection feature. This is enabled by default, but can be disabled in the [Spam Settings](../configuration/settings#spam-settings). If enabled, you can specify the behavior Freeform takes when a spammy submission is detected with the [Spam Protection Behavior](../configuration/settings#spam-protection-behavior) setting:
@@ -68,7 +60,7 @@ The Honeypot can also be manually rendered as follows:
 ```
 
 :::info
-To disable the Freeform Honeypot per form at template level, add the `disableHoneypot: true` parameter to the [Form query](../templates/queries/form).
+To disable the Freeform Honeypot per form at template level, add the `disableHoneypot: true` parameter to the [Form query](../templates/queries/form).<Badge type="feature" text="3.12+" />
 :::
 
 ## Spam Folder
@@ -91,7 +83,7 @@ Enabling the **Spam Folder** feature will not retroactively bring back any previ
 <Photo img={SpamFolderPhoto} alt="Spam Folder" />
 <Photo img={SpamDetailPhoto} alt="View and Manage Spam" />
 
-### Spam Reasons
+### Spam Reasons<Badge type="feature" text="3.6.3+" />
 
 Whenever a submission is flagged by Freeform as spam, it will save the reason(s) why, which will help you understand why the submission failed and also help you troubleshoot potential configuration errors and issues. The detailed spam reason(s) are available inside the submission detail page in the right side column. The reason(s) summary is displayed as a column inside the index listing view of the Freeform Spam Folder. Further to this, you can filter these submissions by the reason they were marked as spam.
 
@@ -122,10 +114,10 @@ This feature is intended for extreme conditions, such as preventing your site fr
 Freeform currently supports the following [Captcha services](../configuration/settings#captcha):
 
 - reCAPTCHA v2 Checkbox
-- reCAPTCHA v2 Invisible <Badge type="pro" text="Pro" />
-- reCAPTCHA v3 <Badge type="pro" text="Pro" />
-- hCaptcha Checkbox <Badge type="pro" text="Pro" />
-- hCaptcha Invisible <Badge type="pro" text="Pro" />
+- reCAPTCHA v2 Invisible<Badge type="pro" text="Pro" />
+- reCAPTCHA v3<Badge type="pro" text="Pro" />
+- hCaptcha Checkbox<Badge type="pro" text="Pro" /><Badge type="feature" text="3.12.9+" />
+- hCaptcha Invisible<Badge type="pro" text="Pro" /><Badge type="feature" text="3.12.9+" />
 
 ### Overview
 
@@ -139,9 +131,9 @@ Here's an overview of how each one of these works:
 - **reCAPTCHA v3** is never visible to the user filling out the form, aside from a small reCAPTCHA logo in the bottom right corner of the page, and users are never presented any puzzle to solve, etc. Instead, users are automatically validated by Google based on a score assigned to them. You have control over that score threshold inside Freeform settings. We suggest starting with something like `0.5` and see how that goes (where a `0.0` score means that it's almost certain a bot and a `1.0` score means it's a user). If the user does not pass this threshold, the submission will follow the behavior you set out for it in the settings (send to spam folder / reject it entirely / show an error to the user, etc). The user has no ability to validate themselves like in **reCAPTCHA v2**.
   - This automatically applies to every form unless you uncheck the "Enable Captchas" checkbox in the form settings in the form builder or disabled at template level.
   - This is only available in the _Pro_ edition of Freeform.
-- **hCaptcha Checkbox** is based off of _reCAPTCHA_ and works very similarly. Once configured for your site, you drag and drop a special Captcha field into the form layout for the forms you wish to have it enabled for. All users submitting your form must check off the hCaptcha checkbox, and in some cases, users will be presented the puzzle to solve to submit the form successfully.
+- **hCaptcha Checkbox** is based off of _reCAPTCHA_ and works very similarly. Once configured for your site, you drag and drop a special Captcha field into the form layout for the forms you wish to have it enabled for. All users submitting your form must check off the hCaptcha checkbox, and in some cases, users will be presented the puzzle to solve to submit the form successfully. <Badge type="feature" text="3.12.9+" />
   - This is available in the _Pro_ editions of Freeform.
-- **hCaptcha Invisible** is similar to hCaptcha Checkbox, but it will not be visible to the user filling out the form. Most users will not even know it's automatically validating them, but like the hCaptcha Checkbox described above, some users will be presented a modal on the page with the puzzle to solve when they click the submit button.
+- **hCaptcha Invisible** is similar to hCaptcha Checkbox, but it will not be visible to the user filling out the form. Most users will not even know it's automatically validating them, but like the hCaptcha Checkbox described above, some users will be presented a modal on the page with the puzzle to solve when they click the submit button. <Badge type="feature" text="3.12.9+" />
   - This automatically applies to every form unless you uncheck the "Enable Captchas" checkbox in the form settings in the form builder or disabled at template level.
   - This is only available in the _Pro_ edition of Freeform.
 
@@ -153,9 +145,9 @@ reCAPTCHA v2 Invisible and reCAPTCHA v3 will automatically load a reCAPTCHA icon
 
 ### reCAPTCHA v2 Checkbox & hCaptcha Checkbox Notes
 
-To add a _Checkbox_ Captcha to your forms, open up each form in the form builder and drag over the **Captcha** special field anywhere you like into your form layout.
+To add a _Checkbox_ Captcha to your forms, open up each form in the Form Builder and drag over the **Captcha** special field anywhere you like into your form layout.
 
-_Checkbox_ Captcha fields will render automatically like the rest of your fields in your form, but if you're building a form manually, you'd call it using the special `recaptcha` handle name:
+_Checkbox_ Captcha fields will render automatically like the rest of your fields in your form, but if you're building a form manually, you'd call it using the special `recaptcha` handle name: <Badge type="feature" text="3.10+" />
 
 ```twig showLineNumbers
 {% set form = craft.freeform.form("myForm") %}
@@ -164,9 +156,18 @@ _Checkbox_ Captcha fields will render automatically like the rest of your fields
 {{ captcha.renderInput }}
 ```
 
+**For versions prior to Freeform 3.10**, you'd call it using the Hash value for the _Captcha Checkbox_ field in Property Editor of the form builder:
+
+```twig showLineNumbers
+{% set form = craft.freeform.form("myForm") %}
+{% set captcha = form.get("JDGnlp8vB") %}
+
+{{ captcha.renderInput }}
+```
+
 ### reCAPTCHA v2 Invisible Notes
 
-To disable reCAPTCHA v2 Invisible and v3 per form at template level, add the `disableRecaptcha: true` parameter to the [Form query](../templates/queries/form).
+To disable reCAPTCHA v2 Invisible and v3 per form at template level, add the `disableRecaptcha: true` parameter to the [Form query](../templates/queries/form).<Badge type="feature" text="3.9.0+" />
 
 If you're loading an entire form via AJAX, you'll need to load the reCAPTCHA JS yourself, since it's considered insecure otherwise and the browser blocks it. You should add this script tag anywhere on your page, preferably the footer:
 

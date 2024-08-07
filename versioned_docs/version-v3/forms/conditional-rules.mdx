@@ -3,77 +3,43 @@ title: 'Conditional Rules'
 sidebar_position: 6
 ---
 
-import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 import { Badge, Photo } from '@site/src/components/utils';
 
 import ConditionalRulesPhoto from './assets/img/conditional-rules.png';
 
-# Conditional Rules<Badge type='pro' text='Pro' /><Badge type='feature' text='Improved in 5.0+' />
+# Conditional Rules Logic for Fields and Pages<Badge type="pro" text="Pro" />
 
-Freeform Pro edition includes Conditional Rules logic that can be added to forms. This feature allows you to effortlessly set fields and groups to **show or hide** based on the contents/selection of other fields, and even **skip pages** or submit the form based on the contents/selection of fields on a previous page.
+Freeform Pro edition includes Conditional Rules logic that can be added to forms. This feature allows you to effortlessly set fields to **show or hide** based on the contents/selection of other fields, and even **skip pages** for multi-page forms based on the contents/selection of fields on a previous page.
 
-To begin adding rules to your form, click on the **Rules** tab in the form builder and follow the options.
-
-:::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../guides/testing/troubleshooting-form-issues)
-:::
+To begin adding rules inside your form, click on the **Conditional Rules** (lines icon) tab in the Property Editor column at the top right and follow the options.
 
 <Photo img={ConditionalRulesPhoto} alt="Form Builder - Conditional Rules" />
 
 ## Quick Setup Guide for Fields
 
-<VerticalStepWrapper>
-  <StepMarkdown>
-    Click the **Conditional Rules** (lines icon) tab in the Property Editor column at the top right. <br />
-    Click **Select page to add rules to** select dropdown, and select the page you'd like to add rules for.
-  </StepMarkdown>
-  <StepMarkdown>
-    Beside *Field Rules*, click the **Add...** select dropdown, and select the **field** from the list you'd like to be **shown or hidden**, based on criteria of other field(s).<br />
-    The word *show* can be toggled to *hide*, and *any* can be toggled to *all* if you wish.
-
-  </StepMarkdown>
-  <StepMarkdown>
-    Click the **Add criteria...** select dropdown and select the field you'd like to affect this field.<br />
-    The word *is* can be toggled to *is not* if you wish.<br />
-    Enter a value or select and option (if multi-option fieldtype) or check the checkbox (if checkbox fieldtype).
-
-  </StepMarkdown>
-  <StepMarkdown>
-    If you wish to add more criteria for this field, click the **Add criteria...** select dropdown and repeat the above process.<br/>
-    Save your form and try it out!
-  </StepMarkdown>
-</VerticalStepWrapper>
+1. Click the **Conditional Rules** (lines icon) tab in the Property Editor column at the top right.
+2. Click **Select page to add rules to** select dropdown, and select the page you'd like to add rules for.
+3. Beside _Field Rules_, click the **Add...** select dropdown, and select the **field** from the list you'd like to be **shown or hidden**, based on criteria of other field(s).
+4. The word _show_ can be toggled to _hide_, and _any_ can be toggled to _all_ if you wish.
+5. Click the **Add criteria...** select dropdown and select the field you'd like to affect this field.
+6. The word _is_ can be toggled to _is not_ if you wish.
+7. Enter a value or select and option (if multi-option fieldtype) or check the checkbox (if checkbox fieldtype).
+8. If you wish to add more criteria for this field, click the **Add criteria...** select dropdown and repeat the above process.
+9. Save your form and try it out!
 
 ## Quick Setup Guide for Page Skip
 
-<VerticalStepWrapper>
-  <StepMarkdown>
-    Click the **Conditional Rules** (lines icon) tab in the Property Editor column at the top right.
+This applies only to [multi-page forms](./multi-page-forms)...
 
-If you don't already have [field conditional rules](#conditional-rules-logic-for-fields-and-pages) for the page you're wanting to make rules for, click **Select page to add rules to** select dropdown, and select the page you'd like to add rules for.
-
-  </StepMarkdown>
-  <StepMarkdown>
-Beside *Page Rules*, click the **Add...** select dropdown, and select the **page** from the list you'd like to have your form **go to**, based on criteria of other field(s).
-
-The word _any_ can be toggled to _all_ if you wish.
-
-  </StepMarkdown>
-  <StepMarkdown>
-Click the **Add criteria...** select dropdown and select the field you'd like to cause the page skip.
-
-The word _is_ can be toggled to _is not_ if you wish.
-
-Enter a value or select and option (if multi-option fieldtype) or check the checkbox (if checkbox fieldtype).
-
-  </StepMarkdown>
-  <StepMarkdown>
-    If you wish to add more criteria for this field, click the **Add criteria...** select dropdown and repeat the above process.
-
-Save your form and try it out!
-
-  </StepMarkdown>
-</VerticalStepWrapper>
+1. Click the **Conditional Rules** (lines icon) tab in the Property Editor column at the top right.
+2. If you don't already have [field conditional rules](#conditional-rules-logic-for-fields-and-pages) for the page you're wanting to make rules for, click **Select page to add rules to** select dropdown, and select the page you'd like to add rules for.
+3. Beside _Page Rules_, click the **Add...** select dropdown, and select the **page** from the list you'd like to have your form **go to**, based on criteria of other field(s).
+4. The word _any_ can be toggled to _all_ if you wish.
+5. Click the **Add criteria...** select dropdown and select the field you'd like to cause the page skip.
+6. The word _is_ can be toggled to _is not_ if you wish.
+7. Enter a value or select and option (if multi-option fieldtype) or check the checkbox (if checkbox fieldtype).
+8. If you wish to add more criteria for this field, click the **Add criteria...** select dropdown and repeat the above process.
+9. Save your form and try it out!
 
 ## Reference
 

@@ -1050,7 +1050,7 @@ A `url` type input field that checks to see if the URL specified has valid synta
 
 Special fields are ones that either every form needs (such as Submit button), ones that assist in setting up form behaviors (such as Confirm and Password), and ones that aid in the layout and content of forms (such as the HTML block). None of these fields store any submission data in the database. The following special fields are available to use:
 
-### Confirm<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
+### Confirm<Badge type="pro" text="Pro" />
 
 A field that allows you to force a user to re-enter a matching value for another text input field, including [Password](#password) fields (e.g. "Confirm Email Address", "Confirm Password"). It runs through additional validation to make sure field values match. If not, it'll show an error. This field stores the data as well, in case that is important for your site's needs. The `field.type` property value is `confirm` (for conditionals).
 
@@ -1269,7 +1269,7 @@ The attribute value differs between various types of submit buttons:
 - `disablePrev`
   - A boolean value. If `true` the **Previous** button should not be rendered.
 
-## Populating Fields with Elements & Predefined Options<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup><Badge type="feature" text="Improved in 5.0+" />
+## Populating Fields with Elements & Predefined Options
 
 Inside the form builder (only), field types with options (such as _Dropdown_, _Radios_, etc) have the ability to be automatically fed options from Craft Elements or Freeform's own predefined options. This allows you to quickly build forms by having fields auto-generated.
 
