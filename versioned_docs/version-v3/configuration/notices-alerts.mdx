@@ -44,13 +44,17 @@ Video: Overview of Reliability Features
   ]}
 />
 
-## Update Notices & Announcements
+## Update Notices
 
-The _Update Notices_ area in the Dashboard keeps you informed about issues that may specifically affect your site. Paired with [Weekly Digest](#weekly--daily-digests) email notifications, _Update Notices_ is a powerful feature that allows you to run your site on auto-pilot. Every few hours, Freeform will check and see if there are any new updates available, pull the feed and then compare it against your current site environment and setup and only show you notices and warnings that apply specifically to that site. This will ensure you catch issues much sooner and minimize form issues.
+The _Important Update Notices_ area in the Dashboard keeps you informed about issues that may specifically affect your site, while the What's New area in the Dashboard lets you know about new features available in the current version you've just updated to.
 
-Freeform also uses Craft's [Announcements](https://craftcms.com/docs/5.x/system/control-panel.html#announcements) feature to let you know about new features available in the version you've just updated to. This works automatically and is displayed by clicking the "gift" icon at the top of the page anywhere in the control panel.
+Paired with [Weekly Digest](#weekly--daily-digests) email notifications, this is a powerful feature that allows you to run your site on auto-pilot. Every few hours, Freeform will check and see if there are any new updates available, pull the feed and then compare it against your current site environment and setup and only show you notices and warnings that apply specifically to that site. This will ensure you catch issues much sooner and minimize form issues.
 
-To enable this feature, go to the **Freeform CP → Settings → Notices & Alerts** settings page. Toggle on the **Display Update Warnings & Notices** setting. This valuable feature is on by default.
+### Setup
+
+To enable this feature, go to the **Freeform CP -> Settings -> Notices & Alerts** settings page. Toggle on the **Display Update Warnings & Notices** setting. This valuable feature is on by default.
+
+To be provided with more tailored warnings and notices, please manually select any of the additional options in the **Additional Optional Checks** setting that may affect your site. Freeform's update notices check cannot detect template-level things or flows, so by selecting any of these options, Freeform will know to check against these as well and provide you with more robust warnings and alerts.
 
 ### How It Works
 
@@ -68,8 +72,10 @@ Common types of notices you'll receive are:
 - Critical security vulnerability bugs.
 - Notices about significant new features that have been released in a newer version.
 
-:::warning
-This feature requires any activity to happen on your site (e.g. someone visiting your site, an admin viewing CP, or a cron job to refresh cache) for Craft's cache (usually 3hrs) to be refreshed. If for any reason your site doesn't receive any activity for an extended period of time, this feature may not be triggered on time.
+Included in this feature is the **What's New** area. This feature lets you know about new features available in the current version you've just updated to.
+
+:::info
+Please note that this feature requires any site visitor visit your site in order for the cache (3hrs) and trigger to be refreshed. If for any reason your site receives no traffic at all for an extended period of time, this feature will not update as quickly as it could.
 :::
 
 <Photo img={NoticeAlertDashboardPhoto} alt="Update Notices preview" />
@@ -84,13 +90,13 @@ To enable this feature, go to the **Freeform CP → Settings → Notices & Alert
 
 Every time Freeform fails to send an email notification due to common issues like typos in variable names or syntax errors, etc in email notification templates, Freeform will then attempt to notify the email address(es) specified in this setting.
 
-:::warning
+:::info
 This feature is not guaranteed to catch every possible email failure. There might be other pieces at play here, and if your email server configuration itself is not correct, this feature will not work.
 :::
 
 <Photo img={EmailAlertPhoto} alt="Email Alert preview" />
 
-## Weekly & Daily Digests
+## Weekly & Daily Digests<Badge type="feature" text="3.9.0+" /><Badge type="feature" text="Improved in 3.10.0" />
 
 The Freeform _Weekly or Daily Digest_ email notifications will keep you in the loop about your website's Freeform form performance and status. It includes a snapshot of the previous week's performance and any logged errors and upgrade notices (if enabled).
 
@@ -102,7 +108,7 @@ To enable this feature, go to the **Freeform CP → Settings → Notices & Alert
 
 Each week on the chosen weekday (or every day if _Daily_ chosen), Freeform will schedule an email notification to be delivered to the specified email address(es). This email notification will include such information as new submissions and spam counts for the previous period, currently logged errors, and important [Update Notices](#update-notices--announcements) (if enabled) that may require your attention.
 
-:::warning
+:::info
 This feature requires any activity to happen on your site (e.g. someone visiting your site, an admin viewing CP, or a cron job to refresh cache) for Craft's cache (usually 3hrs) to be refreshed. If for any reason your site doesn't receive any activity for an extended period of time, this feature may not be triggered on time.
 :::
 
