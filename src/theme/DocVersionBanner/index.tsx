@@ -31,7 +31,7 @@ function UnreleasedVersionLabel({
   return (
     <Translate
       id="theme.docs.versions.unreleasedVersionLabel"
-      description="The label used to tell the user that he's browsing an unreleased doc version"
+      description="The label used to tell the user that they're browsing an unreleased doc version"
       values={{
         siteTitle,
         versionLabel: <b>{versionMetadata.label}</b>,
@@ -51,13 +51,13 @@ function UnmaintainedVersionLabel({
   return (
     <Translate
       id="theme.docs.versions.unmaintainedVersionLabel"
-      description="The label used to tell the user that he's browsing an unmaintained doc version"
+      description="The label used to tell the user that they're browsing an unmaintained doc version"
       values={{
         siteTitle,
         versionLabel: <b className="ml-1">{versionMetadata.label}</b>,
       }}
     >
-      {'This is documentation for an older version of Freeform {versionLabel}.'}
+      {'You are viewing an older version of the Freeform documentation ({versionLabel}).'}
     </Translate>
   );
 }
@@ -94,7 +94,7 @@ function LatestVersionSuggestionLabel({
             className="text-black dark:text-white latest-version-link"
             to={to}
           >
-            View the latest version <b>{versionLabel}</b> →
+            View the latest version (<b>{versionLabel}</b>) →
           </Link>
         ),
         latestVersionLink: (

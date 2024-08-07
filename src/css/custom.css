@@ -1285,6 +1285,7 @@ html[data-theme='dark'] .language-sh:before {
   transition: all 0.5s;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
 }
 
 html[data-theme='dark'] .top-notice {
@@ -1323,6 +1324,7 @@ html[data-theme='dark'] .top-notice {
 }
 
 .top-notice .latest-version-link {
+  font-weight: bold;
   border-bottom: 1px solid #acc600;
   transition: all 0.5s;
 }
