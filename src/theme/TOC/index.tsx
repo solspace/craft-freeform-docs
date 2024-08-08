@@ -61,9 +61,9 @@ export default function TOC({ className, ...props }: Props): JSX.Element {
         linkClassName={LINK_CLASS_NAME}
         linkActiveClassName={LINK_ACTIVE_CLASS_NAME}
       />
-      <div className="flex flex-wrap lg:justify-between bg-[var(--ifm-breadcrumb-item-background-active)] rounded-lg py-4 px-3 mt-6 ">
+      <div className="flex flex-wrap lg:justify-between bg-[var(--ifm-breadcrumb-item-background-active)] rounded-lg p-3 mt-6 ">
         <div>
-          <b>Was this page helpful?</b>
+          <b>Page Feedback</b>
         </div>
         <div className="flex items-center gap-1">
           <FeedbackButton
