@@ -6,7 +6,7 @@ sidebar_position: 4
 import { Badge } from '@site/src/components/utils';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
-# ClickDimensions POST Forwarding<Badge type="pro" text="Pro" />
+# ClickDimensions POST Forwarding<Badge type="pro" text="Pro" /><Badge type="feature" text="3.5.8+" />
 
 Freeform's [POST Forwarding](../integrations/post-forwarding/) feature allows you to integrate your forms with [ClickDimensions](https://clickdimensions.com/) for Microsoft Dynamics.
 
@@ -32,7 +32,7 @@ This guide assumes you are familiar with [ClickDimensions](https://clickdimensio
 
 Add the _ClickDimensions_ script, and then add this AFTER it:
 
-```javascript
+```javascript showLineNumbers
 var match = document.cookie.match(new RegExp('(^| )cuvid=([^;]+)'));
 if (match) {
   var cuvid = match[2];

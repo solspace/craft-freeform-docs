@@ -47,7 +47,7 @@ Freeform allows you to connect and map Freeform submission data to other Craft E
     {
       iconSrc: HireUsIcon,
       iconTitle: 'Hire Us',
-      link: '../guides/developer/custom-integrations',
+      link: '/support/premium',
       extraContent: 'Hire Us',
     },
   ]}
@@ -60,7 +60,7 @@ Freeform allows you to connect and map Freeform submission data to other Craft E
 />
 
 :::info
-Freeform includes the ability to map the Freeform submission ID, submission token, submission title, form ID, form handle and form name to other element fields as well. You can choose these as options in the mapping table in the Integrations tab.
+Freeform includes the ability to map the Freeform submission ID, submission token, submission title, form ID, form handle and form name to other element fields as well. You can choose these as options in the mapping table in the Element Connections tab. <Badge type="feature" text="3.12.7+" />
 :::
 
 ## Craft Entries
@@ -125,7 +125,7 @@ If you'd like to map Freeform submission data to [Craft User](https://craftcms.c
 
 :::
 
-## Solspace Calendar Events
+## Solspace Calendar Events<Badge type="feature" text="3.11.0+" />
 
 Freeform's Element Connections feature supports mapping to **Solspace Calendar Events**, providing you have the **Calendar** plugin installed of course. If you'd like to map Freeform submission data to Calendar Events, while in the form builder for an existing form, do the following:
 
@@ -174,7 +174,7 @@ If you have more than 1 element connection for the form, you can use either:
 - `{% for item in element %}`
 - `{{ element[0].id }}`, `{{ element[1].id }}`, etc
 
-## Editing Elements
+## Editing Elements<Badge type="feature" text="3.11.0+" />
 
 :::danger
 Please be aware that the Element Editing feature opens up a wide variety of possibilities, including ones that could pose a risk to your data and User accounts. When used cautiously and correctly, this feature is secure and is of no risk. Completely read the documentation below, and always carefully think through your flow and test it thoroughly. When in doubt, do not hesitate to contact Solspace support for clarity about the approach you're taking and if there may be any issues or risks with it.
@@ -190,7 +190,7 @@ Freeform allows you to edit/update existing Craft elements (Entries, Users and C
 
 :::warning
 
-#### Important Notes
+### Important Notes
 
 - Element editing does not offer any user or author authentication for Craft Entries and Calendar Events. We urge you to always wrap these forms in a check to make sure the user is a logged in Admin only (or specific checks on certain user groups).
 - User account element editing is restricted to the following logic:
@@ -203,7 +203,7 @@ Freeform allows you to edit/update existing Craft elements (Entries, Users and C
   _ Users may see redundant error messages for fields like *Email Address*, as some of Craft's validation will be show up in addition to Freeform validation.
   _ If you have users / groups with the **Edit users** Craft permission but do not want them editing users on the front end, you'll need to use template conditionals to prevent it (in the event you provide a dynamic way of doing so for Admins, e.g. URI segments).
   _ For self-serve "profile update" forms, you should be using something like `elementId: currentUser.id` (see docs example below).
-  _ Users currently cannot have their user group(s) changed when they are updated through a Freeform form with Element Connections. <secret>A future version may address extra settings and handling to accomodate user group changes.</secret>
+  _ Users currently cannot have their user group(s) changed when they are updated through a Freeform form with Element Connections. A future version may address extra settings and handling to accomodate user group changes.
 
 :::
 

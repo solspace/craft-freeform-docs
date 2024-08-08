@@ -12,13 +12,17 @@ import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
 import ConstantContactUpdate2022Photo from './assets/img/constant-contact-update-2022.png';
 
-# Constant Contact Integration<Badge type="pro" text="Pro" />
+# Constant Contact Integration<Badge type="pro" text="Pro" /><Badge type="feature" text="3.6.7+, Revised 3.13.4+" />
 
 This documentation page assumes you have read over the [Email Marketing Integration Overview](./index.mdx#email-marketing). If you have not yet read it, please do so now. We assume that you have a [Constant Contact ](http://constantcontact.com) account already, along with mailing list(s) already created. This integration requires that you have _Freeform Pro_. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
 
+:::info
+In early 2022, [Constant Contact announced changes to their API service](https://v3.developer.constantcontact.com/api_guide/auth_update_apps.html). This is a change that breaks existing integrations, and requires an update to Freeform in order to fix the connection. For existing Constant Contact users (set up before 3.13.4), please see the [special update instructions](#2022-update-instructions).
+:::
+
 ## Compatibility
 
-The Constant Contact integration includes support for mapping to most standard fields and custom fields.
+The Constant Contact integration includes support for mapping to most standard fields and custom fields.<Badge type="feature" text="Improved 3.11.5+" />
 
 ## Duplicate Check & Update
 

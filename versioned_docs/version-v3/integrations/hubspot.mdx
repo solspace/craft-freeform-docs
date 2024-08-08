@@ -6,14 +6,14 @@ sidebar_position: 12
 import { Badge, PrimaryButtonWithLink } from '@site/src/components/utils';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
-# HubSpot CRM Integration<Badge type="feature" text="Revised 4.0.1+" /> <Badge type="pro" text="Pro" />
+# HubSpot CRM Integration<Badge type="feature" text="Revised 3.13.18+" /><Badge type="pro" text="Pro" />
 
 This guide assumes you have a [HubSpot](https://www.hubspot.com) account already.
 
 :::info
 If you're using the old _Legacy API Key_ version of the HubSpot integration, be sure to switch to this updated integration before. November 30, 2022. After that date, API calls made with the old API keys on or after November 30, 2022 will return 401 errors.
 
-For existing HubSpot users (set up before 4.0.1 or 3.13.18), please see the [special update instructions](hubspot#_2022-private-key-update-instructions).
+For existing HubSpot users (set up before 4.0.1 or 3.13.18), please see the [special update instructions](#2022-private-key-update-instructions).
 :::
 
 This documentation page assumes you have read over the [CRM Integration Overview](./index.mdx#crm). If you have not yet read it, please do so now. We also assume that you have a [HubSpot](http://hubspot.com) account already. This integration requires that you have _Freeform Pro_. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
@@ -77,9 +77,9 @@ A duplicate check on records is done in the following way:
 - Additional configuration:
   - **IP Address Field** (optional)
     - If you want to have the user's IP address sent over to the Contact in HubSpot, you can specify the custom HubSpot Contact field handle to receive it.
-  - **Append checkbox group field values on Contact update?**
+  - **Append checkbox group field values on Contact update?**<Badge type="feature" text="3.2.4+" />
     - If a Contact already exists in HubSpot, enabling this will append additional checkbox group field values to the Contact inside HubSpot, instead of overwriting the options.
-  - **Append checkbox group field values on Company update?**
+  - **Append checkbox group field values on Company update?**<Badge type="feature" text="3.2.4+" />
     - If a Company already exists in HubSpot, enabling this will append additional checkbox group field values to the Company inside HubSpot, instead of overwriting the options.
 - At the top right corner of Freeform page, click **Save** button.
 
