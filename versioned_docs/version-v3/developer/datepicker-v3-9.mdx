@@ -1,16 +1,14 @@
 ---
-title: 'Date Picker Events'
-sidebar_position: 4
+title: 'Date Picker Events v3.9'
+sidebar_position: 4.1
 ---
 
-import { Badge } from '@site/src/components/utils';
-
-# Date Picker Events <Badge type="feature" text="Revised 3.10.0+" />
+# Date Picker Events
 
 The Freeform [Date & Time](../forms/fields#date--time) field comes packed with a built-in, optional [flatpickr](https://flatpickr.js.org/) instance. The _flatpickr_ instance can be customized with via the following events available through the [Freeform JS Plugin](./js-plugin):
 
 :::info
-**If you're using a Freeform version <u>older</u> than 3.10**, please [click here to view the v3.9 documentation](./datepicker-v3-9) that shows the old approach for usage of the Datepicker with Freeform Javascript plugin.
+**You're viewing the v3.9 version of these docs**. To switch to the v3.10 docs, [click here to view the revised v3.10 documentation](./datepicker) that shows usage of the Datepicker with the improved Freeform Javascript plugin.
 :::
 
 :::info
@@ -22,15 +20,15 @@ To get started with what's available for Flatpickr overrides, check out the avai
 This event is fired right before a [flatpickr](https://flatpickr.js.org/) instance is created, allowing you to extend the options that are being passed to the flatpickr instance:
 
 ```js showLineNumbers
-document.addEventListener('flatpickr-before-init', (event) => {
-  // event.options object contains the whole options object that will be
-  // passed to the flatpickr instance
+const form = document.getElementById('my-freeform-form');
+form.addEventListener('flatpickr-before-init', (event) => {
+  // event.detail contains the whole options object that will be
+  // passed to the flatpickr intance
 
-  event.options.static = true;
-  event.options.clickOpens = false;
-  event.options.defaultHour = 8; // starts the time picker at 8:00 am
-  event.options.minuteIncrement = 15; // moves the time picker in 15 minute increments instead of 1
-  event.options.disable = [
+  event.detail.static = true;
+  event.detail.clickOpens = false;
+  event.detail.defaultHour = 8;
+  event.detail.disable = [
     // disables Sundays and Saturdays from being available options in datepicker
     function (date) {
       return date.getDay() === 0 || date.getDay() === 6;
@@ -45,9 +43,10 @@ document.addEventListener('flatpickr-before-init', (event) => {
 This event is called right after the [flatpickr](https://flatpickr.js.org/) instance is created. You can access it via the `event.flatpickr` property of the `event` object:
 
 ```js showLineNumbers
-document.addEventListener('flatpickr-ready', (event) => {
+const form = document.getElementById('my-freeform-form');
+form.addEventListener('flatpickr-ready', (event) => {
   // Get the flatpickr instance
-  var instance = event.flatpickr;
+  var instance = event.detail;
 
   // Get the input field
   var input = instance.input;

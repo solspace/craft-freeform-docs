@@ -3,11 +3,17 @@ title: JS Plugin
 sidebar_position: 3
 ---
 
-# Freeform Javascript Plugin
+import { Badge } from '@site/src/components/utils';
+
+# Freeform Javascript Plugin<Badge type="feature" text="Revised 3.10.0+" />
+
+:::info
+**If you're using a Freeform version <u>older</u> than 3.10**, please [click here to view the v3.9 documentation](./js-plugin-v3-9) that shows the old approach for usage of the Freeform Javascript plugin.
+:::
 
 Freeform includes its own JS plugin that is at the center of handling all of Freeform's powerful convenience features like AJAX, conditional rules, date pickers, table fields, Captchas, Stripe payments, and more!
 
-Freeform is designed to be as lean as possible, and will only call the necessary scripts when the form is loaded inside your template. For example, if the form you're loading does not contain a Date field with datepicker, Freeform will not call the additional scripts that make this necessary.
+Freeform is designed to be as lean as possible, and will only call the necessary scripts when the form is loaded inside your template. For example, if the form you're loading does not contain a Date field with datepicker, Freeform will not call the additional scripts that make this necessary.<Badge type="feature" text="Revised 3.11.0+" />
 
 In the event you wish to override or extend any of Freeform's default JS behavior, you can certainly do so by referring to the options below:
 
@@ -75,7 +81,7 @@ document.addEventListener('freeform-on-submit', function (event) {
 
 You can add your custom form handler scripts anywhere in the page. The `freeform-ready` event is triggered for each form and dispatched via the `form` and `document` elements. The events are dispatched once the DOM is ready. If you add a form to the page via AJAX, it will automatically get initialized with the `Freeform` plugin and will also trigger the `freeform-ready` event.
 
-## Loading Freeform JS manually
+## Loading Freeform JS manually<Badge type="feature" text="Revised 3.11.0+" />
 
 If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Freeform Javascript Insertion Location](../configuration/settings#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformPlugin()` function to your template where you'd like it to insert the JS. You can pass two variables to the function to add custom attributes to the script and style tags that Freeform generates.
 
@@ -123,6 +129,24 @@ Will generate:
   <link rel="stylesheet" href="{siteUrl}/freeform/plugin.css?v=hash" css="stuff" />
 </body>
 ```
+
+:::info
+
+### Freeform 3.10 and lower:
+
+Manually loading Freeform's JS looks different in earlier versions. You can add them with the `freeform.loadFreeformScripts()` function in your template where you'd like it to insert the JS and pass it the form handle.
+
+Here's a simple example of how this may look in your template:
+
+```twig {5} showLineNumbers
+{% set form = craft.freeform.form('myForm') %}
+
+{{ form.render }}
+
+{{ craft.freeform.loadFreeformScripts(form) }}
+```
+
+:::
 
 ## Form Events
 
@@ -475,37 +499,21 @@ The available options are:
 
 To style the Freeform Stripe credit card fields, you'll need to add a listener for the `freeform-stripe-styling` event like this (example for Bootstrap):
 
-```html showLineNumbers
-<script>
-  document.addEventListener('freeform-stripe-styling', function (event) {
-    (event.detail.base = {
-      fontSize: '16px',
-      color: '#adb5bd',
-      fontFamily:
-        '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-    }),
-      (event.detail.invalid = {
-        color: '#dc3545',
-      });
-  });
-</script>
-```
-
-Some styling might need to be done with a typical CSS approach targeting the `.StripeElement` class, e.g.
-
-```css showLineNumbers
-.StripeElement {
-  padding: 8px 10px !important;
-  background: #1a1d20;
-  height: 36px;
-}
+```js showLineNumbers
+document.addEventListener('freeform-stripe-styling', function (event) {
+  event.style.base = {
+    fontSize: '16px',
+    fontFamily:
+      '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+  };
+});
 ```
 
 ## Date Picker Events
 
 The Freeform [Date & Time](../forms/fields) field comes packed with a built-in, optional [flatpickr](https://flatpickr.js.org/) instance. Check out the [Date Picker Events](./datepicker) documentation for full customization options of the _flatpickr_ instance.
 
-## Autoscroll Events
+## Autoscroll Events<Badge type="feature" text="3.10.8+" />
 
 When using the [Automatically Scroll to Form on Errors and Multipage forms?](../configuration/settings#automatically-scroll-to-form-on-errors-and-multipage-forms) setting, Freeform will automatically handle scrolling the the browser down to the form. However, if you have a floating header or other situation you need to account for, you can override the scroll offset as well as the anchor to scroll to. You can attach your own logic to the events by listening on the following events:
 
@@ -526,7 +534,7 @@ document.addEventListener('freeform-ready', (event) => {
 });
 ```
 
-## Table Field Events
+## Table Field Events<Badge type="feature" text="3.10.9+" />
 
 The Freeform [Table](../forms/fields) field comes with its own optional javascript functionality for adding and removing rows. You can attach your own logic to the events by listening on the following events:
 

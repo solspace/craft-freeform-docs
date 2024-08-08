@@ -3,8 +3,6 @@ title: Submission
 sidebar_position: 3
 ---
 
-import { Badge } from '@site/src/components/utils';
-
 # Submission Events
 
 Hook into Submission events to attach your own logic for when submissions are being created, edited or deleted.
@@ -105,24 +103,6 @@ Event::on(
   SubmissionsController::EVENT_AFTER_UPDATE,
   function (UpdateEvent $event) {
     $submission = $event->getSubmission();
-  }
-)
-```
-
-## Process a submission field value <Badge type="feature" text="4.1.12+" />
-
-```php showLineNumbers
-use Solspace\Freeform\Controllers\SubmissionsController;
-use Solspace\Freeform\Events\Submissions\ProcessFieldValueEvent;
-
-Event::on(
-  SubmissionsController::class,
-  SubmissionsController::EVENT_PROCESS_FIELD_VALUE,
-  function (ProcessFieldValueEvent $event) {
-    $field = $event->getField();
-    $value = $event->getValue();
-
-    $event->setValue($value);
   }
 )
 ```

@@ -1,13 +1,19 @@
 ---
-title: Form
+title: Form Events
 sidebar_position: 1
 ---
 
+import { Badge } from '@site/src/components/utils';
+
 # Form Events
+
+:::info
+**If you're using a Freeform version <u>older</u> than 3.12**, please [click here to view the v3.11 documentation](./form-events-v3-11.mdx) that shows the old approach for usage of these events. All of the pre-3.12 events will continue to work with Freeform 3.12, but have been deprecated.
+:::
 
 If you wish to extend the capabilities of Forms in Freeform, feel free to use any of the events listed below:
 
-## Before Submitting
+## Before Submitting<Badge type="feature" text="3.12+" />
 
 This event is triggered once a form has completed all steps and a submission is being stored.
 
@@ -27,7 +33,7 @@ Event::on(
 )
 ```
 
-## After Submitting
+## After Submitting<Badge type="feature" text="3.12+" />
 
 This event is triggered once a form has completed all steps and a submission has been stored and integrations have completed.
 
@@ -47,7 +53,7 @@ Event::on(
 )
 ```
 
-## On Validating the Form
+## On Validating the Form<Badge type="feature" text="3.12+" />
 
 This event is called whenever a form is being validated. Use this event to attach your own validation logic to any form.
 
@@ -75,7 +81,7 @@ Event::on(
 )
 ```
 
-## After Validating the Form
+## After Validating the Form Badge type="feature" text="3.12+" />
 
 This event is called after a form has been validated. Use this event to perform some actions after form validation.
 
@@ -94,7 +100,7 @@ Event::on(
 )
 ```
 
-## Rendering the Opening HTML tag
+## Rendering the Opening HTML tag<Badge type="feature" text="3.12+" />
 
 Use this event to attach your own HTML, CSS or JS to the output of the opening form tag. Most commonly used to attach some sort of additional hidden values or scripts.
 
@@ -113,14 +119,8 @@ Event::on(
     $event->addChunk('<h1>'.$form->getName().'</h1>');
     $event->addChunk('<input type="hidden" name="some_input_name" value="123" />');
 
-    // Add a chunk and replace some variables in it
-    $event->addChunk(
-      '<input type="hidden" name="submissionId" value="{{ submission.id }}" />',
-      ['submission' => $form->getSubmission()]
-    );
-
     // Add a chunk at the beginning of the output
-    $event->addChunk('<script>alert("test");</script>', [], RenderTagEvent::POSITION_BEGINNING);
+    $event->addChunk('<script>alert("test");</script>', RenderTagEvent::POSITION_BEGINNING);
 
     // Add a chunk in a specific position in the chunk list
     $event->addChunk('<style>body { backround: red; }</style>', 2);
@@ -140,7 +140,7 @@ Event::on(
 )
 ```
 
-## Rendering the Closing HTML tag
+## Rendering the Closing HTML tag<Badge type="feature" text="3.12+" />
 
 Use this event to attach your own HTML, CSS or JS to the output of the closing form tag. Most commonly used to attach some sort of additional hidden values or scripts.
 
@@ -169,7 +169,7 @@ Event::on(
 )
 ```
 
-## Attaching Attributes to Forms
+## Attaching Attributes to Forms<Badge type="feature" text="3.12+" />
 
 This event lets you attach custom attributes to all or specific forms.
 
@@ -184,45 +184,23 @@ Event::on(
     $form = $event->getForm();
 
     // Get all existing attributes for this form
-    $attributes = $form->getAttributes();
+    $attributes = $event->getAttributes();
 
     // Only deal with our "specificFormHandle" form
     if ($form->getHandle() === 'specificFormHandle') {
       // If "data-custom" attribute is present - we remove it
-      if ($attributes->get('data-custom')) {
-          $attributes->remove('data-custom');
+      if (array_key_exists('data-custom', $attributes)) {
+        $event->removeAttribute('data-custom');
       }
 
       // Attach a "data-other-attrib" attribute to the form
-      $attributes->set('data-other-attrib', true);
+      $event->attachAttribute('data-other-attrib', true);
     }
   }
 )
 ```
 
-## Attaching custom properties to Forms
-
-This event lets you inject your own properties on forms, to expand their application.
-
-```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
-use Solspace\Freeform\Events\Forms\GetCustomPropertyEvent;
-
-Event::on(
-  Form::class,
-  Form::EVENT_GET_CUSTOM_PROPERTY,
-  function (GetCustomPropertyEvent $event) {
-    $key = $event->getKey(); // Get the property name that was being tried to be accessed
-
-    // Only set this return value when accessing $form->myCustomProperty
-    if ($key === 'myCustomProperty') {
-      $event->setValue('my custom return value');
-    }
-  }
-)
-```
-
-## After Generating the Return URL
+## After Generating the Return URL<Badge type="feature" text="3.12+" />
 
 This event is called when the return URL has been generated and is ready to be used to redirect the page.
 
@@ -245,9 +223,9 @@ Event::on(
 )
 ```
 
-## Generating JSON Output for AJAX Forms
+## Generating JSON Output for AJAX Forms<Badge type="feature" text="3.12+" />
 
-You can attach your own info to the JSON payload that is returned when calling `$form->json()`. Most commonly used in Twig to create an endpoint for fetching fresh form and CSRF tokens when using caching in the frontend templates. (E.g. `freeform.form('myForm')|json_encode`)
+You can attach your own info to the JSON payload that is returned after submitting forms via AJAX:
 
 ```php showLineNumbers
 use Solspace\Freeform\Library\Composer\Components\Form;
@@ -263,34 +241,7 @@ Event::on(
 )
 ```
 
-```twig showLineNumbers
-{# twig file for fetching fresh form data #}
-{% set form = freeform.form('myForm') %}
-{% do form.registerContext %}
-{{- form|json_encode -}}
-```
-
-## Attaching extra output to AJAX response when submitting forms
-
-You can attach extra data to the AJAX response when forms are submitted by using this event.
-
-```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
-use Solspace\Freeform\Events\Forms\PrepareAjaxResponsePayloadEvent;
-
-Event::on(
-  Form::class,
-  Form::EVENT_PREPARE_AJAX_RESPONSE_PAYLOAD,
-  function (PrepareAjaxResponsePayloadEvent $event) {
-    $event->add('someExtraData', [
-        'one' => 1,
-        'two' => true,
-    ]);
-  }
-)
-```
-
-## Handling Form Submit Request
+## Handling Form Submit Request<Badge type="feature" text="3.12+" />
 
 Use these events to perform actions when the submit request is being processed.
 
@@ -330,7 +281,7 @@ Event::on(
 )
 ```
 
-## Resetting a Form Between Requests
+## Resetting a Form Between Requests<Badge type="feature" text="3.12+" />
 
 This event is triggered once a form is submitted fully and it has to be reset and prepared for the next round. While this happens after every form finalization, this is useful only for AJAX forms, which never refresh the page. Freeform uses this to clear the stored values of previous requests for multi-page forms.
 
@@ -368,7 +319,7 @@ Event::on(
 )
 ```
 
-## Persisting Form State
+## Persisting Form State<Badge type="feature" text="3.12+" />
 
 This event is called after handling the request and after resetting the form. Freeform uses this event to store the session context in either the PHP's session or the database table, depending on the user settings.
 
@@ -387,7 +338,7 @@ Event::on(
 )
 ```
 
-## Hydrating the Form
+## Hydrating the Form<Badge type="feature" text="3.12+" />
 
 This event is called when the form object is being built. It parses the form builder settings and attaches them
 to the form object. You can use this event to attach various default form properties in the property bag. Freeform uses this event to attach the Post Forwarding data to the property bag.
@@ -409,7 +360,7 @@ Event::on(
 )
 ```
 
-## Sending Notifications
+## Sending Notifications<Badge type="feature" text="3.12+" />
 
 This event is called when the form should be sending email notifications. You can use this event to send your own emails.
 
@@ -433,29 +384,6 @@ Event::on(
       $fields,
       $submission
     );
-  }
-)
-```
-
-## CORS setup event
-
-This event lets you modify the CORS headers that will be sent with the request.
-
-```php showLineNumbers
-use Solspace\Freeform\Events\Controllers\ConfigureCORSEvent;
-use Solspace\Freeform\Controllers\SubmitController;
-
-Event::on(
-  SubmitController::class,
-  SubmitController::EVENT_CONFIGURE_CORS,
-  function (ConfigureCORSEvent $event) {
-    // View existing headers
-    $existingHeaders = $event->getHeaders();
-
-    // Add headers via the ::add() function
-    $event->add('Header-Name', 'Header Value');
-
-    // ::remove(string $key) and ::setHeaders(array $headers) is also available
   }
 )
 ```
