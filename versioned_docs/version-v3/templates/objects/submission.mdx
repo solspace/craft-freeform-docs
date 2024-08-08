@@ -54,25 +54,29 @@ The token generated for the submission. A common use case for tokens would be wh
 
 Also required if you wish to allow [editing of submissions on front end](../../submissions/overview/#editing-submissions/).
 
+### `fieldMetadata`
+
+A list containing all fields who store values (doesn't include HTML fields, submit fields, email-marketing fields). Each of the objects is a [Field](./field.md) object, and contains the submitted value. You can access all of the field properties for each field specific to the current submissions related Form.
+
+:::info
+Superseded by `submission[field.handle]` approach below...
+:::
+
 ### `submission[field.handle]`
 
 A way to access all submitted field values, excluding HTML fields, submit fields, email-marketing fields. You can automate accessing all field data by using markup like this:
 
 ```twig showLineNumbers
 <ul>
-	{% for field in submission %}
-		<li>{{ field.label }}: {{ submission[field.handle] }}</li>
-	{% endfor %}
+  {% for field in submission %}
+    <li>{{ field.label }}: {{ submission[field.handle] }}</li>
+  {% endfor %}
 </ul>
 ```
 
 You can access any field in the submission's form by the field's handle. If you have a field with a handle `firstName`, you can access its value by calling `submission.firstName` or get its label `submission.firstName.label`. Any other property such as `placeholder`, `options`, `defaultValue`, etc is also available.
 
 Some properties are field type specific. For example, you wouldn't be able to get `rows` from a **Dropdown** field, or `options` from a **Textarea** field.
-
-:::tip
-[Need to display the total number of submissions for the form?](../../guides/submission-data/total-number-of-submissions-for-form)
-:::
 
 ## Usage in Templates
 

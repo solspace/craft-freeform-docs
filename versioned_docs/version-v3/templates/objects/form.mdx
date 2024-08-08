@@ -38,13 +38,25 @@ Outputs the submission title format used when creating new submissions based on 
 
 Outputs the return URL of the form.
 
-### `successMessage`
+### `successMessage`<Badge type="feature" text="3.9+" />
 
 Outputs the custom success message configured in the Validation tab for your form inside the form builder.
 
-### `errorMessage`
+### `errorMessage`<Badge type="feature" text="3.9+" />
 
 Outputs the custom error message configured in the Validation tab for your form inside the form builder.
+
+### `showSpinner`<Badge type="feature" text="3.9+" />
+
+A bool variable, which will be `true` if the form has the **Show Loading Indicator on Submit** setting enabled in the Validation tab for your form inside the form builder.
+
+### `showLoadingText`<Badge type="feature" text="3.9+" />
+
+A bool variable, which will be `true` if the form has the **Show Loading Text** setting enabled in the Validation tab for your form inside the form builder.
+
+### `loadingText`<Badge type="feature" text="3.9+" />
+
+Outputs the custom loading/processing text configured in the Validation tab for your form inside the form builder.
 
 ### `hasErrors`
 
@@ -68,16 +80,12 @@ A bool variable, which will be `true` if the form has the submit limit setting e
 
 You can run a conditional check on this with the following:
 
-- `auth_unlimited` - Logged in Users only (no limit)
+- `auth_unlimited` - Logged in Users only (no limit) <Badge type="feature" text="3.13+" />
 - `cookie` - Once per Cookie only
 - `ip_cookie` - Once per IP/Cookie combo
-- `auth` - Once per logged in Users only
-- `auth_cookie` - Once per logged in User or Guest Cookie only
-- `auth_ip_cookie` - Once per logged in User or Guest IP/Cookie combo
-
-### `submissionLimitReached` <Badge type="feature" text="4.0.9+" />
-
-A bool variable, which will be `true` if the form has the **Limit Form Submission Rate** setting enabled ([duplicate submission check](../../submissions/submission-limits#per-user)) and the user has already submitted the form.
+- `auth` - Once per logged in Users only <Badge type="feature" text="3.13+" />
+- `auth_cookie` - Once per logged in User or Guest Cookie only <Badge type="feature" text="3.13+" />
+- `auth_ip_cookie` - Once per logged in User or Guest IP/Cookie combo <Badge type="feature" text="3.13+" />
 
 ### **Custom Attributes** (`customAttributes`)
 
@@ -89,7 +97,9 @@ The following properties are available to ease the customizability of field rend
 - `action` - the ACTION attribute for the form tag.
 - `status` - the status ID or handle.
 - `returnUrl` - allows overriding the return URL of the form upon successful submit.
-  - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
+  ::: v-pre
+  - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value as of Freeform 3.5.6+ (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
+    :::
 - `rowClass` - the CLASS attribute of all HTML row tags.
 - `columnClass` - the CLASS attribute of all HTML column tags.
 - `submitClass` - the CLASS attribute of submit field input elements.
@@ -118,13 +128,7 @@ If displaying the exact same form more than once in a single template, some of t
 
 When iterating over the form, you will iterate through [Row](./row) objects for the currently active [Page](./page), each [Row](./row) can be iterated over to get [Field](./field) objects. Check the [Field](./field) documentation to see available parameters for those objects.
 
-:::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
-:::
-
 ## Usage in Templates
-
-### Simple Render
 
 Render the form using its formatting template:
 
@@ -132,33 +136,29 @@ Render the form using its formatting template:
 {{ form.render() }}
 ```
 
-### Override Classes & Values
-
 Render the form using its formatting template, but overriding some classes and default values:
 
 ```twig showLineNumbers
 {{ form.render({
-    labelClass: "form-label",
-    inputClass: "form-control",
-    instructionsBelowField: true,
-    submitClass: "btn btn-success",
-    overrideValues: {
-        hiddenFieldHandle: entry.id,
-        stateSelect: "AZ",
-        availability: ["tue", "thu"],
-    },
-    formAttributes: {
-        "novalidate": true,
-        "data-form-id": "whatever",
-    },
-    inputAttributes: {
-        "readonly": true,
-        "data-field-id": field.id,
-    }
+  labelClass: "form-label",
+  inputClass: "form-control",
+  instructionsBelowField: true,
+  submitClass: "btn btn-success",
+  overrideValues: {
+    hiddenFieldHandle: entry.id,
+    stateSelect: "AZ",
+		availability: ["tue", "thu"],
+  },
+  formAttributes: {
+     "novalidate": true,
+     "data-form-id": "whatever",
+  },
+  inputAttributes: {
+     "readonly": true,
+     "data-field-id": field.id,
+  }
 }) }}
 ```
-
-### Manually Iterate
 
 Manually iterate through form fields:
 
@@ -166,80 +166,60 @@ Manually iterate through form fields:
 {{ form.renderTag({rowClass: "sample-row-class"}) }}
 
 {% if form.hasErrors %}
-    <div class="freeform-form-has-errors">
-        {{ "Error! Please review the form and try submitting again."|t('freeform') }}
+  <div class="freeform-form-has-errors">
+    {{ "Error! Please review the form and try submitting again."|t('freeform') }}
 
-        {% if form.errors|length %}
-            <ul>
-            {% for error in form.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
+    {% if form.errors|length %}
+      <ul>
+        {% for error in form.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
 {% endif %}
 
 {% for row in form %}
-    <div class="{{ form.customAttributes.rowClass }}">
-        {% for field in row %}
-            {% set columnClass = "sample-column " ~ form.customAttributes.columnClass %}
-            {% if field.type == "submit" %}
-                {% set columnClass = columnClass ~ " submit-column" %}
-            {% endif %}
+  <div class="{{ form.customAttributes.rowClass }}">
+    {% for field in row %}
+      {% set columnClass = "sample-column " ~ form.customAttributes.columnClass %}
+      {% if field.type == "submit" %}
+        {% set columnClass = columnClass ~ " submit-column" %}
+      {% endif %}
 
-            <div class="{{ columnClass }}"{{ field.rulesHtmlData }}>
-                {{ field.render({
-                    class: field.type != "submit" ? "freeform-input" : "",
-                    labelClass: "sample-label" ~ (field.required ? " required" : ""),
-                    errorClass: "sample-errors",
-                    instructionsClass: "sample-instructions",
-                }) }}
-            </div>
-        {% endfor %}
-    </div>
+      <div class="{{ columnClass }}"{{ field.rulesHtmlData }}>
+        {{ field.render({
+          class: field.type != "submit" ? "freeform-input" : "",
+          labelClass: "sample-label" ~ (field.required ? " required" : ""),
+          errorClass: "sample-errors",
+          instructionsClass: "sample-instructions",
+        }) }}
+      </div>
+    {% endfor %}
+  </div>
 {% endfor %}
 
 {{ form.renderClosingTag }}
 ```
 
-### Iterate over `layout.fields`
-
 You can also iterate over fields directly with `layout.fields` instead of [Row objects](./row):
 
-```twig {3-5} showLineNumbers
+```twig showLineNumbers
 {% set form = craft.freeform.form("myForm") %}
 
 {% for field in form.layout.fields %}
-    <div>{{ field.label }}</div>
+  <div>{{ field.label }}</div>
 {% endfor %}
 ```
 
-### Success Flash
-
 Use session success flash message variable (displays only once) for when form is successfully submitted:
 
-```twig {3-5} showLineNumbers
+```twig showLineNumbers
 {% set form = craft.freeform.form("myForm") %}
 
 {% if form.submittedSuccessfully %}
-    <div>You've successfully submitted this form!</div>
+  <div>You've successfully submitted this form!</div>
 {% endif %}
 
 {{ form.render }}
-```
-
-### Error when Limit Reached
-
-Display a message when form [submission limit (per user)](../../submissions/submission-limits#per-user) is reached:
-
-```twig {3-6} showLineNumbers
-{% set form = craft.freeform.form("myForm") %}
-
-{% if form.submissionLimitReached %}
-    <div class="alert alert-warning submission-limit-reached" role="alert">
-        You've already submitted this form!
-    </div>
-{% else %}
-    {{ form.render }}
-{% endif %}
 ```

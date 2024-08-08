@@ -3,21 +3,13 @@ title: 'Materialize'
 sidebar_position: 16
 ---
 
-# Materialize
+## Materialize
 
-The following example assumes you're including necessary [Materialize](https://materializecss.com) JS and CSS.
-
-:::warning
-Materialize has been abandoned, but the [community has forked it](https://materializecss.github.io/materialize/) and regularly maintains it.
-:::
-
-## Formatting
+The following example assumes you're including necessary [Materialize](https://materializecss.com) JS and CSS:
 
 ```twig showLineNumbers
-{# Opening <form> tag #}
 {{ form.renderTag }}
 
-{# Display page tabs if Multi-page form #}
 {% if form.pages|length > 1 %}
   <ul class="pagination">
     {% for page in form.pages %}
@@ -28,7 +20,6 @@ Materialize has been abandoned, but the [community has forked it](https://materi
   </ul>
 {% endif %}
 
-{# Display Error banner and general errors if applicable #}
 {% if form.hasErrors %}
   <div class="alert alert-danger errors">
     {{ "Error! Please review the form and try submitting again."|t('freeform') }}
@@ -43,7 +34,6 @@ Materialize has been abandoned, but the [community has forked it](https://materi
   </div>
 {% endif %}
 
-{# Render form fields #}
 {% for row in form %}
   <div class="row {{ form.customAttributes.rowClass }}">
     {% for field in row %}
@@ -78,7 +68,7 @@ Materialize has been abandoned, but the [community has forked it](https://materi
                    value="{{ option.value }}"
                   {{ option.value in field.value ? "checked" : "" }}
               />
-              <label for="{{ form.hash ~ field.handle ~ option.value }}">{{ option.label|t('freeform')|raw }}</label>
+              <label for="{{ form.hash ~ field.handle ~ option.value }}">{{ option.label|t|raw }}</label>
             </p>
           {% endfor %}
 
@@ -104,7 +94,7 @@ Materialize has been abandoned, but the [community has forked it](https://materi
                    value="{{ option.value }}"
                   {{ option.value in field.value ? "checked" : "" }}
               />
-              <label for="{{ form.hash ~ field.handle ~ option.value }}">{{ option.label|t('freeform')|raw }}</label>
+              <label for="{{ form.hash ~ field.handle ~ option.value }}">{{ option.label|t|raw }}</label>
             </p>
           {% endfor %}
 
@@ -130,7 +120,7 @@ Materialize has been abandoned, but the [community has forked it](https://materi
                    value="{{ loop.index0 }}"
                   {{ option.value in field.value ? "checked" : "" }}
               />
-              <label for="{{ form.hash ~ field.handle ~ option.value }}">{{ option.label|t('freeform')|raw }}</label>
+              <label for="{{ form.hash ~ field.handle ~ option.value }}">{{ option.label|t|raw }}</label>
             </p>
           {% endfor %}
 
@@ -271,21 +261,5 @@ Materialize has been abandoned, but the [community has forked it](https://materi
   </div>
 {% endfor %}
 
-{# Closing </form> tag #}
 {{ form.renderClosingTag }}
-```
-
-## CDN Links
-
-The following CDN links for Foundation are for v1.0.0, which may no longer be the latest version. Please see official [Materialize documentation](https://materializecss.com/getting-started.html) for latest versions and CDN links.
-
-```html showLineNumbers
-<!-- Compiled and minified CSS -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-/>
-
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 ```

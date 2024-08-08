@@ -13,10 +13,6 @@ The Submissions query fetches a list of submissions based on some or no criteria
 
 <Photo img={TemplateSubmissionPhoto} alt="Submissions" />
 
-:::tip
-[Need to display the total number of submissions for the form?](../../guides/submission-data/total-number-of-submissions-for-form)
-:::
-
 ## Parameters
 
 The following parameters are available for use:
@@ -255,7 +251,7 @@ If you wish to omit the empty options, you can do something like this instead:
 {% endif %}
 ```
 
-### Searching Submissions
+### Searching Example
 
 Only select submissions that have `Bill` as the first name and has their favorite food end with `pie`.
 
@@ -274,20 +270,4 @@ Only select submissions that have `Bill` as the first name and has their favorit
     <div>{{ submission.title }} - {{ submission.form.name }}</div>
   </div>
 {% endfor %}
-```
-
-### Limit by Date Range
-
-If you'd like to limit submission results by a date range, e.g. last 2 weeks until today, you can use something like this:
-
-```twig showLineNumbers
-{% set start = now|date_modify('-2 weeks')|atom %}
-{% set end = now|atom %}
-
-{% set submissions = freeform.submissions({form: "myFormHandle"}).dateCreated(['and', ">= #{start}", "< #{end}"]) %}
-<ul>
-{% for submission in submissions %}
-    <li>{{ submission.title }}</li>
-{% endfor %}
-</ul>
 ```
