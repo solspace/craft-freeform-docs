@@ -6,7 +6,6 @@ import { Badge, Photo } from '@site/src/components/utils';
 
 import ExportProfilesCreatePhoto from './assets/img/export-profiles-create.png';
 import ExportProfilesListPhoto from './assets/img/export-profiles-list.png';
-import ExportProfilesNotificationsPhoto from './assets/img/export-profiles-notifications.png';
 import SubmissionsETCPhoto from './assets/img/submissions-export-to-csv.png';
 import SubmissionsQEPhoto from './assets/img/submissions-quick-export.png';
 
@@ -22,7 +21,7 @@ File Upload fields will export as a complete URL to the file if a public URL is 
 
 <Photo img={SubmissionsQEPhoto} alt="Quick Export" />
 
-## Export from Dashboard
+## Export from Dashboard<Badge type="feature" text="3.9.0+" />
 
 Freeform includes a simple Export dropdown for each form inside the Freeform control panel dashboard. Clicking the _Export..._ dropdown and selecting the file type will generate a complete export of all submissions for that form.
 
@@ -45,7 +44,7 @@ Freeform Pro's Export Profiles feature allows admins to create more complex pre-
 - **Date Range**
   - Select a date range, if any, you want the results limited by. Current options are:
     - None
-    - Custom Range
+    - Custom Range<Badge type="feature" text="3.9.0+" />
       - Range Start (an exact date (e.g. `2020-09-01`) or use something relative like `15 days ago`. Default is `today`.
       - Range End (an exact date (e.g. `2020-09-30`) or use something relative like `15 days ago`. Default is `today`.
     - Presets
@@ -75,7 +74,7 @@ Once export profile(s) exist, users with proper permissions can export submissio
 
 <Photo img={ExportProfilesListPhoto} alt="Export Profiles List" />
 
-## Export Email Notifications<Badge type="pro" text="Pro" />
+## Export Email Notifications<Badge type="pro" text="Pro" /><Badge type="feature" text="3.13.10+" />
 
 To be used in conjunction with Export Profiles, you can automate email notifications containing export files to be generated and sent to email address(es) of your choice.
 
@@ -104,7 +103,7 @@ To be used in conjunction with Export Profiles, you can automate email notificat
   - Enter the email address(es) that should be notified. If more than one, enter each one on a new line.
 - **File Name**
   - The file name to be generated for the export. You can use the `form`, `profile` and `date` objects as a Twig template here to name your file. The extension will be added automatically. E.g. to generate a filename of `some-form-handle-2022-01-01.csv`, use:
-    ```
+    ```twig showLineNumbers
     {{ form.handle }}-{{ date.toDateString }}
     ```
 - **Email Subject**
@@ -112,17 +111,12 @@ To be used in conjunction with Export Profiles, you can automate email notificat
 - **Email Message**
   - The plain text content of the email notification.
 
-<Photo
-  img={ExportProfilesNotificationsPhoto}
-  alt="Export Profle Email Notifications"
-/>
+## Lite CSV Export
 
-## Basic CSV Export
-
-The Express and Lite versions of Freeform include basic **CSV** exporting functionality.
+The Lite version of Freeform includes CSV exporting functionality.
 
 :::info
-This basic CSV export is currently limited by pagination. If you have more than 1 page of submission data, selecting the "Select All" checkbox at the top will only select the entire page's results, not results beyond the page currently being viewed. If you have a large number of submissions and need to export them all in a more robust manner, consider switching to the _Pro_ edition for more export options.
+The _Lite_ edition CSV export is currently limited by pagination. If you have more than 1 page of submission data, selecting the "Select All" checkbox at the top will only select the entire page's results, not results beyond the page currently being viewed. If you have a large number of submissions and need to export them all in a more robust manner, consider switching to the _Pro_ edition for more export options.
 :::
 
 To export a selection of your Freeform submissions:
