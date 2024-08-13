@@ -4,16 +4,14 @@ sidebar_position: 6
 
 # Returning Submit to Same Page
 
-Aside from the obvious of using [AJAX](../../guides/templating/ajax-forms), you can achieve this by adding a query in the success URL instead of an additional segment, etc.
+Aside from the obvious of using [AJAX](./ajax-forms), you can achieve this by adding a query in the success URL instead of an additional segment, etc.
 
-## Instructions
-
-```twig showLineNumbers {1-3,6}
+```twig {1-3,6} showLineNumbers
 {% if craft.app.request.getQueryParam('success') == 1 %}
   <div class="callout success">Your message has been sent.</div>
 {% endif %}
 
-  {{ freeform.form("contactForm", {
+  {{ craft.freeform.form("contactForm", {
       returnUrl: "/contact?success=1",
       submitClass: "button",
     }

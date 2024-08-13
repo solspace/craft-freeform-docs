@@ -44,11 +44,7 @@ import EmailMarketingPhoto from './assets/img/email-marketing.png';
 
 # Integrations<Badge type="pro" text="Pro" />
 
-Freeform includes a wide variety of integrations with popular CRMs, email marketing, webhooks, Craft Elements, and endless custom possibilities!
-
-:::tip
-[Can I make my own API integration?](../guides/developer/custom-integrations)
-:::
+Freeform includes a wide variety of integrations with popular CRMs, email marketing, webhooks, and endless custom possibilities!
 
 ## CRM
 
@@ -64,29 +60,14 @@ The following CRM integrations are currently available for **Freeform Pro** only
       link: './activecampaign#activecampaign-crm-integration',
     },
     {
-      iconSrc: FreshdeskIcon,
-      iconTitle: 'Freshdesk',
-      link: './freshdesk',
-    },
-    {
       iconSrc: HubspotIcon,
       iconTitle: 'HubSpot',
       link: './hubspot',
     },
     {
-      iconSrc: InfusionsoftIcon,
-      iconTitle: 'Infusionsoft',
-      link: './infusionsoft',
-    },
-    {
       iconSrc: InsightlyIcon,
       iconTitle: 'Insightly',
       link: './insightly',
-    },
-    {
-      iconSrc: PardotIcon,
-      iconTitle: 'Pardot',
-      link: './pardot',
     },
     {
       iconSrc: PipedriveIcon,
@@ -104,17 +85,6 @@ The following CRM integrations are currently available for **Freeform Pro** only
       link: './sharpspring',
     },
     {
-      iconSrc: ZohoIcon,
-      iconTitle: 'Zoho',
-      link: './zoho',
-    },
-    {
-      iconSrc: CodeIcon,
-      iconTitle: 'Make Your Own',
-      link: '../guides/developer/custom-integrations',
-      extraContent: 'Make Your Own',
-    },
-    {
       iconSrc: HireUsIcon,
       iconTitle: 'Hire Us',
       link: '/support/premium',
@@ -128,10 +98,6 @@ your needs.
 
 <Photo img={CRMIntrgrationsPhoto} alt="CRM Integrations" />
 
-:::tip
-[Can I make my own CRM or Email Marketing API integration?](../guides/developer/custom-integrations)
-:::
-
 Some important things to know about CRM integrations are:
 
 - CRM integrations are globally available to all forms, but are configured per form inside the form builder interface.
@@ -141,6 +107,8 @@ Some important things to know about CRM integrations are:
 Every integration is a little bit different, so we have detailed instructions for setting up each integration on their own page.
 
 ## Email Marketing
+
+### Mailing List Integrations<Badge type="pro" text="Pro" />
 
 Freeform supports some popular email marketing / mailing list integrations. Inside the [Settings](../configuration/settings#integrations) area of Freeform, there is an Email Marketing Integration Manager, which allows you to manage your mailing list API integrations. Every integration is a little bit different, so we have detailed instructions for setting up each integration on their own page.
 
@@ -179,12 +147,6 @@ The following Email Marketing integrations are currently available for **Freefor
       link: './mailchimp',
     },
     {
-      iconSrc: CodeIcon,
-      iconTitle: 'Make Your Own',
-      link: '../guides/developer/custom-integrations',
-      extraContent: 'Make Your Own',
-    },
-    {
       iconSrc: HireUsIcon,
       iconTitle: 'Hire Us',
       link: '/support/premium',
@@ -195,61 +157,24 @@ The following Email Marketing integrations are currently available for **Freefor
 Not seeing one that you need? [Hire us](/support/premium/) to build one custom for
 your needs.
 
-:::tip
-[Can I make my own CRM or Email Marketing API integration?](../guides/developer/custom-integrations)
-:::
+Some important things to know about Mailing List integrations are:
 
-Some important things to know about Email Marketing integrations are:
-
-- Mailing list integrations are globally available to all forms, but are configured per form inside the form builder interface.
+- Mailing list integrations are globally available to all forms, but are configured per form inside the Composer interface.
 - Most - if not all - integrations attempt to map all available fields and custom fields, but some may have limitations if the API is too complex or doesn't allow it.
-- Mailing list integrations appear as a checkbox that can be drag and dropped into the form builder interface:
-  - Can only be displayed as a single checkbox, or as hidden field (as an automatic opt-in when using specifically for mailing list signups). If you want more than 1 mailing list, you can drag and drop another field into your layout (but the checkboxes cannot be displayed as a group, unless of course you made some manual adjustments to the formatting template).
+- Mailing list integrations appear as a checkbox that can be drag and dropped into the Composer interface:
+  - Can only be displayed as a single checkbox, or as hidden field <Badge type="feature" text="2.3.0+" /> (as an automatic opt-in when using specifically for mailing list signups). If you want more than 1 mailing list, you can drag and drop another field into your layout (but the checkboxes cannot be displayed as a group, unless of course you made some manual adjustments to the formatting template).
     - Label of the checkbox is customizable per form.
     - Checkbox can be checked by default.
   - You can specify the mailing list to be used for the mailing list integration.
-  - Your form must include an [Email](../forms/fields#email) field type, which must then be assigned to the **Target Email Field** setting.
+  - Your form must include an [Email](../forms/fields#fields-email) field type, which must then be assigned to the **Target Email Field** setting.
   - When available, **Field Mapping** setting allows you to map Freeform fields to available mailing list integration fields.
 - To get access to all integrations, purchase (or purchase an upgrade to) _Freeform Pro_.
 
 :::warning
-While data is passed along to the Email Marketing provider, Freeform does not store whether or not Email Marketing fields were opted in, so CP submission views will not display whether or not the user subscribed.
+While data is passed along to the Mailing List provider, Freeform does not store whether or not Mailing List fields were opted in, so CP submission views will not display whether or not the user subscribed.
 :::
 
-## Craft Elements
-
-Not seeing one that you need? [Hire us](/support/premium/) to build one custom for your needs.
-
-<IconCards
-  items={[
-    {
-      iconSrc: CraftEntriesIcon,
-      iconTitle: 'Craft Entries',
-      link: './elements/#craft-entries',
-    },
-    {
-      iconSrc: CraftUsersIcon,
-      iconTitle: 'Craft Users',
-      link: './elements/#craft-users',
-    },
-    {
-      iconSrc: SolspaceCalendarIcon,
-      iconTitle: 'Calendar Events',
-      link: './elements/#calendar-events',
-    },
-    {
-      iconSrc: EditElementsIcon,
-      iconTitle: 'Edit Elements',
-      link: './elements/#editing-elements',
-    },
-    {
-      iconSrc: HireUsIcon,
-      iconTitle: 'Hire Us',
-      link: '/support/premium',
-      extraContent: 'Hire Us',
-    },
-  ]}
-/>
+Every integration is a little bit different, so we have detailed instructions for setting up each integration on their own page.
 
 ## Captchas / Spam Protection
 
@@ -261,52 +186,6 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       iconSrc: RecaptchaIcon,
       iconTitle: 'reCAPTCHA',
       link: '../forms/spam-protection#captchas',
-    },
-    {
-      iconSrc: HcaptchaIcon,
-      iconTitle: 'hCaptcha',
-      link: '../forms/spam-protection#captchas',
-    },
-    {
-      iconSrc: FreeformHoneypotIcon,
-      iconTitle: 'Freeform Honeypot',
-      link: '../forms/spam-protection/#freeform-honeypot',
-    },
-    {
-      iconSrc: HireUsIcon,
-      iconTitle: 'Hire Us',
-      link: '/support/premium',
-      extraContent: 'Hire Us',
-    },
-  ]}
-/>
-
-## Webhooks
-
-Not seeing one that you need? [Hire us](/support/premium/) to build one custom for your needs.
-
-<IconCards
-  items={[
-    {
-      iconSrc: SlackIcon,
-      iconTitle: 'Slack',
-      link: './slack',
-    },
-    {
-      iconSrc: ZapierIcon,
-      iconTitle: 'Zapier',
-      link: './zapier',
-    },
-    {
-      iconSrc: GenericWebhookIcon,
-      iconTitle: 'Generic',
-      link: './generic-webhooks',
-    },
-    {
-      iconSrc: CodeIcon,
-      iconTitle: 'Make Your Own',
-      link: '../developer/webhooks',
-      extraContent: 'Make Your Own',
     },
     {
       iconSrc: HireUsIcon,
@@ -327,16 +206,6 @@ Not seeing one that you need? [Hire us](/support/premium/) to build one custom f
       iconSrc: StripeIcon,
       iconTitle: 'Stripe Payments',
       link: './stripe-payments',
-    },
-    {
-      iconSrc: PostForwardingIcon,
-      iconTitle: 'Post Forwarding',
-      link: './post-forwarding',
-    },
-    {
-      iconSrc: ClickDimensionsIcon,
-      iconTitle: 'ClickDimensions',
-      link: './clickdimensions',
     },
     {
       iconSrc: HireUsIcon,

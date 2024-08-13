@@ -8,7 +8,7 @@ import {
   StepMarkdown,
   FlexCards,
 } from '@site/src/components/docs';
-import { Badge, Photo } from '@site/src/components/utils';
+import { Badge, Photo, SimpleTextLink } from '@site/src/components/utils';
 
 import AppearancePhoto from './assets/img/appearance.png';
 import AppleGooglePayPhoto from './assets/img/applepay-googlepay.png';
@@ -19,15 +19,20 @@ import StripePaymentsPhoto from './assets/img/stripe-payments.png';
 
 import Icons from '@site/static/card-icons';
 
-# Stripe Payments Integration<Badge type="pro" text="Pro" />
+# Freeform Payments<Badge text="Requires Payments plugin (+59)" type="addon" /><Badge type="feature" text="Freeform 2.3.0+" />
 
-:::warning
-The Stripe Payments integration has been updated to support [Strong Customer Authentication (SCA)](https://stripe.com/docs/strong-customer-authentication) changes to the Stripe API. **The new EU rule comes into effect on September 14, 2019**, so any site based in the EU or accepting payments from EU customers will be affected and **need to update** to Freeform 3.3+ in order to prevent payments from being declined.
+Easily collect payments with your Freeform forms! Allow clients to pay invoices, subscribe to a service, pay for memberships and more!
 
-Due to some limitations with the API and making things work with Freeform, there are some new limitations that may be breaking changes to your form and/or form flow. Please refer to the [Strong Customer Authentication guide](#strong-customer-authentication-sca) below for more information.
-:::
+<SimpleTextLink
+  to="https://plugins.craftcms.com/freeform-payments"
+  label="Get it in the Plugin Store!"
+/>
 
-<Photo img={StripePaymentsPhoto} alt="Accept Payments through Stripe" />
+<Photo
+  className="mt-6"
+  img={StripePaymentsPhoto}
+  alt="Accept Payments through Stripe"
+/>
 
 ## Overview
 
@@ -45,14 +50,12 @@ Payments data can be displayed in templates and email notifications, as well as 
 
 It's important to note that Freeform does not store any sensitive credit card data, except for the last 4 digits of the credit card number.
 
-:::info
-When using the Stripe Payments feature, Freeform will automatically force [AJAX mode](../guides/templating/ajax-forms) on the form in order to work with Stripe's validation.
-:::
-
 ## Requirements
 
 Freeform Payments has the following requirements:
 
+- Craft 3.0+ and [its server requirements](https://docs.craftcms.com/v3/requirements.html)
+- [Freeform 2.3+](https://solspace.com/craft/freeform/) Lite or Pro edition
 - [Stripe](https://stripe.com) account (only payment gateway currently)
 - All API requests must be made over [HTTPS](https://en.wikipedia.org/wiki/HTTPS)
   - Can be tested in Test Mode while using HTTP however.
@@ -110,83 +113,30 @@ To fully test or use the **webhooks** part of Stripe payment gateway (Payments s
 
 The following instructions assume you already have a Stripe account. You can add the Stripe integration by doing the following:
 
-<VerticalStepWrapper>
-
-<StepMarkdown>
-### Step 1
-
-- Go to the _Payments_ section under Freeform Settings (**Freeform** -> **Settings** -> **Payments**). Click on the **New Payment Integration** button at the top right.
-- For **Service Provider**, select _Stripe_. Provide your integration a name in the **Name** and **Handle** fields.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 2
-
-Open up another browser tab and go to your Stripe account:
-
-- On the left nav menu, click on **Developer**, then click **API Keys**.
-- Copy the LIVE token for **Publishable key** (e.g. `pk_live_fs7f6f8g8dfg68g68d76dgd8`) and paste into the **Public Key (Live)** field inside Freeform.
-- Copy the LIVE token (click _Reveal live key token_ button to reveal) for **Secret key** (e.g. `sk_live_af7fa7gfdo78g6ddfg6d8d87`) and paste into the **Secret Key (Live)** field inside Freeform.
-- Toggle the _View test data_ link at the bottom left corner in Stripe account area (or top right in API Key page) to allow testing your setup. Stripe will provide you with a **different** set of keys for testing mode.
-- Copy the TEST token for **Publishable key** (e.g. `pk_test_fs7f6f8g8dfg68g68d76dgd8`) and paste into the **Public Key (Test)** field inside Freeform.
-- Copy the TEST token (click _Reveal live key token_ button to reveal) for **Secret key** (e.g. `sk_test_af7fa7gfdo78g6ddfg6d8d87`) and paste into the **Secret Key (Test)** field inside Freeform.
-- Enable the _LIVE mode_ toggle whenever you are ready to have your Payment forms go live. Freeform Payments will then switch to using the LIVE Stripe API tokens.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 3
-
-- Save the integration inside Freeform. Then, reopen the integration you just created by clicking on it in Freeform.
-- Copy the URL value inside the **Webhook URL** field in Freeform (e.g. `http://my-precio.us/freeform/payment-webhooks/stripe?id=1`).
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 4
-
-Switch back to your Stripe account browser tab:
-
-- On the left nav menu, click on **Developer**, then click **Webhooks**.
-- Under the _Endpoints receiving events from your account_ section (you may see more endpoint options), click the **+ Add endpoint** button.
-- Paste the webhook URL you copied from Freeform into the modal window that pops up.
-- You can likely use **latest** or **default** option for _Webhook version_ without any consequence.
-- Select **Send all event types** option for _Filter event_ setting. Specifically, these are the 4 that Freeform actually just needs:
-  - `customer.subscription.created`
-  - `customer.subscription.deleted`
-  - `invoice.payment_failed`
-  - `invoice.payment_succeeded`
-- Click **Add Endpoint** button to save it.
-- On the next page inside Stripe account, click on the newly created Endpoint URL.
-- At the bottom of the next page, you'll see a section titled **Signing secret**.
-- Click on the **Click to reveal** button, and then copy the token (e.g. `whsec_dsf87d876sdf7g876fd8fasd9f7dsasd`).
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 5
-
-Setting up your form to collect payments will generally consist of the following:
-
-- Switch back to the Payment integration inside Freeform, and paste the Signing secret token into the **Webhook Secret** setting.
-- Save the integration again, and it should be ready.
-
-</StepMarkdown>
-
-</VerticalStepWrapper>
-
-:::info
-Freeform will still record failed payment attempts as submissions in the database, as well as send out email notifications and trigger API integrations. You may want to consider adding Payment-specific information in the email notification templates to indicate if the payment was successful or if it failed. Additionally, you can suppress this behavior by toggling the **Suppress Email Notifications & Integrations when Payments Fail** setting for the Payment Gateway.
-:::
-
-:::info
-When having the **Send Success Email from Stripe to Submitter** setting enabled, be sure to require the Email field that is mapped to the Stripe Email field otherwise it could result in an error if not filled in by the user.
-:::
+1. Go to the _Payment Gateways_ section under Freeform Settings (**Freeform** -> **Settings** -> **Payment Gateways**). Click on the **New Payment Gateway Integration** button at the top right.
+2. For **Service Provider**, select _Stripe_. Provide your integration a name in the **Name** and **Handle** fields.
+3. Open up another browser tab and go to your Stripe account:
+   - On the left nav menu, click on **Developer**, then click **API Keys**.
+   - Copy the LIVE token for **Publishable key** (e.g. `pk_live_fs7f6f8g8dfg68g68d76dgd8`) and paste into the **Public Key (Live)** field inside Freeform.
+   - Copy the LIVE token (click _Reveal live key token_ button to reveal) for **Secret key** (e.g. `sk_live_af7fa7gfdo78g6ddfg6d8d87`) and paste into the **Secret Key (Live)** field inside Freeform.
+   - Toggle the _View test data_ link at the bottom left corner in Stripe account area (or top right in API Key page) to allow testing your setup. Stripe will provide you with a **different** set of keys for testing mode.
+   - Copy the TEST token for **Publishable key** (e.g. `pk_test_fs7f6f8g8dfg68g68d76dgd8`) and paste into the **Public Key (Test)** field inside Freeform.
+   - Copy the TEST token (click _Reveal live key token_ button to reveal) for **Secret key** (e.g. `sk_test_af7fa7gfdo78g6ddfg6d8d87`) and paste into the **Secret Key (Test)** field inside Freeform.
+   - Enable the _LIVE mode_ toggle whenever you are ready to have your Payment forms go live. Freeform Payments will then switch to using the LIVE Stripe API tokens.
+4. Save the integration inside Freeform. Then, reopen the integration you just created by clicking on it in Freeform.
+5. Copy the URL value inside the **Webhook URL** field in Freeform (e.g. `http://my-precio.us/freeform/payment-webhooks/stripe?id=1`).
+6. Switch back to your Stripe account browser tab:
+   - On the left nav menu, click on **Developer**, then click **Webhooks**.
+   - Under the _Endpoints receiving events from your account_ section (you may see more endpoint options), click the **+ Add endpoint** button.
+   - Paste the webhook URL you copied from Freeform into the modal window that pops up.
+   - You can likely use **latest** or **default** option for _Webhook version_ without any consequence.
+   - Select **Send all event types** option for _Filter event_ setting.
+   - Click **Add Endpoint** button to save it.
+   - On the next page inside Stripe account, click on the newly created Endpoint URL.
+   - At the bottom of the next page, you'll see a section titled **Signing secret**.
+   - Click on the **Click to reveal** button, and then copy the token (e.g. `whsec_dsf87d876sdf7g876fd8fasd9f7dsasd`).
+7. Switch back to the Payment Gateway integration inside Freeform, and paste the Signing secret token into the **Webhook Secret** setting.
+8. Save the integration again, and it should be ready.
 
 ### Testing the Webhook Connection
 
@@ -196,96 +146,57 @@ You can test to see if the Webhook connection is valid by clicking on the **Send
 
 Setting up your form to collect payments will generally consist of the following:
 
-<VerticalStepWrapper>
-
-<StepMarkdown >
-
-### Step 1
-
-- Set up the form with all the regular fields you need.
-- At the top left, drag and drop the _Credit Card_ special field into your form.
-  - Specify layout type (2 rows or 3 rows).
-  - Adjust any labels and placeholders as necessary.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 2
-
-- At the top right of the page, click on the _Payments_ (_$_) button.
-- Select a gateway from the **Payment Gateway** dropdown.
-- In the **Payment Type** dropdown, select one of the following:
-  - **Single payment** - collect a single payment from the user
-  - **Predefined subscription plan** - subscribe the user to a subscription payment plan
-  - **Customer defined subscription plan** - allow the user to create their own subscription plan
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 3
-
-- In the **Payment Field Mapping** table, you'll see options depending on which Payment Type selected.
-  - **Amount** (applies to 'Single payment' and 'Customer defined subscription plan' options)
-    - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined options for the user to choose an amount.
-      - Predefined option values should contain an integer only, e.g. `49` or `89.95`.
-    - Select a regular Freeform field of the _Number_ fieldtype for the user to enter their own amount.
-      - Option values should contain an integer only, e.g. `49` or `89.95`.
-    - Select **Fixed** if you wish to have a single predefined value for users to pay.
-      - In the **Fixed Amount** field below, enter an integer value, e.g. `49` or `89.95`.
-  - **Currency** (applies to 'Single payment' and 'Customer defined subscription plan' options)
-    - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined options for the user to choose a currency.
-      - Predefined option values should contain 3 letter lower case currency code, e.g. `usd` or `eur`.
-    - Select **Fixed** if you wish to have a single predefined currency option.
-      - In the **Fixed Currency** field below, select a currency for your form, e.g. `USD`.
-  - **Interval** (applies to 'Customer defined subscription plan' option only)
-    - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined options for the user to choose payment frequency.
-      - Predefined option values should contain a valid interval value only, e.g. `biweekly` or `monthly`. Valid options are:
-        - `daily`
-        - `weekly`
-        - `biweekly`
-        - `monthly`
-        - `annually`
-    - Select **Fixed** if you wish to have a single predefined payment interval.
-      - In the **Fixed Interval** field below, select a payment interval, e.g. `Monthly`.
-  - **Plan** (applies to 'Predefined subscription plan' option only)
-    - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined payment plans as options for the user to choose.
-      - Predefined option values should contain a valid subscription ID name value only, e.g. `plan_DNVlbcZQCtNzOs` or `freeform_userRegistration_100_usd_biweekly`.
-    - Select **Fixed** if you wish to have a single predefined subscription plan.
-      - In the **Fixed Subscription Plan** field below, select a subscription from the list.
-    - If you wish to create a new plan directly from Freeform, click the _Add new plan_ button.
-- In the **Payment Description** setting, enter custom wording for the description of the payment to show up on Stripe's end. Using `{id}` will include the ID of the submission. All other Freeform fields are available as variables well here. Default value if left blank is: `Payment for FF Subsmission #XX`.
-- In the **Customer Field Mapping** table, map Freeform fields to the payment gateway's fields.
-  - It's not required to map to all fields.
-  - Choose **Full Name** if you use a single Freeform field to collect customer names. Choose **First Name** and **Last Name** if you use two different Freeform fields to collect customer names. Do not map to both, Freeform will figure things out if you choose 1 approach only.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 4
-
-- Set up the payment gateway email notifications (optionally trigger notifications to the email address entered into the Freeform field that is mapped to the payment gateway **Email** field in the **Customer Field Mapping** table):
-  - **Subscription Created Email** (Subscription type only) - notification of successful subscription
-  - **Subscription Ended Email** (Subscription type only) - notification of subscription being cancelled
-  - **Payment Succeeded Email** - notification of successful payment
-    - For subscriptions, this will be sent for each subsequent successful transaction at the scheduled interval.
-  - **Payment Failed Email** - notification of unsuccessful payment
-    - For subscriptions, this will be sent for any unsuccessful subsequent transaction at the scheduled interval.
-  - Email notifications can still be sent to the submitter the traditional way too - by clicking on the **Email** field and setting up an email notification template for it in the property editor.
-
-</StepMarkdown>
-
-<StepMarkdown>
-
-### Step 5
-
-- Save your form and try it out!
-
-</StepMarkdown>
-
-</VerticalStepWrapper>
+1. Setup form with all the regular fields you need.
+2. At the top left, drag and drop the _Credit Card_ special field into your form.
+   - Specify layout type (2 rows or 3 rows).
+   - Adjust any labels and placeholders as necessary.
+3. At the top right of the page, click on the _Payments_ (_$_) button.
+4. Select a gateway from the **Payment Gateway** dropdown.
+5. In the **Payment Type** dropdown, select one of the following:
+   - **Single payment** - collect a single payment from the user
+   - **Predefined subscription plan** - subscribe the user to a subscription payment plan
+   - **Customer defined subscription plan** - allow the user to create their own subscription plan
+6. In the **Payment Field Mapping** table, you'll see options depending on which Payment Type selected.
+   - **Amount** (applies to 'Single payment' and 'Customer defined subscription plan' options)
+     - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined options for the user to choose an amount.
+       - Predefined option values should contain an integer only, e.g. `49` or `89.95`.
+     - Select a regular Freeform field of the _Number_ fieldtype for the user to enter their own amount.
+       - Option values should contain an integer only, e.g. `49` or `89.95`.
+     - Select **Fixed** if you wish to have a single predefined value for users to pay.
+       - In the **Fixed Amount** field below, enter an integer value, e.g. `49` or `89.95`.
+   - **Currency** (applies to 'Single payment' and 'Customer defined subscription plan' options)
+     - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined options for the user to choose a currency.
+       - Predefined option values should contain 3 letter lower case currency code, e.g. `usd` or `eur`.
+     - Select **Fixed** if you wish to have a single predefined currency option.
+       - In the **Fixed Currency** field below, select a currency for your form, e.g. `USD`.
+   - **Interval** (applies to 'Customer defined subscription plan' option only)
+     - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined options for the user to choose payment frequency.
+       - Predefined option values should contain a valid interval value only, e.g. `biweekly` or `monthly`. Valid options are:
+         - `daily`
+         - `weekly`
+         - `biweekly`
+         - `monthly`
+         - `annually`
+     - Select **Fixed** if you wish to have a single predefined payment interval.
+       - In the **Fixed Interval** field below, select a payment interval, e.g. `Monthly`.
+   - **Plan** (applies to 'Predefined subscription plan' option only)
+     - Select a regular Freeform field of the _Select_ or _Radio_ fieldtype with predefined payment plans as options for the user to choose.
+       - Predefined option values should contain a valid subscription ID name value only, e.g. `plan_DNVlbcZQCtNzOs` or `freeform_userRegistration_100_usd_biweekly`.
+     - Select **Fixed** if you wish to have a single predefined subscription plan.
+       - In the **Fixed Subscription Plan** field below, select a subscription from the list.
+     - If you wish to create a new plan directly from Freeform, click the _Add new plan_ button.
+7. In the **Customer Field Mapping** table, map Freeform fields to the payment gateway's fields.
+   - It's not required to map to all fields.
+   - Choose **Full Name** if you use a single Freeform field to collect customer names. Choose **First Name** and **Last Name** if you use two different Freeform fields to collect customer names. Do not map to both, Freeform will figure things out if you choose 1 approach only.
+8. Set up the payment gateway email notifications (optionally trigger notifications to the email address entered into the Freeform field that is mapped to the payment gateway **Email** field in the **Customer Field Mapping** table):
+   - **Subscription Created Email** (Subscription type only) - notification of successful subscription
+   - **Subscription Ended Email** (Subscription type only) - notification of subscription being cancelled
+   - **Payment Succeeded Email** - notification of successful payment
+     - For subscriptions, this will be sent for each subsequent successful transaction at the scheduled interval.
+   - **Payment Failed Email** - notification of unsuccessful payment
+     - For subscriptions, this will be sent for any unsuccessful subsequent transaction at the scheduled interval.
+   - Email notifications can still be sent to the submitter the traditional way too - by clicking on the **Email** field and setting up an email notification template for it in the property editor.
+9. Save your form and try it out!
 
 ## Usage in Templates & Notifications
 
@@ -358,84 +269,19 @@ For rendering the **Credit Card fields inside your form**, you'll need to includ
 
 You can also perform a check with `{% elseif field.type == "cc_details" %}`.
 
-#### STYLING STRIPE FIELDS
+You can also perform a check with `{% elseif field.type == "cc_details" %}`.
 
-For styling the Stripe credit card fields in the form, you'll need to use the [Freeform JS Plugin](../developer/js-plugin) to control it, specifically adding a listener for the `freeform-stripe-styling` event like this (example for Bootstrap):
+For **styling the Stripe credit card fields** in the form, you'll have to style the parent `<div>` that encompasses the Stripe iframe and not the inputs. For example (using the Flexbox example in Solspace demo templates):
 
-```html showLineNumbers
-<script>
-  document.addEventListener('freeform-stripe-styling', function (event) {
-    (event.detail.base = {
-      fontSize: '16px',
-      color: '#adb5bd',
-      fontFamily:
-        '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-    }),
-      (event.detail.invalid = {
-        color: '#dc3545',
-      });
-  });
-</script>
-```
-
-Some styling might need to be done with a typical CSS approach targeting the `.StripeElement` class, e.g.
-
-```css showLineNumbers
-.StripeElement {
-  padding: 8px 10px !important;
-  background: #1a1d20;
-  height: 36px;
+```twig showLineNumbers
+.freeform-row .freeform-column .freeform-input.StripeElement {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  border: 1px solid;
+  padding-top: 5px;
+  height: 26px
 }
-```
-
-#### DISPLAYING CREDIT CARD ICON<Badge type="feature" text="3.11.9+" />
-
-If you wish to display the credit card icon in the Credit Card Number field, you can do this by including the following override in your template:
-
-```html showLineNumbers
-<script>
-  document.addEventListener('freeform-stripe-styling', function (event) => {
-      event.showCardIcon = true;
-  });
-</script>
-```
-
-#### CUSTOM RETURN URL
-
-If you need to control a custom return on the form, you would do that with the following code implemented with the [Freeform JS Plugin](../developer/js-plugin) like this:
-
-**Freeform 3.10+**:
-
-```js showLineNumbers
-<script>
-    // Do something on a successful ajax submit
-    document.addEventListener('freeform-ajax-success', function(event) {
-    // Redirect the user
-        if (event.response.finished) {
-            window.location.href = event.response.returnUrl;
-        }
-    })
-    document.addEventListener("freeform-render-success", function (event) {
-    // Stop the default success message rendering
-        event.preventDefault();
-    });
-</script>
-```
-
-**Freeform 3.9 and lower**:
-
-```js {5-9} showLineNumbers
-<script>
-const form = document.getElementById('my-form');
-form.addEventListener('freeform-ready', function(event) {
-  const freeform = event.target.freeform;
-  freeform.addOnAfterAjaxSubmit((event, form, response) => {
-    if (response.returnUrl) {
-      window.location.href = response.returnUrl;
-    }
-  })
-});
-</script>
 ```
 
 ### Example usage in Notifications
@@ -477,16 +323,10 @@ For _quick reference_, here is some general testing data:
 
 - Card: `4000000000000002` - Charge is declined with a card_declined code.
 - Card: `4100000000000019` - Results in a charge with a risk level of highest. The charge is blocked as it's considered fraudulent.
-- Card: `4000002760003184` - Test for [Strong Customer Authentication (SCA)](#strong-customer-authentication-sca).
-  - A full list of card numbers for more scenarios can be found in the [Stripe documentation](https://stripe.com/docs/testing#regulatory-cards).
-
-### Troubleshooting
-
-When viewing Payment individual submissions in the control panel, the right side of the page will display a more detailed error for failed payments. If you think there might be an issue with Freeform or your implementation, this may help you look for patterns and troubleshoot.
 
 ## Mapping Payments Data to CRM
 
-Freeform Payments data is available to map to [CRM integrations](./#crm) as well. The following options will be available to map to your CRM fields:
+Freeform Payments data is available to map to [CRM integrations](./index#crm) as well. The following options will be available to map to your CRM fields:
 
 - Amount
 - Interval

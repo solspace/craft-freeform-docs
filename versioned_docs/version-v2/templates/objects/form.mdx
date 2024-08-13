@@ -2,8 +2,6 @@
 sidebar_position: 1
 ---
 
-import { Badge } from '@site/src/components/utils';
-
 # Form object
 
 The Form object contains its metadata and field objects. You can either render the form using the pre-selected formatting template by calling `form.render()` or achieve a more fine-grained control over it by iterating over its rows and fields and using `form.renderTag` and `form.renderClosingTag` methods.
@@ -14,113 +12,75 @@ Freeform will automatically insert javascript in the footer of the page for feat
 
 ## Properties
 
-### `name`
-
-Outputs the name of the form.
-
-### `handle`
-
-Outputs the handle of the form.
-
-### `id`
-
-Outputs the unique ID of the form.
-
-### `description`
-
-Outputs the description of the form.
-
-### `submissionTitleFormat`
-
-Outputs the submission title format used when creating new submissions based on this form.
-
-### `returnUrl`
-
-Outputs the return URL of the form.
-
-### `successMessage`<Badge type="feature" text="3.9+" />
-
-Outputs the custom success message configured in the Validation tab for your form inside the form builder.
-
-### `errorMessage`<Badge type="feature" text="3.9+" />
-
-Outputs the custom error message configured in the Validation tab for your form inside the form builder.
-
-### `showSpinner`<Badge type="feature" text="3.9+" />
-
-A bool variable, which will be `true` if the form has the **Show Loading Indicator on Submit** setting enabled in the Validation tab for your form inside the form builder.
-
-### `showLoadingText`<Badge type="feature" text="3.9+" />
-
-A bool variable, which will be `true` if the form has the **Show Loading Text** setting enabled in the Validation tab for your form inside the form builder.
-
-### `loadingText`<Badge type="feature" text="3.9+" />
-
-Outputs the custom loading/processing text configured in the Validation tab for your form inside the form builder.
-
-### `hasErrors`
-
-A bool variable, which will be `true` if there are any errors in any of the fields or the form. It might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error). This can be used in conjunction with the [Errors object](./errors) for displaying special and general errors.
-
-### `pages`
-
-Returns a list of [Page objects](./page) each containing its label and index.
-
-### `currentPage`
-
-Returns the current [Page object](./page) containing its label and index.
-
-### `ajaxEnabled`
-
-A bool variable, which will be `true` if the form has the built-in AJAX setting enabled.
-
-### `limitFormSubmissions`
-
-A bool variable, which will be `true` if the form has the submit limit setting enabled.
-
-You can run a conditional check on this with the following:
-
-- `auth_unlimited` - Logged in Users only (no limit) <Badge type="feature" text="3.13+" />
-- `cookie` - Once per Cookie only
-- `ip_cookie` - Once per IP/Cookie combo
-- `auth` - Once per logged in Users only <Badge type="feature" text="3.13+" />
-- `auth_cookie` - Once per logged in User or Guest Cookie only <Badge type="feature" text="3.13+" />
-- `auth_ip_cookie` - Once per logged in User or Guest IP/Cookie combo <Badge type="feature" text="3.13+" />
-
-### **Custom Attributes** (`customAttributes`)
-
-The following properties are available to ease the customizability of field rendering if set as parameters (each one is `null` if not set):
-
-- `id` - the ID attribute of the HTML form tag.
-- `class` - the CLASS attribute of the HTML form tag.
-- `method` - the METHOD attribute for the form tag.
-- `action` - the ACTION attribute for the form tag.
-- `status` - the status ID or handle.
-- `returnUrl` - allows overriding the return URL of the form upon successful submit.
-  ::: v-pre
-  - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value as of Freeform 3.5.6+ (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
-    :::
-- `rowClass` - the CLASS attribute of all HTML row tags.
-- `columnClass` - the CLASS attribute of all HTML column tags.
-- `submitClass` - the CLASS attribute of submit field input elements.
-- `inputClass` - the CLASS attribute of all HTML input fields.
-- `labelClass` - the CLASS attribute of all HTML label fields.
-- `errorClass` - the CLASS attribute of all HTML error lists.
-- `instructionsClass` - the CLASS attribute of all instruction fields.
-- `instructionsBelowField` - set to true to render instructions below, not above the input field.
-- `overrideValues` - allows you to override the value inside Text fields, or pre-select a default option for multi-option field types (specify option values in this case).
-  - Specify the field `handle` as key, and provide the custom value override as its value.
-  - If a [Field](./field) uses an `overrideValue` attribute, it will take precedence over the value specified in this attribute.
-  - E.g.:
-    - `hiddenFieldHandle: entry.id` - pull in an entry ID from a Craft Entry.
-    - `stateSelect: "AZ"` - pre-select **Arizona** state in a State select field.
-    - `availability: ["tue", "thu"]` - pre-check **Tuesday** and **Thursday** checkbox options in a checkbox group field type.
-    - `firstName: currentUser.name` - pull in the currently logged in user's name into the Name field.
-- `formAttributes` - an object of attributes which will be added to the form.
-  - E.g. `formAttributes: { "novalidate": true, "data-form-id": "test" }`
-- `inputAttributes` - an object of attributes which will be added to all input fields.
-  - E.g. `inputAttributes: { "readonly": true, "data-field-id": "test" }`
-- `useRequiredAttribute: true` - adds `required` attribute to input fields that have been set to be required in the form builder.
+- `name` <a href="#prop-name" id="prop-name" class="docs-anchor">#</a>
+  - Outputs the name of the form.
+- `handle` <a href="#prop-handle" id="prop-handle" class="docs-anchor">#</a>
+  - Outputs the handle of the form.
+- `id` <a href="#prop-id" id="prop-id" class="docs-anchor">#</a>
+  - Outputs the unique ID of the form.
+- `description` <a href="#prop-description" id="prop-description" class="docs-anchor">#</a>
+  - Outputs the description of the form.
+- `submissionTitleFormat` <a href="#prop-submissionTitleFormat" id="prop-submissionTitleFormat" class="docs-anchor">#</a>
+  - Outputs the submissionTitleFormat used when creating new submissions based on this form.
+- `returnUrl` <a href="#prop-returnUrl" id="prop-returnUrl" class="docs-anchor">#</a>
+  - Outputs the returnUrl of the form.
+- `hasErrors` <a href="#prop-hasErrors" id="prop-hasErrors" class="docs-anchor">#</a>
+  - A bool variable, which will be `true` if there are any errors in any of the fields or the form.
+  - Might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error).
+  - Can be used in conjunction with the [Errors object](./errors) for displaying special and general errors.
+- `pages` <a href="#prop-pages" id="prop-pages" class="docs-anchor">#</a>
+  - Returns a list of [Page objects](./page) each containing its label and index.
+- `currentPage` <a href="#prop-currentPage" id="prop-currentPage" class="docs-anchor">#</a>
+  - Returns the current [Page object](./page) containing its label and index.
+- **Custom Attributes** (`customAttributes`) <a href="#prop-custom-attributes" id="prop-custom-attributes" class="docs-anchor">#</a>
+  - The following properties are available to ease the customizability of field rendering if set as parameters (each one is `null` if not set):
+    - `id` <a href="#prop-custattr-id" id="prop-custattr-id" class="docs-anchor">#</a>
+      - The ID attribute of the HTML form tag.
+    - `class` <a href="#prop-custattr-class" id="prop-custattr-class" class="docs-anchor">#</a>
+      - The CLASS attribute of the HTML form tag.
+    - `method` <a href="#prop-custattr-method" id="prop-custattr-method" class="docs-anchor">#</a>
+      - The METHOD attribute for the form tag.
+    - `action` <a href="#prop-custattr-action" id="prop-custattr-action" class="docs-anchor">#</a>
+      - The ACTION attribute for the form tag.
+    - `status` <a href="#prop-custattr-action" id="prop-custattr-action" class="docs-anchor">#</a>
+      - The status ID or Handle.
+    - `returnUrl` <a href="#prop-custattr-returnurl" id="prop-custattr-returnurl" class="docs-anchor">#</a>
+      - Allows overriding the return URL of the form upon successful submit.
+        ::: v-pre
+      - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value as of Freeform 2.5.27+ (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
+        :::
+    - `rowClass` <a href="#prop-custattr-rowclass" id="prop-custattr-rowclass" class="docs-anchor">#</a>
+      - The CLASS attribute of all HTML row tags.
+    - `columnClass` <a href="#prop-custattr-columnclass" id="prop-custattr-columnclass" class="docs-anchor">#</a>
+      - The CLASS attribute of all HTML column tags.
+    - `submitClass` <a href="#prop-custattr-submitclass" id="prop-custattr-submitclass" class="docs-anchor">#</a>
+      - The CLASS attribute of submit field input elements.
+    - `inputClass` <a href="#prop-custattr-inputclass" id="prop-custattr-inputclass" class="docs-anchor">#</a>
+      - The CLASS attribute of all HTML input fields.
+    - `labelClass` <a href="#prop-custattr-labelclass" id="prop-custattr-labelclass" class="docs-anchor">#</a>
+      - The CLASS attribute of all HTML label fields.
+    - `errorClass` <a href="#prop-custattr-errorclass" id="prop-custattr-errorclass" class="docs-anchor">#</a>
+      - The CLASS attribute of all HTML error lists.
+    - `instructionsClass` <a href="#prop-custattr-instructionsclass" id="prop-custattr-instructionsclass" class="docs-anchor">#</a>
+      - The CLASS attribute of all instruction fields.
+    - `instructionsBelowField` <a href="#prop-custattr-instructionsbelowfield" id="prop-custattr-instructionsbelowfield" class="docs-anchor">#</a>
+      - A boolean value. Set to true to render instructions below, not above the input field.
+    - `overrideValues` <a href="#prop-custattr-overridevalues" id="prop-custattr-overridevalues" class="docs-anchor">#</a>
+      - Allows you to override the value inside Text fields, or pre-select a default option for multi-option field types (specify option values in this case). E.g.:
+        - `hiddenFieldHandle: entry.id` - pull in an entry ID from a Craft Entry.
+        - `stateSelect: "AZ"` - pre-select **Arizona** state in a State select field.
+        - `availability: ["tue", "thu"]` - pre-check **Tuesday** and **Thursday** checkbox options in a checkbox group field type.
+        - `firstName: currentUser.name` - pull in the currently logged in user's name into the Name field.
+      - Specify the field `handle` as key, and provide the custom value override as its value.
+      - If a [Field](./field) uses an `overrideValue` attribute, it will take precedence over the value specified in this attribute.
+    - `formAttributes` <a href="#prop-custattr-formattributes" id="prop-custattr-formattributes" class="docs-anchor">#</a>
+      - An object of attributes which will be added to the form.
+      - Ex: `formAttributes: { "novalidate": true, "data-form-id": "test" }`
+    - `inputAttributes` <a href="#prop-custattr-inputattributes" id="prop-custattr-inputattributes" class="docs-anchor">#</a>
+      - An object of attributes which will be added to all input fields.
+      - Ex: `inputAttributes: { "readonly": true, "data-field-id": "test" }`
+    - `useRequiredAttribute: true` <a href="#prop-custattr-userequiredattribute" id="prop-custattr-userequiredattribute" class="docs-anchor">#</a>
+      - Adds `required` attribute to input fields that have been set to be required in Composer.
 
 :::info
 If displaying the exact same form more than once in a single template, some of the `<form>` tag attributes set on one form may carry over to other ones. To work around this, you can unset the attribute on the other forms (unless they have their own attributes set). For example, if one form has `class: 'something'`, it may end up applying to other instances of the form, but you can add `class: null` to those others to work around it.
@@ -202,20 +162,10 @@ Manually iterate through form fields:
 {{ form.renderClosingTag }}
 ```
 
-You can also iterate over fields directly with `layout.fields` instead of [Row objects](./row):
-
-```twig showLineNumbers
-{% set form = craft.freeform.form("myForm") %}
-
-{% for field in form.layout.fields %}
-  <div>{{ field.label }}</div>
-{% endfor %}
-```
-
 Use session success flash message variable (displays only once) for when form is successfully submitted:
 
 ```twig showLineNumbers
-{% set form = craft.freeform.form("myForm") %}
+{% set form = craft.freeform.form("composerForm") %}
 
 {% if form.submittedSuccessfully %}
   <div>You've successfully submitted this form!</div>

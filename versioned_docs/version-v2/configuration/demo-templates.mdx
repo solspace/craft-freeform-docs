@@ -46,16 +46,28 @@ To install the demo templates manually, just follow the instructions below:
 4. Copy and paste the following routes into your _routes.php_ configuration file (**/config/routes.php**):
 
 ```php showLineNumbers
-'demo/bootstrap/<slug:[^\/]+>/submissions/<id\d+>/success'    => ['template' => 'demo/bootstrap/view_submission'],
-'demo/bootstrap/<slug:[^\/]+>/submissions/<id\d+>'            => ['template' => 'demo/bootstrap/view_submission'],
-'demo/bootstrap/<slug:[^\/]+>/submissions/edit/<token\w+>'    => ['template' => 'demo/bootstrap/edit_submission'],
-'demo/bootstrap/<slug:[^\/]+>/submissions/delete/<token\w+>'  => ['template' => 'demo/bootstrap/delete_submission'],
-'demo/bootstrap/<slug:[^\/]+>/submissions'                    => ['template' => 'demo/bootstrap/submissions'],
-'demo/bootstrap/<slug:[^\/]+>'                                => ['template' => 'demo/bootstrap/form'],
-'demo/bootstrap/<slug:[^\/]+>/success'                        => ['template' => 'demo/bootstrap/form'],
-'demo/custom/<slug:[^\/]+>'                                   => ['template' => 'demo/custom/form'],
-'demo/custom/<slug:[^\/]+>/success'                           => ['template' => 'demo/custom/form'],
-'demo/extras/suppress-edit-submissions/edit/<token\w+>'       => ['template' => 'demo/extras/suppress-edit-submissions'],
+'demo/bootstrap/(?P<slug>[^\/]+)/submissions/(?P<id>\d+)/success'   => 'demo/bootstrap/view_submission',
+'demo/bootstrap/(?P<slug>[^\/]+)/submissions/(?P<id>\d+)'           => 'demo/bootstrap/view_submission',
+'demo/bootstrap/(?P<slug>[^\/]+)/submissions/delete/(?P<token>\w+)' => 'demo/bootstrap/delete_submission',
+'demo/bootstrap/(?P<slug>[^\/]+)/submissions'                       => 'demo/bootstrap/submissions',
+'demo/bootstrap(?:\-ajax)?/(?P<slug>[^\/]+)'                        => 'demo/bootstrap/view',
+'demo/bootstrap(?:\-ajax)?/(?P<slug>[^\/]+)/success'                => 'demo/bootstrap/view',
+'demo/materialize/(?P<slug>[^\/]+)/submissions/(?P<id>\d+)/success' => 'demo/materialize/view_submission',
+'demo/materialize/(?P<slug>[^\/]+)/submissions/(?P<id>\d+)'         => 'demo/materialize/view_submission',
+'demo/materialize/(?P<slug>[^\/]+)/submissions'                     => 'demo/materialize/submissions',
+'demo/materialize/(?P<slug>[^\/]+)'                                 => 'demo/materialize/view',
+'demo/materialize/(?P<slug>[^\/]+)/success'                         => 'demo/materialize/view',
+'demo/foundation/(?P<slug>[^\/]+)'                                  => 'demo/foundation/view',
+'demo/ajax-bootstrap/(?P<slug>[^\/]+)'                              => 'demo/ajax/bootstrap',
+'demo/ajax-bootstrap-source/(?P<slug>[^\/]+)'                       => 'demo/ajax/bootstrap-source',
+'demo/ajax-foundation/(?P<slug>[^\/]+)'                             => 'demo/ajax/foundation',
+'demo/ajax-foundation-source/(?P<slug>[^\/]+)'                      => 'demo/ajax/foundation-source',
+'demo/ajax-materialize/(?P<slug>[^\/]+)'                            => 'demo/ajax/materialize',
+'demo/ajax-materialize-source/(?P<slug>[^\/]+)'                     => 'demo/ajax/materialize-source',
+'demo/ajax-flexbox/(?P<slug>[^\/]+)'                                => 'demo/ajax/flexbox',
+'demo/ajax-flexbox-source/(?P<slug>[^\/]+)'                         => 'demo/ajax/flexbox-source',
+'demo/ajax-grid/(?P<slug>[^\/]+)'                                   => 'demo/ajax/grid',
+'demo/ajax-grid-source/(?P<slug>[^\/]+)'                            => 'demo/ajax/grid-source',
 ```
 
 Visit your demo templates at: **yoursite.com/demo**

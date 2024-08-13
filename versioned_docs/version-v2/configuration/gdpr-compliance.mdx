@@ -41,7 +41,7 @@ Essentially, the easiest blanket approach you can take will be adding a checkbox
 
 ### The Checkbox
 
-In your form, simply create an additional field of the [Checkbox](../forms/fields/#checkbox) field type, and set it to be required. It's important, however, that the following is adhered to:
+In your form, simply create an additional field of the _Checkbox_ field type, and set it to be required. It's important, however, that the following is adhered to:
 
 - The checkbox needs to be clearly labeled and easy to understand. A good example would be something like:
   > I consent to Company Name collecting and storing my data from this form.
@@ -85,8 +85,8 @@ Removing a user's data is simple. If you're requested to remove data about a use
 
 So in review here's a summary of the steps required:
 
-1. Create an additional field of the [Checkbox](../forms/fields#checkbox) field type, and set it to be required. Leave it unchecked by default and label it something like **I consent to Company Name collecting and storing my data from this form.**
-2. Place instructions in [email notifications](../forms/email-notifications) or form success pages explaining how a customer can go about having their data removed from your site.
+1. Create an additional field of the _Checkbox_ field type, and set it to be required. Leave it unchecked by default and label it something like **I consent to Company Name collecting and storing my data from this form.**
+2. Place instructions in email notifications or form success pages explaining how a customer can go about having their data removed from your site.
 3. When requested to remove a user's data, be sure to remove all associated submission(s) within 30 days or less.
 
 Again, be sure to review [this official guide to GDPR](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/).
@@ -110,7 +110,7 @@ IP addresses are collected by default for the purpose of protection against spam
 
 You can add a checkbox to your forms that allows your site users to decide whether or not the submission data should be stored on your site.
 
-- To enable it, toggle on the **[Allow Users to Opt-in](../forms/builder/#form-settings)** setting inside the form's settings (**Form Builder** → **Settings** tab → **Data Storage**) and select the **Checkbox** field you want to be the designated opt-in field.
+- To enable it, see the **[Allow Users to Opt-in](../forms/builder/#form-settings)** setting inside the Form Settings areas of Composer. In the select dropdown, select a Checkbox fieldtype you want to be the designated opt-in field, or choose Disabled to not use this feature.
 - This setting will still send off API data and email notifications.
 - It's important to understand that limiting data to be stored on your site, but still elsewhere such as CRM services and emails would need to be in compliance with GDPR regulations.
 

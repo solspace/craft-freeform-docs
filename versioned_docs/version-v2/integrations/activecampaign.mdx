@@ -8,16 +8,13 @@ import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
 # ActiveCampaign
 
-## ActiveCampaign CRM Integration<Badge type="pro" text="Pro" />
+## ActiveCampaign CRM Integration<Badge type="pro" text="Pro" /><Badge type="feature" text="2.5.25+" />
 
 This documentation page assumes you have read over the [CRM Integration Overview](./index.mdx#crm). If you have not yet read it, please do so now. We also assume that you have an [ActiveCampaign](https://www.activecampaign.com) account already setup. This integration requires that you have _Freeform Pro_. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
 
-### Compatibility
+ActiveCampaign integration includes support for the following:
 
 - Field mapping to all standard and custom fields.
-
-### Duplicate Check & Update
-
 - Duplicate check on _Contact_ email address (will update other details if it matches instead of creating a new contact).
 - Duplicate check on _Organization_ name (will use an existing organization if the value matches instead of creating a new one).
 
@@ -63,27 +60,23 @@ This documentation page assumes you have read over the [CRM Integration Overview
 </StepMarkdown>
 </VerticalStepWrapper>
 
-:::info
-When setting up the form inside the form builder, please be sure to map all required fields for _Deal_:
+## Additional info
+
+When setting up the form inside Composer, please be sure to map all required fields for _Deal_:
 
 - Currency, e.g. use a hidden field that contains `usd` or `eur`.
 - Owner (ID), e.g. use a hidden field that contains `1`.
 - Value ($ amount), e.g. use a hidden field that contains `500.00` or a regular input/select that allows the user to select the value, etc.
 
 If you want the form submitter to automatically (or optionally) be opted into an ActiveCampaign mailing list, use a hidden field or select, radio, checkbox, etc that contains the ID of the mailing list you wish to have them subscribed to. Then map that field to the **Mailing List ID** field under _Contact_.
-:::
 
-## ActiveCampaign Email Marketing Integration<Badge type="pro" text="Pro" />
+## ActiveCampaign Email Marketing Integration<Badge type="pro" text="Pro" /><Badge type="feature" text="2.5.18+" />
 
 This documentation page assumes you have read over the [CRM Integration Overview](./index.mdx#email-marketing). If you have not yet read it, please do so now. We also assume that you have an [ActiveCampaign](https://www.activecampaign.com) account already setup. This integration requires that you have _Freeform Pro_. If you currently have Freeform Lite, you can purchase an upgrade to Freeform Pro.
 
-### Compatibility
+ActiveCampaign integration includes support for the following:
 
 - Field mapping to all standard and custom fields.
-- Field mapping to Contact Tags. <Badge type="feature" text="3.9.2+" />
-
-### Duplicate Check & Update
-
 - Duplicate check on _Contact_ email address (will update other details if it matches instead of creating a new contact).
 
 ### Setup Instructions
@@ -124,7 +117,3 @@ This documentation page assumes you have read over the [CRM Integration Overview
 
 </StepMarkdown>
 </VerticalStepWrapper>
-
-### Mapping to Contact Tags<Badge type="feature" text="3.9.2+" />
-
-When mapping to Contact Tags, you can use any type of Freeform field you like, allowing for the most flexibility for all workflows. If you wish to have the user select their own tags, Freeform will automatically map over option value(s) from option fields such as checkbox groups, select fields, etc. If you wish to have tags forced upon submitters, you can include a Hidden or Invisible field type and include tag(s) in the value in the form builder. When specifying multiples, separate each with a semi-colon (`;`), e.g. `basic;premium;premium plus;preferred`.

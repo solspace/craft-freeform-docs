@@ -45,15 +45,6 @@ Specify status to fetch submissions with a certain status, e.g .`status: "open"`
 
 Specify a token to more securely fetch a specific submission. A common use case would be when you want to display submission data in a success page, by loading the newly created token in the return URL. Can be used in conjunction with or in place of `id`.
 
-### `fieldSearch`
-
-Specify an object of field handles as keys and search parameters as values to search the submissions that contain specific field values.
-
-- Please use the original field handle name for searches, e.g. if you reused a field named `firstName` and renamed it to just `name`, make sure your search query uses `firstName`.
-- You can use a wildcard `*` to search for values that contain different values. For example `*car` or `doc*`.
-- When searching on fields that store data as arrays, please wrap wildcards (`*`) around the values, e.g. `candy: "*licorice*"`.
-- See [searching example](#searching-submissions) below.
-
 ## Usage in Templates
 
 ### Simple List
@@ -219,55 +210,4 @@ The following is an example that shows how to render uploaded [Assets](https://c
     </tbody>
   </table>
 {% endif %}
-```
-
-### Loop Through Field Options
-
-If you wish to loop through multi-option fields such as Dropdowns, Checkboxes, Radios, etc, to show all options and then highlight which options were selected, you can use `submission[field.handle].options` to loop through the values and compare the `submission[field.handle].option` value against the `option.value` to indicate which options were selected.
-
-```twig showLineNumbers
-<ul>
-{% for option in submission[field.handle].options %}
-    <li{% if submission[field.handle].value == option.value %} class="selected"{% endif %}>{{ option.value }}</li>
-{% endfor %}
-</ul>
-```
-
-If you wish to omit the empty options, you can do something like this instead:
-
-```twig showLineNumbers
-{#
-    Create empty array
-    Add the checked items to array
-    Only show field label and values if array|length
-#}
-{% set opts = [] %}
-{% for option in submission[field.handle].options %}
-    {% if option.value in submission[field.handle].value %}{% set opts = opts|merge([option.value]) %}{% endif %}
-{% endfor %}
-{% if opts|length %}
-    {{ field.label }}:
-    {% for key in opts %}{{ key }}, {% endfor %}
-{% endif %}
-```
-
-### Searching Example
-
-Only select submissions that have `Bill` as the first name and has their favorite food end with `pie`.
-
-```twig showLineNumbers {4-7}
-{% set submissions = freeform.submissions({
-  orderBy: "firstName ASC, lastName DESC",
-  status: ["pending", "closed"],
-  fieldSearch: {
-    firstName: "Bill",
-    favoriteFood: "*pie",
-  }
-}) %}
-
-{% for submission in submissions %}
-  <div>
-    <div>{{ submission.title }} - {{ submission.form.name }}</div>
-  </div>
-{% endfor %}
 ```
