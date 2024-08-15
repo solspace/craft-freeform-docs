@@ -67,11 +67,8 @@ Freeform attempts to do all the heavy lifting when it comes to templating. Our l
 
 Forms can be generated on the front end templates 2 different ways:
 
-::: v-pre
-
 1. By coding the formatting directly within the template that you want the form to appear in, using the [freeform.form](../templates/queries/form) template function.
 2. By assigning one of an unlimited number of predefined formatting templates (stored as a regular Twig template in **craft/templates** directory) inside Composer and using the [freeform.form render()](../templates/queries/formd#render) method. This approach is very portable / DRY, and works similar to an include. Then simply just insert 1 line of code: `{{ craft.freeform.form("formHandle").render() }}` in the template you want your form to load in.
-   :::
 
 ## Mailing List API Integrations
 

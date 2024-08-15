@@ -54,10 +54,12 @@ function UnmaintainedVersionLabel({
       description="The label used to tell the user that they're browsing an unmaintained doc version"
       values={{
         siteTitle,
-        versionLabel:<b className="ml-1">{versionMetadata.label}</b>,
+        versionLabel: <b className="">{versionMetadata.label}</b>,
       }}
     >
-      {'You are viewing an older version of the Freeform documentation ({versionLabel}).'}
+      {
+        'You are viewing an older version of the Freeform documentation ({versionLabel}).'
+      }
     </Translate>
   );
 }
