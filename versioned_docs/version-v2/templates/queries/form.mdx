@@ -63,9 +63,7 @@ So following this format: `{{ craft.freeform.form("FORMHANDLE", {OVERRIDES}) }}`
     - Overrides the `<form>` ID attribute.
   - `returnUrl` <a href="#param-returnurl" id="param-returnurl" class="docs-anchor">#</a>
     - Overrides the return URL for the form.
-      ::: v-pre
     - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value as of Freeform 2.5.27+ (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
-      :::
   - `method` <a href="#param-method" id="param-method" class="docs-anchor">#</a>
     - Overrides the `<form>` method attribute. `POST` by default.
   - `name` <a href="#param-name" id="param-name" class="docs-anchor">#</a>
