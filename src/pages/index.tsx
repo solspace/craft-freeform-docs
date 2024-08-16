@@ -15,7 +15,7 @@ import {
 
 function HomepageHeader() {
   return (
-    <header className="flex flex-col m-auto items-center gap-6 mt-32 max-w-7xl">
+    <header className="flex flex-col px-4 m-auto items-center gap-6 mt-32 max-w-7xl">
       <ThemedIdealImage
         sources={{
           light: FreeformIntroBlackPhoto,
@@ -34,6 +34,7 @@ function HomepageHeader() {
         customizable ready-to-go templates and also offers headless support.
       </p>
       <FlexButton
+        position="center"
         items={[
           { to: '/v5#reliability', label: 'Feature Tour' },
           { to: '/v5#compare', label: 'Compare' },
@@ -59,27 +60,29 @@ export default function Home(): JSX.Element {
     >
       <HomepageHeader />
       <main>
-        <section className="flex flex-col gap-2 items-center max-w-7xl m-auto my-20 py-10 bg-slate-200 dark:bg-black rounded-lg">
-          <h4 className="text-lg">
-            <i>Select a version below:</i>
-          </h4>
-          <div className="flex gap-4">
-            {[
-              { label: 'v5 (latest)', link: 'v5', latest: true },
-              { label: 'v4', link: 'v4' },
-              { label: 'v3', link: 'v2' },
-              { label: 'v2', link: 'v2' },
-              { label: 'v1', link: 'v1' },
-            ].map((item, index) => (
-              <PrimaryButtonWithLink
-                key={`${item.link}-${index}`}
-                to={item.link}
-                label={item.label}
-                classes={`${
-                  item?.latest ? '!bg-green-600' : '!bg-gray-800'
-                } hover:opacity-90`}
-              />
-            ))}
+        <section className="container">
+          <div className="flex flex-col gap-2 items-center my-20 py-10 lg:mx-60  bg-slate-200 dark:bg-black rounded-lg">
+            <h4 className="text-lg">
+              <i>Select a version below:</i>
+            </h4>
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                { label: 'v5 (latest)', link: 'v5', latest: true },
+                { label: 'v4', link: 'v4' },
+                { label: 'v3', link: 'v2' },
+                { label: 'v2', link: 'v2' },
+                { label: 'v1', link: 'v1' },
+              ].map((item, index) => (
+                <PrimaryButtonWithLink
+                  key={`${item.link}-${index}`}
+                  to={item.link}
+                  label={item.label}
+                  classes={`${
+                    item?.latest ? '!bg-green-600' : '!bg-gray-800'
+                  } hover:opacity-90`}
+                />
+              ))}
+            </div>
           </div>
         </section>
       </main>
