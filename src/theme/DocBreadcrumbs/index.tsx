@@ -125,11 +125,11 @@ export default function DocBreadcrumbs(): JSX.Element | null {
       </ul>
       <Link
         to={editUrl}
-        className={clsx(styles.editPage, 'edit-page text-sm sm:h-fit sm:w-fit')}
+        className={clsx(styles.editPage, 'edit-page text-xs sm:h-fit sm:w-fit')}
       >
         <img
           src={useBaseUrl('/card-icons/edit.svg')}
-          className="h-4 w-4"
+          className="h-3.5 w-3"
           alt="Suggest an Edit"
         />
 

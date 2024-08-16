@@ -34,7 +34,6 @@ function HomepageHeader() {
         customizable ready-to-go templates and also offers headless support.
       </p>
       <FlexButton
-        position="center"
         items={[
           { to: '/v5#reliability', label: 'Feature Tour' },
           { to: '/v5#compare', label: 'Compare' },

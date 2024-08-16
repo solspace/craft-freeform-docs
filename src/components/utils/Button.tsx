@@ -10,7 +10,6 @@ interface PrimaryButtonWithLink {
 
 interface ButtonProps {
   items: PrimaryButtonWithLink[];
-  position: string;
 }
 
 const PrimaryButtonWithLink: React.FC<PrimaryButtonWithLink> = ({
@@ -34,14 +33,10 @@ const PrimaryButtonWithLink: React.FC<PrimaryButtonWithLink> = ({
   );
 };
 
-const FlexButton: React.FC<ButtonProps> = ({ items, position }) => {
+const FlexButton: React.FC<ButtonProps> = ({ items }) => {
   return (
     <div className="flex flex-col items-center gap-6">
-      <div
-        className={`flex flex-wrap gap-3 ${
-          position ? `justify-${position}` : 'justify-start'
-        }`}
-      >
+      <div className="flex flex-wrap gap-3 justify-center">
         {items.map((item) => (
           <PrimaryButtonWithLink
             key={item.to}
