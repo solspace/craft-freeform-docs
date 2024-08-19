@@ -471,6 +471,7 @@ html[data-theme='light'] .feature-api-grid a:hover {
 
 .photo img {
   border-radius: 0.5rem;
+  width: inherit !important;
 }
 
 /* Iframe Video */
