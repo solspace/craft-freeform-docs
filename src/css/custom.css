@@ -536,6 +536,63 @@ html[data-theme='light'] .filter-icons {
   filter: brightness(0%);
 }
 
+/* FlexCards */
+.menu-grid {
+  display: grid !important;
+  grid-template-columns: 33.3% 33.3% 33.3% !important;
+  grid-template-rows: auto !important;
+  background: transparent !important;
+  margin: 30px 0 20px 0 !important;
+  padding: 0 !important;
+  animation-name: slide-left;
+  animation-duration: 1s;
+  z-index: 3;
+  position: relative;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 1800px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, 33.33%) !important;
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1799px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, 33.33%) !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, 50%) !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, 50%) !important;
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, 50%) !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, 50%) !important;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 599px) {
+  .menu-grid {
+    grid-template-columns: 100% !important;
+  }
+}
+
 /* Docs demo Freeform checkbox */
 
 label.docs-demo-freeform-checkbox {

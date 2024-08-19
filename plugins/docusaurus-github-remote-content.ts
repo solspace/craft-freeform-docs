@@ -67,6 +67,9 @@ function transformer(content: Content, data: string): string {
 
   let filteredData = filteredLines.join('\n');
 
+  // Remove [CRITICAL] text
+  filteredData = filteredData.replace(/\[CRITICAL\]/g, '');
+
   let df = '---\n';
   if (content.meta) {
     Object.entries(content.meta).forEach(

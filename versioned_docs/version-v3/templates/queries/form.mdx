@@ -24,9 +24,7 @@ Freeform will automatically insert javascript in the footer of the page for feat
 
 The _freeform.form_ template function is always constructed the same way. The first assumed parameter should contain the form ID or handle, and the second parameter (optional) should contain an object of overrides (typically used for applying a class globally to specific types of inputs, etc).
 
-:::v-pre
 So following this format: `{{ craft.freeform.form("FORMHANDLE", {OVERRIDES}) }}`, your code might look something like this:
-:::
 
 ```twig showLineNumbers
 {{ craft.freeform.form("myForm", {
@@ -65,9 +63,7 @@ So following this format: `{{ craft.freeform.form("FORMHANDLE", {OVERRIDES}) }}`
     - If using [AJAX](../templating/ajax-forms.md) and loading the same form more than once in the same template, be sure to specify this parameter for each instance so that AJAX submit can account for it correctly.
   - `returnUrl` <a href="#param-returnurl" id="param-returnurl" class="docs-anchor">#</a>
     - Overrides the return URL for the form.
-      :::v-pre
     - You can override the return URL manually with a hidden field or checkbox, etc named `formReturnUrl`, allowing for a more dynamic return URL dependent on the user's choice or action, as long as you hash the value as of Freeform 3.5.6+ (e.g. `<input type="checkbox" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />`).
-      :::
   - `method` <a href="#param-method" id="param-method" class="docs-anchor">#</a>
     - Overrides the `<form>` method attribute. `POST` by default.
   - `name` <a href="#param-name" id="param-name" class="docs-anchor">#</a>

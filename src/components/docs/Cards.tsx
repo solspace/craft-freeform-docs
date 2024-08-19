@@ -145,7 +145,7 @@ const Card: React.FC<CardProps> = ({
     return (
       <Link
         to={fullCardLink}
-        className="group flex flex-row gap-2  border rounded-lg p-3 m-1 max-w-80 2xl:max-w-full transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:m-0 hover:p-4"
+        className="group flex flex-row gap-2  border rounded-lg p-3 m-1 2xl:max-w-full transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:m-0 hover:p-4"
       >
         {iconSrc && (
           <div className="flex justify-center">
@@ -206,7 +206,7 @@ const Card: React.FC<CardProps> = ({
 
 const FlexCards: React.FC<CardSectionProps> = ({ items }) => {
   return (
-    <div className="flex flex-wrap py-6 2xl:grid 2xl:grid-cols-3 justify-center gap-3">
+    <div className="menu-grid">
       {items.map((item, index) => (
         <Card
           key={`flex-cards-${index}`}

@@ -35,8 +35,6 @@ Check out this documentation resource to troubleshoot common problems or find an
 
 The most common issue users run into is email notifications not sending out properly. Most commonly, this is due to a syntax error in their notification template, or an email server configuration issue.
 
-:::v-pre
-
 - Are you 100% certain the email notification is not in a spam folder?
 - Is the email address correct?
 - Is the form successfully being submitted? You can verify this by checking for submissions in the Freeform control panel. If you have the **Store Submitted Data** setting disabled for the form, consider enabling it temporarily to confirm this.
@@ -58,7 +56,6 @@ The most common issue users run into is email notifications not sending out prop
 - Can you send email with Craft's Email Testing feature? Freeform uses Craft's Email service, so if that doesn't work, then Freeform won't either. To check this, in the Control Panel go to **Settings** -> **Email**, then scroll down to the bottom of the page and click the _Test_ button. You can read more about [troubleshooting email errors on Craft's documentation page](https://craftcms.com/support/troubleshooting-email-errors).
 - To be extra thorough, you can also try sending notifications with Craft's simple [Contact Form](https://github.com/craftcms/contact-form) plugin.
 - Are you getting redirected correctly after form submission? Be sure that you don't have any routes or .htaccess rewrites that conflict with the form submission.
-  :::
 
 ## Form not submitting
 
