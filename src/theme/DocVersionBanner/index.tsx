@@ -143,28 +143,33 @@ function DocVersionBannerEnabled({
     latestDocSuggestion ?? getVersionMainDoc(latestVersionSuggestion);
 
   return (
-    <div
-      className={clsx(
-        className,
-        ThemeClassNames.docs.docVersionBanner,
-        'top-notice'
-      )}
-      role="alert"
-    >
-      <div className="flex flex-wrap ml-2">
-        <BannerLabel siteTitle={siteTitle} versionMetadata={versionMetadata} />
-
-        <div className="ml-1">
-          <LatestVersionSuggestionLabel
-            versionLabel={latestVersionSuggestion.label}
-            to={latestVersionSuggestedDoc.path}
-            onClick={() =>
-              savePreferredVersionName(latestVersionSuggestion.name)
-            }
+    <Link to={latestVersionSuggestedDoc.path}>
+      <div
+        className={clsx(
+          className,
+          ThemeClassNames.docs.docVersionBanner,
+          'top-notice'
+        )}
+        role="alert"
+      >
+        <div className="flex flex-wrap ml-2">
+          <BannerLabel
+            siteTitle={siteTitle}
+            versionMetadata={versionMetadata}
           />
+
+          <div className="ml-1">
+            <LatestVersionSuggestionLabel
+              versionLabel={latestVersionSuggestion.label}
+              to={latestVersionSuggestedDoc.path}
+              onClick={() =>
+                savePreferredVersionName(latestVersionSuggestion.name)
+              }
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
