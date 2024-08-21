@@ -471,7 +471,60 @@ html[data-theme='light'] .feature-api-grid a:hover {
 
 .photo img {
   border-radius: 0.5rem;
-  width: inherit !important;
+}
+
+@media (min-width: 550px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 40%) !important;
+  }
+}
+
+@media (min-width: 680px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 30%) !important;
+  }
+}
+
+@media (min-width: 800px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 20%) !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 10%) !important;
+  }
+}
+
+@media (min-width: 997px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 40%) !important;
+  }
+}
+
+@media (min-width: 1225px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 30%) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 20%) !important;
+  }
+}
+
+@media (min-width: 1500px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 10%) !important;
+  }
+}
+
+@media (min-width: 1700px) {
+  .photo--scaled img {
+    width: calc(var(--scale) + 0%) !important;
+  }
 }
 
 /* Iframe Video */

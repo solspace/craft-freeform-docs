@@ -3,10 +3,18 @@ import { ThemedComponent } from '@docusaurus/theme-common';
 import { Props as ThemedImageProps } from '@theme/ThemedImage';
 
 const Photo = (props) => {
-  const { className, ...otherProps } = props;
-  const combinedClassName = `${className ? `${className} ` : ''}photo`;
+  const { scale, ...otherProps } = props;
 
-  return <Image {...otherProps} className={combinedClassName} />;
+  // Set CSS variable for scale
+  const style = scale
+    ? ({ '--scale': `${scale}%` } as React.CSSProperties)
+    : {};
+
+  return (
+    <div className={`photo ${scale ? 'photo--scaled' : ''}`} style={style}>
+      <Image {...otherProps} />
+    </div>
+  );
 };
 
 const ThemedIdealImage = (props: ThemedImageProps): JSX.Element => {

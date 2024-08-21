@@ -520,7 +520,7 @@ yes
 
 A single checkbox field. The `field.type` property value is `checkbox` (for conditionals).
 
-<Photo img={CheckboxPhoto} alt="Checkbox" />
+<Photo scale={50} img={CheckboxPhoto} alt="Checkbox" />
 
 ### Settings
 
@@ -538,7 +538,7 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 
 A group of checkboxes. The `field.type` property value is `checkboxes` (for conditionals).
 
-<Photo img={CheckboxGroupPhoto} alt="Checkboxes field type" />
+<Photo scale={25} img={CheckboxGroupPhoto} alt="Checkboxes field type" />
 
 ### Settings
 
@@ -556,7 +556,7 @@ A group of checkboxes. The `field.type` property value is `checkboxes` (for cond
 
 A field that allows you to force a user to re-enter a matching value for another text input field, including [Password](#password) fields (e.g. "Confirm Email Address", "Confirm Password"). It runs through additional validation to make sure field values match. If not, it'll show an error. This field stores the data as well, in case that is important for your site's needs. The `field.type` property value is `confirm` (for conditionals).
 
-<Photo img={ConfirmPhoto} alt="Confirm field type" />
+<Photo scale={80} img={ConfirmPhoto} alt="Confirm field type" />
 
 ### Settings
 
@@ -567,7 +567,7 @@ A field that allows you to force a user to re-enter a matching value for another
 
 A complex date and/or time field. Can be used as Date only, Time only, or both. Many configuration and validation options available as well. The `field.type` property value is `datetime` (for conditionals).
 
-<Photo img={DateTimePhoto} alt="Date & Time field type" />
+<Photo scale={40} img={DateTimePhoto} alt="Date & Time field type" />
 
 ### Settings
 
@@ -617,7 +617,7 @@ A complex date and/or time field. Can be used as Date only, Time only, or both. 
 
 A select dropdown menu field. The `field.type` property value is `dropdown` (for conditionals).
 
-<Photo img={DropdownPhoto} alt="Dropdown field type" />
+<Photo scale={50} img={DropdownPhoto} alt="Dropdown field type" />
 
 ### Settings
 
@@ -635,7 +635,7 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 
 A single-line text input field that includes additional validation to expect a valid email address as well as the possibility of attaching an email notification to it. Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their email address twice. The `field.type` property value is `email` (for conditionals).
 
-<Photo img={EmailPhoto} alt="Email field type" />
+<Photo scale={40} img={EmailPhoto} alt="Email field type" />
 
 :::info
 It is required to use the **Email** field type if you wish for your users to receive an email notification when submitting the form and/or you're using an Email Marketing API integration.
@@ -658,7 +658,7 @@ It is required to use the **Email** field type if you wish for your users to rec
 
 A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html). The `field.type` property value is `file` (for conditionals).
 
-<Photo img={FileUploadPhoto} alt="File upload field type" />
+<Photo scale={30} img={FileUploadPhoto} alt="File upload field type" />
 
 ### Settings
 
@@ -715,7 +715,11 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 
 An advanced premium javascript-based file uploading field, using [Craft Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html). The `field.type` property value is `file-dnd` (for conditionals).
 
-<Photo img={FileDragDropPhoto} alt="File Upload Drag & Drop field type" />
+<Photo
+  scale={80}
+  img={FileDragDropPhoto}
+  alt="File Upload Drag & Drop field type"
+/>
 
 ### Settings
 
@@ -881,7 +885,7 @@ Freeform will load fields of this type at the beginning of the form, regardless 
 
 A special field type that allows you include HTML and Twig inside your form layout in the form builder. The `field.type` property value is `html` (for conditionals).
 
-<Photo img={HTMLPhoto} alt="HTML field type" />
+<Photo scale={60} img={HTMLPhoto} alt="HTML field type" />
 
 ### Notes
 
@@ -916,7 +920,7 @@ A field that allows you to collect hidden data in form submissions without a hid
 
 A multiple-select field. The `field.type` property value is `multiple-select` (for conditionals).
 
-<Photo img={MultipleSelectPhoto} alt="Multiple Select field type" />
+<Photo scale={35} img={MultipleSelectPhoto} alt="Multiple Select field type" />
 
 :::tip
 [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
@@ -932,7 +936,7 @@ A multiple-select field. The `field.type` property value is `multiple-select` (f
 
 A single-line `number` type input field that is validated to contain certain numbers only. The `field.type` property value is `number` (for conditionals).
 
-<Photo img={NumberPhoto} alt="Number field type" />
+<Photo scale={30} img={NumberPhoto} alt="Number field type" />
 
 :::tip
 [Want to display a Number field as a range slider?](../guides/field-styling/range-slider-number)
@@ -962,7 +966,7 @@ A single-line `number` type input field that is validated to contain certain num
 
 A special field that allows for flexible opinion scoring using Freeform's built in CSS. The `field.type` property value is `opinion-scale` (for conditionals). This field type is included automatically with the _Pro_ edition of Freeform.
 
-<Photo img={OpinionScalePhoto} alt="Opinion scale field type" />
+<Photo scale={50} img={OpinionScalePhoto} alt="Opinion scale field type" />
 
 ### Settings
 
@@ -1010,7 +1014,7 @@ To manually render an Opinion Scale field to use your own styles, your code migh
 
 A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/speciality-forms/user-registration-forms) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
 
-<Photo img={PasswordPhoto} alt="Password field type" />
+<Photo scale={30} img={PasswordPhoto} alt="Password field type" />
 
 ### Settings<Badge type="feature" text="New in 5.2+" />
 
@@ -1027,7 +1031,7 @@ A special field type that allows you to securely collect a password from a submi
 
 A `tel` type input field that is validated to contain phone numbers only, based on a configured pattern. The `field.type` property value is `phone` (for conditionals).
 
-<Photo img={PhonePhoto} alt="Phone field type" />
+<Photo scale={80} img={PhonePhoto} alt="Phone field type" />
 
 ### Settings
 
@@ -1043,7 +1047,7 @@ A `tel` type input field that is validated to contain phone numbers only, based 
 
 A group of radio options. The `field.type` property value is `radios` (for conditionals).
 
-<Photo img={RadiosPhoto} alt="Radios field type" />
+<Photo scale={25} img={RadiosPhoto} alt="Radios field type" />
 
 ### Settings
 
@@ -1063,7 +1067,7 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 A special field that allows for star ratings using Freeform's built-in CSS. The `field.type` property value is `rating` (for conditionals).
 This field type is included automatically with the _Pro_ edition of Freeform.
 
-<Photo img={RatingPhoto} alt="Rating field type" />
+<Photo scale={25} img={RatingPhoto} alt="Rating field type" />
 
 ### Settings
 
@@ -1092,7 +1096,7 @@ To manually render a Rating field using your own styles, your code might look so
 
 An input field that is validated based on the specified regex pattern (e.g. `/^[a-zA-Z0-9]*$/`). The `field.type` property value is `regex` (for conditionals).
 
-<Photo img={RegexPhoto} alt="Regex field type" />
+<Photo scale={30} img={RegexPhoto} alt="Regex field type" />
 
 ### Settings
 
@@ -1113,7 +1117,7 @@ An input field that is validated based on the specified regex pattern (e.g. `/^[
 
 A special field type that allows you include rich text inside your form layout in the form builder. The `field.type` property value is `rich-text` (for conditionals).
 
-<Photo img={HTMLPhoto} alt="Html field type" />
+<Photo scale={70} img={HTMLPhoto} alt="Html field type" />
 
 ### Notes
 
@@ -1128,7 +1132,7 @@ A special field type that allows you include rich text inside your form layout i
 
 A field that allows users to handwrite signatures with their mouse inside your form. The `field.type` property value is `signature` (for conditionals).
 
-<Photo img={SignaturePhoto} alt="Signature field type" />
+<Photo scale={30} img={SignaturePhoto} alt="Signature field type" />
 
 ### Settings
 
@@ -1151,7 +1155,7 @@ A field that allows users to handwrite signatures with their mouse inside your f
 
 Submit buttons are handled automatically by Freeform. They are automatically inserted at the end of your form in the form builder. This includes the **Submit/Continue**, **Previous** (where applicable), and **Save & Continue Later** buttons (where available).
 
-<Photo img={SubmitPhoto} alt="Submit Buttons field type" />
+<Photo scale={20} img={SubmitPhoto} alt="Submit Buttons field type" />
 
 ### Settings
 
@@ -1250,7 +1254,11 @@ And finally, for maximum control, you can use a property attributes render inste
 
 This feature allows users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later/).
 
-<Photo img={SaveContinueLaterPhoto} alt="Save & Continue later field type" />
+<Photo
+  scale={45}
+  img={SaveContinueLaterPhoto}
+  alt="Save & Continue later field type"
+/>
 
 #### Additional Configuration
 
@@ -1273,7 +1281,7 @@ When the [Stripe Payments](../integrations/stripe-payments) integration is confi
 
 A field that allows you to collect and handle repeating data. The `field.type` property value is `table` (for conditionals).
 
-<Photo img={TablePhoto} alt="Table field type" />
+<Photo scale={80} img={TablePhoto} alt="Table field type" />
 
 ### Settings
 
@@ -1427,7 +1435,7 @@ A complete example might look like:
 
 A single-line text input field. The `field.type` property value is `text` (for conditionals).
 
-<Photo img={TextFieldPhoto} alt="Text field type" />
+<Photo scale={60} img={TextFieldPhoto} alt="Text field type" />
 
 :::tip
 [Want to display a Text input as a Color Picker?](../guides/field-styling/color-picker-text)
@@ -1437,7 +1445,7 @@ A single-line text input field. The `field.type` property value is `text` (for c
 
 A multi-line text input field. The `field.type` property value is `textarea` (for conditionals).
 
-<Photo img={TextareaPhoto} alt="Textare field type" />
+<Photo scale={50} img={TextareaPhoto} alt="Textare field type" />
 
 ### Settings
 
@@ -1452,7 +1460,7 @@ A multi-line text input field. The `field.type` property value is `textarea` (fo
 
 A `url` type input field that checks to see if the URL specified has valid syntax (`http://`, `https://`, `ftp://`, etc). The `field.type` property value is `website` (for conditionals).
 
-<Photo img={WebsitePhoto} alt="Website field type" />
+<Photo scale={30} img={WebsitePhoto} alt="Website field type" />
 
 ## Populating Fields with Elements & Predefined Options<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup><Badge type="feature" text="Improved in 5.0+" />
 
