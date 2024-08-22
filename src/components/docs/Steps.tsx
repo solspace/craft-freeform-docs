@@ -43,13 +43,15 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
   }, [stepTitle]);
 
   return (
-    <div className={`flex mb-8 step ${isDone ? 'step-active' : ''}`}>
+    <div className={`relative mb-8 step ${isDone ? 'step-active' : ''}`}>
       {stepNumber && (
-        <div className="flex flex-col items-center mr-6 step-number-wrapper">
-          <div className="flex w-8 h-8 items-center justify-center text-sm font-bold border rounded-lg bg-[#ff6624] text-white dark:text-black step-number">
-            {stepNumber}
+        <div className="absolute h-full">
+          <div className="flex flex-col items-center mr-6 step-number-wrapper h-full">
+            <div className="flex w-8 h-8 items-center justify-center text-sm font-bold border rounded-lg bg-[#ff6624] text-white dark:text-black step-number">
+              {stepNumber}
+            </div>
+            {!isDone && <div className="w-px min-h-12 relative step-line" />}
           </div>
-          {!isDone && <div className="w-px min-h-12 relative step-line" />}
         </div>
       )}
       <div
@@ -66,7 +68,7 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
             Click here to toggle
           </div>
         )}
-        {children}
+        <div className="ml-12">{children}</div>
       </div>
     </div>
   );

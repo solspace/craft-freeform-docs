@@ -467,6 +467,7 @@ html[data-theme='light'] .feature-api-grid a:hover {
 /* Photo */
 .photo {
   margin-bottom: 1rem;
+  width: inherit !important;
 }
 
 .photo img {
