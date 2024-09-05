@@ -11,7 +11,7 @@ If you wish to extend the capabilities of Forms in Freeform, feel free to use an
 This event is triggered once a form has completed all steps and a submission is being stored.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\SubmitEvent;
 
 Event::on(
@@ -31,7 +31,7 @@ Event::on(
 This event is triggered once a form has completed all steps and a submission has been stored and integrations have completed.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\SubmitEvent;
 
 Event::on(
@@ -51,7 +51,7 @@ Event::on(
 This event is called whenever a form is being validated. Use this event to attach your own validation logic to any form.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\ValidationEvent;
 
 Event::on(
@@ -79,7 +79,7 @@ Event::on(
 This event is called after a form has been validated. Use this event to perform some actions after form validation.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\ValidationEvent;
 
 Event::on(
@@ -98,7 +98,7 @@ Event::on(
 Use this event to attach your own HTML, CSS or JS to the output of the opening form tag. Most commonly used to attach some sort of additional hidden values or scripts.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\RenderTagEvent;
 
 // Add output before the <form> opening tag is rendered
@@ -144,7 +144,7 @@ Event::on(
 Use this event to attach your own HTML, CSS or JS to the output of the closing form tag. Most commonly used to attach some sort of additional hidden values or scripts.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\RenderTagEvent;
 
 Event::on(
@@ -173,7 +173,7 @@ Event::on(
 This event lets you attach custom attributes to all or specific forms.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\AttachFormAttributesEvent;
 
 Event::on(
@@ -204,7 +204,7 @@ Event::on(
 This event lets you inject your own properties on forms, to expand their application.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\GetCustomPropertyEvent;
 
 Event::on(
@@ -226,7 +226,7 @@ Event::on(
 This event is called when the return URL has been generated and is ready to be used to redirect the page.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\ReturnUrlEvent;
 
 Event::on(
@@ -249,7 +249,7 @@ Event::on(
 You can attach your own info to the JSON payload that is returned when calling `$form->json()`. Most commonly used in Twig to create an endpoint for fetching fresh form and CSRF tokens when using caching in the frontend templates. (E.g. `freeform.form('myForm')|json_encode`)
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\OutputAsJsonEvent;
 
 Event::on(
@@ -274,7 +274,7 @@ Event::on(
 You can attach extra data to the AJAX response when forms are submitted by using this event.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\PrepareAjaxResponsePayloadEvent;
 
 Event::on(
@@ -296,7 +296,7 @@ Use these events to perform actions when the submit request is being processed.
 The **before handle request** event happens as soon as the processing starts, so you can update your form with your custom information that will be later necessary during validation, etc. Freeform uses this event to determine which session storage mechanism is used, adds additional validation based on it and populates the form values based on it.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\HandleRequestEvent;
 
 Event::on(
@@ -312,7 +312,7 @@ Event::on(
 The **after handle request** event happens after the form has been processed, validated and ready for generating a submission. Freeform uses this event to store the session context with the updated values from POST.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\HandleRequestEvent;
 
 Event::on(
@@ -330,7 +330,7 @@ Event::on(
 This event is triggered once a form is submitted fully and it has to be reset and prepared for the next round. While this happens after every form finalization, this is useful only for AJAX forms, which never refresh the page. Freeform uses this to clear the stored values of previous requests for multi-page forms.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\ResetEvent;
 
 Event::on(
@@ -349,7 +349,7 @@ Event::on(
 This event is triggered after the form has been reset:
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\ResetEvent;
 
 Event::on(
@@ -368,7 +368,7 @@ Event::on(
 This event is called after handling the request and after resetting the form. Freeform uses this event to store the session context in either the PHP's session or the database table, depending on the user settings.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\PersistStateEvent;
 
 Event::on(
@@ -387,7 +387,7 @@ Event::on(
 This event is called when the form should be sending email notifications. You can use this event to send your own emails.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\Form;
+use Solspace\Freeform\Form\Form;
 use Solspace\Freeform\Events\Forms\SendNotificationsEvent;
 
 Event::on(

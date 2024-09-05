@@ -45,7 +45,7 @@ import GroupFieldsVideo from './assets/videos/group-fields.mp4';
 
 # Fields
 
-Freeform features its own set of robust field types. The form builder displays a list of available field types which can then be added to forms indefinitely. Fields are specific to each form, but can also be saved or searched upon to be reused in other forms.
+Freeform features its own set of robust field types. The form builder displays a list of available field types which can then be added to forms indefinitely. Fields are specific to each form, but can also be saved as favorites or searched upon to be reused in other forms.
 
 <FlexCards
   items={[
@@ -130,17 +130,17 @@ Freeform features its own set of robust field types. The form builder displays a
 
 There is a standard number of settings available to all forms (with some exceptions). Every form field has the ability for you to do the following:
 
-| Setting                 | Template&nbsp;Usage                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ----------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Label**               | `label`                                                              | The label for the field. This can be changed per form if you wish.                                                                                                                                                                                                                                                                                                                                                                                      |
-| **Handle**              | `handle`                                                             | How the field may be called in templates, if necessary. You may also override this value per form if you wish.                                                                                                                                                                                                                                                                                                                                          |
-| **Required**            | `required`                                                           | Toggle if the field requires a value to submit the form successfully.                                                                                                                                                                                                                                                                                                                                                                                   |
-| **Instructions**        | `instructions`                                                       | Specify intructions for the field if you wish.                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Default Value**       | `defaultValue`                                                       | For applicable fields, you can set a default value or selected option for the field.                                                                                                                                                                                                                                                                                                                                                                    |
-| **Placeholder**         | `placeholder`                                                        | Specify placeholder text for the field, if applicable.                                                                                                                                                                                                                                                                                                                                                                                                  |
-| **Maximum&nbsp;Length** | `maxlength`                                                          | The maximum number of characters for the field's value. Applicable only to the following field types: <ul><li>[Confirm](#confirm)</li><li>[Date & Time](#date-time)</li><li>[Email](#email)</li><li>[Hidden](#hidden)</li><li>[Invisible](#invisible)</li><li>[Number](#number)</li><li>[Password](#password)</li><li>[Phone](#phone)</li><li>[Regex](#regex)</li><li>[Text](#text)</li><li>[Textarea](#textarea)</li><li>[Website](#website)</li></ul> |
-| **Attribute Editor**    |                                                                      | Apply any kind of attribute on the input, label, error, instruction in Freeform's automated rendering of the form.                                                                                                                                                                                                                                                                                                                                      |
-| **Options**             | `options`<ul><li>`label`</li><li>`value`</li><li>`checked`</li></ul> | Specify the option labels and values for applicable field types. Available only for the following field types: <ul><li>[Checkboxes](#checkboxes)</li><li>[Dropdown](#dropdown)</li><li>[Multiple Select](#multiple-select)</li><li>[Radios](#radios)</li></ul>                                                                                                                                                                                          |
+| Setting                 | Template&nbsp;Usage                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Label**               | `label`                                            | The label for the field. This can be changed per form if you wish.                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Handle**              | `handle`                                           | How the field may be called in templates, if necessary. You may also override this value per form if you wish.                                                                                                                                                                                                                                                                                                                                          |
+| **Required**            | `required`                                         | Toggle if the field requires a value to submit the form successfully.                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Instructions**        | `instructions`                                     | Specify intructions for the field if you wish.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Default Value**       | `defaultValue`                                     | For applicable fields, you can set a default value or selected option for the field.                                                                                                                                                                                                                                                                                                                                                                    |
+| **Placeholder**         | `placeholder`                                      | Specify placeholder text for the field, if applicable.                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Maximum&nbsp;Length** | `maxlength`                                        | The maximum number of characters for the field's value. Applicable only to the following field types: <ul><li>[Confirm](#confirm)</li><li>[Date & Time](#date-time)</li><li>[Email](#email)</li><li>[Hidden](#hidden)</li><li>[Invisible](#invisible)</li><li>[Number](#number)</li><li>[Password](#password)</li><li>[Phone](#phone)</li><li>[Regex](#regex)</li><li>[Text](#text)</li><li>[Textarea](#textarea)</li><li>[Website](#website)</li></ul> |
+| **Attribute Editor**    |                                                    | Apply any kind of attribute on the input, label, error, instruction in Freeform's automated rendering of the form.                                                                                                                                                                                                                                                                                                                                      |
+| **Options**             | `options`<ul><li>`label`</li><li>`value`</li></ul> | Specify the option labels and values for applicable field types. Available only for the following field types: <ul><li>[Checkboxes](#checkboxes)</li><li>[Dropdown](#dropdown)</li><li>[Multiple Select](#multiple-select)</li><li>[Radios](#radios)</li></ul>                                                                                                                                                                                          |
 
 ### Field Encryption<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
 
@@ -528,6 +528,10 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
   - Has a default value of **Yes**, which can be overwritten with any value you want. No matter what value is set manually on the front end, Freeform will interpret it as checked and record the value specified in the form builder.
 - May be checked by default.
 - Can be used as a [User Select](./email-notifications/#user-select) email notification.
+
+### Templating
+
+- `checkedByDefault` (e.g. `1`)
 
 ### User Guides
 
@@ -1290,26 +1294,70 @@ A field that allows you to collect and handle repeating data. The `field.type` p
   - Checkbox
     - When using _Checkbox_, specify a value you'd like to represent that checkbox when checked.
   - Dropdown
-    - When using _Dropdown_, specify multiples separated by the `;` character, e.g. `apples;oranges:cherries`.
+    - When using _Dropdown_, specify multiples separated by the `;` character, e.g. `apples;oranges;cherries`.
 - Check off _Use built-in Table JS?_ checkbox to have Freeform include JS in the form that validates the format and auto-inserts the extra characters like `(`, `-`, `+` etc).
 
 ### Rendering
 
+The Table field type includes a `addButtonLabel` and `removeButtonLabel` parameter to override the Add/Remove row button language. It also includes a special `tableAttributes` option to offer finer control of classes and attributes on each part of the Table field.
+
 Here's how you can use `field.render` for an automated approach to render your Table field inside your formatting templates:
+
+#### Bootstrap 5 example
 
 ```twig showLineNumbers
 {{ field.render({
-    class: "table",
-    label: "table-label",
-    row: "table-row",
-    column: "table-col",
     addButtonLabel: "Add +",
-    addButtonClass: "btn btn-sm btn-primary",
-    removeButtonLabel: "x",
-    removeButtonClass: "btn btn-sm btn-danger",
-    tableTextInputClass: "form-control",
-    tableDropdownInputClass: "form-control",
-    tableCheckboxInputClass: "form-check-input"
+    removeButtonLabel: "X",
+    tableAttributes: {
+        table: { class: "table table-sm table-borderless" },
+        input: { class: "form-control" },
+        dropdown: { class: "form-control form-select" },
+        checkbox: { class: "form-check-input" },
+        removeButton: { class: "btn btn-sm btn-danger" },
+        addButton: { class: "btn btn-sm btn-success" },
+    },
+}) }}
+```
+
+#### Tailwind 3 example
+
+```twig showLineNumbers
+{% set tableColumnCount = field.tableLayout|length %}
+
+{{ field.render({
+    tableAttributes: {
+        table: { class: "table" },
+        row: { class: "table-row" },
+        column: {
+            class: [
+                tableColumnCount in [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] ? "w-1/" ~ tableColumnCount,
+                tableColumnCount == 1 ? "w-full",
+                "table-col pb-1"
+            ]
+        },
+        label: { class: "text-left" },
+        input: {
+            class: [
+                field.attributes.input.get("class"),
+                "mr-5 w-11/12 block"
+            ]
+        },
+        dropdown: {
+            class: [
+                field.attributes.input.get("class"),
+                "mr-5 w-11/12 block"
+            ]
+        },
+        checkbox: {
+            class: [
+                field.attributes.input.get("class"),
+                "mr-5"
+            ]
+        },
+        removeButton: { class: "bg-red-500 hover:bg-red-700 text-white font-normal py-1 px-3 rounded" },
+        addButton: { class: "bg-green-500 hover:bg-green-700 text-white font-normal py-1 px-3 rounded mt-2" },
+    },
 }) }}
 ```
 

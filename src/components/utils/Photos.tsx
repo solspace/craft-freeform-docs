@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from '@theme/IdealImage';
 import { ThemedComponent } from '@docusaurus/theme-common';
 import { Props as ThemedImageProps } from '@theme/ThemedImage';
@@ -5,7 +6,6 @@ import { Props as ThemedImageProps } from '@theme/ThemedImage';
 const Photo = (props) => {
   const { scale, ...otherProps } = props;
 
-  // Set CSS variable for scale
   const style = scale
     ? ({ '--scale': `${scale}%` } as React.CSSProperties)
     : {};
@@ -16,6 +16,28 @@ const Photo = (props) => {
     </div>
   );
 };
+
+// const HoverPhotoChange = (props) => {
+//   const { normalImg, hoverImg, normalImgAlt, hoverImgAlt, ...otherProps } =
+//     props;
+//   const [isHovered, setIsHovered] = useState(false);
+
+//   console.log(normalImg);
+
+//   return (
+//     <div
+//       className="photo"
+//       onMouseEnter={() => setIsHovered(true)}
+//       onMouseLeave={() => setIsHovered(false)}
+//     >
+//       <img
+//         src={isHovered ? normalImg?.src?.src : hoverImg}
+//         alt={isHovered ? hoverImgAlt?.src?.src : normalImgAlt}
+//         {...otherProps}
+//       />
+//     </div>
+//   );
+// };
 
 const ThemedIdealImage = (props: ThemedImageProps): JSX.Element => {
   const { sources, className: parentClassName, alt, ...propsRest } = props;

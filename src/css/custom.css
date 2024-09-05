@@ -474,6 +474,14 @@ html[data-theme='light'] .feature-api-grid a:hover {
   border-radius: 0.5rem;
 }
 
+.tab-items .photo {
+  margin-bottom: 0;
+}
+
+.tab-items .photo img {
+  border-radius: 0;
+}
+
 @media (min-width: 550px) {
   .photo--scaled img {
     width: calc(var(--scale) + 40%) !important;

@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import { Photo } from '@site/src/components/utils';
 
 import JSIcon from '@site/static/icons/js.png';
+import HtmlIcon from '@site/static/icons/html.png';
 import CSSIcon from '@site/static/icons/css.png';
 import TwigIcon from '@site/static/icons/twig.png';
 import FolderIcon from '@site/static/icons/folder.png';
@@ -36,6 +37,7 @@ const TabItems = ({ children }) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const iconMap = {
+    html: HtmlIcon,
     js: JSIcon,
     css: CSSIcon,
     twig: TwigIcon,
@@ -50,7 +52,7 @@ const TabItems = ({ children }) => {
   );
 
   return (
-    <div className="">
+    <div className="tab-items">
       <div className="border-b border-gray-200">
         <nav className="flex  bg-slate-100 dark:bg-slate-800 ">
           <div className="flex flex-wrap rounded-t-lg bg-slate-200 dark:bg-slate-700 ">
@@ -67,7 +69,7 @@ const TabItems = ({ children }) => {
                     onClick={() => setActiveTab(index)}
                   >
                     <Photo
-                      className="w-[18px] h-[18px]"
+                      className="w-[18px] h-[18px] !mb-0"
                       img={iconMap[child.props.filetype] || TwigIcon}
                       alt={child.props.filetype}
                     />

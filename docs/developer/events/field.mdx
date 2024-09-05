@@ -13,7 +13,7 @@ To extend Freeform Field functionality use the following events:
 To add attributes to field components, you need to extend this event and modify the `attributes` object on it.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\FieldInterface;
+use Solspace\Freeform\Fields\FieldInterface;
 use Solspace\Freeform\Events\Fields\FieldRenderEvent;
 use Solspace\Freeform\Fields\TextField;
 
@@ -50,7 +50,7 @@ Event::on(
 This event is called when a `POST` value is being assigned to a field. Use this event to transform a value before it is set for the field. Freeform uses this event to handle Drag & Drop file upload values transforming their UID's to ID's.
 
 ```php showLineNumbers
-use Solspace\Freeform\Library\Composer\Components\FieldInterface;
+use Solspace\Freeform\Fields\FieldInterface;
 use Solspace\Freeform\Events\Fields\TransformValueEvent;
 use Solspace\Freeform\Fields\TextField;
 

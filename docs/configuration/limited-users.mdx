@@ -8,10 +8,18 @@ import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 
 import LimitedUsersSettingsPhoto from './assets/img/limited-users-settings.png';
 import LimitedUsersPermissionPhoto from './assets/img/limited-users-permission.png';
+import NotificationAfterPhoto from './assets/img/notifications-after.png';
+import NotificationBeforePhoto from './assets/img/notifications-before.png';
+import LayoutBeforePhoto from './assets/img/layout-before.png';
+import LayoutAfterPhoto from './assets/img/layout-after.png';
+import SettingsAfterPhoto from './assets/img/settings-after.png';
+import SettingsBeforePhoto from './assets/img/settings-before.png';
+import PropertyEditorAfterPhoto from './assets/img/property-editor-after.png';
+import PropertyEditorBeforePhoto from './assets/img/property-editor-before.png';
 
-# Limited Users<Badge type="feature" text="Coming Soon!" />
+# Limited Users<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.4+" />
 
-With the _Limited Users_ feature, you can easily customize the form builder experience for specific users or groups. You have the ability to choose which [field types](../forms/fields/) are available and which settings and page tabs are visible. This ensures that these users are not overwhelmed by advanced settings and prevents them from accidentally breaking your forms or site.
+With the _Limited Users_ feature, you can easily customize the form builder experience for specific users or groups. You have the ability to choose which [field types](../forms/fields/) are available and which settings and page tabs are visible. This ensures that these users are not overwhelmed by advanced settings and prevents them from accidentally breaking your forms or site. You can also create as many Limited Users permission groups as you like.
 
 Although Freeform offers permissions through regular [Craft User Group Permissions](./permissions/) to limit access to the Freeform control panel, the _Limited Users_ feature allows for more precise control within the [form builder](../forms/builder/) itself.
 
@@ -24,8 +32,8 @@ Although Freeform offers permissions through regular [Craft User Group Permissio
 
 <VerticalStepWrapper>
 <StepMarkdown>
-Open up the **Limited Users** settings page _(Freeform → Settings → Limited Users)_. Freeform includes a **Suggested Setup** for each area of the builder and will be configured to that by default.
-
+1. Open up the **Limited Users** settings page _(Freeform → Settings → Limited Users)_.
+2. Click on the **New Group** button to create a new Limited User permission layer.
 </StepMarkdown>
 <StepMarkdown>
 Carefully review and adjust the settings as necessary.
@@ -48,9 +56,10 @@ Go to the [Form Builder settings](./settings/#form-builder) area _(Freeform → 
 
 </StepMarkdown>
 <StepMarkdown>
-Apply Freeform's _Limited User_ permission to any users or user groups that require it.
+Apply Freeform's newly created _Limited Users_ permission group(s) to any users or user groups that require it.
 
 <Photo
+  scale="45"
   img={LimitedUsersPermissionPhoto}
   alt="Freeform Limited User Permission "
 />

@@ -296,13 +296,13 @@ Be sure to back up the database before proceeding.
 Open your Craft site's main `composer.json` file and adjust the version number for Freeform ([see guide below](#understanding-versions-and-composer-update)).
 
 ```diff
-    "require": {
-        "craftcms/cms": "^4.0.0",
-        "vlucas/phpdotenv": "^5.4.0",
--       "solspace/craft-freeform": "^5.0.0",
-+       "solspace/craft-freeform": "^5.1.0",
-        "solspace/craft-calendar": "^4.0.0"
-    },
+"require": {
+    "craftcms/cms": "^5.0.0",
+    "vlucas/phpdotenv": "^5.4.0",
+-   "solspace/craft-freeform": "^5.0.0",
++   "solspace/craft-freeform": "^5.3.0",
+    "solspace/craft-calendar": "^5.0.0"
+},
 ```
 
 </StepMarkdown>
@@ -456,36 +456,48 @@ composer remove solspace/craft-freeform
   - `1.0.0` - means exactly & only this version
   - `~1.0.0` - means this version & any _patch_ release (up to `1.0.99̅`)
   - `^1.0.0` - means this version & any _minor_ release (up to `1.99̅.99̅`)
-    - Specifying `"solspace/craft-freeform": "^5.0.0",` for example, would always get you the latest version of Freeform **4.x** (e.g. `5.1.9`), but never the next _major_ version of Freeform like **6.x**.
+    - Specifying `"solspace/craft-freeform": "^5.0.0",` for example, would always get you the latest version of Freeform **5.x** (e.g. `5.1.9`), but never the next _major_ version of Freeform like **6.x**.
 
 Your final `composer.json` file might have something like this:
 
 ```json {4}
 "require": {
-    "craftcms/cms": "^4.0.0",
+    "craftcms/cms": "^5.0.0",
     "vlucas/phpdotenv": "^5.4.0",
     "solspace/craft-freeform": "^5.0.0",
-    "solspace/craft-calendar": "^4.0.0",
+    "solspace/craft-calendar": "^5.0.0",
 },
 ```
 
 ### Getting Latest Unreleased Version
 
-Sometimes you need to update your site to use the latest _unreleased_ changes in the Freeform repository. This could be in the main branch or a temporary fix/feat branch, e.g. `v5` or `feat/SFT-123`. To access them, you would prefix the branch with `dev-` + the exact branch path/name. We also recommend that you run those changes as a "dummy" next version number and append a beta version. For example, if the current released version of Freeform is `5.1.4` and there are new unreleased changes in the `v5` branch you want to grab, go up 1 patch version number + `-beta.1`. In this case, we would assume `5.1.5` was the next version, so we'd create the version number: `5.1.5-beta.1`. Altogether, we'd be specifying: `dev-v5 as 5.1.5-beta.1`.
+Sometimes you need to update your site to use the latest _unreleased_ changes in the Calendar repository. This could be in the main branch or a temporary fix/feat branch, e.g. `v5` or `feat/SFT-123`.
 
+To access the latest unreleased version of Calendar (`v5`), you would set the version in your `composer.json` file to just `v5.x-dev` and run `composer update` after. Your final `composer.json` file might have something like this:
+
+```json {4}
+"require": {
+    "craftcms/cms": "^5.0.0",
+    "vlucas/phpdotenv": "^5.4.0",
+    "solspace/craft-calendar": "v5.x-dev",
+    "solspace/craft-freeform": "^5.0.0",
+},
+```
+
+To access an unreleased version from a different branch (e.g. `feat/SFT-123`), you would prefix the branch with `dev-` + the exact branch path/name. We also recommend that you run those changes as a "dummy" next version number and append a beta version. For example, if the current released version of Freeform is `5.3.4` and there are new unreleased changes in the `feat/SFT-123` branch you want to grab, go up 1 patch version number + `-beta.1`. In this case, we would assume `5.3.5` was the next version, so we'd create the version number: `5.3.5-beta.1`. Altogether, we'd be specifying: `dev-feat/SFT-123 as 5.3.5-beta.1`.
 Your final `composer.json` file might have something like this:
 
 ```json {4}
 "require": {
-    "craftcms/cms": "^4.0.0",
+    "craftcms/cms": "^5.0.0",
     "vlucas/phpdotenv": "^5.4.0",
-    "solspace/craft-freeform": "dev-v5 as 5.1.5-beta.1",
-    "solspace/craft-calendar": "^4.0.0",
+    "solspace/craft-freeform": "dev-feat/SFT-123 as 5.3.5-beta.1",
+    "solspace/craft-calendar": "^5.0.0",
 },
 ```
 
 :::info
-If there are more unreleased changes to the repo in the future, you could change `-beta.1` to `-beta.2` and so on. For example, `dev-v5 as 5.1.5-beta.2`.
+If there are more unreleased changes to the repo in the future, you could change `-beta.1` to `-beta.2` and so on. For example, `dev-feat/SFT-123 as 5.3.5-beta.2`.
 :::
 
 ## Purchasing

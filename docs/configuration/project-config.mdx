@@ -13,7 +13,7 @@ If you wish to manage the configuration of Freeform settings via Craft's [Projec
 <div className="flex overflow-scroll">
 <div>
 
-```yaml {2,9,15,18,23,29,35,39,47,51,59,76,85} showLineNumbers
+```yaml {2,9,15,18,23,29,37,41,49,53,63,80,89} showLineNumbers
 freeform:
   # GENERAL INFO
   edition: pro
@@ -46,10 +46,12 @@ freeform:
     autoScrollToErrors: true
     autoScroll: true
     rememberPageSubmitOrder: true
+    useQueueForEmailNotifications: true
+    useQueueForIntegrations: true
 
     # FREEFORM SCRIPTS
     scriptInsertLocation: footer
-    scriptInsertType: pointers
+    scriptInsertType: files
 
     # FORM SESSIONS
     sessionContext: payload
@@ -69,6 +71,8 @@ freeform:
     emailTemplateStorageType: files_database
     emailTemplateDefault: files
     allowFileTemplateEdit: true
+    defaultFromEmail: '{{ craft.app.projectConfig.get("email.fromEmail") }}'
+    defaultFromName: '{{ craft.app.projectConfig.get("email.fromName") }}'
     successTemplateDirectory: _freeform/success/
 
     # SPAM BLOCKING
@@ -179,7 +183,7 @@ freeform:
 </div>
 <div className="no-copy">
 
-```_ {2,9,15,18,23,29,35,39,47,51,59,76,85}
+```_ {2,9,15,18,23,29,37,41,49,53,63,80,89}
 
 GENERAL INFO
 ← Options are `express`, `lite` and `pro`.
@@ -213,10 +217,13 @@ FORM SUBMIT BEHAVIOR
 ← Automatically Scroll to Form on Errors and Multipage forms
 ← Automatically Scroll to top of the Form on AJAX submit
 ← Remember the Page Order in Multi-page forms (Conditional Rules page skipping)
+← Use Queue for Email Notifications
+← Use Queue for Integrations
+
 
 FREEFORM SCRIPTS
-← Freeform Script Insertion Location. Options are 'form', 'footer' or 'manual'.
-← Freeform Script Insert Type. Options are: 'pointers' (recommended), 'files' or 'inline'.
+← Script Insert Location. Options are 'footer' (recommended), 'header', 'form', or 'manual'.
+← Script Insert Type. Options are: 'files' (recommended) or 'inline'.
 
 FORM SESSIONS
 ← Freeform Session Context. Options are: 'payload' (recommended), 'session' (PHP) or 'database' (DB Table).
@@ -236,6 +243,8 @@ TEMPLATE MANAGER
   ← Template Storage Type
   ← Default Email Template Creation Method
   ← Allow File-based Email Templates to be created inside the Control Panel
+  ← Default 'From Email' for new Email Notification templates
+← Default 'From Name' for new Email Notification templates
 ← Success Templates Directory Path
 
 SPAM PROTECTION

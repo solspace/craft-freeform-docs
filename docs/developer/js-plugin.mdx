@@ -76,41 +76,99 @@ document.addEventListener('freeform-on-submit', function (event) {
 
 You can add your custom form handler scripts anywhere in the page. The `freeform-ready` event is triggered for each form and dispatched via the `form` and `document` elements. The events are dispatched once the DOM is ready. If you add a form to the page via AJAX, it will automatically get initialized with the `Freeform` plugin and will also trigger the `freeform-ready` event.
 
-## Loading Freeform JS manually<Badge type='feature' text='Improved in 5.3+' />
+## Loading Freeform JS manually<Badge type='feature' text='Improved in 5.5+' />
 
-If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Freeform Javascript Insertion Location](../configuration/settings#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformPlugin()` function to your template where you'd like it to insert the JS. You can pass two variables to the function to add custom attributes to the script and style tags that Freeform generates.
+If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Script Insertion Location](../configuration/settings#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformPlugin()` function to your template where you'd like it to insert the JS. You can pass two variables to the function to add custom attributes to the script and style tags that Freeform generates.
+
+- `freeform.loadFreeformPlugin()` - will load Freeform's global `freeform.js` and `freeform.css` files.
+- `freeform.loadFormSpecificScripts(form)` <Badge type="feature" text="New in 5.5.3+" /> - will load form-specific scripts such as **reCAPTCHA** and the **JS Test** scripts, where applicable. Be sure to pass the form to this function. If `form` is already defined, you can use that.
+- `freeform.loadScripts()` <Badge type="recommended" text="Recommended" /><Badge type="feature" text="New in 5.5.4+" /> - capable of generating any of Freeform's scripts when you specify them.
+  - Options are:
+    - `freeform` (loads Freeform's main `freeform.js` and `freeform.css` files)
+    - `freeform.js-test`
+    - `recaptcha.v2-invisible`
+    - `recaptcha.v2-checkbox`
+    - `recaptcha.v3`
+    - `hcaptcha.invisible`
+    - `hcaptcha.checkbox`
+    - `stripe`
+
+If you wish to generate Freeform's main scripts, the JS Test, reCAPTCHA v3 and Stripe, your template might look something like this:
+
+```twig showLineNumbers
+{{ freeform.loadScripts([
+    "freeform",
+    "freeform.js-test",
+    "recaptcha.v3",
+    "stripe"
+]) }}
+```
+
+### `loadScripts()` Example
 
 Here's a simple example of how this may look in your template:
 
-```twig {4} showLineNumbers
+```twig {4-8} showLineNumbers
 <body>
-  {# your template code #}
+    {# your template code #}
 
-  {{ freeform.loadFreeformPlugin() }}
+    {{ freeform.loadScripts([
+        "freeform",
+        "freeform.js-test",
+        "recaptcha.v3",
+    ]) }}
 </body>
 ```
 
 Will generate:
-
-```twig {4-5} showLineNumbers
-<body>
-  {# your template code #}
-
-  <script type="text/javascrpt" src="{siteUrl}/freeform/plugin.js?v=hash"></script>
-  <link rel="stylesheet" href="{siteUrl}/freeform/plugin.css?v=hash" />
-</body>
-```
-
-#### Or by passing custom attributes:
 
 ```twig {4-7} showLineNumbers
 <body>
-  {# your template code #}
+    {# your template code #}
 
-  {{ freeform.loadFreeformPlugin(
-    'data-custom="attribute" extra="something else"',
-    'css="stuff"'
-  ) }}
+    <link rel="stylesheet" href="https://site.test/cpresources/ff3a9010/css/front-end/plugin/freeform.css?v=1719558790" />
+    <script type="text/javascript" src="https://site.test/cpresources/ff3a9010/js/scripts/front-end/plugin/freeform.js?v=1719558790"></script>
+    <script type="text/javascript" src="https://site.test/cpresources/8c409078/js-test.js?v=1720148793"></script>
+    <script type="text/javascript" src="https://site.test/cpresources/ff3a9010/js/scripts/front-end/captchas/recaptcha/v3.js?v=1719558790"></script>
+</body>
+```
+
+### `loadFreeformPlugin()` and `loadFormSpecificScripts()` Example
+
+Here's a simple example of how this may look in your template:
+
+```twig {4-5} showLineNumbers
+<body>
+    {# your template code #}
+
+    {{ freeform.loadFreeformPlugin }}
+    {{ freeform.loadFormSpecificScripts(form) }}
+</body>
+```
+
+Will generate:
+
+```twig {4-7} showLineNumbers
+<body>
+    {# your template code #}
+
+    <link rel="stylesheet" href="https://site.test/cpresources/ff3a9010/css/front-end/plugin/freeform.css?v=1719558790" />
+    <script type="text/javascript" src="https://site.test/cpresources/ff3a9010/js/scripts/front-end/plugin/freeform.js?v=1719558790"></script>
+    <script type="text/javascript" src="https://site.test/cpresources/ff3a9010/js/scripts/front-end/captchas/recaptcha/v3.js?v=1719558790"></script>
+    <script type="text/javascript" src="https://site.test/cpresources/8c409078/js-test.js?v=1720148793"></script>
+</body>
+```
+
+### Passing Custom Attributes to `loadFreeformPlugin()`:
+
+```twig {4-7} showLineNumbers
+<body>
+    {# your template code #}
+
+    {{ freeform.loadFreeformPlugin(
+        'data-custom="attribute" extra="something else"',
+        'css="stuff"'
+    ) }}
 </body>
 ```
 
@@ -118,10 +176,10 @@ Will generate:
 
 ```twig {4-5} showLineNumbers
 <body>
-  {# your template code #}
+    {# your template code #}
 
-  <script type="text/javascrpt" src="{siteUrl}/freeform/plugin.js?v=hash" data-custom="attribute" extra="something else"></script>
-  <link rel="stylesheet" href="{siteUrl}/freeform/plugin.css?v=hash" css="stuff" />
+    <link href="https://site.test/cpresources/87e67e90/css/front-end/plugin/freeform.css?v=1716400868" css="stuff" rel="stylesheet">
+    <script src="https://site.test/cpresources/87e67e90/js/scripts/front-end/plugin/freeform.js?v=1716401083" data-custom="attribute" extra="something else"></script>
 </body>
 ```
 
