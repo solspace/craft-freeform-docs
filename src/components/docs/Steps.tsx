@@ -59,7 +59,10 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
         ref={contentRef}
       >
         {stepTitle && (
-          <h3 className="text-[#ff6624] cursor-pointer" onClick={handleClick}>
+          <h3
+            className="text-[#ff6624] cursor-pointer ml-12"
+            onClick={handleClick}
+          >
             {stepTitle}
           </h3>
         )}

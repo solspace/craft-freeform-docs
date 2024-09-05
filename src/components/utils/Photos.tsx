@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from '@theme/IdealImage';
 import { ThemedComponent } from '@docusaurus/theme-common';
 import { Props as ThemedImageProps } from '@theme/ThemedImage';
@@ -17,27 +17,23 @@ const Photo = (props) => {
   );
 };
 
-// const HoverPhotoChange = (props) => {
-//   const { normalImg, hoverImg, normalImgAlt, hoverImgAlt, ...otherProps } =
-//     props;
-//   const [isHovered, setIsHovered] = useState(false);
+const HoverPhotoChange = ({ children }) => {
+  const [isHovered, setIsHovered] = useState(false);
 
-//   console.log(normalImg);
+  const [normalChild, hoverChild] = React.Children.toArray(children);
 
-//   return (
-//     <div
-//       className="photo"
-//       onMouseEnter={() => setIsHovered(true)}
-//       onMouseLeave={() => setIsHovered(false)}
-//     >
-//       <img
-//         src={isHovered ? normalImg?.src?.src : hoverImg}
-//         alt={isHovered ? hoverImgAlt?.src?.src : normalImgAlt}
-//         {...otherProps}
-//       />
-//     </div>
-//   );
-// };
+  return (
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{ cursor: 'pointer' }}
+    >
+      {isHovered ? hoverChild : normalChild}
+    </div>
+  );
+};
+
+export default HoverPhotoChange;
 
 const ThemedIdealImage = (props: ThemedImageProps): JSX.Element => {
   const { sources, className: parentClassName, alt, ...propsRest } = props;
@@ -72,4 +68,4 @@ const BrowserMockupWithPhoto = ({ src, alt }) => {
   );
 };
 
-export { BrowserMockupWithPhoto, ThemedIdealImage, Photo };
+export { BrowserMockupWithPhoto, ThemedIdealImage, Photo, HoverPhotoChange };
