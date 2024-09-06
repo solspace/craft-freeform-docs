@@ -14,45 +14,23 @@ const config: Config = {
   tagline: 'Freeform is cool',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'https://emd.solspace.net/',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://docs.solspace.net/',
   baseUrl: '/craft/freeform',
 
-  // Static directory
   staticDirectories: ['static'],
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'solspace', // Usually your GitHub org/user name.
-  projectName: 'freefrom-docs', // Usually your repo name.
+  organizationName: 'solspace',
+  projectName: 'freefrom-docs',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   locales: ['en'],
-  //   localeConfigs: {
-  //     en: {
-  //       htmlLang: 'en-GB',
-  //     },
-  //   },
-  // },
-
-  // Mermaid
   markdown: {
     mermaid: true,
   },
 
-  // Themes
   themes: ['@docusaurus/theme-mermaid'],
 
-  // External plugins
   plugins: [
     [
       docusaurusGithubRemoteContent,
@@ -110,9 +88,9 @@ const config: Config = {
       '@docusaurus/plugin-ideal-image',
       {
         quality: 90,
-        max: 2040, // max resized image's size.
-        min: 640, // min resized image's size. if original is lower, use that size.
-        steps: 2, // the max number of images generated between min and max (inclusive)
+        max: 2040,
+        min: 640,
+        steps: 2,
         disableInDev: false,
       } satisfies IdealImageOptions,
     ],
@@ -153,8 +131,6 @@ const config: Config = {
           },
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          // showLastUpdateTime: true,
-          // showLastUpdateAuthor: true,
           admonitions: {
             keywords: ['youtube', 'guide'],
             extendDefaults: true,
@@ -170,13 +146,12 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Algolia search
     algolia: {
       appId: '1DT1X6GS6A',
       apiKey: '31f6b0738d7142090aea0e2191164eaa',
       indexName: 'emd-solspace',
       replaceSearchResultPathname: {
-        from: '/docs/', // or as RegExp: /\/docs\//
+        from: '/docs/',
         to: '/',
       },
       searchParameters: {},
@@ -184,7 +159,6 @@ const config: Config = {
       insights: false,
     },
 
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Freeform',
@@ -198,10 +172,6 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
-        // },
         {
           href: 'https://plugins.craftcms.com/freeform',
           label: 'Plugin Store',
