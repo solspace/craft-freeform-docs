@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "v3",
+    "description": "The label for version v3"
+  },
+  "sidebar.tutorialSidebar.category.Test": {
+    "message": "Test",
+    "description": "The label for category Test in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Test.link.generated-index.description": {
+    "message": "Test Docs....",
+    "description": "The generated-index page description for category Test in sidebar tutorialSidebar"
+  }
+}

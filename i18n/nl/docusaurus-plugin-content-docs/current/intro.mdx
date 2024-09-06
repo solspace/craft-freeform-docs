@@ -1,0 +1,62 @@
+---
+sidebar_position: 1
+---
+
+import { PrimaryButtonWithLink } from '@site/src/components/utils';
+import Player from 'react-player';
+
+# Overzicht
+
+--Freeform Intro
+
+<section className="flex flex-col items-center gap-6 mt-20">
+  <img
+    src={require('./assets/img/freeform5.png').default}
+    className="max-w-3xl"
+    alt="Freeform 5 for Craft CMS"
+  />
+  <h2 className="text-amber-500	">Klaar voor waar uw project u ook brengt.</h2>
+  <p className="text-center">
+    Freeform is een veelzijdige tool voor het bouwen van formulieren die zich
+    kan aanpassen aan de ontwikkelingen behoeften van uw project, of het nu een
+    eenvoudige of complexe vorm is. Het biedt effectieve spambescherming en een
+    gebruiksvriendelijke formulierbouwer met krachtige veldtypen en ingebouwde
+    gemaksfuncties waar uw gebruikers dol op zullen zijn. Freeform kan naadloos
+    worden geïntegreerd met populaire CRM's, e-mailmarketingdiensten,
+    Ambachtelijke elementen en meer. Het omvat een volledig aanpasbare,
+    kant-en-klare oplossing sjablonen en biedt ook headless ondersteuning.
+  </p>
+  <div className="flex flex-col items-center gap-6">
+    <div className="flex gap-3">
+      <PrimaryButtonWithLink
+        to="#feature-tour"
+        label="Functierondleiding"
+        arrowDown
+      />
+      <PrimaryButtonWithLink to="#compare" label="Prijzen" arrowDown />
+      <PrimaryButtonWithLink
+        to="/User%20Guides/getting-started/"
+        label="Aan de slag"
+      />
+    </div>
+    <small>
+      <a
+        className="underline decoration-[#058ffe]  hover:decoration-amber-500 hover:underline"
+        href="https://plugins.craftcms.com/freeform"
+      >
+        INSTALLEER VANDAAG EEN GRATIS, ONBEPERKTE PROEF!
+      </a>
+    </small>
+  </div>
+</section>
+
+--Tutorial Video
+
+<Player
+  url={require('./assets/video/builder-feature.mp4').default}
+  muted
+  loop
+  playing
+  width="100%"
+  height="100%"
+/>

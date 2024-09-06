@@ -1,0 +1,26 @@
+{
+  "copyright": {
+    "message": "Copyright © 2024 Solspace, Inc. Built with Docusaurus.",
+    "description": "The footer copyright"
+  },
+  "link.item.label.Home": {
+    "message": "Home",
+    "description": "The label of footer link with label=Home linking to /"
+  },
+  "link.item.label.Support": {
+    "message": "Support",
+    "description": "The label of footer link with label=Support linking to https://docs.solspace.com/support/"
+  },
+  "link.item.label.Premium Support": {
+    "message": "Premium Support",
+    "description": "The label of footer link with label=Premium Support linking to hhttps://docs.solspace.com/support/premium/"
+  },
+  "link.item.label.License Agreement": {
+    "message": "License Agreement",
+    "description": "The label of footer link with label=License Agreement linking to https://docs.solspace.com/license-agreement/"
+  },
+  "link.item.label.Legacy Account": {
+    "message": "Legacy Account",
+    "description": "The label of footer link with label=Legacy Account linking to https://docs.solspace.com/legacy-account/"
+  }
+}
