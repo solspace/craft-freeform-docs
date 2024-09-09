@@ -11,10 +11,10 @@ import PrismDark from './src/utils/prismDark';
 
 const config: Config = {
   title: 'Freeform for Craft',
-  tagline: 'Freeform is cool',
+  tagline: 'Ready for wherever your project takes you.',
   favicon: 'img/favicon.ico',
 
-  url: 'https://docs.solspace.net/',
+  url: 'https://docs.solspace.com/',
   baseUrl: '/craft/freeform',
 
   staticDirectories: ['static'],
@@ -136,7 +136,7 @@ const config: Config = {
             extendDefaults: true,
           },
           editUrl:
-            'https://github.com/solspace/craft-freeform-docs/edit/develop',
+            'https://github.com/solspace/craft-freeform-docs/edit/main',
         },
         theme: {
           customCss: './src/css/custom.css',
