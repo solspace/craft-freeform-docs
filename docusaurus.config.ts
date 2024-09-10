@@ -135,8 +135,7 @@ const config: Config = {
             keywords: ['youtube', 'guide'],
             extendDefaults: true,
           },
-          editUrl:
-            'https://github.com/solspace/craft-freeform-docs/edit/main',
+          editUrl: 'https://github.com/solspace/craft-freeform-docs/edit/main',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -148,7 +147,7 @@ const config: Config = {
   themeConfig: {
     algolia: {
       appId: '0I9DTHM8U8',
-      apiKey: '2ce70af79535774d87200b0e0bcba570',
+      apiKey: '2e0c6dd1d4c6164301e38e88a9a2e47f',
       indexName: 'solspace',
       replaceSearchResultPathname: {
         from: '/docs/',
