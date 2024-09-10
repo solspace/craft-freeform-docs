@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://emd.solspace.net/craft/freeform/sitemap.xml
+Sitemap: https://docs.solspace.com/craft/freeform/sitemap.xml

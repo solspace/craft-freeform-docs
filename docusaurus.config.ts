@@ -147,9 +147,9 @@ const config: Config = {
 
   themeConfig: {
     algolia: {
-      appId: '1DT1X6GS6A',
-      apiKey: '31f6b0738d7142090aea0e2191164eaa',
-      indexName: 'emd-solspace',
+      appId: '0I9DTHM8U8',
+      apiKey: '2ce70af79535774d87200b0e0bcba570',
+      indexName: 'solspace',
       replaceSearchResultPathname: {
         from: '/docs/',
         to: '/',
