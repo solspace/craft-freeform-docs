@@ -7,6 +7,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import { Photo, Badge } from '@site/src/components/utils';
+import {
+  CodeTabs,
+  CodeTabItem,
+  FolderTitle,
+  TabItems,
+} from '@site/src/components/docs';
 
 import FlexboxPhoto from '../assets/img/flexbox.png';
 
@@ -26,131 +32,24 @@ The Flexbox formatting template implementation includes a lot more CSS to style 
 
 ## Templates
 
-<Tabs>
-<TabItem value="flexbox" label="flexbox.twig" default>
+<CodeTabs>
+<FolderTitle directoryName="/flexbox/" />
+<TabItems>
+<CodeTabItem filetype="twig" value="index" label="index.twig" default>
 
 ```twig showLineNumbers
-{# CSS styling #}
-<style>
-    button[type=submit].freeform-processing {
-        display: inline-flex;
-        flex-wrap: nowrap;
-        align-items: center;
-    }
-    button[type=submit].freeform-processing:before {
-        content: "";
-        display: block;
-        flex: 1 0 11px;
-        width: 11px;
-        height: 11px;
-        margin-right: 10px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: transparent transparent #fff #fff;
-        border-radius: 50%;
-        animation: freeform-processing .5s linear infinite;
-    }
-    @keyframes freeform-processing {
-        0% {
-            transform: rotate(0);
-        }
-        100% {
-            transform: rotate(1turn);
-        }
-    }
-    .freeform-pages {
-        display: flex;
-        padding: 0;
-        margin: 0 0 10px;
-        list-style: none;
-    }
-    .freeform-pages li {
-        margin: 0 10px 0 0;
-    }
-    .freeform-row {
-        display: flex;
-        justify-content: space-between;
-        margin: 0 -15px;
-    }
-    .freeform-row .freeform-column {
-        flex: 1 0;
-        padding: 10px 0;
-        margin: 0 15px;
-        box-sizing: border-box;
-    }
-    .freeform-row .freeform-column > .freeform-row:first-child {
-        margin-top: -10px;
-    }
-    .freeform-row .freeform-column label {
-        display: block;
-    }
-    .freeform-row .freeform-column .input-group-one-line {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .freeform-row .freeform-column .input-group-one-line label {
-        padding-right: 10px;
-    }
-    .freeform-row .freeform-column .freeform-label,
-    .freeform-group .freeform-label {
-        font-weight: bold;
-    }
-    .freeform-row .freeform-column .freeform-label.freeform-required:after {
-        content: "*";
-        margin-left: 5px;
-        color: red;
-    }
-    .freeform-row .freeform-column .freeform-input {
-        width: 100%;
-        display: block;
-        box-sizing: border-box;
-    }
-    .freeform-row .freeform-column .freeform-input[type=checkbox],
-    .freeform-row .freeform-column .freeform-input[type=radio] {
-        width: auto;
-        display: inline;
-        margin-right: 5px;
-    }
-    .freeform-row .freeform-column .freeform-input-only-label {
-        font-weight: normal;
-    }
-    .freeform-row .freeform-column .freeform-input-only-label > .freeform-input {
-        display: inline-block;
-        width: auto;
-        margin-right: 5px;
-    }
-    .freeform-row .freeform-column .freeform-errors {
-        list-style: none;
-        padding: 0;
-        margin: 5px 0 0;
-    }
-    .freeform-row .freeform-column .freeform-errors > li {
-        color: red;
-    }
-    .freeform-row .freeform-column .freeform-instructions {
-        margin: 0 0 5px;
-        font-size: 13px;
-        color: #aba7a7;
-    }
-    .freeform-form-errors {
-        padding: 15px;
-        border: 1px solid #f5c6cb;
-        background: #f8d7da;
-        border-radius: 5px;
-        color: #721c24;
-    }
-    .freeform-form-errors > p {
-        margin: 0;
-    }
-    .freeform-group {
-        width: 100%;
-        padding: 0 15px;
-    }
-</style>
+{# CSS overrides #}
+{% set cssPath = view.assetManager.publishedUrl('@freeform-formatting-templates/flexbox/_main.css', true) %}
+{% do view.registerCssFile(cssPath) %}
+
+{# JS overrides #}
+{% set jsPath = view.assetManager.publishedUrl('@freeform-formatting-templates/flexbox/_main.js', true) %}
+{% do view.registerJsFile(jsPath) %}
 
 {# Render the opening form tag #}
 {{ form.renderTag({
     attributes: {
+        form: { class: "freeform-form", "data-freeform-flexbox": true },
         row: { class: "freeform-row" },
         success: { class: "freeform-form-success" },
         errors: { class: "freeform-form-errors" },
@@ -199,23 +98,6 @@ The Flexbox formatting template implementation includes a lot more CSS to style 
         }
     },
 }) }}
-
-{# JS overrides #}
-<script>
-var form = document.querySelector('[data-id="{{ form.anchor }}"]');
-if (form) {
-    form.addEventListener("freeform-stripe-appearance", function (event) {
-        event.elementOptions.appearance = Object.assign(
-            event.elementOptions.appearance,
-            {
-                variables: {
-                    colorPrimary: "#0d6efd",
-                },
-            }
-        );
-    });
-}
-</script>
 
 {# Success and error message handling for non-AJAX forms #}
 {% if not form.settings.ajax %}
@@ -292,8 +174,149 @@ if (form) {
 {{ form.renderClosingTag }}
 ```
 
-</TabItem>
-</Tabs>
+</CodeTabItem>
+
+<CodeTabItem filetype="css" value="_main" label="_main.css">
+
+```css showLineNumbers
+button[type=submit].freeform-processing {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+button[type=submit].freeform-processing:before {
+    content: "";
+    display: block;
+    flex: 1 0 11px;
+    width: 11px;
+    height: 11px;
+    margin-right: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent transparent #fff #fff;
+    border-radius: 50%;
+    animation: freeform-processing .5s linear infinite;
+}
+@keyframes freeform-processing {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(1turn);
+    }
+}
+.freeform-pages {
+    display: flex;
+    padding: 0;
+    margin: 0 0 10px;
+    list-style: none;
+}
+.freeform-pages li {
+    margin: 0 10px 0 0;
+}
+.freeform-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -15px;
+}
+.freeform-row .freeform-column {
+    flex: 1 0;
+    padding: 10px 0;
+    margin: 0 15px;
+    box-sizing: border-box;
+}
+.freeform-row .freeform-column > .freeform-row:first-child {
+    margin-top: -10px;
+}
+.freeform-row .freeform-column label {
+    display: block;
+}
+.freeform-row .freeform-column .input-group-one-line {
+    display: flex;
+    flex-wrap: wrap;
+}
+.freeform-row .freeform-column .input-group-one-line label {
+    padding-right: 10px;
+}
+.freeform-row .freeform-column .freeform-label,
+.freeform-group .freeform-label {
+    font-weight: bold;
+}
+.freeform-row .freeform-column .freeform-label.freeform-required:after {
+    content: "*";
+    margin-left: 5px;
+    color: red;
+}
+.freeform-row .freeform-column .freeform-input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+.freeform-row .freeform-column .freeform-input[type=checkbox],
+.freeform-row .freeform-column .freeform-input[type=radio] {
+    width: auto;
+    display: inline;
+    margin-right: 5px;
+}
+.freeform-row .freeform-column .freeform-input-only-label {
+    font-weight: normal;
+}
+.freeform-row .freeform-column .freeform-input-only-label > .freeform-input {
+    display: inline-block;
+    width: auto;
+    margin-right: 5px;
+}
+.freeform-row .freeform-column .freeform-errors {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0;
+}
+.freeform-row .freeform-column .freeform-errors > li {
+    color: red;
+}
+.freeform-row .freeform-column .freeform-instructions {
+    margin: 0 0 5px;
+    font-size: 13px;
+    color: #aba7a7;
+}
+.freeform-form-errors {
+    padding: 15px;
+    border: 1px solid #f5c6cb;
+    background: #f8d7da;
+    border-radius: 5px;
+    color: #721c24;
+}
+.freeform-form-errors > p {
+    margin: 0;
+}
+.freeform-group {
+    width: 100%;
+    padding: 0 15px;
+}
+```
+
+</CodeTabItem>
+<CodeTabItem filetype="js" value="_main.js" label="_main.js">
+
+```js showLineNumbers
+var form = document.querySelector('[data-freeform-flexbox]');
+if (form) {
+    form.addEventListener("freeform-stripe-appearance", function (event) {
+        event.elementOptions.appearance = Object.assign(
+            event.elementOptions.appearance,
+            {
+                variables: {
+                    colorPrimary: "#0d6efd",
+                },
+            }
+        );
+    });
+}
+```
+
+</CodeTabItem>
+</TabItems>
+</CodeTabs>
 
 ## Live Demo
 

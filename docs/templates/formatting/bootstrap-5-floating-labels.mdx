@@ -38,15 +38,20 @@ This example makes use of Bootstrap's [Floating Labels](https://getbootstrap.com
 <CodeTabItem filetype="twig" value="index" label="index.twig" default>
 
 ```twig showLineNumbers
-{# Pull in CSS and field rendering #}
-<style>
-{% include "freeform/_templates/formatting/bootstrap-5-floating-labels/_main.css" %}
-</style>
+{# CSS overrides #}
+{% set cssPath = view.assetManager.publishedUrl('@freeform-formatting-templates/bootstrap-5-floating-labels/_main.css', true) %}
+{% do view.registerCssFile(cssPath) %}
+
+{# JS overrides #}
+{% set jsPath = view.assetManager.publishedUrl('@freeform-formatting-templates/bootstrap-5-floating-labels/_main.js', true) %}
+{% do view.registerJsFile(jsPath) %}
+
 {% import "freeform/_templates/formatting/bootstrap-5-floating-labels/_row.twig" as rowMacro %}
 
 {# Render the opening form tag #}
 {{ form.renderTag({
     attributes: {
+        form: { class: "freeform-form", "data-freeform-bootstrap-floating-labels": true },
         row: { class: "row" },
         success: { class: "alert alert-success" },
         errors: { class: "alert alert-danger" },
@@ -124,11 +129,6 @@ This example makes use of Bootstrap's [Floating Labels](https://getbootstrap.com
         },
     },
 }) }}
-
-{# Pull in JS overrides #}
-<script>
-{% include "freeform/_templates/formatting/bootstrap-5-floating-labels/_main.js" %}
-</script>
 
 {# Success and error message handling for non-AJAX forms #}
 {% if not form.settings.ajax %}
@@ -270,7 +270,7 @@ label.required:after {
 <CodeTabItem filetype="js" value="_main.js" label="_main.js">
 
 ```js showLineNumbers
-var form = document.querySelector('[data-id="{{ form.anchor }}"]');
+var form = document.querySelector('[data-freeform-bootstrap-floating-labels]');
 if (form) {
   // Styling for AJAX responses
   form.addEventListener('freeform-ready', function (event) {

@@ -62,6 +62,31 @@ Returns the current [Page object](./page) containing its label and index.
 
 A bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled ([duplicate submission check](../../submissions/overview/#submission-limits)) and the user has already submitted the form.
 
+### `isIntegrationEnabled` <Badge type="feature" text="New in 5.6+" />
+
+Allows you to check if an integration is enabled for a form. Use the integration handle you created for each integration.
+
+For **Singles**, the handles are:
+
+- Honeypot: `honeypot`
+- Javascript Test: `javascript-test`
+- Google Tag Manager: `gtm`
+- Post Forwarding: `post-forwarding`
+
+```twig
+<ul>
+{% if form.isIntegrationEnabled("mailchimp") %}
+    <li>Mailchimp is enabled</li>
+{% endif %}
+{% if form.isIntegrationEnabled("honeypot") %}
+    <li>Honeypot is enabled</li>
+{% endif %}
+{% if form.isIntegrationEnabled("recaptchaV3") %}
+    <li>reCAPTCHA v3 is enabled</li>
+{% endif %}
+</ul>
+```
+
 ### Template Overrides<Badge type="feature" text="New in 5.0+" />
 
 The form and each field have the ability to control **attributes**, **values** and more at the template level. Each one of them is entirely optional. There are several namespaces:

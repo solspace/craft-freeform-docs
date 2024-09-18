@@ -20,7 +20,7 @@ import BuilderPagesVideo from './assets/videos/builder-pages.mp4';
 import BuilderRulesVideo from './assets/videos/builder-rules.mp4';
 import BuilderSectionsVideo from './assets/videos/builder-sections.mp4';
 import BuilderSettingsVideo from './assets/videos/builder-settings.mp4';
-import FormDashboardVideo from './assets/videos/form-dashboard.mp4';
+import FormDashboardVideo from './assets/videos/form-dashboard.webm';
 
 # Form Builder<Badge type="feature" text="Improved in 5.0+" />
 
@@ -405,7 +405,15 @@ When manually building submit buttons in multi-page forms, please refer to the [
   ]}
 />
 
-## Dashboard
+## Dashboard<Badge type="feature" text="Improved in 5.6+" />
+
+The Forms dashboard page offers extensive customization options. You can choose to display forms as cards or in a list table, customize the color of each form, set the display order of forms, create groups to organize forms, and archive forms that you don't want to appear on the dashboard.
+
+- [Form Cards](#form-cards)
+- [Form List](#form-list)
+- [Form Groups](#form-groups)
+- [Archiving Forms](#archiving-forms)
+- [Errors & Update Notices](#errors--update-notices)
 
 <Player
   url={FormDashboardVideo}
@@ -416,28 +424,32 @@ When manually building submit buttons in multi-page forms, please refer to the [
   height="100%"
 />
 
+### Form Cards
+
+Forms can be displayed as cards, and you can manage, reorder, and group them.
+
+Each form card will display the form name, handle, and description, along with the statistics showing the number of submissions, the number of spam submissions, and a color-coded chart at the bottom of the card indicating submission counts over the past 30 days. Additionally, you will have the ability to reorder, archive, duplicate, or delete the form.
+
+### Form List<Badge type="feature" text="New in 5.6+" />
+
+Forms can also be displayed as a table list, showing them in alphabetical order. The list view does not include the [form groups](#form-groups) feature.
+
+Each row in the list will display the form name, handle, and description, along with the statistics showing the number of submissions, the number of spam submissions, and a color-coded chart indicating submission counts over the past 30 days. Additionally, you will have the ability to archive, duplicate, or delete the form.
+
+### Form Groups<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.6+" />
+
+To organize your form cards into groups, click on the **Manage Forms Groups** link located at the bottom right of the page. You can create multiple groups and rearrange both groups and forms. Any forms that are not assigned to a group will appear at the bottom under an **Other** group.
+
+### Archiving Forms<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup><Badge type="feature" text="New in 5.5+" />
+
+If you want to reduce clutter or hide old or unused forms, you can archive them by clicking the Archive icon on any form. The form will still be active on the website and can be viewed and edited in the form builder, but it will be moved to the bottom of the Forms dashboard page. You can unarchive forms at any time.
+
 ### Errors & Update Notices
 
-The top of the **Forms** page will conveniently let you know if something is wrong by displaying a banner indicating the number of errors that Freeform logged, if available, as well as [Update Notices](../configuration/notices-alerts/) to keep you informed about issues that may specifically affect your site.
+The top of the **Forms** dashboard page will conveniently let you know if something is wrong by displaying a banner indicating the number of errors that Freeform logged, if available, as well as [Update Notices](../configuration/notices-alerts/) to keep you informed about issues that may specifically affect your site.
 
 :::info
 We respect your privacy, so this feature only pulls update notices from the Solspace.com site and **does not and cannot send any information back**. Solspace collects **no** information at all. The comparison check happens on your Freeform site environment, not on the Solspace site. This feature can also be disabled in the plugin settings.
 :::
 
-### Form Cards
 
-All available forms will display here as cards. You can manage and reorder them here as well.
-
-Each form card displays the following:
-
-- Form name, handle and description.
-  - Clicking on the name of the form will bring you into the form builder interface that allows you to setup and configure the form.
-- Stats:
-  - Number of submissions
-  - Number of spam submissions (if spam folder disabled, this will be the blocked count... and button to reset it)
-  - A chart (matching the color set inside the form builder) at the bottom of the card indicating submission counts over the past year.
-    - Chart colors are controlled by the **Form Color** setting inside the form builder for each form (_Settings_ → _General_).
-- Right side of card (on hover) includes:
-  - Delete form
-  - Duplicate form
-  - Reorder form
