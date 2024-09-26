@@ -183,13 +183,13 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 [Want to display single checkbox fields as a light switch toggle?](../guides/fields/toggle-switch-checkbox)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Specify a value (e.g. `y` or `yes`, etc).
   - Has a default value of **Yes**, which can be overwritten with any value you want. No matter what value is set manually on the front end, Freeform will interpret it as checked and record the value specified in the form builder.
 - May be checked by default.
 
-#### Templating Properties
+### Templating
 
 - `options` (an array of option objects with `label` and `value` properties)
 
@@ -207,13 +207,13 @@ A group of checkboxes. The `field.type` property value is `checkbox_group` (for 
 [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Can specify labels (with values assumed) or labels and values (that differ).
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
 - Can be rendered vertically or horizontally.
 
-#### Templating Properties
+### Templating
 
 - `options` (an array of option objects with `label` and `value` properties)
 
@@ -223,7 +223,7 @@ A complex date and/or time field. Can be used as Date only, Time only, or both. 
 
 <Photo scale={40} img={DateTimePhoto} alt="Date & Time field type" />
 
-#### Form Builder Settings
+### Settings
 
 - May contain a default value.
   - You may use `now`, `today`, `5 days ago`, `2017-01-01 20:00:00`, etc, which will format the default value according to the chosen format as a localized value.
@@ -252,7 +252,7 @@ A complex date and/or time field. Can be used as Date only, Time only, or both. 
 - Choose if placeholder should separate AM/PM with a space (for 12hr clock).
 - Select the Min and Max dates for the date picker and validation (optional). Use static dates (e.g. `2018-11-01`, `2018-11-30`) or relative date strings (e.g. `-10 days`, `+3 months`).
 
-#### Special Notes
+### Notes
 
 - For **localization** reference:
   - The _Flatpickr_ date picker will automatically localize according to the locale set for your site. Locales available are only 2-letter codes like `fr`, `de`, etc. In the event you're using a locale like `fr-CA` or `es-US`, etc, Freeform will just look at the first 2 letters and use that as the locale.
@@ -261,7 +261,7 @@ A complex date and/or time field. Can be used as Date only, Time only, or both. 
     - To translate the `{format}` rendered value to match the current locale, be sure to also translate whatever the rendered string is in the error message. For example, if you're using `fr` locale, and wish to have the default English `DD/MM/YYYY` show up as `JJ/MM/AAAA`, create a static translation for this manually.
 - To customize the date picker appearance and behavior, please see [Date Picker Events](../developer/datepicker) documentation.
 
-#### Templating Properties
+### Templating
 
 - `initialValue`
 - `dateTimeType` (e.g. `both`)
@@ -283,7 +283,7 @@ A special field, displayable as a Select, Radio or Checkbox Group that contains 
 
 <Photo scale={60} img={DynamicRecipientsPhoto} alt="Dynamic Recipients" />
 
-#### Form Builder Settings
+### Settings
 
 - Can specify labels and email address values.
   - Multiple email addresses can be specified for each option, separated by commas.
@@ -297,7 +297,7 @@ A special field, displayable as a Select, Radio or Checkbox Group that contains 
   - Users can specify 1 or more recipient options at a time (when using as Checkboxes).
   - Users/groups need to have permissions access for **Email Notifications** to create new formatting templates inside the form builder.
 
-#### Special Notes
+### Notes
 
 - Can include more than 1 of this field type in your forms, allowing for multiple sets of recipients to be notified.
 - When parsing this field semi-manually, be sure to use `loop.index0` to generate numeric values of options instead of `fieldName.value`.
@@ -313,7 +313,7 @@ The only workarounds for this would be to either:
 - Add sub-address tags to the affected email addresses so their values are unique. For example: `joe+whatever@example.com`, `joe+somethingelse@example.com`.
   :::
 
-#### Templating Properties
+### Templating
 
 - `showAsRadio`
   - A boolean value. If `true` the dynamic recipients field should be rendered as radio buttons instead of a select field.
@@ -336,12 +336,12 @@ It is required to use the **Email** field type if you wish for your users to rec
 [Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?](../guides/form-validation/preventing-email-addresses)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Optionally choose an email notification template to be used to send to the submitter of the form (or the email address entered in this field).
   - Users/groups need to have permissions access for **Email Notifications** to create new formatting templates inside the form builder.
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 - `notificationId` (the ID of the assigned email notification template)
@@ -352,7 +352,11 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 
 <Photo scale={20} img={FileUploadPhoto} alt="File upload field type" />
 
-#### Form Builder Settings
+:::tip
+[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions/)
+:::
+
+### Settings
 
 - Must have a [Craft Asset](https://craftcms.com/docs/5.x/reference/element-types/assets.html) Source location where the file will be uploaded to.
   - Does NOT work with [Image Transforms](https://craftcms.com/docs/5.x/reference/element-types/assets.html#image-transforms).
@@ -368,52 +372,13 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 - Select which file types can be uploaded.
   - Leaving all options unchecked will allow ALL file types.
 
-#### Special Notes
+### Notes
 
 - In [multi-page forms](../forms/builder/#multi-page-forms), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
-- If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
+- If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off).
 
-  - E.g. To add support for `.heic` image files, you can add the following to your `config/general.php` file:
-
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'heic',
-
-    'extraFileKinds' => [
-        'image' => [
-            'extensions' => ['heic'],
-        ],
-    ],
-    ```
-
-    - The `extraFileKinds` part will merge `heic` into the list of valid **Image** file types and treat it as such when you check off _Image_ in the **Allowed File Kinds** setting for the field inside the Freeform form builder. If you do not do this, be sure to uncheck all file types in the **Allowed File Kinds** settings.
-
-  - E.g. To add an assortment of extra file extensions, you add the following to your `config/general.php` file:
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'bim, dwg, rvt'`
-    ```
-    - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
-  - E.g. To add an assortment of extra file extensions, you add the following to your `config/general.php` file:
-
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'bim, dwg, rvt'`
-    ```
-
-    - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
-
-    <br />
-    :::warning
-
-    **Before Freeform 4.1.10:** <br />
-    If you're still getting a `Unknown file type` error, this is likely because Freeform also includes its own layer of file security checks (`/vendor/solspace/craft-freeform/packages/plugin/src/Library/Helpers/FileHelper.php`). You can modify this core file to get it working for you, but please contact us if there's a missing file extension/mime type that needs to be added to Freeform and we'll likely add support for it.
-
-    **In Freeform 4.1.10+:** <Badge type="feature" text="Improved 4.1.10+" /> <br />
-    The above error should no longer be an issue as Freeform File Upload fields were realigned with Craft's file kind/extensions defaults and we removed the custom Freeform MIME type checks.
-    :::
-
-  - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off).
-
-#### Templating Properties
+### Templating
 
 - `fileKinds`
   - An array of allowed file kinds, e.g. `image`, `document`, `audio`, etc.
@@ -433,7 +398,11 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
   alt="File Upload Drag & Drop field type"
 />
 
-#### Form Builder Settings
+:::tip
+[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions/)
+:::
+
+### Settings
 
 - Can control the placeholder wording, e.g. `Drag and drop files here, or click to upload`.
 - Choose a default style/theme, e.g. `Light` or `Dark`.
@@ -450,47 +419,14 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
 - Select which file types can be uploaded.
   - Leaving all options unchecked will allow ALL file types.
 
-#### Special Notes
+### Notes
 
 - Unlike the regular [File Upload](#file-upload) field, the **File Upload Drag & Drop** field will remember files that have been uploaded to it regardless of the context: errors upon submission, [multi-page forms](../forms/builder/#multi-page-forms), returning to edit the submission later.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
 - While files are uploading, Freeform will disable the **Submit** button so that the form has time to finish uploading the files. If the form is submitted while files are still uploading, any that are incomplete will not be saved.
-- If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
-
-  - E.g. To add support for `.heic` image files, you can add the following to your `config/general.php` file:
-
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'heic',
-
-    'extraFileKinds' => [
-        'image' => [
-            'extensions' => ['heic'],
-        ],
-    ],
-    ```
-
-    - The `extraFileKinds` part will merge `heic` into the list of valid **Image** file types and treat it as such when you check off _Image_ in the **Allowed File Kinds** setting for the field inside the Freeform form builder. If you do not do this, be sure to uncheck all file types in the **Allowed File Kinds** settings.
-
-  - E.g. To add an assortment of extra file extensions, you add the following to your `config/general.php` file:
-
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'bim, dwg, rvt'`
-    ```
-
-    - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
-
-    :::warning
-
-    **Before Freeform 4.1.10:** <br />
-    If you're still getting a `Unknown file type` error, this is likely because Freeform also includes its own layer of file security checks (`/vendor/solspace/craft-freeform/packages/plugin/src/Library/Helpers/FileHelper.php`). You can modify this core file to get it working for you, but please contact us if there's a missing file extension/mime type that needs to be added to Freeform and we'll likely add support for it.
-
-    **In Freeform 4.1.10+:** <Badge type="feature" text="Improved 4.1.10+" />
-    The above error should no longer be an issue as Freeform File Upload fields were realigned with Craft's file kind/extensions defaults and we removed the custom Freeform MIME type checks.
-    :::
-
 - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off). However, please note that image file thumbnails will only be present directly after initial upload. Afterward (error when submitting, multi-page forms, returning to edit) the image thumbnails will no longer be accessible to Freeform.
 
-#### Templating Properties
+### Templating
 
 - `fileKinds`
   - An array of allowed file kinds, e.g. `image`, `document`, `audio`, etc.
@@ -500,7 +436,7 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
   - The maximum number of allowed files to be uploaded.
   - A number larger than `1` will allow multiple files to be uploaded at the same time.
 
-#### Customizing the Appearance
+### Customizing the Appearance
 
 The form builder includes some options for controlling basic styling, but you can also customize the appearance of the Drag and Drop File Upload field by using your own CSS. To avoid name collision and have maximum flexibility, the CSS class names use [BEM](http://getbem.com/introduction/) methodology. You will also likely need to specify `!important` for each override to ensure it takes effect.
 
@@ -588,16 +524,16 @@ A single-line hidden input field.
 Freeform will load fields of this type at the beginning of the form, regardless of where they are placed in the form builder layout.
 :::
 
-#### Form Settings
+### Form Settings
 
 - Can only include text strings at this time (no variables allowed).
   - If you need you pass a value to your hidden field dynamically, you can do so with the `values` parameter. E.g. `values: { myFieldName: "myvalue" }`
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 
-#### Special Notes
+### Notes
 
 - To access hidden fields in GraphQL queries you have to loop through the `form > fields` as they are not added to `form > pages > rows > fields`.
 
@@ -615,12 +551,12 @@ A multiple-select field. The `field.type` property value is `multiple-select` (f
 [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Can specify labels (with values assumed) or labels and values (that differ).
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
 
-#### Templating Properties
+### Templating
 
 - `options` (an array of option objects with `label` and `value` properties)
 
@@ -634,7 +570,7 @@ A single-line `number` type input field that is validated to contain certain num
 [Want to display a Number field as a range slider?](../guides/fields/range-slider-number)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Choose if validation should allow negative numbers.
 - Optionally set Min/Max values.
@@ -644,7 +580,7 @@ A single-line `number` type input field that is validated to contain certain num
 - Optionally set the number of decimals allowed.
 - Set the `step` number to set default increments when a user uses the browser up/down arrows to increase/decrease the value.
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 - `minLength`
@@ -661,12 +597,12 @@ A special field that allows for flexible opinion scoring using Freeform's built 
 
 <Photo scale={40} img={OpinionScalePhoto} alt="Opinion scale field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Set the field's option values and optional corresponding labels.
 - Optionally add legends to correspond to with choice options (e.g. _Less Satisfied_, _More Satisfied_).
 
-#### Templating Properties
+### Templating
 
 - `scales`
 - `legends`
@@ -709,14 +645,14 @@ A `tel` type input field that is validated to contain phone numbers only, based 
 
 <Photo scale={75} img={PhonePhoto} alt="Phone field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Set pattern to desired format, where `0` is a digit between `0` and `9`, e.g:
   - `(000) 000-0000`
   - `+0 0000 000000`
   - Check off _Use JS validation_ checkbox to have Freeform include JS in the form that validates the format and auto-inserts the extra characters like `(`, `-`, `+` etc).
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 - `pattern`
@@ -744,13 +680,13 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Can specify labels (with values assumed) or labels and values (that differ).
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
 - Can be rendered vertically or horizontally.
 
-#### Templating Properties
+### Templating
 
 - `options` (an array of option objects with `label` and `value` properties)
 
@@ -761,12 +697,12 @@ This field type is included automatically with the _Pro_ edition of Freeform.
 
 <Photo scale={25} img={RatingPhoto} alt="Rating field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Set the field's number of stars (`3`-`10`).
 - Style the color of the stars for the _unselected_, _hover_ and _selected_ states.
 
-#### Templating Properties
+### Templating
 
 - `colorIdle` (e.g. `#ddd`)
 - `colorHover` (e.g. `gold`)
@@ -788,13 +724,13 @@ An input field that is validated based on the specified regex pattern (e.g. `/^[
 
 <Photo scale={30} img={RegexPhoto} alt="Regex field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Specify a required pattern for values to match, e.g. `/^[a-zA-Z0-9]*$/`.
 - Set the error message a user will see if an incorrect value is supplied.
   - Any occurrences of `{pattern}` will be replaced with specified regex pattern inside the error message, if any are found.
 
-#### Special Notes
+### Notes
 
 - When needing to use `{}` for attributes in **Regex** fields (such as `pattern`), you will need to specify them differently, as Freeform is built to allow Twig rendering and it'll choke. So for example, if you need to use `[0-9]{4,5}`, change it to:
 
@@ -802,7 +738,7 @@ An input field that is validated based on the specified regex pattern (e.g. `/^[
 [0-9]{{ '{' }}4,5{{ '}' }}
 ```
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 - `pattern`
@@ -822,13 +758,13 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Can specify labels (with values assumed) or labels and values (that differ).
   - To make the first option empty, use **labels and values** approach with the first option having something like **Please select...** for the label, and leave option blank.
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
 
-#### Templating Properties
+### Templating
 
 - `options` (an array of option objects with `label` and `value` properties)
 
@@ -838,14 +774,14 @@ A field that allows users to handwrite signatures with their mouse inside your f
 
 <Photo scale={35} img={SignaturePhoto} alt="Signature field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Set the dimensions of the field writing/drawing area.
 - Set the border and background colors.
 - Set the pen dot size (in pixels) and the color.
 - To include ability for a user to click a button to erase their signature and start over, check off the **Show 'Clear' button?** checkbox.
 
-#### Special Notes
+### Notes
 
 - Signatures are stored as an image datapoint value.
 - Signatures can be downloaded as JPG or PNG files (from control panel).
@@ -861,7 +797,7 @@ A field that allows you to collect and handle repeating data. The `field.type` p
 
 <Photo scale={80} img={TablePhoto} alt="Table field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Use the Table Layout area to create columns for the table. Options are:
   - Text
@@ -1014,7 +950,7 @@ A single-line text input field. The `field.type` property value is `text` (for c
 [Want to display a Text input as a Color Picker?](../guides/fields/color-picker-text)
 :::
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 
@@ -1032,11 +968,11 @@ A multi-line text input field. The `field.type` property value is `textarea` (fo
 [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/fields/tinymce-editor-textarea)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Can specify the number of rows the textarea should have.
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 
@@ -1046,30 +982,26 @@ A `url` type input field that checks to see if the URL specified has valid synta
 
 <Photo scale={30} img={WebsitePhoto} alt="Website field type" />
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 
-## Special Fields
-
-Special fields are ones that either every form needs (such as Submit button), ones that assist in setting up form behaviors (such as Confirm and Password), and ones that aid in the layout and content of forms (such as the HTML block). None of these fields store any submission data in the database. The following special fields are available to use:
-
-### Confirm<Badge type="pro" text="Pro" />
+## Confirm<Badge type="pro" text="Pro" />
 
 A field that allows you to force a user to re-enter a matching value for another text input field, including [Password](#password) fields (e.g. "Confirm Email Address", "Confirm Password"). It runs through additional validation to make sure field values match. If not, it'll show an error. This field stores the data as well, in case that is important for your site's needs. The `field.type` property value is `confirm` (for conditionals).
 
 <Photo scale={70} img={ConfirmPhoto} alt="Confirm field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Choose a target field to validate against, e.g. **Email** field.
   - Available fields must be of text input type, but don't necessarily need to be of the [Text](#text) field type - you can use with [Email](#email) fields, [Password](#password) special fields, [Phone](#phone) fields, etc.
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 
-### Credit Card<Badge type="pro" text="Pro" />
+## Credit Card<Badge type="pro" text="Pro" />
 
 When a [Stripe Payments](../integrations/stripe-payments) integration is configured, a credit card special field type will become available. This is required for _Payments_-enabled forms to collect (but not store) credit card information. The `field.type` property value is `cc_details` (for conditionals).
 
@@ -1079,22 +1011,22 @@ When a [Stripe Payments](../integrations/stripe-payments) integration is configu
   alt="Stripe Payment field Layout Options"
 />
 
-#### Form Builder Settings
+### Settings
 
 - Choose a target field to validate against, e.g. **Email** field.
   - Available fields must be of text input type, but don't necessarily need to be of the [Text](#text) field type - you can use with [Email](#email) fields, [Password](#password) special fields, [Phone](#phone) fields, etc.
 
-#### Templating Properties
+### Templating
 
 - `placeholder`
 
-### HTML
+## HTML
 
 A special field type that allows you include HTML and Twig inside your form layout in the form builder. The `field.type` property value is `html` (for conditionals).
 
 <Photo scale={60} img={HTMLPhoto} alt="HTML field type" />
 
-#### Special Notes
+### Notes
 
 - The Property Editor will load an HTML area for you to type or paste your code into.
 - The Layout column in the form builder will live parse your HTML (Twig will not be parse inside the form builder).
@@ -1115,7 +1047,7 @@ If you'd like to display submission data from previous pages, you can do this by
 </ul>
 ```
 
-### Email Marketing<Badge type="pro" text="Pro" />
+## Email Marketing<Badge type="pro" text="Pro" />
 
 <Photo scale={35} img={EmailMarketingPhoto} alt="Mailing list field type" />
 
@@ -1123,7 +1055,7 @@ If you'd like to display submission data from previous pages, you can do this by
 [Want to display this checkbox as a light switch toggle?](../guides/fields/toggle-switch-checkbox)
 :::
 
-#### Form Builder Settings
+### Settings
 
 - Email Marketing / Mailing list integrations appear as a checkbox that can be drag and dropped into the form builder interface (from the bottom left corner):
   - Can be displayed as a single checkbox, or set to be a hidden field (as an automatic opt-in when using specifically for mailing list signups).
@@ -1134,7 +1066,7 @@ If you'd like to display submission data from previous pages, you can do this by
 - Your form must include an [Email](#email) field type, which must then be assigned to the **Target Email Field** setting.
 - When available, the **Field Mapping** setting allows you to map Freeform fields to available mailing list integration fields.
 
-#### Special Notes
+### Notes
 
 - Email Marketing / Mailing list integrations are globally available to all forms, but are configured per form inside the form builder interface.
 - Most - if not all - integrations attempt to map all available fields and custom fields, but some may have limitations if the API is too complex or doesn't allow it.
@@ -1143,28 +1075,28 @@ If you'd like to display submission data from previous pages, you can do this by
 While data is passed along to the Email Marketing provider, Freeform does not store whether or not Email Marketing fields were opted in, so CP submission views will not display whether or not the user subscribed.
 :::
 
-### Password<Badge type="pro" text="Pro" />
+## Password<Badge type="pro" text="Pro" />
 
 A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/speciality-forms/user-registration-forms) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
 
 <Photo scale={30} img={PasswordPhoto} alt="Password field type" />
 
-#### Special Notes
+### Notes
 
 - Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../forms/email-notifications/#all-fields).
 - When using with the Users [Element integration](../integrations/elements/), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
 
-### Captcha
+## Captcha
 
 A special field type that displays and handles the [reCAPTCHA](https://www.google.com/recaptcha) or [hCaptcha](https://www.hcaptcha.com) interaction with the user when the [Checkbox](./spam-protection) option is enabled and configured for the website. Please note that reCAPTCHA v2 Invisible, reCAPTCHA v3 and hCaptcha Invisble do not require any addition of a special field to the form layout. Freeform will automatically apply that validation and take care of it. The `field.type` property value is `recaptcha` (for conditionals).
 
 <Photo scale={30} img={CaptchaPhoto} alt="reCAPTCHA v2 Checkbox field type" />
 
-#### Special Notes
+### Notes
 
 - See [Captchas documentation](./spam-protection#captchas) for more information.
 
-#### Templating
+### Templating
 
 - When a _reCAPTCHA v2 Checkbox_ or _hCaptcha Checkbox_ field is placed into a form layout in the Freeform form builder, it will render automatically like the rest of your fields. However, if you're building a form manually, you'd call it like this:
   ```twig showLineNumbers
@@ -1181,13 +1113,13 @@ A special field type that displays and handles the [reCAPTCHA](https://www.googl
   <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
   ```
 
-### Rich Text<Badge type="pro" text="Pro" />
+## Rich Text<Badge type="pro" text="Pro" />
 
 A special field type that allows you include rich text inside your form layout in the form builder. The `field.type` property value is `rich-text` (for conditionals).
 
 <Photo scale={60} img={HTMLPhoto} alt="Html field type" />
 
-#### Special Notes
+### Notes
 
 - The Property Editor will load a Rich Text area for you to type into and style as necessary. You can also expand the editor into full mode.
 - The Layout column in the form builder will live parse your content.
@@ -1197,7 +1129,7 @@ A special field type that allows you include rich text inside your form layout i
 [Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/fields/tinymce-editor-textarea)
 :::
 
-### Save & Continue Later<Badge type="pro" text="Pro" />
+## Save & Continue Later<Badge type="pro" text="Pro" />
 
 A special field type that lets you place "save" button(s) inside your form layout in the form builder, allowing users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later). The `field.type` property value is `save` (for conditionals).
 
@@ -1207,7 +1139,7 @@ A special field type that lets you place "save" button(s) inside your form layou
   alt="Save & Continue later field type"
 />
 
-#### Form Builder Settings
+### Settings
 
 - Settings allow you to edit the button label.
 - You may adjust the positioning of the submit button:
@@ -1224,7 +1156,7 @@ A special field type that lets you place "save" button(s) inside your form layou
     - If the user hasn't yet filled out an email address, the email notification attempt will be suppressed (as there is no field validation to ensure the Email field is fillout out). A good way around this would be to have the first page include basic info like _name_ and _email_ but no option to save the form until the second page.
 - You may include 1 per page in your form.
 
-#### Templating Properties
+### Templating
 
 - `labelNext`
   - A label for the **Next** button. `Submit` by default.
@@ -1233,13 +1165,13 @@ A special field type that lets you place "save" button(s) inside your form layou
 - `disablePrev`
   - A boolean value. If `true` the **Previous** button should not be rendered.
 
-### Submit
+## Submit
 
 A special field type that lets you place submit button(s) inside your form layout in the form builder. The `field.type` property value is `submit` (for conditionals).
 
 <Photo scale={20} img={SubmitPhoto} alt="Submit Buttons field type" />
 
-#### Form Builder Settings
+### Settings
 
 - Settings allow you to edit the button label(s).
 - You may adjust the positioning of the submit button:
@@ -1256,7 +1188,7 @@ A special field type that lets you place submit button(s) inside your form layou
     - Together at Right
 - You may include 1 per page in your form.
 
-#### Special Notes
+### Notes
 
 When manually building submit buttons in forms, be sure to include a `data-freeform-action` attribute to it.
 
@@ -1272,7 +1204,7 @@ The attribute value differs between various types of submit buttons:
 <button type="submit" data-freeform-action="save">Save & Continue Later</button>
 ```
 
-#### Templating Properties
+### Templating
 
 - `labelNext`
   - A label for the **Next** button. `Submit` by default.

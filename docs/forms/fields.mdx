@@ -664,6 +664,10 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 
 <Photo scale={30} img={FileUploadPhoto} alt="File upload field type" />
 
+:::tip
+[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions/)
+:::
+
 ### Settings
 
 - Must have a [Craft Asset](https://craftcms.com/docs/5.x/reference/element-types/assets.html) Source location where the file will be uploaded to.
@@ -703,6 +707,10 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
   alt="File Upload Drag & Drop field type"
 />
 
+:::tip
+[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions/)
+:::
+
 ### Settings
 
 - Can control the placeholder wording, e.g. `Drag and drop files here, or click to upload`.
@@ -725,28 +733,6 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
 - Unlike the regular [File Upload](#file-upload) field, the **File Upload Drag & Drop** field will remember files that have been uploaded to it regardless of the context: errors upon submission, [multi-page forms](../forms/builder/#multi-page-forms), returning to edit the submission later.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
 - While files are uploading, Freeform will disable the **Submit** button so that the form has time to finish uploading the files. If the form is submitted while files are still uploading, any that are incomplete will not be saved.
-- If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
-
-  - E.g. To add support for `.heic` image files, you can add the following to your `config/general.php` file:
-
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'heic',
-
-    'extraFileKinds' => [
-        'image' => [
-            'extensions' => ['heic'],
-        ],
-    ],
-    ```
-
-    - The `extraFileKinds` part will merge `heic` into the list of valid **Image** file types and treat it as such when you check off _Image_ in the **Allowed File Kinds** setting for the field inside the Freeform form builder. If you do not do this, be sure to uncheck all file types in the **Allowed File Kinds** settings.
-
-  - E.g. To add an assortment of extra file extensions, you add the following to your `config/general.php` file:
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'bim, dwg, rvt'`
-    ```
-    - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
-
 - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off). However, please note that image file thumbnails will only be present directly after initial upload. Afterward (error when submitting, multi-page forms, returning to edit) the image thumbnails will no longer be accessible to Freeform.
 
 ### Templating
