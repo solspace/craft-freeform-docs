@@ -535,8 +535,8 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/field-styling/parsing-html-in-field-options/)
-- [Want to display single checkbox fields as a light switch toggle?](../guides/field-styling/toggle-switch-checkbox/)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/fields/parsing-html-in-field-options/)
+- [Want to display single checkbox fields as a light switch toggle?](../guides/fields/toggle-switch-checkbox/)
 
 ## Checkboxes<Badge type="feature" text="Renamed in 5.0+" />
 
@@ -553,7 +553,7 @@ A group of checkboxes. The `field.type` property value is `checkboxes` (for cond
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/field-styling/parsing-html-in-field-options/)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/fields/parsing-html-in-field-options/)
 - [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
 
 ## Confirm<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
@@ -633,7 +633,7 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 ### User Guides
 
 - [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/field-styling/other-option-for-fields)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields)
 
 ## Email<Badge type="feature" text="Revised in 5.0+" />
 
@@ -684,28 +684,6 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 
 - In [multi-page forms](../forms/builder/#multi-page-forms), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
-- If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
-
-  - E.g. To add support for `.heic` image files, you can add the following to your `config/general.php` file:
-
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'heic',
-
-    'extraFileKinds' => [
-        'image' => [
-            'extensions' => ['heic'],
-        ],
-    ],
-    ```
-
-    - The `extraFileKinds` part will merge `heic` into the list of valid **Image** file types and treat it as such when you check off _Image_ in the **Allowed File Kinds** setting for the field inside the Freeform form builder. If you do not do this, be sure to uncheck all file types in the **Allowed File Kinds** settings.
-
-  - E.g. To add an assortment of extra file extensions, you add the following to your `config/general.php` file:
-    ```php showLineNumbers
-    'extraAllowedFileExtensions' => 'bim, dwg, rvt'`
-    ```
-    - Then be sure to uncheck all file types in the **Allowed File Kinds** settings, unless you group these into a file kind group using the `extraFileKinds` setting shown above.
-
 - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off).
 
 ### Templating
@@ -943,7 +921,7 @@ A single-line `number` type input field that is validated to contain certain num
 <Photo scale={30} img={NumberPhoto} alt="Number field type" />
 
 :::tip
-[Want to display a Number field as a range slider?](../guides/field-styling/range-slider-number)
+[Want to display a Number field as a range slider?](../guides/fields/range-slider-number)
 :::
 
 ### Settings
@@ -1064,7 +1042,7 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 
 - [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/dynamic-data/populate-field-options-at-template-level)
 - [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/field-styling/other-option-for-fields)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields)
 
 ## Rating<Badge type="pro" text="Pro" />
 
@@ -1129,7 +1107,7 @@ A special field type that allows you include rich text inside your form layout i
 - The Layout column in the form builder will live parse your content.
 
 :::tip
-[Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/field-styling/tinymce-editor-textarea)
+[Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/fields/tinymce-editor-textarea)
 :::
 
 ## Signature<Badge type="pro" text="Pro" />
@@ -1486,7 +1464,7 @@ A single-line text input field. The `field.type` property value is `text` (for c
 <Photo scale={60} img={TextFieldPhoto} alt="Text field type" />
 
 :::tip
-[Want to display a Text input as a Color Picker?](../guides/field-styling/color-picker-text)
+[Want to display a Text input as a Color Picker?](../guides/fields/color-picker-text)
 :::
 
 ## Textarea
@@ -1502,7 +1480,7 @@ A multi-line text input field. The `field.type` property value is `textarea` (fo
 ### User Guides
 
 - [Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields)
-- [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/field-styling/tinymce-editor-textarea)
+- [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/fields/tinymce-editor-textarea)
 
 ## Website<Badge type="pro" text="Pro" />
 
