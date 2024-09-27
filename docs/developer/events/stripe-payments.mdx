@@ -25,3 +25,20 @@ Event::on(
   }
 )
 ```
+
+## Additional Payment metadata when Submission created<Badge type="feature" text="5.6.3+" />
+
+This event allows additional metadata to be attached to a payment intent when a submission is created.
+
+```php showLineNumbers
+use Solspace\Freeform\Integrations\PaymentGateways\Stripe;
+use Solspace\Freeform\Integrations\PaymentGateways\Events\UpdateMetadataEvent;
+
+Event::on(
+  Stripe::class,
+  Stripe::EVENT_AFTER_UPDATE_PAYMENT_METADATA,
+  function {
+    //
+  }
+)
+```
