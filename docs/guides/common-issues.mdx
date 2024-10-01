@@ -27,10 +27,21 @@ Check out this documentation resource to troubleshoot common problems or find an
 
 Some fields and other JS in my form are not working correctly. I'm also seeing this error in the browser console: `freeform/plugin.js net::ERR_ABORTED 404 (Not Found)`.
 
+### Freeform 5.3+
+
 <AnswerCard>
+It's possible this could be a caching issue. First try clearing your Craft cache and see if that helps.
+
 :::info
 If you're using Freeform 5.3+, this issue is very unlikely to occur. The _Freeform Script Insert Type_ setting was improved and no longer offers the **Static URLs** option, which was likely to cause this issue in some environments. The below instructions only apply to versions before 5.3.
 :::
+
+</AnswerCard>
+
+### Freeform 5.0.x to 5.2.x
+
+<AnswerCard>
+It's possible this could be a caching issue. First try clearing your Craft cache and see if that helps.
 
 If the JS in your form is not working and you're seeing an error like `freeform/plugin.js net::ERR_ABORTED 404 (Not Found)` in the browser console, it's almost certainly due to your site having server rules you have applied to JS and CSS files to see if they are actual files. The default for Freeform is to load its scripts as **Static URLs**, which becomes a problem in this case. To resolve this issue, you can switch the _Freeform Script Insert Type_ setting (_Craft CP → Freeform → Settings → Form Behavior_) to **As Files** instead.
 
