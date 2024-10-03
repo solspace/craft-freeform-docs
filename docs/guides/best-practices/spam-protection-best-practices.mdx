@@ -37,6 +37,14 @@ Typically, the most effective spam controls (in order) are:
 
 </StepMarkdown>
 <StepMarkdown>
+### Enable a Captcha Service
+
+Though not always necessary, we strongly recommend using [reCAPTCHA](../../integrations/recaptcha) or [hCaptcha](../../integrations/hcaptcha) on your forms to offer the most robust spam protection.
+
+- **reCAPTCHA Score-based (v3)** offers the least intrusive spam protection for your customers. It's free to set up and is available on the Lite and Pro editions of Freeform.
+
+</StepMarkdown>
+<StepMarkdown>
 ### Keyword Blocking
 
 Keyword and email blocking can oftentimes alleviate spam with patterns. For example, if you never conduct business in Russian or with Russians, you can probably block all `*.ru` email addresses. If your site does not discuss `blockchain` or `bitcoin`, etc, you can likely block these common spam words too. Some words might work for some sites, but not for others. It'll be up to you to carefully decide on keywords. Here's a few example lists:
@@ -105,7 +113,7 @@ When using **reCAPTCHA v3**, we highly recommend using **Send to Freeform Spam F
 <StepMarkdown>
 ### Using Caching
 
-When possible, we recommend you do not cache your forms or templates that include them, as it can run into issues. However, sometimes this must be done, and it certainly can be done. Freeform can be cached through basic Twig caching or Static Page Caching (e.g. [Cloudflare](http://cloudflare.com/), [Blitz](https://plugins.craftcms.com/blitz), etc). The important thing to note is that when this is done, you need to refresh the Craft CSRF Token and Freeform Form Hash, otherwise you form will fail and flag all submissions as spam.
+When possible, we recommend you do not cache your forms or templates that include them, as it can run into issues. However, sometimes this must be done, and it certainly can be done. Freeform can be cached through basic Twig caching or Static Page Caching (e.g. [Cloudflare](https://cloudflare.com/), [Blitz](https://plugins.craftcms.com/blitz), etc). The important thing to note is that when this is done, you need to refresh the Craft CSRF Token and Freeform Form Hash, otherwise you form will fail and flag all submissions as spam.
 
 Please see the [Caching Forms documentation guide](../templating/caching-forms/) for more information.
 
@@ -132,10 +140,22 @@ We recommend that you closely monitor your site activity for a few weeks after l
 If too much spam is still coming through, carefully review the words used in the spammy submissions and consider blocking some of those keywords if you strongly believe a legitimate customer would never use those words given your context. For example, if your website sells socks, an email containing `SEO` is very likely spam, but if your website builds websites, an email containing `SEO` could plausibly be a legitimate customer asking for help with SEO (though it very likely may be spam!).
 
 </StepMarkdown>
+<StepMarkdown>
+### Geo Blocking
+
+While the above spam protection methods may be adequate for long periods of time, your site may randomly become a target of spam attacks. Even _reCAPTCHA_ might not even be effective for some attacks.
+
+We encourage you to consider using a service like [Cloudflare](https://cloudflare.com/) or [Fastly](https://www.fastly.com/). If a surge of traffic/spam comes into your site, you can quickly identify which countries they may be coming from. You can then block or set up additional challenges for those countries. This way, the spammers won't even get access to your site (and forms).
+
+</StepMarkdown>
 
 </VerticalStepWrapper>
 
 ## Express Setup
+
+:::warning
+We strongly recommend using [reCAPTCHA](../../integrations/recaptcha) or [hCaptcha](../../integrations/hcaptcha) on your forms to offer the most robust spam protection. However, the express guide below gets basic protection for your site.
+:::
 
 The absolute shortest and fastest way to some amount of spam protection that would work for most sites would be the following:
 
@@ -145,3 +165,5 @@ The absolute shortest and fastest way to some amount of spam protection that wou
 4. Set the [Spam Protection Behavior](../../configuration/settings/#spam-protection-behavior) setting to **Simulate Success**.
 
 Keep an eye on the Spam Folder over the next couple of weeks to see if anything is incorrectly being flagged as spam. If you are still receiving spam, look for patterns of keywords and consider adding them to the **Block Keywords** and/or **Block Email addresses** settings. Any time you start blocking keywords, be sure to monitor the Spam Folder for a little while to see if the keywords you used are a little too aggressive.
+
+It may also be necessary to use [reCAPTCHA](../../integrations/recaptcha) or [hCaptcha](../../integrations/hcaptcha) on your forms to offer the most robust spam protection.
