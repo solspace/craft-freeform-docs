@@ -8,12 +8,14 @@ import { BadgeGroup, Badge, Photo } from '@site/src/components/utils';
 
 import SpamFolderPhoto from './assets/img/spam-folder.png';
 import SpamDetailPhoto from './assets/img/spam-detail.png';
-import SpamPhoto from './assets/img/spam.png';
 
 import RecaptchaIcon from './assets/icons/recaptcha.png';
 import HcaptchaIcon from './assets/icons/hcaptcha.png';
 import HoneypotIcon from './assets/icons/freeform-honeypot.png';
 import JavascriptTestIcon from './assets/icons/freeform-javascript-test.png';
+import BlockedKeywordsIcon from './assets/icons/blocked-keywords.png';
+import BlockedEmailsIcon from './assets/icons/blocked-emails.png';
+import BlockedIpAddressesIcon from './assets/icons/blocked-ip-addresses.png';
 
 # Spam Protection
 
@@ -40,6 +42,21 @@ Freeform includes a variety of robust spam control features to make managing for
       iconSrc: JavascriptTestIcon,
       iconTitle: 'Freeform Javascript Test',
       link: '#freeform-javascript-test',
+    },
+    {
+      iconSrc: BlockedKeywordsIcon,
+      iconTitle: 'Blocked Keywords',
+      link: '#spam-blocking',
+    },
+    {
+      iconSrc: BlockedEmailsIcon,
+      iconTitle: 'Blocked Emails',
+      link: '#spam-blocking',
+    },
+    {
+      iconSrc: BlockedIpAddressesIcon,
+      iconTitle: 'Blocked IP Addresses',
+      link: '#spam-blocking',
     },
   ]}
 />
@@ -143,9 +160,13 @@ Enabling the **Spam Folder** feature will not retroactively bring back any previ
 
 If Freeform flags a submission as spam, it will provide specific reasons for the flagging. These reasons can help you determine why the submission failed and assist you in resolving any configuration errors or issues. You can find the detailed spam reasons in the right column of the submission detail page. Additionally, a summary of the reasons is displayed as a column in the index listing view of the Freeform Spam Folder. You also have the option to filter submissions based on the reason for the spam flag.
 
-## Spam Blocking
+## Spam Blocking<Badge type="feature" text="Improved in 5.5+" />
 
 If Freeform detects any blocked keywords/values in the form submission, it will flag it as spam. It will then go into the spam folder (if configured) or show an error at the top of the form (not recommended).
+
+Freeform's spam blocking features are now handled as integrations. Previously, whenever Craft's `allowAdminChanges` was set to `false`, it was no longer possible for users to modify blocked keywords, emails and IP addresses. This has been rectified by moving them from the settings to integration types. Users can now create pre-built sets of spam blocks, share them across forms, and manage each individually per form.
+
+To configure spam blocking, visit the **Settings** > **Integrations** > **Spam Blocking** section.
 
 ### Available Options
 
@@ -162,15 +183,13 @@ If Freeform detects any blocked keywords/values in the form submission, it will 
 
 ### How it Works
 
-- If the submission fails, it will then match the behavior of the [Spam Protection Behavior](../configuration/settings/#spam-behavior) setting.
+- If the submission fails, it will then match the behavior of the [Spam Protection Behavior](../configuration/settings.mdx#spam-behavior) setting.
 - If you have the [Spam Folder](#spam-folder) feature enabled, spammy submissions will go through to the Spam Folder in the Freeform control panel.
 - You have the option to display errors for fields using a blocked email address or keyword, but we recommend only using this for troubleshooting purposes.
 
-<Photo img={SpamPhoto} alt="Spam Settings" />
-
 ## Throttling
 
-If your site is being attacked by spammers or you're concerned about it, you can enable the [Form Submission Throttling](../configuration/settings/#throttling) setting. This will globally (affecting all users) prevent spam or attacks by limiting the number of times all forms can be submitted within a given timeframe.
+If your site is being attacked by spammers or you're concerned about it, you can enable the [Form Submission Throttling](../configuration/settings.mdx#throttling) setting. This will globally (affecting all users) prevent spam or attacks by limiting the number of times all forms can be submitted within a given timeframe.
 
 :::warning
 This feature is intended for extreme conditions, such as preventing your site from going down if attacked by a spammer. It should NOT be used as a 'fine-tuning' spam measure, as it applies to ALL users. For example, if you set it to '1 per minute', once one user submits any form, any other user will not be able to submit a form within that timeframe. A more realistic value for smaller websites is something like 50 per minute. Use extreme caution for larger and more active sites.
