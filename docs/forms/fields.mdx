@@ -531,7 +531,7 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 - Specify a value (e.g. `y` or `yes`, etc).
   - Has a default value of **Yes**, which can be overwritten with any value you want. No matter what value is set manually on the front end, Freeform will interpret it as checked and record the value specified in the form builder.
 - May be checked by default.
-- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+- Can be used as a [User Select](./email-notifications.mdx#user-select) email notification.
 
 ### Templating
 
@@ -539,8 +539,8 @@ A single checkbox field. The `field.type` property value is `checkbox` (for cond
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/fields/parsing-html-in-field-options/)
-- [Want to display single checkbox fields as a light switch toggle?](../guides/fields/toggle-switch-checkbox/)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/fields/parsing-html-in-field-options.mdx)
+- [Want to display single checkbox fields as a light switch toggle?](../guides/fields/toggle-switch-checkbox.mdx)
 
 ## Checkboxes<Badge type="feature" text="Renamed in 5.0+" />
 
@@ -552,13 +552,13 @@ A group of checkboxes. The `field.type` property value is `checkboxes` (for cond
 
 - Can specify labels (with values assumed) or labels and values (that differ).
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
-- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+- Can be used as a [User Select](./email-notifications.mdx#user-select) email notification.
 - Can be rendered vertically or horizontally.
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/fields/parsing-html-in-field-options/)
-- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/fields/parsing-html-in-field-options.mdx)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level.mdx)
 
 ## Confirm<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
 
@@ -603,7 +603,7 @@ A complex date and/or time field. Can be used as Date only, Time only, or both. 
   - To translate the formatting syntax error message, be sure to translate the following strings:
     - `"{value}" does not conform to "{format}" format.`
     - To translate the `{format}` rendered value to match the current locale, be sure to also translate whatever the rendered string is in the error message. For example, if you're using `fr` locale, and wish to have the default English `DD/MM/YYYY` show up as `JJ/MM/AAAA`, create a static translation for this manually.
-- To customize the date picker appearance and behavior, please see [Date Picker Events](../developer/datepicker/) documentation.
+- To customize the date picker appearance and behavior, please see [Date Picker Events](../developer/datepicker.mdx) documentation.
 
 ### Templating
 
@@ -632,12 +632,12 @@ A select dropdown menu field. The `field.type` property value is `dropdown` (for
 - Can specify labels (with values assumed) or labels and values (that differ).
   - To make the first option empty, use **labels and values** approach with the first option having something like **Please select...** for the label, and leave option blank.
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
-- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+- Can be used as a [User Select](./email-notifications.mdx#user-select) email notification.
 
 ### User Guides
 
-- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level.mdx)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields.mdx)
 
 ## Email<Badge type="feature" text="Revised in 5.0+" />
 
@@ -650,12 +650,12 @@ It is required to use the **Email** field type if you wish for your users to rec
 :::
 
 :::tip
-[Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?](../guides/form-validation/preventing-email-addresses)
+[Need to prevent users from using certain types of email addresses (e.g. common free ones such as Gmail, Yahoo, etc)?](../guides/form-validation/preventing-email-addresses.mdx)
 :::
 
 ### Settings
 
-- Optionally choose an email notification template (see [Email Notifications](./email-notifications/#email-fields) documentation) to be used to send to the submitter of the form (or the email address entered in this field).
+- Optionally choose an email notification template (see [Email Notifications](./email-notifications.mdx#email-fields) documentation) to be used to send to the submitter of the form (or the email address entered in this field).
   - Users/groups need to have permissions for **Notifications** to create new formatting templates inside the form builder.
 
 ### Templating
@@ -690,7 +690,7 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 
 ### Notes
 
-- In [multi-page forms](../forms/builder/#multi-page-forms), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
+- In [multi-page forms](../forms/builder.mdx#multi-page-forms), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
 - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off).
 
@@ -734,7 +734,7 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
 
 ### Notes
 
-- Unlike the regular [File Upload](#file-upload) field, the **File Upload Drag & Drop** field will remember files that have been uploaded to it regardless of the context: errors upon submission, [multi-page forms](../forms/builder/#multi-page-forms), returning to edit the submission later.
+- Unlike the regular [File Upload](#file-upload) field, the **File Upload Drag & Drop** field will remember files that have been uploaded to it regardless of the context: errors upon submission, [multi-page forms](../forms/builder.mdx#multi-page-forms), returning to edit the submission later.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
 - While files are uploading, Freeform will disable the **Submit** button so that the form has time to finish uploading the files. If the form is submitted while files are still uploading, any that are incomplete will not be saved.
 - If you're handling sensitive files, you may wish to choose an Asset volume without public URL's (**Assets in this volume have public URLs** toggle is off). However, please note that image file thumbnails will only be present directly after initial upload. Afterward (error when submitting, multi-page forms, returning to edit) the image thumbnails will no longer be accessible to Freeform.
@@ -902,7 +902,7 @@ A multiple-select field. The `field.type` property value is `multiple-select` (f
 
 - Can specify labels (with values assumed) or labels and values (that differ).
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
-- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+- Can be used as a [User Select](./email-notifications.mdx#user-select) email notification.
 
 ## Number
 
@@ -996,7 +996,7 @@ A special field type that allows you to securely collect a password from a submi
 
 ### Notes
 
-- Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../forms/email-notifications/#all-fields).
+- Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../forms/email-notifications.mdx#all-fields).
 - When using with the Users [Element integration](../integrations/elements/), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
 
 ## Phone<Badge type="pro" text="Pro" />
@@ -1025,7 +1025,7 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 
 - Can specify labels (with values assumed) or labels and values (that differ).
 - Can be automatically populated with select [Craft Elements or Pre-defined list options](#populating-fields-with-elements--predefined-options).
-- Can be used as a [User Select](./email-notifications/#user-select) email notification.
+- Can be used as a [User Select](./email-notifications.mdx#user-select) email notification.
 - Can be rendered vertically or horizontally.
 
 ### User Guides
@@ -1138,7 +1138,7 @@ The Submit button settings allow you to edit the button label(s) and adjust the 
 
 ### Templating<Badge type="feature" text="Revised in 5.0+" />
 
-Controlling the format for submit buttons is now done through the new `buttons` namespace available in the [Template Overrides](../templates/formatting/#template-overrides) feature.
+Controlling the format for submit buttons is now done through the new `buttons` namespace available in the [Template Overrides](../templates/formatting.mdx#template-overrides) feature.
 
 ```twig showLineNumbers
 {{ form.render({
