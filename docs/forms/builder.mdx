@@ -10,6 +10,7 @@ import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
 
 import Icons from '@site/static/card-icons';
 
+import BulkInsertOptionsPhoto from './assets/img/bulk-insert-options.png';
 import FieldAttributeEditorPhoto from './assets/img/field-attribute-editor.png';
 
 import BuilderFeatureVideo from './assets/videos/builder-feature.mp4';
@@ -134,9 +135,13 @@ The left column lists all available fields and field types to use for the form. 
     - Press the `esc` key on your keyboard
     - Click the `x` at the top right
     - Click anywhere else on the page
+- **Bulk Insert Options** <Badge type="feature" text="New in 5.5+" /> - paste in large lists of options into a textarea for options-based field types such as Checkboxes and Dropdowns.
+    - **Separator** - specify a separator (if applicable) used to separate the option label and value when using custom values for option labels. Options are: _Pipe_, _Comma_, _Semicolon_, _Arrow_ and _Space_.
+    - **Append Values** - whether the options you're adding should add to the existing options configured or replace them.
+    - **Bulk Editor** - enter bulk values separated by new lines. If using custom values for option labels, you can provide a label and a value separated by a separator. For example, if you used `|` you would write: `Label|value` and set the **Separator** setting to _Pipe_.
+    <Photo img={BulkInsertOptionsPhoto} alt="Build Insert Options" />
 - **Attributes Editor** - add any attributes for the field and its container here, e.g. `data-my-attribute`, `id`, etc.
-
-<Photo img={FieldAttributeEditorPhoto} alt="Field Attributes Editor" />
+    <Photo img={FieldAttributeEditorPhoto} alt="Field Attributes Editor" />
 
 ### Preview
 

@@ -217,6 +217,10 @@ The Calculation field allows you to perform dynamic calculations based on user-i
 For the Calculation field to work as a dynamic amount with the [Stripe Payments](../integrations/stripe-payments/) integration, the **Input Type** setting should be set to _Regular Text Input_ or _Plain Text_. If set to _Hidden_, the Calculation field should be within a multipage setup where it is on a page _before_ the page with the Stripe Payment Element field.
 :::
 
+#### Decimal Count <Badge type="feature" text="New in 5.6+" />
+
+The _Decimal Count_ setting allows you to set the maximum number of decimal places the calculated result should have. Leave blank if you don't want to limit the decimal places. If you'd like to have no decimals (whole numbers only), enter a value of `0`.
+
 ### Supported Fields
 
 The following fields can be accessed within field calculation formulas:
