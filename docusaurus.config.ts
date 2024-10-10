@@ -20,7 +20,7 @@ const config: Config = {
   staticDirectories: ['static'],
 
   organizationName: 'solspace',
-  projectName: 'freefrom-docs',
+  projectName: 'freeform-docs',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
