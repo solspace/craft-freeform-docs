@@ -6,7 +6,7 @@ title: Caching Forms
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 import { Badge } from '@site/src/components/utils';
 
-# Caching Forms<Badge type="feature" text="Improved in 5.0+" />
+# Caching Forms<Badge type="feature" text="Revised in 5.0+" />
 
 Forms and pages can be cached in a variety of ways. Here are 2 different solutions, depending on your caching approach.
 
@@ -14,15 +14,13 @@ Forms and pages can be cached in a variety of ways. Here are 2 different solutio
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../testing/troubleshooting-form-issues/)
 :::
 
-## Twig Template Caching
+## Twig Template Caching <Badge type="feature" text="Revised in 5.0+" />
 
-When using simple [Craft Caching](https://craftcms.com/docs/5.x/reference/twig/tags.html#cache), you'll need to make sure that you are refreshing the [CSRF token](https://craftcms.com/docs/5.x/development/forms.html#csrf). Here's how that may look inside your template:
+When using simple [Craft Caching](https://craftcms.com/docs/5.x/reference/twig/tags.html#cache), you'll need to make sure that you are refreshing the [CSRF token](https://craftcms.com/docs/5.x/development/forms.html#csrf).
 
-### Refresh CSRF Token
+Here's how that may look inside your template:
 
-For when NOT using with the [JS Enhancement](../../forms/spam-protection#javascript-enhancement) feature:
-
-```twig showLineNumbers
+```twig
 {# Initialize the form #}
 {% set form = freeform.form("myFormHandle") %}
 
@@ -42,7 +40,8 @@ For when NOT using with the [JS Enhancement](../../forms/spam-protection#javascr
 </script>
 ```
 
-## Static Page Caching / CDN / Blitz
+
+## Static Page Caching / CDN / Blitz <Badge type="feature" text="Revised in 5.0+" />
 
 Services like [CloudFlare](http://cloudflare.com) allow you to cache components of web pages like JS, CSS and images. But you can also cache entire web pages; the complete HTML of a page. They then distribute these cached copies of pages across their global network of data centers. This makes websites screaming fast. The [Blitz](https://plugins.craftcms.com/blitz) Craft plugin is another way for static page caching.
 
@@ -54,14 +53,13 @@ You can overcome this problem of expired CSRF tokens in Craft CMS with some simp
 <StepMarkdown>
 Create a separate Twig template to handle loading the refreshed tokens with the following code:
 
-```twig showLineNumbers
+```twig
 {{ {
     csrf: {
         name: craft.app.config.general.csrfTokenName,
         value: craft.app.request.csrfToken,
     }
 }|json_encode|raw }}
-
 ```
 
 </StepMarkdown>
@@ -76,7 +74,7 @@ Set up a rule in CloudFlare or your preferred CDN that makes sure any URLs start
 <StepMarkdown>
 Add the following JS snippet to your main `.js` file or to the bottom of all your web pages. Note that this snippet assumes you're already running [jQuery](https://jquery.com). It uses AJAX to fetch the contents of `https://yourwebsite.com/dynamic`, which just returns a fresh CSRF token (and anything else you include). This is then replaced in the CSRF token field of all forms on the page.
 
-```twig showLineNumbers
+```twig
 {# Initialize the form #}
 {% set form = freeform.form("myFormHandle") %}
 {{ form.render }}
