@@ -189,7 +189,7 @@ Freeform contains a rich set of field types to handle just about every possible 
 | [Regex](#regex)                                                                    | `regex`                               | An input field that is validated based on the specified regex pattern (e.g. `/^[a-zA-Z0-9]*$/`).                                                               |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Rich Text](#rich-text)                                                            | `rich-text`                           | A block that allows you to insert rich text into areas of your form (headings, descriptions, etc).                                                             |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Signature](#signature)                                                            | `signature`                           | A field that allows users to handwrite signatures inside your form.                                                                                            |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
-| [Stripe Payment](#stripe-payment) <Badge type="feature" text="Improved in 5.0+" /> | `stripe`                              | A set of input fields to allow the validation of credit cards and other payment options for [Stripe Payment](../integrations/stripe-payments) implementations. |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
+| [Stripe Payment](#stripe-payment) <Badge type="feature" text="Improved in 5.0+" /> | `stripe`                              | A set of input fields to allow the validation of credit cards and other payment options for [Stripe Payment](../integrations/stripe-payments/) implementations. |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Submit buttons](#submit-buttons)                                                  | <span class="compare-none">N/A</span> | Handles the submit button(s), including **Save** option for the form.                                                                                          |         <span class="edition-express">✓</span>         |       <span class="edition-lite">✓</span>        |       <span class="edition-pro">✓</span>       |
 | [Table](#table)                                                                    | `table`                               | A field that allows you to collect and handle repeating data.                                                                                                  |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Text](#text)                                                                      | `text`                                | A single-line text input field.                                                                                                                                |         <span class="edition-express">✓</span>         |       <span class="edition-lite">✓</span>        |       <span class="edition-pro">✓</span>       |
@@ -1245,7 +1245,7 @@ This feature allows users to save their form progress and continue/complete the 
 
 ## Stripe Payment<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
 
-When the [Stripe Payments](../integrations/stripe-payments) integration is configured, a Stripe Payments special field type will become available. This field enables your forms to collect (but not store) credit card or other payment information and pass it off to Stripe.
+When the [Stripe Payments](../integrations/stripe-payments/) integration is configured, a Stripe Payments special field type will become available. This field enables your forms to collect (but not store) credit card or other payment information and pass it off to Stripe.
 
 <Photo img={StripePhoto} alt="Stripe Payment field Layout Options" />
 
@@ -1393,7 +1393,7 @@ For **manual** rendering of the Table field inside your form for full customizab
 
 ### Submission Data
 
-Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission):
+Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission/):
 
 ```twig showLineNumbers
 <table class="table">

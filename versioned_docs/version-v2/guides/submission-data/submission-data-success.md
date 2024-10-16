@@ -8,7 +8,7 @@ You cannot display POST data on the success return page because that data is cle
 
 ## Instructions
 
-Freeform allows you to [display submissions on the front end](../../templates/objects/submission). It also allows you to set the return URL to include the future submission ID. You can set this either in the **Return URL** field for the form in the form builder, or at template level like:
+Freeform allows you to [display submissions on the front end](../../templates/objects/submission/). It also allows you to set the return URL to include the future submission ID. You can set this either in the **Return URL** field for the form in the form builder, or at template level like:
 
 ```twig showLineNumbers
 returnUrl: "{{ siteUrl }}your-page/success/{{ submission.id }}"
@@ -22,7 +22,7 @@ Using this approach can be a security risk as site visitors could try out other 
 Thanks {{ submission.firstName }}, we've received your message and will get back to you shortly!
 ```
 
-However, if you do wish to include sensitive information, you can consider pairing the submission ID with the Freeform token in the URI. See the [token](../../templates/objects/submission#token) property in the Submission object and the [token](../../templates/queries/submissions#token) parameter in the [Submissions query](../../templates/queries/submissions) for more information. The resulting code would look like:
+However, if you do wish to include sensitive information, you can consider pairing the submission ID with the Freeform token in the URI. See the [token](../../templates/objects/submission.mdx#token) property in the Submission object and the [token](../../templates/queries/submissions.mdx#token) parameter in the [Submissions query](../../templates/queries/submissions/) for more information. The resulting code would look like:
 
 ```twig showLineNumbers
 returnUrl: "{{ siteUrl }}your-page/success/{{ submission.id }}/{{ submission.token }}"

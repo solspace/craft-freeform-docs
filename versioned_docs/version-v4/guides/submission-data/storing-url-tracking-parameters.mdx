@@ -28,7 +28,7 @@ In the event you'd like to store URL tracking parameters (e.g. `utm_source`, `ut
 </StepMarkdown>
 <StepMarkdown>
 ### Step 2
-- In the regular template where you are loading the form, you'll need to add the [values](../../templates/queries/form#values) parameter and grab the values from the URL with `craft.app.request.getQueryParam('')`:
+- In the regular template where you are loading the form, you'll need to add the [values](../../templates/queries/form.mdx#values) parameter and grab the values from the URL with `craft.app.request.getQueryParam('')`:
     ```twig showLineNumbers
     {% set form = craft.freeform.form("contact", {
         overrideValues: {
@@ -46,5 +46,5 @@ In the event you'd like to store URL tracking parameters (e.g. `utm_source`, `ut
 </VerticalStepWrapper>
 
 :::tip
-[Check out our other guide for passing along other types of data to Freeform form fields.](../dynamic-data/passing-dynamic-data-to-forms)
+[Check out our other guide for passing along other types of data to Freeform form fields.](../dynamic-data/passing-dynamic-data-to-forms/)
 :::

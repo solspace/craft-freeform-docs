@@ -54,7 +54,7 @@ You currently cannot specify more than 1 option with the same email address. It 
 
 Email notifications can be setup dynamically at template level using the [dynamicNotification](../templates/queries/form#param-dynamicnotification) parameter in your template. This allows you to hard code values or dynamically pass a value from another element such as a Craft Entry. To setup:
 
-1. In your Twig template, add the following parameter to your [Form query](../templates/queries/form):
+1. In your Twig template, add the following parameter to your [Form query](../templates/queries/form/):
    `dynamicNotification: { recipients: ["admin@example.com", "support@example.com"], template: "test.html" }`
    - For Twig file based templates, specify the full file name including file extension (e.g. `my-template.html`) for `template`.
    - For Database entry based templates, specify the handle for `template`.
@@ -154,7 +154,7 @@ In addition to this, email notification templates can be created directly at for
       - To parse only fields with data, use `{% for field in allFields if field.valueAsString %}`
       - Excludes File Upload fields. To render these manually, [see example here](#including-file-upload-data).
       - Excludes Mailing List selection. To render manually, [see example here](#including-mailing-list-selection-data).
-    - Can iterate over submission values from the [Submission object](../templates/objects/submission) (as long as you're [storing submitted data)
+    - Can iterate over submission values from the [Submission object](../templates/objects/submission/) (as long as you're [storing submitted data)
 
 ## Managing Email Templates as HTML Files
 
@@ -231,7 +231,7 @@ Below is a manually built example for database method:
 </ul>
 ```
 
-You can also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission) as long as you're storing submitted data like this:
+You can also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission/) as long as you're storing submitted data like this:
 
 ```twig
 {% if submission is not null %}
@@ -285,7 +285,7 @@ And then in your Freeform Email Notification template, something like:
 
 ### Including File Upload Data
 
-File Upload field data is excluded from [automated rendering](#all-fields) in `allFields` variable. You can of course include files as attachments, but if you wish to include an uploaded image rendered into the notification, or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission), and then using the [Assets](https://docs.craftcms.com/v3/assets.html) function:
+File Upload field data is excluded from [automated rendering](#all-fields) in `allFields` variable. You can of course include files as attachments, but if you wish to include an uploaded image rendered into the notification, or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission/), and then using the [Assets](https://docs.craftcms.com/v3/assets.html) function:
 
 ```twig showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
@@ -361,7 +361,7 @@ Below is a manually built example for database method:
 </ul>
 ```
 
-You can also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission) as long as you're [storing submitted data like this:
+You can also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission/) as long as you're [storing submitted data like this:
 
 ```twig showLineNumbers
 {% if submission is not null %}
@@ -415,7 +415,7 @@ And then in your Freeform Email Notification template, something like:
 
 ### Including File Upload Data
 
-File Upload field data is excluded from [automated rendering](#all-fields) in `allFields` variable. You can of course include files as attachments, but if you wish to include an uploaded image rendered into the notification, or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission), and then using the [Assets](https://docs.craftcms.com/v3/assets.html) function:
+File Upload field data is excluded from [automated rendering](#all-fields) in `allFields` variable. You can of course include files as attachments, but if you wish to include an uploaded image rendered into the notification, or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission/), and then using the [Assets](https://docs.craftcms.com/v3/assets.html) function:
 
 ```twig showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>

@@ -127,7 +127,7 @@ You can read more about [Freeform Fields and Field Types here](../forms/fields.m
 
 Unfortunately you cannot because that data is cleared upon submission, which is done because for security reasons and preventing forms from being submitted more than once, etc.
 
-You can however, consider another approach. Freeform allows you to [display submissions on the front end](../templates/objects/submission). It also allows you to set the return URL to include the future submission ID. You can set this either in the **Return URL** field for the form in Composer, or at template level like:
+You can however, consider another approach. Freeform allows you to [display submissions on the front end](../templates/objects/submission/). It also allows you to set the return URL to include the future submission ID. You can set this either in the **Return URL** field for the form in Composer, or at template level like:
 
 ```html showLineNumbers
 returnUrl: "{{ siteUrl }}your-page/success/{{ submission.id }}"

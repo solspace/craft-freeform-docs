@@ -81,7 +81,7 @@ You currently cannot specify more than 1 option with the same email address. It 
 
 Email notifications can be setup dynamically at template level using the [dynamicNotification](../templates/queries/form#param-dynamicnotification) parameter in your template. This allows you to hard code values or dynamically pass a value from another element such as a Craft Entry. To setup:
 
-1. In your Twig template, add the following parameter to your [Form query](../templates/queries/form):
+1. In your Twig template, add the following parameter to your [Form query](../templates/queries/form/):
    `dynamicNotification: { recipients: ["admin@example.com", "support@example.com"], template: "test.html" }`
    _ For Twig file based templates, specify the full file name including file extension (e.g. `my-template.html`) for `template`.
    _ For Database entry based templates, specify the handle for `template`.

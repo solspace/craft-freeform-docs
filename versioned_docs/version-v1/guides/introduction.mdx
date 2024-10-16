@@ -67,7 +67,7 @@ Freeform attempts to do all the heavy lifting when it comes to templating. Our l
 
 Forms can be generated on the front end templates 2 different ways:
 
-1. By coding the formatting directly within the template that you want the form to appear in, using the [freeform.form](../templates/queries/form) template function.
+1. By coding the formatting directly within the template that you want the form to appear in, using the [freeform.form](../templates/queries/form/) template function.
 2. By assigning one of an unlimited number of predefined formatting templates (stored as a regular Twig template in **craft/templates** directory) inside Composer and using the [freeform.form render()](../templates/queries/form.mdx#render) method. This approach is very portable / DRY, and works similar to an include. Then simply just insert 1 line of code: `{{ craft.freeform.form("formHandle").render() }}` in the template you want your form to load in.
 
 ## Mailing List API Integrations
@@ -91,8 +91,8 @@ Freeform supports some popular [CRM (Customer Relationship Management) API integ
 
 As for templating, we strived to make things as flexible as possible, while also coming up with templating that can automate much of the handling of parsing your forms. Freeform is capable of figuring out as much of this as possible for you. This can be achieved by building [formatting templates](../templates/) for your forms, or simply building forms directly within the page template(s) you're placing your forms into:
 
-- [freeform.form template function](../templates/queries/form) - for displaying/parsing your forms.
-- [freeform.submissions template function](../templates/queries/submissions) - for displaying an individual submission or list of them.
+- [freeform.form template function](../templates/queries/form/) - for displaying/parsing your forms.
+- [freeform.submissions template function](../templates/queries/submissions/) - for displaying an individual submission or list of them.
 
 Freeform also includes a complete set of [demo templates](../configuration/demo-templates). These demo templates let you have a fully functioning area on your website with just a couple clicks! Further to this, it allows you to see real world examples of the template code in action, which will help you get acquainted with Freeform quicker.
 

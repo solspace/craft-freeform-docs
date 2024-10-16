@@ -7,7 +7,7 @@ import { Badge } from '@site/src/components/utils';
 
 # Submission Editing<Badge type="pro" text="Pro" />
 
-Freeform allows you to edit submissions via the front end templates as well. Currently, this feature has no user/author check, and requires you use/provide the `submission.token` to work (as opposed to the ID). <secret>A future version will likely include ability to check on authors, etc.</secret> The editing uses the same [Form query](../templates/queries/form), but knows you're in **edit mode** when you feed the `submissionToken` parameter a valid value.
+Freeform allows you to edit submissions via the front end templates as well. Currently, this feature has no user/author check, and requires you use/provide the `submission.token` to work (as opposed to the ID). <secret>A future version will likely include ability to check on authors, etc.</secret> The editing uses the same [Form query](../templates/queries/form/), but knows you're in **edit mode** when you feed the `submissionToken` parameter a valid value.
 
 :::warning
 There are currently some limitations with this feature. Please note that:
@@ -44,9 +44,9 @@ You can also check out the example in the [demo templates](../configuration/demo
 
 ### Suppression of Notifications and more
 
-You can apply the `suppress` parameter to the [Form](../templates/queries/form) and `render` queries, which allows you to suppress email notifications, API integrations and [Element Connections](../integrations/elements/) for a form by passing an object of suppressions you wish to enable, typically used for editing submissions, e.g.:
+You can apply the `suppress` parameter to the [Form](../templates/queries/form/) and `render` queries, which allows you to suppress email notifications, API integrations and [Element Connections](../integrations/elements/) for a form by passing an object of suppressions you wish to enable, typically used for editing submissions, e.g.:
 
-- `adminNotifications: true` - suppress [Admin notifications](../forms/email-notifications#admin-notifications)
+- `adminNotifications: true` - suppress [Admin notifications](../forms/email-notifications/#admin-notifications)
 - `dynamicRecipients: true` - suppress [Dynamic Recipient notifications](../forms/email-notifications#dynamic-recipients)
 - `submitterNotifications: true` - suppress [Submitter email notifications](../forms/email-notifications#user-submitter-notifications)
 - `api: true` - suppress [CRM](../integrations#crm) and [Email Marketing](../integrations/#email-marketing) integrations

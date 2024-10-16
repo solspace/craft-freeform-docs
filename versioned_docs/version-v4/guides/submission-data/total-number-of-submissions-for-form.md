@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Display Total Number of Submissions for a Form
 
-If you wish to display the total number of submissions a Freeform form has received, you can do this by including the `.count` function on the [Submissions Query](../../templates/queries/submissions).
+If you wish to display the total number of submissions a Freeform form has received, you can do this by including the `.count` function on the [Submissions Query](../../templates/queries/submissions/).
 
 ## Instructions
 

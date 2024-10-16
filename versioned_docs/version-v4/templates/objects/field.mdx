@@ -70,7 +70,7 @@ An object of customizable attributes to ease the customizability of `render` met
   - Adds `required` attribute to input fields that have been set to be required in the form builder.
 - `idAttribute`
   - The ID for the field.
-  - Considers the `fieldIdPrefix` parameter available to the [Form query](../queries/form).
+  - Considers the `fieldIdPrefix` parameter available to the [Form query](../queries/form/).
 - `inputAttributes`
   - An array of **input** attributes specified for the field input in the Field Attribute table inside the form builder at template level.
   - For example, it may look something like this when hardcoding a form field:
@@ -114,7 +114,7 @@ An object of customizable attributes to ease the customizability of `render` met
     - `table` <Badge type="pro" text="Pro" />
     - `signature` <Badge type="pro" text="Pro" />
 - `rulesHtmlData`
-  - Parses the necessary code for [Conditional Rules](../../forms/conditional-rules) feature.
+  - Parses the necessary code for [Conditional Rules](../../forms/conditional-rules/) feature.
   - Should be used in automated form rendering, placed on the `div` wrapper for each field inside of `for field in row`.
     ```twig showLineNumbers
     <div class="{{ columnClass }}"{{ field.rulesHtmlData }}>

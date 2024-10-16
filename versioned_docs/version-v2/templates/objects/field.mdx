@@ -73,7 +73,7 @@ Each field object contains the metadata specified in [form builder](../../forms/
     - `rating` <Badge type="pro" text="Pro" />
 
 - `rulesHtmlData` <a href="#prop-rules-html-data" id="prop-rules-html-data" class="docs-anchor">#</a>
-  - Parses the necessary code for [Conditional Rules](../../forms/conditional-rules) feature.
+  - Parses the necessary code for [Conditional Rules](../../forms/conditional-rules/) feature.
   - Should be used in automated form rendering, placed on the `div` wrapper for each field inside of `{% for field in row %}`.
     - E.g. `<div class="{{ columnClass }}"{{ field.rulesHtmlData }}>`
   - Will render a `data-ff-rule` attribute along with the necessary string to work with Freeform's inserted JS for Rules feature, e.g. `data-ff-rule='{"show":true,"type":"any","criteria":[{"tgt":"firstName","o":"=","val":"Bob"}]}'`.

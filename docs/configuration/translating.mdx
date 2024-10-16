@@ -48,7 +48,7 @@ To see how all parts of form formatting templates are translated, [have a look a
     {{ field.renderErrors() }}
 ```
 
-Some parts are handled with JS and therefore need to be translated differently. Specifically, if you're using the [built-in AJAX feature](../guides/templating/ajax-forms) and need to translate the success/error banner, you'll need to override the [Freeform JS Plugin](../developer/js-plugin) and translate those with:
+Some parts are handled with JS and therefore need to be translated differently. Specifically, if you're using the [built-in AJAX feature](../guides/templating/ajax-forms) and need to translate the success/error banner, you'll need to override the [Freeform JS Plugin](../developer/js-plugin/) and translate those with:
 
 ```js showLineNumbers
 freeform.setOption('successBannerMessage', 'My custom success message');
