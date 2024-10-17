@@ -11,7 +11,7 @@ AJAX currently will not work with [multi-page](../../forms/multi-page-forms) for
 
 Freeform now has built-in automated AJAX submit support. To enable, simply check the **Enable AJAX** checkbox in the Form Settings tab inside Composer. Freeform will then handle the rest (as long as you're using a standard formatting template - very custom formatting templates may not work properly).
 
-If you wish to customize the success and error messages for the form, you'd have to edit (or add extra override JS to your page) in the template/formatting template to control the message and styling. You can additionally add the translate `|t` filter to it to allow static translations in your [Freeform translation](../../configuration/translating) file to handle other site languages. This additional code isn't necessary at all if you only want to translate the success and error strings **and** you're using a formatting template that already contains the following JS override code. In Freeform they default to: `Form has been submitted successfully!` and `Error! Please review the form and try submitting again.`. Also see [add/control redirect for AJAX-enabled forms](#redirect-ajax-enabled-forms).
+If you wish to customize the success and error messages for the form, you'd have to edit (or add extra override JS to your page) in the template/formatting template to control the message and styling. You can additionally add the translate `|t` filter to it to allow static translations in your [Freeform translation](../../configuration/translating.mdx) file to handle other site languages. This additional code isn't necessary at all if you only want to translate the success and error strings **and** you're using a formatting template that already contains the following JS override code. In Freeform they default to: `Form has been submitted successfully!` and `Error! Please review the form and try submitting again.`. Also see [add/control redirect for AJAX-enabled forms](#redirect-ajax-enabled-forms).
 
 ```html showLineNumbers
 <script>
@@ -94,7 +94,7 @@ The AJAX request must be a `post` request and it will return a JSON object with 
 ## Usage in Templates
 
 :::info
-To see a variety of complete working AJAX examples for the most popular frameworks, install and check out our [Demo Templates](../../configuration/demo-templates) included with Freeform. The JS used in the demo templates work in the latest browsers with plain vanilla javascript and do not require any JS libraries, like jQuery, etc.
+To see a variety of complete working AJAX examples for the most popular frameworks, install and check out our [Demo Templates](../../configuration/demo-templates.mdx) included with Freeform. The JS used in the demo templates work in the latest browsers with plain vanilla javascript and do not require any JS libraries, like jQuery, etc.
 :::
 
 Here's an example of the JS code that turns any form into an AJAX-ready form. It strives to cover most use-cases and allows for easy customization:

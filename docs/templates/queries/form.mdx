@@ -12,28 +12,28 @@ import BasicDarkPhoto from '../assets/img/basic-dark.png';
 
 # Form Queries
 
-The Form query returns a [Form object](../objects/form/) containing its metadata and field objects. From there you can either render the form using the pre-selected formatting template by calling `form.render()` or take control of it by iterating over its fields and using `form.renderTag` and `form.renderClosingTag` methods.
+The Form query returns a [Form object](../objects/form.mdx) containing its metadata and field objects. From there you can either render the form using the pre-selected formatting template by calling `form.render()` or take control of it by iterating over its fields and using `form.renderTag` and `form.renderClosingTag` methods.
 
 :::info
-Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection/), Submit disable on click, and other special field types. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Script Insert Location](../../configuration/settings/#script-insert-location) setting.
+Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection.mdx), Submit disable on click, and other special field types. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Script Insert Location](../../configuration/settings.mdx#script-insert-location) setting.
 :::
 
 :::tip
-[Using headless website architecture with JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more.](../../headless/graphql/)
+[Using headless website architecture with JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more.](../../headless/graphql.mdx)
 :::
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/testing/troubleshooting-form-issues)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/testing/troubleshooting-form-issues.mdx)
 :::
 
 <Photo img={BasicDarkPhoto} alt="Basic Dark Example" />
 
 ## Parameters
 
-The `Form` query is always constructed the same way. The first assumed parameter should contain the form handle or ID, and the second parameter (optional) contains [Template Overrides](../../templates/formatting/#template-overrides) and other available settings, typically used for applying a class globally to specific types of inputs, etc.
+The `Form` query is always constructed the same way. The first assumed parameter should contain the form handle or ID, and the second parameter (optional) contains [Template Overrides](../../templates/formatting/index.mdx#template-overrides) and other available settings, typically used for applying a class globally to specific types of inputs, etc.
 
 :::info
-Please see the [Template Overrides](../../templates/formatting/#template-overrides) documentation for detailed instructions.
+Please see the [Template Overrides](../../templates/formatting/index.mdx#template-overrides) documentation for detailed instructions.
 :::
 
 A basic implementation of the `Form` query would look like this:
@@ -42,7 +42,7 @@ A basic implementation of the `Form` query would look like this:
 {{ freeform.form("myFormHandle").render() }}
 ```
 
-Once [Template Overrides](../../templates/formatting/#template-overrides) have been implemented, your code might look something like this:
+Once [Template Overrides](../../templates/formatting/index.mdx#template-overrides) have been implemented, your code might look something like this:
 
 ```twig showLineNumbers
 {{ freeform.form("myFormHandle", {
@@ -158,7 +158,7 @@ Overrides the return URL for the form. You can override the return URL manually 
 </Tabs>
 
 :::tip
-[Options for handling the Success Return URL on forms.](../../guides/templating/success-return-on-forms)
+[Options for handling the Success Return URL on forms.](../../guides/templating/success-return-on-forms.mdx)
 :::
 
 ### `status`
@@ -200,23 +200,23 @@ formattingTemplate: 'template-name.twig'
 
 ### `disable` <Badge type="feature" text="Revised and renamed in 5.0+" />
 
-Allows you to disable email notifications, API integrations and [Element integrations](../../integrations/elements/) for a form by passing an object of items you wish to disable, typically used for [editing submissions](../../submissions/overview/#editing-submissions/), e.g.:
+Allows you to disable email notifications, API integrations and [Element integrations](../../integrations/elements.mdx) for a form by passing an object of items you wish to disable, typically used for [editing submissions](../../submissions/overview.mdx#submission-editing), e.g.:
 
-- `adminNotifications: true` - disable [Admin](../../forms/email-notifications/#admin) notifications
-- `conditionalNotifications: true` <Badge type="feature" text="New in 5.0+" /> - disable [Conditional](../../forms/email-notifications/#conditional) notifications
-- `userSelectNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [User Select](../../forms/email-notifications/#user-select) notifications
-- `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../../forms/email-notifications/#email-fields) notifications
-- `api: true` - disable any **CRM** and **Email Marketing** [integrations](../../integrations/)
-- `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable any [Element](../../integrations/elements/) integrations
+- `adminNotifications: true` - disable [Admin](../../forms/email-notifications.mdx#admin) notifications
+- `conditionalNotifications: true` <Badge type="feature" text="New in 5.0+" /> - disable [Conditional](../../forms/email-notifications.mdx#conditional) notifications
+- `userSelectNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [User Select](../../forms/email-notifications.mdx#user-select) notifications
+- `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../../forms/email-notifications.mdx#email-fields) notifications
+- `api: true` - disable any **CRM** and **Email Marketing** [integrations](../../integrations/index.mdx)
+- `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable any [Element](../../integrations/elements.mdx) integrations
   :::warning
   This will not disable Element _validation_, e.g. required fields, username already in use, etc.
   :::
-- `payments: true` - disable [Payment](../../integrations/stripe-payments/) integrations
+- `payments: true` - disable [Payment](../../integrations/stripe-payments.mdx) integrations
 - `webhooks: true` - disable any Webhooks
 - `captchas: true` <Badge type="feature" text="New in 5.0+" /> - disable any Captchas
 - `honeypots: true` <Badge type="feature" text="New in 5.0+" /> - disable the Freeform Honeypot
 - `javascriptTest: true` <Badge type="feature" text="New in 5.0+" /> - disable the Freeform Javascript Test
-- `submitButtons` <Badge type="feature" text="New in 5.0+" /> - disable the automatic insertion of [Submit buttons](../../forms/fields/#submit-buttons)
+- `submitButtons` <Badge type="feature" text="New in 5.0+" /> - disable the automatic insertion of [Submit buttons](../../forms/fields.mdx#submit-buttons)
 
 You can also just set this to `true` (`disable: true`) to disable all items (except `submitButtons`) at once.
 
@@ -231,9 +231,9 @@ disable: {
 
 ### `relations` <Badge type="pro" text="Pro" />
 
-This is a powerful feature that allows you to relate the posted submission to any other Craft Element, as long as it contains a [Freeform Submissions element field type](../../forms/fieldtype/). This allows you to quickly turn Freeform into a plugin replacement for Comments, Reviews, Ratings, and more!
+This is a powerful feature that allows you to relate the posted submission to any other Craft Element, as long as it contains a [Freeform Submissions element field type](../../forms/fieldtype.mdx). This allows you to quickly turn Freeform into a plugin replacement for Comments, Reviews, Ratings, and more!
 
-You can specify as many element ID's to relate to as you wish. All you have to do is specify the [Freeform Submissions Field](../../forms/fieldtype/) handle and supply an array of element ID's or just a single element ID that you wish to relate submissions for.
+You can specify as many element ID's to relate to as you wish. All you have to do is specify the [Freeform Submissions Field](../../forms/fieldtype.mdx) handle and supply an array of element ID's or just a single element ID that you wish to relate submissions for.
 
 ```php showLineNumbers
 relations: {
@@ -268,7 +268,7 @@ dynamicNotification: {
 - For Twig file based templates, specify the full file name including **.html** for `template`.
 
 :::warning
-When using **PHP Sessions** for form context, this feature may not work properly if the page is cached with something like Varnish, etc. In order for it to work correctly, you would have to [refresh the tokens similar to what is described in this guide](../../guides/templating/caching-forms).
+When using **PHP Sessions** for form context, this feature may not work properly if the page is cached with something like Varnish, etc. In order for it to work correctly, you would have to [refresh the tokens similar to what is described in this guide](../../guides/templating/caching-forms.mdx).
 :::
 
 ### `postForwarding` <Badge type="pro" text="Pro" />
@@ -284,19 +284,19 @@ postForwarding: {
 
 ### `submissionToken` <Badge type="pro" text="Pro" />
 
-Provide the submission `token` from the `submission` object to switch the form into **edit mode** and allow [editing of submissions on front end](../../submissions/overview/#editing-submissions/).
+Provide the submission `token` from the `submission` object to switch the form into **edit mode** and allow [editing of submissions on front end](../../submissions/overview.mdx#submission-editing).
 
 ### Template Overrides<Badge type="feature" text="New in 5.0+" />
 
 You can control the **attributes**, **values** and more at the template level for forms, fields and buttons. Each one of them is entirely optional. There are several namespaces:
 
 - `attributes` - whatever you specify here will be set as an attribute on the form.
-- `buttons` - controls the output of the [Submit button(s)](../../forms/fields/#submit-buttons).
-- `fields` - controls the output of all [Fields](../../forms/fields/).
-- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/).
+- `buttons` - controls the output of the [Submit button(s)](../../forms/fields.mdx#submit-buttons).
+- `fields` - controls the output of all [Fields](../../forms/fields.mdx).
+- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha.mdx) or [hCaptcha](../../integrations/hcaptcha.mdx).
 
 :::info
-Please see the [Template Overrides](../../templates/formatting/#template-overrides) documentation for detailed instructions.
+Please see the [Template Overrides](../../templates/formatting/index.mdx#template-overrides) documentation for detailed instructions.
 :::
 
 ### Custom Form Properties
@@ -316,7 +316,7 @@ Then in your formatting template, use:
 ```
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template.mdx)
 :::
 
 :::info
@@ -760,7 +760,7 @@ You can manually format multi-page forms as well. The key is to wrap page contex
 
 ### Iterate over Fields instead of Rows
 
-You can also iterate over fields directly with `layout.fields` instead of [Row objects](../objects/row/):
+You can also iterate over fields directly with `layout.fields` instead of [Row objects](../objects/row.mdx):
 
 ```twig showLineNumbers
 {% set form = freeform.form("myForm") %}
@@ -790,7 +790,7 @@ Rendering the form that allows editing a specific submission and disables all of
 
 You can feed Element ID(s) however you like, but the below example shows how you might pass off a loaded Entry ID to the Freeform form so that the submission will be related to it.
 
-If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtype/) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
+If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtype.mdx) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
 
 ```twig showLineNumbers {6-8}
 {# Fetch the entry however you wish #}

@@ -12,11 +12,11 @@ Freeform Relations become a suitable replacement for Comments, Ratings, Product 
 
 ## Overview
 
-Freeform allows you to intuitively relate form submissions to any other Craft (or third party) Element. This is done by feeding the Craft Element ID to Freeform's `relations` parameter in the [Form query](../templates/queries/form/), thus allowing you to use Freeform forms to do anything such as allow users to submit comments on [Craft Entries](https://craftcms.com/docs/5.x/reference/element-types/entries.html), post ratings and reviews for Entries or [Commerce Products](https://craftcms.com/docs/commerce/2.x/products.html), relate submissions to [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) and more!
+Freeform allows you to intuitively relate form submissions to any other Craft (or third party) Element. This is done by feeding the Craft Element ID to Freeform's `relations` parameter in the [Form query](../templates/queries/form.mdx), thus allowing you to use Freeform forms to do anything such as allow users to submit comments on [Craft Entries](https://craftcms.com/docs/5.x/reference/element-types/entries.html), post ratings and reviews for Entries or [Commerce Products](https://craftcms.com/docs/commerce/2.x/products.html), relate submissions to [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) and more!
 
 ## How it Works
 
-When pairing the [Freeform Submissions element field type](../submissions/fieldtype/) with the `relations` parameter in the [Form query](../templates/queries/form/), you can automate attaching/relating of Freeform submissions to other Craft elements when the form is submitted. The submission(s) are then attached to the other element and appear visually in those elements the same way as [Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html) do in the control panel, and more importantly, can then be used to easily display those submissions tied to the Craft Element inside your templates.
+When pairing the [Freeform Submissions element field type](../submissions/fieldtype.mdx) with the `relations` parameter in the [Form query](../templates/queries/form.mdx), you can automate attaching/relating of Freeform submissions to other Craft elements when the form is submitted. The submission(s) are then attached to the other element and appear visually in those elements the same way as [Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html) do in the control panel, and more importantly, can then be used to easily display those submissions tied to the Craft Element inside your templates.
 
 ## How to Setup
 
@@ -134,7 +134,7 @@ Submit the form, and you'll see that the Freeform submissions should now be rela
 
 ### Displaying Related Submissions
 
-If you'd like to display submissions that are related to any given Craft Element, you would do this by calling the **Freeform Submissions** field in your element, and using the ID(s) it contains to populate a [Submissions query](../templates/queries/submissions/).
+If you'd like to display submissions that are related to any given Craft Element, you would do this by calling the **Freeform Submissions** field in your element, and using the ID(s) it contains to populate a [Submissions query](../templates/queries/submissions.mdx).
 
 Let's work off of the [Relating More Than One Element](#relating-more-than-one-element) example above. If you used the [Simple Setup](#simple-setup) example, just ignore the _Users_ part of this guide. Again, we're assuming you have a **Freeform Submissions** field with a handle of `productReviews` for Craft Entries, and another **Freeform Submissions** field with a handle of `userReviews` for Craft Users.
 

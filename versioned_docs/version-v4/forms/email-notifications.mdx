@@ -16,15 +16,15 @@ import EmailNotificationsSendAdditionalPhoto from './assets/img/email-notificati
 Freeform allows you to send email notifications upon submittal of a form. They are global and can be reused for multiple forms, saving you time when you are managing many forms.
 
 :::info
-Be sure to configure the [Email Alert](../configuration/settings/#notices--alerts) feature. It allows you to automatically send an email notification alerting the email address(es) specified when an email notification cannot be delivered.
+Be sure to configure the [Email Alert](../configuration/settings.mdx#notices--alerts) feature. It allows you to automatically send an email notification alerting the email address(es) specified when an email notification cannot be delivered.
 :::
 
 :::tip
-[Email notifications may not work as expected when using **Sendmail** on your local dev environment. Check out our _Mailtrap_ setup guide.](../guides/testing/email-testing-mailtrap)
+[Email notifications may not work as expected when using **Sendmail** on your local dev environment. Check out our _Mailtrap_ setup guide.](../guides/testing/email-testing-mailtrap.mdx)
 :::
 
 :::tip
-[Need to use the submitter of the form as Reply-to email address in admin email notifications?](../guides/best-practices/admin-notifications-replyto-submitter)
+[Need to use the submitter of the form as Reply-to email address in admin email notifications?](../guides/best-practices/admin-notifications-replyto-submitter.mdx)
 :::
 
 ## Types of Email Notifications
@@ -99,14 +99,14 @@ You currently cannot specify more than 1 option with the same email address. It 
 
 Email notifications can be setup dynamically at template level using the [dynamicNotification](../templates/queries/form#param-dynamicnotification) parameter in your template. This allows you to hard code values or dynamically pass a value from another element such as a Craft Entry. To setup:
 
-1. In your Twig template, add the following parameter to your [Form query](../templates/queries/form/):
+1. In your Twig template, add the following parameter to your [Form query](../templates/queries/form.mdx):
    `dynamicNotification: { recipients: ["admin@example.com", "support@example.com"], template: "test.html" }`
    _ For Twig file based templates, specify the full file name including file extension (e.g. `my-template.html`) for `template`.
    _ For Database entry based templates, specify the handle for `template`.
 
 ### User/Submitter Notifications
 
-Email notifications can be sent to the user submitting the form using the [Email](./fields#email) field type. This is often used to send an email confirmation for the user. To setup:
+Email notifications can be sent to the user submitting the form using the [Email](./fields.mdx#email) field type. This is often used to send an email confirmation for the user. To setup:
 
 1. In the field editor (**Freeform -> Fields**) or the form builder (**Add New Field** button at left), create a new field of the _Email_ field type.
 2. In the form builder for the form, drag that field into field layout.
@@ -117,7 +117,7 @@ When the form submitter enters their email address in this field, Freeform will 
 
 ### User Defined
 
-Email notifications can be sent to email addresses of the submitters choosing using the [Email](./fields#email) field type. This would be commonly used for "tell-a-friend" type forms, or forms to send out any other type of invites. The user submitting the form would enter an email address in the form and Freeform can send an email notification to them. This essentially works the same way as [User/Submitter Notifications](#user-submitter-notifications). Just be careful as this could be abused by spammers. To set up:
+Email notifications can be sent to email addresses of the submitters choosing using the [Email](./fields.mdx#email) field type. This would be commonly used for "tell-a-friend" type forms, or forms to send out any other type of invites. The user submitting the form would enter an email address in the form and Freeform can send an email notification to them. This essentially works the same way as [User/Submitter Notifications](#user-submitter-notifications). Just be careful as this could be abused by spammers. To set up:
 
 1. In the field editor (**Freeform -> Fields**) or the form builder (**Add New Field** button at left), create a new field of the _Email_ field type.
 2. In the form builder for the form, drag that field into field layout.
@@ -130,9 +130,9 @@ This feature could be abused by spammers.
 
 ## Managing Email Templates
 
-Email notification templates are available to be stored as files, in the database, or both. You can choose which one is best for your site. These templates can be managed either from the Freeform control panel or manually adding/editing template files directly. In order to send file-based email notifications, a directory path must be set for Freeform to manage these templates, as they are stored as Twig-based files. Please see the [Directory Path](../configuration/settings/#template-manager) setting under **Settings** → **Template Manager**).
+Email notification templates are available to be stored as files, in the database, or both. You can choose which one is best for your site. These templates can be managed either from the Freeform control panel or manually adding/editing template files directly. In order to send file-based email notifications, a directory path must be set for Freeform to manage these templates, as they are stored as Twig-based files. Please see the [Directory Path](../configuration/settings.mdx#template-manager) setting under **Settings** → **Template Manager**).
 
-If adding a brand new email notification template inside the form builder, Freeform will respect the [Default Email Template Creation Method](../configuration/settings/#email-templates) setting and contain basic default content that should be checked and updated once finished building your form.
+If adding a brand new email notification template inside the form builder, Freeform will respect the [Default Email Template Creation Method](../configuration/settings.mdx#email-templates) setting and contain basic default content that should be checked and updated once finished building your form.
 
 <Photo img={EmailNotificationsListPhoto} alt="Email Notifications List" />
 <Photo
@@ -174,7 +174,7 @@ Email Notification templates may contain the following options:
     If you are using **SMTP** or a service that uses SMTP (like _Sendgrid_, etc), please make sure that the email address you have configured in the **From Email** setting for the email notification exactly matches what you have set in the Craft **Email Settings** area. If you wish to use the submitters email address as the "From" email, use the **Reply-to Email** setting instead.
     :::
     :::tip
-    [Need to use the submitter of the form as Reply-to email address in admin email notifications?](../guides/best-practices/admin-notifications-replyto-submitter)
+    [Need to use the submitter of the form as Reply-to email address in admin email notifications?](../guides/best-practices/admin-notifications-replyto-submitter.mdx)
     :::
 - **From Name** - the email address the email notification will appear from.
   - May include any Freeform field variables (`fieldName`), e.g.
@@ -240,8 +240,8 @@ Email Notification templates may contain the following options:
       ```twig
       <img src="{{ submission.myFieldHandle.value }}" alt="Signature" />
       ```
-  - You may iterate over submission values from the [Submission object](../templates/objects/submission/) (as long as you're [storing submitted data](./builder/#settings))
-  - If using the [Elements integration](./fieldtype), you may use the `element` object to display data from the newly created Craft Element such as ID, title, username, etc.
+  - You may iterate over submission values from the [Submission object](../templates/objects/submission.mdx) (as long as you're [storing submitted data](./builder.mdx#settings))
+  - If using the [Elements integration](./fieldtype.mdx), you may use the `element` object to display data from the newly created Craft Element such as ID, title, username, etc.
     - For example (but not limited to):
       - `element.id` will return the ID of the newly created Element
       - `element.title` will return the title of the newly created Craft Entry
@@ -386,7 +386,7 @@ If you wish to include HTML and Rich Text blocks in the output, use the `allFiel
 
 ### Using Submission object
 
-You may also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission/) (as long as you're [storing submitted data](./builder/#settings)) like this:
+You may also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission.mdx) (as long as you're [storing submitted data](./builder.mdx#settings)) like this:
 
 ```twig showLineNumbers
 {% if submission is not null %}
@@ -444,7 +444,7 @@ And then in your Freeform email notification template, something like:
 
 ### Including File Upload Data
 
-[File Upload](./fields/#file-upload) field data is excluded from automated rendering in `allFields` variable. You may of course include files as attachments, but if you wish to include an uploaded image rendered into the notification or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission/), and then using the [Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html) query:
+[File Upload](./fields.mdx#file-upload) field data is excluded from automated rendering in `allFields` variable. You may of course include files as attachments, but if you wish to include an uploaded image rendered into the notification or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission.mdx), and then using the [Assets](https://craftcms.com/docs/5.x/reference/element-types/assets.html) query:
 
 ```twig {9-15} showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>
@@ -487,7 +487,7 @@ Textarea data is stored in the database as newlines, which obviously don't parse
 ```
 
 :::tip
-[Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields)
+[Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields.mdx)
 :::
 
 ### Show all Admin Recipients that received the Email Notification

@@ -17,7 +17,7 @@ import FreeformDashboardPhoto from './assets/img/freeform-dashboard.png';
 
 # Form Builder
 
-What makes Freeform different from other form plugins is that it gives you full control to create simple or complex multi-page forms, and everything is at your fingertips in our elegant form builder. It has been expertly designed to minimize mouse movement and clicks. Freeform also features a long list of its own set of robust [field types](./fields/).
+What makes Freeform different from other form plugins is that it gives you full control to create simple or complex multi-page forms, and everything is at your fingertips in our elegant form builder. It has been expertly designed to minimize mouse movement and clicks. Freeform also features a long list of its own set of robust [field types](./fields.mdx).
 
 <FlexCards
   items={[
@@ -85,7 +85,7 @@ The Freeform form builder is an all-in-one interface that lets you take control 
 
 - The form builder is divided into 3 columns:
   - **Fields** (left column) contains all of the available fields and special fields you can add to your form.
-    - New fields can be created in the main field creation area (**Freeform > Fields > New Field**) as well as directly within the form builder interface by clicking the **Add New Field** button. [Fields](./fields) created here are available globally as well (they do not just exist for that form).
+    - New fields can be created in the main field creation area (**Freeform > Fields > New Field**) as well as directly within the form builder interface by clicking the **Add New Field** button. [Fields](./fields.mdx) created here are available globally as well (they do not just exist for that form).
     - If you have configured an [Email Marketing integration](../configuration/settings#integrations), you'll see a list for Email Marketing integrations at th bottom left corner. There will be 1 displayed per connection, but you can include the mailing list sign up field as many times as you wish, as long as each uses a different list for that integration.
   - **Layout** (center column) is where you actively see an interactive live preview of what your form will look like.
     - You can click or drag any of the fields from the **Fields** (left column) into the Layout area to add them. Drag them around to move them. Freeform will auto-split rows into columns to fit your fields beside each other, if you wish (to a maximum of 4 columns).
@@ -109,7 +109,7 @@ The form builder's settings tabs (top right of builder):
 
 ## Form Settings
 
-The **Form Settings** tab (cog icon) handles the overall settings for the form. It will also display and handle editing of settings for [fields](./fields) and [multi-page page tabs](./multi-page-forms).
+The **Form Settings** tab (cog icon) handles the overall settings for the form. It will also display and handle editing of settings for [fields](./fields.mdx) and [multi-page page tabs](./multi-page-forms).
 
 - **Name** - the name for your form to identify it easier.
 - **Handle** - the unique identifier for the form used in your regular templates calling the form.
@@ -121,29 +121,29 @@ The **Form Settings** tab (cog icon) handles the overall settings for the form. 
   - Options are:
     - **Reload Form with Success Message** - upon successful submit of the form, Freeform will reload the form again and display a success banner above the form.
       - If you wish to customize the success message, be sure to visit the _Validation_ tab to specify the **Success Message**.
-    - **Load Success Template** - upon successful submit of the form, Freeform will stay on the same page but replace the form contents with the contents of the _Success Template_ that you specify. Please note that this will not work when manually rendering form formatting directly inside a regular template (not using a [Formatting Template](../templates/formatting/)).
-      - **Success Template** - specify which [Success Template](../configuration/settings#success-templates) you'd like to be used for this form.
+    - **Load Success Template** - upon successful submit of the form, Freeform will stay on the same page but replace the form contents with the contents of the _Success Template_ that you specify. Please note that this will not work when manually rendering form formatting directly inside a regular template (not using a [Formatting Template](../templates/formatting/index.mdx)).
+      - **Success Template** - specify which [Success Template](../configuration/settings.mdx#success-templates) you'd like to be used for this form.
     - **Use Return URL** - upon successful submit of the form, Freeform will redirect the user to the URL specified in the _Return URL_ setting.
       - **Return URL** - the URL that the form will redirect to after successful submit.
         - May contain:
           - `form.handle` - handle of form.
           - `submission.token` - secure token created for the submission.
-          - `submission.id` - newly created unique submission ID in the URL. This would allow you to use the [Submissions query](../templates/queries/submissions/) to display some or all of the users' submission on the success page.
+          - `submission.id` - newly created unique submission ID in the URL. This would allow you to use the [Submissions query](../templates/queries/submissions.mdx) to display some or all of the users' submission on the success page.
 - **Default Status** - the default status to be used when users submit the form, unless overwritten at template level.
-  - See [Statuses documentation](../configuration/settings#statuses) for managing statuses.
+  - See [Statuses documentation](../configuration/settings.mdx#statuses) for managing statuses.
 - **Formatting Template** (optional) - if using the [render() method](../templates/queries/form#render), this essentially allows you to "attach" a formatting template to a form so that you don't need to include formatting inside the template(s) you place the form inside.
   - Select from an existing sample or custom template, or create a new one.
     - If creating a new one, a new template file will automatically be created for you in your [Formatting Template Directory](../configuration/settings#form-template-directory) containing sample template code that you can adjust later.
     - Users/groups need to have permissions access for **Settings** to create new formatting templates.
 - **Enable AJAX** - enables Freeform's [built-in automated AJAX submit support](../guides/templating/ajax-forms). Once enabled, Freeform will handle the rest (as long as you're using standard template formatting - very custom formatting templates may not work properly).
 - **Collect IP Addresses** - allows you to specify whether or not the form should collect IP addresses from submitters.
-  - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance) for more information.
+  - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance.mdx) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance.mdx) for more information.
 - **Store Submitted Data** - allows you to specify whether the submission data for this form should be stored in the database.
   - Typical use-cases for not storing submission data on your site would be if you just wanted the [email notification](./email-notifications) and/or wanted the data submitted over to an [Email Marketing](../integrations#email-marketing) or [CRM](../integrations#crm) integration.
-  - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance) for more information.
+  - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance.mdx) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance.mdx) for more information.
 - **Opt-In Data Storage Checkbox** - allows the submitter to choose whether or not they want their submission data stored on your site. In the select dropdown, select a **Checkbox** fieldtype you want to be the designated opt-in field, or choose **Disabled** to not use this feature.
-  - This setting will still send off data to [integrations](../integrations/) and [email notifications](./email-notifications).
-  - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance) for more information.
+  - This setting will still send off data to [integrations](../integrations/index.mdx) and [email notifications](./email-notifications).
+  - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance.mdx) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance.mdx) for more information.
 - **Google Tag Manager** - allows you to enable Google Tag Manager to push successful form submission events to the data layer (when AJAX enabled).
   - **Event Name** - specify a custom event name that you wish to assign to a successful form submission.
   - **GTM Account ID** - add this if you want Google Tag Manager scripts added to your page by Freeform. Leave blank if you are adding your own GTM scripts.
@@ -173,7 +173,7 @@ Freeform's **Validation** tab (lock icon) is where you can configure certain for
     - _Once per logged in Users only_ <Badge type="feature" text="3.13+" />
     - _Once per logged in User or Guest Cookie only_ <Badge type="feature" text="3.13+" />
     - _Once per logged in User or Guest IP/Cookie combo_ <Badge type="feature" text="3.13+" />
-  - Please see [Submission Limits](../submissions/overview#submission-limits) documentation for more information about available options, including setting limits for the entire form.
+  - Please see [Submission Limits](../submissions/overview.mdx#submission-limits) documentation for more information about available options, including setting limits for the entire form.
 - **Stop Submissions After** (date) <Badge type="feature" text="3.13+" /> - allows you to prevent new submissions of the form after the set date.
 
 ## Admin Email Notifications
@@ -211,7 +211,7 @@ For more email notification options, please see the [Types of Email Notification
 
 The **Conditional Rules** tab (lines icon) is where you can configure fields to **show or hide** based on the contents/selection of other fields, and even **skip pages** or submit the form based on the contents/selection of fields on a previous page.
 
-Please see the [Conditional Rules](./conditional-rules/) documentation for more information about this feature.
+Please see the [Conditional Rules](./conditional-rules.mdx) documentation for more information about this feature.
 
 ## Element Connections <Badge type="pro" text="Pro" />
 
@@ -229,11 +229,11 @@ The **CRM Integrations** tab (cloud icon) is where you configure any [CRM integr
 
 ## Stripe Payments <Badge type="pro" text="Pro" />
 
-The **Payments** tab (dollar sign icon) is where you configure a [Stripe Payments](../integrations/stripe-payments) integration on a per-form level. Simply choose the Payment integration name and then configure the form and map out your Freeform fields to your Stripe fields. This tab will only show if you have a Payment integration configured. You will also need to add a [Credit Card](./fields#credit-card) special field to the form layout.
+The **Payments** tab (dollar sign icon) is where you configure a [Stripe Payments](../integrations/stripe-payments.mdx) integration on a per-form level. Simply choose the Payment integration name and then configure the form and map out your Freeform fields to your Stripe fields. This tab will only show if you have a Payment integration configured. You will also need to add a [Credit Card](./fields#credit-card) special field to the form layout.
 
 ## Freeform Dashboard<Badge type="feature" text="Improved in 3.9.0" />
 
-Freeform contains its own dashboard page that gives you convenient insights and an overview of your forms, submissions, and any logged errors or update warnings and notices. The data displayed here will respect all [Permissions](../configuration/permissions) set for users / user groups. The Dashboard page will likely receive more enhancements in the future!
+Freeform contains its own dashboard page that gives you convenient insights and an overview of your forms, submissions, and any logged errors or update warnings and notices. The data displayed here will respect all [Permissions](../configuration/permissions.mdx) set for users / user groups. The Dashboard page will likely receive more enhancements in the future!
 
 <Photo img={FreeformDashboardPhoto} alt="Freeform Dashboard" />
 

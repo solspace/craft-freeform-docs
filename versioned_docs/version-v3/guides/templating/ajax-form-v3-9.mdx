@@ -15,12 +15,12 @@ Welcome to the guide for submitting your forms using AJAX. The good news is that
 
 ## Overview
 
-Freeform has its own built-in automated AJAX support. To enable it, simply check the **Enable AJAX** checkbox in the _Form Settings_ tab inside the Form Builder and Freeform will then handle the rest. Freeform includes its own [javascript plugin](../../developer/js-plugin) which handles AJAX functionality and all other JS needed (such as Date fields, Stripe payments and more). Much of the default functionality (formatting, language, etc) can be overridden if necessary. See [customization](#customization) reference guide below.
+Freeform has its own built-in automated AJAX support. To enable it, simply check the **Enable AJAX** checkbox in the _Form Settings_ tab inside the Form Builder and Freeform will then handle the rest. Freeform includes its own [javascript plugin](../../developer/js-plugin.mdx) which handles AJAX functionality and all other JS needed (such as Date fields, Stripe payments and more). Much of the default functionality (formatting, language, etc) can be overridden if necessary. See [customization](#customization) reference guide below.
 
 If you need to use a manual approach for the AJAX call, usually because some sort of framework is used to generate the form such as [Vue.js](https://vuejs.org/), please see the [Manual Implementations](#manual-implementations) guide further below.
 
 :::info
-Be sure to check out the [Freeform Javascript plugin](../../developer/js-plugin) documentation, to learn how to further extend Freeform's functionality.
+Be sure to check out the [Freeform Javascript plugin](../../developer/js-plugin.mdx) documentation, to learn how to further extend Freeform's functionality.
 :::
 
 :::warning
@@ -29,7 +29,7 @@ AJAX currently will not work with [multi-page](../../forms/multi-page-forms) for
 
 ### Placement of Script Overrides
 
-The placement of your JS overrides will depend on what your [Freeform Javascript Insertion Location](../../configuration/settings#general-settings) setting is set to. This is general information that will apply to all scenarios further below (light customization to advanced options). See those options for more complete solutions.
+The placement of your JS overrides will depend on what your [Freeform Javascript Insertion Location](../../configuration/settings.mdx#general-settings) setting is set to. This is general information that will apply to all scenarios further below (light customization to advanced options). See those options for more complete solutions.
 
 When using **Inside Form** option, the Freeform JS plugin instance will be accessible to scripts that are called inside the footer. Load your custom script in the footer and call the Freeform JS plugin instance directly from the form object, like so:
 
@@ -41,7 +41,7 @@ form.freeform.setOption(
 );
 ```
 
-If you have set the [Freeform Javascript Insertion Location](../../configuration/settings#general-settings) setting set to **Page Footer**, then it's best to attach an event listener to the form object which will execute once the Freeform JS plugin instance has finished initializing. Use this script before the rest of the footer scripts, but after the form has been rendered, like so:
+If you have set the [Freeform Javascript Insertion Location](../../configuration/settings.mdx#general-settings) setting set to **Page Footer**, then it's best to attach an event listener to the form object which will execute once the Freeform JS plugin instance has finished initializing. Use this script before the rest of the footer scripts, but after the form has been rendered, like so:
 
 ```js showLineNumbers
 const form = document.getElementById('my-form');
@@ -232,7 +232,7 @@ form.addEventListener('freeform-ready', function (event) {
 
 ## Advanced
 
-To attach your own functionality when the AJAX form successfully submits or fails, you have to listen to the respective events dispatched by the [Freeform JS plugin](../../developer/js-plugin). For instance, redirecting after an AJAX submit is finished:
+To attach your own functionality when the AJAX form successfully submits or fails, you have to listen to the respective events dispatched by the [Freeform JS plugin](../../developer/js-plugin.mdx). For instance, redirecting after an AJAX submit is finished:
 
 ```js showLineNumbers
 // Find the form element

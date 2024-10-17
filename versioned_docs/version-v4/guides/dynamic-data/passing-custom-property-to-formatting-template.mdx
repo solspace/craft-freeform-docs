@@ -12,7 +12,7 @@ Sometimes you may need to dynamically control what is displayed in a formatting 
 
 <VerticalStepWrapper>
 <StepMarkdown stepTitle="Step 1">
-In your custom [formatting template](../../templates/formatting/), add in a custom property. For the purpose of this example, we'll set up a conditional around the form title. We'll call that property `showFormTitle`. It can be accessed through `form.properties`.
+In your custom [formatting template](../../templates/formatting/index.mdx), add in a custom property. For the purpose of this example, we'll set up a conditional around the form title. We'll call that property `showFormTitle`. It can be accessed through `form.properties`.
 
 ```twig showLineNumbers
 {% if form.properties.showFormTitle %}
@@ -76,5 +76,5 @@ OR
 </VerticalStepWrapper>
 
 :::info
-You can add as many custom properties as you like, but be sure not to use any reserved words such as `class`, `id`, etc (anything that is already a parameter/property name in the [Form query](../../templates/queries/form/)).
+You can add as many custom properties as you like, but be sure not to use any reserved words such as `class`, `id`, etc (anything that is already a parameter/property name in the [Form query](../../templates/queries/form.mdx)).
 :::

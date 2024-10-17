@@ -163,7 +163,7 @@ Below is a manually built example for database method:
 </ul>
 ```
 
-You can also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission/) as long as you're storing submitted data like this:
+You can also have your notification email template code iterate over submission values from the [Submission object](../templates/objects/submission.mdx) as long as you're storing submitted data like this:
 
 ```twig showLineNumbers
 {% if submission is not null %}
@@ -178,7 +178,7 @@ You can also have your notification email template code iterate over submission 
 
 ### Including File Upload Data
 
-File Upload field data is excluded from [automated rendering](#all-fields) in `allFields` variable. You can of course include files as attachments, but if you wish to include an uploaded image rendered into the notification, or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission/), and then using the [Assets](https://docs.craftcms.com/v3/assets.html) function:
+File Upload field data is excluded from [automated rendering](#all-fields) in `allFields` variable. You can of course include files as attachments, but if you wish to include an uploaded image rendered into the notification, or just show a URL link to the file uploaded, you can do that by retrieving the Asset ID from the [Submission object](../templates/objects/submission.mdx), and then using the [Assets](https://docs.craftcms.com/v3/assets.html) function:
 
 ```twig showLineNumbers
 <p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>

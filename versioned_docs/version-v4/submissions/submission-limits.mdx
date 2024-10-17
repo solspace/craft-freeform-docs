@@ -39,7 +39,7 @@ If you need to set limits on the number of submissions a form may receive or who
 
 ## Per User <Badge type="pro" text="Pro" />
 
-Inside the [Validation](../forms/builder#validation) tab (lock icon) in the [form builder](../forms/builder), an option exists to allow you to limit the number of times a specific user can submit the form. Look for this setting:
+Inside the [Validation](../forms/builder#validation) tab (lock icon) in the [form builder](../forms/builder.mdx), an option exists to allow you to limit the number of times a specific user can submit the form. Look for this setting:
 
 - **Limit Form Submission Rate**
   - _Do not limit_
@@ -54,7 +54,7 @@ Inside the [Validation](../forms/builder#validation) tab (lock icon) in the [for
 
 ### Templating
 
-Freeform includes validation to prevent duplicate submissions (when the user tries to submit the form again), but if you wish to prevent users from even being able to see the form (and display an error/notice in its place), you can use `duplicate` ([form object](../templates/objects/form/)) as a conditional. It's a bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled and the user has already submitted the form.
+Freeform includes validation to prevent duplicate submissions (when the user tries to submit the form again), but if you wish to prevent users from even being able to see the form (and display an error/notice in its place), you can use `duplicate` ([form object](../templates/objects/form.mdx)) as a conditional. It's a bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled and the user has already submitted the form.
 
 ```twig showLineNumbers {4-5}
 {# Replace 'myForm' with your form handle. #}
@@ -80,7 +80,7 @@ Freeform includes the ability to set a limit on the maximum number of submission
 
 ### Templating
 
-The key is applying the `submissionLimit` parameter to the [Form query](../templates/queries/form/) and feeding it a number value. This could be hardcoded or you could grab this value from somewhere else such as another element or global variable, etc. Here's an example of what that may look like:
+The key is applying the `submissionLimit` parameter to the [Form query](../templates/queries/form.mdx) and feeding it a number value. This could be hardcoded or you could grab this value from somewhere else such as another element or global variable, etc. Here's an example of what that may look like:
 
 ```twig showLineNumbers {4-8}
 {# Replace 'myForm' with your form handle. #}
@@ -110,4 +110,4 @@ The key is applying the `submissionLimit` parameter to the [Form query](../templ
 
 ## Stop After Date
 
-Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](../forms/builder), a **Stop Submissions After Date** setting exists to allow you to prevent new submissions of the form after the specified date.
+Inside the [Settings → Limits](../forms/builder.mdx#settings) area in the [form builder](../forms/builder.mdx), a **Stop Submissions After Date** setting exists to allow you to prevent new submissions of the form after the specified date.

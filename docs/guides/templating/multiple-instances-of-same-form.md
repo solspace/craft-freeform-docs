@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Multiple Instances of the Same Form
 
-You certainly can have more than one Freeform form loaded in the same page. However, in some cases you may run into issues when doing so, such as [AJAX](../../guides/templating/ajax-forms/) not working correctly or some special fields not loading correctly.
+You certainly can have more than one Freeform form loaded in the same page. However, in some cases you may run into issues when doing so, such as [AJAX](../../guides/templating/ajax-forms.mdx) not working correctly or some special fields not loading correctly.
 
 ## Instructions
 

@@ -18,7 +18,7 @@ To translate the Freeform control panel, you can simply duplicate the _freeform.
 
 It's important to note that you have full control over what and how it's translated. You need to make sure you're consistent with applying `|t` or `|t('freeform')` as that will dictate whether the translation needs to happen inside a file named `site.php` or `freeform.php`, respectively.
 
-To see how all parts of form formatting templates are translated, [have a look at the examples we've included](../templates/formatting/). When using `render` helpers, Freeform will generally handle the translation (`|t('freeform')`) setting for you. However, once you go manual or semi-manual, for example, radio and checkbox field options should look something like this in your templates:
+To see how all parts of form formatting templates are translated, [have a look at the examples we've included](../templates/formatting/index.mdx). When using `render` helpers, Freeform will generally handle the translation (`|t('freeform')`) setting for you. However, once you go manual or semi-manual, for example, radio and checkbox field options should look something like this in your templates:
 
 ```twig {18} showLineNumbers
 {% elseif field.type == "radio_group" %}
@@ -48,7 +48,7 @@ To see how all parts of form formatting templates are translated, [have a look a
     {{ field.renderErrors() }}
 ```
 
-Some parts are handled with JS and therefore need to be translated differently. Specifically, if you're using the [built-in AJAX feature](../guides/templating/ajax-forms) and need to translate the success/error banner, you'll need to override the [Freeform JS Plugin](../developer/js-plugin/) and translate those with:
+Some parts are handled with JS and therefore need to be translated differently. Specifically, if you're using the [built-in AJAX feature](../guides/templating/ajax-forms) and need to translate the success/error banner, you'll need to override the [Freeform JS Plugin](../developer/js-plugin.mdx) and translate those with:
 
 ```js showLineNumbers
 freeform.setOption('successBannerMessage', 'My custom success message');

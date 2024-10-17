@@ -28,11 +28,11 @@ This guide provides an overview of how Freeform works without going into too muc
 
 ## Introduction
 
-Freeform centers itself around letting admins and clients enjoy the experience of building and managing simple or complex forms in an intuitive interface that lets you see a live preview of the forms you're building. We refer to this as the [form builder](../forms/builder/), where almost everything is at your fingertips as it aims to stay out of your way and let you do as much as possible without moving around to other areas in the control panel. At the same time, Freeform is very powerful and flexible, so there is also a wide variety of other features, settings and options.
+Freeform centers itself around letting admins and clients enjoy the experience of building and managing simple or complex forms in an intuitive interface that lets you see a live preview of the forms you're building. We refer to this as the [form builder](../forms/builder.mdx), where almost everything is at your fingertips as it aims to stay out of your way and let you do as much as possible without moving around to other areas in the control panel. At the same time, Freeform is very powerful and flexible, so there is also a wide variety of other features, settings and options.
 
 ## Forms
 
-Each form is built inside the intuitive [form builder](../forms/builder/). This is where you can design the form layout, configure which fields are required, set up integrations, email notifications, conditional rules, validation and more. Freeform also allows for [multi-page forms](../forms/builder/#multi-page-forms) and has built-in [spam protection](../forms/spam-protection/) options.
+Each form is built inside the intuitive [form builder](../forms/builder.mdx). This is where you can design the form layout, configure which fields are required, set up integrations, email notifications, conditional rules, validation and more. Freeform also allows for [multi-page forms](../forms/builder.mdx#multi-page-forms) and has built-in [spam protection](../forms/spam-protection.mdx) options.
 
 The form builder is a workspace divided into three columns:
 
@@ -44,28 +44,28 @@ The form builder is a workspace divided into three columns:
 
 ## Fields
 
-Freeform uses its own set of [field & field types](../forms/fields/). Fields are global and available in all forms but can also be overwritten per form. This allows you to save time reusing existing fields when making other forms and will enable you to adjust them when needed. So to clarify, you can create fields with labels and options common to all forms but also override those on each form.
+Freeform uses its own set of [field & field types](../forms/fields.mdx). Fields are global and available in all forms but can also be overwritten per form. This allows you to save time reusing existing fields when making other forms and will enable you to adjust them when needed. So to clarify, you can create fields with labels and options common to all forms but also override those on each form.
 
-Freeform includes several standard fields preinstalled for you, which should get you started. Fields can be created and managed in the main field creation area (**Freeform > Fields > New Field**) and can also be made directly within the [form builder](../forms/builder/) interface. The field manager area (**Freeform > Fields > New Field**) essentially stores the default labels, options, etc, for each field (which can be adjusted for each form inside the form builder).
+Freeform includes several standard fields preinstalled for you, which should get you started. Fields can be created and managed in the main field creation area (**Freeform > Fields > New Field**) and can also be made directly within the [form builder](../forms/builder.mdx) interface. The field manager area (**Freeform > Fields > New Field**) essentially stores the default labels, options, etc, for each field (which can be adjusted for each form inside the form builder).
 
 <Photo img={FormBuilderPhoto} alt="Form Builder Firlds" />
 
 ## Email Notifications
 
-[Email notification templates](../forms/email-notifications/) are global and can be reused for multiple forms, saving you time when managing many forms. Email templates can be managed within the control panel (saved to the database) or as template files. All notification templates can be created and customized at Freeform > Email Notifications (of if using files, you can edit them in your favorite editor, etc).
+[Email notification templates](../forms/email-notifications.mdx) are global and can be reused for multiple forms, saving you time when managing many forms. Email templates can be managed within the control panel (saved to the database) or as template files. All notification templates can be created and customized at Freeform > Email Notifications (of if using files, you can edit them in your favorite editor, etc).
 
 Freeform allows you to send email notifications upon submittal of a form 5 different ways, each with its content/template:
 
-- [Admin Notifications](../forms/email-notifications/#admin)
+- [Admin Notifications](../forms/email-notifications.mdx#admin)
   - Specify the email address(es) you'd like to be notified upon successful submission of form.
 - [Dynamic Recipients](../forms/email-notifications/#dynamic-recipients)
   - Allow the user to choose from a predefined list of options to be emailed via select dropdown/radio group/checkbox group field.
 - [Dynamic Template Notifications](../forms/email-notifications/#dynamic-template-notifications)
-  - At the template level with the `dynamicNotification` parameter in the [Form query](../templates/queries/form/).
+  - At the template level with the `dynamicNotification` parameter in the [Form query](../templates/queries/form.mdx).
 - [User/Submitter Notifications](../forms/email-notifications/#user-submitter-notifications)
-  - To the user submitting the form, with the email addresses specified/selected in the [Email](../forms/fields/#email) field type.
+  - To the user submitting the form, with the email addresses specified/selected in the [Email](../forms/fields.mdx#email) field type.
 - [User-Defined](../forms/email-notifications/#user-defined)
-  - To a user-defined email address (e.g. Tell-a-Friend form), with the email addresses specified/selected in the [Email](../forms/fields/#email) field type.
+  - To a user-defined email address (e.g. Tell-a-Friend form), with the email addresses specified/selected in the [Email](../forms/fields.mdx#email) field type.
 
 <Photo img={EmailNotificationsListPhoto} alt="Email Notifications List" />
 <Photo
@@ -75,7 +75,7 @@ Freeform allows you to send email notifications upon submittal of a form 5 diffe
 
 ## Formatting Templates
 
-Freeform attempts to do all the heavy lifting when it comes to templating. Our looping templating approach allows you to automate all or almost all of your form formatting. This can be achieved by using [ready-made options](../templates/formatting/#sample-templates) or custom-building your own [formatting templates](../templates/formatting/).
+Freeform attempts to do all the heavy lifting when it comes to templating. Our looping templating approach allows you to automate all or almost all of your form formatting. This can be achieved by using [ready-made options](../templates/formatting/index.mdx#sample-templates) or custom-building your own [formatting templates](../templates/formatting/index.mdx).
 
 Forms can be generated on the front-end templates two different ways:
 
@@ -83,11 +83,11 @@ Forms can be generated on the front-end templates two different ways:
    ```twig showLineNumbers
    {{ freeform.form("yourFormHandle").render() }}
    ```
-2. By coding the formatting directly within the template you want the form to appear in, using the [Form query](../templates/queries/form/). We recommend the first approach, but this option is technically available if your project requires it.
+2. By coding the formatting directly within the template you want the form to appear in, using the [Form query](../templates/queries/form.mdx). We recommend the first approach, but this option is technically available if your project requires it.
 
 ## Integrations
 
-Freeform supports various popular [integrations](../integrations/) so you can do more with your forms, such as accepting payments, subscribing users to email marketing lists, and capturing data in CRMs, etc.
+Freeform supports various popular [integrations](../integrations/index.mdx) so you can do more with your forms, such as accepting payments, subscribing users to email marketing lists, and capturing data in CRMs, etc.
 
 - [CRMs](../integrations/#crm)
 - [Email Marketing](../integrations/#email-marketing)
@@ -101,17 +101,17 @@ Freeform supports various popular [integrations](../integrations/) so you can do
 
 ## Templating
 
-We strived to make things as flexible as possible while also coming up with templating that can automate much of the handling of parsing your forms. Freeform figures out as much of this as possible for you. This can be achieved by building [formatting templates](../templates/formatting/) for your forms.
+We strived to make things as flexible as possible while also coming up with templating that can automate much of the handling of parsing your forms. Freeform figures out as much of this as possible for you. This can be achieved by building [formatting templates](../templates/formatting/index.mdx) for your forms.
 
 ### Form Query
 
-To display a form inside a page, add a [Form template query](../templates/queries/form/) to the template. This will automatically use the [formatting template](../templates/formatting/) assigned to the form inside the [form builder](../forms/builder/).
+To display a form inside a page, add a [Form template query](../templates/queries/form.mdx) to the template. This will automatically use the [formatting template](../templates/formatting/index.mdx) assigned to the form inside the [form builder](../forms/builder.mdx).
 
 ```twig
 {{ craft.freeform.form("yourFormHandle").render() }}
 ```
 
-To add some overrides to the form, such as setting some classes or even [inserting values dynamically](./dynamic-data/passing-dynamic-data-to-forms/) from the page, your code might look something like this:
+To add some overrides to the form, such as setting some classes or even [inserting values dynamically](./dynamic-data/passing-dynamic-data-to-forms.mdx) from the page, your code might look something like this:
 
 ```twig showLineNumbers
 {{ craft.freeform.form("yourFormHandle", {
@@ -126,11 +126,11 @@ To add some overrides to the form, such as setting some classes or even [inserti
 
 ### Formatting Templates
 
-Freeform includes a large number of example [formatting templates](../templates/formatting/) to choose from. You can use these as a starting point and adjust them to suit your needs or create your own from scratch.
+Freeform includes a large number of example [formatting templates](../templates/formatting/index.mdx) to choose from. You can use these as a starting point and adjust them to suit your needs or create your own from scratch.
 
 ### Demo Templates
 
-Freeform includes a complete set of [demo templates](../configuration/demo-templates/). These demo templates give you a fully functioning area on your website with just a few clicks! Furthermore, it allows you to see real-world examples of the template code in action, which will help you get acquainted with Freeform more quickly.
+Freeform includes a complete set of [demo templates](../configuration/demo-templates.mdx). These demo templates give you a fully functioning area on your website with just a few clicks! Furthermore, it allows you to see real-world examples of the template code in action, which will help you get acquainted with Freeform more quickly.
 
 :::info
 When experiencing issues with your regular templates, always consider returning to the demo templates and see if your form works correctly there. Often the problem can be detected and resolved by comparing your template/approach with what is used in the demo templates.
@@ -142,7 +142,7 @@ Similar to Craft Entries, every time a user submits a form, we refer to those as
 
 ### Submissions Query
 
-To display submissions inside a page, add a [Submissions template query](../templates/queries/submissions/) to the template.
+To display submissions inside a page, add a [Submissions template query](../templates/queries/submissions.mdx) to the template.
 
 Display a simple list of submissions:
 
@@ -159,7 +159,7 @@ Display a simple list of submissions:
 </ul>
 ```
 
-To display a single submission, your template code might look something like this (see [Submission object](../templates/objects/submission/) for more info):
+To display a single submission, your template code might look something like this (see [Submission object](../templates/objects/submission.mdx) for more info):
 
 ```twig showLineNumbers
 {% set submissionId = craft.app.request.segment(5) %}

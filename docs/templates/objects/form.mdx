@@ -9,7 +9,7 @@ import { Badge } from '@site/src/components/utils';
 The Form object contains its metadata and field objects. You can either render the form using the pre-selected formatting template by calling `form.render()` or achieve a more fine-grained control over it by iterating over its rows and fields and using `form.renderTag` and `form.renderClosingTag` methods.
 
 :::info
-Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection), Submit disable on click, and other special fieldtypes. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Script Insert Location Location](../../configuration/settings#script-insert-location) setting.
+Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection.mdx), Submit disable on click, and other special fieldtypes. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Script Insert Location Location](../../configuration/settings.mdx#script-insert-location) setting.
 :::
 
 ## Properties
@@ -48,19 +48,19 @@ Outputs the custom error message configured in the Validation tab for your form 
 
 ### `hasErrors`
 
-A bool variable, which will be `true` if there are any errors in any of the fields or the form. It might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error). This can be used in conjunction with the [Errors object](./errors) for displaying special and general errors.
+A bool variable, which will be `true` if there are any errors in any of the fields or the form. It might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error). This can be used in conjunction with the [Errors object](./errors.mdx) for displaying special and general errors.
 
 ### `pages`
 
-Returns a list of [Page objects](./page) each containing its label and index.
+Returns a list of [Page objects](./page.mdx) each containing its label and index.
 
 ### `currentPage`
 
-Returns the current [Page object](./page) containing its label and index.
+Returns the current [Page object](./page.mdx) containing its label and index.
 
 ### `duplicate` <Badge type="feature" text="Renamed and Revised in 5.0+" />
 
-A bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled ([duplicate submission check](../../submissions/overview/#submission-limits)) and the user has already submitted the form.
+A bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled ([duplicate submission check](../../submissions/overview.mdx#submission-limits)) and the user has already submitted the form.
 
 ### `isIntegrationEnabled` <Badge type="feature" text="New in 5.6+" />
 
@@ -92,16 +92,16 @@ For **Singles**, the handles are:
 The form and each field have the ability to control **attributes**, **values** and more at the template level. Each one of them is entirely optional. There are several namespaces:
 
 - `attributes` - whatever you specify here will be set as an attribute on the form.
-- `buttons` - controls the output of the [Submit button(s)](../../forms/fields/#submit-buttons).
-- `fields` - controls the output of all [Fields](../../forms/fields/).
-- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/).
+- `buttons` - controls the output of the [Submit button(s)](../../forms/fields.mdx#submit-buttons).
+- `fields` - controls the output of all [Fields](../../forms/fields.mdx).
+- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha.mdx) or [hCaptcha](../../integrations/hcaptcha.mdx).
 
 :::info
-Please see the [Template Overrides](../../templates/formatting/#template-overrides) documentation for detailed instructions.
+Please see the [Template Overrides](../../templates/formatting/index.mdx#template-overrides) documentation for detailed instructions.
 :::
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template.mdx)
 :::
 
 ## Usage in Templates
@@ -118,7 +118,7 @@ A basic implementation might look like this:
 
 ### Override Classes & Values
 
-Once [Template Overrides](../../templates/formatting/#template-overrides) have been implemented, your code might look something like this:
+Once [Template Overrides](../../templates/formatting/index.mdx#template-overrides) have been implemented, your code might look something like this:
 
 ```twig showLineNumbers
 {% set form = freeform.form("myFormHandle") %}
@@ -332,7 +332,7 @@ When not using AJAX, the session success flash message (displays only once) when
 
 ### Error when Duplicate
 
-Display a message when the submission is a [duplicate](../../submissions/overview/#submission-limits#per-user):
+Display a message when the submission is a [duplicate](../../submissions/overview.mdx#submission-limits#per-user):
 
 ```twig showLineNumbers {3-6}
 {% set form = freeform.form("myForm") %}

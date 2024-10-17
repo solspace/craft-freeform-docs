@@ -14,7 +14,7 @@ import FieldTypeFormVideo from './assets/videos/fieldtype-form.mp4';
 
 # _Form_ Element Field Type<BadgeGroup><Badge type="lite" text="Lite" /><Badge type="pro" text="Pro" /></BadgeGroup>
 
-Freeform includes a _Freeform Form_ field type (and [Freeform Submissions](../submissions/fieldtype/)), which allows you to assign/relate forms to other element types such as Craft Entries.
+Freeform includes a _Freeform Form_ field type (and [Freeform Submissions](../submissions/fieldtype.mdx)), which allows you to assign/relate forms to other element types such as Craft Entries.
 
 <Photo img={FieldTypePhoto} alt="Field Type" />
 
@@ -71,7 +71,7 @@ The following template properties are available for the _Form_ field type:
 - `handle` - outputs the handle of the form
 - `id` - outputs the unique ID of the form
 - `description` - outputs the description of the form
-- `render()` - outputs the full form, rendering it with the [Formatting Template](../templates/formatting/) specified in the form builder for the form.
+- `render()` - outputs the full form, rendering it with the [Formatting Template](../templates/formatting/index.mdx) specified in the form builder for the form.
 
 ## Examples
 
@@ -114,7 +114,7 @@ If you're using the _Freeform Form_ field inside a Matrix field, your code might
 
 ### Passing Entry Data into Freeform Fields
 
-If you'd like to automatically pass content from another element (such as a Craft Entry) into Freeform field(s), you'd have to use the `value` parameter as part of the [Template Overrides](../templates/formatting/#template-overrides) feature inside your formatting template.
+If you'd like to automatically pass content from another element (such as a Craft Entry) into Freeform field(s), you'd have to use the `value` parameter as part of the [Template Overrides](../templates/formatting/index.mdx#template-overrides) feature inside your formatting template.
 
 For example, if you want to pass the title of an entry to a Freeform field, and the entry slug is in the second segment of your URL, you should set that in your formatting template. Also, be sure to include a hidden Freeform field in your form (in this case called `entryTitle`). Your template code might look something like this:
 

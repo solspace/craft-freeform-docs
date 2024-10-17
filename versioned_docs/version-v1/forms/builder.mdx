@@ -24,7 +24,7 @@ What makes Freeform very different from other form plugins is that it includes a
 
 To create your first form, visit the Forms area of the Freeform control panel (**Freeform > Forms**), and then click the **New Form** button at the top right corner of the page.
 
-The below documentation assumes that you have reviewed the [Fields & Field Types documentation](./fields). If you have not already done so, start over there first.
+The below documentation assumes that you have reviewed the [Fields & Field Types documentation](./fields.mdx). If you have not already done so, start over there first.
 
 <Photo img={FormBuilderPhoto} alt="Form Builder" />
 <Photo img={FormBuilder1Photo} alt="Form Builder 1" />
@@ -61,10 +61,10 @@ Freeform Composer is an all-in-one interface that lets you take control of almos
     - Users/groups need to have permissions access for **Settings** to create new formatting templates.
 * **Status** <a href="#form-status" id="form-status" class="docs-anchor">#</a>
   - The default status to be used when users submit the form, unless overwritten at template level.
-  - See [Statuses documentation](../configuration/settings#statuses) for managing statuses.
+  - See [Statuses documentation](../configuration/settings.mdx#statuses) for managing statuses.
 * **Return URL** <a href="#form-return-url" id="form-return-url" class="docs-anchor">#</a>
   - The URL that the form will redirect to after successful submit.
-  - May contain `{{ form.handle }}` and/or `{{ submission.id }}` to parse the newly created unique submission ID in the URL. This would allow you to use the [freeform.submissions](../templates/queries/submissions/) template function to display some or all of the users' submission on the success page.
+  - May contain `{{ form.handle }}` and/or `{{ submission.id }}` to parse the newly created unique submission ID in the URL. This would allow you to use the [freeform.submissions](../templates/queries/submissions.mdx) template function to display some or all of the users' submission on the success page.
 * **Description** <a href="#form-description" id="form-description" class="docs-anchor">#</a>
   - A description for the form to store notes or help identify what it's used for, etc.
 
@@ -136,4 +136,4 @@ The Property Editor controls every aspect of your form. Clicking on any field, p
 
 ### CRM API Integrations
 
-If you have installed and configured any [CRM API integrations](../configuration/settings#crm) (Customer Relationship Management), you will see a **CRM** button at the top of the **Property Editor** area (right column). To configure this, click that button, and then select an integration name from the options. You may then map out your Freeform fields to your CRM's fields.
+If you have installed and configured any [CRM API integrations](../configuration/settings.mdx#crm) (Customer Relationship Management), you will see a **CRM** button at the top of the **Property Editor** area (right column). To configure this, click that button, and then select an integration name from the options. You may then map out your Freeform fields to your CRM's fields.

@@ -54,7 +54,7 @@ Freeform offers the most flexible and customizable options for handling the form
 />
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/testing/troubleshooting-form-issues)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/testing/troubleshooting-form-issues.mdx)
 :::
 
 <Photo img={BasicDarkPhoto} alt="Basic Dark Example Formatting Template" />
@@ -69,7 +69,7 @@ Forms can be generated inside your front end templates one of 3 different ways:
 
 ### Formatting Template with Form Render<Badge type="recommended" text="Recommended" />
 
-The most common and hastle-free approach is to use the **formatting template** assigned to the form and load a [Form query](../queries/form/) using the `render` method in your template. In templates that you want your forms to show up in, you simply just insert one line of code:
+The most common and hastle-free approach is to use the **formatting template** assigned to the form and load a [Form query](../queries/form.mdx) using the `render` method in your template. In templates that you want your forms to show up in, you simply just insert one line of code:
 
 ```twig showLineNumbers
 {{ freeform.form("myFormHandle").render() }}
@@ -119,12 +119,12 @@ The most common and hastle-free approach is to use the **formatting template** a
   ```
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template.mdx)
 :::
 
 ### Code Your Form Directly in the Template
 
-If you absolutely prefer to do so, you can use a [Form query](../queries/form/) with the `renderTag` to code your form directly inside the template you need it to load in. This can definitely work against you if you intend on placing the form in more than one page.
+If you absolutely prefer to do so, you can use a [Form query](../queries/form.mdx) with the `renderTag` to code your form directly inside the template you need it to load in. This can definitely work against you if you intend on placing the form in more than one page.
 
 - Your form formatting code is contained directly within the template that you want the form to appear in.
 - No matter what formatting template your form may have assigned to it in the form builder, the form always conforms to the template formatting used in this template.
@@ -253,18 +253,18 @@ Freeform includes a large number of sample _formatting templates_ to choose from
 
 | Template Name                                                                                                                                         | Type                    | Description                                                                                                                                                                                                                |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Basic Light](./basic-light/) </div>                                    | Framework&nbsp;Agnostic | A neatly styled basic formatting template.                                                                                                                                                                                 |
-| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Basic Dark](./basic-dark/) </div>                                      | Framework Agnostic      | A neatly styled basic _dark mode_ formatting template.                                                                                                                                                                     |
-| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Basic Floating Labels](./basic-floating-labels/) </div>                | Framework Agnostic      | A neatly styled basic formatting template that displays labels in the center of the inputs and shrinks them to the top-left when clicked and/or contains a value.                                                          |
-| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Conversational](./conversational/) </div>                              | Framework Agnostic      | A neatly styled basic formatting template that displays one field at a time and smoothly scrolls down to the next question until complete. Similar to how _Typeform_ displays forms. Also a great choice for survey forms. |
-| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Multipage All Fields](./multipage-all-fields/) </div>                  | Framework Agnostic      | A neatly styled basic formatting template that displays ALL fields for a multipage form for the purpose of reviewing/previewing fields on other pages.                                                                     |
-| <div class="sample-templates-icon"><Photo img={GridIcon} alt="Grid"/> [Grid](./grid/) </div>                                                          | Barebones               | A very basic starter template that requires additional CSS to style it.                                                                                                                                                    |
-| <div class="sample-templates-icon"><Photo img={GridIcon} alt="Flexbox"/> [Flexbox](./flexbox/) </div>                                                 | Barebones               | A very basic starter template that requires additional CSS to style it.                                                                                                                                                    |
-| <div class="sample-templates-icon"><Photo img={BootstrapIcon} alt="Bootstrap 5"/> [Bootstrap 5](./bootstrap-5/) </div>                                | Popular Framework       | An implementation of Bootstrap 5.                                                                                                                                                                                          |
-| <div class="sample-templates-icon"><Photo img={BootstrapIcon} alt="Bootstrap 5"/> [Bootstrap 5 Dark Mode](./bootstrap-5-dark/) </div>                 | Popular Framework       | An implementation of Bootstrap 5 that uses the dark theme.                                                                                                                                                                 |
-| <div class="sample-templates-icon"><Photo img={BootstrapIcon} alt="Bootstrap 5"/> [Bootstrap&nbsp;5&nbsp;Floating&nbsp;Labels](./bootstrap-5-floating-labels/)</div> | Popular Framework       | An implementation of Bootstrap 5 that uses the floating labels feature.                                                                                                                                                    |
-| <div class="sample-templates-icon"><Photo img={TailwindIcon} alt="Tailwind 3"/> [Tailwind 3](./tailwind-3/) </div>                                    | Popular Framework       | An implementation of the Tailwind CSS 3 framework.                                                                                                                                                                         |
-| <div class="sample-templates-icon"><Photo img={FoundationIcon} alt="Foundation 6"/> [Foundation 6](./foundation-6/) </div>                            | Popular Framework       | An implementation of the Foundation 6 framework.                                                                                                                                                                           |
+| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Basic Light](./basic-light.mdx) </div>                                    | Framework&nbsp;Agnostic | A neatly styled basic formatting template.                                                                                                                                                                                 |
+| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Basic Dark](./basic-dark.mdx) </div>                                      | Framework Agnostic      | A neatly styled basic _dark mode_ formatting template.                                                                                                                                                                     |
+| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Basic Floating Labels](./basic-floating-labels.mdx) </div>                | Framework Agnostic      | A neatly styled basic formatting template that displays labels in the center of the inputs and shrinks them to the top-left when clicked and/or contains a value.                                                          |
+| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Conversational](./conversational.mdx) </div>                              | Framework Agnostic      | A neatly styled basic formatting template that displays one field at a time and smoothly scrolls down to the next question until complete. Similar to how _Typeform_ displays forms. Also a great choice for survey forms. |
+| <div class="sample-templates-icon"><Photo img={SolspaceIcon} alt="Solspace"/> [Multipage All Fields](./multipage-all-fields.mdx) </div>                  | Framework Agnostic      | A neatly styled basic formatting template that displays ALL fields for a multipage form for the purpose of reviewing/previewing fields on other pages.                                                                     |
+| <div class="sample-templates-icon"><Photo img={GridIcon} alt="Grid"/> [Grid](./grid.mdx) </div>                                                          | Barebones               | A very basic starter template that requires additional CSS to style it.                                                                                                                                                    |
+| <div class="sample-templates-icon"><Photo img={GridIcon} alt="Flexbox"/> [Flexbox](./flexbox.mdx) </div>                                                 | Barebones               | A very basic starter template that requires additional CSS to style it.                                                                                                                                                    |
+| <div class="sample-templates-icon"><Photo img={BootstrapIcon} alt="Bootstrap 5"/> [Bootstrap 5](./bootstrap-5.mdx) </div>                                | Popular Framework       | An implementation of Bootstrap 5.                                                                                                                                                                                          |
+| <div class="sample-templates-icon"><Photo img={BootstrapIcon} alt="Bootstrap 5"/> [Bootstrap 5 Dark Mode](./bootstrap-5-dark.mdx) </div>                 | Popular Framework       | An implementation of Bootstrap 5 that uses the dark theme.                                                                                                                                                                 |
+| <div class="sample-templates-icon"><Photo img={BootstrapIcon} alt="Bootstrap 5"/> [Bootstrap&nbsp;5&nbsp;Floating&nbsp;Labels](./bootstrap-5-floating-labels.mdx)</div> | Popular Framework       | An implementation of Bootstrap 5 that uses the floating labels feature.                                                                                                                                                    |
+| <div class="sample-templates-icon"><Photo img={TailwindIcon} alt="Tailwind 3"/> [Tailwind 3](./tailwind-3.mdx) </div>                                    | Popular Framework       | An implementation of the Tailwind CSS 3 framework.                                                                                                                                                                         |
+| <div class="sample-templates-icon"><Photo img={FoundationIcon} alt="Foundation 6"/> [Foundation 6](./foundation-6.mdx) </div>                            | Popular Framework       | An implementation of the Foundation 6 framework.                                                                                                                                                                           |
 
 :::info
 
@@ -279,9 +279,9 @@ Freeform includes a large number of sample _formatting templates_ to choose from
 The form and each field have the ability to control **attributes**, **values** and more at the template level. Each one of them is entirely optional. There are several namespaces:
 
 - `attributes` - whatever you specify here will be set as an attribute on the form.
-- `buttons` - controls the output of the [Submit button(s)](../../forms/fields/#submit-buttons).
-- `fields` - controls the output of all [Fields](../../forms/fields/).
-- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/).
+- `buttons` - controls the output of the [Submit button(s)](../../forms/fields.mdx#submit-buttons).
+- `fields` - controls the output of all [Fields](../../forms/fields.mdx).
+- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha.mdx) or [hCaptcha](../../integrations/hcaptcha.mdx).
 
 Here's a breakdown:
 
@@ -332,7 +332,7 @@ Here's a breakdown:
     - `value` - override the default value for the specified field.
     - `label` - override the field label for the specified field.
     - `instructions` - override the field instructions for the specified field type.
-- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/). <Badge type="feature" text="New in 5.1+" />
+- `captchas` - add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha.mdx) or [hCaptcha](../../integrations/hcaptcha.mdx). <Badge type="feature" text="New in 5.1+" />
   - `"foo": "bar"`- unknown attributes - applied directly to the `<div data-freeform-recaptcha-container>` tag.
   - `class: "my-form-class"` - known attributes - applied directly to the corresponding attribute on the `<div data-freeform-recaptcha-container>` tag.
 
@@ -1203,7 +1203,7 @@ For further customization of the submit buttons, please see the [options and ins
 
 ### On Captcha Wrapper <Badge type="feature" text="New in 5.1+" />
 
-You can add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha/) or [hCaptcha](../../integrations/hcaptcha/).
+You can add attributes to the main Captcha wrapper automatically inserted by Freeform when using [reCAPTCHA](../../integrations/recaptcha.mdx) or [hCaptcha](../../integrations/hcaptcha.mdx).
 
 <Tabs>
   <TabItem value="template-code" label="Template Code" default>
@@ -1262,7 +1262,7 @@ You can override the value inside text fields, or pre-select a default option fo
 ```
 
 :::tip
-[Need to pass dynamic data such as the current URL, logged in user data, or data from another element to your form fields?](../../guides/dynamic-data/passing-dynamic-data-to-forms/)
+[Need to pass dynamic data such as the current URL, logged in user data, or data from another element to your form fields?](../../guides/dynamic-data/passing-dynamic-data-to-forms.mdx)
 :::
 
 ### Array Values & Conditionals
@@ -1561,5 +1561,5 @@ Freeform explicitly requires that all options exist for the field in the form bu
 ```
 
 :::tip
-[Need to populate field options at template level for automated formatting templates? Check out the guide for workaround options.](../../guides/dynamic-data/populate-field-options-at-template-level)
+[Need to populate field options at template level for automated formatting templates? Check out the guide for workaround options.](../../guides/dynamic-data/populate-field-options-at-template-level.mdx)
 :::

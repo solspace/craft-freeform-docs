@@ -11,7 +11,7 @@ If you need to set limits on the number of submissions a form may receive or who
 
 ## Per User <Badge type="pro" text="Pro" />
 
-Inside the [Validation](../forms/builder#validation) tab (lock icon) in the [form builder](../forms/builder), an option exists to allow you to limit the number of times a user can submit the form. Look for this setting:
+Inside the [Validation](../forms/builder#validation) tab (lock icon) in the [form builder](../forms/builder.mdx), an option exists to allow you to limit the number of times a user can submit the form. Look for this setting:
 
 - **Limit Form Submission Rate**
   - _Do not limit_
@@ -26,7 +26,7 @@ Inside the [Validation](../forms/builder#validation) tab (lock icon) in the [for
 
 Freeform includes the ability to set a limit on the maximum number of submissions a form may receive, and the reject any additional ones. You can also include a template-based condition check and display an alternate message without ever presenting the form to the user in the event it's reached it's limit.
 
-The key is applying the `submissionLimit` parameter to the [Form query](../templates/queries/form/) and feeding it a number value. This could be hardcoded or you could grab this value from somewhere else such as another element or global variable, etc. Here's an example of what that may look like:
+The key is applying the `submissionLimit` parameter to the [Form query](../templates/queries/form.mdx) and feeding it a number value. This could be hardcoded or you could grab this value from somewhere else such as another element or global variable, etc. Here's an example of what that may look like:
 
 ```twig showLineNumbers {4-8}
 {# Replace 'myForm' with your form handle. #}
@@ -56,4 +56,4 @@ The key is applying the `submissionLimit` parameter to the [Form query](../templ
 
 ## Stop Submissions After Date<Badge type="feature" text="3.13+" />
 
-Inside the [Validation](../forms/builder/#validation) tab (lock icon) in the [form builder](../forms/builder), an option exists to allow you to prevent new submissions of the form after the set date.
+Inside the [Validation](../forms/builder/#validation) tab (lock icon) in the [form builder](../forms/builder.mdx), an option exists to allow you to prevent new submissions of the form after the set date.

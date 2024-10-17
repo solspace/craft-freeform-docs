@@ -15,14 +15,14 @@ import CEM6Photo from './assets/img/custom-email-marketing-6.png';
 
 # Custom Email Marketing Integrations<Badge type="pro" text="Pro" />
 
-You can create your own [Email Marketing](../integrations/) types and add them to Freeform.
+You can create your own [Email Marketing](../integrations/index.mdx) types and add them to Freeform.
 
 ## Setup Guide<Badge type="feature" text="Revised in 5.0+" />
 
-The creation of a custom Email Marketing integration in Freeform will require using a custom [Craft module](https://craftcms.com/docs/5.x/extend/module-guide.html). This guide assumes you already have that knowledge. If not, please [check out the guide](../guides/developer/building-a-custom-module) we have.
+The creation of a custom Email Marketing integration in Freeform will require using a custom [Craft module](https://craftcms.com/docs/5.x/extend/module-guide.html). This guide assumes you already have that knowledge. If not, please [check out the guide](../guides/developer/building-a-custom-module.mdx) we have.
 
 :::tip
-[View the guide on how to build a custom module.](../guides/developer/building-a-custom-module)
+[View the guide on how to build a custom module.](../guides/developer/building-a-custom-module.mdx)
 :::
 
 To add a custom Email Marketing integration, you need to create a new class that implements `\Solspace\Freeform\Library\Integrations\Types\EmailMarketing\EmailMarketingIntegrationInterface` interface.
@@ -551,7 +551,7 @@ class CustomEmailMarketingIntegration extends EmailMarketingIntegration
         label: 'Contact Fields',
         instructions: 'Select the Freeform fields to be mapped to the applicable Mailchimp Contact fields.',
         order: 6,
-        source: 'api/integrations/email-marketing/fields/'.self::CATEGORY_CONTACT,
+        source: 'api/integrations/email-marketing.mdxfields/'.self::CATEGORY_CONTACT,
         parameterFields: [
             'id' => 'id',
             'values.mailingList' => 'mailingListId',
@@ -834,7 +834,7 @@ class CustomEmailMarketingIntegration extends EmailMarketingIntegration
         label: 'Contact Fields',
         instructions: 'Select the Freeform fields to be mapped to the applicable Mailchimp Contact fields.',
         order: 6,
-        source: 'api/integrations/email-marketing/fields/'.self::CATEGORY_CONTACT,
+        source: 'api/integrations/email-marketing.mdxfields/'.self::CATEGORY_CONTACT,
         parameterFields: [
             'id' => 'id',
             'values.mailingList' => 'mailingListId',

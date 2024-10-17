@@ -12,18 +12,18 @@ import BasicDarkPhoto from '../assets/img/basic-dark.png';
 
 # Form Queries
 
-The Form query returns a [Form object](../objects/form/) containing its metadata and field objects. From there you can either render the form using the pre-selected formatting template by calling `form.render()` or take control of it by iterating over its fields and using `form.renderTag` and `form.renderClosingTag` methods.
+The Form query returns a [Form object](../objects/form.mdx) containing its metadata and field objects. From there you can either render the form using the pre-selected formatting template by calling `form.render()` or take control of it by iterating over its fields and using `form.renderTag` and `form.renderClosingTag` methods.
 
 :::info
-Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection/), Submit disable on click, and other special field types. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings/#scripts-location) setting.
+Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection.mdx), Submit disable on click, and other special field types. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings/#scripts-location) setting.
 :::
 
 :::tip
-[Using headless website architecture with JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more.](../../headless/graphql/)
+[Using headless website architecture with JavaScript-based front-end frameworks such as Vue.js, Next.js, React JS and more.](../../headless/graphql.mdx)
 :::
 
 :::tip
-[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/testing/troubleshooting-form-issues)
+[Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../../guides/testing/troubleshooting-form-issues.mdx)
 :::
 
 <Photo img={BasicDarkPhoto} alt="Basic Dark Example" />
@@ -98,7 +98,7 @@ Overrides the return URL for the form. You can override the return URL manually 
 ```
 
 :::tip
-[Options for handling the Success Return URL on forms.](../../guides/templating/success-return-on-forms)
+[Options for handling the Success Return URL on forms.](../../guides/templating/success-return-on-forms.mdx)
 :::
 
 ### `method`
@@ -127,14 +127,14 @@ formattingTemplate: 'template-name.html'
 
 ### `suppress`
 
-Allows you to suppress email notifications, API integrations and [Element Connections](../../integrations/elements/) for a form by passing an object of suppressions you wish to enable, typically used for [editing submissions](../../submissions/submission-editing), e.g.:
+Allows you to suppress email notifications, API integrations and [Element Connections](../../integrations/elements.mdx) for a form by passing an object of suppressions you wish to enable, typically used for [editing submissions](../../submissions/submission-editing), e.g.:
 
 - `adminNotifications: true` - suppress [Admin notifications](../../forms/email-notifications/#admin-notifications)
 - `dynamicRecipients: true` - suppress [Dynamic Recipient notifications](../../forms/email-notifications#dynamic-recipients)
 - `submitterNotifications: true` - suppress [Submitter email notifications](../../forms/email-notifications#usersubmitter-notifications)
 - `api: true` - suppress [CRM](../../integrations#crm) and [Email Marketing](../../integrations/#email-marketing) integrations
-- `connections: true` - suppress creation of new elements via [Element Connections](../../integrations/elements/) feature (will not disable Element _validation_, e.g. required fields, username already in use, etc).
-- `payments: true` - suppress [Payment](../../integrations/stripe-payments) integrations
+- `connections: true` - suppress creation of new elements via [Element Connections](../../integrations/elements.mdx) feature (will not disable Element _validation_, e.g. required fields, username already in use, etc).
+- `payments: true` - suppress [Payment](../../integrations/stripe-payments.mdx) integrations
 - `webhooks: true` - suppress any Webhooks for the form
 
 ```php showLineNumbers
@@ -150,9 +150,9 @@ You can also just set this to `true` (`suppress: true`) to enable all suppressio
 
 ### `relations` <Badge type="pro" text="Pro" />
 
-This is a powerful feature that allows you to relate the posted submission to any other Craft Element, as long as it contains a [Freeform Submissions element field type](../../forms/fieldtype). This allows you to quickly turn Freeform into a plugin replacement for Comments, Reviews, Ratings, and more!
+This is a powerful feature that allows you to relate the posted submission to any other Craft Element, as long as it contains a [Freeform Submissions element field type](../../forms/fieldtype.mdx). This allows you to quickly turn Freeform into a plugin replacement for Comments, Reviews, Ratings, and more!
 
-You can specify as many element ID's to relate to as you wish. All you have to do is specify the [Freeform Submissions Field](../../forms/fieldtype) handle and supply an array of element ID's or just a single element ID that you wish to relate submissions for.
+You can specify as many element ID's to relate to as you wish. All you have to do is specify the [Freeform Submissions Field](../../forms/fieldtype.mdx) handle and supply an array of element ID's or just a single element ID that you wish to relate submissions for.
 
 ```php showLineNumberss
 relations: {
@@ -173,7 +173,7 @@ Allows you to override the value inside Text fields, or pre-select a default opt
 - `firstName: currentUser.name` - pull in the currently logged in user's name into the Name field.
 
 :::tip
-[Need to pass dynamic data such as the current URL, logged in user data, or data from another element to your form fields?](../../guides/dynamic-data/passing-dynamic-data-to-forms/)
+[Need to pass dynamic data such as the current URL, logged in user data, or data from another element to your form fields?](../../guides/dynamic-data/passing-dynamic-data-to-forms.mdx)
 :::
 
 ```twig
@@ -184,7 +184,7 @@ overrideValues: {
 }
 ```
 
-Specify the field `handle` as key, and provide the custom value override as its value. If a [Field](../objects/field) uses an `overrideValue` attribute, it will take precedence over the value specified in this attribute.
+Specify the field `handle` as key, and provide the custom value override as its value. If a [Field](../objects/field.mdx) uses an `overrideValue` attribute, it will take precedence over the value specified in this attribute.
 
 ### `formAttributes`
 
@@ -240,7 +240,7 @@ dynamicNotification: {
 - For Twig file based templates, specify the full file name including **.html** for `template`.
 
 :::warning
-When using **PHP Sessions** for form context, this feature may not work properly if the page is cached with something like Varnish, etc. In order for it to work correctly, you would have to [refresh the tokens similar to what is described in this guide](../../guides/templating/caching-forms).
+When using **PHP Sessions** for form context, this feature may not work properly if the page is cached with something like Varnish, etc. In order for it to work correctly, you would have to [refresh the tokens similar to what is described in this guide](../../guides/templating/caching-forms.mdx).
 :::
 
 ### `disableRecaptcha`
@@ -291,7 +291,7 @@ Then in your formatting template, use:
 ```
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template.mdx)
 :::
 
 :::info showLineNumbers
@@ -449,7 +449,7 @@ The attribute value differs between various types of submit buttons:
 
 - For the regular submit button which advances forms forward, it's value has to be `submit`
 - For the back buttons in multi-page forms, the value has to be `back`
-- For the [Save & Continue Later](../../forms/save-continue-later) buttons, the value has to be `save`
+- For the [Save & Continue Later](../../forms/save-continue-later.mdx) buttons, the value has to be `save`
 
 ```html showLineNumbers
 <button type="submit" data-freeform-action="submit">Submit</button>
@@ -585,7 +585,7 @@ The attribute value differs between various types of submit buttons:
 
 - For the regular submit button which advances forms forward, it's value has to be `submit`
 - For the back buttons in multi-page forms, the value has to be `back`
-- For the [Save & Continue Later](../../forms/save-continue-later) buttons, the value has to be `save`
+- For the [Save & Continue Later](../../forms/save-continue-later.mdx) buttons, the value has to be `save`
 
 ```html showLineNumbers
 <button type="submit" data-freeform-action="submit">Submit</button>
@@ -597,7 +597,7 @@ The attribute value differs between various types of submit buttons:
 
 ### Iterate over Fields instead of Rows
 
-You can also iterate over fields directly with `layout.fields` instead of [Row objects](../objects/row):
+You can also iterate over fields directly with `layout.fields` instead of [Row objects](../objects/row.mdx):
 
 ```twig showLineNumbers
 {% set form = craft.freeform.form("myForm") %}
@@ -630,7 +630,7 @@ Rendering the form that allows editing a specific submission and suppresses all 
 
 You can feed Element ID(s) however you like, but the below example shows how you might pass off a loaded Entry ID to the Freeform form so that the submission will be related to it.
 
-If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtype) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
+If you have a Craft Entry with a slug of `submitted-contacts` that contains a [Freeform Submissions Field](../../forms/fieldtype.mdx) with a handle of `contactFormSubmissions`, and you would like to attach each submission to the Craft Entry field, you could do something like the following:
 
 ```twig {6-8} showLineNumbers
 {# Fetch the entry however you wish #}

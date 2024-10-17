@@ -30,7 +30,7 @@ Once a **Save & Continue Later** special field is added to the page layout in th
 - **Return URL** - where the user should be returned to if they click the **Save** button.
   - Special `token` and `key` variables are available to include in the return path.
   - The return URL would be wherever you like, and fully customizable. This is where you'd include instructions to the user including a URL for where to return to complete the form later.
-- **Target Email field** (optional) - the [Email](./fields#email) field that will contain the user's email address in order to send the email notification.
+- **Target Email field** (optional) - the [Email](./fields.mdx#email) field that will contain the user's email address in order to send the email notification.
   - If the user hasn't yet filled out an email address and the field is NOT required, the email notification attempt will be suppressed. If the email address field is marked as required, the form will run through regular field validation until it contains a valid value. A good way around this would be to have the first page include basic info like _name_ and _email_ and/or no option to save the form until the second page.
   - **Email Notification Template** - the email notification sent to the user if they click the **Save** button.
     - Choose a special Freeform email notification template.

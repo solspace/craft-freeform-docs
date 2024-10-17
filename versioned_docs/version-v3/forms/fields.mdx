@@ -96,7 +96,7 @@ Freeform features its own set of robust field types. The form builder displays a
 - All fieldtypes conveniently include the ability to set attributes for their **labels**, **inputs**, **errors** and **instructions** directly inside the form builder property editor.
   - This allows you to keep your hands clean of being inside formatting templates and specify one-off exceptions for fields such as `readonly` and `autocomplete="off"`, etc.
   - To use single attributes like `novalidate`, just enter the attribute in the **Attribute** column and leave the **Value** column empty.
-  - You can use anything inside the [Form](../templates/objects/form) and [Field](../templates/objects/field) objects as well, e.g.:
+  - You can use anything inside the [Form](../templates/objects/form.mdx) and [Field](../templates/objects/field.mdx) objects as well, e.g.:
     - `field.id` to access Field ID.
     - `form.handle` to access form handle.
 
@@ -243,7 +243,7 @@ A complex date and/or time field. Can be used as Date only, Time only, or both. 
   - To translate the formatting syntax error message, be sure to translate the following strings:
     - `"{value}" does not conform to "{format}" format.`
     - To translate the `{format}` rendered value to match the current locale, be sure to also translate whatever the rendered string is in the error message. For example, if you're using `fr` locale, and wish to have the default English `DD/MM/YYYY` show up as `JJ/MM/AAAA`, create a static translation for this manually.
-- To customize the date picker appearance and behavior, please see [Date Picker Events](../developer/datepicker) documentation.
+- To customize the date picker appearance and behavior, please see [Date Picker Events](../developer/datepicker.mdx) documentation.
 
 #### Templating Properties
 
@@ -350,7 +350,7 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 
 #### Special Notes
 
-- In [multi-page forms](../forms/builder/#multi-page-forms), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
+- In [multi-page forms](../forms/builder.mdx#multi-page-forms), if an earlier page contains file upload field(s), files will actually be uploaded before the form is officially submitted.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
 - If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
 
@@ -424,7 +424,7 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
 
 #### Special Notes
 
-- Unlike the regular [File Upload](#file-upload) field, the **File Upload Drag & Drop** field will remember files that have been uploaded to it regardless of the context: errors upon submission, [multi-page forms](../forms/builder/#multi-page-forms), returning to edit the submission later.
+- Unlike the regular [File Upload](#file-upload) field, the **File Upload Drag & Drop** field will remember files that have been uploaded to it regardless of the context: errors upon submission, [multi-page forms](../forms/builder.mdx#multi-page-forms), returning to edit the submission later.
   - If the form is never completed, incomplete submissions are stored for 3hrs, and then are removed (along with the files) after that.
 - While files are uploading, Freeform will disable the **Submit** button so that the form has time to finish uploading the files. If the form is submitted while files are still uploading, any that are incomplete will not be saved.
 - If you wish to allow more file extensions, you will need to add the [extraAllowedFileExtensions](https://craftcms.com/docs/5.x/reference/config/general.html#extraallowedfileextensions) (and possibly [extraFileKinds](https://craftcms.com/docs/5.x/reference/config/general.html#extrafilekinds)) config items to your Craft config file (`config/general.php`).
@@ -880,7 +880,7 @@ For **manual** rendering of the Table field inside your form for full customizab
 
 #### Submission Data
 
-Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission/):
+Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission.mdx):
 
 ```twig showLineNumbers
 <table class="table">
@@ -989,7 +989,7 @@ A field that allows you to force a user to re-enter a matching value for another
 
 ### Credit Card<Badge type="pro" text="Pro" />
 
-When a [Stripe Payments](../integrations/stripe-payments) integration is configured, a credit card special field type will become available. This is required for _Payments_-enabled forms to collect (but not store) credit card information. The `field.type` property value is `cc_details` (for conditionals).
+When a [Stripe Payments](../integrations/stripe-payments.mdx) integration is configured, a credit card special field type will become available. This is required for _Payments_-enabled forms to collect (but not store) credit card information. The `field.type` property value is `cc_details` (for conditionals).
 
 <Photo img={CreditCardPhoto} alt="Stripe Payment field Layout Options" />
 
@@ -1013,7 +1013,7 @@ A special field type that allows you include HTML and Twig inside your form layo
 - The Property Editor will load an HTML area for you to type or paste your code into.
 - The Layout column in the form builder will live parse your HTML (Twig will not be parse inside the form builder).
 - All HTML is allowed here.
-- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.<Badge type="feature" text="3.10+" />
+- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings.mdx#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.<Badge type="feature" text="3.10+" />
 - You can include as many of these in your form as you wish.
 
 #### Displaying Submission Data from Previous Pages<Badge type="feature" text="3.10+" />
@@ -1055,24 +1055,24 @@ While data is passed along to the Email Marketing provider, Freeform does not st
 
 ### Password<Badge type="pro" text="Pro" />
 
-A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/speciality-forms/user-registration-forms) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
+A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/speciality-forms/user-registration-forms.mdx) with the [Elements integration](../integrations/elements.mdx)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
 
 <Photo img={PasswordPhoto} alt="Password field type" />
 
 #### Special Notes
 
 - Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../forms/email-notifications/#all-fields).
-- When using with the Users [Element integration](../integrations/elements/), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
+- When using with the Users [Element integration](../integrations/elements.mdx), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
 
 ### Captcha
 
-A special field type that displays and handles the [reCAPTCHA](https://www.google.com/recaptcha) or [hCaptcha](https://www.hcaptcha.com) interaction with the user when the [Checkbox](./spam-protection) option is enabled and configured for the website. Please note that reCAPTCHA v2 Invisible, reCAPTCHA v3 and hCaptcha Invisble do not require any addition of a special field to the form layout. Freeform will automatically apply that validation and take care of it. The `field.type` property value is `recaptcha` (for conditionals).
+A special field type that displays and handles the [reCAPTCHA](https://www.google.com/recaptcha.mdx) or [hCaptcha](https://www.hcaptcha.com) interaction with the user when the [Checkbox](./spam-protection.mdx) option is enabled and configured for the website. Please note that reCAPTCHA v2 Invisible, reCAPTCHA v3 and hCaptcha Invisble do not require any addition of a special field to the form layout. Freeform will automatically apply that validation and take care of it. The `field.type` property value is `recaptcha` (for conditionals).
 
 <Photo img={CaptchaPhoto} alt="reCAPTCHA v2 Checkbox field type" />
 
 #### Special Notes
 
-- See [Captchas documentation](./spam-protection#captchas) for more information.
+- See [Captchas documentation](./spam-protection.mdx#captchas) for more information.
 
 #### Templating
 
@@ -1105,7 +1105,7 @@ A special field type that allows you include rich text inside your form layout i
 
 ### Save & Continue Later<Badge type="pro" text="Pro" /><Badge type="feature" text="3.12+" />
 
-A special field type that lets you place "save" button(s) inside your form layout in the form builder, allowing users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later). The `field.type` property value is `save` (for conditionals).
+A special field type that lets you place "save" button(s) inside your form layout in the form builder, allowing users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later.mdx). The `field.type` property value is `save` (for conditionals).
 
 #### Form Builder Settings
 
@@ -1120,7 +1120,7 @@ A special field type that lets you place "save" button(s) inside your form layou
 - You may optionally specify that an email notification be sent to the user if they click the **Save** button.
   - Choose a special Freeform email notification template.
   - The message of this email notification is completely customizable, but be sure to include instructions to the user including a URL for where to return to complete the form later.
-  - Requires targeting of a [Email](./fields#email) field that will contain the user's email address in order to send the email notification.
+  - Requires targeting of a [Email](./fields.mdx#email) field that will contain the user's email address in order to send the email notification.
     - If the user hasn't yet filled out an email address, the email notification attempt will be suppressed (as there is no field validation to ensure the Email field is fillout out). A good way around this would be to have the first page include basic info like _name_ and _email_ but no option to save the form until the second page.
 - You may include 1 per page in your form.
 
@@ -1164,7 +1164,7 @@ The attribute value differs between various types of submit buttons:
 
 - For the regular submit button which advances forms forward, it's value has to be `submit`
 - For the back buttons in multi-page forms, the value has to be `back`
-- For the [Save & Continue Later](./save-continue-later) buttons, the value has to be `save`
+- For the [Save & Continue Later](./save-continue-later.mdx) buttons, the value has to be `save`
 
 ```html showLineNumbers
 <button type="submit" data-freeform-action="submit">Submit</button>
@@ -1188,7 +1188,7 @@ Inside the form builder (only), field types with options (such as _Dropdown_, _R
 :::info
 For cases where you need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template), please see this guide:
 
-- **GUIDE:** [Populate Field Options at Template Level](../guides/dynamic-data/populate-field-options-at-template-level)
+- **GUIDE:** [Populate Field Options at Template Level](../guides/dynamic-data/populate-field-options-at-template-level.mdx)
 
 :::
 

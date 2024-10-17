@@ -46,13 +46,13 @@ The Freeform_FormModel.
 
 ### `ip`
 
-The IP address of the submitter, if [collection of IP addresses is enabled](../../forms/builder/#form-settings).
+The IP address of the submitter, if [collection of IP addresses is enabled](../../forms/builder.mdx#form-settings).
 
 ### `token`
 
-The token generated for the submission. A common use case for tokens would be when you want to have a more secure URL for accessing and displaying submission data, or allowing users to [delete their own submission](../queries/deleting-submissions-by-token) and not requiring any login, etc.
+The token generated for the submission. A common use case for tokens would be when you want to have a more secure URL for accessing and displaying submission data, or allowing users to [delete their own submission](../queries/deleting-submissions-by-token.mdx) and not requiring any login, etc.
 
-Also required if you wish to allow [editing of submissions on front end](../../submissions/overview/#editing-submissions/).
+Also required if you wish to allow [editing of submissions on front end](../../submissions/overview.mdx#submission-editing).
 
 ### `submission[field.handle]`
 
@@ -71,7 +71,7 @@ You can access any field in the submission's form by the field's handle. If you 
 Some properties are field type specific. For example, you wouldn't be able to get `rows` from a **Dropdown** field, or `options` from a **Textarea** field.
 
 :::tip
-[Need to display the total number of submissions for the form?](../../guides/submission-data/total-number-of-submissions-for-form)
+[Need to display the total number of submissions for the form?](../../guides/submission-data/total-number-of-submissions-for-form.mdx)
 :::
 
 ## Usage in Templates

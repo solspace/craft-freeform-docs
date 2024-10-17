@@ -15,7 +15,7 @@ Welcome to the guide for submitting your forms using AJAX. The good news is that
 
 ## Overview
 
-Freeform has its own built-in automated AJAX support. To enable it, simply check the **Enable AJAX** checkbox in the _Form Settings_ tab inside the Form Builder and Freeform will then handle the rest. Freeform includes its own [javascript plugin](../../developer/js-plugin) which handles AJAX functionality and all other JS needed (such as Date fields, Stripe payments and more). Much of the default functionality (formatting, language, etc) can be overridden if necessary. See [customization](#customization) reference guide below.
+Freeform has its own built-in automated AJAX support. To enable it, simply check the **Enable AJAX** checkbox in the _Form Settings_ tab inside the Form Builder and Freeform will then handle the rest. Freeform includes its own [javascript plugin](../../developer/js-plugin.mdx) which handles AJAX functionality and all other JS needed (such as Date fields, Stripe payments and more). Much of the default functionality (formatting, language, etc) can be overridden if necessary. See [customization](#customization) reference guide below.
 
 :::info
 When using Freeform's [Stripe Payments](../../integrations#other) feature, Freeform will automatically force AJAX mode on the form in order to work with Stripe's validation.
@@ -24,7 +24,7 @@ When using Freeform's [Stripe Payments](../../integrations#other) feature, Freef
 If you need to use a manual approach for the AJAX call, usually because some sort of framework is used to generate the form such as [Vue.js](https://vuejs.org/), please see the [Manual Implementations](#manual-implementations) guide further below.
 
 :::info
-Be sure to check out the [Freeform Javascript plugin](../../developer/js-plugin) documentation, to learn how to further extend Freeform's functionality.
+Be sure to check out the [Freeform Javascript plugin](../../developer/js-plugin.mdx) documentation, to learn how to further extend Freeform's functionality.
 :::
 
 Multi-page forms now work with the built-in AJAX feature. <Badge type="feature" text="3.10.0+" />
@@ -271,7 +271,7 @@ form.addEventListener('freeform-render-field-errors', function (event) {
 
 ## Advanced
 
-To attach your own functionality when the AJAX form successfully submits or fails, you have to listen to the respective events dispatched by the [Freeform JS plugin](../../developer/js-plugin). For instance, redirecting after an AJAX submit is finished:
+To attach your own functionality when the AJAX form successfully submits or fails, you have to listen to the respective events dispatched by the [Freeform JS plugin](../../developer/js-plugin.mdx). For instance, redirecting after an AJAX submit is finished:
 
 ```js showLineNumbers
 // Find the form element

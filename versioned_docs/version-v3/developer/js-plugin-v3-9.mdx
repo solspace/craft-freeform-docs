@@ -8,7 +8,7 @@ sidebar_class_name: hidden
 If you wish to extend the capabilities of Freeform's front-end Javascript plugin, please refer to the documentation below:
 
 :::info
-**You're viewing the v3.9 version of these docs**. To switch to the v3.10 docs, [click here to view the revised v3.10 documentation](./js-plugin) that shows usage of the improved Freeform Javascript plugin.
+**You're viewing the v3.9 version of these docs**. To switch to the v3.10 docs, [click here to view the revised v3.10 documentation](./js-plugin.mdx) that shows usage of the improved Freeform Javascript plugin.
 :::
 
 ## Getting the Plugin Instance
@@ -71,7 +71,7 @@ form.addEventListener('freeform-ready', function (event) {
 
 ## Loading Freeform JS manually
 
-If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Freeform Javascript Insertion Location](../configuration/settings#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformScripts()` function to your template where you'd like it to insert the JS and pass it the form handle.
+If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Freeform Javascript Insertion Location](../configuration/settings.mdx#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformScripts()` function to your template where you'd like it to insert the JS and pass it the form handle.
 
 Here's a simple example of how this may look in your template:
 
@@ -301,4 +301,4 @@ const form = document.getElementById('my-form');
 
 ## Date Picker Events
 
-The Freeform [Date & Time](../forms/fields#date--time) field comes packed with a built-in, optional [flatpickr](https://flatpickr.js.org/) instance. Check out the [Date Picker Events](./datepicker) documentation for full customization options of the _flatpickr_ instance.
+The Freeform [Date & Time](../forms/fields#date--time) field comes packed with a built-in, optional [flatpickr](https://flatpickr.js.org/) instance. Check out the [Date Picker Events](./datepicker.mdx) documentation for full customization options of the _flatpickr_ instance.

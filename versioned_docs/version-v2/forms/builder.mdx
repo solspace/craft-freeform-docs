@@ -25,7 +25,7 @@ What makes Freeform very different from other form plugins is that it includes a
 
 To create your first form, visit the Forms area of the Freeform control panel (**Freeform > Forms**), and then click the **New Form** button at the top right corner of the page.
 
-The below documentation assumes that you have reviewed the [Fields & Field Types documentation](./fields). If you have not already done so, start over there first.
+The below documentation assumes that you have reviewed the [Fields & Field Types documentation](./fields.mdx). If you have not already done so, start over there first.
 
 <Photo img={FormBuilderPhoto} alt="Form Builder" />
 <Photo img={FormBuilder1Photo} alt="Form Builder 1" />
@@ -80,7 +80,7 @@ When you first create a form, the Property Editor (right column) will display ov
     - `{{ submission.id }}` - newly created unique submission ID in the URL. This would allow you to use the [freeform.submissions](../submissions/overview) template function to display some or all of the users' submission on the success page.
 - **Default Status** <a href="#form-status" id="form-status" class="docs-anchor">#</a>
   - The default status to be used when users submit the form, unless overwritten at template level.
-  - See [Statuses documentation](../configuration/settings#statuses) for managing statuses.
+  - See [Statuses documentation](../configuration/settings.mdx#statuses) for managing statuses.
 - **Formatting Template** <a href="#formatting-template" id="formatting-template" class="docs-anchor">#</a>
   - Optional, if using the [render() method](../templates/queries/form#render), this essentially allows you to "attach" a formatting template to a form so that you don't need to include formatting inside the template(s) you place the form inside.
   - Select from an existing sample or custom template, or create a new one.
@@ -90,15 +90,15 @@ When you first create a form, the Property Editor (right column) will display ov
   - To enable Freeform's built-in automated AJAX submit support, simply check this checkbox and Freeform will then handle the rest (as long as you're using a standard formatting template - very custom formatting templates may not work properly).
 - **Collect IP Addresses** <a href="#submission-collect-ip" id="submission-collect-ip" class="docs-anchor">#</a>
   - This setting allows you to specify whether or not the form should collect IP addresses from submitters.
-    - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance) for more information.
+    - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance.mdx) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance.mdx) for more information.
 - **Store Submitted Data** <a href="#submission-store-data" id="submission-store-data" class="docs-anchor">#</a>
   - This setting allows you to specify whether the submission data for this form should be stored in the database or not.
     - Typical use-cases for not storing submission data on your site would be if you just wanted the [email notification](./email-notifications) and/or wanted the data submitted over to a [Mailing List](../integrations#mailing-list-integrations) or [CRM](../integrations#crm) API.
-    - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance) for more information.
+    - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance.mdx) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance.mdx) for more information.
 - **Opt-In Data Storage Checkbox** <a href="#submission-data-storage-opt-in" id="submission-data-storage-opt-in" class="docs-anchor">#</a>
   - This setting allows the submitter to choose whether or not they want their submission data stored on your site. In the select dropdown, select a **Checkbox** fieldtype you want to be the designated opt-in field, or choose **Disabled** to not use this feature.
     - This setting will still send off API data and email notifications.
-    - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance) for more information.
+    - It's important to note that this likely isn't a complete solution for [GDPR Compliance](../configuration/gdpr-compliance.mdx) if that is why you are using this feature. Please read our official [Guide to GDPR Compliance with Freeform](../configuration/gdpr-compliance.mdx) for more information.
 - **Form tag Attributes** <Badge type="feature" text="2.5.0+" /> <a href="#form-attributes" id="form-attributes" class="docs-anchor">#</a>
   - Add any `<form>` tag attributes for the form here, e.g. `novalidate`, `data-my-attribute` and `autocomplete="on"`.
 - **Form Color** <a href="#form-color" id="form-color" class="docs-anchor">#</a>
@@ -165,9 +165,9 @@ For all fields, there is a **Reset** button at the top right of the Property Edi
 
 ## Conditional Rules
 
-Freeform Pro edition includes [Conditional Rules](./conditional-rules/) logic that can be added to forms. This feature allows you to effortlessly set fields to **show or hide** based on the contents/selection of other fields, and even **skip pages** based on the contents/selection of fields on a previous page.
+Freeform Pro edition includes [Conditional Rules](./conditional-rules.mdx) logic that can be added to forms. This feature allows you to effortlessly set fields to **show or hide** based on the contents/selection of other fields, and even **skip pages** based on the contents/selection of fields on a previous page.
 
-To use this feature, click on the **Conditional Rules** (lines icon) tab in the Property Editor column at the top right and follow the options. You can read more about the [Conditional Rules feature](./conditional-rules/) here.
+To use this feature, click on the **Conditional Rules** (lines icon) tab in the Property Editor column at the top right and follow the options. You can read more about the [Conditional Rules feature](./conditional-rules.mdx) here.
 
 ## Element Connections
 
@@ -179,13 +179,13 @@ To use this feature, click on the **Element Connections** (chain icon) tab in th
 
 ## CRM API Integrations
 
-If you have installed and configured any [CRM API integrations](../configuration/settings#crm) (Customer Relationship Management), you will see a **CRM** (cloud icon) tab at the top of the **Property Editor** area (right column). To configure this, click that button, and then select an integration name from the options. You may then map out your Freeform fields to your CRM's fields.
+If you have installed and configured any [CRM API integrations](../configuration/settings.mdx#crm) (Customer Relationship Management), you will see a **CRM** (cloud icon) tab at the top of the **Property Editor** area (right column). To configure this, click that button, and then select an integration name from the options. You may then map out your Freeform fields to your CRM's fields.
 
 <Photo img={IntegrationsPhoto} alt="CRM Integrations" />
 
 ## Freeform Dashboard<Badge type="feature" text="2.4.0+" />
 
-Freeform contains its own dashboard page that gives you convenient insights and an overview of your forms, submissions, and any logged errors or update warnings and notices. The data displayed here will respect all [Permissions](../configuration/permissions) set for users / user groups.
+Freeform contains its own dashboard page that gives you convenient insights and an overview of your forms, submissions, and any logged errors or update warnings and notices. The data displayed here will respect all [Permissions](../configuration/permissions.mdx) set for users / user groups.
 
 <Photo img={FreeformDashboardPhoto} alt="Freeform Dashboard" />
 

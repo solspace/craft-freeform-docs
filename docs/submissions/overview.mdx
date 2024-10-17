@@ -61,23 +61,23 @@ One common use case might be displaying the contents of the form submission to t
 
 If the information is not sensitive, and meant to be public - like comments, you can also display submissions in a paginated (or not) list.
 
-For more information about this, please visit the [Submissions query](../templates/queries/submissions/) documentation.
+For more information about this, please visit the [Submissions query](../templates/queries/submissions.mdx) documentation.
 
 ## Submission Editing<Badge type="pro" text="Pro" />
 
-Freeform allows you to edit submissions via the front end templates as well. Currently, this feature has no user/author check, and requires you use/provide the `submission.token` to work (as opposed to the ID). <secret>A future version will likely include ability to check on authors, etc.</secret> The editing uses the same [Form query](../templates/queries/form/), but knows you're in **edit mode** when you feed the `submissionToken` parameter a valid value.
+Freeform allows you to edit submissions via the front end templates as well. Currently, this feature has no user/author check, and requires you use/provide the `submission.token` to work (as opposed to the ID). <secret>A future version will likely include ability to check on authors, etc.</secret> The editing uses the same [Form query](../templates/queries/form.mdx), but knows you're in **edit mode** when you feed the `submissionToken` parameter a valid value.
 
 :::warning
 There are currently some limitations with this feature. Please note that:
 
-- Not all types of forms can be intuitively edited (e.g. [Payment](../integrations/stripe-payments/) forms, some complex ones, etc).
-- Editing [Payment](../integrations/stripe-payments/) forms will NOT update payment details, but instead will make a new submission/charge.
-- Editing forms with [Element integrations](../integrations/elements/) will NOT update the corresponding element, but just create a new one instead (so currently no editing of user profile data, etc).
+- Not all types of forms can be intuitively edited (e.g. [Payment](../integrations/stripe-payments.mdx) forms, some complex ones, etc).
+- Editing [Payment](../integrations/stripe-payments.mdx) forms will NOT update payment details, but instead will make a new submission/charge.
+- Editing forms with [Element integrations](../integrations/elements.mdx) will NOT update the corresponding element, but just create a new one instead (so currently no editing of user profile data, etc).
   :::
 
 ### Overview
 
-When linking to the form edit, you might use something like this inside the [Submissions query](../templates/queries/submissions/):
+When linking to the form edit, you might use something like this inside the [Submissions query](../templates/queries/submissions.mdx):
 
 ```twig showLineNumbers
 {% if currentUser and currentUser.admin %}
@@ -87,7 +87,7 @@ When linking to the form edit, you might use something like this inside the [Sub
 {% endif %}
 ```
 
-Then in your template that includes the [Form query](../templates/queries/form/), be sure that the `submissionToken` parameter is included and checking the URL for a value:
+Then in your template that includes the [Form query](../templates/queries/form.mdx), be sure that the `submissionToken` parameter is included and checking the URL for a value:
 
 ```twig showLineNumbers{1,5}
 {% set submissionToken = craft.app.request.segment(4) %}
@@ -98,19 +98,19 @@ Then in your template that includes the [Form query](../templates/queries/form/)
 }) %}
 ```
 
-You can also check out the example in the [demo templates](../configuration/demo-templates/) if you wish to see it in action.
+You can also check out the example in the [demo templates](../configuration/demo-templates.mdx) if you wish to see it in action.
 
 ### Disabling of Notifications and more <Badge type="feature" text="Revised and renamed in 5.0+" />
 
-You can apply the `disable` parameter to the [Form](../templates/queries/form/) and `render` queries, which allows you to disable email notifications, API integrations and [Element integrations](../integrations/elements/) for a form by passing an object of items you wish to disable, typically used for editing submissions, e.g.:
+You can apply the `disable` parameter to the [Form](../templates/queries/form.mdx) and `render` queries, which allows you to disable email notifications, API integrations and [Element integrations](../integrations/elements.mdx) for a form by passing an object of items you wish to disable, typically used for editing submissions, e.g.:
 
-- `adminNotifications: true` - disable [Admin](../forms/email-notifications/#admin) notifications
-- `conditionalNotifications: true` <Badge type="feature" text="New in 5.0+" /> - disable [Conditional](../forms/email-notifications/#conditional) notifications.
-- `userSelectNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [User Select](../forms/email-notifications/#user-select) notifications.
-- `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../forms/email-notifications/#email-fields) notifications
-- `api: true` - disable [CRM](../integrations/) and [Email Marketing](../integrations/) integrations
-- `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable creation of new elements via [Element integrations](../integrations/elements/) (will not disable Element _validation_, e.g. required fields, username already in use, etc).
-- `payments: true` - disable [Payment](../integrations/stripe-payments/) integrations
+- `adminNotifications: true` - disable [Admin](../forms/email-notifications.mdx#admin) notifications
+- `conditionalNotifications: true` <Badge type="feature" text="New in 5.0+" /> - disable [Conditional](../forms/email-notifications.mdx#conditional) notifications.
+- `userSelectNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [User Select](../forms/email-notifications.mdx#user-select) notifications.
+- `emailFieldNotifications: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable [Email Fields](../forms/email-notifications.mdx#email-fields) notifications
+- `api: true` - disable [CRM](../integrations/index.mdx) and [Email Marketing](../integrations/index.mdx) integrations
+- `elements: true` <Badge type="feature" text="Renamed in 5.0+" /> - disable creation of new elements via [Element integrations](../integrations/elements.mdx) (will not disable Element _validation_, e.g. required fields, username already in use, etc).
+- `payments: true` - disable [Payment](../integrations/stripe-payments.mdx) integrations
 - `webhooks: true` - disable any Webhooks for the form
 
 You can also just set this to `true` (`disable: true`) to disable all items at once.
@@ -176,7 +176,7 @@ If you need to set limits on the number of submissions a form may receive or who
 
 ### Duplicate Check<Badge type="pro" text="Pro" /><Badge type="feature" text="Renamed and Improved in 5.0+" />
 
-Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](../forms/builder), a **Duplicate Check** setting exists to allow you to limit the number of times a specific user can submit the form.
+Inside the [Settings → Limits](../forms/builder.mdx#settings) area in the [form builder](../forms/builder.mdx), a **Duplicate Check** setting exists to allow you to limit the number of times a specific user can submit the form.
 
 - _Do not limit_ (default - no duplicate check applied)
 - _Logged in Users Only - No Limit_
@@ -188,7 +188,7 @@ Inside the [Settings → Limits](../forms/builder/#settings) area in the [form b
 
 #### Templating
 
-Freeform includes validation to prevent duplicate submissions (when the user tries to submit the form again), but if you wish to prevent users from even being able to see the form (and display an error/notice in its place), you can use `duplicate` ([form object](../templates/objects/form/)) as a conditional. It's a bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled and the user has already submitted the form.
+Freeform includes validation to prevent duplicate submissions (when the user tries to submit the form again), but if you wish to prevent users from even being able to see the form (and display an error/notice in its place), you can use `duplicate` ([form object](../templates/objects/form.mdx)) as a conditional. It's a bool variable, which will be `true` if the form has the **Duplicate Check** setting enabled and the user has already submitted the form.
 
 ```twig showLineNumbers {4-5}
 {# Replace 'myForm' with your form handle. #}
@@ -214,7 +214,7 @@ Freeform includes the ability to set a limit on the maximum number of submission
 
 #### Templating
 
-The key is applying the `submissionLimit` parameter to the [Form query](../templates/queries/form/) and feeding it a number value. This could be hardcoded or you could grab this value from somewhere else such as another element or global variable, etc. Here's an example of what that may look like:
+The key is applying the `submissionLimit` parameter to the [Form query](../templates/queries/form.mdx) and feeding it a number value. This could be hardcoded or you could grab this value from somewhere else such as another element or global variable, etc. Here's an example of what that may look like:
 
 ```twig showLineNumbers {4-8}
 {# Replace 'myForm' with your form handle. #}
@@ -244,7 +244,7 @@ The key is applying the `submissionLimit` parameter to the [Form query](../templ
 
 ### Stop After Date
 
-Inside the [Settings → Limits](../forms/builder/#settings) area in the [form builder](../forms/builder), a **Stop Submissions After Date** setting exists to allow you to prevent new submissions of the form after the specified date.
+Inside the [Settings → Limits](../forms/builder.mdx#settings) area in the [form builder](../forms/builder.mdx), a **Stop Submissions After Date** setting exists to allow you to prevent new submissions of the form after the specified date.
 
 :::warning
 This date will be validated against when [editing](#submission-editing) submissions as well.

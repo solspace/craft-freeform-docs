@@ -25,7 +25,7 @@ If you wish to offer flexibility and control to your clients for setting the Ret
    - You can also use the following (wrap with `{{` and `}}`):
      - `form.handle` - handle of the form.
      - `submission.token` - the secure token created for the submission.
-     - `submission.id` - the newly created unique submission ID in the URL. This (and `submission.token`) would allow you to use the [Submissions query](../../templates/queries/submissions/) to display some or all of the users' submission on the success page.
+     - `submission.id` - the newly created unique submission ID in the URL. This (and `submission.token`) would allow you to use the [Submissions query](../../templates/queries/submissions.mdx) to display some or all of the users' submission on the success page.
 
 #### EXAMPLE
 
@@ -94,7 +94,7 @@ If you'd like something that is not specific to a single form, you can use `docu
 
 ### At Template Level
 
-If you wish to set the Return URL at template level, whether you're doing this to include a dynamic segment in the return URL, etc, you can do so by specifying the `returnUrl` parameter on the [Form query](../../templates/queries/form/) or the [form object](../../templates/objects/form).
+If you wish to set the Return URL at template level, whether you're doing this to include a dynamic segment in the return URL, etc, you can do so by specifying the `returnUrl` parameter on the [Form query](../../templates/queries/form.mdx) or the [form object](../../templates/objects/form.mdx).
 
 ```twig showLineNumbers
 {{ form.renderTag({returnUrl: "contact/success"}) }}
@@ -103,7 +103,7 @@ If you wish to set the Return URL at template level, whether you're doing this t
 #### INSTRUCTIONS
 
 1. Open up your page template.
-2. Inside the [Form query](../../templates/queries/form/) or the [form object](../../templates/objects/form), add the `returnUrl: "contact/success"` parameter.
+2. Inside the [Form query](../../templates/queries/form.mdx) or the [form object](../../templates/objects/form.mdx), add the `returnUrl: "contact/success"` parameter.
    - You can add most variables such as `form.handle`, `submission.id`, `submission.token` as well as perform conditional checks, etc:
      ```twig showLineNumbers
      returnUrl: "{{ siteUrl }}freeform-demo/bootstrap/{{ form.handle }}/{% if submission %}submissions/{{ submission.id }}/{% endif %}success"

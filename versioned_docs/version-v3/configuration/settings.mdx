@@ -36,7 +36,7 @@ import SettingsRecaptchaPhoto from './assets/img/cp_settings-recaptcha.png';
 
 # Plugin Settings
 
-Freeform includes a wide variety of settings that allow you to customize your form management experience. To adjust your settings, click the **Settings** menu item while in the Freeform plugin, or go to **Settings → Plugins → Freeform** and click the settings link. These can also be configured within your Craft [Project Config](./project-config) file
+Freeform includes a wide variety of settings that allow you to customize your form management experience. To adjust your settings, click the **Settings** menu item while in the Freeform plugin, or go to **Settings → Plugins → Freeform** and click the settings link. These can also be configured within your Craft [Project Config](./project-config.mdx) file
 
 <FlexCards
   items={[
@@ -177,7 +177,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 | **Maximum Number of Saved Forms Per Session** <Badge type="feature" text="3.12+" />               | `saveFormSessionLimit: '5'`    | The maximum number of saved forms per session for Save & Continue Later feature.                                                                                                                                                                                                           | ✓    | <span class="orange">✓</span> |
 
 :::info
-The **Automatically Scroll to Form on Errors and Multipage forms?** feature can have its behavior can been manipulated with the [Autoscroll Events](../developer/js-plugin#autoscroll-events). <Badge type="feature" text="3.10.8+" />
+The **Automatically Scroll to Form on Errors and Multipage forms?** feature can have its behavior can been manipulated with the [Autoscroll Events](../developer/js-plugin.mdx#autoscroll-events). <Badge type="feature" text="3.10.8+" />
 :::
 
 ### Freeform Javascript Insertion Location
@@ -250,7 +250,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 
 ## Email Templates
 
-This area is for users that wish to use Twig-based HTML template files for email notifications. See [Email Notifications](../forms/email-notifications) documentation for more information about implementation.
+This area is for users that wish to use Twig-based HTML template files for email notifications. See [Email Notifications](../forms/email-notifications.mdx) documentation for more information about implementation.
 
 :::info
 This page and its settings all become inaccessible when the Craft `allowAdminChanges` config setting is set to `false`.
@@ -314,7 +314,7 @@ This page and its settings all remain accessible when the Craft `allowAdminChang
 
 ## Demo Templates
 
-Allows you to install the [Demo Templates](./demo-templates) to get Freeform up and running on the front end with just a couple clicks!
+Allows you to install the [Demo Templates](./demo-templates.mdx) to get Freeform up and running on the front end with just a couple clicks!
 
 :::warning
 This page and its settings all become inaccessible when the Craft `allowAdminChanges` config setting is set to `false`.
@@ -324,7 +324,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 
 ## Spam Settings
 
-For more information about Freeform's spam protection features, visit the [Spam Protection documentation](../forms/spam-protection).
+For more information about Freeform's spam protection features, visit the [Spam Protection documentation](../forms/spam-protection.mdx).
 
 :::warning
 This page and its settings all become inaccessible when the Craft `allowAdminChanges` config setting is set to `false`.
@@ -379,7 +379,7 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 
 | Setting                                                                                                    | Project Config                        | Description                                                                                                                                                                                                                                                                                                                                            | Lite | Pro                           |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---- | ----------------------------- |
-| **Use Captchas on Forms?**                                                                                 | `recaptchaEnabled: '1'`               | Enable this setting and fill in the Captcha _Site Key_ and _Secret Key_ to enable a Captcha service for Freeform. Visit [Google reCAPTCHA site](https://www.google.com/recaptcha) to register your site and get your _Site Key_ and _Secret Key_.                                                                                                      | ✓    | <span class="orange">✓</span> |
+| **Use Captchas on Forms?**                                                                                 | `recaptchaEnabled: '1'`               | Enable this setting and fill in the Captcha _Site Key_ and _Secret Key_ to enable a Captcha service for Freeform. Visit [Google reCAPTCHA site](https://www.google.com/recaptcha.mdx) to register your site and get your _Site Key_ and _Secret Key_.                                                                                                      | ✓    | <span class="orange">✓</span> |
 | **Captcha type**                                                                                           | `recaptchaType: v2_checkbox`          | Choose which Captcha service and type you wish to use:<br /><ul><li>_reCAPTCHA v2 Checkbox_</li><li>_reCAPTCHA v2 Invisible_ <Badge type="pro" text="Pro" /></li><li>_reCAPTCHA v3_ <Badge type="pro" text="Pro" /></li><li>_hCaptcha Checkbox_ <Badge type="pro" text="Pro" /></li><li>_hCaptcha Invisible_ <Badge type="pro" text="Pro" /></li></ul> | ✓    | <span class="orange">✓</span> |
 | **Captcha Site Key**                                                                                       | `recaptchaKey: XXXXX`                 | The Site Key provided by the Captcha service.                                                                                                                                                                                                                                                                                                          | ✓    | <span class="orange">✓</span> |
 | **Captcha Secret Key**                                                                                     | `recaptchaSecret: XXXXX`              | The Secret Key provided by the Captcha service.                                                                                                                                                                                                                                                                                                        | ✓    | <span class="orange">✓</span> |
@@ -406,7 +406,7 @@ All integration pages and their settings remain accessible when the Craft `allow
 
 The Email Marketing area allows you to manage your mailing list API integrations. Email Marketing integrations are set up here and are globally available to all forms, but are configured per form inside the form builder interface. To connect to an Email Marketing API, click the **New Integration** at the top right.
 
-- View the [Email Marketing Integration](../integrations/) documentation for more information about setting up and configuring.
+- View the [Email Marketing Integration](../integrations/index.mdx) documentation for more information about setting up and configuring.
 
 <Photo img={SettingEmailMarktetingPhoto} alt="Email marketing" />
 
@@ -414,7 +414,7 @@ The Email Marketing area allows you to manage your mailing list API integrations
 
 The CRM area allows you to manage your CRM (Customer Relationship Management) API integrations. CRM integrations are set up here and are globally available to all forms, but are configured per form inside the form builder interface. To connect to a CRM API, click the **New Integration** at the top right.
 
-- View the [CRM Integration](../integrations/) documentation for more information about setting up and configuring.
+- View the [CRM Integration](../integrations/index.mdx) documentation for more information about setting up and configuring.
 
 <Photo img={SettingCrmPhoto} alt="CRM" />
 
@@ -422,7 +422,7 @@ The CRM area allows you to manage your CRM (Customer Relationship Management) AP
 
 This area allows you to configure and manage Stripe Payments for your forms. The Stripe Payments integration is set up here and are globally available to all forms, but are configured per form inside the form builder interface. To create a new Stripe payment setup, click the **New Payment Integration** at the top right.
 
-- View the [Payments API Integration](../integrations/stripe-payments) documentation for more information about setting up and configuring.
+- View the [Payments API Integration](../integrations/stripe-payments.mdx) documentation for more information about setting up and configuring.
 
 <Photo img={SettingPaymentsPhoto} alt="Payments" />
 
@@ -430,8 +430,8 @@ This area allows you to configure and manage Stripe Payments for your forms. The
 
 This area allows you to configure and manage **Slack**, **Zapier** and **generic** Webhooks for your forms. The Webhooks integrations are set up and completely managed here. You specify which form(s) each Webhook applies to, etc. To create a new Webhook, click the **New Webhook** at the top right.
 
-- View the [Slack API Integration](../integrations/slack/) documentation for more information about setting up and configuring.
-- View the [Zapier API Integration](../integrations/zapier/) documentation for more information about setting up and configuring.
+- View the [Slack API Integration](../integrations/slack.mdx) documentation for more information about setting up and configuring.
+- View the [Zapier API Integration](../integrations/zapier.mdx) documentation for more information about setting up and configuring.
 
 <Photo img={SettingSlackPhoto} alt="Slack Webhooks" />
 
@@ -445,9 +445,9 @@ This page and its settings all become inaccessible when the Craft `allowAdminCha
 
 Check out the options below to learn more about each:
 
-- [Update Notices](../configuration/notices-alerts/)
-- [Email Alerts](../configuration/notices-alerts/)
-- [Weekly Digest](../configuration/notices-alerts/)
+- [Update Notices](../configuration/notices-alerts.mdx)
+- [Email Alerts](../configuration/notices-alerts.mdx)
+- [Weekly Digest](../configuration/notices-alerts.mdx)
 
 <Photo img={NoticeAlertPhoto} alt="Notices & Alerts" />
 

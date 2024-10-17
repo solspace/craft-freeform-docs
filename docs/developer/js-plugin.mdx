@@ -78,7 +78,7 @@ You can add your custom form handler scripts anywhere in the page. The `freeform
 
 ## Loading Freeform JS manually<Badge type='feature' text='Improved in 5.5+' />
 
-If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Script Insertion Location](../configuration/settings#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformPlugin()` function to your template where you'd like it to insert the JS. You can pass two variables to the function to add custom attributes to the script and style tags that Freeform generates.
+If you wish to manually load the Freeform JS elsewhere in your template (rather than having Freeform automatically insert it inside the Freeform form or in the page footer), be sure to select the `None` option for the [Script Insertion Location](../configuration/settings.mdx#general-settings) setting. Then, you'll need to add the `freeform.loadFreeformPlugin()` function to your template where you'd like it to insert the JS. You can pass two variables to the function to add custom attributes to the script and style tags that Freeform generates.
 
 - `freeform.loadFreeformPlugin()` - will load Freeform's global `freeform.js` and `freeform.css` files.
 - `freeform.loadFormSpecificScripts(form)` <Badge type="feature" text="New in 5.5.3+" /> - will load form-specific scripts such as **reCAPTCHA** and the **JS Test** scripts, where applicable. Be sure to pass the form to this function. If `form` is already defined, you can use that.
@@ -662,11 +662,11 @@ Full documentation can be found here: [Stripe Elements Appearance API](https://s
 
 ## Date Picker Events
 
-The Freeform [Date & Time](../forms/fields) field comes packed with a built-in, optional [flatpickr](https://flatpickr.js.org/) instance. Check out the [Date Picker Events](./datepicker) documentation for full customization options of the _flatpickr_ instance.
+The Freeform [Date & Time](../forms/fields.mdx) field comes packed with a built-in, optional [flatpickr](https://flatpickr.js.org/) instance. Check out the [Date Picker Events](./datepicker.mdx) documentation for full customization options of the _flatpickr_ instance.
 
 ## Autoscroll Events
 
-When using the [Automatically Scroll to Form on Errors and Multipage forms?](../configuration/settings#automatically-scroll-to-form-on-errors-and-multipage-forms) setting, Freeform will automatically handle scrolling the the browser down to the form. However, if you have a floating header or other situation you need to account for, you can override the scroll offset as well as the anchor to scroll to. You can attach your own logic to the events by listening on the following events:
+When using the [Automatically Scroll to Form on Errors and Multipage forms?](../configuration/settings.mdx#automatically-scroll-to-form-on-errors-and-multipage-forms) setting, Freeform will automatically handle scrolling the the browser down to the form. However, if you have a floating header or other situation you need to account for, you can override the scroll offset as well as the anchor to scroll to. You can attach your own logic to the events by listening on the following events:
 
 ```js showLineNumbers
 document.addEventListener('freeform-ready', (event) => {
@@ -687,7 +687,7 @@ document.addEventListener('freeform-ready', (event) => {
 
 ## Table Field Events
 
-The Freeform [Table](../forms/fields) field comes with its own optional javascript functionality for adding and removing rows. You can attach your own logic to the events by listening on the following events:
+The Freeform [Table](../forms/fields.mdx) field comes with its own optional javascript functionality for adding and removing rows. You can attach your own logic to the events by listening on the following events:
 
 ```js showLineNumbers
 const form = document.getElementById('my-form');

@@ -9,7 +9,7 @@ import { Badge } from '@site/src/components/utils';
 The Form object contains its metadata and field objects. You can either render the form using the pre-selected formatting template by calling `form.render()` or achieve a more fine-grained control over it by iterating over its rows and fields and using `form.renderTag` and `form.renderClosingTag` methods.
 
 :::info
-Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection), Submit disable on click, and other special fieldtypes. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings#scripts-location) setting.
+Freeform will automatically insert javascript in the footer of the page for features such as [Spam Protection](../../forms/spam-protection.mdx), Submit disable on click, and other special fieldtypes. If you prefer to have this load inside the `<form></form>` tags, you can adjust the [Freeform Javascript Insertion Location](../../configuration/settings#scripts-location) setting.
 :::
 
 ## Properties
@@ -48,15 +48,15 @@ Outputs the custom error message configured in the Validation tab for your form 
 
 ### `hasErrors`
 
-A bool variable, which will be `true` if there are any errors in any of the fields or the form. It might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error). This can be used in conjunction with the [Errors object](./errors) for displaying special and general errors.
+A bool variable, which will be `true` if there are any errors in any of the fields or the form. It might be `true` even if `form.errors` list is empty, (e.g. if one or more fields have an error). This can be used in conjunction with the [Errors object](./errors.mdx) for displaying special and general errors.
 
 ### `pages`
 
-Returns a list of [Page objects](./page) each containing its label and index.
+Returns a list of [Page objects](./page.mdx) each containing its label and index.
 
 ### `currentPage`
 
-Returns the current [Page object](./page) containing its label and index.
+Returns the current [Page object](./page.mdx) containing its label and index.
 
 ### `ajaxEnabled`
 
@@ -100,7 +100,7 @@ The following properties are available to ease the customizability of field rend
 - `instructionsBelowField` - set to true to render instructions below, not above the input field.
 - `overrideValues` - allows you to override the value inside Text fields, or pre-select a default option for multi-option field types (specify option values in this case).
   - Specify the field `handle` as key, and provide the custom value override as its value.
-  - If a [Field](./field) uses an `overrideValue` attribute, it will take precedence over the value specified in this attribute.
+  - If a [Field](./field.mdx) uses an `overrideValue` attribute, it will take precedence over the value specified in this attribute.
   - E.g.:
     - `hiddenFieldHandle: entry.id` - pull in an entry ID from a Craft Entry.
     - `stateSelect: "AZ"` - pre-select **Arizona** state in a State select field.
@@ -116,10 +116,10 @@ The following properties are available to ease the customizability of field rend
 If displaying the exact same form more than once in a single template, some of the `<form>` tag attributes set on one form may carry over to other ones. To work around this, you can unset the attribute on the other forms (unless they have their own attributes set). For example, if one form has `class: 'something'`, it may end up applying to other instances of the form, but you can add `class: null` to those others to work around it.
 :::
 
-When iterating over the form, you will iterate through [Row](./row) objects for the currently active [Page](./page), each [Row](./row) can be iterated over to get [Field](./field) objects. Check the [Field](./field) documentation to see available parameters for those objects.
+When iterating over the form, you will iterate through [Row](./row.mdx) objects for the currently active [Page](./page.mdx), each [Row](./row.mdx) can be iterated over to get [Field](./field.mdx) objects. Check the [Field](./field.mdx) documentation to see available parameters for those objects.
 
 :::tip
-[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template)
+[Need to pass a custom property to a formatting template, e.g. toggle display of the form title, etc?](../../guides/dynamic-data/passing-custom-property-to-formatting-template.mdx)
 :::
 
 ## Usage in Templates
@@ -204,7 +204,7 @@ Manually iterate through form fields:
 
 ### Iterate over `layout.fields`
 
-You can also iterate over fields directly with `layout.fields` instead of [Row objects](./row):
+You can also iterate over fields directly with `layout.fields` instead of [Row objects](./row.mdx):
 
 ```twig {3-5} showLineNumbers
 {% set form = craft.freeform.form("myForm") %}

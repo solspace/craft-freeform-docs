@@ -463,7 +463,7 @@ When submitting my forms, I am getting an `Unable to verify your data submission
 <AnswerCard>
 This is almost always because Craft's CSRF token is invalid or expired. The most common causes of this are:
 
-- **Form/template/website is cached** - if using cache, please see the [Caching Forms](../guides/templating/caching-forms/) documentation guide to see how you will need to manually refresh the Craft CSRF token.
+- **Form/template/website is cached** - if using cache, please see the [Caching Forms](../guides/templating/caching-forms.mdx) documentation guide to see how you will need to manually refresh the Craft CSRF token.
 - **Browser left open too long** - if the user leaves the page open for a while and revisits later, or spends too much time to complete the form (2-3 hours), the Craft CSRF token will expire. This is a limitation of the current PHP Session limit setting for your server. You may be able to extend it for a greater length of time if you contact your webhost/web admin, however.
 - **Loading Freeform onto a different website/domain** - this should work by default, but if you have the `sameSiteCookieValue` [Craft config](https://craftcms.com/docs/5.x/reference/config/general.html#samesitecookievalue) setting set to `strict` or `lax`, it may cause an issue. You'll need to remove the setting line or set it to `null` in order for it to work correctly.
 
@@ -481,7 +481,7 @@ There are a few workaround for this:
 
 1. Create an email address alias for each option so that each option in the Dynamic Recipients field type settings will be unique.
 2. Add sub-address tags to the affected email addresses so their values are unique. For example: `joe+whatever@example.com`, `joe+somethingelse@example.com`, etc.
-3. [Build a custom module](../guides/developer/building-a-custom-module) that sends an email notification to a recipient based upon the selection of a Select/Checkbox Group/Radio fields' option using the `EVENT_AFTER_SUBMIT` event. We've created [a guide](../guides/developer/building-a-custom-module) that will get you 99% of the way there.
+3. [Build a custom module](../guides/developer/building-a-custom-module.mdx) that sends an email notification to a recipient based upon the selection of a Select/Checkbox Group/Radio fields' option using the `EVENT_AFTER_SUBMIT` event. We've created [a guide](../guides/developer/building-a-custom-module.mdx) that will get you 99% of the way there.
 
 <secret>
   A future version of Freeform (v5) will resolve this issue entirely.

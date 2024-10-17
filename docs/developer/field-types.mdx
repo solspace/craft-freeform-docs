@@ -12,14 +12,14 @@ import CEEditorPhoto from './assets/img/custom-field-type-property-editor.png';
 
 # Custom Field Types<Badge type="feature" text="New in 5.0+" />
 
-With Freeform 5 comes the power of creating fully custom [field types](../forms/fields/). The field type class is the one that holds all of the properties and their descriptors. You can now add a custom field type by listening to the field register event and attaching your field type to it.
+With Freeform 5 comes the power of creating fully custom [field types](../forms/fields.mdx). The field type class is the one that holds all of the properties and their descriptors. You can now add a custom field type by listening to the field register event and attaching your field type to it.
 
 ## Setup Guide
 
-The creation of a custom field type in Freeform will require using a custom [Craft module](https://craftcms.com/docs/5.x/extend/module-guide.html). This guide assumes you already have that knowledge. If not, please [check out the guide](../guides/developer/building-a-custom-module) we have.
+The creation of a custom field type in Freeform will require using a custom [Craft module](https://craftcms.com/docs/5.x/extend/module-guide.html). This guide assumes you already have that knowledge. If not, please [check out the guide](../guides/developer/building-a-custom-module.mdx) we have.
 
 :::tip
-[View the guide on how to build a custom module.](../guides/developer/building-a-custom-module)
+[View the guide on how to build a custom module.](../guides/developer/building-a-custom-module.mdx)
 :::
 
 <VerticalStepWrapper>
@@ -192,7 +192,7 @@ class DisplayAddressField extends AbstractField
 
 When we add the field to the form and click on it to reveal the **Property Editor**, we will see the standard controls for the field as well as our newly added **Google Maps API Key** and **Address** fields.
 
-Let's enter our API key in there and specify an address that should be displayed. Then, let's open the form in the front end. We recommend using the [Demo Templates](../configuration/demo-templates/) to get started as quickly as possible.
+Let's enter our API key in there and specify an address that should be displayed. Then, let's open the form in the front end. We recommend using the [Demo Templates](../configuration/demo-templates.mdx) to get started as quickly as possible.
 
 For this example, we will use the _Louvre Museum_ in France.
 

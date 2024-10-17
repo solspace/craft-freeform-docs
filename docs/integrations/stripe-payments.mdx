@@ -88,7 +88,7 @@ import StripePaymentsVideo from './assets/videos/stripe-payments.mp4';
 
 ## Key Features
 
-Freeform Payments uses the [Payment Element](https://stripe.com/docs/payments/payment-element) approach from [Stripe](https://stripe.com). The Payment Element is a UI component that accepts 40+ payment methods, validates input, and handles errors. This means that in addition to accepting **credit cards**, it will allow you to enable support for **Stripe Link**, **Apple Pay**, **Google Pay**, **PayPal** (within Europe), **bank payments**, **deferred payments** and many other options. Within minutes you can have anything from a form accepting donations to a [membership registration form](../guides/speciality-forms/user-registration-forms) that has users pay for a subscription at any interval. The possibilities are endless!
+Freeform Payments uses the [Payment Element](https://stripe.com/docs/payments/payment-element) approach from [Stripe](https://stripe.com). The Payment Element is a UI component that accepts 40+ payment methods, validates input, and handles errors. This means that in addition to accepting **credit cards**, it will allow you to enable support for **Stripe Link**, **Apple Pay**, **Google Pay**, **PayPal** (within Europe), **bank payments**, **deferred payments** and many other options. Within minutes you can have anything from a form accepting donations to a [membership registration form](../guides/speciality-forms/user-registration-forms.mdx) that has users pay for a subscription at any interval. The possibilities are endless!
 
 <FlexCards
   items={[
@@ -157,21 +157,21 @@ Freeform Payments uses the [Payment Element](https://stripe.com/docs/payments/pa
 The Freeform Stripe integration has the following requirements:
 
 - Freeform **Pro** edition.
-  - If you're using another edition, you can [switch/upgrade](../setup/installing-updating/#changing-editions) for the difference in price.
+  - If you're using another edition, you can [switch/upgrade](../setup/installing-updating.mdx#changing-editions) for the difference in price.
 - Your own [Stripe](https://stripe.com) account.
 - All API requests must be made over **HTTPS**. Testing can be done while using HTTP in Test Mode, however.
 - Publicly accessible site is required to **fully** test or use Stripe.
   - You can forego **webhooks** testing if you like, however, and use a non-public local dev site.
   - When using on a local dev site, you will need to use a domain extension like `.test` in order for Stripe to recognize it.
   - If using a local dev machine, you can work around this by using a service like **[ngrok](https://ngrok.com/product)**. You can still access your site via the local dev URL, as long as the public version is working and Stripe is aware of it.
-- When using [multi-page](../forms/builder/#multi-page-forms) forms, the Stripe Element field should be placed on the last page of the form.
-- The built-in [Success Behavior](../forms/builder/#success-errors) setting will be ignored, as a **Success** and **Fail** Redirect URL path will need to be specified.
+- When using [multi-page](../forms/builder.mdx#multi-page-forms) forms, the Stripe Element field should be placed on the last page of the form.
+- The built-in [Success Behavior](../forms/builder.mdx#success-errors) setting will be ignored, as a **Success** and **Fail** Redirect URL path will need to be specified.
 
 ## Best Practices<Badge type="recommended" text="Recommended" />
 
 ### Place Stripe field on Last Page
 
-_Stripe_ makes some strong recommendations and assumptions that the _Stripe Payment Element_ will only be displayed once the payment amount is determined and payment is ready to be made (on the last page of a multi-page form). Therefore, it works best when its placed on the last page inside of a [multi-page](../forms/builder/#multi-page-forms) form.
+_Stripe_ makes some strong recommendations and assumptions that the _Stripe Payment Element_ will only be displayed once the payment amount is determined and payment is ready to be made (on the last page of a multi-page form). Therefore, it works best when its placed on the last page inside of a [multi-page](../forms/builder.mdx#multi-page-forms) form.
 
 If you choose **not** to do it this way, some Stripe behaviors are worked around to ensure the feature still works:
 
@@ -181,7 +181,7 @@ If you choose **not** to do it this way, some Stripe behaviors are worked around
 
 ### Conditional Rules for Multiple Payment Options
 
-It's possible to allow multiple payment options inside the same form. For example, you could include both a _one-time_ and _subscription_ payment option in the same form. However, simply show and hide the Stripe payment fields with [conditional rules](../forms/conditional-rules/).
+It's possible to allow multiple payment options inside the same form. For example, you could include both a _one-time_ and _subscription_ payment option in the same form. However, simply show and hide the Stripe payment fields with [conditional rules](../forms/conditional-rules.mdx).
 
 ## Customization
 
@@ -331,7 +331,7 @@ Setting up your form to collect payments will generally consist of the following
   - _Successful Payment Redirect_ - specify a URL to be redirected to upon successful payment.
   - _Failed Payment Redirect_ - specify a URL to be redirected to upon failed payment.
     :::tip
-    The built-in [Success Behavior](../forms/builder/#success-errors) setting will be ignored, as a **Success** and **Fail** Redirect URL path will need to be specified in these settings.
+    The built-in [Success Behavior](../forms/builder.mdx#success-errors) setting will be ignored, as a **Success** and **Fail** Redirect URL path will need to be specified in these settings.
     :::
   - _Theme_ - choose from `Default`, `Dark`, or `Minimal`.
     - This can be used as a starting point. Check out the style guide to make further adjustments to the styles.
@@ -389,7 +389,7 @@ Some payment methods such as _Apple Pay_ require domains to be registered. You c
 
 ### Mapping Payment Data to Other Integrations
 
-Stripe payment data is available to map to other [integrations](../integrations/) such as **CRMs** as well. The following options will become available to map:
+Stripe payment data is available to map to other [integrations](../integrations/index.mdx) such as **CRMs** as well. The following options will become available to map:
 
 - Amount
 - Interval
@@ -403,7 +403,7 @@ Stripe payment data is available to map to other [integrations](../integrations/
 
 ## Templating
 
-The following properties are available for use inside email notification templates and front end templates ([Submission object](../templates/objects/submission/)):
+The following properties are available for use inside email notification templates and front end templates ([Submission object](../templates/objects/submission.mdx)):
 
 - `payments.amount`
   - Outputs the amount paid/subscribed to for the submission, e.g. `49.95`.
@@ -460,7 +460,7 @@ For rendering the _Stripe Payment Element_ field inside your form, it simply wor
 {{ field.render() }}
 ```
 
-If you wish to make any customization to the handling of Stripe payment fields, you can use the [Template Overrides](../templates/formatting/#template-overrides) feature and do this at form level:
+If you wish to make any customization to the handling of Stripe payment fields, you can use the [Template Overrides](../templates/formatting/index.mdx#template-overrides) feature and do this at form level:
 
 ```twig showLineNumbers
 {{ form.renderTag({
@@ -494,7 +494,7 @@ Or at the field level by using a conditional like this:
 
 ### Styling the Stripe Element <Badge type="feature" text="Improved in 5.0+" />
 
-To style the Stripe Payment Element, you'll need to use the [Freeform JS Plugin](../developer/js-plugin/) and apply [Stripe's Appearance API variables](https://docs.stripe.com/elements/appearance-api?platform=web#variables) to the `elementOptions` and `paymentOptions` listeners.
+To style the Stripe Payment Element, you'll need to use the [Freeform JS Plugin](../developer/js-plugin.mdx) and apply [Stripe's Appearance API variables](https://docs.stripe.com/elements/appearance-api?platform=web#variables) to the `elementOptions` and `paymentOptions` listeners.
 
 #### elementOptions.appearance
 

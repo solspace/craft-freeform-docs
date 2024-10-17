@@ -92,7 +92,7 @@ Freeform features its own set of robust field types. The form builder displays a
 />
 
 :::tip
-[Need to build your own custom field type? Check out the guide.](../developer/field-types/)
+[Need to build your own custom field type? Check out the guide.](../developer/field-types.mdx)
 :::
 
 <Player
@@ -115,14 +115,14 @@ Freeform features its own set of robust field types. The form builder displays a
 
 ### Important Notes
 
-- If you'd like to [build your own custom field type](../developer/field-types/), check out the guide.
+- If you'd like to [build your own custom field type](../developer/field-types.mdx), check out the guide.
 - Saved fields are a snapshot of that field at the time it was saved.
 - Any customizations of a Saved field or using a field from another form are specific only to the form they're adjusted in.
 - Fields can be changed to other field types at any point, but be aware that data loss could occur when switching incompatible field types.
 - All field types conveniently include the ability to set attributes for their **labels**, **inputs**, **errors** and **instructions** directly inside the form builder property editor.
   - This allows you to keep your hands clean of being inside formatting templates and specify one-off exceptions for fields such as `readonly` and `autocomplete="off"`, etc.
   - To use single attributes like `novalidate`, just enter the attribute in the **Attribute** column and leave the **Value** column empty.
-  - You can use anything inside the [Form](../templates/objects/form) and [Field](../templates/objects/field) objects as well, e.g.:
+  - You can use anything inside the [Form](../templates/objects/form.mdx) and [Field](../templates/objects/field.mdx) objects as well, e.g.:
     - `field.id` to access Field ID.
     - `form.handle` to access form handle.
 
@@ -189,7 +189,7 @@ Freeform contains a rich set of field types to handle just about every possible 
 | [Regex](#regex)                                                                    | `regex`                               | An input field that is validated based on the specified regex pattern (e.g. `/^[a-zA-Z0-9]*$/`).                                                               |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Rich Text](#rich-text)                                                            | `rich-text`                           | A block that allows you to insert rich text into areas of your form (headings, descriptions, etc).                                                             |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Signature](#signature)                                                            | `signature`                           | A field that allows users to handwrite signatures inside your form.                                                                                            |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
-| [Stripe Payment](#stripe-payment) <Badge type="feature" text="Improved in 5.0+" /> | `stripe`                              | A set of input fields to allow the validation of credit cards and other payment options for [Stripe Payment](../integrations/stripe-payments/) implementations. |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
+| [Stripe Payment](#stripe-payment) <Badge type="feature" text="Improved in 5.0+" /> | `stripe`                              | A set of input fields to allow the validation of credit cards and other payment options for [Stripe Payment](../integrations/stripe-payments.mdx) implementations. |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Submit buttons](#submit-buttons)                                                  | <span class="compare-none">N/A</span> | Handles the submit button(s), including **Save** option for the form.                                                                                          |         <span class="edition-express">✓</span>         |       <span class="edition-lite">✓</span>        |       <span class="edition-pro">✓</span>       |
 | [Table](#table)                                                                    | `table`                               | A field that allows you to collect and handle repeating data.                                                                                                  |          <span class="compare-none">✕</span>           |       <span class="compare-none">✕</span>        |       <span class="edition-pro">✓</span>       |
 | [Text](#text)                                                                      | `text`                                | A single-line text input field.                                                                                                                                |         <span class="edition-express">✓</span>         |       <span class="edition-lite">✓</span>        |       <span class="edition-pro">✓</span>       |
@@ -214,7 +214,7 @@ Any field can be a favorite field! If you have a number of fields that are commo
 The Calculation field allows you to perform dynamic calculations based on user-input values within your forms.
 
 :::warning
-For the Calculation field to work as a dynamic amount with the [Stripe Payments](../integrations/stripe-payments/) integration, the **Input Type** setting should be set to _Regular Text Input_ or _Plain Text_. If set to _Hidden_, the Calculation field should be within a multipage setup where it is on a page _before_ the page with the Stripe Payment Element field.
+For the Calculation field to work as a dynamic amount with the [Stripe Payments](../integrations/stripe-payments.mdx) integration, the **Input Type** setting should be set to _Regular Text Input_ or _Plain Text_. If set to _Hidden_, the Calculation field should be within a multipage setup where it is on a page _before_ the page with the Stripe Payment Element field.
 :::
 
 #### Decimal Count <Badge type="feature" text="New in 5.6+" />
@@ -669,7 +669,7 @@ A regular file upload field, using [Craft Assets](https://craftcms.com/docs/5.x/
 <Photo scale={30} img={FileUploadPhoto} alt="File upload field type" />
 
 :::tip
-[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions/)
+[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions.mdx)
 :::
 
 ### Settings
@@ -712,7 +712,7 @@ An advanced premium javascript-based file uploading field, using [Craft Assets](
 />
 
 :::tip
-[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions/)
+[Would you like to allow more file extensions in file uploads?](../guides/fields/allow-additional-file-extensions.mdx)
 :::
 
 ### Settings
@@ -828,7 +828,7 @@ Below is an example with regular CSS:
 
 ## Group<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.0+" />
 
-A field that contains other fields within it. To use, add a Group field into your form's layout, then add/drag other fields into that Group inside the form builder. This becomes especially powerful when using with [Conditional Rules](./conditional-rules/), as you'll be able create a single rule to show/hide an entire group of fields at once.
+A field that contains other fields within it. To use, add a Group field into your form's layout, then add/drag other fields into that Group inside the form builder. This becomes especially powerful when using with [Conditional Rules](./conditional-rules.mdx), as you'll be able create a single rule to show/hide an entire group of fields at once.
 
 <Player url={GroupFieldsVideo} muted loop playing width="100%" height="100%" />
 
@@ -864,7 +864,7 @@ A special field type that allows you include HTML and Twig inside your form layo
 - The Property Editor will load an HTML area for you to type or paste your code into.
 - The Layout column in the form builder will live parse your HTML (Twig will not be parse inside the form builder).
 - All HTML is allowed here.
-- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.
+- To enable Twig inside this field, turn on the [Allow Twig to be Enabled for each HTML block?](../configuration/settings.mdx#allow-twig-to-be-enabled-for-each-html-block) setting (and decide if you need to enable to the **Render HTML block Twig in isolated mode?** setting as well). Then, you will see an **Allow Twig** checkbox in the property editor column. Check that to allow this HTML block to parse Twig code.
 
 ### Display Submission Data from Previous Pages
 
@@ -895,7 +895,7 @@ A multiple-select field. The `field.type` property value is `multiple-select` (f
 <Photo scale={35} img={MultipleSelectPhoto} alt="Multiple Select field type" />
 
 :::tip
-[Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
+[Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level.mdx)
 :::
 
 ### Settings
@@ -911,7 +911,7 @@ A single-line `number` type input field that is validated to contain certain num
 <Photo scale={30} img={NumberPhoto} alt="Number field type" />
 
 :::tip
-[Want to display a Number field as a range slider?](../guides/fields/range-slider-number)
+[Want to display a Number field as a range slider?](../guides/fields/range-slider-number.mdx)
 :::
 
 ### Settings
@@ -984,7 +984,7 @@ To manually render an Opinion Scale field to use your own styles, your code migh
 
 ## Password<Badge type="pro" text="Pro" />
 
-A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/speciality-forms/user-registration-forms) with the [Elements integration](../integrations/elements/)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
+A special field type that allows you to securely collect a password from a submitter **but NOT store the value in the Freeform database** (typically used for [User Registration forms](../guides/speciality-forms/user-registration-forms.mdx) with the [Elements integration](../integrations/elements.mdx)). Pair this with the [Confirm](#confirm) special field type if you wish to have the user enter their password twice. The `field.type` property value is `password` (for conditionals).
 
 <Photo scale={30} img={PasswordPhoto} alt="Password field type" />
 
@@ -997,7 +997,7 @@ A special field type that allows you to securely collect a password from a submi
 ### Notes
 
 - Collected data is not stored in Freeform anywhere, nor is it included in the Submission object or `allFields` variable in [email notifications](../forms/email-notifications.mdx#all-fields).
-- When using with the Users [Element integration](../integrations/elements/), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
+- When using with the Users [Element integration](../integrations/elements.mdx), the password will be passed off to Craft's [Users](https://craftcms.com/docs/5.x/reference/element-types/users.html) member account feature.
 
 ## Phone<Badge type="pro" text="Pro" />
 
@@ -1030,9 +1030,9 @@ A group of radio options. The `field.type` property value is `radios` (for condi
 
 ### User Guides
 
-- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/dynamic-data/populate-field-options-at-template-level)
-- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level)
-- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields)
+- [Need to display basic HTML (`<b>`, `<i>`, `<a>`, etc) in your option labels to add emphasis or display a link?](../guides/dynamic-data/populate-field-options-at-template-level.mdx)
+- [Need to populate field options at template level? Check out the guide for workaround options.](../guides/dynamic-data/populate-field-options-at-template-level.mdx)
+- [Looking to include an additional "Other" choice that displays an input field for users to fill in their own value?](../guides/fields/other-option-for-fields.mdx)
 
 ## Rating<Badge type="pro" text="Pro" />
 
@@ -1097,7 +1097,7 @@ A special field type that allows you include rich text inside your form layout i
 - The Layout column in the form builder will live parse your content.
 
 :::tip
-[Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/fields/tinymce-editor-textarea)
+[Want to allow front end users to use a rich text editor such as **TinyMCE** on a textarea field?](../guides/fields/tinymce-editor-textarea.mdx)
 :::
 
 ## Signature<Badge type="pro" text="Pro" />
@@ -1224,7 +1224,7 @@ And finally, for maximum control, you can use a property attributes render inste
 
 ### Save & Continue Later<Badge type="pro" text="Pro" />
 
-This feature allows users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later/).
+This feature allows users to save their form progress and continue/complete the form later. For more information about this feature, please see the [Save & Continue Later documentation](./save-continue-later.mdx).
 
 <Photo
   scale={45}
@@ -1245,7 +1245,7 @@ This feature allows users to save their form progress and continue/complete the 
 
 ## Stripe Payment<Badge type="pro" text="Pro" /><Badge type="feature" text="Improved in 5.0+" />
 
-When the [Stripe Payments](../integrations/stripe-payments/) integration is configured, a Stripe Payments special field type will become available. This field enables your forms to collect (but not store) credit card or other payment information and pass it off to Stripe.
+When the [Stripe Payments](../integrations/stripe-payments.mdx) integration is configured, a Stripe Payments special field type will become available. This field enables your forms to collect (but not store) credit card or other payment information and pass it off to Stripe.
 
 <Photo img={StripePhoto} alt="Stripe Payment field Layout Options" />
 
@@ -1393,7 +1393,7 @@ For **manual** rendering of the Table field inside your form for full customizab
 
 ### Submission Data
 
-Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission/):
+Here's how to render a Table field's data inside the [Submission object](../templates/objects/submission.mdx):
 
 ```twig showLineNumbers
 <table class="table">
@@ -1454,7 +1454,7 @@ A single-line text input field. The `field.type` property value is `text` (for c
 <Photo scale={60} img={TextFieldPhoto} alt="Text field type" />
 
 :::tip
-[Want to display a Text input as a Color Picker?](../guides/fields/color-picker-text)
+[Want to display a Text input as a Color Picker?](../guides/fields/color-picker-text.mdx)
 :::
 
 ## Textarea
@@ -1469,8 +1469,8 @@ A multi-line text input field. The `field.type` property value is `textarea` (fo
 
 ### User Guides
 
-- [Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields)
-- [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/fields/tinymce-editor-textarea)
+- [Need to display linebreaks for Textarea fields in email notifications or on the front end with a Submissions query?](../guides/templating/line-breaks-in-textarea-fields.mdx)
+- [Want to allow users to use a rich text editor such as **TinyMCE** on the textarea field?](../guides/fields/tinymce-editor-textarea.mdx)
 
 ## Website<Badge type="pro" text="Pro" />
 
@@ -1483,7 +1483,7 @@ A `url` type input field that checks to see if the URL specified has valid synta
 Inside the form builder (only), field types with options (such as _Dropdown_, _Radios_, etc) have the ability to be automatically fed options from Craft Elements or Freeform's own predefined options. This allows you to quickly build forms by having fields auto-generated.
 
 :::tip
-[Need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template? Check out how to populate field options at template level.](../guides/dynamic-data/populate-field-options-at-template-level)
+[Need more control over populating field options dynamically at template level, such as from a Craft Entry or some other Twig code in your template? Check out how to populate field options at template level.](../guides/dynamic-data/populate-field-options-at-template-level.mdx)
 :::
 
 ### Applicable Field Types

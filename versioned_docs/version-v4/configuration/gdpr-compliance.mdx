@@ -41,7 +41,7 @@ Essentially, the easiest blanket approach you can take will be adding a checkbox
 
 ### The Checkbox
 
-In your form, simply create an additional field of the [Checkbox](../forms/fields/#checkbox) field type, and set it to be required. It's important, however, that the following is adhered to:
+In your form, simply create an additional field of the [Checkbox](../forms/fields.mdx#checkbox) field type, and set it to be required. It's important, however, that the following is adhered to:
 
 - The checkbox needs to be clearly labeled and easy to understand. A good example would be something like:
   > I consent to Company Name collecting and storing my data from this form.
@@ -49,7 +49,7 @@ In your form, simply create an additional field of the [Checkbox](../forms/field
 - The checkbox must be a positive opt-in, and cannot be pre-checked by default.
 - Set the checkbox to be **required** so that the form cannot be submitted without consent being given.
 
-If you'd like to add additional disclaimer information above or below the checkbox, you can do this by using the [HTML Block](../forms/fields/#html) special field type available inside the form builder.
+If you'd like to add additional disclaimer information above or below the checkbox, you can do this by using the [HTML Block](../forms/fields.mdx#html) special field type available inside the form builder.
 
 ### Proof of Consent
 
@@ -85,8 +85,8 @@ Removing a user's data is simple. If you're requested to remove data about a use
 
 So in review here's a summary of the steps required:
 
-1. Create an additional field of the [Checkbox](../forms/fields/#checkbox) field type, and set it to be required. Leave it unchecked by default and label it something like **I consent to Company Name collecting and storing my data from this form.**
-2. Place instructions in [email notifications](../forms/email-notifications) or form success pages explaining how a customer can go about having their data removed from your site.
+1. Create an additional field of the [Checkbox](../forms/fields.mdx#checkbox) field type, and set it to be required. Leave it unchecked by default and label it something like **I consent to Company Name collecting and storing my data from this form.**
+2. Place instructions in [email notifications](../forms/email-notifications.mdx) or form success pages explaining how a customer can go about having their data removed from your site.
 3. When requested to remove a user's data, be sure to remove all associated submission(s) within 30 days or less.
 
 Again, be sure to review [this official guide to GDPR](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/).
@@ -102,7 +102,7 @@ There are some other measures you can take for your site in regard to GDPR compl
 
 ### Disable IP address collection
 
-IP addresses are collected by default for protection against spammers and other possible future features such as limiting submissions to 1 per user, etc. You can disable the collection of IP addresses of submitters per form by toggling off the **[Collect IP Addresses](../forms/builder/#form-settings)** setting inside the form's settings (**Form Builder** → **Settings** tab → **Data Storage**).
+IP addresses are collected by default for protection against spammers and other possible future features such as limiting submissions to 1 per user, etc. You can disable the collection of IP addresses of submitters per form by toggling off the **[Collect IP Addresses](../forms/builder.mdx#form-settings)** setting inside the form's settings (**Form Builder** → **Settings** tab → **Data Storage**).
 
 :::info
 It's worth noting that while IP addresses are considered personally identifying information, you are likely collecting all sorts of other personally identifying information anyway, so omitting IP addresses doesn't exactly solve anything unless you're running an anonymous survey or poll, in which disabling this would allow you to avoid GDPR consent troubles.
@@ -112,13 +112,13 @@ It's worth noting that while IP addresses are considered personally identifying 
 
 You can add a checkbox to your forms that allows your site users to decide whether or not the submission data should be stored on your site.
 
-- To enable it, toggle on the **[Allow Users to Opt-in](../forms/builder/#form-settings)** setting inside the form's settings (**Form Builder** → **Settings** tab → **Data Storage**) and select the **Checkbox** field you want to be the designated opt-in field.
+- To enable it, toggle on the **[Allow Users to Opt-in](../forms/builder.mdx#form-settings)** setting inside the form's settings (**Form Builder** → **Settings** tab → **Data Storage**) and select the **Checkbox** field you want to be the designated opt-in field.
 - This setting will still send off API data and email notifications.
 - It's important to understand that limiting data to be stored on your site, but still elsewhere such as CRM services and emails would need to be in compliance with GDPR regulations.
 
 ### Automatically purge submission data
 
-If you wish to have your Freeform submissions data purged from your site automatically after a certain number of days, you can do this using the **[Automatically Purge Submission Data](./settings/#general-settings)** setting under General Settings. GDPR regulations require that you comply with a persons request to remove their data within 30 days, so theoretically if you set this setting to _30 days_ or less, you would automatically be complying without needing to specifically handle their request (at least in regards to the data you have on them inside Freeform).
+If you wish to have your Freeform submissions data purged from your site automatically after a certain number of days, you can do this using the **[Automatically Purge Submission Data](./settings.mdx#general-settings)** setting under General Settings. GDPR regulations require that you comply with a persons request to remove their data within 30 days, so theoretically if you set this setting to _30 days_ or less, you would automatically be complying without needing to specifically handle their request (at least in regards to the data you have on them inside Freeform).
 
 - The **Days After Submission Date to Purge** setting allows you to select the number of days after submissions have been submitted for Freeform to begin automatically purging.
 - This process will only run every hour, and only when Freeform is accessed on the front end in templates or in the control panel.
@@ -129,4 +129,4 @@ Enabling this and saving this settings page will result in purging beginning.
 
 ### Self-serve submission deletion
 
-Freeform submissions include a unique "secure" token that is available for a variety of purposes. Specifically, you could include the token inside an email notification to the submitter (or on the success page after submitting) to construct a link that allows them to remove their submission in a single click. See [Deleting Submissions By Token](../templates/queries/deleting-submissions-by-token) documentation for more information.
+Freeform submissions include a unique "secure" token that is available for a variety of purposes. Specifically, you could include the token inside an email notification to the submitter (or on the success page after submitting) to construct a link that allows them to remove their submission in a single click. See [Deleting Submissions By Token](../templates/queries/deleting-submissions-by-token.mdx) documentation for more information.
