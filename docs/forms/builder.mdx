@@ -136,12 +136,13 @@ The left column lists all available fields and field types to use for the form. 
     - Click the `x` at the top right
     - Click anywhere else on the page
 - **Bulk Insert Options** <Badge type="feature" text="New in 5.5+" /> - paste in large lists of options into a textarea for options-based field types such as Checkboxes and Dropdowns.
-    - **Separator** - specify a separator (if applicable) used to separate the option label and value when using custom values for option labels. Options are: _Pipe_, _Comma_, _Semicolon_, _Arrow_ and _Space_.
-    - **Append Values** - whether the options you're adding should add to the existing options configured or replace them.
-    - **Bulk Editor** - enter bulk values separated by new lines. If using custom values for option labels, you can provide a label and a value separated by a separator. For example, if you used `|` you would write: `Label|value` and set the **Separator** setting to _Pipe_.
+  - **Separator** - specify a separator (if applicable) used to separate the option label and value when using custom values for option labels. Options are: _Pipe_, _Comma_, _Semicolon_, _Arrow_ and _Space_.
+  - **Append Values** - whether the options you're adding should add to the existing options configured or replace them.
+  - **Bulk Editor** - enter bulk values separated by new lines. If using custom values for option labels, you can provide a label and a value separated by a separator. For example, if you used `|` you would write: `Label|value` and set the **Separator** setting to _Pipe_.
     <Photo img={BulkInsertOptionsPhoto} alt="Build Insert Options" />
 - **Attributes Editor** - add any attributes for the field and its container here, e.g. `data-my-attribute`, `id`, etc.
-    <Photo img={FieldAttributeEditorPhoto} alt="Field Attributes Editor" />
+  {' '}
+  <Photo img={FieldAttributeEditorPhoto} alt="Field Attributes Editor" />
 
 ### Preview
 
@@ -302,7 +303,7 @@ This is where you configure all settings and behaviors for the form.
   - When additional form types are installed, you can choose a different form type that enables special behaviors.
 - **Submission Title** - the variable(s) you place here will establish the title of each form submission to be displayed in the Submissions list.
   - May include any Freeform field variables (`fieldName`) as well as `form.name`, `form.id`, `form.handle` and `dateCreated` as long as they are wrapped in curly braces (`{{` and `}}`).
-- **Formatting Template** - if using the [render() method](../templates/queries/form/#render), this essentially allows you to "attach" a formatting template to a form so that you don't need to include formatting inside the template(s) you place the form inside.
+- **Formatting Template** - if using the [render() method](../templates/queries/form.mdx#render), this essentially allows you to "attach" a formatting template to a form so that you don't need to include formatting inside the template(s) you place the form inside.
   - Select from an existing sample or custom template.
 - **Description** - a description for the form to store notes or help identify what it's used for, etc.
 - **Form Color** - used for form cards in the dashboard as well as features like charts in Freeform dashboard widgets.
@@ -456,5 +457,3 @@ The top of the **Forms** dashboard page will conveniently let you know if someth
 :::info
 We respect your privacy, so this feature only pulls update notices from the Solspace.com site and **does not and cannot send any information back**. Solspace collects **no** information at all. The comparison check happens on your Freeform site environment, not on the Solspace site. This feature can also be disabled in the plugin settings.
 :::
-
-
