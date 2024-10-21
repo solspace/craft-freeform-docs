@@ -13,7 +13,7 @@
 :root {
   --ifm-background-color: #fff;
   --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-dark: #22e379;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
   --ifm-color-primary-light: #33925d;
@@ -282,8 +282,54 @@ video {
   border-bottom-left-radius: 0 !important;
 }
 
-h2 > .badge:first-child,
-h2 > .badge-group:first-child,
+h2 {
+    border-top: 2px solid rgba(5, 143, 254, .3);
+    margin: 50px -10px 10px !important;
+    padding: 20px 10px;
+}
+h2#title {
+    border: none;
+    margin: 0 -10px !important;
+}
+
+h3 {
+    border-top: 1px solid rgba(5,143,254,0.1);
+    margin: 35px -10px 0;
+    padding: 30px 10px 0;
+}
+
+h2 + h3 {
+    border: none;
+    margin-top: -25px !important;
+    padding-top: 15px;
+}
+div.theme-admonition + h3 {
+    border: none;
+    margin-top: 0 !important;
+    padding-top: 10px;
+}
+
+.menu-grid h3 {
+    border: none;
+    margin-top: inherit !important;
+    padding-top: inherit;
+}
+
+.menu-grid h3 {
+    border: none;
+    margin: 0 !important;
+    padding: 0;
+}
+.step h3 {
+    border: none;
+    margin: var(--ifm-heading-margin-top) 0 var(--ifm-heading-margin-bottom) -1rem !important;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding: 0 var(--ifm-spacing-horizontal);
+}
+
 h3 > .badge:first-child,
 h3 > .badge-group:first-child {
   margin-left: 7px;

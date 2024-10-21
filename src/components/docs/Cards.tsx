@@ -145,7 +145,7 @@ const Card: React.FC<CardProps> = ({
     return (
       <Link
         to={fullCardLink}
-        className="group flex flex-row gap-2  border rounded-lg p-3 m-1 2xl:max-w-full transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:m-0 hover:p-4"
+        className="group flex flex-row gap-3 border rounded-lg p-3 m-1 2xl:max-w-full transition-all duration-500 dark:text-white bg-[rgba(0,127,230,0.2)] dark:bg-[rgba(0,105,190,0.25)] hover:bg-[#87c9ff] hover:dark:bg-[#0069be] hover:m-0 hover:p-4"
       >
         {iconSrc && (
           <div className="flex justify-center">
@@ -171,7 +171,7 @@ const Card: React.FC<CardProps> = ({
   }
 
   return (
-    <div className="group flex flex-row gap-2 border rounded-lg py-2 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white">
+    <div className="group flex flex-row gap-3 border rounded-lg py-2 px-3 max-w-80 2xl:max-w-fit transition-all duration-500 dark:text-white">
       {iconSrc && (
         <div className="flex justify-center">
           <img
@@ -181,12 +181,12 @@ const Card: React.FC<CardProps> = ({
           />
         </div>
       )}
-      <div className="">
+      <div className="pl-2">
         <h3 className="text-lg font-semibold mb-0 text-black dark:text-white">
           {title}
           {titleBadge && <Badge type="feature" text={titleBadge} />}
         </h3>
-        <p className="text-gray-700 mb-1 dark:text-gray-300 ">
+        <p className="text-gray-700 mb-1 dark:text-gray-300 leading-6">
           {description}{' '}
           {linkWithDescription && (
             <SimpleTextLink

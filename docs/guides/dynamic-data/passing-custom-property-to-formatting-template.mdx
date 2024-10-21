@@ -11,7 +11,7 @@ Sometimes you may need to dynamically control what is displayed in a formatting 
 ## Instructions
 
 <VerticalStepWrapper>
-<StepMarkdown stepTitle="Step 1">
+<StepMarkdown>
 In your custom [formatting template](../../templates/formatting/index.mdx), add in a custom property. For the purpose of this example, we'll set up a conditional around the form title. We'll call that property `showFormTitle`. It can be accessed through `form.properties`.
 
 ```twig showLineNumbers
@@ -61,7 +61,7 @@ In a very basic formatting template, that might look something like this:
 ```
 
 </StepMarkdown>
-<StepMarkdown stepTitle="Step 2">
+<StepMarkdown>
 ```twig showLineNumbers
 {{ freeform.form("myFormHandle").render({ showFormTitle: true }) }}
 ```

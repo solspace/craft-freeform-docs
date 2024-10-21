@@ -19,7 +19,7 @@ You can implement Parsley validation for your form 1 of 2 ways:
 You can add the necessary attributes to your forms with the form builder. Follow the instructions below to see how.
 
 <VerticalStepWrapper>
-<StepMarkdown stepTitle="Step 1">
+<StepMarkdown>
 - Open up an existing form inside Freeform and go to the **Form Settings** tab (cog/gear icon).
 - At the bottom of the settings tab, there's an area called **Form tag Attributes**. Add `data-parsley-validate` in the *Attribute* column and leave the *Value* column empty (or specify `true`). This will trigger the Parsley validation.
 
@@ -28,7 +28,7 @@ You can add the necessary attributes to your forms with the form builder. Follow
 | data-parsley-validate |       |
 
 </StepMarkdown>
-<StepMarkdown stepTitle="Step 2">
+<StepMarkdown>
 - For the rest of your fields, add attributes to them in the form builder interace as needed. To add attributes to fields, simply click the field in the middle layout column, and in the right side Property Editor column, you'll see an **Input attributes** settings area. For example:
     - Add `required` to the *Attribute* column and leave the *Value* column empty (or specify `true`) to make the field required.
         - Merely checking the *This field is required* checkbox is not sufficient to trigger Parsley, as it's intended just for Freeform's own validation.
@@ -40,7 +40,7 @@ You can add the necessary attributes to your forms with the form builder. Follow
         | data-parsley-maxlength | 20 |
 
 </StepMarkdown>
-<StepMarkdown stepTitle="Step 3">
+<StepMarkdown>
 - Render your form builder-based form in a Twig template as usual.
     ```twig showLineNumbers
     {{ freeform.form("parsleyForm").render() }}
@@ -55,7 +55,7 @@ You can add the necessary attributes to your forms with the form builder. Follow
 You can add the necessary attributes and changes to your forms directly inside your Twig templates with the Freeform `form.renderTag()`. Follow the instructions below to see how.
 
 <VerticalStepWrapper>
-<StepMarkdown stepTitle="Step 1">
+<StepMarkdown>
 - Add the `data-parsley-validate` attribute to your form using the `renderTag()` method like this:
     ```twig showLineNumbers {2}
     {% set form = freeform.form("parsleyForm", {
@@ -66,7 +66,7 @@ You can add the necessary attributes and changes to your forms directly inside y
     {{ form.renderClosingTag }}
 
 </StepMarkdown>
-<StepMarkdown stepTitle="Step 2">
+<StepMarkdown>
 - To set field level attributes, you can apply them directly to your form field inputs or `field.render`. Usually it's more convenient to set these inside the Freeform control panel form builder area, but you can still control these at the template level if you want. Your template code might look something like this:
     ```twig showLineNumbers {2,9-18}
     {% set form = freeform.form("parsleyForm", {

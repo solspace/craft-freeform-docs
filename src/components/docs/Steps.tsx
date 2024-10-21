@@ -58,6 +58,7 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
         className="flex flex-col mt-1 max-w-[1045px] step-content"
         ref={contentRef}
       >
+        <div className="ml-12">
         {stepTitle && (
           <h3
             className="text-[#ff6624] cursor-pointer ml-12"
@@ -71,7 +72,8 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
             Click here to toggle
           </div>
         )}
-        <div className="ml-12">{children}</div>
+        {children}
+        </div>
       </div>
     </div>
   );

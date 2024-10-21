@@ -17,26 +17,41 @@ Freeform offers a wide variety of ways to handle the success return on forms. Ch
 
 If you wish to offer flexibility and control to your clients for setting the Return URL, this can be set inside the form builder for each form.
 
-#### INSTRUCTIONS
+<VerticalStepWrapper>
+<StepMarkdown>
+Open up the form inside the form builder.
 
-1. Open up the form inside the form builder.
-2. Go to the **Form Settings** tab (on the right).
-3. Inside the **Return URL** setting, add the path you want Freeform to return the user to upon success.
-   - You can also use the following (wrap with `{{` and `}}`):
-     - `form.handle` - handle of the form.
-     - `submission.token` - the secure token created for the submission.
-     - `submission.id` - the newly created unique submission ID in the URL. This (and `submission.token`) would allow you to use the [Submissions query](../../templates/queries/submissions.mdx) to display some or all of the users' submission on the success page.
+</StepMarkdown>
+<StepMarkdown>
+Go to the **Settings** tab.
+
+</StepMarkdown>
+<StepMarkdown>
+For the **Success Behavior** setting, select _Return the Submitter to the following URL_.
+
+</StepMarkdown>
+<StepMarkdown>
+Inside the **Return URL** setting, add the path you want Freeform to return the user to upon success.
+
+You can also use the following (wrap with `{{` and `}}`):
+
+- `form.handle` - handle of the form.
+- `submission.token` - the secure token created for the submission.
+- `submission.id` - the newly created unique submission ID in the URL. This (and `submission.token`) would allow you to use the [Submissions query](../../templates/queries/submissions.mdx) to display some or all of the users' submission on the success page.
 
 #### EXAMPLE
 
 <Photo img={SuccessReturnPhoto} alt="Success Return URL on Forms" />
+
+</StepMarkdown>
+</VerticalStepWrapper>
 
 #### IMPORTANT NOTES
 
 - This approach can easily be overwritten by any template parameters. As soon as the template level `returnUrl` parameter is specified, Freeform will ignore the value set inside the form builder.
 - This approach will not immediately work with AJAX. When AJAX is enabled, Freeform will by default stay on the same page and just show a success banner. To have Freeform perform a redirect to the return URL specified in the form builder upon successful AJAX submit, you'll need to add some JS to your page template. See example below:
 
-```twig showLineNumbers {8-22}
+```twig {8-22}
 <html>
 <head>
 </head>
@@ -66,7 +81,7 @@ If you wish to offer flexibility and control to your clients for setting the Ret
 
 If you'd like something that is not specific to a single form, you can use `document` instead:
 
-```twig showLineNumbers {8-20}
+```twig {8-20}
 <html>
 <head>
 </head>
@@ -96,22 +111,27 @@ If you'd like something that is not specific to a single form, you can use `docu
 
 If you wish to set the Return URL at template level, whether you're doing this to include a dynamic segment in the return URL, etc, you can do so by specifying the `returnUrl` parameter on the [Form query](../../templates/queries/form.mdx) or the [form object](../../templates/objects/form.mdx).
 
-```
+```twig
 {{ form.renderTag({returnUrl: "contact/success"}) }}
 ```
 
-#### INSTRUCTIONS
+<VerticalStepWrapper>
+<StepMarkdown>
+Open up your page template.
 
-1. Open up your page template.
-2. Inside the [Form query](../../templates/queries/form.mdx) or the [form object](../../templates/objects/form.mdx), add the `returnUrl: "contact/success"` parameter.
-   - You can add most variables such as `form.handle`, `submission.id`, `submission.token` as well as perform conditional checks, etc:
-     ```twig showLineNumbers
-     returnUrl: "{{ siteUrl }}freeform-demo/bootstrap/{{ form.handle }}/{% if submission %}submissions/{{ submission.id }}/{% endif %}success"
-     ```
+</StepMarkdown>
+<StepMarkdown>
+Inside the [Form query](../../templates/queries/form.mdx) or the [form object](../../templates/objects/form.mdx), add the `returnUrl: "contact/success"` parameter.
+
+You can add most variables such as `form.handle`, `submission.id`, `submission.token` as well as perform conditional checks, etc:
+
+```twig
+returnUrl: "{{ siteUrl }}freeform-demo/bootstrap/{{ form.handle }}/{% if submission %}submissions/{{ submission.id }}/{% endif %}success"
+```
 
 #### EXAMPLE
 
-```twig showLineNumbers {7}
+```twig {7}
 <html>
 <head>
 </head>
@@ -126,12 +146,15 @@ If you wish to set the Return URL at template level, whether you're doing this t
 </html>
 ```
 
+</StepMarkdown>
+</VerticalStepWrapper>
+
 #### IMPORTANT NOTES
 
 - This approach overrides anything set inside the form builder.
 - This approach will not immediately work with AJAX. When AJAX is enabled, Freeform will by default stay on the same page and just show a success banner. To have Freeform perform a redirect to the return URL specified in the parameter upon successful AJAX submit, you'll need to add some JS to your page template. See example below:
 
-```twig showLineNumbers {7,11-19}
+```twig {7,11-19}
 <html>
 <head>
 </head>
@@ -162,7 +185,7 @@ If you wish to set the Return URL at template level, whether you're doing this t
 
 Aside from the obvious of using [AJAX](../../guides/templating/ajax-forms.mdx), you can achieve this by adding a query in the success URL instead of an additional segment, etc.
 
-```twig showLineNumbers {1-3,6}
+```twig {1-3,6}
 {% if craft.app.request.getQueryParam('success') == 1 %}
   <div class="callout success">Your message has been sent.</div>
 {% endif %}
@@ -178,7 +201,7 @@ Aside from the obvious of using [AJAX](../../guides/templating/ajax-forms.mdx), 
 
 Or a different option, simply redirecting to `/contact?success`:
 
-```twig showLineNumbers
+```twig
 {% set successParam = craft.app.request.getParam('success') %}
 {% if successParam is not null %}
   <p>Success!!</p>
@@ -187,7 +210,7 @@ Or a different option, simply redirecting to `/contact?success`:
 
 And in case you're looking for a dynamic way of setting a return URL with combining several segments:
 
-```twig showLineNumbers
+```twig
 {% set returnUrlPath = siteUrl ~ "get-quote/" ~ craft.app.request.getSegment(2) ~ "?success=1" %}
 ```
 
@@ -195,7 +218,7 @@ And in case you're looking for a dynamic way of setting a return URL with combin
 
 Once using AJAX with your forms, Freeform will ignore any Return URL value you have set for the form inside the form builder as well as the `returnUrl` parameter. Only once you add some additional JS overrides using Freeform's Javascript handling will it begin to work that way:
 
-```twig showLineNumbers {7,11-19}
+```twig {7,11-19}
 <html>
 <head>
 </head>
@@ -226,7 +249,7 @@ The built-in AJAX functionality lets you completely customize the way your forms
 
 #### Apply to ALL forms on the page
 
-```twig showLineNumbers {11-18}
+```twig {11-18}
 <html>
 <head>
 </head>
@@ -252,7 +275,7 @@ The built-in AJAX functionality lets you completely customize the way your forms
 
 #### Apply to a specific form
 
-```twig showLineNumbers {11-20}
+```twig {11-20}
 <html>
 <head>
 </head>
@@ -292,7 +315,7 @@ Create a new form or edit an existing one as usual. Be sure to check off the **E
 <StepMarkdown title="Step 2">
 Add a `div` to hold the success contents inside your existing template that contains the form, e.g. `custom-content`:
 
-```twig showLineNumbers
+```twig
 <div id="custom-content">
     <h3>Thank you!</h3>
     <p>
@@ -306,7 +329,7 @@ Add a `div` to hold the success contents inside your existing template that cont
 <StepMarkdown title="Step 3">
 Wrap your existing form render with a `div` to make it easier to swap out with the custom success `div`, e.g. `form-wrapper`:
 
-```twig showLineNumbers
+```twig
 <div id="form-wrapper">
     {{ freeform.form('myContactForm').render }}
 </div>
@@ -316,7 +339,7 @@ Wrap your existing form render with a `div` to make it easier to swap out with t
 <StepMarkdown title="Step 4">
 In the footer of the template that will contain the form, be sure to include something like this in the footer area:
 
-```js showLineNumbers
+```js
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
     document.addEventListener('freeform-render-success', function (event) {
@@ -343,7 +366,7 @@ Create a new form or edit an existing one as usual. Be sure to check off the **E
 <StepMarkdown title="Step 2">
 Create a new template to hold the success contents, e.g. named `ajax-success.html` with content of:
 
-```twig showLineNumbers
+```twig
 <h3>Thank you!</h3>
 <p>
     We have received your submission. You may now
@@ -355,7 +378,7 @@ Create a new template to hold the success contents, e.g. named `ajax-success.htm
 <StepMarkdown title="Step 3">
 Wrap your existing form render with a `div` to make it easier to swap out with the success template, e.g. `form-wrapper`:
 
-```twig showLineNumbers
+```twig
 <div id="form-wrapper">
     {{ freeform.form('myContactForm').render }}
 </div>
@@ -365,7 +388,7 @@ Wrap your existing form render with a `div` to make it easier to swap out with t
 <StepMarkdown title="Step 4">
 In the footer of the template that will contain the form, be sure to include something like this in the footer area:
 
-```js showLineNumbers
+```js
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript">
     // Find the form element, can be a specific ID or just look for any forms
@@ -402,13 +425,13 @@ If you're using an automated rendering of the form, you'll need to consider how 
 
 #### Hidden field
 
-```twig showLineNumbers
+```twig
 <input type="hidden" name="formReturnUrl" value="{{ 'whatever/my-url'|hash }}" />
 ```
 
 #### Checkbox field
 
-```twig showLineNumbers
+```twig
 <label for="return-checkbox">
     <input type="checkbox" name="formReturnUrl" id="return-checkbox" value="{{ 'whatever/my-url'|hash }}" />
     Some descriptive text about this checkbox
@@ -417,7 +440,7 @@ If you're using an automated rendering of the form, you'll need to consider how 
 
 #### Dropdown field
 
-```twig showLineNumbers
+```twig
 <label for="return-select">
     Please choose...
 </label>
