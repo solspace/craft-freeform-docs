@@ -47,10 +47,10 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
       {stepNumber && (
         <div className="absolute h-full">
           <div className="flex flex-col items-center mr-6 step-number-wrapper h-full">
-            <div className="flex w-8 h-8 items-center justify-center text-sm font-bold border rounded-lg bg-[#ff6624] text-white dark:text-black step-number">
+            <div className="flex w-8 p-1.5 items-center justify-center text-sm font-bold border rounded-lg bg-[#ff6624] text-white dark:text-black step-number">
               {stepNumber}
             </div>
-            {!isDone && <div className="w-px min-h-12 relative step-line" />}
+            {!isDone && <div className="w-px min-h-9 relative step-line" />}
           </div>
         </div>
       )}
@@ -59,20 +59,20 @@ const StepMarkdown: React.FC<StepMarkdownProps> = ({
         ref={contentRef}
       >
         <div className="ml-12">
-        {stepTitle && (
-          <h3
-            className="text-[#ff6624] cursor-pointer ml-12"
-            onClick={handleClick}
-          >
-            {stepTitle}
-          </h3>
-        )}
-        {!stepTitle && !children && (
-          <div className="cursor-pointer" onClick={handleClick}>
-            Click here to toggle
-          </div>
-        )}
-        {children}
+          {stepTitle && (
+            <h3
+              className="text-[#ff6624] cursor-pointer ml-12"
+              onClick={handleClick}
+            >
+              {stepTitle}
+            </h3>
+          )}
+          {!stepTitle && !children && (
+            <div className="cursor-pointer" onClick={handleClick}>
+              Click here to toggle
+            </div>
+          )}
+          {children}
         </div>
       </div>
     </div>
