@@ -84,7 +84,7 @@ Carefully review the [changelog](./changelog.mdx) for Freeform 5.x as well as th
 <StepMarkdown>
 Edit your project's `composer.json` file and update the Freeform version to 5.x:
 
-```diff showLineNumbers
+```diff
   "require": {
       "craftcms/cms": "^5.0.0",
       "vlucas/phpdotenv": "^5.4.0",
@@ -95,19 +95,19 @@ Edit your project's `composer.json` file and update the Freeform version to 5.x:
 ```
 
 - Get the latest 5.x package of Freeform by running the following command:
-  ```sh showLineNumbers
+  ```sh
   php craft update freeform
   ```
   - To get a specific version, run the following command:
-    ```sh showLineNumbers
+    ```sh
     php craft update freeform:5.3.0
     ```
 - Perform the migration one of two ways: - In your CLI, run one of the following commands (all plugins including Craft, or just Freeform): <Badge type="recommended" text="Recommended" />
-  `sh showLineNumbers
+  `sh
  php craft migrate/all
 `
   **OR**
-  `sh showLineNumbers
+  `sh
  php craft migrate --plugin=freeform
 `
   The CLI will then present something like this:

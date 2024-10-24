@@ -118,7 +118,7 @@ Freeform can be installed through the CLI:
 <StepMarkdown>
 Open your CLI app and go to your Craft project:
 
-```sh command-line showLineNumbers
+```sh command-line
 cd /path/to/project
 ```
 
@@ -126,13 +126,13 @@ cd /path/to/project
 <StepMarkdown>
 Then tell _Composer_ to require the plugin:
 
-```sh command-line showLineNumbers
+```sh command-line
 composer require solspace/craft-freeform -w
 ```
 
 To load a specific version, use:
 
-```sh command-line showLineNumbers
+```sh command-line
 composer require solspace/craft-freeform:5.0.0 -w
 ```
 
@@ -140,7 +140,7 @@ composer require solspace/craft-freeform:5.0.0 -w
 <StepMarkdown>
 Install Freeform by running the following command:
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft plugin/install freeform
 ```
 
@@ -229,7 +229,7 @@ Be sure to back up the database before proceeding.
 <StepMarkdown>
 Open your CLI and go to your Craft project:
 
-```sh command-line showLineNumbers
+```sh command-line
 cd /path/to/project
 ```
 
@@ -237,7 +237,7 @@ cd /path/to/project
 <StepMarkdown>
 To see available updates, run this command:
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft update
 ```
 
@@ -245,13 +245,13 @@ php craft update
 <StepMarkdown>
 Follow the prompts, or run:
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft update freeform
 ```
 
 To update to a specific version of Freeform, run:
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft update freeform:5.0.0
 ```
 
@@ -311,7 +311,7 @@ Open your Craft site's main `composer.json` file and adjust the version number f
 <StepMarkdown>
 Open your CLI app and go to your Craft project:
 
-```sh command-line showLineNumbers
+```sh command-line
 cd /path/to/project
 ```
 
@@ -319,7 +319,7 @@ cd /path/to/project
 <StepMarkdown>
 To run any available updates for your site, run:
 
-```sh command-line showLineNumbers
+```sh command-line
 composer update
 ```
 
@@ -330,13 +330,13 @@ Proceed to the Craft control panel and click the **Finish Updates** button if it
 
 _OR_ enter the following command to check for migrations for Craft and all plugins:
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft migrate/all
 ```
 
 _OR_ just perform Freeform migration(s):
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft migrate --plugin=freeform
 ```
 
@@ -391,7 +391,7 @@ Freeform can be temporarily disabled from the CLI or control panel. The benefit 
 <StepMarkdown>
 Open your CLI app and go to your Craft project:
 
-```sh command-line showLineNumbers
+```sh command-line
 cd /path/to/project
 ```
 
@@ -399,7 +399,7 @@ cd /path/to/project
 <StepMarkdown>
 Disable Freeform by running the following command in your CLI app: <Badge type="recommended" text="Recommended" />
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft plugin/disable freeform
 ```
 
@@ -417,7 +417,7 @@ Follow the steps below to uninstall Freeform from your site.
 <StepMarkdown>
 Open your CLI app and go to your Craft project:
 
-```sh command-line showLineNumbers
+```sh command-line
 cd /path/to/project
 ```
 
@@ -429,7 +429,7 @@ Uninstall Freeform by running the following command in your CLI app: <Badge type
 This action cannot be undone. All of your Freeform data be will lost forever, unless you have made a backup.
 :::
 
-```sh command-line showLineNumbers
+```sh command-line
 php craft plugin/uninstall freeform
 ```
 
@@ -443,7 +443,7 @@ Then tell _Composer_ to remove the plugin:
 Do not remove a plugin package with Composer before uninstalling it from the control panel or with Craft's CLI.
 :::
 
-```sh command-line showLineNumbers
+```sh command-line
 composer remove solspace/craft-freeform
 ```
 
@@ -481,8 +481,8 @@ To access the latest unreleased version of Calendar (`v5`), you would set the ve
 "require": {
     "craftcms/cms": "^5.0.0",
     "vlucas/phpdotenv": "^5.4.0",
-    "solspace/craft-calendar": "v5.x-dev",
-    "solspace/craft-freeform": "^5.0.0",
+    "solspace/craft-freeform": "v5.x-dev",
+    "solspace/craft-calendar": "^5.0.0",
 },
 ```
 
