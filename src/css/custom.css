@@ -283,51 +283,51 @@ video {
 }
 
 h2 {
-    border-top: 2px solid rgba(5, 143, 254, .3);
-    margin: 50px -10px 10px !important;
-    padding: 20px 10px;
+  border-top: 2px solid rgba(5, 143, 254, .3);
+  margin: 50px -10px 10px !important;
+  padding: 20px 10px;
 }
 h2#title {
-    border: none;
-    margin: 0 -10px !important;
+  border: none;
+  margin: 0 -10px !important;
 }
 
 h3 {
-    border-top: 1px solid rgba(5,143,254,0.1);
-    margin: 35px -10px 0;
-    padding: 30px 10px 0;
+  border-top: 1px solid rgba(5,143,254,0.1);
+  margin: 35px -10px 0;
+  padding: 30px 10px 0;
 }
 
 h2 + h3 {
-    border: none;
-    margin-top: -25px !important;
-    padding-top: 15px;
+  border: none;
+  margin-top: -25px !important;
+  padding-top: 15px;
 }
 div.theme-admonition + h3 {
-    border: none;
-    margin-top: 0 !important;
-    padding-top: 10px;
+  border: none;
+  margin-top: 0 !important;
+  padding-top: 10px;
 }
 
 .menu-grid h3 {
-    border: none;
-    margin-top: inherit !important;
-    padding-top: inherit;
+  border: none;
+  margin-top: inherit !important;
+  padding-top: inherit;
 }
 
 .menu-grid h3 {
-    border: none;
-    margin: 0 !important;
-    padding: 0;
+  border: none;
+  margin: 0 !important;
+  padding: 0;
 }
 .step h3 {
-    border: none;
-    margin: var(--ifm-heading-margin-top) 0 var(--ifm-heading-margin-bottom) -1rem !important;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding: 0 var(--ifm-spacing-horizontal);
+  border: none;
+  margin: var(--ifm-heading-margin-top) 0 var(--ifm-heading-margin-bottom) -1rem !important;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding: 0 var(--ifm-spacing-horizontal);
 }
 
 h3 > .badge:first-child,
