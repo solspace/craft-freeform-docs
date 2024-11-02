@@ -3,12 +3,17 @@ sidebar_position: 2
 title: Caching Forms
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
 import { Badge } from '@site/src/components/utils';
 
-# Caching Forms<Badge type="feature" text="Revised in 5.0+" />
+# Caching Forms<Badge type="feature" text="Improved in 5.0+" />
 
-Forms and pages can be cached in a variety of ways. Here are 2 different solutions, depending on your caching approach.
+Forms and pages can be cached in a variety of ways. Here are 2 different solutions, depending on your caching approach:
+
+- [Twig Template Caching](#twig-template-caching-)
+- [Static Page Caching / CDN / Blitz](#static-page-caching--cdn--blitz-)
 
 :::tip
 [Quick troubleshooting the most commonly reported issues with your form's appearance, behavior, or submission of the form on the front end.](../testing/troubleshooting-form-issues.mdx)
@@ -16,9 +21,41 @@ Forms and pages can be cached in a variety of ways. Here are 2 different solutio
 
 ## Twig Template Caching <Badge type="feature" text="Revised in 5.0+" />
 
-When using simple [Craft Caching](https://craftcms.com/docs/5.x/reference/twig/tags.html#cache), you'll need to make sure that you are refreshing the [CSRF token](https://craftcms.com/docs/5.x/development/forms.html#csrf).
+When using simple [Craft Caching](https://craftcms.com/docs/5.x/reference/twig/tags.html#cache), you'll need to make sure that you are refreshing the [CSRF token](https://craftcms.com/docs/5.x/reference/twig/functions.html#csrfinput).
 
-Here's how that may look inside your template:
+There are two approaches you can take:
+
+- [Using Craft's `asyncCsrfInputs` Setting](#using-crafts-asynccsrfinputs-setting-) <Badge type="recommended" text="Recommended" />
+- [Manually Refresh CSRF in Template](#manually-refresh-csrf-in-template)
+
+### Using Craft's `asyncCsrfInputs` Setting <Badge type="recommended" text="Recommended" />
+The simplest approach you can take is enabling Craft's [`asyncCsrfInputs`](https://craftcms.com/docs/5.x/reference/config/general.html#asynccsrfinputs) setting. It will automatically take care of the CSRF token for you and you don't need to do anything else.
+
+<Tabs>
+  <TabItem value="template-code" label="Twig Template" default>
+    ```twig
+    {# Initialize the form #}
+    {% set form = freeform.form("myFormHandle") %}
+
+    {# Cached form comes here #}
+    {% cache %}
+        {{ form.render }}
+    {% endcache %}
+    ```
+  </TabItem>
+  <TabItem value="output" label="Craft Static Config">
+    ```php
+    ->asyncCsrfInputs(true)
+    ```
+  </TabItem>
+</Tabs>
+
+
+
+
+
+### Manually Refresh CSRF in Template
+If you need wish to refresh the CSRF token manually instead, this can be done with a but of javascript in the template:
 
 ```twig
 {# Initialize the form #}
@@ -29,7 +66,7 @@ Here's how that may look inside your template:
     {{ form.render }}
 {% endcache %}
 
-{# Script for updating the form's CSRF token loads after #}
+{# Script for updating the form's CSRF token #}
 <script>
     // Find the corresponding Form
     var form = document.querySelector('form');
