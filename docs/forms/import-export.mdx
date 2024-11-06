@@ -1,0 +1,59 @@
+---
+sidebar_position: 8
+title: 'Import & Export'
+---
+
+import { VerticalStepWrapper, StepMarkdown } from '@site/src/components/docs';
+import { FlexCards } from '@site/src/components/docs';
+import { Badge, BadgeGroup, Photo } from '@site/src/components/utils';
+
+import ImportPhoto from './assets/img/import.png';
+import ExportPhoto from './assets/img/export.png';
+
+# Import & Export <Badge type="addon" text="Beta" /><Badge type="feature" text="New in 5.6+" />
+
+## Overview
+
+Freeform includes an import and export utility that allows you to granularly import and export partial or entire Freeform setups from one site or environment to another. This could be used for performing site updates across environments and syncing changes in Freeform, or as a boilerplate for new sites.
+
+Imports & Exports can include:
+
+- Forms (incuding layout, notifications, rules, integrations, settings)
+- Form Submissions
+- Templates (including email notification, formatting, success, PDF)
+- Freeform Settings
+- Integrations
+
+<Photo img={ExportPhoto} alt="Export Freeform Data" />
+<Photo img={ImportPhoto} alt="Import Freeform Data" />
+
+## Compatibility
+
+The chart below shows which data is currently available to include in exports and imports.
+
+| Feature | <span class="edition-pro">Compatible</span> | Available in Near Future |
+|:--- |:---:|:---:|
+| Forms: Layout | <span class="edition-pro">✓</span> |  |
+| Forms: Notifications | <span class="edition-pro">✓</span> |  |
+| Forms: Rules | <span class="edition-pro">✓</span> |  |
+| Forms: Integrations | <span class="edition-pro">✓</span> |  |
+| Forms: Settings | <span class="edition-pro">✓</span> |  |
+| All Field types | <span class="edition-pro">✓</span> |  |
+| Favorite Fields | <span class="compare-none">✕</span> | ✓ |
+| Form Groups | <span class="compare-none">✕</span> | ✓ |
+| Submissions | <span class="edition-pro">✓</span> |  |
+| Spam | <span class="compare-none">✕</span> | ✓ |
+| Email Notification Templates | <span class="edition-pro">✓</span> |  |
+| Custom Formatting Templates | <span class="edition-pro">✓</span> |  |
+| Success Templates | <span class="edition-pro">✓</span> |  |
+| PDF Templates | <span class="edition-pro">✓</span> |  |
+| Settings: General | <span class="edition-pro">✓</span> |  |
+| Settings: Form Behavior | <span class="edition-pro">✓</span> |  |
+| Settings: Form Builder | <span class="edition-pro">✓</span> |  |
+| Settings: Limited Users | <span class="compare-none">✕</span> | ✓ |
+| Settings: Template Manager | <span class="edition-pro">✓</span> |  |
+| Settings: PDF Templates | <span class="edition-pro">✓</span> |  |
+| Settings: Statuses | <span class="edition-pro">✓</span> |  |
+| Settings: Spam Protection | <span class="edition-pro">✓</span> |  |
+| Settings: All Integration types | <span class="edition-pro">✓</span> |  |
+| Settings: Notices & Alerts | <span class="edition-pro">✓</span> |  |

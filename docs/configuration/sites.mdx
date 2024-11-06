@@ -1,43 +1,93 @@
 ---
-title: Site Filtering
-sidebar_position: 9
+title: Site-Aware Forms
+sidebar_position: 1
 ---
 
 import { Photo, Badge } from '@site/src/components/utils';
 
-import BuilderSettingPhoto from './assets/img/builder-setting.png';
+import BuilderSitesPhoto from './assets/img/builder-sites.png';
 import Forms1Photo from './assets/img/forms-1.png';
 import Forms2Photo from './assets/img/forms-2.png';
 import Forms3Photo from './assets/img/forms-3.png';
-import SettingPhoto from './assets/img/setting.png';
+import SettingSitesPhoto from './assets/img/setting-sites.png';
+import BuilderTranslationsSettingsPhoto from './assets/img/builder-translations-settings.png';
+import BuilderTranslationsFieldsPhoto from './assets/img/builder-translations-fields.png';
+import BuilderTranslationsOptionsPhoto from './assets/img/builder-translations-options.png';
 import SubmissionsPhoto from './assets/img/submissions.png';
 import SwitcherPhoto from './assets/img/switcher.png';
 
-# Site Filtering for Forms and Submissions<Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.2+" />
+# Site-Aware Forms <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.2+, Improved in 5.7+" />
 
-Optionally enable Site filtering for forms and submissions to show/hide them for specific Sites.
+Allows you to optionally enable [Site](https://craftcms.com/docs/5.x/system/sites.html) awareness in Freeform to show/hide them for specific Sites and enable translations per site for forms to have unique labels and messages on the front end.
 
 ## Overview
 
-This feature allows you to filter form lists by [Sites](https://craftcms.com/docs/5.x/system/sites.html) and prevents other admins from accessing forms that belong to Sites they don't have access to. By default, any new forms created will be visible for the Site they were created on (with the ability to enable additional sites).
+When this feature is enabled, forms become aware of the currently active [Site](https://craftcms.com/docs/5.x/system/sites.html) when loaded on the front end. In the control panel, you can filter form lists by Site and prevent other admins from accessing forms that belong to Sites they don't have access to. By default, any new forms created will be visible for the Site they were created on (with the ability to enable additional sites).
 
-This can help clean up the Freeform control panel when you have many forms specific to certain Sites.
-
-:::warning
-This only controls access to forms and submissions. It does not enable translations per site.
+:::info
+To enable translations on forms per Site, go to the form builder and enable the 'Translatable' setting under the 'Settings' tab.
 :::
 
-### Setting
+### Settings
 
-Inside the **General Settings** page, you can enable this feature by toggling ON the **Site Filtering for Forms and Submissions** setting (or `sitesEnabled: true` in Project Config).
+Inside the **General Settings** page, you can enable this feature by toggling ON the **Site-Aware Forms** setting (or `sitesEnabled: true` in Project Config).
 
-<Photo img={SettingPhoto} alt="General Settings" />
+<Photo img={SettingSitesPhoto} alt="Site-Aware Forms setting in General Settings" />
 
-### Form Builder
+### Form Builder <Badge type="feature" text="Updated in 5.7+" />
 
-Once enabled, an additional **Sites** setting will appear for forms inside the _Settings_ tab of the form builder.
+Once enabled, an additional **Sites** setting and **Translatable** toggle will appear for forms inside the _Settings_ tab of the form builder.
 
-<Photo img={BuilderSettingPhoto} alt="Form Builder" />
+<Photo img={BuilderSitesPhoto} alt="Sites and Translatable settings in Form Builder" />
+
+### Translations <Badge type="feature" text="New in 5.7+" />
+
+Once the **Translations** setting is enabled for a form, various parts of the form will become available for translation. The translation process is similar to other areas within the Craft control panel. You will notice the familiar translation icon next to any setting that can be translated. To set a different value for other sites, use the Site picker at the top of the page.
+
+The translation icon will turn blue if a translation exists for a site other than the primary site. Clicking this icon will allow you to cancel the translation value for that site and revert it to the configuration set for the primary site.
+
+#### Translatable Settings
+Various settings for forms become translatable, including form name and description, processing text, and success and error messages.
+
+<Photo img={BuilderTranslationsSettingsPhoto} alt="Translatable Settings in Form Builder" />
+
+#### Translatable Fields
+Various settings for fields become translatable, including label, instructions, placeholder, default value, and custom error validation message.
+
+<Photo img={BuilderTranslationsFieldsPhoto} alt="Translatable Fields in Form Builder" />
+
+#### Translatable Field Options
+If a field contains options such as Dropdowns or Checkboxes, the option labels can be translated, while the option values remain fixed for sites other than the primary site. Additionally, the same set and quantity of options must be maintained across all sites.
+
+<Photo img={BuilderTranslationsOptionsPhoto} alt="Translatable Field Options in Form Builder" />
+
+The following items are translatable:
+
+- Settings
+    - General
+        - **Form Name**
+        - **Form Description**
+    - Processing
+        - **Processing Text**
+    - Success & Errors
+        - **Success Message**
+        - **Error Message**
+- Form Layout
+    - **Page Tab Names**
+    - Submit Buttons
+        - **Labels**
+    - Fields
+        - **Label**
+        - **Instructions**
+        - **Placeholder**
+        - **Default Value**
+        - **Custom Validation Error**
+        - Custom Options
+            - **Option Labels**
+
+:::warning
+Options and labels inside of **Opinion Scales** and **Table** fields are currently not translatable at this time.
+:::
 
 ### Site Switcher
 
@@ -71,7 +121,7 @@ It's important to note that if a form is only enabled for _Site A_ and _Site B_,
 
 If you wish to enable this feature retroactively to an existing Craft install, please follow the steps below:
 
-1. Enable the **Site Filtering for Forms and Submissions** setting in Freeform.
+1. Enable the **Site-Aware Forms** setting in Freeform.
 2. Open up each form and update the **Sites** setting inside the _Settings_ tab and save the form.
    - Repeat for every form on your site.
    - By default, every form will have NO Sites checked off, but Freeform assumes the form should be active for ALL Sites if that is the case.
@@ -82,11 +132,8 @@ If you wish to enable this feature retroactively to an existing Craft install, p
 
 ## What It Doesn't Do
 
-While this feature relies on the Craft [Sites](https://craftcms.com/docs/5.x/system/sites.html) feature to work, the primary intention at this point is to allow filtering of forms and submissions per Site.
+Here are some things it cannot do:
 
-Here are some things it cannot do (yet?):
-
-- CP-based translations of Freeform forms. The only option for translating forms per site remains via [Static Text Translations](../configuration/translating.mdx).
 - Translations of Freeform submissions per site.
 - Unique settings per site.
 - Unique integrations per site.
