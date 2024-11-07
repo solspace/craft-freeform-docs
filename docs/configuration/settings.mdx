@@ -66,6 +66,13 @@ Freeform includes a wide variety of settings that allow you to customize your fo
       fullCardLink: '#template-manager',
     },
     {
+      title: 'PDF Templates',
+      description:
+        'Create custom PDF templates to be generated for email notifications.',
+      icon: Icons.PDFIcon,
+      fullCardLink: '#pdf-templates-',
+    },
+    {
       title: 'Spam Protection',
       description: "Configure Freeform's built-in spam controls.",
       icon: Icons.CarrotIcon,
@@ -297,6 +304,23 @@ Your success template might look something like this:
 ```
 
 Things like `form.id`, `form.handle` and `form.name` are available for use here as well.
+
+## PDF Templates <Badge type="pro" text="Pro" /><Badge type="feature" text="New in 5.7+" />
+
+You can create an unlimited number of custom PDF's to be generated for email notifications. You are in full control to build beautiful HTML-based templates and dynamically pull in form and submission data. In the [Email Notifications](../forms/email-notifications.mdx) area, when editing an email notification template, you can then assign which PDF template(s) should be included with it.
+
+The file name and PDF body may contain any of the [Twig variables](../forms/email-notifications.mdx#template-options) available in the body of email notification templates. Please [see documentation](../forms/email-notifications.mdx#template-options) for more information.
+
+Each PDF template contains the following:
+
+- Name
+- Description
+- File Name (the name of the PDF file when it's generated - can use Twig variables)
+- PDF Body (uses HTML and can include Twig variables)
+
+:::info
+This page and its settings all remain accessible when the Craft `allowAdminChanges` config setting is set to `false`.
+:::
 
 ## Statuses
 
