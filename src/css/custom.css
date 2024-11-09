@@ -309,17 +309,12 @@ div.theme-admonition + h3 {
   padding-top: 10px;
 }
 
-.menu-grid h3 {
-  border: none;
-  margin-top: inherit !important;
-  padding-top: inherit;
-}
-
-.menu-grid h3 {
+.menu-grid h3, .grid h3 {
   border: none;
   margin: 0 !important;
   padding: 0;
 }
+
 .step h3 {
   border: none;
   margin: var(--ifm-heading-margin-top) 0 var(--ifm-heading-margin-bottom) -1rem !important;

@@ -48,6 +48,7 @@ import Pardot from './assets/icons/integrations/pardot.png';
 import Freshdesk from './assets/icons/integrations/freshdesk.png';
 import Keap from './assets/icons/integrations/keap.png';
 import Insightly from './assets/icons/integrations/insightly.png';
+import Jira from './assets/icons/integrations/jira.png';
 import GoogleSheets from './assets/icons/integrations/google-sheets.png';
 import Zoho from './assets/icons/integrations/zoho.png';
 import Campaign from './assets/icons/integrations/campaign.png';
@@ -307,26 +308,26 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         title: 'Freeform Honeypot',
         description: 'The Honeypot feature included in the system effectively deals with simple bot spam.',
         icon: Icons.CarrotIcon,
-        linkWithDescription: './forms/spam-protection/#freeform-honeypot',
+        linkWithDescription: 'forms/spam-protection/#freeform-honeypot',
       },
       {
         title: 'Built-in Spam Folder',
         description: 'Use the Spam Folder to catch any potential spam without risking missing legitimate submissions.',
         icon: Icons.SpamIcon,
-        linkWithDescription: './forms/spam-protection/#spam-folder',
+        linkWithDescription: 'forms/spam-protection/#spam-folder',
       },
       {
         title: 'reCAPTCHA & hCaptcha',
         description:
           'To enhance your spam-fighting capabilities, you can choose to enable either reCAPTCHA or hCaptcha.',
         icon: Icons.CaptchaIcon,
-        linkWithDescription: './forms/spam-protection/#recaptcha',
+        linkWithDescription: 'forms/spam-protection/#recaptcha',
       },
       {
         title: 'Keyword Blocking',
         description: 'With Freeform, you have the power to target and block specific email addresses, keywords, and IP addresses.',
         icon: Icons.BlockedIcon,
-        linkWithDescription: './forms/spam-protection/#spam-blocking',
+        linkWithDescription: 'forms/spam-protection/#spam-blocking',
       },
       {
         title: 'Throttling / Submit Time',
@@ -440,7 +441,6 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
           'Hide field data',
         icon: Icons.HiddenIcon,
       },
-
            {
         link: 'forms/fields#dropdown',
         title: 'Dropdown',
@@ -541,7 +541,6 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     'Perform dynamic calculations based on user-input values within forms',
     icon: Icons.CalculationIcon,
     },
-
     {
     link: 'forms/fields#signature',
     title: 'Signature',
@@ -549,7 +548,6 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     'Users can digitally sign submissions',
     icon: Icons.SignatureIcon,
     },
-
     {
     link: 'forms/fields#invisible',
     title: 'Invisible',
@@ -557,7 +555,6 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
     'Include hidden data that is not visible in rendered source code',
     icon: Icons.InvisibleIcon,
     },
-
     {
     link: 'forms/fields#regex',
     title: 'Regex',
@@ -804,6 +801,11 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         link: 'integrations/google-sheets/',
         iconSrc: GoogleSheets,
       },
+      {
+        title: 'Jira',
+        link: 'integrations/jira/',
+        iconSrc: Jira,
+      },
       { title: 'Zoho', link: 'integrations/zoho/', iconSrc: Zoho },
       { title: 'Campaign', link: 'integrations/campaign/', iconSrc: Campaign },
       {
@@ -976,6 +978,13 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         icon: Icons.DataManageIcon,
         linkWithDescription: 'submissions/overview/',
       },
+      {
+        title: 'PDF Templates',
+        titleBadge: 'New!',
+        description: 'Create custom PDF templates to be generated for email notifications.',
+        icon: Icons.PDFIcon,
+        linkWithDescription: 'configuration/settings/#pdf-templates-',
+      },
          {
         title: 'Exporting',
         description: 'Quickly export submission data or generate Export Profile reports in Excel, CSV, Text, XML, or JSON formats.',
@@ -1091,10 +1100,18 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         icon: Icons.ConfigPageIcon,
         linkWithDescription: 'configuration/settings/',
       },
-         {
-        title: 'Site Filtering',
+      {
+        title: 'Site-Aware Forms',
+        titleBadge: 'New!',
         description: 'Optionally enable Site filtering for forms and submissions to show/hide them for specific Sites.',
         icon: Icons.WorldIcon,
+        linkWithDescription: 'configuration/sites/',
+      },
+      {
+        title: 'Translatable',
+        titleBadge: 'New!',
+        description: 'Enable translations per site for forms to have unique labels and messages on the front end.',
+        icon: Icons.TranslationIcon,
         linkWithDescription: 'configuration/sites/',
       },
          {
@@ -1113,12 +1130,6 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
         title: 'Accessibility tested',
         description: 'We have tested our sample templates to ensure that they are accessible to everyone, using best-practice accessibility implementations.',
         icon: Icons.UserCheckIcon,
-      },
-         {
-        title: 'Translatable',
-        description: 'Ability to translate the Freeform control panel, form messages, and field options using static translation files.',
-        icon: Icons.TranslationIcon,
-        linkWithDescription: 'configuration/translating/',
       },
          {
         title: 'Developer-friendly',
@@ -1163,12 +1174,14 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 | Field Encryption                                                                                                                          |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Edit Submissions on Front End                                                                                                             |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | GDPR Compliant                                                                                                                            |                                                                            <span class="edition-express">✓</span>                                                                            |                                                                                           <span class="edition-lite">✓</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
-| Site Filtering for Forms and Submissions                                                                                                  |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
+| Site-Aware Forms                                                                                                  |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
+| Translations per Site inside Builder                                                                                                  |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Automatically Purge Submission Data                                                                                                       |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Automatically Purge Spam Submission Data                                                                                                  |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="edition-lite">✓</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Email Notifications                                                                                                                       |                                                    <span class="edition-express">Admin, Email Field, User-Defined, Template-based</span>                                                     |                                                             <span class="edition-lite">Admin, User Select, Email Field, User-Defined, Template-based</span>                                                             |                                                      <span class="edition-pro">Admin, Conditional, User Select, Email Field, User-Defined, Template-based</span>                                                       |
 | Email Alert of Failed Email Notifications                                                                                                 |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="edition-lite">✓</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Weekly/Daily Digest Emails                                                                                                                |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="edition-lite">✓</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
+| Dynamic PDF Templates                                                                                                  |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Exporting of Data                                                                                                                         |                                                                        <span class="edition-express">Basic CSV</span>                                                                        |                                                                                       <span class="edition-lite">Basic CSV</span>                                                                                       |                                                                              <span class="edition-pro">Excel, CSV, XML, JSON, Text</span>                                                                              |
 | Export Profiles (pre-configured)                                                                                                          |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Export Email Notifications                                                                                                                |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
@@ -1199,7 +1212,7 @@ import EmailNotificationsVideo from './assets/videos/email-notifications.mp4';
 | Email Marketing Integrations                                                                                                              |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                              <span class="edition-pro">Mailchimp, Campaign Monitor, Constant Contact, ActiveCampaign, Dotdigital, Campaign plugin</span>                                               |
 | CRM Integrations                                                                                                                          |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                   <span class="edition-pro">Salesforce, Pardot, HubSpot, ActiveCampaign, Pipedrive, Zoho CRM, Keap, Insightly, SharpSpring, Freshdesk</span>                                   |
 | Webhooks Integrations                                                                                                                     |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                <span class="edition-pro">Slack, Zapier, generic</span>                                                                                 |
-| Other Integrations                                                                                                                        |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                     <span class="edition-pro">Google Sheets</span>                                                                                     |
+| Other Integrations                                                                                                                        |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                     <span class="edition-pro">Google Sheets, Jira Cards</span>                                                                                     |
 | POST Forwarding                                                                                                                           |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | GraphQL Support                                                                                                                           |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="edition-lite">✓</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
 | Stripe Payments                                                                                                                           |                                                                             <span class="compare-none">✕</span>                                                                              |                                                                                           <span class="compare-none">✕</span>                                                                                           |                                                                                           <span class="edition-pro">✓</span>                                                                                           |
