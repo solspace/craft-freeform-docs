@@ -146,3 +146,11 @@ Add the following JS snippet to your main `.js` file or to the bottom of all you
 :::tip
 [Using a form more than once in the same template? Be sure to specify the `id` parameter for the _Form_ query in your template with unique values.](./multiple-instances-of-same-form.md)
 :::
+
+## Stripe Integrations
+
+Freeform will trigger Payment Intent requests automatically upon page load. These requests use the initial form data, meaning the original CSRF token.
+
+The assumption is that payment forms should never be cached, so if your form has a Stripe integration enabled and you are using Blitz caching and refreshing your CSRF tokens, we suggest injecting your payment form into your template using [Blitz dynamic content](https://putyourlightson.com/plugins/blitz#dynamic-content) or [Sprig](https://putyourlightson.com/plugins/sprig#component-attributes).
+
+Then there is then no need to refresh CSRF tokens as the dynamic content is injected after the page loads. Otherwise, you risk a "400 Bad Request - Unable to verify your data submission" error.
